@@ -1,0 +1,32 @@
+[
+  {
+    "id": "b0f2aedf-1b50-43f0-8483-4be8081ac8fe",
+    "company": "Thoughtmix",
+    "users": 3882,
+    "percentage": 76
+  },
+  {
+    "id": "78608897-fd0c-468f-839a-8ecf1c41738f",
+    "company": "Realcube",
+    "users": 5794,
+    "percentage": 1
+  },
+  {
+    "id": "c3cb9000-bd85-432e-953d-eeae66824ff6",
+    "company": "Eamia",
+    "users": 9308,
+    "percentage": 74
+  },
+  {
+    "id": "35233364-55f8-44fc-a814-d21f653858e3",
+    "company": "Talane",
+    "users": 6889,
+    "percentage": 75
+  },
+  {
+    "id": "0d4d8e60-0a4a-4581-93ed-8b3de4e4e5b5",
+    "company": "Browseblab",
+    "users": 5832,
+    "percentage": 74
+  }
+]

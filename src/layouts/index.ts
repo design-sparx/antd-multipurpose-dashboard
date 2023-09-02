@@ -1,3 +1,4 @@
-import {AppLayout} from "./App"
+import {AppLayout} from "./app"
+import DashboardLayout from "./dashboards";
 
-export {AppLayout}
+export {AppLayout, DashboardLayout}

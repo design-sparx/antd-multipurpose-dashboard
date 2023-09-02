@@ -1,7 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
 import {DefaultDasboardPage, HomePage} from "../pages";
-import {AppLayout} from "../layouts";
 import ErrorPage from "../pages/errors/Error.tsx";
+import {DashboardLayout} from "../layouts";
 
 const router = createBrowserRouter([
     {
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboards",
-        element: <AppLayout/>,
+        element: <DashboardLayout/>,
         errorElement: <ErrorPage/>,
         children: [
             {

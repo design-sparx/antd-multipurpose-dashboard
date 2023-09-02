@@ -20,7 +20,8 @@ import {
     PATH_START,
     PATH_SUBSCRIPTION,
     PATH_USER_MGMT,
-    PATH_USER_PROFILE
+    PATH_USER_PROFILE,
+    PATH_LANDING
 } from "./routes.ts"
 
 export {
@@ -45,5 +46,6 @@ export {
     PATH_USER_PROFILE,
     PATH_FILE,
     PATH_SOCIAL,
-    PATH_START
+    PATH_START,
+    PATH_LANDING
 }

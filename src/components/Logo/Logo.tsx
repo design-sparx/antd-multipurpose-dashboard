@@ -6,7 +6,7 @@ type LogoProps = { color: "black" | "white" } & React.HTMLAttributes<HTMLDivElem
 const Logo = ({color, ...others}: LogoProps) => {
     return (
         <div {...others}>
-            <LayoutOutlined style={{color}}/>
+            <LayoutOutlined style={{color, fontSize: 24}}/>
             <Typography.Title level={4} type="secondary" style={{color, margin: 0}}>DesignSparx</Typography.Title>
         </div>
     );

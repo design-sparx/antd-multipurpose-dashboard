@@ -2,6 +2,7 @@ function path(root: string, sublink: string) {
     return `${root}${sublink}`
 }
 
+const ROOTS_LANDING = '/landing'
 const ROOTS_DASHBOARD = '/dashboards'
 const ROOTS_LAYOUT = '/layouts'
 const ROOTS_CORPORATE= '/corporate'
@@ -21,11 +22,20 @@ const ROOTS_INBOX = '/inbox'
 const ROOTS_CALENDAR = '/calendar'
 const ROOTS_ERRORS = '/errors'
 
+export const PATH_LANDING = {
+    root: ROOTS_LANDING
+}
+
 export const PATH_DASHBOARD = {
     root: ROOTS_DASHBOARD,
     default: path(ROOTS_DASHBOARD, '/default'),
-    analytics: path(ROOTS_DASHBOARD, '/analytics'),
-    saas: path(ROOTS_DASHBOARD, '/saas'),
+    projects: path(ROOTS_DASHBOARD, '/projects'),
+    ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),
+    marketing: path(ROOTS_DASHBOARD, '/marketing'),
+    social: path(ROOTS_DASHBOARD, '/social'),
+    bidding: path(ROOTS_DASHBOARD, '/bidding'),
+    courses: path(ROOTS_DASHBOARD, '/courses'),
+    logistics: path(ROOTS_DASHBOARD, '/logistics'),
 }
 
 export const PATH_LAYOUT = {
@@ -125,9 +135,14 @@ export const PATH_CONTACTS = {
 
 export const PATH_USER_MGMT = {
     root: ROOTS_USER_MGMT,
-    details: (id: string | number): string => path(ROOTS_USER_MGMT, `/view/${id}`),
-    roles: path(ROOTS_USER_MGMT, '/roles'),
-    rolesDetails: (id: string | number): string => path(ROOTS_USER_MGMT, `/roles/view/${id}`),
+    users: {
+        all: path(ROOTS_USER_MGMT, '/users'),
+        details: (id: string | number): string => path(ROOTS_USER_MGMT, `/view/${id}`),
+    },
+    roles: {
+        all: path(ROOTS_USER_MGMT, '/roles'),
+        details: (id: string | number): string => path(ROOTS_USER_MGMT, `/roles/view/${id}`),
+    },
     permissions: path(ROOTS_USER_MGMT, '/permissions'),
 }
 
