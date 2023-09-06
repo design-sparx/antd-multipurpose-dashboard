@@ -91,7 +91,7 @@ const CONTENT_LIST: Record<string, React.ReactNode> = {
 type Props = CardProps
 
 const CampaignsCard = ({...others}: Props) => {
-    const [activeTabKey2, setActiveTabKey2] = useState<string>('app');
+    const [activeTabKey2, setActiveTabKey2] = useState<string>('allCampaigns');
 
     const onTab2Change = (key: string) => {
         setActiveTabKey2(key);

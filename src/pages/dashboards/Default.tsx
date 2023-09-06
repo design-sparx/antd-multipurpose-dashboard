@@ -1,14 +1,14 @@
 import {
     CampaignsCard,
-    CompanyUsersStats,
+    RecentUsersCard,
     EarningsCard,
     GetStartedCard,
     OrdersChart,
-    SubscribersChart
+    SubscribersChart, LatestOrdersCard, TimelineCard
 } from "../../components";
 import {Col, Row} from "antd";
 
-const DefaultDasboardPage = () => {
+const DefaultDashboardPage = () => {
     return (
         <div>
             <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
@@ -24,15 +24,21 @@ const DefaultDasboardPage = () => {
                 <Col span={16}>
                     <SubscribersChart style={{height: '100%'}}/>
                 </Col>
-                <Col span={8}>
-                    <CompanyUsersStats style={{height: '100%'}}/>
+                <Col span={12}>
+                    <RecentUsersCard style={{height: '100%'}}/>
                 </Col>
-                <Col span={24}>
+                <Col span={12}>
+                    <LatestOrdersCard style={{height: '100%'}}/>
+                </Col>
+                <Col span={16}>
                     <CampaignsCard style={{height: '100%'}}/>
+                </Col>
+                <Col span={8}>
+                    <TimelineCard style={{height: '100%'}}/>
                 </Col>
             </Row>
         </div>
     );
 };
 
-export default DefaultDasboardPage;
+export default DefaultDashboardPage;

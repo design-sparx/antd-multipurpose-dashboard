@@ -1,3 +1,3 @@
-import DefaultDasboardPage from "./Default.tsx";
+import DefaultDashboardPage from "./Default.tsx";
 
-export {DefaultDasboardPage}
+export {DefaultDashboardPage}

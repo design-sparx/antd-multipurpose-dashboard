@@ -1,0 +1,122 @@
+[
+  {
+    "user_id": 1,
+    "first_name": "Durward",
+    "last_name": "Checchi",
+    "age": 76,
+    "email": "dchecchi0@upenn.edu",
+    "country": "Philippines",
+    "postal_code": "6520",
+    "favorite_color": "blue",
+    "gender": "Male",
+    "birthdate": "3/25/1983"
+  },
+  {
+    "user_id": 2,
+    "first_name": "Suzanna",
+    "last_name": "Brodley",
+    "age": 74,
+    "email": "sbrodley1@typepad.com",
+    "country": "Greece",
+    "postal_code": null,
+    "favorite_color": "red",
+    "gender": "Female",
+    "birthdate": "3/8/2001"
+  },
+  {
+    "user_id": 3,
+    "first_name": "Carver",
+    "last_name": "Nornasell",
+    "age": 72,
+    "email": "cnornasell2@dailymail.co.uk",
+    "country": "China",
+    "postal_code": null,
+    "favorite_color": "green",
+    "gender": "Male",
+    "birthdate": "8/10/1999"
+  },
+  {
+    "user_id": 4,
+    "first_name": "Ned",
+    "last_name": "Le Borgne",
+    "age": 29,
+    "email": "nleborgne3@gmpg.org",
+    "country": "Brazil",
+    "postal_code": "36660-000",
+    "favorite_color": "green",
+    "gender": "Male",
+    "birthdate": "7/6/1993"
+  },
+  {
+    "user_id": 5,
+    "first_name": "Jamie",
+    "last_name": "Farland",
+    "age": 43,
+    "email": "jfarland4@oakley.com",
+    "country": "Japan",
+    "postal_code": "747-1111",
+    "favorite_color": "blue",
+    "gender": "Male",
+    "birthdate": "11/6/1994"
+  },
+  {
+    "user_id": 6,
+    "first_name": "Phil",
+    "last_name": "Snelman",
+    "age": 65,
+    "email": "psnelman5@home.pl",
+    "country": "Indonesia",
+    "postal_code": null,
+    "favorite_color": "blue",
+    "gender": "Female",
+    "birthdate": "9/25/1986"
+  },
+  {
+    "user_id": 7,
+    "first_name": "Gradey",
+    "last_name": "Aspall",
+    "age": 72,
+    "email": "gaspall6@github.io",
+    "country": "Japan",
+    "postal_code": "949-1742",
+    "favorite_color": "green",
+    "gender": "Male",
+    "birthdate": "7/14/1954"
+  },
+  {
+    "user_id": 8,
+    "first_name": "Berny",
+    "last_name": "Desbrow",
+    "age": 40,
+    "email": "bdesbrow7@guardian.co.uk",
+    "country": "Czech Republic",
+    "postal_code": "468 22",
+    "favorite_color": "blue",
+    "gender": "Male",
+    "birthdate": "6/13/1988"
+  },
+  {
+    "user_id": 9,
+    "first_name": "Sal",
+    "last_name": "Brant",
+    "age": 33,
+    "email": "sbrant8@wikipedia.org",
+    "country": "Indonesia",
+    "postal_code": null,
+    "favorite_color": "blue",
+    "gender": "Female",
+    "birthdate": "12/7/1955"
+  },
+  {
+    "user_id": 10,
+    "first_name": "Tedi",
+    "last_name": "Winpenny",
+    "age": 27,
+    "email": "twinpenny9@nhs.uk",
+    "country": "Russia",
+    "postal_code": "391545",
+    "favorite_color": "blue",
+    "gender": "Polygender",
+    "birthdate": "1/11/1992"
+  }
+]

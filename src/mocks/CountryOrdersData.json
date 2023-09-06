@@ -1,0 +1,122 @@
+[
+  {
+    "country": "Bolivia",
+    "orders": 3,
+    "revenue": "Boliviano",
+    "customer_name": "Ara Palfreyman",
+    "customer_email": "apalfreyman0@facebook.com",
+    "shipping_address": "766 Longview Court",
+    "product_name": "Pie Filling - Pumpkin",
+    "order_date": "3/31/2020",
+    "delivery_status": "delivered",
+    "payment_method": "PayPal"
+  },
+  {
+    "country": "Nigeria",
+    "orders": 109,
+    "revenue": "Naira",
+    "customer_name": "Arnoldo Kiggel",
+    "customer_email": "akiggel1@macromedia.com",
+    "shipping_address": "51 Sugar Plaza",
+    "product_name": "Milk - Chocolate 500ml",
+    "order_date": "1/18/2021",
+    "delivery_status": "pending",
+    "payment_method": "PayPal"
+  },
+  {
+    "country": "Colombia",
+    "orders": 633,
+    "revenue": "Peso",
+    "customer_name": "Ciel Doni",
+    "customer_email": "cdoni2@mapy.cz",
+    "shipping_address": "793 Clemons Crossing",
+    "product_name": "Bagels Poppyseed",
+    "order_date": "4/24/2020",
+    "delivery_status": "pending",
+    "payment_method": "PayPal"
+  },
+  {
+    "country": "North Korea",
+    "orders": 1,
+    "revenue": "Won",
+    "customer_name": "Tomasina Robet",
+    "customer_email": "trobet3@businesswire.com",
+    "shipping_address": "7930 Melrose Pass",
+    "product_name": "Table Cloth 81x81 White",
+    "order_date": "12/20/2021",
+    "delivery_status": "in transit",
+    "payment_method": "cash"
+  },
+  {
+    "country": "United States",
+    "orders": 501,
+    "revenue": "Dollar",
+    "customer_name": "Alastair Saphin",
+    "customer_email": "asaphin4@tinypic.com",
+    "shipping_address": "8750 Colorado Parkway",
+    "product_name": "Beer - Creemore",
+    "order_date": "8/13/2020",
+    "delivery_status": "pending",
+    "payment_method": "cash"
+  },
+  {
+    "country": "Indonesia",
+    "orders": 375,
+    "revenue": "Rupiah",
+    "customer_name": "Currie Geerdts",
+    "customer_email": "cgeerdts5@ted.com",
+    "shipping_address": "1149 Eggendart Pass",
+    "product_name": "Wine - Savigny - Les - Beaune",
+    "order_date": "9/7/2021",
+    "delivery_status": "pending",
+    "payment_method": "credit card"
+  },
+  {
+    "country": "Indonesia",
+    "orders": 726,
+    "revenue": "Rupiah",
+    "customer_name": "Toby Lillford",
+    "customer_email": "tlillford6@networksolutions.com",
+    "shipping_address": "408 Lakewood Gardens Circle",
+    "product_name": "Liners - Baking Cups",
+    "order_date": "6/16/2020",
+    "delivery_status": "in transit",
+    "payment_method": "PayPal"
+  },
+  {
+    "country": "Ireland",
+    "orders": 574,
+    "revenue": "Euro",
+    "customer_name": "Kev Whiley",
+    "customer_email": "kwhiley7@desdev.cn",
+    "shipping_address": "64 Montana Road",
+    "product_name": "Wasabi Paste",
+    "order_date": "8/24/2020",
+    "delivery_status": "in transit",
+    "payment_method": "PayPal"
+  },
+  {
+    "country": "Russia",
+    "orders": 114,
+    "revenue": "Ruble",
+    "customer_name": "Peta Burtonwood",
+    "customer_email": "pburtonwood8@soundcloud.com",
+    "shipping_address": "4764 Miller Drive",
+    "product_name": "Red Snapper - Fillet, Skin On",
+    "order_date": "10/26/2021",
+    "delivery_status": "delivered",
+    "payment_method": "credit card"
+  },
+  {
+    "country": "Pakistan",
+    "orders": 621,
+    "revenue": "Rupee",
+    "customer_name": "Laird Syversen",
+    "customer_email": "lsyversen9@nytimes.com",
+    "shipping_address": "15 Red Cloud Junction",
+    "product_name": "Sprite - 355 Ml",
+    "order_date": "8/11/2020",
+    "delivery_status": "in transit",
+    "payment_method": "PayPal"
+  }
+]
