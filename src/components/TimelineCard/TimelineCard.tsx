@@ -1,5 +1,5 @@
 import {Card, CardProps, Timeline, Typography} from "antd";
-import TimelineActivityData from "../../mocks/TimelineActivityData.json"
+import TimelineActivityData from "../../mocks/TimelineActivity.json"
 import {LaptopOutlined, MobileOutlined, TabletOutlined} from "@ant-design/icons";
 
 type Props = CardProps

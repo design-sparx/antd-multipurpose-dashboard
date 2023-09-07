@@ -1,3 +1,4 @@
 import DefaultDashboardPage from "./Default.tsx";
+import ProjectsDashboardPage from "./Projects.tsx";
 
-export {DefaultDashboardPage}
+export {DefaultDashboardPage, ProjectsDashboardPage}

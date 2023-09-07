@@ -13,8 +13,11 @@
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^5.2.5",
     "antd": "^5.8.5",
+    "interactjs": "^1.10.18",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
+    "react-calendar-timeline": "^0.28.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-responsive": "^9.0.2",
@@ -23,6 +26,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/react": "^18.2.15",
+    "@types/react-calendar-timeline": "^0.28.2",
     "@types/react-dom": "^18.2.7",
     "@types/react-helmet": "^6.1.6",
     "@types/react-router-dom": "^5.3.3",
@@ -32,6 +36,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "sass": "^1.66.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

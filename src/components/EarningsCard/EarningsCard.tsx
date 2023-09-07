@@ -1,27 +1,16 @@
 import {Badge, Card, CardProps, Space, Typography} from "antd";
 import {Pie} from '@ant-design/plots';
-import {ArrowUpOutlined} from "@ant-design/icons";
+import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons";
 import {MoreMenu} from "../index.ts";
+import * as _ from "lodash";
 
-const PieChart = () => {
-    const data = [
-        {
-            type: 'Sales',
-            value: 3838,
-        },
-        {
-            type: 'YouTube',
-            value: 2722,
-        },
-        {
-            type: 'Courses',
-            value: 2411,
-        },
-        {
-            type: 'Others',
-            value: 5163,
-        },
-    ];
+type Props = {
+    data: any,
+    title: string,
+    diff: number
+} & CardProps
+
+const EarningsCard = ({data, title, diff, ...others}: Props) => {
     const config = {
         appendPadding: 10,
         data,
@@ -58,42 +47,35 @@ const PieChart = () => {
             },
         },
     };
-    // @ts-ignore
-    return <Pie {...config} />;
-};
-
-type Props = CardProps
-
-const EarningsCard = ({...others}: Props) => {
 
     return (
         <Card
-            title='Revenue stream'
+            title={title}
             extra={
                 <MoreMenu/>
             }
             {...others}
         >
-            <Space style={{justifyContent: 'space-between', width: '100%'}}>
+            <Space direction="vertical" style={{justifyContent: 'flex-start', width: '100%'}}>
                 <Space direction="horizontal" align="center">
-                    <Typography.Title level={1} style={{margin: 0}}>$10,233</Typography.Title>
+                    <Typography.Title level={1} style={{margin: 0}}><small>$</small>{_.sumBy(data, 'value')}</Typography.Title>
                     <Badge
                         count={
                             <div style={{display: 'flex', gap: '4px'}}>
-                                <ArrowUpOutlined/>
-                                <Typography.Text style={{color: 'white'}} strong>2.2</Typography.Text>
+                                {diff < 0 ? <ArrowDownOutlined/> : <ArrowUpOutlined/>}
+                                <Typography.Text style={{color: 'white'}} strong>{diff}</Typography.Text>
                             </div>
                         }
                         style={{
-                            backgroundColor: '#52c41a',
+                            backgroundColor: diff < 0 ? '#ff4d4f' : '#52c41a',
                             color: 'white',
-                            padding: '.15rem .25rem',
-                            borderRadius: '4px'
+                            padding: '.175rem .35rem',
                         }}
                     />
                 </Space>
                 <div style={{height: 180, textAlign: 'center'}}>
-                    <PieChart/>
+                    {/*@ts-ignore*/}
+                    <Pie {...config} />
                 </div>
             </Space>
         </Card>

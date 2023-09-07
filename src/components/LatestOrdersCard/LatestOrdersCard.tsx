@@ -1,4 +1,4 @@
-import CountryUsersData from "../../mocks/CountryOrdersData.json"
+import CountryUsersData from "../../mocks/CountryOrders.json"
 import {Card, CardProps, Table} from "antd";
 import {MoreMenu} from "../index.ts";
 
