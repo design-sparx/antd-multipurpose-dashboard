@@ -13,6 +13,7 @@ import RevenueCard from "./RevenueCard/RevenueCard.tsx";
 import ProjectsCard from "./ProjectsCard/ProjectsCard.tsx";
 import ClientsTable from "./ClientsTable/ClientsTable.tsx";
 import ProjectsTable from "./ProjectsTables/ProjectsTable.tsx";
+import CustomerReviewsCard from "./CustomerReviewsCard/CustomerReviewsCard.tsx";
 
 export {
     Logo,
@@ -29,5 +30,6 @@ export {
     RevenueCard,
     ProjectsCard,
     ClientsTable,
-    ProjectsTable
+    ProjectsTable,
+    CustomerReviewsCard
 }

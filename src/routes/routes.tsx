@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import {DefaultDashboardPage, HomePage, ProjectsDashboardPage} from "../pages";
+import {DefaultDashboardPage, EcommerceDashboardPage, HomePage, ProjectsDashboardPage} from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
 import {DashboardLayout} from "../layouts";
 
@@ -21,7 +21,11 @@ const router = createBrowserRouter([
             {
                 path: "projects",
                 element: <ProjectsDashboardPage/>
-            }
+            },
+            {
+                path: "ecommerce",
+                element: <EcommerceDashboardPage/>
+            },
         ]
     }
 ]);
