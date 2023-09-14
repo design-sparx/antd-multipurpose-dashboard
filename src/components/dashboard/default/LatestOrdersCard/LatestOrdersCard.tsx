@@ -1,6 +1,6 @@
-import CountryUsersData from "../../mocks/CountryOrders.json"
+import CountryUsersData from "../../../../mocks/CountryOrders.json"
 import {Card, CardProps, Table} from "antd";
-import {MoreMenu} from "../index.ts";
+import {MoreMenu} from "../../../index.ts";
 
 enum Status {
     Pending = 'pending',

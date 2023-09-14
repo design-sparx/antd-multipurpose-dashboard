@@ -1,6 +1,6 @@
-import ChannelUsersData from "../../mocks/ChannelUsers.json"
+import ChannelUsersData from "../../../../mocks/ChannelUsers.json"
 import {Card, CardProps, Table, Typography} from "antd";
-import {MoreMenu} from "../index.ts";
+import {MoreMenu} from "../../../index.ts";
 
 enum Status {
     Pending = 'pending',

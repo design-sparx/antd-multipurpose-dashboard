@@ -1,8 +1,8 @@
 import {Badge, Card, CardProps, Space, Typography} from "antd";
 import {Pie} from '@ant-design/plots';
 import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons";
-import {MoreMenu} from "../index.ts";
 import * as _ from "lodash";
+import {MoreMenu} from "../../../index.ts";
 
 type Props = {
     data: any,

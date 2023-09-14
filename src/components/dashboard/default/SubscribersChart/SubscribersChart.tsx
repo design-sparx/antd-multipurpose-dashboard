@@ -1,6 +1,6 @@
 import {Card, CardProps, Typography} from "antd";
 import {Column} from "@ant-design/plots";
-import {MoreMenu} from "../index.ts";
+import {MoreMenu} from "../../../index.ts";
 
 type Props = CardProps
 

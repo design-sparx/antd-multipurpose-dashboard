@@ -1,4 +1,4 @@
-import {Button, Card, Col, Row, Progress, Space, Image, Tag, Typography, Table, Tooltip, Popover} from "antd";
+import {Button, Card, Col, Image, Popover, Progress, Row, Space, Table, Tag, Typography} from "antd";
 import {CustomerReviewsCard, RevenueCard} from "../../components";
 import {Area, Bullet} from "@ant-design/charts";
 import {ArrowDownOutlined, ArrowUpOutlined, EyeOutlined, QuestionOutlined, RightOutlined} from "@ant-design/icons";

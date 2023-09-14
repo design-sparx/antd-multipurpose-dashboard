@@ -1,4 +1,4 @@
-import {Projects} from "../../types";
+import {Projects} from "../../../../types";
 import {Card, CardProps, Descriptions, DescriptionsProps, Space, Tooltip, Typography} from "antd";
 import {CalendarOutlined, ClockCircleOutlined, UsergroupAddOutlined} from "@ant-design/icons";
 

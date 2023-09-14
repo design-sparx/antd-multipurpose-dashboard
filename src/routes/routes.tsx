@@ -1,5 +1,11 @@
 import {createBrowserRouter} from "react-router-dom";
-import {DefaultDashboardPage, EcommerceDashboardPage, HomePage, ProjectsDashboardPage} from "../pages";
+import {
+    DefaultDashboardPage,
+    EcommerceDashboardPage,
+    HomePage,
+    MarketingDashboardPage,
+    ProjectsDashboardPage
+} from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
 import {DashboardLayout} from "../layouts";
 
@@ -25,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: "ecommerce",
                 element: <EcommerceDashboardPage/>
+            },
+            {
+                path: "marketing",
+                element: <MarketingDashboardPage/>
             },
         ]
     }

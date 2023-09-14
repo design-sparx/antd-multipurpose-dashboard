@@ -1,6 +1,6 @@
 import {Card, CardProps} from "antd";
 import {Area} from "@ant-design/charts";
-import {MoreMenu} from "../index.ts";
+import {MoreMenu} from "../../../index.ts";
 
 const AreaChart = () => {
     const data = [

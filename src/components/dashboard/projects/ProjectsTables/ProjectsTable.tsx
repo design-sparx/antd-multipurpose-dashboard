@@ -1,5 +1,5 @@
 import {Table, Typography} from "antd";
-import {Projects} from "../../types";
+import {Projects} from "../../../../types";
 
 const COLUMNS = [
     {
