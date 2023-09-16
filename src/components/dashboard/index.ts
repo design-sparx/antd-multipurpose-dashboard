@@ -8,10 +8,18 @@ import {
     EarningsCard,
     SubscribersChart
 } from "./default"
-import {RevenueCard} from "./shared"
+import {RevenueCard, PostsCard} from "./shared"
 import {CustomerReviewsCard} from "./ecommerce"
 import {ProjectsCountCard, ProjectsCard, ProjectsTable, ClientsTable} from "./projects"
-import {StatsCard, VisitorsChartCard, SocialStatsCard, CampaignsActivity, CampaignsAdsCard, AudienceLocationChart} from "./marketing"
+import {
+    StatsCard,
+    VisitorsChartCard,
+    SocialStatsCard as MarketingSocialStatsCard,
+    CampaignsActivity,
+    CampaignsAdsCard,
+    AudienceLocationChart
+} from "./marketing"
+import {SocialStatsCard, FollowersChart, LikesChart, DevicesCardChart, MilestonesCard, CommentsCard} from "./social"
 
 export {
     CampaignsCard,
@@ -33,5 +41,12 @@ export {
     SocialStatsCard,
     CampaignsActivity,
     CampaignsAdsCard,
-    AudienceLocationChart
+    AudienceLocationChart,
+    MarketingSocialStatsCard,
+    FollowersChart,
+    LikesChart,
+    DevicesCardChart,
+    PostsCard,
+    MilestonesCard,
+    CommentsCard
 }

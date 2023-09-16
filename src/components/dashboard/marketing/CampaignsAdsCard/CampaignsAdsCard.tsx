@@ -1,4 +1,4 @@
-import {Card, CardProps, Image, Progress, Space, Table, Typography} from "antd";
+import {Card, CardProps, Space, Table, Typography} from "antd";
 import CampaignsAdsData from "../../../../mocks/CampaignAds.json";
 
 type Props = CardProps
@@ -7,27 +7,27 @@ const TABLE_COLUMNS = [
     {
         title: 'Source',
         dataIndex: 'ad_source',
-        key: 'source'
+        key: 'marketing_source'
     },
     {
         title: 'Impression',
         dataIndex: 'impressions',
-        key: 'impression'
+        key: 'marketing_impression'
     },
     {
         title: 'Cost',
         dataIndex: 'cost',
-        key: 'cost'
+        key: 'marketing_cost'
     },
     {
         title: 'Revenue',
         dataIndex: 'revenue',
-        key: 'revenue'
+        key: 'marketing_revenue'
     },
     {
         title: 'Clicks',
         dataIndex: 'clicks',
-        key: 'clicks'
+        key: 'marketing_clicks'
     },
     {
         title: 'Conversion rate',
@@ -37,7 +37,7 @@ const TABLE_COLUMNS = [
     {
         title: 'ROI',
         dataIndex: 'roi',
-        key: 'roi'
+        key: 'marketing_roi'
     },
 ]
 
@@ -52,7 +52,11 @@ const CampaignsAdsCard = ({...others}: Props) => {
             }
             {...others}
         >
-            <Table dataSource={CampaignsAdsData} columns={TABLE_COLUMNS}/>
+            <Table
+                dataSource={CampaignsAdsData}
+                columns={TABLE_COLUMNS}
+                rowKey={(record) => record.id}
+            />
         </Card>
     );
 };

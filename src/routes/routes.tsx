@@ -4,7 +4,8 @@ import {
     EcommerceDashboardPage,
     HomePage,
     MarketingDashboardPage,
-    ProjectsDashboardPage
+    ProjectsDashboardPage,
+    SocialDashboardPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
 import {DashboardLayout} from "../layouts";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "marketing",
                 element: <MarketingDashboardPage/>
+            },
+            {
+                path: "social",
+                element: <SocialDashboardPage/>
             },
         ]
     }

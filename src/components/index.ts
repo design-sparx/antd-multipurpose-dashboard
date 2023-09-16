@@ -15,9 +15,19 @@ import {
     CustomerReviewsCard,
     RecentUsersCard,
     LatestOrdersCard,
-    SocialStatsCard,
+    MarketingSocialStatsCard,
     VisitorsChartCard,
-    StatsCard, CampaignsActivity, CampaignsAdsCard, AudienceLocationChart
+    StatsCard,
+    CampaignsActivity,
+    CampaignsAdsCard,
+    AudienceLocationChart,
+    SocialStatsCard,
+    FollowersChart,
+    LikesChart,
+    DevicesCardChart,
+    PostsCard,
+    MilestonesCard,
+    CommentsCard
 } from "./dashboard"
 
 export {
@@ -37,10 +47,12 @@ export {
     TimelineCard,
     LatestOrdersCard,
     ClientsTable,
-    SocialStatsCard,
+    MarketingSocialStatsCard,
     StatsCard,
     VisitorsChartCard,
     CampaignsActivity,
     CampaignsAdsCard,
-    AudienceLocationChart
+    AudienceLocationChart,
+    SocialStatsCard,
+    FollowersChart, LikesChart, DevicesCardChart, PostsCard, MilestonesCard, CommentsCard
 }

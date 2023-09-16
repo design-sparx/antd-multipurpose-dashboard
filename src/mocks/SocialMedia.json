@@ -1,0 +1,53 @@
+[
+  {
+    "id": "b1f76a05-31fb-4a57-8a21-068a3d991f07",
+    "followers": 11374,
+    "following": 53756,
+    "posts": 98954,
+    "likes": 98992,
+    "comments": 41318,
+    "engagement_rate": 3413.93,
+    "title": "facebook"
+  },
+  {
+    "id": "72a2e948-e2e1-45e4-a628-c437c821b9d1",
+    "followers": 45020,
+    "following": 79850,
+    "posts": 90705,
+    "likes": 40821,
+    "comments": 14429,
+    "engagement_rate": 7672.22,
+    "title": "twitter"
+  },
+  {
+    "id": "f81fec68-7563-49f0-91e8-fb6d6abcb55a",
+    "followers": 63178,
+    "following": 17828,
+    "posts": 10536,
+    "likes": 6096,
+    "comments": 43156,
+    "engagement_rate": 4048.96,
+    "title": "instagram"
+  },
+  {
+    "id": "81a2f401-532c-40d4-aea0-bcd8785b9565",
+    "followers": 39246,
+    "following": 81326,
+    "posts": 76684,
+    "likes": 42046,
+    "comments": 89698,
+    "engagement_rate": 3957.44,
+    "title": "linkedin"
+  },
+  {
+    "id": "90c309ee-bb8e-480e-a62e-4dd266d720b4",
+    "followers": 40597,
+    "following": 83724,
+    "posts": 67809,
+    "likes": 40509,
+    "comments": 93344,
+    "engagement_rate": 9625.38,
+    "title": "youtube"
+
+  }
+]

@@ -57,8 +57,8 @@ const SocialStatsCard = ({...others}: Props) => {
             ]}
             {...others}
         >
-            {SOCIALS_DATA.map(_ =>
-                <Card.Grid hoverable={false} style={gridStyle}>
+            {SOCIALS_DATA.map((_, i) =>
+                <Card.Grid key={`${_.title}-${i}`} hoverable={false} style={gridStyle}>
                     <Space>
                         <Typography.Text>{_.title}</Typography.Text>
                         <Tag color={_.diff < 0 ? 'error' : 'success'}>{_.diff}</Tag>

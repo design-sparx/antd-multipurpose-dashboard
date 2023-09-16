@@ -1,6 +1,6 @@
 import {Col, Row} from "antd";
 import {
-    SocialStatsCard,
+    MarketingSocialStatsCard,
     StatsCard,
     VisitorsChartCard,
     CampaignsActivity,
@@ -28,7 +28,7 @@ const MarketingDashboardPage = () => {
                     <VisitorsChartCard/>
                 </Col>
                 <Col span={4}>
-                    <SocialStatsCard/>
+                    <MarketingSocialStatsCard/>
                 </Col>
                 <Col span={8}>
                     <CampaignsActivity/>
