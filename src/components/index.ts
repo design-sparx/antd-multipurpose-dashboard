@@ -14,7 +14,10 @@ import {
     TimelineCard,
     CustomerReviewsCard,
     RecentUsersCard,
-    LatestOrdersCard
+    LatestOrdersCard,
+    SocialStatsCard,
+    VisitorsChartCard,
+    StatsCard, CampaignsActivity, CampaignsAdsCard, AudienceLocationChart
 } from "./dashboard"
 
 export {
@@ -33,5 +36,11 @@ export {
     SubscribersChart,
     TimelineCard,
     LatestOrdersCard,
-    ClientsTable
+    ClientsTable,
+    SocialStatsCard,
+    StatsCard,
+    VisitorsChartCard,
+    CampaignsActivity,
+    CampaignsAdsCard,
+    AudienceLocationChart
 }

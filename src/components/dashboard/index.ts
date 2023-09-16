@@ -11,6 +11,7 @@ import {
 import {RevenueCard} from "./shared"
 import {CustomerReviewsCard} from "./ecommerce"
 import {ProjectsCountCard, ProjectsCard, ProjectsTable, ClientsTable} from "./projects"
+import {StatsCard, VisitorsChartCard, SocialStatsCard, CampaignsActivity, CampaignsAdsCard, AudienceLocationChart} from "./marketing"
 
 export {
     CampaignsCard,
@@ -26,5 +27,11 @@ export {
     EarningsCard,
     GetStartedCard,
     RecentUsersCard,
-    SubscribersChart
+    SubscribersChart,
+    StatsCard,
+    VisitorsChartCard,
+    SocialStatsCard,
+    CampaignsActivity,
+    CampaignsAdsCard,
+    AudienceLocationChart
 }

@@ -13,6 +13,7 @@
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^5.2.5",
     "antd": "^5.8.5",
+    "dayjs": "^1.11.9",
     "interactjs": "^1.10.18",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
