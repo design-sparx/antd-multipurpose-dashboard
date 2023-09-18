@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Col, Row, Space, Tabs, TabsProps} from "antd";
+import {Col, Row, Tabs, TabsProps} from "antd";
 import {
     FacebookFilled,
     FacebookOutlined,
@@ -38,7 +38,7 @@ type SectionProps = {
 }
 
 const Section = ({tab}: SectionProps) => {
-    const [title, setTitle] = useState();
+    const [title, setTitle] = useState<string>('');
 
     useEffect(() => {
         switch (tab) {

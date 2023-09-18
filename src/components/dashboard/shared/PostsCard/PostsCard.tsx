@@ -1,10 +1,10 @@
 import {Avatar, Button, Card, CardProps, Col, Divider, Image, List, Row, Space, theme, Typography} from "antd";
 import {Posts} from "../../../../types";
-import {DeleteFilled, EditFilled, LikeOutlined, MessageOutlined, StarOutlined} from "@ant-design/icons";
+import {CommentOutlined, DeleteFilled, EditFilled, LikeOutlined, ShareAltOutlined} from "@ant-design/icons";
 import React from "react";
 import {getNameInitials} from "../../../../utils";
 
-const IconText = ({icon, text}: { icon: React.FC; text: string }) => (
+const IconText = ({icon, text}: { icon: React.FC; text: string | number }) => (
     <Space>
         {React.createElement(icon)}
         {text}
@@ -13,7 +13,7 @@ const IconText = ({icon, text}: { icon: React.FC; text: string }) => (
 
 type Props = {
     as: "scheduled" | "active"
-    data: Posts
+    data: Posts[]
 } & CardProps
 
 const PostsCard = ({as, data, ...others}: Props) => {
@@ -38,9 +38,9 @@ const PostsCard = ({as, data, ...others}: Props) => {
                         <List.Item
                             key={item.title}
                             actions={[
-                                <IconText icon={StarOutlined} text="156" key="list-vertical-star-o"/>,
-                                <IconText icon={LikeOutlined} text={item.likes_count} key="list-vertical-like-o"/>,
-                                <IconText icon={MessageOutlined} text="2" key="list-vertical-message"/>,
+                                <IconText icon={LikeOutlined} text={item.likes_count} key="list-vertical-star-o"/>,
+                                <IconText icon={CommentOutlined} text={item.comments_count} key="list-vertical-like-o"/>,
+                                <IconText icon={ShareAltOutlined} text={item.shares_count} key="list-vertical-message"/>,
                             ]}
                             extra={
                                 <img
