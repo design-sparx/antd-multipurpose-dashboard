@@ -1,0 +1,122 @@
+[
+  {
+    "creator_id": "a7cfca60-6c9e-4e24-8dc4-b2db0b19941b",
+    "first_name": "Eda",
+    "last_name": "Crighton",
+    "age": 84,
+    "email": "ecrighton0@aboutads.info",
+    "country": "Indonesia",
+    "postal_code": null,
+    "favorite_color": "blue",
+    "sales_count": 46,
+    "total_sales": "Rupiah"
+  },
+  {
+    "creator_id": "474e2cd2-fc79-49b8-98fe-dab443facede",
+    "first_name": "Page",
+    "last_name": "Nickoles",
+    "age": 83,
+    "email": "pnickoles1@ycombinator.com",
+    "country": "Thailand",
+    "postal_code": "49120",
+    "favorite_color": "blue",
+    "sales_count": 736,
+    "total_sales": "Baht"
+  },
+  {
+    "creator_id": "5d6ff6d2-3678-4306-9b90-c0de2b4acda4",
+    "first_name": "Mitch",
+    "last_name": "Bernakiewicz",
+    "age": 60,
+    "email": "mbernakiewicz2@tinyurl.com",
+    "country": "China",
+    "postal_code": null,
+    "favorite_color": "red",
+    "sales_count": 177,
+    "total_sales": "Yuan Renminbi"
+  },
+  {
+    "creator_id": "efe93f64-2706-4377-8d2d-fb7a62e5a929",
+    "first_name": "Padget",
+    "last_name": "Grinham",
+    "age": 56,
+    "email": "pgrinham3@tuttocitta.it",
+    "country": "China",
+    "postal_code": null,
+    "favorite_color": "green",
+    "sales_count": 349,
+    "total_sales": "Yuan Renminbi"
+  },
+  {
+    "creator_id": "6e2175b8-a0f6-4b6d-b7e8-77b75f889501",
+    "first_name": "Hinze",
+    "last_name": "Heasley",
+    "age": 23,
+    "email": "hheasley4@woothemes.com",
+    "country": "Brazil",
+    "postal_code": "26700-000",
+    "favorite_color": "green",
+    "sales_count": 824,
+    "total_sales": "Real"
+  },
+  {
+    "creator_id": "6a3edbca-f8bf-4d38-b68f-cc54b95aa1aa",
+    "first_name": "Melisenda",
+    "last_name": "Dibble",
+    "age": 34,
+    "email": "mdibble5@youku.com",
+    "country": "Thailand",
+    "postal_code": "24120",
+    "favorite_color": "blue",
+    "sales_count": 314,
+    "total_sales": "Baht"
+  },
+  {
+    "creator_id": "836a9e11-41a8-430f-8275-f3a1aba6bed6",
+    "first_name": "Marget",
+    "last_name": "Yuryaev",
+    "age": 23,
+    "email": "myuryaev6@google.it",
+    "country": "Hungary",
+    "postal_code": "2035",
+    "favorite_color": "green",
+    "sales_count": 894,
+    "total_sales": "Forint"
+  },
+  {
+    "creator_id": "fea080f9-7372-471b-a6da-e8216802bb91",
+    "first_name": "Germayne",
+    "last_name": "Moggle",
+    "age": 46,
+    "email": "gmoggle7@tiny.cc",
+    "country": "Argentina",
+    "postal_code": "4640",
+    "favorite_color": "blue",
+    "sales_count": 24,
+    "total_sales": "Peso"
+  },
+  {
+    "creator_id": "0f6b9641-f248-45c5-8e1f-62058888a33b",
+    "first_name": "Rubi",
+    "last_name": "Merrisson",
+    "age": 28,
+    "email": "rmerrisson8@w3.org",
+    "country": "China",
+    "postal_code": null,
+    "favorite_color": "green",
+    "sales_count": 618,
+    "total_sales": "Yuan Renminbi"
+  },
+  {
+    "creator_id": "a2af599b-e75e-43d7-bf84-fbc02b50bbb1",
+    "first_name": "Julio",
+    "last_name": "Batthew",
+    "age": 24,
+    "email": "jbatthew9@virginia.edu",
+    "country": "China",
+    "postal_code": null,
+    "favorite_color": "blue",
+    "sales_count": 618,
+    "total_sales": "Yuan Renminbi"
+  }
+]

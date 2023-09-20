@@ -3,6 +3,7 @@ import type {Clients} from "./clients";
 import type {CampaignAds} from "./campaigns"
 import type {PostPlatform, Posts, PostCategory} from "./posts"
 import type {CommentsType, CommentGender, CommentsPlatform, Comments} from "./comments"
+import type {Auction, AuctionCreator, AuctionSales, AuctionTransactions} from "./auction.ts"
 
 export type {
     Projects,
@@ -14,5 +15,12 @@ export type {
     PostCategory,
     PostPlatform,
     Posts,
-    Comments, CommentGender, CommentsType, CommentsPlatform
+    Comments,
+    CommentGender,
+    CommentsType,
+    CommentsPlatform,
+    Auction,
+    AuctionCreator,
+    AuctionSales,
+    AuctionTransactions
 }

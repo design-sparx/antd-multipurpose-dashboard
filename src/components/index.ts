@@ -27,8 +27,10 @@ import {
     DevicesCardChart,
     PostsCard,
     MilestonesCard,
-    CommentsCard
+    CommentsCard,
+    AuctionCarousel, CreatorsCard, TopItemsCard, TransactionsCard, BiddingCategoriesCard
 } from "./dashboard"
+import UserAvatar from "./UserAvatar/UserAvatar.tsx";
 
 export {
     Logo,
@@ -54,5 +56,16 @@ export {
     CampaignsAdsCard,
     AudienceLocationChart,
     SocialStatsCard,
-    FollowersChart, LikesChart, DevicesCardChart, PostsCard, MilestonesCard, CommentsCard
+    FollowersChart,
+    LikesChart,
+    DevicesCardChart,
+    PostsCard,
+    MilestonesCard,
+    CommentsCard,
+    AuctionCarousel,
+    UserAvatar,
+    CreatorsCard,
+    TopItemsCard,
+    TransactionsCard,
+    BiddingCategoriesCard
 }

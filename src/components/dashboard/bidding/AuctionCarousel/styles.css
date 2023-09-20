@@ -1,0 +1,13 @@
+.auction-card .ant-card-body {
+    padding: 2px;
+}
+
+.auction-card .auction-card-header {
+    height: 280px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}

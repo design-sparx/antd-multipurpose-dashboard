@@ -3,7 +3,7 @@ import {ArrowRightOutlined, CommentOutlined, DeleteOutlined, LikeOutlined} from 
 import {Comments} from "../../../../types";
 import {getNameInitials} from "../../../../utils";
 
-type Props = {data: Comments} & CardProps
+type Props = {data: Comments[]} & CardProps
 
 const CommentsCard = ({data, ...others}: Props) => {
     const {token} = theme.useToken()

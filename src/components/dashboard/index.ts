@@ -20,6 +20,7 @@ import {
     AudienceLocationChart
 } from "./marketing"
 import {SocialStatsCard, FollowersChart, LikesChart, DevicesCardChart, MilestonesCard, CommentsCard} from "./social"
+import {AuctionCarousel, CreatorsCard, TopItemsCard, TransactionsCard, CategoriesCard as BiddingCategoriesCard} from "./bidding"
 
 export {
     CampaignsCard,
@@ -48,5 +49,10 @@ export {
     DevicesCardChart,
     PostsCard,
     MilestonesCard,
-    CommentsCard
+    CommentsCard,
+    AuctionCarousel,
+    CreatorsCard,
+    TopItemsCard,
+    TransactionsCard,
+    BiddingCategoriesCard
 }

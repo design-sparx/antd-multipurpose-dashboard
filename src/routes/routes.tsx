@@ -1,5 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import {
+    BiddingDashboardPage,
     DefaultDashboardPage,
     EcommerceDashboardPage,
     HomePage,
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
                 path: "social",
                 element: <SocialDashboardPage/>
             },
+            {
+                path: "bidding",
+                element: <BiddingDashboardPage/>
+            }
         ]
     }
 ]);
