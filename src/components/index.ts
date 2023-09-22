@@ -17,7 +17,7 @@ import {
     LatestOrdersCard,
     MarketingSocialStatsCard,
     VisitorsChartCard,
-    StatsCard,
+    MarketingStatsCard,
     CampaignsActivity,
     CampaignsAdsCard,
     AudienceLocationChart,
@@ -28,7 +28,18 @@ import {
     PostsCard,
     MilestonesCard,
     CommentsCard,
-    AuctionCarousel, CreatorsCard, TopItemsCard, TransactionsCard, BiddingCategoriesCard
+    AuctionCarousel,
+    CreatorsCard,
+    TopItemsCard,
+    TransactionsCard,
+    BiddingCategoriesCard,
+    CoursesCard,
+    CoursesCarousel,
+    LearningStatsCard,
+    StudyStatisticsCard,
+    ProgressCard,
+    ExamsCard,
+    CommunityGroupCard
 } from "./dashboard"
 import UserAvatar from "./UserAvatar/UserAvatar.tsx";
 
@@ -50,7 +61,7 @@ export {
     LatestOrdersCard,
     ClientsTable,
     MarketingSocialStatsCard,
-    StatsCard,
+    MarketingStatsCard,
     VisitorsChartCard,
     CampaignsActivity,
     CampaignsAdsCard,
@@ -67,5 +78,12 @@ export {
     CreatorsCard,
     TopItemsCard,
     TransactionsCard,
-    BiddingCategoriesCard
+    BiddingCategoriesCard,
+    CoursesCard,
+    CoursesCarousel,
+    LearningStatsCard,
+    StudyStatisticsCard,
+    ProgressCard,
+    ExamsCard,
+    CommunityGroupCard
 }

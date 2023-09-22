@@ -10,6 +10,7 @@ import {
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
 import {DashboardLayout} from "../layouts";
+import {LearningDashboardPage} from "../pages/dashboards";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: "bidding",
                 element: <BiddingDashboardPage/>
+            },
+            {
+                path: "learning",
+                element: <LearningDashboardPage/>
             }
         ]
     }

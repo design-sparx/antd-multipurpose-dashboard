@@ -34,7 +34,7 @@ export const PATH_DASHBOARD = {
     marketing: path(ROOTS_DASHBOARD, '/marketing'),
     social: path(ROOTS_DASHBOARD, '/social'),
     bidding: path(ROOTS_DASHBOARD, '/bidding'),
-    courses: path(ROOTS_DASHBOARD, '/courses'),
+    learning: path(ROOTS_DASHBOARD, '/learning'),
     logistics: path(ROOTS_DASHBOARD, '/logistics'),
 }
 

@@ -1,7 +1,7 @@
 import {Col, Row} from "antd";
 import {
     MarketingSocialStatsCard,
-    StatsCard,
+    MarketingStatsCard,
     VisitorsChartCard,
     CampaignsActivity,
     CampaignsAdsCard,
@@ -13,16 +13,16 @@ const MarketingDashboardPage = () => {
         <div>
             <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
                 <Col span={6}>
-                    <StatsCard data={[274, 337, 81, 497]} title='impressions' diff={12.5} value={2216869}/>
+                    <MarketingStatsCard data={[274, 337, 81, 497]} title='impressions' diff={12.5} value={2216869}/>
                 </Col>
                 <Col span={6}>
-                    <StatsCard data={[20, 40, 80, 50]} title='clicks' diff={-2.1} value={2216869}/>
+                    <MarketingStatsCard data={[20, 40, 80, 50]} title='clicks' diff={-2.1} value={2216869}/>
                 </Col>
                 <Col span={6}>
-                    <StatsCard data={[497, 81, 274, 337,]} title='revenue' diff={34.6} value='$9,321.92'/>
+                    <MarketingStatsCard data={[497, 81, 274, 337,]} title='revenue' diff={34.6} value='$9,321.92'/>
                 </Col>
                 <Col span={6}>
-                    <StatsCard data={[337, 274, 497, 81]} title='cost' diff={6.3} value='$5,550.00'/>
+                    <MarketingStatsCard data={[337, 274, 497, 81]} title='cost' diff={6.3} value='$5,550.00'/>
                 </Col>
                 <Col span={12}>
                     <VisitorsChartCard/>

@@ -12,7 +12,7 @@ import {RevenueCard, PostsCard} from "./shared"
 import {CustomerReviewsCard} from "./ecommerce"
 import {ProjectsCountCard, ProjectsCard, ProjectsTable, ClientsTable} from "./projects"
 import {
-    StatsCard,
+    StatsCard as MarketingStatsCard,
     VisitorsChartCard,
     SocialStatsCard as MarketingSocialStatsCard,
     CampaignsActivity,
@@ -20,7 +20,22 @@ import {
     AudienceLocationChart
 } from "./marketing"
 import {SocialStatsCard, FollowersChart, LikesChart, DevicesCardChart, MilestonesCard, CommentsCard} from "./social"
-import {AuctionCarousel, CreatorsCard, TopItemsCard, TransactionsCard, CategoriesCard as BiddingCategoriesCard} from "./bidding"
+import {
+    AuctionCarousel,
+    CreatorsCard,
+    TopItemsCard,
+    TransactionsCard,
+    CategoriesCard as BiddingCategoriesCard
+} from "./bidding"
+import {
+    StatsCard as LearningStatsCard,
+    CoursesCard,
+    CoursesCarousel,
+    StudyStatisticsCard,
+    ProgressCard,
+    ExamsCard,
+    CommunityGroupCard
+} from "./learning"
 
 export {
     CampaignsCard,
@@ -37,7 +52,7 @@ export {
     GetStartedCard,
     RecentUsersCard,
     SubscribersChart,
-    StatsCard,
+    MarketingStatsCard,
     VisitorsChartCard,
     SocialStatsCard,
     CampaignsActivity,
@@ -54,5 +69,12 @@ export {
     CreatorsCard,
     TopItemsCard,
     TransactionsCard,
-    BiddingCategoriesCard
+    BiddingCategoriesCard,
+    LearningStatsCard,
+    CoursesCard,
+    CoursesCarousel,
+    StudyStatisticsCard,
+    ProgressCard,
+    ExamsCard,
+    CommunityGroupCard
 }

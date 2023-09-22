@@ -1,11 +1,11 @@
 import {Badge, Button, Card, CardProps, Carousel, CarouselProps, Space, Tag, Typography} from "antd";
 import {ClockCircleOutlined, EditOutlined, EllipsisOutlined, SettingOutlined} from "@ant-design/icons";
-import {Auction} from "../../../../types";
+import {Bidding} from "../../../../types";
 
 import "./styles.css";
 
 type CardItemProps = {
-    item: Auction
+    item: Bidding
 } & CardProps
 
 const CardItem = ({item}: CardItemProps) => {
@@ -72,7 +72,7 @@ const CardItem = ({item}: CardItemProps) => {
 }
 
 type Props = {
-    data: Auction[]
+    data: Bidding[]
 }
 
 const AuctionCarousel = ({data}: Props) => {

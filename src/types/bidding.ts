@@ -1,4 +1,4 @@
-export type Auction = {
+export type Bidding = {
     auction_id: string
     nft_name: string
     nft_image: string

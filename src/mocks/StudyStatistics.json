@@ -1,0 +1,602 @@
+[
+  {
+    "id": "f49b1c7e-cf8b-4976-a5e5-002da1bb789a",
+    "value": 27.1,
+    "category": "Mathematics",
+    "month": "Feb"
+  },
+  {
+    "id": "a3426d85-50bd-48ca-8af0-50279d6d1342",
+    "value": 15.2,
+    "category": "Science",
+    "month": "Mar"
+  },
+  {
+    "id": "bd65ae80-4535-483a-84e0-beb6e03b8d60",
+    "value": 42.6,
+    "category": "Foreign Language",
+    "month": "Apr"
+  },
+  {
+    "id": "4c7cdc12-282d-4cdc-83aa-f17e44e29d5f",
+    "value": 5.2,
+    "category": "Art",
+    "month": "Nov"
+  },
+  {
+    "id": "5acb1118-be52-422c-8428-662765470ecc",
+    "value": 36.8,
+    "category": "Foreign Language",
+    "month": "Aug"
+  },
+  {
+    "id": "a4731d1e-5255-465a-bcc2-b5da77bcc7aa",
+    "value": 45.6,
+    "category": "Computer Science",
+    "month": "Jul"
+  },
+  {
+    "id": "3bd03ed5-b938-465c-9f3a-371b89f00263",
+    "value": 33.7,
+    "category": "Mathematics",
+    "month": "Jun"
+  },
+  {
+    "id": "b70f3b92-30c3-4963-ada9-148597945ef4",
+    "value": 4.8,
+    "category": "Science",
+    "month": "Dec"
+  },
+  {
+    "id": "61e30954-6a28-46a5-afa0-ac0dbc368349",
+    "value": 33.1,
+    "category": "Foreign Language",
+    "month": "Dec"
+  },
+  {
+    "id": "ea0fa9cf-6b7a-460b-91ac-0d10435330b9",
+    "value": 22.5,
+    "category": "Physical Education",
+    "month": "May"
+  },
+  {
+    "id": "6f8ec58c-b352-4a45-ae17-08bbbe4e7ab9",
+    "value": 11.0,
+    "category": "Science",
+    "month": "Aug"
+  },
+  {
+    "id": "f562f3e1-b937-42ca-ae89-65a7c647ad94",
+    "value": 42.8,
+    "category": "Mathematics",
+    "month": "Aug"
+  },
+  {
+    "id": "c5faaec1-6da5-4cd9-9d36-ff88efad9bbe",
+    "value": 4.8,
+    "category": "Computer Science",
+    "month": "Oct"
+  },
+  {
+    "id": "d5e0b9af-e5d5-460c-8c25-b8dcbf26fc93",
+    "value": 18.2,
+    "category": "Mathematics",
+    "month": "Sept"
+  },
+  {
+    "id": "f4e81cca-a6eb-4bdd-97b4-3fb7d219aea9",
+    "value": 9.5,
+    "category": "English",
+    "month": "Mar"
+  },
+  {
+    "id": "456e6d32-5792-4efd-8a7b-37fd682699f1",
+    "value": 30.7,
+    "category": "Art",
+    "month": "Dec"
+  },
+  {
+    "id": "074f0c84-be72-444d-b024-578fa21e93d4",
+    "value": 10.9,
+    "category": "Computer Science",
+    "month": "Jul"
+  },
+  {
+    "id": "987e4ced-0505-4523-a24a-e250257b22b7",
+    "value": 48.1,
+    "category": "History",
+    "month": "Mar"
+  },
+  {
+    "id": "8c00f840-7e97-4991-82c4-0506410bd5c9",
+    "value": 7.6,
+    "category": "History",
+    "month": "Jun"
+  },
+  {
+    "id": "b7eb6c7c-8376-4fed-90cf-0344834d80da",
+    "value": 33.7,
+    "category": "Physical Education",
+    "month": "Dec"
+  },
+  {
+    "id": "e3cb733b-a834-4e04-8a2d-8b70006d9a5a",
+    "value": 10.5,
+    "category": "Geography",
+    "month": "Aug"
+  },
+  {
+    "id": "fdb4fd86-39b2-4ea9-85ca-370db80385bd",
+    "value": 7.4,
+    "category": "History",
+    "month": "Apr"
+  },
+  {
+    "id": "3a549335-8751-4144-aa08-a8309aaf971a",
+    "value": 13.3,
+    "category": "History",
+    "month": "Jul"
+  },
+  {
+    "id": "73a5d7d3-f4ab-473a-965d-4b8e73c0d35e",
+    "value": 5.8,
+    "category": "Geography",
+    "month": "May"
+  },
+  {
+    "id": "1d287ba5-9031-48de-8796-f3f70e3024bf",
+    "value": 8.0,
+    "category": "Physical Education",
+    "month": "Feb"
+  },
+  {
+    "id": "7aeeeb53-6c12-437a-96d4-108e47fa2d2d",
+    "value": 22.1,
+    "category": "Science",
+    "month": "Sept"
+  },
+  {
+    "id": "08a8c647-3747-4211-b537-0d987519e78b",
+    "value": 47.8,
+    "category": "Foreign Language",
+    "month": "Dec"
+  },
+  {
+    "id": "decba539-8d03-4e6b-aca7-14f1198eff6a",
+    "value": 24.8,
+    "category": "Physical Education",
+    "month": "Sept"
+  },
+  {
+    "id": "984ff375-59d7-4799-85b7-cda9bdc1e80b",
+    "value": 42.6,
+    "category": "Mathematics",
+    "month": "Jul"
+  },
+  {
+    "id": "271e8b56-18c5-4a39-8bad-34df2cc2e5c9",
+    "value": 36.0,
+    "category": "Geography",
+    "month": "Mar"
+  },
+  {
+    "id": "9ef27e78-af96-4fff-9bcc-8ec8814624a9",
+    "value": 38.7,
+    "category": "History",
+    "month": "Dec"
+  },
+  {
+    "id": "aee37e5a-c65c-44f2-a86a-5e14a3481e02",
+    "value": 44.5,
+    "category": "Computer Science",
+    "month": "Feb"
+  },
+  {
+    "id": "df3d697e-c5f5-4522-9ab9-baf4a8691609",
+    "value": 34.8,
+    "category": "Foreign Language",
+    "month": "Jun"
+  },
+  {
+    "id": "d2318cee-3143-48df-bdd7-69ecf2fc872c",
+    "value": 33.2,
+    "category": "Computer Science",
+    "month": "Oct"
+  },
+  {
+    "id": "d4bdc1fb-3328-4e4b-8d83-291bdaa13613",
+    "value": 24.8,
+    "category": "Science",
+    "month": "Jul"
+  },
+  {
+    "id": "d2168941-3f26-4b7f-9665-ada23b85cd51",
+    "value": 45.2,
+    "category": "Computer Science",
+    "month": "Oct"
+  },
+  {
+    "id": "2de06939-647d-47b1-99d4-06d5c0150f97",
+    "value": 40.3,
+    "category": "Physical Education",
+    "month": "Mar"
+  },
+  {
+    "id": "3e3f1210-4ead-4d99-85d9-1cf75e0c266b",
+    "value": 40.4,
+    "category": "Mathematics",
+    "month": "Oct"
+  },
+  {
+    "id": "9184d8c9-0f87-416c-be61-458f11cc09a3",
+    "value": 41.2,
+    "category": "Music",
+    "month": "Nov"
+  },
+  {
+    "id": "d8527dfa-dc75-4132-a114-f3a22180d9b6",
+    "value": 11.2,
+    "category": "Mathematics",
+    "month": "May"
+  },
+  {
+    "id": "52980e88-c5c1-49c6-b00a-a0f4c9cb9570",
+    "value": 23.6,
+    "category": "Science",
+    "month": "Jan"
+  },
+  {
+    "id": "3aa9f053-171a-4ca3-98a7-ad9f94d739f7",
+    "value": 24.6,
+    "category": "English",
+    "month": "Jan"
+  },
+  {
+    "id": "ad50469e-1634-4482-b2c0-b1597384162f",
+    "value": 2.2,
+    "category": "Art",
+    "month": "Feb"
+  },
+  {
+    "id": "b63a106f-0b12-4d9e-868e-326eae2c146c",
+    "value": 30.2,
+    "category": "Music",
+    "month": "Jun"
+  },
+  {
+    "id": "7517daee-2e09-40cb-9f2d-222d12d70547",
+    "value": 46.2,
+    "category": "Foreign Language",
+    "month": "Sept"
+  },
+  {
+    "id": "4b434694-af82-42bb-82ab-8f9c76db42c0",
+    "value": 14.2,
+    "category": "Geography",
+    "month": "Jan"
+  },
+  {
+    "id": "e6d14a99-9273-4227-82f5-3381e18ac99c",
+    "value": 34.6,
+    "category": "Science",
+    "month": "Mar"
+  },
+  {
+    "id": "ee459a0b-0080-464f-8b6b-511f440cc750",
+    "value": 1.7,
+    "category": "Physical Education",
+    "month": "Feb"
+  },
+  {
+    "id": "33508f0f-8896-4006-9f76-50f7cbf6c1eb",
+    "value": 1.6,
+    "category": "Mathematics",
+    "month": "Apr"
+  },
+  {
+    "id": "9a6f2d57-26cb-4f88-b24b-6e0b47c90327",
+    "value": 8.5,
+    "category": "Foreign Language",
+    "month": "Sept"
+  },
+  {
+    "id": "230d38b2-da6e-4852-9b40-7e952acc5d58",
+    "value": 21.5,
+    "category": "Foreign Language",
+    "month": "Jun"
+  },
+  {
+    "id": "fb2bdb1e-f664-4b12-b542-a76249cb69a8",
+    "value": 13.5,
+    "category": "Art",
+    "month": "Jan"
+  },
+  {
+    "id": "785f3314-908c-407d-8fbe-dcf687de3758",
+    "value": 45.8,
+    "category": "History",
+    "month": "Dec"
+  },
+  {
+    "id": "8408061e-4710-4e29-b16a-3ee3a3c8c1ce",
+    "value": 31.6,
+    "category": "English",
+    "month": "Mar"
+  },
+  {
+    "id": "bddddd34-18ee-44c9-8a6b-89ad95a06eb2",
+    "value": 49.0,
+    "category": "Art",
+    "month": "May"
+  },
+  {
+    "id": "6a61c04c-ec8f-4bc2-aa95-d030880fbdc0",
+    "value": 40.5,
+    "category": "Computer Science",
+    "month": "Feb"
+  },
+  {
+    "id": "dea72480-90ff-48d4-a816-988200483a2c",
+    "value": 16.5,
+    "category": "Geography",
+    "month": "Feb"
+  },
+  {
+    "id": "b311cb8b-5ec5-4b48-9a47-3dd71e5c3b9e",
+    "value": 25.5,
+    "category": "Art",
+    "month": "Aug"
+  },
+  {
+    "id": "fa600d15-9108-4111-80ca-b6ef5652a494",
+    "value": 45.7,
+    "category": "Foreign Language",
+    "month": "Jan"
+  },
+  {
+    "id": "50a3cc9c-cffa-4875-953f-3ad6b10b5029",
+    "value": 7.6,
+    "category": "Music",
+    "month": "Feb"
+  },
+  {
+    "id": "67994726-6fd2-49cd-b3a4-d2aa1677a09b",
+    "value": 9.1,
+    "category": "English",
+    "month": "Aug"
+  },
+  {
+    "id": "acd782d3-26b1-4c43-aa78-4cdf0114495d",
+    "value": 17.6,
+    "category": "Computer Science",
+    "month": "Mar"
+  },
+  {
+    "id": "529d976a-9e80-48b9-a68e-27c6c951bab1",
+    "value": 40.0,
+    "category": "Geography",
+    "month": "Feb"
+  },
+  {
+    "id": "a770539d-bb22-4751-8adb-dae53e16e061",
+    "value": 44.5,
+    "category": "Mathematics",
+    "month": "Apr"
+  },
+  {
+    "id": "29518209-5571-4b08-8019-df5a2d656e8e",
+    "value": 36.1,
+    "category": "Foreign Language",
+    "month": "Feb"
+  },
+  {
+    "id": "ef834dd6-8590-4841-9a6a-7d0480c23393",
+    "value": 30.0,
+    "category": "Computer Science",
+    "month": "Jan"
+  },
+  {
+    "id": "8cf3b98f-4aea-4408-bd4b-9bfea520885a",
+    "value": 20.7,
+    "category": "Foreign Language",
+    "month": "May"
+  },
+  {
+    "id": "83447e97-734b-4eda-8629-5c6105596c03",
+    "value": 37.0,
+    "category": "Mathematics",
+    "month": "Mar"
+  },
+  {
+    "id": "b61c7696-2353-43ab-a14a-05e614aa24d2",
+    "value": 18.5,
+    "category": "Computer Science",
+    "month": "Feb"
+  },
+  {
+    "id": "f8f78cab-4004-45ae-a25a-2743d03df778",
+    "value": 22.4,
+    "category": "History",
+    "month": "Apr"
+  },
+  {
+    "id": "036ac877-b490-4b6a-9ecd-473b1a7426a3",
+    "value": 33.1,
+    "category": "Physical Education",
+    "month": "Dec"
+  },
+  {
+    "id": "969b230f-61e9-4c1b-92b2-60ee81cdaba4",
+    "value": 11.0,
+    "category": "Music",
+    "month": "Aug"
+  },
+  {
+    "id": "91c890ad-936b-4f88-b49d-2f890f5fd560",
+    "value": 18.6,
+    "category": "Foreign Language",
+    "month": "Jul"
+  },
+  {
+    "id": "84482446-5ba0-42e8-933b-8e00a097c3c9",
+    "value": 4.1,
+    "category": "Music",
+    "month": "Feb"
+  },
+  {
+    "id": "9a468963-b83b-4b60-9e83-70c15c368255",
+    "value": 18.8,
+    "category": "Science",
+    "month": "Apr"
+  },
+  {
+    "id": "d344743f-5faa-480e-9347-d9c325a1e04d",
+    "value": 44.9,
+    "category": "Science",
+    "month": "Apr"
+  },
+  {
+    "id": "ae214c04-45a6-4726-9b6b-beaee9a49f39",
+    "value": 33.2,
+    "category": "History",
+    "month": "Jul"
+  },
+  {
+    "id": "8dd1b1dd-719b-4f17-b2a8-533a7e4f7d28",
+    "value": 13.0,
+    "category": "Music",
+    "month": "Aug"
+  },
+  {
+    "id": "241ece4d-9c76-42a4-9956-95e51f824e17",
+    "value": 40.2,
+    "category": "Art",
+    "month": "Jan"
+  },
+  {
+    "id": "dc58ee45-4266-4927-aec6-0688e2452d63",
+    "value": 21.9,
+    "category": "Science",
+    "month": "Sept"
+  },
+  {
+    "id": "ec8f020b-ba0c-4caa-972c-95672d88f2b8",
+    "value": 15.6,
+    "category": "History",
+    "month": "Jun"
+  },
+  {
+    "id": "23465813-fbef-4ad0-89c4-c0274d04e8bf",
+    "value": 42.4,
+    "category": "Foreign Language",
+    "month": "Dec"
+  },
+  {
+    "id": "1570dc58-9a35-4972-9d14-46025e711c82",
+    "value": 34.8,
+    "category": "Geography",
+    "month": "Aug"
+  },
+  {
+    "id": "0cf91710-dd6f-4834-afcc-c4092184961a",
+    "value": 17.9,
+    "category": "English",
+    "month": "Oct"
+  },
+  {
+    "id": "a34f2acd-272d-48c8-99a3-d5033f4ae05b",
+    "value": 23.0,
+    "category": "Music",
+    "month": "Aug"
+  },
+  {
+    "id": "e017a4d5-78eb-4b79-86c5-7462b0b794d3",
+    "value": 25.7,
+    "category": "Music",
+    "month": "Dec"
+  },
+  {
+    "id": "666636d7-c119-4b8f-b74b-2173702a8895",
+    "value": 38.5,
+    "category": "Computer Science",
+    "month": "Aug"
+  },
+  {
+    "id": "7396235e-8c0f-46b2-9aa8-f9613c3f53de",
+    "value": 10.7,
+    "category": "Music",
+    "month": "Dec"
+  },
+  {
+    "id": "043b0d64-4a42-465a-9b7b-910599fd597a",
+    "value": 24.9,
+    "category": "Mathematics",
+    "month": "Jul"
+  },
+  {
+    "id": "44d6dc85-5a10-4ed9-86ca-1cc4d8d12106",
+    "value": 4.2,
+    "category": "Physical Education",
+    "month": "Jan"
+  },
+  {
+    "id": "5413ab75-424f-4e4f-8ccf-cc7b65d63957",
+    "value": 37.2,
+    "category": "Physical Education",
+    "month": "Dec"
+  },
+  {
+    "id": "55c64950-3a4c-482b-b708-fce3aa7b1fa7",
+    "value": 34.7,
+    "category": "Physical Education",
+    "month": "Apr"
+  },
+  {
+    "id": "0c4732f6-568d-4ece-96ab-4f52e65056d8",
+    "value": 33.1,
+    "category": "Mathematics",
+    "month": "Aug"
+  },
+  {
+    "id": "0211dae6-2d8d-4614-9ca4-8884ca6847a8",
+    "value": 17.7,
+    "category": "Art",
+    "month": "Aug"
+  },
+  {
+    "id": "d83a90e3-380c-424b-a8e4-8acd49cfed04",
+    "value": 11.7,
+    "category": "Foreign Language",
+    "month": "May"
+  },
+  {
+    "id": "40a87a1f-8de7-4b79-9128-a27819f07302",
+    "value": 32.8,
+    "category": "Foreign Language",
+    "month": "Apr"
+  },
+  {
+    "id": "b612043b-50e9-4c20-baf1-c9faa49963bc",
+    "value": 10.9,
+    "category": "English",
+    "month": "Jun"
+  },
+  {
+    "id": "06384972-a7ec-48ed-ad10-0c6b8014f3cd",
+    "value": 19.8,
+    "category": "English",
+    "month": "Nov"
+  },
+  {
+    "id": "14eefd01-e35d-4285-937e-f057a9c18c50",
+    "value": 35.2,
+    "category": "Mathematics",
+    "month": "Feb"
+  },
+  {
+    "id": "1064cb10-b4f4-410e-a657-e9311c5c898f",
+    "value": 30.0,
+    "category": "Mathematics",
+    "month": "Mar"
+  }
+]

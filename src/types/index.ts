@@ -3,7 +3,8 @@ import type {Clients} from "./clients";
 import type {CampaignAds} from "./campaigns"
 import type {PostPlatform, Posts, PostCategory} from "./posts"
 import type {CommentsType, CommentGender, CommentsPlatform, Comments} from "./comments"
-import type {Auction, AuctionCreator, AuctionSales, AuctionTransactions} from "./auction.ts"
+import type {Bidding, AuctionCreator, AuctionSales, AuctionTransactions} from "./bidding"
+import type {LearningCourses, RecommendedCourses, Exam, CommunityGroup} from "./learnings.ts"
 
 export type {
     Projects,
@@ -19,8 +20,12 @@ export type {
     CommentGender,
     CommentsType,
     CommentsPlatform,
-    Auction,
+    Bidding,
     AuctionCreator,
     AuctionSales,
-    AuctionTransactions
+    AuctionTransactions,
+    LearningCourses,
+    RecommendedCourses,
+    Exam,
+    CommunityGroup
 }
