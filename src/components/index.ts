@@ -97,5 +97,5 @@ export {
     DeliveryAnalyticsCard,
     DailyPlanCard,
     TruckListCard,
-    DeliveryRequestCard
+    DeliveryRequestCard,
 }
