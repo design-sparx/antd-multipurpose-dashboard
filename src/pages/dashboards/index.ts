@@ -5,6 +5,7 @@ import MarketingDashboardPage from "./Marketing.tsx";
 import SocialDashboardPage from "./Social.tsx";
 import BiddingDashboardPage from "./Bidding.tsx";
 import LearningDashboardPage from "./Learning.tsx";
+import LogisticsDashboardPage from "./Logistics.tsx";
 
 export {
     DefaultDashboardPage,
@@ -13,5 +14,6 @@ export {
     MarketingDashboardPage,
     SocialDashboardPage,
     BiddingDashboardPage,
-    LearningDashboardPage
+    LearningDashboardPage,
+    LogisticsDashboardPage
 }

@@ -36,6 +36,14 @@ import {
     ExamsCard,
     CommunityGroupCard
 } from "./learning"
+import {
+    StatsCard as LogisticsStatsCard,
+    DeliveryTableCard,
+    DeliveryAnalyticsCard,
+    DailyPlanCard,
+    TruckListCard,
+    DeliveryRequestCard
+} from "./logistics"
 
 export {
     CampaignsCard,
@@ -76,5 +84,11 @@ export {
     StudyStatisticsCard,
     ProgressCard,
     ExamsCard,
-    CommunityGroupCard
+    CommunityGroupCard,
+    LogisticsStatsCard,
+    DeliveryTableCard,
+    DeliveryAnalyticsCard,
+    DailyPlanCard,
+    TruckListCard,
+    DeliveryRequestCard
 }

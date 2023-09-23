@@ -5,6 +5,7 @@ import type {PostPlatform, Posts, PostCategory} from "./posts"
 import type {CommentsType, CommentGender, CommentsPlatform, Comments} from "./comments"
 import type {Bidding, AuctionCreator, AuctionSales, AuctionTransactions} from "./bidding"
 import type {LearningCourses, RecommendedCourses, Exam, CommunityGroup} from "./learnings.ts"
+import type {TruckDelivery, DeliveryAnalytics, Truck, DeliveryRequest} from "./logistics.ts"
 
 export type {
     Projects,
@@ -27,5 +28,9 @@ export type {
     LearningCourses,
     RecommendedCourses,
     Exam,
-    CommunityGroup
+    CommunityGroup,
+    TruckDelivery,
+    DeliveryAnalytics,
+    Truck,
+    DeliveryRequest
 }

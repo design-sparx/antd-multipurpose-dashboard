@@ -39,7 +39,13 @@ import {
     StudyStatisticsCard,
     ProgressCard,
     ExamsCard,
-    CommunityGroupCard
+    CommunityGroupCard,
+    LogisticsStatsCard,
+    DeliveryTableCard,
+    DeliveryAnalyticsCard,
+    DailyPlanCard,
+    TruckListCard,
+    DeliveryRequestCard
 } from "./dashboard"
 import UserAvatar from "./UserAvatar/UserAvatar.tsx";
 
@@ -85,5 +91,11 @@ export {
     StudyStatisticsCard,
     ProgressCard,
     ExamsCard,
-    CommunityGroupCard
+    CommunityGroupCard,
+    LogisticsStatsCard,
+    DeliveryTableCard,
+    DeliveryAnalyticsCard,
+    DailyPlanCard,
+    TruckListCard,
+    DeliveryRequestCard
 }
