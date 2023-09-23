@@ -45,7 +45,7 @@ export type DeliveryRequest = {
     delivery_time: number
     truck_type: "small" | "medium" | "large" | string
     cargo_weight: number
-    delivery_status: "pending" | "in transit" | "delivered"
+    delivery_status: "pending" | "in transit" | "delivered" | string
     driver_name: string
     contact_number: string
 }
