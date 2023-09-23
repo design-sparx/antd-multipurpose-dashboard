@@ -127,7 +127,7 @@ const CirclePackingChart = () => {
         color: 'rgb(252, 253, 191)-rgb(231, 82, 99)-rgb(183, 55, 121)',
         // 自定义 label 样式
         label: {
-            formatter: ({name}) => {
+            formatter: ({name}: any) => {
                 return name !== 'root' ? name : '';
             },
             // 偏移
@@ -141,6 +141,7 @@ const CirclePackingChart = () => {
         legend: false,
     };
 
+    // @ts-ignore
     return <CirclePacking {...config} />;
 }
 

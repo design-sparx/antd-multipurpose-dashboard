@@ -2,14 +2,6 @@ import ChannelUsersData from "../../../../mocks/ChannelUsers.json"
 import {Card, CardProps, Table, Typography} from "antd";
 import {MoreMenu} from "../../../index.ts";
 
-enum Status {
-    Pending = 'pending',
-    Inactive = 'inactive',
-    Active = 'active',
-    Cancelled = 'cancelled',
-    Completed = 'completed'
-}
-
 const DATA_SOURCE = ChannelUsersData;
 
 const COLUMNS = [
@@ -17,7 +9,7 @@ const COLUMNS = [
         title: 'Names',
         dataIndex: 'first_name',
         key: 'name',
-        render: (_, {first_name, last_name}: any) => (
+        render: (_: any, {first_name, last_name}: any) => (
             <Typography.Text>{first_name}{' '}{last_name}</Typography.Text>
         )
     },

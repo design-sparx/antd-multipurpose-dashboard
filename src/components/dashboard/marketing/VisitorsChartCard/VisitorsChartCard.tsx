@@ -1,5 +1,5 @@
 import {Button, Card, CardProps, Space, Typography} from "antd";
-import {CaretRightOutlined, RightOutlined} from "@ant-design/icons";
+import {RightOutlined} from "@ant-design/icons";
 import {Area} from "@ant-design/charts";
 
 
