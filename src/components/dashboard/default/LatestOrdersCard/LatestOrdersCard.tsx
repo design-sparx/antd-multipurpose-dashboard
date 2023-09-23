@@ -2,14 +2,6 @@ import CountryUsersData from "../../../../mocks/CountryOrders.json"
 import {Card, CardProps, Table} from "antd";
 import {MoreMenu} from "../../../index.ts";
 
-enum Status {
-    Pending = 'pending',
-    Inactive = 'inactive',
-    Active = 'active',
-    Cancelled = 'cancelled',
-    Completed = 'completed'
-}
-
 const DATA_SOURCE = CountryUsersData;
 
 const COLUMNS = [

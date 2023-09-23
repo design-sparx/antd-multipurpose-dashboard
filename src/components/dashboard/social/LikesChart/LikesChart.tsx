@@ -139,6 +139,8 @@ const ColumnChart = () => {
             /** Set color */
         //color: ['#1ca9e6', '#f88c24'],
     };
+
+    // @ts-ignore
     return <Column {...config} />;
 };
 

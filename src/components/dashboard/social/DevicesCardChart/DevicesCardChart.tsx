@@ -31,7 +31,7 @@ const PieChart = () => {
         label: {
             type: 'inner',
             offset: '-50%',
-            content: ({percent}) => `${(percent * 100).toFixed(0)}%`,
+            content: ({percent}: any) => `${(percent * 100).toFixed(0)}%`,
             style: {
                 textAlign: 'center',
                 fontSize: 12,
@@ -59,6 +59,8 @@ const PieChart = () => {
         },
         legend: false
     };
+
+    // @ts-ignore
     return <Pie {...config} />;
 };
 
