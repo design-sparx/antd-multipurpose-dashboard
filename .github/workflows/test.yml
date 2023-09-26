@@ -1,0 +1,31 @@
+# This workflow will do a clean install of dependencies, optionally build, and run tests
+# across different versions of node.
+name: Test
+on:
+  push:
+    branches:
+      - '**' # make it run on any branch
+      - '!main' # but exclude the 'main' and 'master' branches
+      - '!master'
+  pull_request:
+    branches:
+      - '**'
+      - '!main'
+      - '!master'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - '16.x'
+          - '18.x' # whichever node versions you support
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
