@@ -6,6 +6,8 @@ import type {CommentsType, CommentGender, CommentsPlatform, Comments} from "./co
 import type {Bidding, AuctionCreator, AuctionSales, AuctionTransactions} from "./bidding"
 import type {LearningCourses, RecommendedCourses, Exam, CommunityGroup} from "./learnings.ts"
 import type {TruckDelivery, DeliveryAnalytics, Truck, DeliveryRequest} from "./logistics.ts"
+import type {Tasks} from "./dashboard"
+import type {Notifications} from "./notifications"
 
 export type {
     Projects,
@@ -32,5 +34,7 @@ export type {
     TruckDelivery,
     DeliveryAnalytics,
     Truck,
-    DeliveryRequest
+    DeliveryRequest,
+    Tasks,
+    Notifications
 }

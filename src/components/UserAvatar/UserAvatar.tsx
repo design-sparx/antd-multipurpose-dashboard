@@ -1,4 +1,4 @@
-import {Avatar, Space, theme, Typography} from "antd";
+import {Avatar, AvatarProps, Space, theme, Typography} from "antd";
 import {getNameInitials} from "../../utils";
 import {UserOutlined} from "@ant-design/icons";
 
@@ -8,16 +8,30 @@ import {UserOutlined} from "@ant-design/icons";
 type Props = {
     fullName: string
     mark?: boolean
+    size?: "small" | "medium" | "large"
 }
 
-const UserAvatar = ({fullName, mark}: Props) => {
+const UserAvatar = ({fullName, mark, size}: Props) => {
     const {token} = theme.useToken()
+
+    const avatarProps: AvatarProps = {
+        size: size === "large" ? 36 : size === "small" ? 16 : 24
+    }
 
     return (
         <Space>
             {mark ?
-                <Avatar style={{backgroundColor: token.colorPrimary}} icon={<UserOutlined />}/> :
-                <Avatar style={{backgroundColor: token.colorPrimary}}>{getNameInitials(fullName)}</Avatar>
+                <Avatar
+                    style={{backgroundColor: token.colorPrimary}}
+                    icon={<UserOutlined/>}
+                    {...avatarProps}
+                /> :
+                <Avatar
+                    style={{backgroundColor: token.colorPrimary}}
+                    {...avatarProps}
+                >
+                    {getNameInitials(fullName)}
+                </Avatar>
             }
             <Typography.Text>{fullName}</Typography.Text>
         </Space>

@@ -6,11 +6,14 @@ import {
     TimelineCard,
     LatestOrdersCard,
     EarningsCard,
-    SubscribersChart
+    SubscribersChart,
+    WeeklyActivityCard,
+    TasksChartCard,
+    TasksListCard
 } from "./default"
-import {RevenueCard, PostsCard} from "./shared"
+import {RevenueCard, PostsCard, ProjectsCard} from "./shared"
 import {CustomerReviewsCard} from "./ecommerce"
-import {ProjectsCountCard, ProjectsCard, ProjectsTable, ClientsTable} from "./projects"
+import {ProjectsCountCard, ProjectsTable, ClientsTable} from "./projects"
 import {
     StatsCard as MarketingStatsCard,
     VisitorsChartCard,
@@ -90,5 +93,8 @@ export {
     DeliveryAnalyticsCard,
     DailyPlanCard,
     TruckListCard,
-    DeliveryRequestCard
+    DeliveryRequestCard,
+    WeeklyActivityCard,
+    TasksChartCard,
+    TasksListCard
 }

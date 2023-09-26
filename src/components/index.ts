@@ -45,9 +45,14 @@ import {
     DeliveryAnalyticsCard,
     DailyPlanCard,
     TruckListCard,
-    DeliveryRequestCard
+    DeliveryRequestCard,
+    WeeklyActivityCard,
+    TasksChartCard,
+    TasksListCard
 } from "./dashboard"
 import UserAvatar from "./UserAvatar/UserAvatar.tsx";
+import NotificationsItem from "./NotificationsItem/NotificationsItem.tsx";
+import NotificationsCard from "./NotificationsCard/NotificationsCard.tsx";
 
 export {
     Logo,
@@ -98,4 +103,9 @@ export {
     DailyPlanCard,
     TruckListCard,
     DeliveryRequestCard,
+    WeeklyActivityCard,
+    TasksChartCard,
+    TasksListCard,
+    NotificationsItem,
+    NotificationsCard
 }
