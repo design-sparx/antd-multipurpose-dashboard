@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 0.2.1
+
+### Patch Changes
+
+- f1e46f7: ## Updated
+  - updated test.yml to use minimum node v16
+
 ## 0.2.0
 
 ### Minor Changes
