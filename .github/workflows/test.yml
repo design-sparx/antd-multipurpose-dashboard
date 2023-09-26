@@ -29,10 +29,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Clean install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Build application
-        run: npm run build --if-present
+        run: yarn run build --if-present
 
       - name: Test
-        run: npm test
+        run: yarn test
