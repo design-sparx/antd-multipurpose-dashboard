@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 0.2.2
+
+### Patch Changes
+
+- 4a4a0f1: ## Updated
+  - replaced npm commands with yaml to fix "The `npm ci` command can only install with an existing package-lock.json" error from the test github action
+
 ## 0.2.1
 
 ### Patch Changes
