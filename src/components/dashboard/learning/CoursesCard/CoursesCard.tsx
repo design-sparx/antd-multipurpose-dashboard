@@ -1,8 +1,9 @@
-import {Avatar, Card, CardProps, Space, Table, Typography} from "antd";
+import {Avatar, CardProps, Space, Table, Typography} from "antd";
 import {LearningCourses} from "../../../../types";
 import {CalendarOutlined, SwapRightOutlined} from "@ant-design/icons";
 import {colourNameToHex, getNameInitials, isColorLight} from "../../../../utils";
 import {ColumnsType} from "antd/es/table";
+import {Card} from "../../../index.ts";
 
 const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     {

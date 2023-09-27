@@ -1,5 +1,6 @@
 import React from "react";
-import {Card, CardProps, Progress, Space, Typography} from "antd";
+import {CardProps, Progress, Space, Typography} from "antd";
+import {Card} from "../../../index.ts";
 
 type Props = {
     title: string

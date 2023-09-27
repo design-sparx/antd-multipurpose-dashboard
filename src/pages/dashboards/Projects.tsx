@@ -1,9 +1,7 @@
-import {Button, Card, Col, Row, Segmented, Space} from "antd";
-import {ClientsTable, ProjectsCard, ProjectsTable, RevenueCard} from "../../components";
+import {Button, Col, Row, Segmented, Space} from "antd";
+import {Card, ClientsTable, ProjectsCard, ProjectsTable, RevenueCard} from "../../components";
 import {Column} from "@ant-design/plots";
-import Timeline from 'react-calendar-timeline'
 import 'react-calendar-timeline/lib/Timeline.css'
-import moment from 'moment'
 import ProjectsData from "../../mocks/Projects.json";
 import ClientsData from "../../mocks/Clients.json"
 import {Projects} from "../../types";
@@ -91,7 +89,7 @@ const RevenueColumnChart = () => {
         seriesField: 'name',
 
         /** set color */
-        color: ['#1ca9e6', '#f88c24'],
+        // color: ['#1ca9e6', '#f88c24'],
 
         /** Set spacing */
         // marginRatio: 0.1,
@@ -117,32 +115,6 @@ const RevenueColumnChart = () => {
     // @ts-ignore
     return <Column {...config} />;
 };
-
-const groups = [{id: 1, title: 'group 1'}, {id: 2, title: 'group 2'}]
-
-const items = [
-    {
-        id: 1,
-        group: 1,
-        title: 'item 1',
-        start_time: moment(),
-        end_time: moment().add(1, 'hour')
-    },
-    {
-        id: 2,
-        group: 2,
-        title: 'item 2',
-        start_time: moment().add(-0.5, 'hour'),
-        end_time: moment().add(0.5, 'hour')
-    },
-    {
-        id: 3,
-        group: 1,
-        title: 'item 3',
-        start_time: moment().add(2, 'hour'),
-        end_time: moment().add(3, 'hour')
-    }
-]
 
 const PROJECT_TABS = [
     {
@@ -214,16 +186,6 @@ const ProjectsDashboardPage = () => {
                 <Col span={8}>
                     <Card title="Top clients">
                         <ClientsTable data={ClientsData.slice(0, 5)}/>
-                    </Card>
-                </Col>
-                <Col span={24}>
-                    <Card title="Daily activities" extra={<Button>See details activity</Button>}>
-                        <Timeline
-                            groups={groups}
-                            items={items}
-                            defaultTimeStart={moment().add(-12, 'hour')}
-                            defaultTimeEnd={moment().add(12, 'hour')}
-                        />
                     </Card>
                 </Col>
                 <Col span={24}>

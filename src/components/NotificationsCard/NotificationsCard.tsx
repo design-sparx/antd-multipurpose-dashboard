@@ -1,5 +1,5 @@
-import {Button, Card, CardProps, List} from "antd";
-import {NotificationsItem} from "../index.ts";
+import {Button, CardProps, List} from "antd";
+import {Card, NotificationsItem} from "../index.ts";
 import {Notifications} from "../../types";
 
 import "./styles.css";
@@ -13,7 +13,7 @@ const NotificationsCard = ({data, ...others}: Props) => {
         <Card
             title="Notifications"
             extra={<Button>View all</Button>}
-            className="notifications-list-card"
+            className="card notifications-list-card"
             {...others}
         >
             <List

@@ -1,6 +1,7 @@
-import {Button, Card, CardProps, Col, List, Progress, Row, Space, Typography} from "antd";
+import {Button, CardProps, Col, List, Progress, Row, Space, Typography} from "antd";
 import React from "react";
 import {GroupOutlined, RadiusSettingOutlined, ShareAltOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 const MOCK_DATA = [
     {

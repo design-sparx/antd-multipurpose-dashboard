@@ -1,6 +1,7 @@
-import {Card, CardProps, Table, Typography, Image, Space} from "antd";
+import {CardProps, Table, Typography, Image, Space} from "antd";
 import {AuctionTransactions} from "../../../../types";
 import {SwapRightOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 const TRANSACTIONS_COLUMNS = [
     {

@@ -1,8 +1,9 @@
-import {Avatar, Button, Card, CardProps, Col, Divider, Image, List, Row, Space, theme, Typography} from "antd";
+import {Avatar, Button, CardProps, Col, Divider, Image, List, Row, Space, theme, Typography} from "antd";
 import {Posts} from "../../../../types";
 import {CommentOutlined, DeleteFilled, EditFilled, LikeOutlined, ShareAltOutlined} from "@ant-design/icons";
 import React from "react";
 import {getNameInitials} from "../../../../utils";
+import {Card} from "../../../index.ts";
 
 const IconText = ({icon, text}: { icon: React.FC; text: string | number }) => (
     <Space>

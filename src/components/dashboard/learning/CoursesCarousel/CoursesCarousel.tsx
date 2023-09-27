@@ -1,7 +1,8 @@
-import {Button, Card, CardProps, Carousel, CarouselProps, Space, Tag, Typography} from "antd";
+import {Button, Card as AntdCard, CardProps, Carousel, CarouselProps, Space, Tag, Typography} from "antd";
 import {RecommendedCourses} from "../../../../types";
 import {useEffect, useRef, useState} from "react";
 import {BookOutlined, ClockCircleOutlined, LockOutlined, TagFilled} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 type CardItemProps = {
     data: RecommendedCourses
@@ -32,7 +33,7 @@ const CardItem = ({data}: CardItemProps) => {
     }, [level]);
 
     return (
-        <Card
+        <AntdCard
             style={{
                 margin: `0 4px`
             }}
@@ -64,7 +65,7 @@ const CardItem = ({data}: CardItemProps) => {
                 </Space>
                 <Button icon={<LockOutlined/>}>Enroll Now</Button>
             </Space>
-        </Card>
+        </AntdCard>
     )
 }
 

@@ -1,5 +1,6 @@
 import {CirclePacking} from "@ant-design/charts";
-import {Card, CardProps, Space, Typography} from "antd";
+import {CardProps, Space, Typography} from "antd";
+import {Card} from "../../../index.ts";
 
 const CirclePackingChart = () => {
     const data = {

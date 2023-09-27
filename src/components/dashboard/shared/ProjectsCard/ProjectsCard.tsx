@@ -1,8 +1,9 @@
 import {Projects} from "../../../../types";
-import {Card, CardProps, Descriptions, DescriptionsProps, Space, Tooltip, Typography} from "antd";
+import {CardProps, Descriptions, DescriptionsProps, Space, Tooltip, Typography} from "antd";
 import {CalendarOutlined, ClockCircleOutlined, UsergroupAddOutlined} from "@ant-design/icons";
 
 import "./styles.css";
+import {Card} from "../../../index.ts";
 
 type Props = {
     project: Projects

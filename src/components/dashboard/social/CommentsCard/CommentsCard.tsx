@@ -1,7 +1,8 @@
-import {Avatar, Button, Card, CardProps, List, Space, Tag, theme, Typography} from "antd";
+import {Avatar, Button, CardProps, List, Space, Tag, theme, Typography} from "antd";
 import {ArrowRightOutlined, CommentOutlined, DeleteOutlined, LikeOutlined} from "@ant-design/icons";
 import {Comments} from "../../../../types";
 import {getNameInitials} from "../../../../utils";
+import {Card} from "../../../index.ts";
 
 type Props = {data: Comments[]} & CardProps
 

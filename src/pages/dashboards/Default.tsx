@@ -1,5 +1,6 @@
 import {useRef} from "react";
 import {
+    Card,
     GetStartedCard,
     NotificationsCard,
     ProjectsCard,
@@ -7,7 +8,7 @@ import {
     TasksListCard,
     WeeklyActivityCard
 } from "../../components";
-import {Button, Card, Carousel, CarouselProps, Col, Row, RowProps, Space, Typography} from "antd";
+import {Button, Carousel, CarouselProps, Col, Row, RowProps, Space, Typography} from "antd";
 import TasksListData from "../../mocks/TasksList.json";
 import ProjectsData from "../../mocks/Projects.json";
 import NotificationsData from "../../mocks/Notifications.json";
@@ -116,54 +117,53 @@ const TASKS_DATA = [
     },
 ]
 
+const CAROUSEL_PROPS: CarouselProps = {
+    dots: true,
+    autoplay: true,
+    infinite: true,
+    speed: 500,
+    autoplaySpeed: 10000,
+    slidesToShow: 1,
+    slidesToScroll: 1
+};
+
+const ROW_PROPS: RowProps = {
+    gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]
+}
+
+const SUB_ROW_PROPS: RowProps = {
+    gutter: [{xs: 4, sm: 8, md: 12, lg: 16}, {xs: 4, sm: 8, md: 12, lg: 16}]
+}
+
 const DefaultDashboardPage = () => {
     const sliderRef1 = useRef<any>()
     const sliderRef2 = useRef<any>()
 
-    const settings: CarouselProps = {
-        dots: true,
-        autoplay: true,
-        infinite: true,
-        speed: 500,
-        autoplaySpeed: 10000,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    };
-
-    const rowProps: RowProps = {
-        gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]
-    }
-
-    const subRowProps: RowProps = {
-        gutter: [{xs: 4, sm: 8, md: 12, lg: 16}, {xs: 4, sm: 8, md: 12, lg: 16}]
-    }
-
     return (
         <div>
-            <Typography>Analytics Overview</Typography>
-            <Row {...rowProps}>
+            <Row {...ROW_PROPS}>
                 <Col span={18}>
-                    <Row {...rowProps}>
+                    <Row {...ROW_PROPS}>
                         <Col span={24}>
-                            <Row {...subRowProps}>
+                            <Row {...SUB_ROW_PROPS}>
                                 <Col span={18}>
                                     <GetStartedCard/>
                                 </Col>
                                 <Col span={6}>
-                                    <Row {...subRowProps}>
+                                    <Row {...SUB_ROW_PROPS}>
                                         <Col span={24}>
                                             <Card>
                                                 <Space direction="vertical" align="center" style={{width: '100%'}}>
-                                                    <Typography.Title>10+</Typography.Title>
-                                                    <Typography.Text>Projects</Typography.Text>
+                                                    <Typography.Title style={{margin: 0}}>10+</Typography.Title>
+                                                    <Typography.Text strong>Projects</Typography.Text>
                                                 </Space>
                                             </Card>
                                         </Col>
                                         <Col span={24}>
                                             <Card>
                                                 <Space direction="vertical" align="center" style={{width: '100%'}}>
-                                                    <Typography.Title>60+</Typography.Title>
-                                                    <Typography.Text>Tasks</Typography.Text>
+                                                    <Typography.Title style={{margin: 0}}>60+</Typography.Title>
+                                                    <Typography.Text strong>Tasks</Typography.Text>
                                                 </Space>
                                             </Card>
                                         </Col>
@@ -183,32 +183,35 @@ const DefaultDashboardPage = () => {
                     </Row>
                 </Col>
                 <Col span={6}>
-                    <Row {...rowProps}>
+                    <Row {...ROW_PROPS}>
                         <Col span={24}>
                             <Card
                                 title="Ongoing projects"
                                 extra={<Button>View all</Button>}
                                 bordered={false}
                             >
-                                <Carousel ref={sliderRef1} {...settings}>
+                                <Carousel ref={sliderRef1} {...CAROUSEL_PROPS}>
                                     {ProjectsData
                                         .filter(o => o.status.toLowerCase() === "in progress")
                                         .slice(0, 4)
-                                        .map(o => <ProjectsCard
-                                            key={o.project_id}
-                                            project={o} size="small"
-                                            style={{margin: `0 8px`}}
-                                        />)}
+                                        .map(o =>
+                                            <ProjectsCard
+                                                key={o.project_id}
+                                                project={o} size="small"
+                                                style={{margin: `0 8px`}}
+                                            />
+                                        )
+                                    }
                                 </Carousel>
                             </Card>
                         </Col>
                         <Col span={24}>
-                            <Card
+                            { <Card
                                 title="Projects in queue"
                                 extra={<Button>View all</Button>}
                                 bordered={false}
                             >
-                                <Carousel ref={sliderRef2} {...settings}>
+                                <Carousel ref={sliderRef2} {...CAROUSEL_PROPS}>
                                     {ProjectsData
                                         .filter(o => o.status.toLowerCase() === "on hold")
                                         .slice(0, 4)
@@ -219,7 +222,7 @@ const DefaultDashboardPage = () => {
                                             style={{margin: `0 8px`}}
                                         />)}
                                 </Carousel>
-                            </Card>
+                            </Card>}
                         </Col>
                         <Col span={24}>
                             <NotificationsCard data={NotificationsData}/>

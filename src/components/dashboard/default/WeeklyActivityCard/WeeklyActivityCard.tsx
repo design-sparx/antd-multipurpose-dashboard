@@ -1,5 +1,6 @@
 import {Area} from "@ant-design/charts";
-import {Card, CardProps} from "antd";
+import {CardProps} from "antd";
+import {Card} from "../../../index.ts";
 
 type Activity = {
     day: string

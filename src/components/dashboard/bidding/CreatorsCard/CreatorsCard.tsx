@@ -1,7 +1,8 @@
-import {Avatar, Button, Card, CardProps, List, Space, Typography} from "antd";
+import {Avatar, Button, CardProps, List, Space, Typography} from "antd";
 import {AuctionCreator} from "../../../../types";
 import {getNameInitials} from "../../../../utils";
 import {CheckCircleFilled, PlusOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 type Props = { data: AuctionCreator[] } & CardProps
 

@@ -1,8 +1,9 @@
-import {Card, CardProps} from "antd";
+import {CardProps} from "antd";
 import {Column} from "@ant-design/charts";
 import {DeliveryAnalytics} from "../../../../types";
 import {useEffect, useState} from "react";
 import * as _ from "lodash";
+import {Card} from "../../../index.ts";
 
 type ChartProps = {
     data: DeliveryAnalytics[]

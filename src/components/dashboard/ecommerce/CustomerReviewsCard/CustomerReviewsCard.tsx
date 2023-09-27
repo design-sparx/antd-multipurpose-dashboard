@@ -1,6 +1,7 @@
-import {Button, Card, CardProps, Popover, Progress, ProgressProps, Rate, Space, Typography} from "antd";
+import {Button, CardProps, Popover, Progress, ProgressProps, Rate, Space, Typography} from "antd";
 import {lime, green, yellow, orange, red} from '@ant-design/colors';
 import {ExclamationOutlined, QuestionOutlined, SyncOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 const PROGRESS_PROPS: ProgressProps = {
     style: {

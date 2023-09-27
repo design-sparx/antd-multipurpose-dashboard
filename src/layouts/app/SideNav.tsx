@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, Menu, MenuProps, SiderProps} from "antd";
+import {ConfigProvider, Layout, Menu, MenuProps, SiderProps} from "antd";
 import {
     BookOutlined,
     BugOutlined, CalendarOutlined,
@@ -194,18 +194,10 @@ const SideNav = ({...others}: SideNavProps) => {
             onCollapse={(collapsed, type) => {
                 console.log(collapsed, type);
             }}
-            style={{
-                overflow: 'auto',
-                height: '100vh',
-                position: 'fixed',
-                left: 0,
-                top: 0,
-                bottom: 0,
-            }}
             {...others}
         >
             <Logo
-                color="white"
+                color="black"
                 style={{
                     display: 'flex',
                     gap: '8px',
@@ -215,14 +207,23 @@ const SideNav = ({...others}: SideNavProps) => {
                     padding: '1rem 0'
                 }}
             />
-            <Menu
-                theme="dark"
-                onClick={onClick}
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                mode="inline"
-                items={items}
-            />
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Menu: {
+                            itemBg: "none"
+                        }
+                    }
+                }}>
+                <Menu
+                    onClick={onClick}
+                    defaultSelectedKeys={['1']}
+                    defaultOpenKeys={['sub1']}
+                    mode="inline"
+                    items={items}
+                    style={{border: "none"}}
+                />
+            </ConfigProvider>
         </Sider>
     );
 };
