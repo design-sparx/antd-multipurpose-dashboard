@@ -1,5 +1,6 @@
-import {Badge, Button, Card, CardProps, Col, List, Progress, Row, Space, Typography} from "antd";
+import {Badge, Button, CardProps, Col, List, Progress, Row, Space, Typography} from "antd";
 import {Truck} from "../../../../types";
+import {Card} from "../../../index.ts";
 
 import "./styles.css";
 
@@ -12,7 +13,7 @@ const TruckListCard = ({data, ...others}: Props) => {
         <Card
             title="Available Trucks"
             extra={<Button>See All</Button>}
-            className="available-tucks-card"
+            className="available-tucks-card card"
             {...others}
         >
             <List

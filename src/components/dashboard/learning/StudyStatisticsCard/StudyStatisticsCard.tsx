@@ -1,7 +1,8 @@
-import {Card, CardProps} from "antd";
+import {CardProps} from "antd";
 import {Heatmap} from "@ant-design/plots";
 import {useEffect, useState} from "react";
 import * as _ from "lodash";
+import {Card} from "../../../index.ts";
 
 type StudyStatistics = {
     id: string

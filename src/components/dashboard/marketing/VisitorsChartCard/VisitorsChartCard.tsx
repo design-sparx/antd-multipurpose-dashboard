@@ -1,7 +1,7 @@
-import {Button, Card, CardProps, Space, Typography} from "antd";
+import {Button, CardProps, Space, Typography} from "antd";
 import {RightOutlined} from "@ant-design/icons";
 import {Area} from "@ant-design/charts";
-
+import {Card} from "../../../index.ts";
 
 const AreaChart = () => {
     const data = [
@@ -54,6 +54,7 @@ const AreaChart = () => {
         xAxis: {
             range: [0, 1],
         },
+        smooth: true
     };
 
     return <Area {...config} />;

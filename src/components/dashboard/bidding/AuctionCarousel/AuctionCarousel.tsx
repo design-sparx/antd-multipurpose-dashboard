@@ -1,6 +1,7 @@
-import {Badge, Button, Card, CardProps, Carousel, CarouselProps, Space, Tag, Typography} from "antd";
+import {Badge, Button, CardProps, Carousel, CarouselProps, Space, Tag, Typography} from "antd";
 import {ClockCircleOutlined, EditOutlined, EllipsisOutlined, SettingOutlined} from "@ant-design/icons";
 import {Bidding} from "../../../../types";
+import {Card} from "../../../index.ts";
 
 import "./styles.css";
 
@@ -50,7 +51,7 @@ const CardItem = ({item}: CardItemProps) => {
                 <EditOutlined key="edit"/>,
                 <EllipsisOutlined key="ellipsis"/>,
             ]}
-            className="auction-card"
+            className="auction-card card"
         >
             <Space direction="vertical">
                 <Typography.Title

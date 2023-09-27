@@ -1,6 +1,7 @@
-import {Card, CardProps, Col, Row, Space, Typography} from "antd";
+import {CardProps, Col, Row, Space, Typography} from "antd";
 import {Pie} from "@ant-design/plots";
 import {DesktopOutlined, MobileOutlined, SettingOutlined, TabletFilled} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 const PieChart = () => {
     const data = [

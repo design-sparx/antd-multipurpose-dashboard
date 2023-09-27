@@ -1,5 +1,6 @@
-import {Card, CardProps, Space, Typography} from "antd";
+import {CardProps, Space, Typography} from "antd";
 import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 type Props = {
     title: string,

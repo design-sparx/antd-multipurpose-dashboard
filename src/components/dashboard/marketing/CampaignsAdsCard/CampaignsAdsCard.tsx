@@ -1,5 +1,6 @@
-import {Card, CardProps, Space, Table, Typography} from "antd";
+import {CardProps, Space, Table, Typography} from "antd";
 import CampaignsAdsData from "../../../../mocks/CampaignAds.json";
+import {Card} from "../../../index.ts";
 
 type Props = CardProps
 

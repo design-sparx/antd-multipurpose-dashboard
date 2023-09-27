@@ -1,6 +1,7 @@
-import {Button, Calendar, CalendarProps, Card, CardProps, Space, Typography} from "antd";
+import {Button, Calendar, CalendarProps, CardProps, Space, Typography} from "antd";
 import type {Dayjs} from 'dayjs';
 import {RightOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
     console.log(value.format('YYYY-MM-DD'), mode);

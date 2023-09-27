@@ -1,5 +1,6 @@
-import {Card, CardProps} from "antd";
+import {CardProps} from "antd";
 import {Column} from "@ant-design/plots";
+import {Card} from "../../../index.ts";
 
 const ColumnChart = () => {
     const data = [

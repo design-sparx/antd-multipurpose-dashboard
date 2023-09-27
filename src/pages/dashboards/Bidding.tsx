@@ -1,5 +1,5 @@
-import {Button, Card, Col, Row, Select, Space, Typography} from "antd";
-import {AuctionCarousel, BiddingCategoriesCard, CreatorsCard, TopItemsCard, TransactionsCard} from "../../components";
+import {Button, Col, Row, Select, Space, Typography} from "antd";
+import {AuctionCarousel, BiddingCategoriesCard, Card, CreatorsCard, TopItemsCard, TransactionsCard} from "../../components";
 import LiveAuctionData from "../../mocks/LiveAuction.json";
 import AuctionCreatorsData from "../../mocks/AuctionCreators.json"
 import TopSellingItemsData from "../../mocks/BiddingTopSellers.json"

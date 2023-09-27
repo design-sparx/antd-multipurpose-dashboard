@@ -53,6 +53,7 @@ import {
 import UserAvatar from "./UserAvatar/UserAvatar.tsx";
 import NotificationsItem from "./NotificationsItem/NotificationsItem.tsx";
 import NotificationsCard from "./NotificationsCard/NotificationsCard.tsx";
+import Card from "./Card/Card.tsx";
 
 export {
     Logo,
@@ -107,5 +108,6 @@ export {
     TasksChartCard,
     TasksListCard,
     NotificationsItem,
-    NotificationsCard
+    NotificationsCard,
+    Card
 }

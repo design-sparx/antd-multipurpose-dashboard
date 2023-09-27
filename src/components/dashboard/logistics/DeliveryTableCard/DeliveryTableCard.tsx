@@ -1,7 +1,8 @@
-import {Button, Card, CardProps, Table, Typography} from "antd";
+import {Button, CardProps, Table, Typography} from "antd";
 import {TruckDelivery} from "../../../../types";
 import {useState} from "react";
 import {ColumnsType} from "antd/es/table";
+import {Card} from "../../../index.ts";
 
 type TabKeys = "all" | "in transit" | "delayed" | "delivered" | string
 

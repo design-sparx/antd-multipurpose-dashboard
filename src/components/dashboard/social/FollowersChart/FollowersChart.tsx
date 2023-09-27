@@ -1,6 +1,7 @@
-import {Card, CardProps} from "antd";
+import {CardProps} from "antd";
 import {useEffect, useState} from "react";
 import {Line} from "@ant-design/charts";
+import {Card} from "../../../index.ts";
 
 type TabKeys = 'all' | 'followers' | 'following' | 'blocked' | string
 

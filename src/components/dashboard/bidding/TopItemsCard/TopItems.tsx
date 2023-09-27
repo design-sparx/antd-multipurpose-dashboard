@@ -1,5 +1,6 @@
-import {Card, CardProps, Image, Space, Table, Typography} from "antd";
+import {CardProps, Image, Space, Table, Typography} from "antd";
 import {AuctionSales} from "../../../../types";
+import {Card} from "../../../index.ts";
 
 const SALES_COLUMNS = [
     {

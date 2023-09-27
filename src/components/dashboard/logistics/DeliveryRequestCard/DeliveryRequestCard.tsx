@@ -1,8 +1,8 @@
-import {Badge, Button, Card, CardProps, List, Space, Typography} from "antd";
+import {Badge, Button, CardProps, List, Space, Typography} from "antd";
 import {DeliveryRequest} from "../../../../types";
+import {Card, UserAvatar} from "../../../index.ts";
 
 import "./styles.css";
-import {UserAvatar} from "../../../index.ts";
 
 type Props = {
     data: DeliveryRequest[]
@@ -12,7 +12,7 @@ const DeliveryRequestCard = ({data, ...others}: Props) => {
     return (
         <Card
             title="Recent request"
-            className="delivery-request-card"
+            className="delivery-request-card card"
             extra={<Button>See all</Button>}
             {...others}
         >

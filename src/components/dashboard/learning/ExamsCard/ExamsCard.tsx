@@ -1,8 +1,9 @@
-import {Button, Card, CardProps, List, Space, Typography} from "antd";
+import {Button, CardProps, List, Space, Typography} from "antd";
 import {Exam} from "../../../../types";
 import {RightOutlined} from "@ant-design/icons";
 
 import "./styles.css";
+import {Card} from "../../../index.ts";
 
 type Props = {
     data: Exam[]
@@ -12,7 +13,7 @@ const ExamsCard = ({data, ...others}: Props) => {
     return (
         <Card
             title="Upcoming Exams"
-            className="exam-card"
+            className="exam-card card"
             actions={[
                 <Button>See all upcoming exams</Button>
             ]}

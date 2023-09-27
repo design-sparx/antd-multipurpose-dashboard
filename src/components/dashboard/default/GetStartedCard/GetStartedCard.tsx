@@ -1,5 +1,6 @@
-import {Button, Card, CardProps, Image, Space, Typography} from "antd";
+import {Button, CardProps, Image, Space, Typography} from "antd";
 import {RightOutlined} from "@ant-design/icons";
+import {Card} from "../../../index";
 
 type Props = CardProps
 

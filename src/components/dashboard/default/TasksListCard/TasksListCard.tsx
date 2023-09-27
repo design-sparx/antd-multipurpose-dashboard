@@ -1,10 +1,9 @@
-import {Badge, Button, Card, CardProps, List, Space, Tag, Typography} from "antd";
+import {Badge, Button, Card as AntdCard,CardProps, List, Space, Tag, Typography} from "antd";
 import {Tasks} from "../../../../types";
 import {CalendarOutlined, FlagOutlined} from "@ant-design/icons";
-import {UserAvatar} from "../../../index.ts";
+import {Card, UserAvatar} from "../../../index.ts";
 
 import "./styles.css";
-
 
 type Props = {
     data: Tasks[]
@@ -15,7 +14,7 @@ const TasksListCard = ({data, ...others}: Props) => {
         <Card
             title="Tasks"
             extra={<Button>View all</Button>}
-            className="tasks-list-card"
+            className="tasks-list-card card"
             {...others}
         >
             <List
@@ -38,9 +37,9 @@ const TasksListCard = ({data, ...others}: Props) => {
                 dataSource={data}
                 renderItem={(item) => (
                     <List.Item
-                        key={item.title}
+                        key={item.name}
                     >
-                        <Card title={item.title}>
+                        <AntdCard title={item.name} hoverable={true} bordered={true} style={{height: "100%"}}>
                             <Space direction="vertical">
                                 <Space style={{justifyContent: "space-between", width: "100%"}}>
                                     <Typography.Title
@@ -81,7 +80,7 @@ const TasksListCard = ({data, ...others}: Props) => {
                                     <UserAvatar fullName={item.assigned_to} size="medium"/>
                                 </Space>
                             </Space>
-                        </Card>
+                        </AntdCard>
                     </List.Item>
                 )}
             />

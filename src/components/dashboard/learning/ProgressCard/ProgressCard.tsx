@@ -1,6 +1,7 @@
-import {Button, Card, CardProps, Col, Dropdown, MenuProps, Row, Space, Typography} from "antd";
+import {Button, CardProps, Col, Dropdown, MenuProps, Row, Space, Typography} from "antd";
 import {RadialBar} from "@ant-design/charts";
 import {DownOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 const RadialChart = () => {
     const data = [
@@ -24,7 +25,6 @@ const RadialChart = () => {
         xField: 'name',
         yField: 'count',
         maxAngle: 270,
-        //最大旋转角度,
         radius: 1,
         innerRadius: 0.5,
         tooltip: {

@@ -1,5 +1,6 @@
 import {Column} from "@ant-design/plots";
-import {Button, Card, CardProps} from "antd";
+import {Button, CardProps} from "antd";
+import {Card} from "../../../index.ts";
 
 type Tasks = {
     day: string,

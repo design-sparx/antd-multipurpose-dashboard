@@ -1,5 +1,6 @@
-import {Card, CardProps, Col, Row, Space, Tag, Typography} from "antd";
+import {CardProps, Col, Row, Space, Tag, Typography} from "antd";
 import {TinyColumn} from "@ant-design/charts";
+import {Card} from "../../../index.ts";
 
 type ChartData = [number, number, number, number]
 

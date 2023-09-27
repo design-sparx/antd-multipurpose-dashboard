@@ -1,6 +1,7 @@
-import {Card, CardProps, Space, Typography} from "antd";
+import {CardProps, Space, Typography} from "antd";
 import {CommentOutlined, LikeOutlined, UserAddOutlined, UserOutlined, UserSwitchOutlined} from "@ant-design/icons";
 import {ReactElement} from "react";
+import {Card} from "../../../index.ts";
 
 type Props = {
     title: 'followers' | 'following' | 'likes' | 'comments',

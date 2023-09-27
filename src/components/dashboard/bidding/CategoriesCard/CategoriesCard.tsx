@@ -1,4 +1,5 @@
-import {Card, CardProps, Table} from "antd";
+import {CardProps, Table} from "antd";
+import {Card} from "../../../index.ts";
 
 const CATEGORIES_MOCKS = [
     {

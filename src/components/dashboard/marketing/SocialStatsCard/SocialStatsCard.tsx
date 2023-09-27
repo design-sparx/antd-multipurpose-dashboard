@@ -1,4 +1,4 @@
-import {Button, Card, CardProps, Space, Tag, Typography} from "antd";
+import {Card as AntdCard, Button, CardProps, Space, Tag, Typography, theme} from "antd";
 import {
     FacebookOutlined,
     InstagramOutlined,
@@ -6,6 +6,7 @@ import {
     TwitterOutlined,
     YoutubeOutlined
 } from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 const SOCIALS_DATA = [
     {
@@ -50,15 +51,23 @@ const gridStyle: React.CSSProperties = {
 type Props = CardProps
 
 const SocialStatsCard = ({...others}: Props) => {
+    const {
+        token: {borderRadius},
+    } = theme.useToken();
+
     return (
         <Card
             actions={[
-               <Button>View details report <RightOutlined/></Button>
+                <Button>View details report <RightOutlined/></Button>
             ]}
             {...others}
         >
             {SOCIALS_DATA.map((_, i) =>
-                <Card.Grid key={`${_.title}-${i}`} hoverable={false} style={gridStyle}>
+                <AntdCard.Grid
+                    key={`${_.title}-${i}`}
+                    hoverable={false}
+                    style={{borderRadius, ...gridStyle}}
+                >
                     <Space>
                         <Typography.Text>{_.title}</Typography.Text>
                         <Tag color={_.diff < 0 ? 'error' : 'success'}>{_.diff}</Tag>
@@ -67,7 +76,7 @@ const SocialStatsCard = ({...others}: Props) => {
                         <Typography.Title level={4} style={{margin: 0}}>{_.value}</Typography.Title>
                         <Typography.Text color="secondary">visitors</Typography.Text>
                     </Space>
-                </Card.Grid>
+                </AntdCard.Grid>
             )}
         </Card>
     );

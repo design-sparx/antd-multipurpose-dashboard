@@ -1,6 +1,7 @@
-import {Avatar, Button, Card, CardProps, List, Typography} from "antd";
+import {Avatar, Button, CardProps, List, Typography} from "antd";
 import {CommunityGroup} from "../../../../types";
 import {PlusOutlined} from "@ant-design/icons";
+import {Card} from "../../../index.ts";
 
 import "./styles.css";
 
@@ -12,7 +13,7 @@ const ExamsCard = ({data, ...others}: Props) => {
     return (
         <Card
             title="Community Groups"
-            className="community-group-card"
+            className="community-group-card card"
             extra={
                 <Button icon={<PlusOutlined/>}/>
             }
