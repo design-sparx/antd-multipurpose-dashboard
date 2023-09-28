@@ -1,12 +1,21 @@
-import {Button, Col, Image, Popover, Progress, Row, Space, Table, Tag, Typography} from "antd";
-import {Card, CustomerReviewsCard, RevenueCard} from "../../components";
+import {Button, Col, Image, Popover, Progress, Row, RowProps, Space, Table, Tag, Typography} from "antd";
+import {Card, CustomerReviewsCard, PageHeader, RevenueCard} from "../../components";
 import {Area, Bullet} from "@ant-design/charts";
-import {ArrowDownOutlined, ArrowUpOutlined, EyeOutlined, QuestionOutlined, RightOutlined} from "@ant-design/icons";
+import {
+    ArrowDownOutlined,
+    ArrowUpOutlined,
+    EyeOutlined,
+    HomeOutlined, PieChartOutlined,
+    QuestionOutlined,
+    RightOutlined
+} from "@ant-design/icons";
 import {Pie} from "@ant-design/plots";
 import TopSellingProductsData from "../../mocks/TopProducts.json"
 import TopCategoriesData from "../../mocks/TopCategories.json"
 import TopSellerData from "../../mocks/TopSeller.json"
 import RecentOrdersData from "../../mocks/RecentOrders.json"
+import {DASHBOARD_ITEMS} from "../../constants";
+import {Link} from "react-router-dom";
 
 const {Paragraph, Text, Title} = Typography
 
@@ -471,25 +480,53 @@ const ORDERS_COLUMNS = [
     },
 ]
 
+const ROW_PROPS: RowProps = {
+    gutter: [
+        {xs: 8, sm: 16, md: 24, lg: 32},
+        {xs: 8, sm: 16, md: 24, lg: 32}
+    ]
+}
+
 const EcommerceDashboardPage = () => {
     return (
         <div>
-            <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
-                <Col span={16}>
-                    <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
-                        <Col span={6}>
+            <PageHeader
+                title="ecommerce dashboard"
+                breadcrumbs={[
+                    {
+                        title: (<><HomeOutlined/><span>home</span></>),
+                        path: "/"
+                    },
+                    {
+                        title: (<><PieChartOutlined/><span>dashboards</span></>),
+                        menu: {
+                            items: DASHBOARD_ITEMS.map(d => ({
+                                key: d.title,
+                                title: <Link to={d.path}>{d.title}</Link>,
+                            }))
+                        }
+                    },
+                    {
+                        title: "ecommerce"
+                    }
+                ]}
+            />
+            <Row {...ROW_PROPS}>
+                <Col xs={24} lg={16}>
+                    <Row {...ROW_PROPS}>
+                        <Col xs={24} sm={12} lg={6}>
                             <RevenueCard title="Visitors" value="20,149" diff={5.54}/>
                         </Col>
-                        <Col span={6}>
+                        <Col xs={24} sm={12} lg={6}>
                             <RevenueCard title="Customers" value="5,834" diff={-12.3}/>
                         </Col>
-                        <Col span={6}>
+                        <Col xs={24} sm={12} lg={6}>
                             <RevenueCard title="Orders" value="3,270" diff={9.52}/>
                         </Col>
-                        <Col span={6}>
+                        <Col xs={24} sm={12} lg={6}>
                             <RevenueCard title="Sales" value="$ 1.324K" diff={2.34}/>
                         </Col>
-                        <Col span={12}>
+                        <Col xs={24} lg={12}>
                             <Card
                                 title={
                                     <Space>
@@ -512,7 +549,7 @@ const EcommerceDashboardPage = () => {
                                 <SalesChart/>
                             </Card>
                         </Col>
-                        <Col span={12}>
+                        <Col xs={24} lg={12}>
                             <Card
                                 title={
                                     <Space>
@@ -533,10 +570,10 @@ const EcommerceDashboardPage = () => {
                         </Col>
                     </Row>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} lg={8}>
                     <CustomerReviewsCard/>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} lg={8}>
                     <Card
                         title={
                             <Space>
@@ -555,7 +592,7 @@ const EcommerceDashboardPage = () => {
                         <OrdersStatusChart/>
                     </Card>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} lg={8}>
                     <Card
                         title={
                             <Space>
@@ -590,7 +627,7 @@ const EcommerceDashboardPage = () => {
                         </Space>
                     </Card>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} lg={8}>
                     <Card
                         title={
                             <Space>
@@ -611,7 +648,7 @@ const EcommerceDashboardPage = () => {
                         </div>
                     </Card>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <Card title={
                         <Space>
                             <Title level={5}>Top selling products</Title>
@@ -623,7 +660,7 @@ const EcommerceDashboardPage = () => {
                         <Table columns={PRODUCTS_COLUMNS} dataSource={TopSellingProductsData}/>
                     </Card>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <Card
                         title={
                             <Space>

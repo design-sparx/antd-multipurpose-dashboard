@@ -54,6 +54,7 @@ import UserAvatar from "./UserAvatar/UserAvatar.tsx";
 import NotificationsItem from "./NotificationsItem/NotificationsItem.tsx";
 import NotificationsCard from "./NotificationsCard/NotificationsCard.tsx";
 import Card from "./Card/Card.tsx";
+import PageHeader from "./PageHeader/PageHeader.tsx";
 
 export {
     Logo,
@@ -109,5 +110,6 @@ export {
     TasksListCard,
     NotificationsItem,
     NotificationsCard,
-    Card
+    Card,
+    PageHeader
 }

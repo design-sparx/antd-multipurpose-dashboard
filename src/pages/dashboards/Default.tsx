@@ -2,7 +2,7 @@ import {useRef} from "react";
 import {
     Card,
     GetStartedCard,
-    NotificationsCard,
+    NotificationsCard, PageHeader,
     ProjectsCard,
     TasksChartCard,
     TasksListCard,
@@ -12,6 +12,9 @@ import {Button, Carousel, CarouselProps, Col, Row, RowProps, Space, Typography} 
 import TasksListData from "../../mocks/TasksList.json";
 import ProjectsData from "../../mocks/Projects.json";
 import NotificationsData from "../../mocks/Notifications.json";
+import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
+import {DASHBOARD_ITEMS} from "../../constants";
+import {Link} from "react-router-dom";
 
 const ACTIVITY_DATA = [
     {
@@ -128,11 +131,11 @@ const CAROUSEL_PROPS: CarouselProps = {
 };
 
 const ROW_PROPS: RowProps = {
-    gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]
+    gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]
 }
 
 const SUB_ROW_PROPS: RowProps = {
-    gutter: [{xs: 4, sm: 8, md: 12, lg: 16}, {xs: 4, sm: 8, md: 12, lg: 16}]
+    gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]
 }
 
 const DefaultDashboardPage = () => {
@@ -141,17 +144,38 @@ const DefaultDashboardPage = () => {
 
     return (
         <div>
+            <PageHeader
+                title="default dashboard"
+                breadcrumbs={[
+                    {
+                        title: (<><HomeOutlined/><span>home</span></>),
+                        path: "/"
+                    },
+                    {
+                        title: (<><PieChartOutlined/><span>dashboards</span></>),
+                        menu: {
+                            items: DASHBOARD_ITEMS.map(d => ({
+                                key: d.title,
+                                title: <Link to={d.path}>{d.title}</Link>,
+                            }))
+                        }
+                    },
+                    {
+                        title: "default"
+                    }
+                ]}
+            />
             <Row {...ROW_PROPS}>
-                <Col span={18}>
+                <Col xs={24} lg={18}>
                     <Row {...ROW_PROPS}>
-                        <Col span={24}>
+                        <Col xs={24} md={24}>
                             <Row {...SUB_ROW_PROPS}>
-                                <Col span={18}>
+                                <Col xs={24} lg={18}>
                                     <GetStartedCard/>
                                 </Col>
-                                <Col span={6}>
+                                <Col xs={24} lg={6}>
                                     <Row {...SUB_ROW_PROPS}>
-                                        <Col span={24}>
+                                        <Col xs={12} lg={24}>
                                             <Card>
                                                 <Space direction="vertical" align="center" style={{width: '100%'}}>
                                                     <Typography.Title style={{margin: 0}}>10+</Typography.Title>
@@ -159,7 +183,7 @@ const DefaultDashboardPage = () => {
                                                 </Space>
                                             </Card>
                                         </Col>
-                                        <Col span={24}>
+                                        <Col xs={12} lg={24}>
                                             <Card>
                                                 <Space direction="vertical" align="center" style={{width: '100%'}}>
                                                     <Typography.Title style={{margin: 0}}>60+</Typography.Title>
@@ -171,10 +195,10 @@ const DefaultDashboardPage = () => {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col span={12}>
+                        <Col xs={24} lg={12}>
                             <WeeklyActivityCard data={ACTIVITY_DATA}/>
                         </Col>
-                        <Col span={12}>
+                        <Col xs={24} lg={12}>
                             <TasksChartCard data={TASKS_DATA}/>
                         </Col>
                         <Col span={24}>
@@ -182,7 +206,7 @@ const DefaultDashboardPage = () => {
                         </Col>
                     </Row>
                 </Col>
-                <Col span={6}>
+                <Col md={24} lg={6}>
                     <Row {...ROW_PROPS}>
                         <Col span={24}>
                             <Card
@@ -206,7 +230,7 @@ const DefaultDashboardPage = () => {
                             </Card>
                         </Col>
                         <Col span={24}>
-                            { <Card
+                            {<Card
                                 title="Projects in queue"
                                 extra={<Button>View all</Button>}
                                 bordered={false}

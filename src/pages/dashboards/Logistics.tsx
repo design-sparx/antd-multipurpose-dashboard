@@ -1,17 +1,27 @@
-import {Col, Row, Space} from "antd";
-import {BlockOutlined, CarOutlined, GroupOutlined, ShoppingOutlined} from "@ant-design/icons";
+import {Col, Row, RowProps} from "antd";
 import {
+    BlockOutlined,
+    CarOutlined,
+    GroupOutlined,
+    HomeOutlined,
+    PieChartOutlined,
+    ShoppingOutlined
+} from "@ant-design/icons";
+import {
+    DailyPlanCard,
+    DeliveryAnalyticsCard,
+    DeliveryRequestCard,
     DeliveryTableCard,
     LogisticsStatsCard,
-    DeliveryAnalyticsCard,
-    DailyPlanCard,
-    TruckListCard,
-    DeliveryRequestCard
+    PageHeader,
+    TruckListCard
 } from "../../components";
 import TruckDeliveryData from "../../mocks/TruckDeliveries.json";
 import DeliveryAnalyticsData from "../../mocks/DeliveryAnalytics.json";
 import TrucksData from "../../mocks/Trucks.json"
 import DeliveryRequests from "../../mocks/TruckDeliveryRequest.json";
+import {DASHBOARD_ITEMS} from "../../constants";
+import {Link} from "react-router-dom";
 
 const STATS = [
     {
@@ -55,31 +65,56 @@ const PLAN_DATA = [
     },
 ];
 
+const ROW_PROPS: RowProps = {
+    gutter: [
+        {xs: 8, sm: 16, md: 24, lg: 32},
+        {xs: 8, sm: 16, md: 24, lg: 32}
+    ]
+}
+
 const LogisticsDashboardPage = () => {
     return (
         <div>
-            <Space>
-
-            </Space>
-            <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
+            <PageHeader
+                title="logistics dashboard"
+                breadcrumbs={[
+                    {
+                        title: (<><HomeOutlined/><span>home</span></>),
+                        path: "/"
+                    },
+                    {
+                        title: (<><PieChartOutlined/><span>dashboards</span></>),
+                        menu: {
+                            items: DASHBOARD_ITEMS.map(d => ({
+                                key: d.title,
+                                title: <Link to={d.path}>{d.title}</Link>,
+                            }))
+                        }
+                    },
+                    {
+                        title: "logistics"
+                    }
+                ]}
+            />
+            <Row {...ROW_PROPS}>
                 {STATS.map(s => (
-                    <Col span={6} key={s.title}>
+                    <Col xs={24} sm={12} lg={6} key={s.title}>
                         <LogisticsStatsCard {...s}/>
                     </Col>
                 ))}
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <DeliveryAnalyticsCard data={DeliveryAnalyticsData}/>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <DailyPlanCard data={PLAN_DATA}/>
                 </Col>
                 <Col span={24}>
                     <DeliveryTableCard data={TruckDeliveryData}/>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <TruckListCard data={TrucksData}/>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <DeliveryRequestCard data={DeliveryRequests}/>
                 </Col>
             </Row>

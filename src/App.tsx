@@ -11,6 +11,12 @@ function App() {
                 token: {
                     colorPrimary: '#925368',
                     borderRadius: 6,
+                },
+                components: {
+                    Breadcrumb: {
+                        linkColor: 'rgba(0,0,0,.8)',
+                        itemColor: 'rgba(0,0,0,.8)'
+                    }
                 }
             }}
         >
