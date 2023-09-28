@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 0.3.0
+
+### Minor Changes
+
+- d93a009: Added mobile responsiveness to both layouts and existing pages
+
 ## 0.2.3
 
 ### Patch Changes
