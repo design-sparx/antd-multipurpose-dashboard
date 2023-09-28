@@ -1,4 +1,4 @@
-import {Card as AntdCard, Button, CardProps, Space, Tag, Typography, theme} from "antd";
+import {Card as AntdCard, Button, CardProps, Space, Tag, Typography, theme, List} from "antd";
 import {
     FacebookOutlined,
     InstagramOutlined,
@@ -62,22 +62,34 @@ const SocialStatsCard = ({...others}: Props) => {
             ]}
             {...others}
         >
-            {SOCIALS_DATA.map((_, i) =>
-                <AntdCard.Grid
-                    key={`${_.title}-${i}`}
-                    hoverable={false}
-                    style={{borderRadius, ...gridStyle}}
-                >
-                    <Space>
-                        <Typography.Text>{_.title}</Typography.Text>
-                        <Tag color={_.diff < 0 ? 'error' : 'success'}>{_.diff}</Tag>
-                    </Space>
-                    <Space>
-                        <Typography.Title level={4} style={{margin: 0}}>{_.value}</Typography.Title>
-                        <Typography.Text color="secondary">visitors</Typography.Text>
-                    </Space>
-                </AntdCard.Grid>
-            )}
+            <List
+                grid={{
+                    gutter: 16,
+                    xs: 1,
+                    sm: 2,
+                    md: 4,
+                    lg: 4,
+                    xl: 6,
+                    xxl: 3,
+                }}
+                dataSource={SOCIALS_DATA}
+                renderItem={(item, i ) => (
+                    <AntdCard.Grid
+                        key={`${item.title}-${i}`}
+                        hoverable={false}
+                        style={{borderRadius, ...gridStyle}}
+                    >
+                        <Space>
+                            <Typography.Text>{item.title}</Typography.Text>
+                            <Tag color={item.diff < 0 ? 'error' : 'success'}>{item.diff}</Tag>
+                        </Space>
+                        <Space>
+                            <Typography.Title level={4} style={{margin: 0}}>{item.value}</Typography.Title>
+                            <Typography.Text color="secondary">visitors</Typography.Text>
+                        </Space>
+                    </AntdCard.Grid>
+                )}
+            />
         </Card>
     );
 };

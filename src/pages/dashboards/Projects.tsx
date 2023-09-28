@@ -1,12 +1,14 @@
 import {Button, Col, Row, Segmented, Space} from "antd";
-import {Card, ClientsTable, ProjectsCard, ProjectsTable, RevenueCard} from "../../components";
+import {Card, ClientsTable, PageHeader, ProjectsCard, ProjectsTable, RevenueCard} from "../../components";
 import {Column} from "@ant-design/plots";
 import 'react-calendar-timeline/lib/Timeline.css'
 import ProjectsData from "../../mocks/Projects.json";
 import ClientsData from "../../mocks/Clients.json"
 import {Projects} from "../../types";
 import {useState} from "react";
-import {CloudUploadOutlined, PlusOutlined} from "@ant-design/icons";
+import {CloudUploadOutlined, HomeOutlined, PieChartOutlined, PlusOutlined} from "@ant-design/icons";
+import {DASHBOARD_ITEMS} from "../../constants";
+import {Link} from "react-router-dom";
 
 const RevenueColumnChart = () => {
     const data = [
@@ -146,17 +148,38 @@ const ProjectsDashboardPage = () => {
 
     return (
         <div>
-            <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
-                <Col span={6}>
+            <PageHeader
+                title="projects dashboard"
+                breadcrumbs={[
+                    {
+                        title: (<><HomeOutlined/><span>home</span></>),
+                        path: "/"
+                    },
+                    {
+                        title: (<><PieChartOutlined/><span>dashboards</span></>),
+                        menu: {
+                            items: DASHBOARD_ITEMS.map(d => ({
+                                key: d.title,
+                                title: <Link to={d.path}>{d.title}</Link>,
+                            }))
+                        }
+                    },
+                    {
+                        title: "projects"
+                    }
+                ]}
+            />
+            <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]}>
+                <Col xs={24} sm={12} lg={6}>
                     <RevenueCard title="Total revenue" value='$ 1,556.30' diff={280}/>
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} lg={6}>
                     <RevenueCard title="Spent this week" value='$ 1806.30' diff={180}/>
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} lg={6}>
                     <RevenueCard title="Worked this week" value='35:12' diff={-10.00}/>
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} lg={6}>
                     <RevenueCard title="Worked today" value='05:30:00' diff={-20.10}/>
                 </Col>
                 <Col span={24}>
@@ -167,7 +190,7 @@ const ProjectsDashboardPage = () => {
                         <Row gutter={[16, 16]}>
                             {ProjectsData.slice(0, 4).map((_: Projects) => {
                                 return (
-                                    <Col span={6} key={_.project_id}>
+                                    <Col xs={24} sm={12} lg={6} key={_.project_id}>
                                         <ProjectsCard project={_} type="inner"/>
                                     </Col>
                                 )
@@ -175,7 +198,7 @@ const ProjectsDashboardPage = () => {
                         </Row>
                     </Card>
                 </Col>
-                <Col span={16}>
+                <Col xs={24} lg={16}>
                     <Card
                         title="Project stats"
                         extra={<Segmented options={['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']}/>}
@@ -183,7 +206,7 @@ const ProjectsDashboardPage = () => {
                         <RevenueColumnChart/>
                     </Card>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} lg={16}>
                     <Card title="Top clients">
                         <ClientsTable data={ClientsData.slice(0, 5)}/>
                     </Card>
