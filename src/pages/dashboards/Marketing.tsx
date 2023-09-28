@@ -10,6 +10,7 @@ import {
 import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 const ROW_PROPS: RowProps = {
     gutter: [
@@ -21,6 +22,9 @@ const ROW_PROPS: RowProps = {
 const MarketingDashboardPage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Marketing | Antd Dashboard</title>
+            </Helmet>
             <PageHeader
                 title="marketing dashboard"
                 breadcrumbs={[

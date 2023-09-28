@@ -22,6 +22,7 @@ import TrucksData from "../../mocks/Trucks.json"
 import DeliveryRequests from "../../mocks/TruckDeliveryRequest.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 const STATS = [
     {
@@ -75,6 +76,9 @@ const ROW_PROPS: RowProps = {
 const LogisticsDashboardPage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Logistics | Antd Dashboard</title>
+            </Helmet>
             <PageHeader
                 title="logistics dashboard"
                 breadcrumbs={[

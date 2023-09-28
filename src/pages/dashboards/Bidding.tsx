@@ -15,6 +15,7 @@ import TransactionsData from "../../mocks/BiddingTransactions.json"
 import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 const ROW_PROPS: RowProps = {
     gutter: [
@@ -26,6 +27,9 @@ const ROW_PROPS: RowProps = {
 const BiddingDashboardPage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Bidding | Antd Dashboard</title>
+            </Helmet>
             <PageHeader
                 title="bidding dashboard"
                 breadcrumbs={[
