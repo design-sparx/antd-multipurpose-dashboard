@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 0.2.3
+
+### Patch Changes
+
+- 701c579: ### Added:
+  - added glassphormism effect to template
+
 ## 0.2.2
 
 ### Patch Changes
