@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
-import {Col, Row, Tabs, TabsProps} from "antd";
+import {Col, Row, RowProps, Tabs, TabsProps} from "antd";
 import {
     FacebookFilled,
-    FacebookOutlined,
+    FacebookOutlined, HomeOutlined,
     InstagramFilled,
     InstagramOutlined,
     LinkedinFilled,
-    LinkedinOutlined,
+    LinkedinOutlined, PieChartOutlined,
     TwitterCircleFilled,
     TwitterOutlined,
     YoutubeFilled,
@@ -17,13 +17,23 @@ import {
     DevicesCardChart,
     FollowersChart,
     LikesChart,
-    MilestonesCard,
+    MilestonesCard, PageHeader,
     PostsCard,
     SocialStatsCard
 } from "../../components";
 import SocialMediaData from "../../mocks/SocialMedia.json";
 import ScheduledPostsData from "../../mocks/ScheduledPosts.json"
 import SocialsCommentsData from "../../mocks/SocialComments.json";
+import {DASHBOARD_ITEMS} from "../../constants";
+import {Link} from "react-router-dom";
+import {useMediaQuery} from "react-responsive";
+
+const ROW_PROPS: RowProps = {
+    gutter: [
+        {xs: 8, sm: 16, md: 24, lg: 32},
+        {xs: 8, sm: 16, md: 24, lg: 32}
+    ]
+}
 
 type TabKeys =
     'social-facebook-tab'
@@ -63,48 +73,48 @@ const Section = ({tab}: SectionProps) => {
     }, [tab]);
 
     return <>
-        <Col span={18}>
-            <Row gutter={[{xs: 8, sm: 12, md: 20, lg: 24}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
-                <Col span={6}>
+        <Col xs={24} lg={18}>
+            <Row {...ROW_PROPS}>
+                <Col xs={24} sm={12} lg={6}>
                     <SocialStatsCard
                         title='followers'
                         value={SocialMediaData?.find(_ => _.title === title)?.followers || 0}
                     />
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} lg={6}>
                     <SocialStatsCard
                         title='followers'
                         value={SocialMediaData?.find(_ => _.title === title)?.following || 0}
                     />
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} lg={6}>
                     <SocialStatsCard
                         key='followers-card'
                         title='followers'
                         value={SocialMediaData?.find(_ => _.title === title)?.likes || 0}
                     />
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} lg={6}>
                     <SocialStatsCard
                         key='followers-card'
                         title='followers'
                         value={SocialMediaData?.find(_ => _.title === title)?.comments || 0}
                     />
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <FollowersChart/>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <LikesChart/>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <PostsCard
                         title='Scheduled Posts'
                         as="scheduled"
                         data={ScheduledPostsData?.filter(_ => _.platform.toLowerCase() === title)}
                     />
                 </Col>
-                <Col span={12}>
+                <Col xs={24} lg={12}>
                     <Row gutter={[{xs: 8, sm: 12, md: 20, lg: 24}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
                         <Col span={24}>
                             <DevicesCardChart/>
@@ -116,13 +126,14 @@ const Section = ({tab}: SectionProps) => {
                 </Col>
             </Row>
         </Col>
-        <Col span={6}>
+        <Col xs={24} lg={6}>
             <CommentsCard data={SocialsCommentsData.filter(_ => _.platform.toLowerCase() === title).slice(0, 7)}/>
         </Col>
     </>
 }
 
 const SocialDashboardPage = () => {
+    const isMobile = useMediaQuery({ maxWidth: 769 })
     const [activeTabKey, setActiveTabKey] = useState<TabKeys>('social-facebook-tab');
 
     const TAB_LIST: TabsProps['items'] = [
@@ -182,12 +193,35 @@ const SocialDashboardPage = () => {
 
     return (
         <div>
+            <PageHeader
+                title="social dashboard"
+                breadcrumbs={[
+                    {
+                        title: (<><HomeOutlined/><span>home</span></>),
+                        path: "/"
+                    },
+                    {
+                        title: (<><PieChartOutlined/><span>dashboards</span></>),
+                        menu: {
+                            items: DASHBOARD_ITEMS.map(d => ({
+                                key: d.title,
+                                title: <Link to={d.path}>{d.title}</Link>,
+                            }))
+                        }
+                    },
+                    {
+                        title: "social"
+                    }
+                ]}
+            />
             <Tabs
+                centered={isMobile}
                 items={TAB_LIST}
                 activeKey={activeTabKey}
                 onChange={onTabChange}
+                type="card"
             />
-            <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
+            <Row {...ROW_PROPS}>
                 {TAB_CONTENT[activeTabKey]}
             </Row>
         </div>

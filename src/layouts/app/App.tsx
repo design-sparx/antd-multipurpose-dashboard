@@ -1,22 +1,49 @@
-import {Button, Input, Layout, Space, theme, Tooltip} from "antd";
+import {Affix, Button, Input, Layout, Space, theme, Tooltip} from "antd";
 import {Outlet} from "react-router-dom";
-import {ReactNode, useState} from "react";
-import {AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MessageOutlined} from "@ant-design/icons";
+import {useEffect, useState} from "react";
+import {AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MessageOutlined, UpOutlined} from "@ant-design/icons";
 import SideNav from "./SideNav.tsx";
 import HeaderNav from "./HeaderNav.tsx";
 import FooterNav from "./FooterNav.tsx";
+import {useMediaQuery} from "react-responsive";
 
 const {Content} = Layout
 
-type AppLayoutProps = {
-    headerContent: ReactNode
-}
-
-const AppLayout = ({headerContent}: AppLayoutProps) => {
+const AppLayout = () => {
     const {
         token: {borderRadius},
     } = theme.useToken();
-    const [collapsed, setCollapsed] = useState(false);
+    const isMobile = useMediaQuery({maxWidth: 769})
+    const [collapsed, setCollapsed] = useState(true);
+    const [showTopBtn, setShowTopBtn] = useState(false);
+    const [navFill, setNavFill] = useState(false)
+
+    const goToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
+    useEffect(() => {
+        setCollapsed(isMobile)
+    }, [isMobile]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+
+            if (window.scrollY > 10) {
+                setNavFill(true)
+            } else {
+                setNavFill(false)
+            }
+        });
+    }, []);
 
     return (
         <Layout
@@ -50,32 +77,41 @@ const AppLayout = ({headerContent}: AppLayoutProps) => {
                     style={{
                         marginLeft: collapsed ? 0 : '200px',
                         padding: '0 1rem 0 0',
-                        background: "none",
+                        background: navFill ? "rgb(211, 215, 231)" : "none",
+                        backdropFilter: navFill ? "blur(8px)" : "none",
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         // boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.1)',
                         position: 'sticky',
                         top: 0,
-                        zIndex: 1
+                        zIndex: 1,
+                        gap: 8,
+                        transition: "width 2s"
                     }}>
-                    <Space align="center">
-                        <Button
-                            type="text"
-                            icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
-                            onClick={() => setCollapsed(!collapsed)}
+                    <Space align="center" style={{width: "100%"}}>
+                        <Tooltip title={`${collapsed ? "Expand" : "Collapse"} Sidebar`}>
+                            <Button
+                                type="text"
+                                icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
+                                onClick={() => setCollapsed(!collapsed)}
+                                style={{
+                                    fontSize: '16px',
+                                    width: 64,
+                                    height: 64,
+                                }}
+                            />
+                        </Tooltip>
+                        <Input.Search
+                            placeholder="search"
                             style={{
-                                fontSize: '16px',
-                                width: 64,
-                                height: 64,
+                                width: isMobile ? "100%" : "400px",
+                                marginTop: "10px"
                             }}
+                            size="large"
                         />
-                        <div style={{marginBottom: '1.2rem'}}>
-                            {headerContent}
-                        </div>
                     </Space>
                     <Space align="center">
-                        <Input.Search placeholder="search" style={{display: 'inline'}}></Input.Search>
                         <Tooltip title="Apps">
                             <Button icon={<AppstoreOutlined/>}/>
                         </Tooltip>
@@ -91,9 +127,23 @@ const AppLayout = ({headerContent}: AppLayoutProps) => {
                         borderRadius
                     }}
                 >
-                    <div style={{padding: 24, minHeight: 360, background: ''}}>
+                    <div style={{padding: 24, minHeight: 360, background: 'none'}}>
                         <Outlet/>
                     </div>
+                    {showTopBtn &&
+                        <Affix offsetBottom={10} style={{textAlign: 'end', transition: "width 2s"}}>
+                            <Tooltip title="Scroll to top of the screen">
+                                <Button
+                                    type="primary"
+                                    onClick={goToTop}
+                                    icon={<UpOutlined/>}
+                                    shape={isMobile ? "circle" : "default"}
+                                    size={isMobile ? "large" : "middle"}>
+                                    {!isMobile && "Scroll to top"}
+                                </Button>
+                            </Tooltip>
+                        </Affix>
+                    }
                 </Content>
                 <FooterNav
                     style={{
