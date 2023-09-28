@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 0.3.1
+
+### Patch Changes
+
+- bfd0aa0: ### Added:
+  - react helmet to manage document heads
+
 ## 0.3.0
 
 ### Minor Changes
