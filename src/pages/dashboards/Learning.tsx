@@ -24,6 +24,7 @@ import ExamsData from "../../mocks/Exams.json";
 import CommunityGroupsData from "../../mocks/CommunityGroups.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 const ROW_PROPS: RowProps = {
     gutter: [
@@ -35,6 +36,9 @@ const ROW_PROPS: RowProps = {
 const LearningDashboardPage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Learning | Antd Dashboard</title>
+            </Helmet>
             <PageHeader
                 title="learning dashboard"
                 breadcrumbs={[

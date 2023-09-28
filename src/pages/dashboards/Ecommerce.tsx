@@ -16,6 +16,7 @@ import TopSellerData from "../../mocks/TopSeller.json"
 import RecentOrdersData from "../../mocks/RecentOrders.json"
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 const {Paragraph, Text, Title} = Typography
 
@@ -490,6 +491,9 @@ const ROW_PROPS: RowProps = {
 const EcommerceDashboardPage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Ecommerce | Antd Dashboard</title>
+            </Helmet>
             <PageHeader
                 title="ecommerce dashboard"
                 breadcrumbs={[

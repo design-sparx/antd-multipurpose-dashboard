@@ -9,6 +9,7 @@ import {useState} from "react";
 import {CloudUploadOutlined, HomeOutlined, PieChartOutlined, PlusOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 const RevenueColumnChart = () => {
     const data = [
@@ -148,6 +149,9 @@ const ProjectsDashboardPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Projects | Antd Dashboard</title>
+            </Helmet>
             <PageHeader
                 title="projects dashboard"
                 breadcrumbs={[

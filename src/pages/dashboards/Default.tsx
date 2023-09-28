@@ -15,6 +15,7 @@ import NotificationsData from "../../mocks/Notifications.json";
 import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 const ACTIVITY_DATA = [
     {
@@ -144,6 +145,9 @@ const DefaultDashboardPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Default | Antd Dashboard</title>
+            </Helmet>
             <PageHeader
                 title="default dashboard"
                 breadcrumbs={[
