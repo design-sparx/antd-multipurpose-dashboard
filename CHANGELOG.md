@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 0.4.0
+
+### Minor Changes
+
+- 740edc8: Added react helmet to manage document heads
+- 740edc8: Added: - added react top progress bar - added sidebar collapse transitions
+
 ## 0.3.1
 
 ### Patch Changes
