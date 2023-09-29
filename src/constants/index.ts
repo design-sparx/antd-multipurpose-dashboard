@@ -24,7 +24,7 @@ import {
     PATH_LANDING
 } from "./routes.ts"
 
-export const DASHBOARD_ITEMS = [
+const DASHBOARD_ITEMS = [
     {title: 'default', path: PATH_DASHBOARD.default},
     {title: 'projects', path: PATH_DASHBOARD.projects},
     {title: 'ecommerce', path: PATH_DASHBOARD.ecommerce},
@@ -58,5 +58,6 @@ export {
     PATH_FILE,
     PATH_SOCIAL,
     PATH_START,
-    PATH_LANDING
+    PATH_LANDING,
+    DASHBOARD_ITEMS
 }
