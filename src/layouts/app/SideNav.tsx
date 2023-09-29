@@ -1,26 +1,44 @@
-import React from "react";
+import React, {useRef} from "react";
 import {ConfigProvider, Layout, Menu, MenuProps, SiderProps} from "antd";
 import {
     BookOutlined,
-    BugOutlined, CalendarOutlined,
-    ContactsOutlined, FileOutlined, GroupOutlined,
+    BugOutlined,
+    CalendarOutlined,
+    ContactsOutlined,
+    FileOutlined,
+    GroupOutlined,
     HeartOutlined,
     HomeOutlined,
-    IdcardOutlined, MailOutlined,
-    PieChartOutlined, ProfileOutlined,
-    ReadOutlined, SecurityScanOutlined, SolutionOutlined, TeamOutlined,
+    IdcardOutlined,
+    MailOutlined,
+    PieChartOutlined,
+    ProfileOutlined,
+    ReadOutlined,
+    SecurityScanOutlined,
+    SolutionOutlined,
+    TeamOutlined,
     UserOutlined,
 } from "@ant-design/icons";
 import {Logo} from "../../components";
 import {Link} from "react-router-dom";
 import {
-    PATH_ACCOUNT, PATH_AUTH,
-    PATH_BLOG, PATH_CALENDAR,
-    PATH_CAREERS, PATH_CONTACTS,
+    PATH_ACCOUNT,
+    PATH_AUTH,
+    PATH_BLOG,
+    PATH_CALENDAR,
+    PATH_CAREERS,
+    PATH_CONTACTS,
     PATH_CORPORATE,
-    PATH_DASHBOARD, PATH_ERROR, PATH_FILE, PATH_INBOX, PATH_INVOICE,
-    PATH_LANDING, PATH_PROJECTS,
-    PATH_SOCIAL, PATH_SUBSCRIPTION, PATH_USER_MGMT,
+    PATH_DASHBOARD,
+    PATH_ERROR,
+    PATH_FILE,
+    PATH_INBOX,
+    PATH_INVOICE,
+    PATH_LANDING,
+    PATH_PROJECTS,
+    PATH_SOCIAL,
+    PATH_SUBSCRIPTION,
+    PATH_USER_MGMT,
     PATH_USER_PROFILE
 } from "../../constants";
 
@@ -180,20 +198,16 @@ const items: MenuProps['items'] = [
 type SideNavProps = SiderProps
 
 const SideNav = ({...others}: SideNavProps) => {
+    const nodeRef = useRef(null);
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
     };
 
     return (
         <Sider
+            ref={nodeRef}
             breakpoint="lg"
             collapsedWidth="0"
-            onBreakpoint={(broken) => {
-                console.log(broken);
-            }}
-            onCollapse={(collapsed, type) => {
-                console.log(collapsed, type);
-            }}
             {...others}
         >
             <Logo

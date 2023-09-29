@@ -55,6 +55,8 @@ import NotificationsItem from "./NotificationsItem/NotificationsItem.tsx";
 import NotificationsCard from "./NotificationsCard/NotificationsCard.tsx";
 import Card from "./Card/Card.tsx";
 import PageHeader from "./PageHeader/PageHeader.tsx";
+import {Bar, Container, Nprogress} from "./Nprogress"
+
 
 export {
     Logo,
@@ -111,5 +113,8 @@ export {
     NotificationsItem,
     NotificationsCard,
     Card,
-    PageHeader
+    PageHeader,
+    Bar,
+    Container,
+    Nprogress
 }
