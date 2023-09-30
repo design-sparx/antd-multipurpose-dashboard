@@ -15,6 +15,7 @@ function App() {
                     token: {
                         colorPrimary: '#2378c3',
                         borderRadius: 6,
+                        fontFamily: "Libre Franklin, sans-serif"
                     },
                     components: {
                         Breadcrumb: {
@@ -24,7 +25,7 @@ function App() {
                         Card: {
                             colorBgContainer: "none"
                         }
-                    }
+                    },
                 }}
             >
                 <RouterProvider router={routes}/>
