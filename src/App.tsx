@@ -13,13 +13,16 @@ function App() {
             <ConfigProvider
                 theme={{
                     token: {
-                        colorPrimary: '#925368',
+                        colorPrimary: '#2378c3',
                         borderRadius: 6,
                     },
                     components: {
                         Breadcrumb: {
                             linkColor: 'rgba(0,0,0,.8)',
                             itemColor: 'rgba(0,0,0,.8)'
+                        },
+                        Card: {
+                            colorBgContainer: "none"
                         }
                     }
                 }}

@@ -1,4 +1,4 @@
-import {Badge, Button, Card as AntdCard,CardProps, List, Space, Tag, Typography} from "antd";
+import {Badge, Button, Card as AntdCard, CardProps, List, Space, Tag, Typography} from "antd";
 import {Tasks} from "../../../../types";
 import {CalendarOutlined, FlagOutlined} from "@ant-design/icons";
 import {Card, UserAvatar} from "../../../index.ts";
@@ -31,15 +31,20 @@ const TasksListCard = ({data, ...others}: Props) => {
                     onChange: (page) => {
                         console.log(page);
                     },
-                    pageSize: 10,
+                    pageSize: 6,
                     align: "center"
                 }}
                 dataSource={data}
                 renderItem={(item) => (
                     <List.Item
                         key={item.name}
+                        style={{height: "100%"}}
                     >
-                        <AntdCard title={item.name} hoverable={true} bordered={true} style={{height: "100%"}}>
+                        <AntdCard
+                            hoverable={true}
+                            bordered={true}
+                            style={{height: "100%", background: "white"}}
+                        >
                             <Space direction="vertical">
                                 <Space style={{justifyContent: "space-between", width: "100%"}}>
                                     <Typography.Title
@@ -48,7 +53,7 @@ const TasksListCard = ({data, ...others}: Props) => {
                                     >
                                         {item.name.slice(0, 20)}...
                                     </Typography.Title>
-                                    <Tag bordered={false} style={{textTransform: "capitalize"}}>{item.category}</Tag>
+                                    <Tag style={{textTransform: "capitalize"}}>{item.category}</Tag>
                                 </Space>
                                 <Typography.Paragraph
                                     ellipsis={{rows: 2}}

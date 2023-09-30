@@ -9,7 +9,7 @@ import {
     SocialDashboardPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
-import {DashboardLayout} from "../layouts";
+import {DashboardLayout, GuestLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
 
@@ -44,8 +44,15 @@ const PageWrapper = ({children}: PageProps) => {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <PageWrapper children={<HomePage/>}/>,
-        errorElement: <ErrorPage/>
+        element: <PageWrapper children={<GuestLayout/>}/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "home",
+                index: true,
+                element: <HomePage/>
+            }
+        ]
     },
     {
         path: "/dashboards",

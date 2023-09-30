@@ -7,7 +7,14 @@ type Props = CardProps
 const GetStartedCard = ({...others}: Props) => {
     return (
         <Card {...others}>
-            <Space align="center">
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: 8,
+                }}
+            >
                 <Space direction="vertical" size="large">
                     <Typography.Title level={4} style={{margin: 0}}>You have 2 projects to finish this
                         week</Typography.Title>
@@ -15,8 +22,8 @@ const GetStartedCard = ({...others}: Props) => {
                         goal.</Typography.Text>
                     <Button type="primary">More{' '}<RightOutlined/></Button>
                 </Space>
-                <Image src="/get-started.png" height={200} preview={false} style={{objectFit: 'cover'}}/>
-            </Space>
+                <Image src="/get-started.png" height={180} preview={false} style={{objectFit: 'cover'}}/>
+            </div>
         </Card>
     );
 };

@@ -164,3 +164,10 @@ export const isColorLight = (color: string): boolean => {
     const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
     return brightness > 155;
 }
+
+export const goToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+};

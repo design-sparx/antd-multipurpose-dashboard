@@ -8,6 +8,7 @@ import SideNav from "./SideNav.tsx";
 import HeaderNav from "./HeaderNav.tsx";
 import FooterNav from "./FooterNav.tsx";
 import {Nprogress} from "../../components";
+import {goToTop} from "../../utils";
 
 const {Content} = Layout
 
@@ -22,13 +23,6 @@ const AppLayout = () => {
     const [isLoading, setIsLoading] = useState(false)
     const location = useLocation()
     const nodeRef = useRef(null)
-
-    const goToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    };
 
     useEffect(() => {
         setCollapsed(isMobile)
@@ -56,8 +50,9 @@ const AppLayout = () => {
             <Layout
                 style={{
                     minHeight: '100vh',
-                    backgroundColor: '#d3d7e7',
-                    backgroundImage: 'radial-gradient(at 47% 33%, hsl(237.50, 23%, 80%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(349.81, 35%, 70%) 0, transparent 55%)',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    backgroundImage: 'radial-gradient(at 47% 33%, hsl(204.07, 70%, 53%) 0, transparent 59%),\n' +
+                        'radial-gradient(at 82% 65%, hsl(197.95, 0%, 100%) 0, transparent 55%);',
                 }}
             >
                 <SideNav
@@ -84,8 +79,8 @@ const AppLayout = () => {
                     <HeaderNav
                         style={{
                             marginLeft: collapsed ? 0 : '200px',
-                            padding: '0 1rem 0 0',
-                            background: navFill ? "rgb(211, 215, 231)" : "none",
+                            padding: '0 2rem 0 0',
+                            background: navFill ? "rgb(193, 224, 244)" : "none",
                             backdropFilter: navFill ? "blur(8px)" : "none",
                             display: 'flex',
                             alignItems: 'center',
@@ -121,17 +116,17 @@ const AppLayout = () => {
                         </Space>
                         <Space align="center">
                             <Tooltip title="Apps">
-                                <Button icon={<AppstoreOutlined/>}/>
+                                <Button icon={<AppstoreOutlined/>} type="text"/>
                             </Tooltip>
                             <Tooltip title="Messages">
-                                <Button icon={<MessageOutlined/>}/>
+                                <Button icon={<MessageOutlined/>} type="text"/>
                             </Tooltip>
                         </Space>
                     </HeaderNav>
                     <Content
                         style={{
                             margin: `0 24px 0 ${collapsed ? '24px' : '224px'}`,
-                            background: "rgba(161, 167, 203, .5)",
+                            background: "rgba(52, 152, 219, 0.35)",
                             borderRadius,
                             transition: "all .25s",
                             padding: '24px 32px',

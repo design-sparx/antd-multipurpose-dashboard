@@ -2,10 +2,10 @@ function path(root: string, sublink: string) {
     return `${root}${sublink}`
 }
 
-const ROOTS_LANDING = '/landing'
+const ROOTS_LANDING = '/home'
 const ROOTS_DASHBOARD = '/dashboards'
 const ROOTS_LAYOUT = '/layouts'
-const ROOTS_CORPORATE= '/corporate'
+const ROOTS_CORPORATE = '/corporate'
 const ROOTS_PROFILE = '/profile'
 const ROOTS_SOCIAL = '/social'
 const ROOTS_BLOG = '/blog'
@@ -23,7 +23,11 @@ const ROOTS_CALENDAR = '/calendar'
 const ROOTS_ERRORS = '/errors'
 
 export const PATH_LANDING = {
-    root: ROOTS_LANDING
+    root: ROOTS_LANDING,
+    why: "/why-us",
+    pricing: "/pricing",
+    about: "/about",
+    contact: "/contact",
 }
 
 export const PATH_DASHBOARD = {
