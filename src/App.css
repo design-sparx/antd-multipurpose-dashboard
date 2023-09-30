@@ -16,43 +16,53 @@
 }
 
 .page-enter-active,
-.page-exit-active{
+.page-exit-active {
     transition: opacity 300ms;
 }
 
 .fade-enter-active,
-.fade-exit-active{
+.fade-exit-active {
     transition: opacity 300ms;
 }
 
 .right-to-left-enter {
     transform: translateX(100%);
 }
+
 .right-to-left-enter-active {
     transform: translateX(0);
-    transition:all 300ms ease;
+    transition: all 300ms ease;
 }
 
 .right-to-left-exit {
     transform: translateX(0);
 }
+
 .right-to-left-exit-active {
     transform: translateX(-100%);
-    transition:all 300ms ease;
+    transition: all 300ms ease;
 }
 
 .left-to-right-enter {
     transform: translateX(-100%);
 }
+
 .left-to-right-enter-active {
     transform: translateX(0);
-    transition:all 300ms ease;
+    transition: all 300ms ease;
 }
 
 .left-to-right-exit {
     transform: translateX(0);
 }
+
 .left-to-right-exit-active {
     transform: translateX(100%);
-    transition:all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.text-highlight {
+    background: -webkit-linear-gradient(45deg, #8e44ad , #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

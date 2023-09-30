@@ -8,7 +8,7 @@ import {
     TasksListCard,
     WeeklyActivityCard
 } from "../../components";
-import {Button, Carousel, CarouselProps, Col, Row, RowProps, Space, Typography} from "antd";
+import {Button, CardProps, Carousel, CarouselProps, Col, Row, RowProps, Space, Typography} from "antd";
 import TasksListData from "../../mocks/TasksList.json";
 import ProjectsData from "../../mocks/Projects.json";
 import NotificationsData from "../../mocks/Notifications.json";
@@ -139,6 +139,16 @@ const SUB_ROW_PROPS: RowProps = {
     gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]
 }
 
+const CARD_PROPS: CardProps = {
+    style: {
+        height: "100%",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        gap: 8,
+    }
+}
+
 const DefaultDashboardPage = () => {
     const sliderRef1 = useRef<any>()
     const sliderRef2 = useRef<any>()
@@ -175,7 +185,7 @@ const DefaultDashboardPage = () => {
                         <Col xs={24} md={24}>
                             <Row {...SUB_ROW_PROPS}>
                                 <Col xs={24} lg={18}>
-                                    <GetStartedCard/>
+                                    <GetStartedCard {...CARD_PROPS}/>
                                 </Col>
                                 <Col xs={24} lg={6}>
                                     <Row {...SUB_ROW_PROPS}>
