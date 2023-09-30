@@ -61,7 +61,7 @@ const GuestLayout = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        background: navFill ? "rgba(52, 152, 219, 0.1)" : "none",
+                        background: navFill ? "rgba(255, 255, 255, .5)" : "none",
                         backdropFilter: navFill ? "blur(8px)" : "none",
                         gap: 12,
                         position: "sticky",
@@ -76,7 +76,8 @@ const GuestLayout = () => {
                         theme={{
                             components: {
                                 Menu: {
-                                    itemBg: "none"
+                                    itemBg: "none",
+                                    lineType: "none"
                                 }
                             }
                         }}>
