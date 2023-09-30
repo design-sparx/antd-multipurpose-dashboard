@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 0.4.1
+
+### Patch Changes
+
+- e82db0e: ### Update:
+  - landing page update
+
 ## 0.4.0
 
 ### Minor Changes
