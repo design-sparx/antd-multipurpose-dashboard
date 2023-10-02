@@ -59,6 +59,8 @@ import {Bar, Container, Nprogress} from "./Nprogress"
 import EmployeeCard from "./EmployeeCard/EmployeeCard";
 import BlogsListCard from "./corporate/BlogsListCard/BlogsListCard";
 import SocialMediaCard from "./SocialMediaCard/SocialMediaCard.tsx";
+import FaqCollapse from "./FaqCollapse/FaqCollapse.tsx";
+import ContactForm from "./ContactForm/ContactForm.tsx";
 
 export {
     Logo,
@@ -121,5 +123,7 @@ export {
     Nprogress,
     EmployeeCard,
     BlogsListCard,
-    SocialMediaCard
+    SocialMediaCard,
+    FaqCollapse,
+    ContactForm
 }
