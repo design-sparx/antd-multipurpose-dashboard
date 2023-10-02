@@ -35,6 +35,15 @@ const DASHBOARD_ITEMS = [
     {title: 'logistics', path: PATH_DASHBOARD.logistics},
 ]
 
+const CORPORATE_ITEMS = [
+    {title: 'about', path: PATH_CORPORATE.about},
+    {title: 'team', path: PATH_CORPORATE.team},
+    {title: 'faq', path: PATH_CORPORATE.faqs},
+    {title: 'contact us', path: PATH_CORPORATE.contact},
+    {title: 'pricing', path: PATH_CORPORATE.pricing},
+    {title: 'licence', path: PATH_CORPORATE.licence},
+]
+
 export {
     PATH_CALENDAR,
     PATH_USER_MGMT,
@@ -59,5 +68,6 @@ export {
     PATH_SOCIAL,
     PATH_START,
     PATH_LANDING,
-    DASHBOARD_ITEMS
+    DASHBOARD_ITEMS,
+    CORPORATE_ITEMS
 }

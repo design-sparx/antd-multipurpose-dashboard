@@ -57,7 +57,7 @@ import Card from "./Card/Card.tsx";
 import PageHeader from "./PageHeader/PageHeader.tsx";
 import {Bar, Container, Nprogress} from "./Nprogress"
 import EmployeeCard from "./EmployeeCard/EmployeeCard";
-import BlogsListCard from "./BlogsListCard/BlogsListCard";
+import BlogsListCard from "./corporate/BlogsListCard/BlogsListCard";
 import SocialMediaCard from "./SocialMediaCard/SocialMediaCard.tsx";
 
 export {

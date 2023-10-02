@@ -1,6 +1,6 @@
 import {createBrowserRouter, useLocation} from "react-router-dom";
 import {
-    BiddingDashboardPage, CorporateAboutPage,
+    BiddingDashboardPage, CorporateAboutPage, CorporateTeamPage,
     DefaultDashboardPage,
     EcommerceDashboardPage,
     HomePage,
@@ -9,7 +9,7 @@ import {
     SocialDashboardPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
-import {DashboardLayout, GuestLayout} from "../layouts";
+import {CorporateLayout, DashboardLayout, GuestLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
 
@@ -96,13 +96,17 @@ const router = createBrowserRouter([
     },
     {
         path: "/corporate",
-        element: <PageWrapper children={<DashboardLayout/>}/>,
+        element: <PageWrapper children={<CorporateLayout/>}/>,
         errorElement: <ErrorPage/>,
         children: [
             {
                 index: true,
                 path: "about",
                 element: <CorporateAboutPage/>
+            },
+            {
+                path: "team",
+                element: <CorporateTeamPage/>
             }
         ]
     }
