@@ -8,6 +8,7 @@ import type {LearningCourses, RecommendedCourses, Exam, CommunityGroup} from "./
 import type {TruckDelivery, DeliveryAnalytics, Truck, DeliveryRequest} from "./logistics.ts"
 import type {Tasks} from "./dashboard"
 import type {Notifications} from "./notifications"
+import type {Employee} from "./employee.ts"
 
 export type {
     Projects,
@@ -36,5 +37,6 @@ export type {
     Truck,
     DeliveryRequest,
     Tasks,
-    Notifications
+    Notifications,
+    Employee
 }

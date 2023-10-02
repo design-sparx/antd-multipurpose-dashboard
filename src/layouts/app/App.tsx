@@ -80,7 +80,7 @@ const AppLayout = () => {
                         style={{
                             marginLeft: collapsed ? 0 : '200px',
                             padding: '0 2rem 0 0',
-                            background: navFill ? "rgb(193, 224, 244)" : "none",
+                            background: navFill ? "#eaf5fc" : "none",
                             backdropFilter: navFill ? "blur(8px)" : "none",
                             display: 'flex',
                             alignItems: 'center',

@@ -1,6 +1,6 @@
 import {createBrowserRouter, useLocation} from "react-router-dom";
 import {
-    BiddingDashboardPage,
+    BiddingDashboardPage, CorporateAboutPage,
     DefaultDashboardPage,
     EcommerceDashboardPage,
     HomePage,
@@ -48,8 +48,8 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
         children: [
             {
-                path: "home",
                 index: true,
+                path: "home",
                 element: <HomePage/>
             }
         ]
@@ -60,6 +60,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
         children: [
             {
+                index: true,
                 path: "default",
                 element: <DefaultDashboardPage/>
             },
@@ -90,6 +91,18 @@ const router = createBrowserRouter([
             {
                 path: "logistics",
                 element: <LogisticsDashboardPage/>
+            }
+        ]
+    },
+    {
+        path: "/corporate",
+        element: <PageWrapper children={<DashboardLayout/>}/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                index: true,
+                path: "about",
+                element: <CorporateAboutPage/>
             }
         ]
     }

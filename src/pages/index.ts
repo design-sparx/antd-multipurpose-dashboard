@@ -7,6 +7,7 @@ import {
     BiddingDashboardPage
 } from "./dashboards"
 import HomePage from "./Home.tsx";
+import {CorporateAboutPage} from "./corporate"
 
 export {
     DefaultDashboardPage,
@@ -15,5 +16,6 @@ export {
     EcommerceDashboardPage,
     MarketingDashboardPage,
     SocialDashboardPage,
-    BiddingDashboardPage
+    BiddingDashboardPage,
+    CorporateAboutPage
 }

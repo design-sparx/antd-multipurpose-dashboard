@@ -51,12 +51,14 @@ import {
     TasksListCard
 } from "./dashboard"
 import UserAvatar from "./UserAvatar/UserAvatar.tsx";
-import NotificationsItem from "./NotificationsItem/NotificationsItem.tsx";
-import NotificationsCard from "./NotificationsCard/NotificationsCard.tsx";
+import NotificationsItem from "./NotificationsItem/NotificationsItem";
+import NotificationsCard from "./NotificationsCard/NotificationsCard";
 import Card from "./Card/Card.tsx";
 import PageHeader from "./PageHeader/PageHeader.tsx";
 import {Bar, Container, Nprogress} from "./Nprogress"
-
+import EmployeeCard from "./EmployeeCard/EmployeeCard";
+import BlogsListCard from "./BlogsListCard/BlogsListCard";
+import SocialMediaCard from "./SocialMediaCard/SocialMediaCard.tsx";
 
 export {
     Logo,
@@ -116,5 +118,8 @@ export {
     PageHeader,
     Bar,
     Container,
-    Nprogress
+    Nprogress,
+    EmployeeCard,
+    BlogsListCard,
+    SocialMediaCard
 }
