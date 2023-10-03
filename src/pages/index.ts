@@ -1,20 +1,21 @@
 import {
+    BiddingDashboardPage,
     DefaultDashboardPage,
-    ProjectsDashboardPage,
     EcommerceDashboardPage,
     MarketingDashboardPage,
-    SocialDashboardPage,
-    BiddingDashboardPage
+    ProjectsDashboardPage,
+    SocialDashboardPage
 } from "./dashboards"
 import HomePage from "./Home.tsx";
 import {
     CorporateAboutPage,
-    CorporateTeamPage,
-    CorporateFaqPage,
     CorporateContactPage,
+    CorporateFaqPage,
+    CorporateLicensePage,
     CorporatePricingPage,
-    CorporateLicensePage
+    CorporateTeamPage,
 } from "./corporate"
+import SitemapPage from "./Sitemap.tsx";
 
 export {
     DefaultDashboardPage,
@@ -29,5 +30,6 @@ export {
     CorporateFaqPage,
     CorporateContactPage,
     CorporatePricingPage,
-    CorporateLicensePage
+    CorporateLicensePage,
+    SitemapPage
 }

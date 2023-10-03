@@ -3,7 +3,8 @@ import {
     BiddingDashboardPage,
     CorporateAboutPage,
     CorporateContactPage,
-    CorporateFaqPage, CorporateLicensePage,
+    CorporateFaqPage,
+    CorporateLicensePage,
     CorporatePricingPage,
     CorporateTeamPage,
     DefaultDashboardPage,
@@ -11,6 +12,7 @@ import {
     HomePage,
     MarketingDashboardPage,
     ProjectsDashboardPage,
+    SitemapPage,
     SocialDashboardPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
@@ -96,6 +98,18 @@ const router = createBrowserRouter([
             {
                 path: "logistics",
                 element: <LogisticsDashboardPage/>
+            }
+        ]
+    },
+    {
+        path: "/sitemap",
+        element: <PageWrapper children={<DashboardLayout/>}/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                index: true,
+                path: "",
+                element: <SitemapPage/>
             }
         ]
     },

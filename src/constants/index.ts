@@ -21,7 +21,8 @@ import {
     PATH_SUBSCRIPTION,
     PATH_USER_MGMT,
     PATH_USER_PROFILE,
-    PATH_LANDING
+    PATH_LANDING,
+    PATH_SITEMAP
 } from "./routes.ts"
 
 const DASHBOARD_ITEMS = [
@@ -68,6 +69,7 @@ export {
     PATH_SOCIAL,
     PATH_START,
     PATH_LANDING,
+    PATH_SITEMAP,
     DASHBOARD_ITEMS,
     CORPORATE_ITEMS
 }

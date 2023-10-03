@@ -58,10 +58,11 @@ import PageHeader from "./PageHeader/PageHeader.tsx";
 import {Bar, Container, Nprogress} from "./Nprogress"
 import EmployeeCard from "./EmployeeCard/EmployeeCard";
 import BlogsListCard from "./corporate/BlogsListCard/BlogsListCard";
-import SocialMediaCard from "./SocialMediaCard/SocialMediaCard.tsx";
-import FaqCollapse from "./FaqCollapse/FaqCollapse.tsx";
-import ContactForm from "./ContactForm/ContactForm.tsx";
-import PricingTable from "./PricingTable/PricingTable.tsx";
+import SocialMediaCard from "./SocialMediaCard/SocialMediaCard";
+import FaqCollapse from "./FaqCollapse/FaqCollapse";
+import ContactForm from "./ContactForm/ContactForm";
+import PricingTable from "./PricingTable/PricingTable";
+import SitemapCard from "./SitemapCard/SitemapCard";
 
 export {
     Logo,
@@ -127,5 +128,6 @@ export {
     SocialMediaCard,
     FaqCollapse,
     ContactForm,
-    PricingTable
+    PricingTable,
+    SitemapCard
 }

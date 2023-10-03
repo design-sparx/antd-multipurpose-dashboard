@@ -2,6 +2,7 @@ import React, {useRef} from "react";
 import {ConfigProvider, Layout, Menu, MenuProps, SiderProps} from "antd";
 import {
     BookOutlined,
+    BranchesOutlined,
     BugOutlined,
     CalendarOutlined,
     ContactsOutlined,
@@ -36,6 +37,7 @@ import {
     PATH_INVOICE,
     PATH_LANDING,
     PATH_PROJECTS,
+    PATH_SITEMAP,
     PATH_SOCIAL,
     PATH_SUBSCRIPTION,
     PATH_USER_MGMT,
@@ -70,6 +72,8 @@ const items: MenuProps['items'] = [
         getItem(<Link to={PATH_DASHBOARD.logistics}>Logistics</Link>, 'logistics', null),
     ]),
 
+    getItem(<Link to={PATH_SITEMAP.root}>Sitemap</Link>, 'sitemap', <BranchesOutlined/>),
+
     getItem(
         'Pages',
         'pages',
@@ -84,7 +88,6 @@ const items: MenuProps['items'] = [
         getItem(<Link to={PATH_CORPORATE.contact}>Contact us</Link>, 'contact us', null),
         getItem(<Link to={PATH_CORPORATE.pricing}>Pricing</Link>, 'pricing', null),
         getItem(<Link to={PATH_CORPORATE.license}>License</Link>, 'license', null),
-        getItem(<Link to={PATH_CORPORATE.sitemap}>Sitemap</Link>, 'sitemap', null),
     ]),
 
     getItem('User profile', 'user profile', <UserOutlined/>, [
