@@ -3,7 +3,7 @@ import {
     BiddingDashboardPage,
     CorporateAboutPage,
     CorporateContactPage,
-    CorporateFaqPage,
+    CorporateFaqPage, CorporateLicensePage,
     CorporatePricingPage,
     CorporateTeamPage,
     DefaultDashboardPage,
@@ -124,6 +124,10 @@ const router = createBrowserRouter([
             {
                 path: "pricing",
                 element: <CorporatePricingPage/>
+            },
+            {
+                path: "license",
+                element: <CorporateLicensePage/>
             }
         ]
     }

@@ -63,7 +63,7 @@ export const PATH_CORPORATE = {
     faqs: path(ROOTS_CORPORATE, '/faqs'),
     contact: path(ROOTS_CORPORATE, '/contact'),
     pricing: path(ROOTS_CORPORATE, '/pricing'),
-    licence: path(ROOTS_CORPORATE, '/licence'),
+    license: path(ROOTS_CORPORATE, '/license'),
     sitemap: path(ROOTS_CORPORATE, '/sitemap'),
 }
 

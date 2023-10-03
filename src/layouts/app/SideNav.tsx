@@ -83,7 +83,7 @@ const items: MenuProps['items'] = [
         getItem(<Link to={PATH_CORPORATE.faqs}>FAQ</Link>, 'faqs', null),
         getItem(<Link to={PATH_CORPORATE.contact}>Contact us</Link>, 'contact us', null),
         getItem(<Link to={PATH_CORPORATE.pricing}>Pricing</Link>, 'pricing', null),
-        getItem(<Link to={PATH_CORPORATE.licence}>Licence</Link>, 'licence', null),
+        getItem(<Link to={PATH_CORPORATE.license}>License</Link>, 'license', null),
         getItem(<Link to={PATH_CORPORATE.sitemap}>Sitemap</Link>, 'sitemap', null),
     ]),
 

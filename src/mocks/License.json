@@ -1,0 +1,14 @@
+[
+  {
+    "title": "free",
+    "description": "The Free Plan grants the user a non-exclusive, non-transferable license to use the dashboard template for personal or non-commercial purposes. Users are allowed to modify the template to suit their needs. However, this license does not permit the user to sublicense, sell, or distribute the template or any derivative works. The Free Plan also includes basic support via email. The license is valid as long as the user adheres to the terms of service."
+  },
+  {
+    "title": "pro",
+    "description": "The Pro Plan includes a non-exclusive, non-transferable license that allows the user to use the dashboard template for commercial purposes. Users can modify, customize, and create derivative works based on the template. The license permits the user to sublicense the template to clients or end-users. It also includes priority email support and grants access to premium features such as data export/import and the premium templates library. The license is valid for the subscribed period (monthly or annually) and automatically renews unless canceled."
+  },
+  {
+    "title": "enterprise",
+    "description": "The Enterprise Plan provides a comprehensive, non-exclusive, non-transferable license for large-scale commercial use. This license grants the user unlimited flexibility to modify, customize, and create derivative works from the dashboard template. Users can sublicense the template, access premium support with a dedicated account manager, and utilize advanced features like API access and integration support. The license includes 24/7 priority support and ensures the highest level of data security and compliance. The license is valid for the subscribed period (monthly or annually) and automatically renews unless canceled."
+  }
+]
