@@ -42,7 +42,7 @@ const CORPORATE_ITEMS = [
     {title: 'faq', path: PATH_CORPORATE.faqs},
     {title: 'contact us', path: PATH_CORPORATE.contact},
     {title: 'pricing', path: PATH_CORPORATE.pricing},
-    {title: 'licence', path: PATH_CORPORATE.licence},
+    {title: 'license', path: PATH_CORPORATE.license},
 ]
 
 export {
