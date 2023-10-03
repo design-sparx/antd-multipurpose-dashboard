@@ -10,6 +10,7 @@ import type {Tasks} from "./dashboard"
 import type {Notifications} from "./notifications"
 import type {Employee} from "./employee"
 import type {Faq} from "./faq"
+import type {Pricing} from "./pricing.ts"
 
 export type {
     Projects,
@@ -40,5 +41,6 @@ export type {
     Tasks,
     Notifications,
     Employee,
-    Faq
+    Faq,
+    Pricing
 }

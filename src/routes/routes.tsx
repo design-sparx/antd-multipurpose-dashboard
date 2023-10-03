@@ -1,6 +1,11 @@
 import {createBrowserRouter, useLocation} from "react-router-dom";
 import {
-    BiddingDashboardPage, CorporateAboutPage, CorporateContactPage, CorporateFaqPage, CorporateTeamPage,
+    BiddingDashboardPage,
+    CorporateAboutPage,
+    CorporateContactPage,
+    CorporateFaqPage,
+    CorporatePricingPage,
+    CorporateTeamPage,
     DefaultDashboardPage,
     EcommerceDashboardPage,
     HomePage,
@@ -115,6 +120,10 @@ const router = createBrowserRouter([
             {
                 path: "contact",
                 element: <CorporateContactPage/>
+            },
+            {
+                path: "pricing",
+                element: <CorporatePricingPage/>
             }
         ]
     }

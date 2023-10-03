@@ -61,6 +61,7 @@ import BlogsListCard from "./corporate/BlogsListCard/BlogsListCard";
 import SocialMediaCard from "./SocialMediaCard/SocialMediaCard.tsx";
 import FaqCollapse from "./FaqCollapse/FaqCollapse.tsx";
 import ContactForm from "./ContactForm/ContactForm.tsx";
+import PricingTable from "./PricingTable/PricingTable.tsx";
 
 export {
     Logo,
@@ -125,5 +126,6 @@ export {
     BlogsListCard,
     SocialMediaCard,
     FaqCollapse,
-    ContactForm
+    ContactForm,
+    PricingTable
 }
