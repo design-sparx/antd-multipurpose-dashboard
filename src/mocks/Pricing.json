@@ -1,0 +1,44 @@
+[
+  {
+    "plan": "free",
+    "monthly": 0,
+    "annually": 0,
+    "savings_caption": "Save 0%",
+    "features": [
+      "Basic Dashboard Templates",
+      "Limited Widgets and Customization Options",
+      "Email Support"
+    ],
+    "color": "purple"
+  },
+  {
+    "plan": "pro",
+    "monthly": 9.99,
+    "annually": 99.99,
+    "savings_caption": "Save 17%",
+    "features": [
+      "Advanced Dashboard Templates",
+      "Rich Widgets and Customization Options",
+      "Priority Email Support",
+      "Data Export and Import",
+      "Access to Premium Templates Library"
+    ],
+    "color": "maroon",
+    "preferred": true
+  },
+  {
+    "plan": "enterprise",
+    "monthly": 29.99,
+    "annually": 299.99,
+    "savings_caption": "Save 17%",
+    "features": [
+      "Enterprise-grade Dashboard Templates",
+      "Unlimited Widgets and Customization Options",
+      "24/7 Priority Support",
+      "Dedicated Account Manager",
+      "Advanced Data Security and Compliance",
+      "API Access and Integration Support"
+    ],
+    "color": "cyan"
+  }
+]

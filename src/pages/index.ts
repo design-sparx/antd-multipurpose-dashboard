@@ -1,12 +1,21 @@
 import {
+    BiddingDashboardPage,
     DefaultDashboardPage,
-    ProjectsDashboardPage,
     EcommerceDashboardPage,
     MarketingDashboardPage,
-    SocialDashboardPage,
-    BiddingDashboardPage
+    ProjectsDashboardPage,
+    SocialDashboardPage
 } from "./dashboards"
 import HomePage from "./Home.tsx";
+import {
+    CorporateAboutPage,
+    CorporateContactPage,
+    CorporateFaqPage,
+    CorporateLicensePage,
+    CorporatePricingPage,
+    CorporateTeamPage,
+} from "./corporate"
+import SitemapPage from "./Sitemap.tsx";
 
 export {
     DefaultDashboardPage,
@@ -15,5 +24,12 @@ export {
     EcommerceDashboardPage,
     MarketingDashboardPage,
     SocialDashboardPage,
-    BiddingDashboardPage
+    BiddingDashboardPage,
+    CorporateAboutPage,
+    CorporateTeamPage,
+    CorporateFaqPage,
+    CorporateContactPage,
+    CorporatePricingPage,
+    CorporateLicensePage,
+    SitemapPage
 }

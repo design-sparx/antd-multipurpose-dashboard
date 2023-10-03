@@ -1,8 +1,11 @@
 import {AppLayout} from "../app";
+import {Outlet} from "react-router-dom";
 
 const DashboardLayout = () => {
     return (
-        <AppLayout />
+        <AppLayout>
+            <Outlet/>
+        </AppLayout>
     );
 };
 

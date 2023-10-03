@@ -4,6 +4,7 @@ function path(root: string, sublink: string) {
 
 const ROOTS_LANDING = '/home'
 const ROOTS_DASHBOARD = '/dashboards'
+const ROOTS_SITEMAP = '/sitemap'
 const ROOTS_LAYOUT = '/layouts'
 const ROOTS_CORPORATE = '/corporate'
 const ROOTS_PROFILE = '/profile'
@@ -42,6 +43,10 @@ export const PATH_DASHBOARD = {
     logistics: path(ROOTS_DASHBOARD, '/logistics'),
 }
 
+export const PATH_SITEMAP = {
+    root: ROOTS_SITEMAP
+}
+
 export const PATH_LAYOUT = {
     root: ROOTS_LAYOUT,
     sidebar: {
@@ -63,8 +68,7 @@ export const PATH_CORPORATE = {
     faqs: path(ROOTS_CORPORATE, '/faqs'),
     contact: path(ROOTS_CORPORATE, '/contact'),
     pricing: path(ROOTS_CORPORATE, '/pricing'),
-    licence: path(ROOTS_CORPORATE, '/licence'),
-    sitemap: path(ROOTS_CORPORATE, '/sitemap'),
+    license: path(ROOTS_CORPORATE, '/license'),
 }
 
 export const PATH_USER_PROFILE = {

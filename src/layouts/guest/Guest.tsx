@@ -52,8 +52,8 @@ const GuestLayout = () => {
                 style={{
                     minHeight: '100vh',
                     backgroundColor: 'rgba(52, 152, 219, 0.05)',
-                    backgroundImage: 'radial-gradient(at 47% 33%, hsl(204.07, 70%, 53%) 0, transparent 59%),\n' +
-                        'radial-gradient(at 82% 65%, hsl(197.95, 0%, 100%) 0, transparent 55%);',
+                    backgroundImage: 'radial-gradient(at 47% 33%, hsl(197.95, 0%, 100%) 0, transparent 59%),\n' +
+                        'radial-gradient(at 82% 65%, hsl(204.07, 70%, 53%) 0, transparent 55%)',
                 }}
             >
                 <Header

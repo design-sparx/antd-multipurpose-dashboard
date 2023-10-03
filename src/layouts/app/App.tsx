@@ -1,6 +1,6 @@
 import {Affix, Button, Input, Layout, Space, theme, Tooltip} from "antd";
-import {Outlet, useLocation} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {useLocation} from "react-router-dom";
+import {ReactNode, useEffect, useRef, useState} from "react";
 import {AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MessageOutlined, UpOutlined} from "@ant-design/icons";
 import {CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import {useMediaQuery} from "react-responsive";
@@ -12,7 +12,11 @@ import {goToTop} from "../../utils";
 
 const {Content} = Layout
 
-const AppLayout = () => {
+type AppLayoutProps = {
+    children: ReactNode
+}
+
+const AppLayout = ({children}: AppLayoutProps) => {
     const {
         token: {borderRadius},
     } = theme.useToken();
@@ -51,8 +55,8 @@ const AppLayout = () => {
                 style={{
                     minHeight: '100vh',
                     backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                    backgroundImage: 'radial-gradient(at 47% 33%, hsl(204.07, 70%, 53%) 0, transparent 59%),\n' +
-                        'radial-gradient(at 82% 65%, hsl(197.95, 0%, 100%) 0, transparent 55%);',
+                    backgroundImage: 'radial-gradient(at 47% 33%, hsl(197.95, 0%, 100%) 0, transparent 59%),\n' +
+                        'radial-gradient(at 82% 65%, hsl(204.07, 70%, 53%) 0, transparent 55%)',
                 }}
             >
                 <SideNav
@@ -80,7 +84,7 @@ const AppLayout = () => {
                         style={{
                             marginLeft: collapsed ? 0 : '200px',
                             padding: '0 2rem 0 0',
-                            background: navFill ? "rgb(193, 224, 244)" : "none",
+                            background: navFill ? "#eaf5fc" : "none",
                             backdropFilter: navFill ? "blur(8px)" : "none",
                             display: 'flex',
                             alignItems: 'center',
@@ -150,7 +154,7 @@ const AppLayout = () => {
                                 >
                                     {() => (
                                         <div ref={nodeRef} style={{background: 'none'}}>
-                                            <Outlet/>
+                                            {children}
                                         </div>
                                     )}
                                 </CSSTransition>

@@ -1,15 +1,22 @@
 import {createBrowserRouter, useLocation} from "react-router-dom";
 import {
     BiddingDashboardPage,
+    CorporateAboutPage,
+    CorporateContactPage,
+    CorporateFaqPage,
+    CorporateLicensePage,
+    CorporatePricingPage,
+    CorporateTeamPage,
     DefaultDashboardPage,
     EcommerceDashboardPage,
     HomePage,
     MarketingDashboardPage,
     ProjectsDashboardPage,
+    SitemapPage,
     SocialDashboardPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
-import {DashboardLayout, GuestLayout} from "../layouts";
+import {CorporateLayout, DashboardLayout, GuestLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
 
@@ -48,8 +55,8 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
         children: [
             {
-                path: "home",
                 index: true,
+                path: "home",
                 element: <HomePage/>
             }
         ]
@@ -60,6 +67,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
         children: [
             {
+                index: true,
                 path: "default",
                 element: <DefaultDashboardPage/>
             },
@@ -90,6 +98,50 @@ const router = createBrowserRouter([
             {
                 path: "logistics",
                 element: <LogisticsDashboardPage/>
+            }
+        ]
+    },
+    {
+        path: "/sitemap",
+        element: <PageWrapper children={<DashboardLayout/>}/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                index: true,
+                path: "",
+                element: <SitemapPage/>
+            }
+        ]
+    },
+    {
+        path: "/corporate",
+        element: <PageWrapper children={<CorporateLayout/>}/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                index: true,
+                path: "about",
+                element: <CorporateAboutPage/>
+            },
+            {
+                path: "team",
+                element: <CorporateTeamPage/>
+            },
+            {
+                path: "faqs",
+                element: <CorporateFaqPage/>
+            },
+            {
+                path: "contact",
+                element: <CorporateContactPage/>
+            },
+            {
+                path: "pricing",
+                element: <CorporatePricingPage/>
+            },
+            {
+                path: "license",
+                element: <CorporateLicensePage/>
             }
         ]
     }
