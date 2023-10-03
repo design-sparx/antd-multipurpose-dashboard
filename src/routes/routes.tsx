@@ -13,10 +13,10 @@ import {
     MarketingDashboardPage,
     ProjectsDashboardPage,
     SitemapPage,
-    SocialDashboardPage
+    SocialDashboardPage, UserAccountDetailsPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
-import {CorporateLayout, DashboardLayout, GuestLayout} from "../layouts";
+import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
 
@@ -143,6 +143,18 @@ const router = createBrowserRouter([
                 path: "license",
                 element: <CorporateLicensePage/>
             }
+        ]
+    },
+    {
+        path: "/user-profile",
+        element: <PageWrapper children={<UserAccountLayout/>}/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                index: true,
+                path: "details",
+                element: <UserAccountDetailsPage/>
+            },
         ]
     }
 ]);

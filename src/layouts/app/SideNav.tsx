@@ -15,7 +15,7 @@ import {
     PieChartOutlined,
     ProfileOutlined,
     ReadOutlined,
-    SecurityScanOutlined,
+    SecurityScanOutlined, SnippetsOutlined,
     SolutionOutlined,
     TeamOutlined,
     UserOutlined,
@@ -30,7 +30,7 @@ import {
     PATH_CAREERS,
     PATH_CONTACTS,
     PATH_CORPORATE,
-    PATH_DASHBOARD,
+    PATH_DASHBOARD, PATH_DOCS,
     PATH_ERROR,
     PATH_FILE,
     PATH_INBOX,
@@ -91,12 +91,14 @@ const items: MenuProps['items'] = [
     ]),
 
     getItem('User profile', 'user profile', <UserOutlined/>, [
-        getItem(<Link to={PATH_USER_PROFILE.overview}>Overview</Link>, 'user-overview', null),
-        getItem(<Link to={PATH_USER_PROFILE.projects}>Projects</Link>, 'user-projects', null),
-        getItem(<Link to={PATH_USER_PROFILE.campaigns}>Campaigns</Link>, 'user-campaigns', null),
-        getItem(<Link to={PATH_USER_PROFILE.documents}>Documents</Link>, 'user-documents', null),
-        getItem(<Link to={PATH_USER_PROFILE.followers}>Followers</Link>, 'user-followers', null),
+        getItem(<Link to={PATH_USER_PROFILE.details}>Details</Link>, 'user-details', null),
+        getItem(<Link to={PATH_USER_PROFILE.preferences}>Preferences</Link>, 'user-preferences', null),
+        getItem(<Link to={PATH_USER_PROFILE.personalInformation}>Information</Link>, 'user-personal-information', null),
+        getItem(<Link to={PATH_USER_PROFILE.security}>Security</Link>, 'user-security', null),
         getItem(<Link to={PATH_USER_PROFILE.activity}>Activity</Link>, 'user-activity', null),
+        getItem(<Link to={PATH_USER_PROFILE.action}>Actions</Link>, 'user-actions', null),
+        getItem(<Link to={PATH_USER_PROFILE.help}>Help</Link>, 'user-help', null),
+        getItem(<Link to={PATH_USER_PROFILE.feedback}>Feedback</Link>, 'user-feedback', null),
     ]),
 
     getItem('Social', 'socials', <HeartOutlined/>, [
@@ -127,6 +129,29 @@ const items: MenuProps['items'] = [
         getItem(<Link to={PATH_ACCOUNT.api}>API Keys</Link>, 'account-api', null),
         getItem(<Link to={PATH_ACCOUNT.logs}>Logs</Link>, 'account-logs', null),
     ]),
+
+    getItem('Authentication', 'authentication', <SecurityScanOutlined/>, [
+        getItem(<Link to={PATH_AUTH.signin}>Sign In</Link>, 'auth-signin', null),
+        getItem(<Link to={PATH_AUTH.signup}>Sign Up</Link>, 'auth-signup', null),
+        getItem(<Link to={PATH_AUTH.welcome}>Welcome</Link>, 'auth-welcome', null),
+        getItem(<Link to={PATH_AUTH.verifyEmail}>Verify email</Link>, 'auth-verify', null),
+        getItem(<Link to={PATH_AUTH.passwordReset}>Password reset</Link>, 'auth-password-reset', null),
+        getItem(<Link to={PATH_AUTH.passwordConfirm}>Passsword confirmation</Link>, 'auth-password-confirmation', null),
+        getItem(<Link to={PATH_AUTH.accountDelete}>Account deactivation</Link>, 'auth-account-deactivation', null),
+    ]),
+
+    getItem('Errors', 'errors', <BugOutlined/>, [
+        getItem(<Link to={PATH_ERROR.error403}>403</Link>, 'error-403', null),
+        getItem(<Link to={PATH_ERROR.error403}>404</Link>, 'error-404', null),
+        getItem(<Link to={PATH_ERROR.error500}>500</Link>, 'error-500', null),
+    ]),
+
+    getItem(
+        'Apps',
+        'apps',
+        null,
+        [],
+        'group'),
 
     getItem('Projects', 'projects-m', <BookOutlined/>, [
         getItem(<Link to={PATH_PROJECTS.root}>List</Link>, 'projects-list', null),
@@ -181,21 +206,14 @@ const items: MenuProps['items'] = [
         getItem(<Link to={PATH_SUBSCRIPTION.details(1)}>View</Link>, 'sub-details', null),
     ]),
 
-    getItem('Authentication', 'authentication', <SecurityScanOutlined/>, [
-        getItem(<Link to={PATH_AUTH.signin}>Sign In</Link>, 'auth-signin', null),
-        getItem(<Link to={PATH_AUTH.signup}>Sign Up</Link>, 'auth-signup', null),
-        getItem(<Link to={PATH_AUTH.welcome}>Welcome</Link>, 'auth-welcome', null),
-        getItem(<Link to={PATH_AUTH.verifyEmail}>Verify email</Link>, 'auth-verify', null),
-        getItem(<Link to={PATH_AUTH.passwordReset}>Password reset</Link>, 'auth-password-reset', null),
-        getItem(<Link to={PATH_AUTH.passwordConfirm}>Passsword confirmation</Link>, 'auth-password-confirmation', null),
-        getItem(<Link to={PATH_AUTH.accountDelete}>Account deactivation</Link>, 'auth-account-deactivation', null),
-    ]),
+    getItem(
+        'Help',
+        'help',
+        null,
+        [],
+        'group'),
 
-    getItem('Errors', 'errors', <BugOutlined/>, [
-        getItem(<Link to={PATH_ERROR.error403}>403</Link>, 'error-403', null),
-        getItem(<Link to={PATH_ERROR.error403}>404</Link>, 'error-404', null),
-        getItem(<Link to={PATH_ERROR.error500}>500</Link>, 'error-500', null),
-    ]),
+    getItem(<Link to={PATH_DOCS.root}>Documentation</Link>, 'documentation', <SnippetsOutlined/>),
 ];
 
 type SideNavProps = SiderProps

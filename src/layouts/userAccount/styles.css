@@ -1,0 +1,7 @@
+.user-profile-card-nav .ant-tabs-nav {
+    margin: 0 0 0 1rem;
+}
+
+.user-profile-card-nav .ant-card-actions li:first-of-type {
+    margin: 0;
+}

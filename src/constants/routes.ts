@@ -7,7 +7,7 @@ const ROOTS_DASHBOARD = '/dashboards'
 const ROOTS_SITEMAP = '/sitemap'
 const ROOTS_LAYOUT = '/layouts'
 const ROOTS_CORPORATE = '/corporate'
-const ROOTS_PROFILE = '/profile'
+const ROOTS_PROFILE = '/user-profile'
 const ROOTS_SOCIAL = '/social'
 const ROOTS_BLOG = '/blog'
 const ROOTS_CAREERS = '/careers'
@@ -73,12 +73,14 @@ export const PATH_CORPORATE = {
 
 export const PATH_USER_PROFILE = {
     root: ROOTS_PROFILE,
-    overview: path(ROOTS_PROFILE, '/overview'),
-    projects: path(ROOTS_PROFILE, '/projects'),
-    campaigns: path(ROOTS_PROFILE, '/campaigns'),
-    documents: path(ROOTS_PROFILE, '/documents'),
-    followers: path(ROOTS_PROFILE, '/followers'),
+    details: path(ROOTS_PROFILE, '/details'),
+    preferences: path(ROOTS_PROFILE, '/preferences'),
+    personalInformation: path(ROOTS_PROFILE, '/personal-information'),
+    security: path(ROOTS_PROFILE, '/security'),
     activity: path(ROOTS_PROFILE, '/activity'),
+    action: path(ROOTS_PROFILE, '/actions'),
+    help: path(ROOTS_PROFILE, '/help'),
+    feedback: path(ROOTS_PROFILE, '/feedback'),
 }
 
 export const PATH_SOCIAL = {
