@@ -1,5 +1,18 @@
 # antd-multi-dashboard
 
+## 0.4.2
+
+### Patch Changes
+
+- e7d2fcf: ### Added:
+  - finished corporate about page
+  - finished corporate team page
+  - finished corporate contact page
+  - added redirects to fix reload error on netlify
+  - added corporate pricing page
+  - added corporate licence page
+  - added sitemap page
+
 ## 0.4.1
 
 ### Patch Changes
