@@ -13,7 +13,9 @@ import {
     MarketingDashboardPage,
     ProjectsDashboardPage,
     SitemapPage,
-    SocialDashboardPage, UserAccountDetailsPage
+    SocialDashboardPage,
+    UserProfileDetailsPage,
+    UserProfilePreferencesPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
 import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
@@ -153,7 +155,11 @@ const router = createBrowserRouter([
             {
                 index: true,
                 path: "details",
-                element: <UserAccountDetailsPage/>
+                element: <UserProfileDetailsPage/>
+            },
+            {
+                path: "preferences",
+                element: <UserProfilePreferencesPage/>
             },
         ]
     }

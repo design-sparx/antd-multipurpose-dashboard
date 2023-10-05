@@ -129,9 +129,9 @@ const AppLayout = ({children}: AppLayoutProps) => {
                     </HeaderNav>
                     <Content
                         style={{
-                            margin: `0 24px 0 ${collapsed ? '24px' : '224px'}`,
+                            margin: `0 0 0 ${collapsed ? 0 : '200px'}`,
                             background: "rgba(52, 152, 219, 0.35)",
-                            borderRadius,
+                            borderRadius: collapsed ? 0 : borderRadius,
                             transition: "all .25s",
                             padding: '24px 32px',
                             minHeight: 360,

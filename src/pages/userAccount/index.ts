@@ -1,3 +1,4 @@
-import UserAccountDetailsPage from "./Details.tsx";
+import UserProfileDetailsPage from "./Details.tsx";
+import UserProfilePreferencesPage from "./Preferences.tsx";
 
-export {UserAccountDetailsPage}
+export {UserProfilePreferencesPage, UserProfileDetailsPage}

@@ -63,6 +63,7 @@ import FaqCollapse from "./FaqCollapse/FaqCollapse";
 import ContactForm from "./ContactForm/ContactForm";
 import PricingTable from "./PricingTable/PricingTable";
 import SitemapCard from "./SitemapCard/SitemapCard";
+import Flex from "./Flex/Flex.tsx"
 
 export {
     Logo,
@@ -129,5 +130,6 @@ export {
     FaqCollapse,
     ContactForm,
     PricingTable,
-    SitemapCard
+    SitemapCard,
+    Flex
 }
