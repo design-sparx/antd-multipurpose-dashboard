@@ -2,6 +2,7 @@ import {RouterProvider} from 'react-router-dom'
 import routes from "./routes/routes.tsx";
 import {ConfigProvider} from "antd";
 import {HelmetProvider} from "react-helmet-async"
+import {StylesContext} from "./context";
 
 import "./App.css"
 
@@ -48,7 +49,18 @@ function App() {
                     },
                 }}
             >
-                <RouterProvider router={routes}/>
+                <StylesContext.Provider
+                    value={{
+                        rowProps: {
+                            gutter: [
+                                {xs: 8, sm: 16, md: 24, lg: 32},
+                                {xs: 8, sm: 16, md: 24, lg: 32}
+                            ]
+                        }
+                    }}
+                >
+                    <RouterProvider router={routes}/>
+                </StylesContext.Provider>
             </ConfigProvider>
         </HelmetProvider>
     )
