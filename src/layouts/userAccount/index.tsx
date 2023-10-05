@@ -1,8 +1,9 @@
 import {AppLayout} from "../index.ts";
-import {Descriptions, DescriptionsProps, Image, Space, Tabs, TabsProps, theme} from "antd";
+import {Col, Descriptions, DescriptionsProps, Image, Row, Tabs, TabsProps, theme} from "antd";
 import {Card} from "../../components";
 import {Outlet, useNavigate} from "react-router-dom";
 import {USER_PROFILE_ITEMS} from "../../constants";
+import {useStylesContext} from "../../context";
 
 import "./styles.css"
 
@@ -44,6 +45,7 @@ const TAB_ITEMS: TabsProps['items'] = USER_PROFILE_ITEMS.map(u => ({key: u.title
 const UserAccountLayout = () => {
     const {token: {borderRadius}} = theme.useToken()
     const navigate = useNavigate()
+    const stylesContext = useStylesContext()
 
     const onChange = (key: string) => {
         navigate(key)
@@ -55,21 +57,26 @@ const UserAccountLayout = () => {
                 <Card
                     className="user-profile-card-nav card"
                     actions={[
-                        <Tabs defaultActiveKey="1" items={TAB_ITEMS} onChange={onChange} style={{textTransform: "capitalize"}}/>
+                        <Tabs defaultActiveKey="1" items={TAB_ITEMS} onChange={onChange}
+                              style={{textTransform: "capitalize"}}/>
                     ]}
                 >
-                    <Space>
-                        <Image
-                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                            alt="user profile image"
-                            height={200}
-                            width={200}
-                            style={{borderRadius}}
-                        />
-                        <Descriptions title="User Info" items={DESCRIPTION_ITEMS}/>;
-                    </Space>
+                    <Row {...stylesContext?.rowProps}>
+                        <Col lg={4}>
+                            <Image
+                                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                                alt="user profile image"
+                                height="100%"
+                                width="100%"
+                                style={{borderRadius}}
+                            />
+                        </Col>
+                        <Col lg={20}>
+                            <Descriptions title="User Info" items={DESCRIPTION_ITEMS}/>
+                        </Col>
+                    </Row>
                 </Card>
-                <div>
+                <div style={{marginTop: "1.5rem"}}>
                     <Outlet/>
                 </div>
             </AppLayout>
