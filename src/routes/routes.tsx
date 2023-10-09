@@ -14,7 +14,7 @@ import {
     ProjectsDashboardPage,
     SitemapPage,
     SocialDashboardPage,
-    UserProfileDetailsPage,
+    UserProfileDetailsPage, UserProfileInformationPage,
     UserProfilePreferencesPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
@@ -160,6 +160,10 @@ const router = createBrowserRouter([
             {
                 path: "preferences",
                 element: <UserProfilePreferencesPage/>
+            },
+            {
+                path: "information",
+                element: <UserProfileInformationPage/>
             },
         ]
     }

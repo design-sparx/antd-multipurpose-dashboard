@@ -6,9 +6,9 @@ type Props = {
     alignItems?: CSSProperties["alignItems"]
     flexDirection?: CSSProperties["flexDirection"]
     children: ReactNode
-}
+} & CSSProperties
 
-const Flex = ({flexDirection, alignItems, gap, justifyContent, children}: Props) => {
+const Flex = ({flexDirection, alignItems, gap, justifyContent, children, ...others}: Props) => {
     return (
         <div
             style={{
@@ -17,7 +17,8 @@ const Flex = ({flexDirection, alignItems, gap, justifyContent, children}: Props)
                 flexDirection,
                 justifyContent,
                 alignItems,
-                gap: typeof gap === "number" ? gap : (gap === "large" ? '24px' : (gap === "small" ? "8px" : "16px"))
+                gap: typeof gap === "number" ? gap : (gap === "large" ? '24px' : (gap === "small" ? "8px" : "16px")),
+                ...others
             }}
         >
             {children}
