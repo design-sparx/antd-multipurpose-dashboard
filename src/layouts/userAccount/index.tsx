@@ -1,9 +1,11 @@
 import {AppLayout} from "../index.ts";
-import {Col, Descriptions, DescriptionsProps, Image, Row, Tabs, TabsProps, theme} from "antd";
+import {Col, Descriptions, DescriptionsProps, Image, Row, Tabs, TabsProps, theme, Typography} from "antd";
 import {Card} from "../../components";
 import {Outlet, useNavigate} from "react-router-dom";
 import {USER_PROFILE_ITEMS} from "../../constants";
 import {useStylesContext} from "../../context";
+
+const {Link} = Typography
 
 import "./styles.css"
 
@@ -21,22 +23,22 @@ const DESCRIPTION_ITEMS: DescriptionsProps['items'] = [
     {
         key: 'email',
         label: 'Email',
-        children: <a href="mailto:kelvin.kiprop96@gmail.com">kelvin.kiprop96@gmail.com</a>,
+        children: <Link href="mailto:kelvin.kiprop96@gmail.com">kelvin.kiprop96@gmail.com</Link>,
     },
     {
         key: 'telephone',
         label: 'Phone',
-        children: <a href="tel:+254706094433">+254 706 094 4433</a>,
+        children: <Link href="tel:+254706094433">+254 706 094 4433</Link>,
     },
     {
         key: 'github',
         label: 'Github',
-        children: <a href="https://github.com/kelvink96" target="_blank">kelvink96</a>,
+        children: <Link href="https://github.com/kelvink96" target="_blank">kelvink96</Link>,
     },
     {
         key: 'twitter',
         label: 'Twitter',
-        children: <a href="https://twitter.com/kelvink_96" target="_blank">@kelvink_96</a>,
+        children: <Link href="https://twitter.com/kelvink_96" target="_blank">@kelvink_96</Link>,
     },
 ];
 

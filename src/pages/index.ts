@@ -21,7 +21,8 @@ import {
     UserProfilePreferencesPage,
     UserProfileInformationPage,
     UserProfileSecurityPage,
-    UserProfileActivityPage
+    UserProfileActivityPage,
+    UserProfileActionsPage
 } from "./userAccount"
 
 export {
@@ -43,5 +44,6 @@ export {
     UserProfilePreferencesPage,
     UserProfileInformationPage,
     UserProfileSecurityPage,
-    UserProfileActivityPage
+    UserProfileActivityPage,
+    UserProfileActionsPage
 }

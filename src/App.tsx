@@ -48,6 +48,17 @@ function App() {
                         },
                         Timeline: {
                             dotBg: "none"
+                        },
+                        Button: {
+                            colorLink: COLOR["500"],
+                            colorLinkActive: COLOR["700"],
+                            colorLinkHover: COLOR["300"],
+                        },
+                        Typography: {
+                            colorLink: COLOR["500"],
+                            colorLinkActive: COLOR["700"],
+                            colorLinkHover: COLOR["300"],
+                            linkHoverDecoration: "underline"
                         }
                     },
                 }}

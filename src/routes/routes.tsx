@@ -13,7 +13,7 @@ import {
     MarketingDashboardPage,
     ProjectsDashboardPage,
     SitemapPage,
-    SocialDashboardPage, UserProfileActivityPage,
+    SocialDashboardPage, UserProfileActionsPage, UserProfileActivityPage,
     UserProfileDetailsPage, UserProfileInformationPage,
     UserProfilePreferencesPage, UserProfileSecurityPage
 } from "../pages";
@@ -172,6 +172,10 @@ const router = createBrowserRouter([
             {
                 path: "activity",
                 element: <UserProfileActivityPage/>
+            },
+            {
+                path: "actions",
+                element: <UserProfileActionsPage/>
             },
         ]
     }
