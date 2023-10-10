@@ -16,7 +16,7 @@ import {
     CorporateTeamPage,
 } from "./corporate"
 import SitemapPage from "./Sitemap.tsx";
-import {UserProfileDetailsPage, UserProfilePreferencesPage, UserProfileInformationPage} from "./userAccount"
+import {UserProfileDetailsPage, UserProfilePreferencesPage, UserProfileInformationPage, UserProfileSecurityPage} from "./userAccount"
 
 export {
     DefaultDashboardPage,
@@ -35,5 +35,6 @@ export {
     SitemapPage,
     UserProfileDetailsPage,
     UserProfilePreferencesPage,
-    UserProfileInformationPage
+    UserProfileInformationPage,
+    UserProfileSecurityPage
 }

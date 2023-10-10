@@ -11,6 +11,7 @@ import type {Notifications} from "./notifications"
 import type {Employee} from "./employee"
 import type {Faq} from "./faq"
 import type {Pricing} from "./pricing.ts"
+import type {Session} from "./session.ts"
 
 export type {
     Projects,
@@ -42,5 +43,6 @@ export type {
     Notifications,
     Employee,
     Faq,
-    Pricing
+    Pricing,
+    Session
 }
