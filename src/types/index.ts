@@ -10,8 +10,9 @@ import type {Tasks} from "./dashboard"
 import type {Notifications} from "./notifications"
 import type {Employee} from "./employee"
 import type {Faq} from "./faq"
-import type {Pricing} from "./pricing.ts"
-import type {Session} from "./session.ts"
+import type {Pricing} from "./pricing"
+import type {Session} from "./session"
+import type {ActivityTimeline} from "./timeline"
 
 export type {
     Projects,
@@ -44,5 +45,6 @@ export type {
     Employee,
     Faq,
     Pricing,
-    Session
+    Session,
+    ActivityTimeline
 }

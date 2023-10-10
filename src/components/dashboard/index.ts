@@ -3,7 +3,6 @@ import {
     RecentUsersCard,
     GetStartedCard,
     OrdersChart,
-    TimelineCard,
     LatestOrdersCard,
     EarningsCard,
     SubscribersChart,
@@ -51,7 +50,6 @@ import {
 export {
     CampaignsCard,
     LatestOrdersCard,
-    TimelineCard,
     ProjectsCountCard,
     RevenueCard,
     ProjectsCard,

@@ -13,7 +13,7 @@ import {
     MarketingDashboardPage,
     ProjectsDashboardPage,
     SitemapPage,
-    SocialDashboardPage,
+    SocialDashboardPage, UserProfileActivityPage,
     UserProfileDetailsPage, UserProfileInformationPage,
     UserProfilePreferencesPage, UserProfileSecurityPage
 } from "../pages";
@@ -168,6 +168,10 @@ const router = createBrowserRouter([
             {
                 path: "security",
                 element: <UserProfileSecurityPage/>
+            },
+            {
+                path: "activity",
+                element: <UserProfileActivityPage/>
             },
         ]
     }

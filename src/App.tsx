@@ -45,6 +45,9 @@ function App() {
                         Segmented: {
                             colorBgLayout: COLOR["300"],
                             borderRadius: 6,
+                        },
+                        Timeline: {
+                            dotBg: "none"
                         }
                     },
                 }}
