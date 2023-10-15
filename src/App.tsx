@@ -38,6 +38,11 @@ function App() {
                             linkColor: 'rgba(0,0,0,.8)',
                             itemColor: 'rgba(0,0,0,.8)'
                         },
+                        Button: {
+                            colorLink: COLOR["500"],
+                            colorLinkActive: COLOR["700"],
+                            colorLinkHover: COLOR["300"],
+                        },
                         Card: {
                             colorBgContainer: "none",
                             colorBorderSecondary: COLOR["100"],
@@ -46,13 +51,11 @@ function App() {
                             colorBgLayout: COLOR["300"],
                             borderRadius: 6,
                         },
+                        Tabs: {
+                            colorBorderSecondary: COLOR["100"],
+                        },
                         Timeline: {
                             dotBg: "none"
-                        },
-                        Button: {
-                            colorLink: COLOR["500"],
-                            colorLinkActive: COLOR["700"],
-                            colorLinkHover: COLOR["300"],
                         },
                         Typography: {
                             colorLink: COLOR["500"],

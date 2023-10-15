@@ -22,7 +22,8 @@ import {
     UserProfileInformationPage,
     UserProfileSecurityPage,
     UserProfileActivityPage,
-    UserProfileActionsPage
+    UserProfileActionsPage,
+    UserProfileHelpPage
 } from "./userAccount"
 
 export {

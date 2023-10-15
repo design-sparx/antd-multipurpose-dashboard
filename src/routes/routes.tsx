@@ -21,6 +21,7 @@ import ErrorPage from "../pages/errors/Error.tsx";
 import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
+import {UserProfileHelpPage} from "../pages/userAccount";
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -176,6 +177,10 @@ const router = createBrowserRouter([
             {
                 path: "actions",
                 element: <UserProfileActionsPage/>
+            },
+            {
+                path: "help",
+                element: <UserProfileHelpPage/>
             },
         ]
     }

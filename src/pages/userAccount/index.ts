@@ -4,6 +4,7 @@ import UserProfileInformationPage from "./Information.tsx";
 import UserProfileSecurityPage from "./Security.tsx";
 import UserProfileActivityPage from "./Activity.tsx";
 import UserProfileActionsPage from "./Actions.tsx";
+import UserProfileHelpPage from "./Help.tsx";
 
 export {
     UserProfilePreferencesPage,
@@ -11,5 +12,6 @@ export {
     UserProfileInformationPage,
     UserProfileSecurityPage,
     UserProfileActivityPage,
-    UserProfileActionsPage
+    UserProfileActionsPage,
+    UserProfileHelpPage
 }
