@@ -1,4 +1,4 @@
-import {Button, CardProps, List} from "antd";
+import {Button, CardProps, Flex, Typography} from "antd";
 import {Card} from "../index.ts";
 
 import "./styles.css"
@@ -12,22 +12,23 @@ type Props = {
 
 const SitemapCard = ({data, ...others}: Props) => {
     return (
-        <Card title={data.title} className="sitemap-card card" {...others}>
-            <List
-                dataSource={data.links}
-                bordered={false}
-                renderItem={(item) => (
-                    <List.Item key={`sitemap-${item.title}`}>
+        <Card {...others}>
+            <Flex vertical gap="middle">
+                <Typography.Title level={5} style={{margin: 0, textTransform: "capitalize"}}>
+                    {data.title}
+                </Typography.Title>
+                <Flex gap="small" wrap="wrap">
+                    {data.links.map(d =>
                         <Button
+                            key={d.title}
                             type="link"
-                            href={item.path}
-                            style={{textTransform: "capitalize", marginLeft: ".5rem"}}
+                            href={d.path}
+                            style={{textTransform: "capitalize"}}
                         >
-                            {item.title}
-                        </Button>
-                    </List.Item>
-                )}
-            />
+                            {d.title}
+                        </Button>)}
+                </Flex>
+            </Flex>
         </Card>
     );
 };

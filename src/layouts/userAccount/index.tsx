@@ -1,13 +1,25 @@
 import {AppLayout} from "../index.ts";
-import {Col, Descriptions, DescriptionsProps, Image, Row, Tabs, TabsProps, theme, Typography} from "antd";
+import {
+    Col,
+    ConfigProvider,
+    Descriptions,
+    DescriptionsProps,
+    Image,
+    Row,
+    Tabs,
+    TabsProps,
+    theme,
+    Typography
+} from "antd";
 import {Card} from "../../components";
-import {Outlet, useNavigate} from "react-router-dom";
+import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {USER_PROFILE_ITEMS} from "../../constants";
 import {useStylesContext} from "../../context";
 
 const {Link} = Typography
 
 import "./styles.css"
+import {useEffect, useState} from "react";
 
 const DESCRIPTION_ITEMS: DescriptionsProps['items'] = [
     {
@@ -48,10 +60,20 @@ const UserAccountLayout = () => {
     const {token: {borderRadius}} = theme.useToken()
     const navigate = useNavigate()
     const stylesContext = useStylesContext()
+    const location = useLocation()
+    const [activeKey, setActiveKey] = useState(TAB_ITEMS[0].key);
 
     const onChange = (key: string) => {
         navigate(key)
     };
+
+    useEffect(() => {
+        console.log(location)
+        const k = TAB_ITEMS.find(d => location.pathname.includes(d.key))?.key || ""
+
+        console.log(k)
+        setActiveKey(k);
+    }, [location]);
 
     return (
         <>
@@ -59,8 +81,23 @@ const UserAccountLayout = () => {
                 <Card
                     className="user-profile-card-nav card"
                     actions={[
-                        <Tabs defaultActiveKey="1" items={TAB_ITEMS} onChange={onChange}
-                              style={{textTransform: "capitalize"}}/>
+                        <ConfigProvider
+                            theme={{
+                                components: {
+                                    Tabs: {
+                                        colorBorderSecondary: "none",
+                                    },
+                                }
+                            }}
+                        >
+                            <Tabs
+                                defaultActiveKey={activeKey}
+                                activeKey={activeKey}
+                                items={TAB_ITEMS}
+                                onChange={onChange}
+                                style={{textTransform: "capitalize"}}
+                            />
+                        </ConfigProvider>
                     ]}
                 >
                     <Row {...stylesContext?.rowProps}>
