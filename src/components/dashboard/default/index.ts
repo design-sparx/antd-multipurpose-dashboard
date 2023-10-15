@@ -5,7 +5,6 @@ import LatestOrdersCard from "./LatestOrdersCard/LatestOrdersCard.tsx";
 import OrdersChart from "./OrdersChart/OrdersChart.tsx";
 import RecentUsersCard from "./RecentUsersCard/RecentUsersCard.tsx";
 import SubscribersChart from "./SubscribersChart/SubscribersChart.tsx";
-import TimelineCard from "./TimelineCard/TimelineCard.tsx";
 import WeeklyActivityCard from "./WeeklyActivityCard/WeeklyActivityCard.tsx";
 import TasksChartCard from "./TasksChartCard/TasksChartCard.tsx";
 import TasksListCard from "./TasksListCard/TasksListCard.tsx";
@@ -13,7 +12,6 @@ import TasksListCard from "./TasksListCard/TasksListCard.tsx";
 export {
     CampaignsCard,
     LatestOrdersCard,
-    TimelineCard,
     OrdersChart,
     RecentUsersCard,
     EarningsCard,

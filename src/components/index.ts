@@ -11,7 +11,6 @@ import {
     GetStartedCard,
     OrdersChart,
     SubscribersChart,
-    TimelineCard,
     CustomerReviewsCard,
     RecentUsersCard,
     LatestOrdersCard,
@@ -63,6 +62,8 @@ import FaqCollapse from "./FaqCollapse/FaqCollapse";
 import ContactForm from "./ContactForm/ContactForm";
 import PricingTable from "./PricingTable/PricingTable";
 import SitemapCard from "./SitemapCard/SitemapCard";
+import Flex from "./Flex/Flex.tsx"
+import TimelineCard from "./TimelineCard/TimelineCard.tsx"
 
 export {
     Logo,
@@ -129,5 +130,6 @@ export {
     FaqCollapse,
     ContactForm,
     PricingTable,
-    SitemapCard
+    SitemapCard,
+    Flex
 }

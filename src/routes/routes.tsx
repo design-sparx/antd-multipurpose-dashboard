@@ -13,10 +13,18 @@ import {
     MarketingDashboardPage,
     ProjectsDashboardPage,
     SitemapPage,
-    SocialDashboardPage
+    SocialDashboardPage,
+    UserProfileActionsPage,
+    UserProfileActivityPage,
+    UserProfileDetailsPage,
+    UserProfileFeedbackPage,
+    UserProfileHelpPage,
+    UserProfileInformationPage,
+    UserProfilePreferencesPage,
+    UserProfileSecurityPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
-import {CorporateLayout, DashboardLayout, GuestLayout} from "../layouts";
+import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
 
@@ -143,6 +151,46 @@ const router = createBrowserRouter([
                 path: "license",
                 element: <CorporateLicensePage/>
             }
+        ]
+    },
+    {
+        path: "/user-profile",
+        element: <PageWrapper children={<UserAccountLayout/>}/>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                index: true,
+                path: "details",
+                element: <UserProfileDetailsPage/>
+            },
+            {
+                path: "preferences",
+                element: <UserProfilePreferencesPage/>
+            },
+            {
+                path: "information",
+                element: <UserProfileInformationPage/>
+            },
+            {
+                path: "security",
+                element: <UserProfileSecurityPage/>
+            },
+            {
+                path: "activity",
+                element: <UserProfileActivityPage/>
+            },
+            {
+                path: "actions",
+                element: <UserProfileActionsPage/>
+            },
+            {
+                path: "help",
+                element: <UserProfileHelpPage/>
+            },
+            {
+                path: "feedback",
+                element: <UserProfileFeedbackPage/>
+            },
         ]
     }
 ]);

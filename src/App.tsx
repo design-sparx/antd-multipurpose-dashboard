@@ -2,6 +2,7 @@ import {RouterProvider} from 'react-router-dom'
 import routes from "./routes/routes.tsx";
 import {ConfigProvider} from "antd";
 import {HelmetProvider} from "react-helmet-async"
+import {StylesContext} from "./context";
 
 import "./App.css"
 
@@ -37,18 +38,50 @@ function App() {
                             linkColor: 'rgba(0,0,0,.8)',
                             itemColor: 'rgba(0,0,0,.8)'
                         },
+                        Button: {
+                            colorLink: COLOR["500"],
+                            colorLinkActive: COLOR["700"],
+                            colorLinkHover: COLOR["300"],
+                        },
                         Card: {
                             colorBgContainer: "none",
                             colorBorderSecondary: COLOR["100"],
                         },
+                        Rate: {
+                            colorFillContent: COLOR["100"],
+                            colorText: COLOR["600"]
+                        },
                         Segmented: {
                             colorBgLayout: COLOR["300"],
                             borderRadius: 6,
+                        },
+                        Tabs: {
+                            colorBorderSecondary: COLOR["100"],
+                        },
+                        Timeline: {
+                            dotBg: "none"
+                        },
+                        Typography: {
+                            colorLink: COLOR["500"],
+                            colorLinkActive: COLOR["700"],
+                            colorLinkHover: COLOR["300"],
+                            linkHoverDecoration: "underline"
                         }
                     },
                 }}
             >
-                <RouterProvider router={routes}/>
+                <StylesContext.Provider
+                    value={{
+                        rowProps: {
+                            gutter: [
+                                {xs: 8, sm: 16, md: 24, lg: 32},
+                                {xs: 8, sm: 16, md: 24, lg: 32}
+                            ]
+                        }
+                    }}
+                >
+                    <RouterProvider router={routes}/>
+                </StylesContext.Provider>
             </ConfigProvider>
         </HelmetProvider>
     )
