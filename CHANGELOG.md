@@ -1,5 +1,28 @@
 # antd-multi-dashboard
 
+## 0.4.3
+
+### Patch Changes
+
+- 314a528: added account security page
+- 2201502: added account feedback page
+- 2d5f55e: finished account activity page
+- 18834e4: added user profile details page
+- 3753458: added account actions page
+- a1c18ac: ### Added the user profile pages
+  - details
+  - preferences
+  - information
+  - security
+  - activity
+  - actions
+  - help
+  - feedback
+- 255f85f: added user profile personal information page
+- efff0fb: added account help page
+- 18834e4: added user account layout
+- f5f27c8: added user profile preferences page
+
 ## 0.4.2
 
 ### Patch Changes
