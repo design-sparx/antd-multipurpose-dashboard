@@ -1,5 +1,23 @@
 # antd-multi-dashboard
 
+## 0.5.0
+
+### Minor Changes
+
+- 2f2f5b0: completed user profile pages and sections
+
+### Patch Changes
+
+- e18bbf4: ### Added
+
+  - added user profile to sitemap
+  - added active tab styles on the user profile page
+
+  ### Updated
+
+  - updated sitemap card styles
+  - minor page-to-page transition update
+
 ## 0.4.3
 
 ### Patch Changes
