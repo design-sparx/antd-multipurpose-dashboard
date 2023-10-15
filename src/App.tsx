@@ -47,6 +47,10 @@ function App() {
                             colorBgContainer: "none",
                             colorBorderSecondary: COLOR["100"],
                         },
+                        Rate: {
+                            colorFillContent: COLOR["100"],
+                            colorText: COLOR["600"]
+                        },
                         Segmented: {
                             colorBgLayout: COLOR["300"],
                             borderRadius: 6,

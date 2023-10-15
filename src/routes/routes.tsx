@@ -13,15 +13,20 @@ import {
     MarketingDashboardPage,
     ProjectsDashboardPage,
     SitemapPage,
-    SocialDashboardPage, UserProfileActionsPage, UserProfileActivityPage,
-    UserProfileDetailsPage, UserProfileInformationPage,
-    UserProfilePreferencesPage, UserProfileSecurityPage
+    SocialDashboardPage,
+    UserProfileActionsPage,
+    UserProfileActivityPage,
+    UserProfileDetailsPage,
+    UserProfileFeedbackPage,
+    UserProfileHelpPage,
+    UserProfileInformationPage,
+    UserProfilePreferencesPage,
+    UserProfileSecurityPage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
 import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
-import {UserProfileHelpPage} from "../pages/userAccount";
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -181,6 +186,10 @@ const router = createBrowserRouter([
             {
                 path: "help",
                 element: <UserProfileHelpPage/>
+            },
+            {
+                path: "feedback",
+                element: <UserProfileFeedbackPage/>
             },
         ]
     }
