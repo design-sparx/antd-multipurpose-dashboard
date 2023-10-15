@@ -1,13 +1,9 @@
 import {SitemapCard} from "../components";
-import {Col, Row, RowProps, Typography} from "antd";
-import {CORPORATE_ITEMS, DASHBOARD_ITEMS} from "../constants";
+import {Col, Flex, Row, Typography} from "antd";
+import {CORPORATE_ITEMS, DASHBOARD_ITEMS, USER_PROFILE_ITEMS} from "../constants";
+import {useStylesContext} from "../context";
+import {BranchesOutlined} from "@ant-design/icons";
 
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
 
 const SITES = [
     {
@@ -17,20 +13,28 @@ const SITES = [
     {
         title: "corporate",
         links: CORPORATE_ITEMS
+    },
+    {
+        title: "user profile",
+        links: USER_PROFILE_ITEMS
     }
 ]
 
 const SitemapPage = () => {
+    const context = useStylesContext()
+
     return (
         <div>
-            <Typography.Title level={3}>Sitemap</Typography.Title>
-            <Row {...ROW_PROPS}>
-                {SITES.map(s =>
-                    <Col xs={24} sm={12} lg={6} xl={6}>
-                        <SitemapCard data={s}/>
-                    </Col>
-                )}
-            </Row>
+            <Flex vertical gap="middle">
+                <Typography.Title level={3}><BranchesOutlined/>{' '}Sitemap</Typography.Title>
+                <Row {...context?.rowProps}>
+                    {SITES.map(s =>
+                        <Col xs={24} sm={12} md={8} lg={6} key={`col-${s.title}`}>
+                            <SitemapCard data={s}/>
+                        </Col>
+                    )}
+                </Row>
+            </Flex>
         </div>
     );
 };
