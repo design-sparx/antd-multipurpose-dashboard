@@ -1,8 +1,9 @@
 import {createContext, useContext} from "react";
-import {RowProps} from "antd";
+import {CarouselProps, RowProps} from "antd";
 
 export type StylesContentProps = {
-    rowProps: RowProps
+    rowProps: RowProps,
+    carouselProps: CarouselProps
 }
 
 export const StylesContext = createContext<StylesContentProps | null>(null)

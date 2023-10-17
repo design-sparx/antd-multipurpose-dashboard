@@ -16,10 +16,10 @@ import {
     PageHeader,
     TruckListCard
 } from "../../components";
-import TruckDeliveryData from "../../mocks/TruckDeliveries.json";
-import DeliveryAnalyticsData from "../../mocks/DeliveryAnalytics.json";
-import TrucksData from "../../mocks/Trucks.json"
-import DeliveryRequests from "../../mocks/TruckDeliveryRequest.json";
+import TruckDeliveryData from "../../../public/mocks/TruckDeliveries.json";
+import DeliveryAnalyticsData from "../../../public/mocks/DeliveryAnalytics.json";
+import TrucksData from "../../../public/mocks/Trucks.json"
+import DeliveryRequests from "../../../public/mocks/TruckDeliveryRequest.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";

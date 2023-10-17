@@ -1,4 +1,4 @@
-import ChannelUsersData from "../../../../mocks/ChannelUsers.json"
+import ChannelUsersData from "../../../../../public/mocks/ChannelUsers.json"
 import {Card, CardProps, Table, Typography} from "antd";
 import {MoreMenu} from "../../../index.ts";
 

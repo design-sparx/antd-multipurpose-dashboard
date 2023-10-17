@@ -1,4 +1,5 @@
-import {Typography} from "antd";
+import {Flex, FlexProps, Typography} from "antd";
+import {Link} from "react-router-dom";
 
 type LogoProps = {
     color: "black" | "white",
@@ -6,14 +7,24 @@ type LogoProps = {
         h?: number | string,
         w?: number | string
     }
-} & React.HTMLAttributes<HTMLDivElement>
+    asLink?: boolean
+    href?: string
+} & Omit<FlexProps, "children">
 
-const Logo = ({color, imgSize, ...others}: LogoProps) => {
+const Logo = ({asLink, color, href, imgSize, ...others}: LogoProps) => {
     return (
-        <div {...others}>
-            <img src="/logo-no-background.png" alt="design sparx logo" height={imgSize?.h || 48}/>
-            <Typography.Title level={4} type="secondary" style={{color, margin: 0}}>Design Sparx</Typography.Title>
-        </div>
+        asLink ?
+            <Link to={href || "#"}>
+                <Flex gap={others.gap || "middle"} align="center" {...others}>
+                    <img src="/logo-no-background.png" alt="design sparx logo" height={imgSize?.h || 48}/>
+                    <Typography.Title level={5} type="secondary" style={{color, margin: 0}}>Design
+                        Sparx</Typography.Title>
+                </Flex>
+            </Link> : <Flex gap={others.gap || "middle"} align="center" {...others}>
+                <img src="/logo-no-background.png" alt="design sparx logo" height={imgSize?.h || 48}/>
+                <Typography.Title level={5} type="secondary" style={{color, margin: 0}}>Design
+                    Sparx</Typography.Title>
+            </Flex>
     );
 };
 

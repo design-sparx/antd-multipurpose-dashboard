@@ -1,6 +1,6 @@
 import {Badge, Button, Card, CardProps, Space, Table, Typography} from "antd";
 import {useState} from "react";
-import CampaignsData from "../../../../mocks/Campaigns.json"
+import CampaignsData from "../../../../../public/mocks/Campaigns.json"
 import {CalendarOutlined, PlusOutlined} from "@ant-design/icons";
 
 // socials - Facebook, Instagram, Twitter, LinkedIn

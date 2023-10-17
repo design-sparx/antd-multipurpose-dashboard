@@ -47,6 +47,10 @@ function App() {
                             colorBgContainer: "none",
                             colorBorderSecondary: COLOR["100"],
                         },
+                        Carousel: {
+                            colorBgContainer: COLOR["800"],
+                            dotWidth: 8
+                        },
                         Rate: {
                             colorFillContent: COLOR["100"],
                             colorText: COLOR["600"]
@@ -77,6 +81,14 @@ function App() {
                                 {xs: 8, sm: 16, md: 24, lg: 32},
                                 {xs: 8, sm: 16, md: 24, lg: 32}
                             ]
+                        },
+                        carouselProps: {
+                            autoplay: true,
+                            dots: true,
+                            dotPosition: 'bottom',
+                            infinite: true,
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
                         }
                     }}
                 >

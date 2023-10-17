@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import {createElement, useEffect, useState} from "react";
 import * as _ from "lodash";
-import FaqsData from "../../mocks/Faqs.json";
+import FaqsData from "../../../public/mocks/Faqs.json";
 import {TitleProps} from "antd/es/typography/Title";
 
 const {Text, Title} = Typography

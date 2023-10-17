@@ -1,7 +1,7 @@
 import React from "react";
 import {Card as AntdCard, Col, Image, List, Row, RowProps, Typography} from "antd";
 import {Card, EmployeeCard} from "../../components";
-import EmployeesData from "../../mocks/Employees.json"
+import EmployeesData from "../../../public/mocks/Employees.json"
 import {Employee} from "../../types";
 
 const {Title, Text, Paragraph} = Typography

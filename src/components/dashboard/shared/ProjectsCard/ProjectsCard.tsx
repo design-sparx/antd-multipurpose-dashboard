@@ -1,9 +1,9 @@
 import {Projects} from "../../../../types";
-import {CardProps, Descriptions, DescriptionsProps, Space, Tooltip, Typography} from "antd";
+import {Card as AntdCard, CardProps, Descriptions, DescriptionsProps, Space, Tooltip, Typography} from "antd";
 import {CalendarOutlined, ClockCircleOutlined, UsergroupAddOutlined} from "@ant-design/icons";
-
 import "./styles.css";
-import {Card} from "../../../index.ts";
+
+const {Text} = Typography
 
 type Props = {
     project: Projects
@@ -64,16 +64,17 @@ const ProjectsCard = (props: Props) => {
 
     return (
         size === "small" ?
-            <Card title={`${project_name.slice(0, 15)}...`} className="project-small-card" {...others}>
+            <AntdCard className="project-small-card" {...others}>
                 <Space direction="vertical">
-                    <Typography.Text>Owner: {project_manager}</Typography.Text>
-                    <Typography.Text>Client: {client_name}</Typography.Text>
-                    <Typography.Text>Priority: {priority}</Typography.Text>
-                    <Typography.Text>Type: {project_type}</Typography.Text>
-                    <Typography.Text>Location: {project_location}</Typography.Text>
+                    <Text strong className="text-capitalize">{project_name.slice(0, 15)}</Text>
+                    <Text>Owner: {project_manager}</Text>
+                    <Text>Client: {client_name}</Text>
+                    <Text>Priority: {priority}</Text>
+                    <Text>Type: {project_type}</Text>
+                    <Text>Location: {project_location}</Text>
                 </Space>
-            </Card> :
-            <Card
+            </AntdCard> :
+            <AntdCard
                 title={project_name}
                 hoverable={true}
                 actions={[
@@ -102,8 +103,7 @@ const ProjectsCard = (props: Props) => {
                     items={items}
                     column={{xxl: 2, xl: 2, lg: 2, md: 1, sm: 1, xs: 1}}
                 />
-            </Card>
-
+            </AntdCard>
     );
 };
 

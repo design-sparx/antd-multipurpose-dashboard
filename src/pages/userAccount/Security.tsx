@@ -1,7 +1,7 @@
 import {Badge, Button, Col, Collapse, Descriptions, Form, Input, Row, Typography} from "antd";
 import {useStylesContext} from "../../context";
 import {Card, Flex} from "../../components";
-import SessionActivityData from "../../mocks/SessionActivity.json"
+import SessionActivityData from "../../../public/mocks/SessionActivity.json"
 import {Session} from "../../types";
 import {LaptopOutlined, MobileOutlined, SaveOutlined, TabletOutlined} from "@ant-design/icons";
 

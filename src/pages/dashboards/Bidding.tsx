@@ -8,10 +8,10 @@ import {
     TopItemsCard,
     TransactionsCard
 } from "../../components";
-import LiveAuctionData from "../../mocks/LiveAuction.json";
-import AuctionCreatorsData from "../../mocks/AuctionCreators.json"
-import TopSellingItemsData from "../../mocks/BiddingTopSellers.json"
-import TransactionsData from "../../mocks/BiddingTransactions.json"
+import LiveAuctionData from "../../../public/mocks/LiveAuction.json";
+import AuctionCreatorsData from "../../../public/mocks/AuctionCreators.json"
+import TopSellingItemsData from "../../../public/mocks/BiddingTopSellers.json"
+import TransactionsData from "../../../public/mocks/BiddingTransactions.json"
 import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";

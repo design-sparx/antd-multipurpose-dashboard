@@ -21,9 +21,9 @@ import {
     PostsCard,
     SocialStatsCard
 } from "../../components";
-import SocialMediaData from "../../mocks/SocialMedia.json";
-import ScheduledPostsData from "../../mocks/ScheduledPosts.json"
-import SocialsCommentsData from "../../mocks/SocialComments.json";
+import SocialMediaData from "../../../public/mocks/SocialMedia.json";
+import ScheduledPostsData from "../../../public/mocks/ScheduledPosts.json"
+import SocialsCommentsData from "../../../public/mocks/SocialComments.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";

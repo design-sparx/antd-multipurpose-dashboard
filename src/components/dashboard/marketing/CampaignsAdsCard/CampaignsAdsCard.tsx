@@ -1,5 +1,5 @@
 import {CardProps, Space, Table, Typography} from "antd";
-import CampaignsAdsData from "../../../../mocks/CampaignAds.json";
+import CampaignsAdsData from "../../../../../public/mocks/CampaignAds.json";
 import {Card} from "../../../index.ts";
 
 type Props = CardProps

@@ -1,4 +1,4 @@
-import {Avatar, AvatarProps, Space, theme, Typography} from "antd";
+import {Avatar, AvatarProps, Flex, theme, Typography} from "antd";
 import {getNameInitials} from "../../utils";
 import {UserOutlined} from "@ant-design/icons";
 
@@ -19,7 +19,7 @@ const UserAvatar = ({fullName, mark, size}: Props) => {
     }
 
     return (
-        <Space>
+        <Flex gap="small" align="center">
             {mark ?
                 <Avatar
                     style={{backgroundColor: token.colorPrimary}}
@@ -34,7 +34,7 @@ const UserAvatar = ({fullName, mark, size}: Props) => {
                 </Avatar>
             }
             <Typography.Text>{fullName}</Typography.Text>
-        </Space>
+        </Flex>
     );
 };
 

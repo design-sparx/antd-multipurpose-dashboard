@@ -17,11 +17,11 @@ import {
     ProgressCard,
     StudyStatisticsCard
 } from "../../components";
-import CoursesData from "../../mocks/Courses.json"
-import RecommendedCourseData from "../../mocks/RecommendedCourses.json"
-import StudyStatisticsData from "../../mocks/StudyStatistics.json";
-import ExamsData from "../../mocks/Exams.json";
-import CommunityGroupsData from "../../mocks/CommunityGroups.json";
+import CoursesData from "../../../public/mocks/Courses.json"
+import RecommendedCourseData from "../../../public/mocks/RecommendedCourses.json"
+import StudyStatisticsData from "../../../public/mocks/StudyStatistics.json";
+import ExamsData from "../../../public/mocks/Exams.json";
+import CommunityGroupsData from "../../../public/mocks/CommunityGroups.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";

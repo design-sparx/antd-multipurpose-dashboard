@@ -2,20 +2,22 @@ import {useRef} from "react";
 import {
     Card,
     GetStartedCard,
-    NotificationsCard, PageHeader,
+    Loader,
+    NotificationsCard,
+    PageHeader,
     ProjectsCard,
     TasksChartCard,
     TasksListCard,
     WeeklyActivityCard
 } from "../../components";
-import {Button, CardProps, Carousel, CarouselProps, Col, Row, RowProps, Space, Typography} from "antd";
-import TasksListData from "../../mocks/TasksList.json";
-import ProjectsData from "../../mocks/Projects.json";
-import NotificationsData from "../../mocks/Notifications.json";
+import {Alert, Button, CardProps, Carousel, CarouselProps, Col, Flex, Row, Typography} from "antd";
 import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
+import {useStylesContext} from "../../context";
+import {useFetchData} from "../../hooks";
+import {Projects} from "../../types";
 
 const ACTIVITY_DATA = [
     {
@@ -122,22 +124,9 @@ const TASKS_DATA = [
 ]
 
 const CAROUSEL_PROPS: CarouselProps = {
-    dots: true,
-    autoplay: true,
-    infinite: true,
-    speed: 500,
-    autoplaySpeed: 10000,
     slidesToShow: 1,
     slidesToScroll: 1
 };
-
-const ROW_PROPS: RowProps = {
-    gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]
-}
-
-const SUB_ROW_PROPS: RowProps = {
-    gutter: [{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]
-}
 
 const CARD_PROPS: CardProps = {
     style: {
@@ -150,8 +139,24 @@ const CARD_PROPS: CardProps = {
 }
 
 const DefaultDashboardPage = () => {
-    const sliderRef1 = useRef<any>()
-    const sliderRef2 = useRef<any>()
+    const stylesContext = useStylesContext()
+    const sliderRef1 = useRef<any>(null)
+    const sliderRef2 = useRef<any>(null)
+    const {
+        data: tasksListData = [],
+        error: tasksListError,
+        loading: tasksListLoading
+    } = useFetchData("../mocks/TasksList.json")
+    const {
+        data: projectsData = [],
+        error: projectsError,
+        loading: projectsLoading
+    } = useFetchData("../mocks/Projects.json")
+    const {
+        data: notificationsData = [],
+        error: notificationsError,
+        loading: notificationsLoading
+    } = useFetchData("../mocks/Notifications.json")
 
     return (
         <div>
@@ -179,30 +184,30 @@ const DefaultDashboardPage = () => {
                     }
                 ]}
             />
-            <Row {...ROW_PROPS}>
+            <Row {...stylesContext?.rowProps}>
                 <Col xs={24} lg={18}>
-                    <Row {...ROW_PROPS}>
+                    <Row {...stylesContext?.rowProps}>
                         <Col xs={24} md={24}>
-                            <Row {...SUB_ROW_PROPS}>
+                            <Row {...stylesContext?.rowProps}>
                                 <Col xs={24} lg={18}>
                                     <GetStartedCard {...CARD_PROPS}/>
                                 </Col>
                                 <Col xs={24} lg={6}>
-                                    <Row {...SUB_ROW_PROPS}>
+                                    <Row {...stylesContext?.rowProps}>
                                         <Col xs={12} lg={24}>
                                             <Card>
-                                                <Space direction="vertical" align="center" style={{width: '100%'}}>
+                                                <Flex vertical align="center" gap="middle">
                                                     <Typography.Title style={{margin: 0}}>10+</Typography.Title>
-                                                    <Typography.Text strong>Projects</Typography.Text>
-                                                </Space>
+                                                    <Typography.Text>Projects</Typography.Text>
+                                                </Flex>
                                             </Card>
                                         </Col>
                                         <Col xs={12} lg={24}>
                                             <Card>
-                                                <Space direction="vertical" align="center" style={{width: '100%'}}>
+                                                <Flex vertical align="center" gap="middle">
                                                     <Typography.Title style={{margin: 0}}>60+</Typography.Title>
-                                                    <Typography.Text strong>Tasks</Typography.Text>
-                                                </Space>
+                                                    <Typography.Text>Tasks</Typography.Text>
+                                                </Flex>
                                             </Card>
                                         </Col>
                                     </Row>
@@ -216,54 +221,83 @@ const DefaultDashboardPage = () => {
                             <TasksChartCard data={TASKS_DATA}/>
                         </Col>
                         <Col span={24}>
-                            <TasksListCard data={TasksListData}/>
+                            <TasksListCard
+                                data={tasksListData}
+                                error={tasksListError}
+                                loading={tasksListLoading}
+                            />
                         </Col>
                     </Row>
                 </Col>
                 <Col md={24} lg={6}>
-                    <Row {...ROW_PROPS}>
+                    <Row {...stylesContext?.rowProps}>
                         <Col span={24}>
                             <Card
                                 title="Ongoing projects"
                                 extra={<Button>View all</Button>}
                                 bordered={false}
                             >
-                                <Carousel ref={sliderRef1} {...CAROUSEL_PROPS}>
-                                    {ProjectsData
-                                        .filter(o => o.status.toLowerCase() === "in progress")
-                                        .slice(0, 4)
-                                        .map(o =>
-                                            <ProjectsCard
-                                                key={o.project_id}
-                                                project={o} size="small"
-                                                style={{margin: `0 8px`}}
-                                            />
-                                        )
-                                    }
-                                </Carousel>
+                                {projectsError ?
+                                    <Alert
+                                        message="Error"
+                                        description={projectsError.toString()}
+                                        type="error"
+                                        showIcon
+                                    /> : (projectsLoading ?
+                                            <Loader/> :
+                                            <Carousel
+                                                ref={sliderRef1} {...stylesContext?.carouselProps} {...CAROUSEL_PROPS}>
+                                                {projectsData
+                                                    .filter((o: Projects) => o.status.toLowerCase() === "in progress")
+                                                    .slice(0, 4)
+                                                    .map((o: Projects) =>
+                                                        <ProjectsCard
+                                                            key={o.project_id}
+                                                            project={o} size="small"
+                                                            style={{margin: `0 8px`}}
+                                                        />
+                                                    )
+                                                }
+                                            </Carousel>
+                                    )
+                                }
                             </Card>
                         </Col>
                         <Col span={24}>
-                            {<Card
-                                title="Projects in queue"
+                            <Card
+                                title="Queued projects"
                                 extra={<Button>View all</Button>}
                                 bordered={false}
                             >
-                                <Carousel ref={sliderRef2} {...CAROUSEL_PROPS}>
-                                    {ProjectsData
-                                        .filter(o => o.status.toLowerCase() === "on hold")
-                                        .slice(0, 4)
-                                        .map(o => <ProjectsCard
-                                            key={o.project_id}
-                                            project={o}
-                                            size="small"
-                                            style={{margin: `0 8px`}}
-                                        />)}
-                                </Carousel>
-                            </Card>}
+                                {projectsError ?
+                                    <Alert
+                                        message="Error"
+                                        description={projectsError.toString()}
+                                        type="error"
+                                        showIcon
+                                    /> : (projectsLoading ?
+                                            <Loader/> :
+                                            <Carousel
+                                                ref={sliderRef2} {...stylesContext?.carouselProps} {...CAROUSEL_PROPS}>
+                                                {projectsData
+                                                    .filter((o: Projects) => o.status.toLowerCase() === "on hold")
+                                                    .slice(0, 4)
+                                                    .map((o: Projects) => <ProjectsCard
+                                                        key={o.project_id}
+                                                        project={o}
+                                                        size="small"
+                                                        style={{margin: `0 8px`}}
+                                                    />)}
+                                            </Carousel>
+                                    )}
+                            </Card>
                         </Col>
                         <Col span={24}>
-                            <NotificationsCard data={NotificationsData}/>
+                            <NotificationsCard
+                                data={notificationsData}
+                                error={notificationsError}
+                                loading={notificationsLoading}
+                            />
                         </Col>
                     </Row>
                 </Col>

@@ -2,8 +2,8 @@ import {Button, Col, Row, Segmented, Space} from "antd";
 import {Card, ClientsTable, PageHeader, ProjectsCard, ProjectsTable, RevenueCard} from "../../components";
 import {Column} from "@ant-design/plots";
 import 'react-calendar-timeline/lib/Timeline.css'
-import ProjectsData from "../../mocks/Projects.json";
-import ClientsData from "../../mocks/Clients.json"
+import ProjectsData from "../../../public/mocks/Projects.json";
+import ClientsData from "../../../public/mocks/Clients.json"
 import {Projects} from "../../types";
 import {useState} from "react";
 import {CloudUploadOutlined, HomeOutlined, PieChartOutlined, PlusOutlined} from "@ant-design/icons";

@@ -10,10 +10,10 @@ import {
     RightOutlined
 } from "@ant-design/icons";
 import {Pie} from "@ant-design/plots";
-import TopSellingProductsData from "../../mocks/TopProducts.json"
-import TopCategoriesData from "../../mocks/TopCategories.json"
-import TopSellerData from "../../mocks/TopSeller.json"
-import RecentOrdersData from "../../mocks/RecentOrders.json"
+import TopSellingProductsData from "../../../public/mocks/TopProducts.json"
+import TopCategoriesData from "../../../public/mocks/TopCategories.json"
+import TopSellerData from "../../../public/mocks/TopSeller.json"
+import RecentOrdersData from "../../../public/mocks/RecentOrders.json"
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";

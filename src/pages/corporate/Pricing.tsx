@@ -1,5 +1,5 @@
 import {PricingTable} from "../../components";
-import PricingData from "../../mocks/Pricing.json"
+import PricingData from "../../../public/mocks/Pricing.json"
 
 const CorporatePricingPage = () => {
     return (
