@@ -1,6 +1,6 @@
-import {CardProps, Col, Row, Space, Typography} from "antd";
+import {Button, CardProps, Col, Popover, Row, Space, Typography} from "antd";
 import {Pie} from "@ant-design/plots";
-import {DesktopOutlined, MobileOutlined, SettingOutlined, TabletFilled} from "@ant-design/icons";
+import {DesktopOutlined, MobileOutlined, QuestionOutlined, SettingOutlined, TabletFilled} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
 
 const PieChart = () => {
@@ -53,7 +53,8 @@ const PieChart = () => {
                     whiteSpace: 'pre-wrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    fontSize: 16
+                    fontSize: 16,
+                    fontWeight: "normal"
                 },
                 content: 'Devices\nUsage',
             },
@@ -70,21 +71,21 @@ type Props = CardProps
 const DevicesCardChart = ({...others}: Props) => {
     return (
         <Card
-            title={
-                <Space direction="vertical">
-                    <Typography.Title level={5}>Flow on device</Typography.Title>
-                    <Typography.Text>Stats can help to design post</Typography.Text>
-                </Space>
+            title="Flow on device"
+            extra={
+                <Popover content="Stats can help to design post">
+                    <Button icon={<QuestionOutlined/>} type="text"/>
+                </Popover>
             }
             {...others}
         >
-            <Row style={{alignItems: 'center'}}>
-                <Col span={12}>
+            <Row gutter={[8, 8]} style={{alignItems: 'center'}}>
+                <Col xs={24} sm={10} lg={8}>
                     <div style={{height: 200}}>
                         <PieChart/>
                     </div>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} sm={12} lg={14}>
                     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <Space direction="vertical">
                             <DesktopOutlined/>

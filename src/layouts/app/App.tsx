@@ -25,6 +25,7 @@ const AppLayout = ({children}: AppLayoutProps) => {
     const [isLoading, setIsLoading] = useState(false)
     const location = useLocation()
     const nodeRef = useRef(null)
+    const floatBtnRef = useRef(null)
 
     useEffect(() => {
         setCollapsed(isMobile)
@@ -151,7 +152,9 @@ const AppLayout = ({children}: AppLayoutProps) => {
                                 </CSSTransition>
                             </SwitchTransition>
                         </TransitionGroup>
-                        <FloatButton.BackTop />
+                        <div ref={floatBtnRef}>
+                            <FloatButton.BackTop/>
+                        </div>
                     </Content>
                     <FooterNav
                         style={{

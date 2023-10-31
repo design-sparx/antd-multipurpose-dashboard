@@ -1,47 +1,51 @@
-import {Avatar, Button, CardProps, List, Space, Typography} from "antd";
+import {Alert, Button, CardProps, Table, TableColumnsType} from "antd";
 import {AuctionCreator} from "../../../../types";
-import {getNameInitials} from "../../../../utils";
-import {CheckCircleFilled, PlusOutlined} from "@ant-design/icons";
-import {Card} from "../../../index.ts";
+import {Card, UserAvatar} from "../../../index";
 
-type Props = { data: AuctionCreator[] } & CardProps
+import "./styles.css"
+import {UserAddOutlined} from "@ant-design/icons";
+import {ReactNode} from "react";
 
-const CreatorsCard = ({data, ...others}: Props) => {
+const COLUMNS: TableColumnsType<AuctionCreator> = [
+    {
+        key: 'creators_name',
+        dataIndex: 'first_name',
+        title: 'Creator',
+        render: (_, {first_name, last_name, favorite_color}) =>
+            <UserAvatar fullName={`${first_name} ${last_name}`} color={favorite_color} verified/>
+    },
+    {
+        key: 'sold_items',
+        dataIndex: 'sales_count',
+        title: 'Items',
+    },
+    {
+        key: 'creator_actions',
+        dataIndex: 'actions',
+        title: "Actions",
+        render: () => <Button type="link" icon={<UserAddOutlined/>}>Follow</Button>
+    }
+]
+
+type Props = { data: AuctionCreator[], loading: boolean, error: ReactNode } & CardProps
+
+const CreatorsCard = ({data, loading, error, ...others}: Props) => {
     return (
-        <Card
-            title="Popular creators"
-            extra={<Button>See all creators</Button>}
-            {...others}
-        >
-            <List
-                itemLayout="vertical"
-                size="large"
-                pagination={{
-                    onChange: (page) => {
-                        console.log(page);
-                    },
-                    pageSize: 5,
-                }}
-                dataSource={data}
-                renderItem={(item) => (
-                    <div style={{display: 'flex', gap: 8}}>
-                        <Avatar
-                            style={{backgroundColor: item.favorite_color}}
-                        >
-                            {getNameInitials(`${item.first_name} ${item.last_name}`)}
-                        </Avatar>
-                        <Space direction="vertical" size={4} style={{flex: 1}}>
-                            <Typography.Link>
-                                {item.first_name}{' '}{item.last_name}{' '}
-                                <CheckCircleFilled style={{fontSize: 12}}/>
-                            </Typography.Link>
-                            <Typography.Text>{item.sales_count} items</Typography.Text>
-                        </Space>
-                        <Button>Follow <PlusOutlined/></Button>
-                    </div>
-                )}
-            />
-        </Card>
+        error ?
+            <Alert
+                message="Error"
+                description={error.toString()}
+                type="error"
+                showIcon
+            /> :
+            <Card
+                title="creators"
+                extra={<Button>See all creators</Button>}
+                className="card"
+                {...others}
+            >
+                <Table dataSource={data} columns={COLUMNS} size="middle" loading={loading} className="overflow-scroll"/>
+            </Card>
     );
 };
 

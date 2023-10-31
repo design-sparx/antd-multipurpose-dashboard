@@ -51,9 +51,10 @@ const TasksListCard = ({data, error, loading, ...others}: Props) => {
                                     style={{height: "100%"}}
                                 >
                                     <AntdCard
-                                        hoverable={true}
-                                        bordered={false}
-                                        style={{height: "100%", background: "white"}}
+                                        hoverable
+                                        bordered
+                                        type="inner"
+                                        style={{height: "100%"}}
                                     >
                                         <Flex vertical gap="middle">
                                             <Flex justify="space-between" align="center">

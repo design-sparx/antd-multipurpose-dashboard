@@ -200,7 +200,8 @@ export const PATH_CHANGELOG = {
 
 export const PATH_GITHUB = {
     org: "https://github.com/design-sparx",
-    personal: "https://github.com/kelvink96"
+    personal: "https://github.com/kelvink96",
+    repo: "https://github.com/design-sparx/antd-multipurpose-dashboard"
 }
 
 export const PATH_SOCIALS = {

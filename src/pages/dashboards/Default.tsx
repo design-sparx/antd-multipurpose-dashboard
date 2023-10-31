@@ -253,7 +253,8 @@ const DefaultDashboardPage = () => {
                                                     .map((o: Projects) =>
                                                         <ProjectsCard
                                                             key={o.project_id}
-                                                            project={o} size="small"
+                                                            project={o}
+                                                            size="small"
                                                             style={{margin: `0 8px`}}
                                                         />
                                                     )

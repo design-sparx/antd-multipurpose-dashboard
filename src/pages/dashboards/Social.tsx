@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
-import {Col, Row, RowProps, Tabs, TabsProps} from "antd";
+import {Col, ConfigProvider, Row, RowProps, Tabs, TabsProps} from "antd";
 import {
     FacebookFilled,
-    FacebookOutlined, HomeOutlined,
+    FacebookOutlined,
+    HomeOutlined,
     InstagramFilled,
     InstagramOutlined,
     LinkedinFilled,
-    LinkedinOutlined, PieChartOutlined,
+    LinkedinOutlined,
+    PieChartOutlined,
     TwitterCircleFilled,
     TwitterOutlined,
     YoutubeFilled,
@@ -17,16 +19,17 @@ import {
     DevicesCardChart,
     FollowersChart,
     LikesChart,
-    MilestonesCard, PageHeader,
+    MilestonesCard,
+    PageHeader,
     PostsCard,
     SocialStatsCard
 } from "../../components";
-import SocialMediaData from "../../../public/mocks/SocialMedia.json";
-import ScheduledPostsData from "../../../public/mocks/ScheduledPosts.json"
-import SocialsCommentsData from "../../../public/mocks/SocialComments.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
+import {COLOR} from "../../App.tsx";
+import {useFetchData} from "../../hooks";
+import {Comments, Posts} from "../../types";
 
 const ROW_PROPS: RowProps = {
     gutter: [
@@ -49,6 +52,21 @@ type SectionProps = {
 
 const Section = ({tab}: SectionProps) => {
     const [title, setTitle] = useState<string>('');
+    const {
+        data: socialsData,
+        loading: socialsDataLoading,
+        error: socialsDataError
+    } = useFetchData('../mocks/SocialMedia.json')
+    const {
+        data: socialCommentsData,
+        loading: socialsCommentsDataLoading,
+        error: socialsCommentsDataError
+    } = useFetchData('../mocks/SocialComments.json')
+    const {
+        data: scheduledPostsData,
+        loading: scheduledPostsDataLoading,
+        error: scheduledPostsDataError
+    } = useFetchData('../mocks/ScheduledPosts.json')
 
     useEffect(() => {
         switch (tab) {
@@ -77,41 +95,57 @@ const Section = ({tab}: SectionProps) => {
             <Row {...ROW_PROPS}>
                 <Col xs={24} sm={12} lg={6}>
                     <SocialStatsCard
-                        title='followers'
-                        value={SocialMediaData?.find(_ => _.title === title)?.followers || 0}
-                    />
-                </Col>
-                <Col xs={24} sm={12} lg={6}>
-                    <SocialStatsCard
-                        title='followers'
-                        value={SocialMediaData?.find(_ => _.title === title)?.following || 0}
-                    />
-                </Col>
-                <Col xs={24} sm={12} lg={6}>
-                    <SocialStatsCard
                         key='followers-card'
                         title='followers'
-                        value={SocialMediaData?.find(_ => _.title === title)?.likes || 0}
+                        value={socialsData?.find((_: any) => _.title === title)?.followers || 0}
+                        error={socialsDataError}
+                        loading={socialsDataLoading}
+                        style={{height: "100%"}}
                     />
                 </Col>
                 <Col xs={24} sm={12} lg={6}>
                     <SocialStatsCard
-                        key='followers-card'
-                        title='followers'
-                        value={SocialMediaData?.find(_ => _.title === title)?.comments || 0}
+                        key='following-card'
+                        title='following'
+                        value={socialsData?.find((_: any) => _.title === title)?.following || 0}
+                        error={socialsDataError}
+                        loading={socialsDataLoading}
+                        style={{height: "100%"}}
+                    />
+                </Col>
+                <Col xs={24} sm={12} lg={6}>
+                    <SocialStatsCard
+                        key='likes-card'
+                        title='likes'
+                        value={socialsData?.find((_: any) => _.title === title)?.likes || 0}
+                        error={socialsDataError}
+                        loading={socialsDataLoading}
+                        style={{height: "100%"}}
+                    />
+                </Col>
+                <Col xs={24} sm={12} lg={6}>
+                    <SocialStatsCard
+                        key='comments-card'
+                        title='comments'
+                        value={socialsData?.find((_: any) => _.title === title)?.comments || 0}
+                        error={socialsDataError}
+                        loading={socialsDataLoading}
+                        style={{height: "100%"}}
                     />
                 </Col>
                 <Col xs={24} lg={12}>
                     <FollowersChart/>
                 </Col>
                 <Col xs={24} lg={12}>
-                    <LikesChart/>
+                    <LikesChart style={{height: "100%"}}/>
                 </Col>
                 <Col xs={24} lg={12}>
                     <PostsCard
                         title='Scheduled Posts'
                         as="scheduled"
-                        data={ScheduledPostsData?.filter(_ => _.platform.toLowerCase() === title)}
+                        data={scheduledPostsData?.filter((_: Posts) => _.platform.toLowerCase() === title)}
+                        loading={scheduledPostsDataLoading}
+                        error={scheduledPostsDataError}
                     />
                 </Col>
                 <Col xs={24} lg={12}>
@@ -127,13 +161,17 @@ const Section = ({tab}: SectionProps) => {
             </Row>
         </Col>
         <Col xs={24} lg={6}>
-            <CommentsCard data={SocialsCommentsData.filter(_ => _.platform.toLowerCase() === title).slice(0, 7)}/>
+            <CommentsCard
+                data={socialCommentsData.filter((_: Comments) => _.platform.toLowerCase() === title)?.slice(0, 7)}
+                loading={socialsCommentsDataLoading}
+                error={socialsCommentsDataError}
+            />
         </Col>
     </>
 }
 
 const SocialDashboardPage = () => {
-    const isMobile = useMediaQuery({ maxWidth: 769 })
+    const isMobile = useMediaQuery({maxWidth: 769})
     const [activeTabKey, setActiveTabKey] = useState<TabKeys>('social-facebook-tab');
 
     const TAB_LIST: TabsProps['items'] = [
@@ -214,13 +252,27 @@ const SocialDashboardPage = () => {
                     }
                 ]}
             />
-            <Tabs
-                centered={isMobile}
-                items={TAB_LIST}
-                activeKey={activeTabKey}
-                onChange={onTabChange}
-                type="card"
-            />
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Tabs: {
+                            cardBg: COLOR["50"],
+                            colorBgContainer: COLOR["500"],
+                            itemSelectedColor: "#FFFFFF",
+                            itemHoverColor: COLOR["500"],
+                        }
+                    }
+                }}
+            >
+                <Tabs
+                    centered={isMobile}
+                    items={TAB_LIST}
+                    activeKey={activeTabKey}
+                    onChange={onTabChange}
+                    type="card"
+                    size="middle"
+                />
+            </ConfigProvider>
             <Row {...ROW_PROPS}>
                 {TAB_CONTENT[activeTabKey]}
             </Row>

@@ -1,4 +1,4 @@
-import {Button, Col, Row, RowProps, Select, Space, Typography} from "antd";
+import {Button, Col, Flex, Popover, Row, RowProps, Select, Typography} from "antd";
 import {
     AuctionCarousel,
     BiddingCategoriesCard,
@@ -8,14 +8,11 @@ import {
     TopItemsCard,
     TransactionsCard
 } from "../../components";
-import LiveAuctionData from "../../../public/mocks/LiveAuction.json";
-import AuctionCreatorsData from "../../../public/mocks/AuctionCreators.json"
-import TopSellingItemsData from "../../../public/mocks/BiddingTopSellers.json"
-import TransactionsData from "../../../public/mocks/BiddingTransactions.json"
-import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
+import {HomeOutlined, PieChartOutlined, QuestionOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
+import {useFetchData} from "../../hooks";
 
 const ROW_PROPS: RowProps = {
     gutter: [
@@ -25,6 +22,27 @@ const ROW_PROPS: RowProps = {
 }
 
 const BiddingDashboardPage = () => {
+    const {
+        data: auctionData,
+        loading: auctionDataLoading,
+        error: auctionDataError
+    } = useFetchData('../mocks/LiveAuction.json')
+    const {
+        data: auctionCreatorsData,
+        loading: auctionCreatorsDataLoading,
+        error: auctionCreatorsDataError
+    } = useFetchData('../mocks/AuctionCreators.json')
+    const {
+        data: topSellersData,
+        loading: topSellersDataLoading,
+        error: topSellersDataError
+    } = useFetchData('../mocks/BiddingTopSellers.json')
+    const {
+        data: transactionsData,
+        loading: transactionsDataLoading,
+        error: transactionsDataError
+    } = useFetchData('../mocks/BiddingTransactions.json')
+
     return (
         <div>
             <Helmet>
@@ -52,9 +70,9 @@ const BiddingDashboardPage = () => {
                 ]}
             />
             <Row {...ROW_PROPS}>
-                <Col span={24}>
-                    <Space align="center">
-                        <Typography.Title level={4}>Live auction</Typography.Title>
+                <Col sm={24} md={24} xl={18}>
+                    <Flex align="center" justify="space-between">
+                        <Typography.Title level={4}>Live auctions</Typography.Title>
                         <Select
                             defaultValue="Popular"
                             style={{width: 120}}
@@ -65,38 +83,68 @@ const BiddingDashboardPage = () => {
                                 {value: 'Price', label: 'Price'},
                             ]}
                         />
-                    </Space>
-                    <AuctionCarousel data={LiveAuctionData}/>
+                    </Flex>
+                    <AuctionCarousel data={auctionData} loading={auctionDataLoading} error={auctionDataError}/>
                 </Col>
-                <Col xs={24} lg={8}>
+                <Col xs={24} md={24} xl={6}>
+                    <Typography.Title level={4}>Account status</Typography.Title>
                     <Row {...ROW_PROPS}>
-                        <Col xs={24} sm={12} lg={24}>
-                            <Card title="Wallet">
-                                <Typography.Title>$4892.00</Typography.Title>
-                                <Typography.Text>Your account balance</Typography.Text>
-                                <Button>Check Transactions</Button>
+                        <Col md={12} xl={24}>
+                            <Card
+                                title="Wallet"
+                                extra={
+                                    <Popover content="Your account balance">
+                                        <Button icon={<QuestionOutlined/>} type="text"/>
+                                    </Popover>
+                                }
+                            >
+                                <Flex vertical gap="middle">
+                                    <Typography.Title level={2} className="m-0">$4892.00</Typography.Title>
+                                    <Button>Check Transactions</Button>
+                                </Flex>
                             </Card>
                         </Col>
-                        <Col xs={24} sm={12} lg={24}>
-                            <Card title="Revenue">
-                                <Typography.Title>$210.00</Typography.Title>
-                                <Typography.Text>Revenue is retrieved by your staked.</Typography.Text>
-                                <Button>Read</Button>
+                        <Col md={12} xl={24}>
+                            <Card
+                                title="Revenue"
+                                extra={
+                                    <Popover content="Revenue is retrieved by your staked.">
+                                        <Button icon={<QuestionOutlined/>} type="text"/>
+                                    </Popover>
+                                }
+                            >
+                                <Flex vertical gap="middle">
+                                    <Typography.Title level={2} className="m-0">$210.00</Typography.Title>
+                                    <Button>Read</Button>
+                                </Flex>
                             </Card>
                         </Col>
                     </Row>
                 </Col>
-                <Col xs={24} lg={8}>
-                    <CreatorsCard data={AuctionCreatorsData}/>
+                <Col xs={24} xl={12}>
+                    <CreatorsCard
+                        data={auctionCreatorsData}
+                        loading={auctionCreatorsDataLoading}
+                        error={auctionCreatorsDataError}
+                    />
                 </Col>
-                <Col xs={24} lg={8}>
-                    <BiddingCategoriesCard/>
+                <Col xs={24} xl={12}>
+                    <BiddingCategoriesCard style={{height: "100%"}}/>
                 </Col>
-                <Col span={24}>
-                    <TopItemsCard data={TopSellingItemsData}/>
+                <Col xs={24} xl={12}>
+                    <TopItemsCard
+                        data={topSellersData}
+                        loading={topSellersDataLoading}
+                        error={topSellersDataError}
+                        style={{height: "100%"}}
+                    />
                 </Col>
-                <Col span={24}>
-                    <TransactionsCard data={TransactionsData}/>
+                <Col xs={24} xl={12}>
+                    <TransactionsCard
+                        data={transactionsData}
+                        loading={transactionsDataLoading}
+                        error={transactionsDataError} style={{height: "100%"}}
+                    />
                 </Col>
             </Row>
         </div>

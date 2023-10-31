@@ -1,50 +1,67 @@
-import {Table, Typography} from "antd";
+import {Badge, BadgeProps, Table, Tag, TagProps, Typography} from "antd";
 import {Projects} from "../../../../types";
 
 const COLUMNS = [
     {
         title: 'Name',
         dataIndex: 'project_name',
-        key: 'project_name',
+        key: 'proj_name',
         render: (_: any, {project_name}: Projects) =>
-            <Typography.Paragraph ellipsis={{rows: 1}}>
+            <Typography.Paragraph ellipsis={{rows: 1}} className="text-capitalize" style={{marginBottom: 0}}>
                 {project_name.substring(0, 20)}
             </Typography.Paragraph>
     },
     {
-        title: 'Manager',
-        dataIndex: 'project_manager',
-        key: 'project_manager',
-    },
-    {
         title: 'Client',
         dataIndex: 'client_name',
-        key: 'client_name',
-    },
-    {
-        title: 'Type',
-        dataIndex: 'project_type',
-        key: 'project_type',
+        key: 'proj_client_name',
     },
     {
         title: 'Category',
         dataIndex: 'project_category',
-        key: 'project_category',
+        key: 'proj_category',
+        render: (_: any) => <span className="text-capitalize">{_}</span>
     },
     {
         title: 'Priority',
         dataIndex: 'priority',
-        key: 'priority',
+        key: 'proj_priority',
+        render: (_: any) => {
+            let color: TagProps["color"]
+
+            if (_ === "low") {
+                color = "cyan"
+            } else if (_ === "medium") {
+                color = "geekblue"
+            } else {
+                color = "magenta"
+            }
+
+            return <Tag color={color} className="text-capitalize">{_}</Tag>
+        }
     },
     {
         title: 'Status',
         dataIndex: 'status',
-        key: 'status',
+        key: 'proj_status',
+        render: (_: any) => {
+            let status: BadgeProps["status"]
+
+            if (_ === "on hold") {
+                status = "default"
+            } else if (_ === "completed") {
+                status = "success"
+            } else {
+                status = "processing"
+            }
+
+            return <Badge status={status} text={_} className="text-capitalize"/>
+        }
     },
     {
         title: 'Team size',
         dataIndex: 'team_size',
-        key: 'team_size',
+        key: 'proj_team_size',
     },
     {
         title: 'Duration',
@@ -54,13 +71,8 @@ const COLUMNS = [
     {
         title: 'Start date',
         dataIndex: 'start_date',
-        key: 'start_date',
-    },
-    {
-        title: 'Location',
-        dataIndex: 'project_location',
-        key: 'project_location',
-    },
+        key: 'proj_start_date',
+    }
 ];
 
 type Props = {
@@ -69,7 +81,7 @@ type Props = {
 
 const ProjectsTable = ({data}: Props) => {
     return (
-        <Table dataSource={data} columns={COLUMNS}/>
+        <Table dataSource={data} columns={COLUMNS} className="overflow-scroll"/>
     );
 };
 

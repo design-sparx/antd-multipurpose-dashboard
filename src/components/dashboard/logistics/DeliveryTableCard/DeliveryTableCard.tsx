@@ -1,8 +1,8 @@
-import {Button, CardProps, Table, Typography} from "antd";
+import {Alert, Button, CardProps, Table, TableProps, Typography} from "antd";
 import {TruckDelivery} from "../../../../types";
-import {useState} from "react";
+import {ReactNode, useState} from "react";
 import {ColumnsType} from "antd/es/table";
-import {Card} from "../../../index.ts";
+import {Card, UserAvatar} from "../../../index.ts";
 
 type TabKeys = "all" | "in transit" | "delayed" | "delivered" | string
 
@@ -47,12 +47,8 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
     {
         title: 'Driver',
         dataIndex: 'driver_name',
-        key: 'driver_name'
-    },
-    {
-        title: 'Driver',
-        dataIndex: 'driver_name',
-        key: 'driver_name'
+        key: 'driver_name',
+        render: (_: any) => <UserAvatar fullName={_}/>
     },
     {
         title: 'Status',
@@ -62,7 +58,8 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
     {
         title: 'Cost',
         dataIndex: 'shipment_cost',
-        key: 'shipment_cost'
+        key: 'shipment_cost',
+        render: (_: any) => <span>${_}</span>
     },
     {
         title: 'Delivery date',
@@ -73,19 +70,21 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
 
 type DeliveryTableProps = {
     data: TruckDelivery[]
-}
+} & TableProps<any>
 
-const DeliveryTable = ({data}: DeliveryTableProps) => {
+const DeliveryTable = ({data, ...others}: DeliveryTableProps) => {
     return (
-        <Table dataSource={data} columns={DELIVERY_TABLE_COLUMNS}/>
+        <Table dataSource={data} columns={DELIVERY_TABLE_COLUMNS} {...others}/>
     )
 }
 
 type Props = {
     data: TruckDelivery[]
+    loading: boolean
+    error: ReactNode
 } & CardProps
 
-const DeliveryTableCard = ({data, ...others}: Props) => {
+const DeliveryTableCard = ({data, loading, error, ...others}: Props) => {
     const [activeTabKey, setActiveTabKey] = useState<TabKeys>('all');
 
     const onTabChange = (key: string) => {
@@ -101,9 +100,18 @@ const DeliveryTableCard = ({data, ...others}: Props) => {
             onTabChange={onTabChange}
             {...others}
         >
-            <DeliveryTable
-                data={activeTabKey !== "all" ? data.filter(d => d.delivery_status.toLowerCase() === activeTabKey) : data}
-            />
+            {error ?
+                <Alert
+                    message="Error"
+                    description={error.toString()}
+                    type="error"
+                    showIcon
+                /> :
+                <DeliveryTable
+                    data={activeTabKey !== "all" ? data.filter(d => d.delivery_status.toLowerCase() === activeTabKey) : data}
+                    loading={loading}
+                />
+            }
         </Card>
     );
 };

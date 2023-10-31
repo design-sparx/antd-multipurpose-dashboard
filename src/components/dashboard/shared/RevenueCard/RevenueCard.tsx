@@ -1,6 +1,7 @@
-import {CardProps, Space, Typography} from "antd";
+import {CardProps, Flex, Space, Typography} from "antd";
 import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
+import {green, red} from "@ant-design/colors"
 
 type Props = {
     title: string,
@@ -8,16 +9,24 @@ type Props = {
     diff: number
 } & CardProps
 
-const RevenueCard = ({title, value, diff}: Props) => {
-    return (
-        <Card title={title}>
-            <Typography.Title>{value}</Typography.Title>
-            <Space>
+const RevenueCard = ({title, value, diff}: Props) => (
+    <Card>
+        <Flex vertical gap="large">
+            <Typography.Text>{title}</Typography.Text>
+            <Typography.Title level={2} style={{margin: 0}}>{value}</Typography.Title>
+            <Space style={{color: diff > 0 ? green[6] : red[5]}}>
                 {diff > 0 ? <ArrowUpOutlined/> : <ArrowDownOutlined/>}
-                <Typography.Text>{diff}%</Typography.Text>
+                <Typography.Text
+                    style={{
+                        color: diff > 0 ? green[6] : red[5],
+                        fontWeight: 500
+                    }}
+                >
+                    {diff}%
+                </Typography.Text>
             </Space>
-        </Card>
-    );
-};
+        </Flex>
+    </Card>
+);
 
 export default RevenueCard;

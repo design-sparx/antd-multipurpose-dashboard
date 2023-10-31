@@ -1,15 +1,17 @@
-import {Badge, Button, CardProps, Carousel, CarouselProps, Space, Tag, Typography} from "antd";
-import {ClockCircleOutlined, EditOutlined, EllipsisOutlined, SettingOutlined} from "@ant-design/icons";
+import {Alert, Button, CardProps, Carousel, CarouselProps, Flex, Space, Tag, theme, Typography} from "antd";
+import {ClockCircleOutlined} from "@ant-design/icons";
 import {Bidding} from "../../../../types";
-import {Card} from "../../../index.ts";
+import {Card, Loader} from "../../../index.ts";
 
 import "./styles.css";
+import {ReactNode} from "react";
 
 type CardItemProps = {
     item: Bidding
 } & CardProps
 
 const CardItem = ({item}: CardItemProps) => {
+    const {token: {borderRadius}} = theme.useToken()
     const {
         auction_id,
         nft_name,
@@ -22,6 +24,7 @@ const CardItem = ({item}: CardItemProps) => {
 
     return (
         <Card
+            style={{marginRight: 16}}
             cover={
                 <div
                     className='auction-card-header'
@@ -30,33 +33,33 @@ const CardItem = ({item}: CardItemProps) => {
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
+                        borderTopLeftRadius: borderRadius,
+                        borderTopRightRadius: borderRadius
                     }}
                 >
-                    <Badge
-                        dot
-                        status={status === "active" ? "success" : "error"}
-                        text={status}
-                        style={{color: 'white', fontWeight: 600, textTransform: 'capitalize', fontSize: 16}}
-                    />
-                    <Tag
-                        icon={<ClockCircleOutlined/>}
-                        color="#585858"
-                    >
-                        {time_left.split(' ')[0]} left
-                    </Tag>
+                    <Flex justify="space-between" align="flex-start">
+                        <Tag
+                            color={status === "active" ? "green-inverse" : "volcano-inverse"}
+                            className="text-capitalize m-0"
+                        >
+                            {status}
+                        </Tag>
+                        <Tag
+                            icon={<ClockCircleOutlined/>}
+                            color="magenta-inverse"
+                            className="m-0"
+                        >
+                            {time_left.split(' ')[0]} left
+                        </Tag>
+                    </Flex>
                 </div>
             }
-            actions={[
-                <SettingOutlined key="setting"/>,
-                <EditOutlined key="edit"/>,
-                <EllipsisOutlined key="ellipsis"/>,
-            ]}
             className="auction-card card"
         >
-            <Space direction="vertical">
+            <Flex vertical gap="middle" style={{padding: "16px"}}>
                 <Typography.Title
                     level={5}
-                    style={{margin: 0}}
+                    className="text-capitalize m-0"
                 >
                     {nft_name.split(' ')[0]} {nft_name.split(' ')[1]} #{auction_id.slice(0, 4)}
                 </Typography.Title>
@@ -64,44 +67,69 @@ const CardItem = ({item}: CardItemProps) => {
                     <Typography.Text>{is_highest_bid_mine ? 'Your Bid' : 'Highest Bid'}</Typography.Text>
                     <Typography.Text>${winning_bid}</Typography.Text>
                 </Space>
-                <Space>
-                    <Button>Place Bid</Button>
-                </Space>
-            </Space>
+                <Button block type="primary" disabled={is_highest_bid_mine}>Place Bid</Button>
+            </Flex>
         </Card>
     )
 }
 
 type Props = {
     data: Bidding[]
+    loading: boolean
+    error: ReactNode
 }
 
-const AuctionCarousel = ({data}: Props) => {
+const AuctionCarousel = ({data, error, loading}: Props) => {
     const settings: CarouselProps = {
-        autoplay: false,
+        autoplay: true,
+        autoplaySpeed: 10000,
         dots: true,
         dotPosition: 'bottom',
         infinite: true,
-        speed: 1000,
+        speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 1,
-        appendDots: dots => (
-            <div
-                style={{
-                    backgroundColor: "black",
-                    borderRadius: "10px",
-                    padding: "10px"
-                }}
-            >
-                <ul style={{margin: "0px"}}> {dots} </ul>
-            </div>
-        ),
+        slidesToScroll: 2,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ],
+        cssEase: "linear"
     };
 
     return (
-        <Carousel {...settings}>
-            {data.map(_ => <CardItem key={_.auction_id} item={_}/>)}
-        </Carousel>
+        error ?
+            <Alert
+                message="Error"
+                description={error.toString()}
+                type="error"
+                showIcon
+            /> : (
+                loading ? <Loader/> :
+                    <Carousel {...settings}>
+                        {data.map(_ => <CardItem key={_.auction_id} item={_}/>)}
+                    </Carousel>
+            )
     );
 };
 

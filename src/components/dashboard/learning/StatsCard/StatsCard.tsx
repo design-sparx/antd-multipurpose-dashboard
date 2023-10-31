@@ -1,5 +1,5 @@
 import React from "react";
-import {CardProps, Progress, Space, Typography} from "antd";
+import {CardProps, Flex, Progress, Typography} from "antd";
 import {Card} from "../../../index.ts";
 
 type Props = {
@@ -13,18 +13,14 @@ type Props = {
 const StatsCard = ({color, icon, title, value, progress, ...others}: Props) => {
     return (
         <Card
-            title={
-                <Space align="center">
-                    {React.createElement(icon)}
-                    <Typography.Title level={5}>{title}</Typography.Title>
-                </Space>
-            }
             {...others}
         >
-            <div style={{display: 'flex', flexDirection: 'column'}}>
-                <Typography.Title>{value}</Typography.Title>
+            <Flex vertical gap="middle">
+                {React.createElement(icon, {style: {fontSize: 30}})}
+                <Typography.Text className="m-0 text-capitalize">{title}</Typography.Text>
+                <Typography.Title level={2} className="m-0">{value}</Typography.Title>
                 <Progress percent={progress} showInfo={false} strokeColor={color}/>
-            </div>
+            </Flex>
         </Card>
     );
 };

@@ -17,14 +17,10 @@ import {
     ProgressCard,
     StudyStatisticsCard
 } from "../../components";
-import CoursesData from "../../../public/mocks/Courses.json"
-import RecommendedCourseData from "../../../public/mocks/RecommendedCourses.json"
-import StudyStatisticsData from "../../../public/mocks/StudyStatistics.json";
-import ExamsData from "../../../public/mocks/Exams.json";
-import CommunityGroupsData from "../../../public/mocks/CommunityGroups.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
+import {useFetchData} from "../../hooks";
 
 const ROW_PROPS: RowProps = {
     gutter: [
@@ -34,6 +30,32 @@ const ROW_PROPS: RowProps = {
 }
 
 const LearningDashboardPage = () => {
+    const {
+        data: coursesData,
+        loading: coursesDataLoading,
+        error: coursesDataError
+    } = useFetchData('../mocks/Courses.json')
+    const {
+        data: studyData,
+        loading: studyDataLoading,
+        error: studyDataError
+    } = useFetchData('../mocks/StudyStatistics.json')
+    const {
+        data: recommendedCoursesData,
+        loading: recommendedCoursesDataLoading,
+        error: recommendedCoursesDataError
+    } = useFetchData('../mocks/RecommendedCourses.json')
+    const {
+        data: examsData,
+        loading: examsDataLoading,
+        error: examsDataError
+    } = useFetchData('../mocks/Exams.json')
+    const {
+        data: communitiesData,
+        loading: communitiesDataLoading,
+        error: communitiesDataError
+    } = useFetchData('../mocks/CommunityGroups.json')
+
     return (
         <div>
             <Helmet>
@@ -61,65 +83,77 @@ const LearningDashboardPage = () => {
                 ]}
             />
             <Row {...ROW_PROPS}>
-                <Col xs={24} lg={18}>
+                <Col xs={24} xl={18}>
                     <Row {...ROW_PROPS}>
-                        <Col xs={24} sm={12} lg={6}>
+                        <Col xs={24} sm={12} xl={6}>
                             <LearningStatsCard
                                 title="Courses in Progress"
                                 value={18}
                                 icon={FileSyncOutlined}
-                                color="orange"
+                                color="teal"
                                 progress={30}
+                                style={{height: "100%"}}
                             />
                         </Col>
-                        <Col xs={24} sm={12} lg={6}>
+                        <Col xs={24} sm={12} xl={6}>
                             <LearningStatsCard
                                 title="Courses completed"
                                 value={97}
                                 icon={FileProtectOutlined}
                                 color="green"
                                 progress={90}
+                                style={{height: "100%"}}
                             />
                         </Col>
-                        <Col xs={24} sm={12} lg={6}>
+                        <Col xs={24} sm={12} xl={6}>
                             <LearningStatsCard
                                 title="Certificates earned"
                                 value={62}
                                 icon={SafetyCertificateOutlined}
                                 color="blue"
                                 progress={76}
+                                style={{height: "100%"}}
                             />
                         </Col>
-                        <Col xs={24} sm={12} lg={6}>
+                        <Col xs={24} sm={12} xl={6}>
                             <LearningStatsCard
                                 title="Community support"
                                 value={245}
                                 icon={UsergroupAddOutlined}
                                 color="purple"
                                 progress={78}
+                                style={{height: "100%"}}
                             />
                         </Col>
-                        <Col span={24}>
-                            <CoursesCard data={CoursesData}/>
+                        <Col xs={24} xl={12}>
+                            <ProgressCard style={{height: "100%"}}/>
+                        </Col>
+                        <Col xs={24} xl={12}>
+                            <StudyStatisticsCard data={studyData} loading={studyDataLoading} error={studyDataError}/>
                         </Col>
                         <Col span={24}>
-                            <StudyStatisticsCard data={StudyStatisticsData}/>
-                        </Col>
-                        <Col span={24}>
-                            <CoursesCarousel data={RecommendedCourseData}/>
+                            <CoursesCard data={coursesData} loading={coursesDataLoading} error={coursesDataError}/>
                         </Col>
                     </Row>
                 </Col>
-                <Col xs={24} lg={6}>
+                <Col xs={24} xl={6}>
                     <Row {...ROW_PROPS}>
                         <Col span={24}>
-                            <ProgressCard/>
+                            <ExamsCard data={examsData} loading={examsDataLoading} error={examsDataError}/>
                         </Col>
                         <Col span={24}>
-                            <ExamsCard data={ExamsData}/>
+                            <CommunityGroupCard
+                                data={communitiesData}
+                                loading={communitiesDataLoading}
+                                error={communitiesDataError}
+                            />
                         </Col>
                         <Col span={24}>
-                            <CommunityGroupCard data={CommunityGroupsData}/>
+                            <CoursesCarousel
+                                data={recommendedCoursesData}
+                                loading={recommendedCoursesDataLoading}
+                                error={recommendedCoursesDataError}
+                            />
                         </Col>
                     </Row>
                 </Col>

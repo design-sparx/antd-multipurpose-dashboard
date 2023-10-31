@@ -1,6 +1,8 @@
 import {CardProps, Table} from "antd";
 import {Card} from "../../../index.ts";
 
+import "./styles.css"
+
 const CATEGORIES_MOCKS = [
     {
         "id": "4f3d4a10-9650-4351-8583-deebc6aba264",
@@ -172,10 +174,11 @@ type Props = CardProps
 const CategoriesCard = ({...others}: Props) => {
     return (
         <Card
-            title="Popular categories"
+            title="categories"
+            className="card"
             {...others}
         >
-            <Table dataSource={CATEGORIES_MOCKS} columns={CATEGORIES_COLUMNS} size="small"/>
+            <Table dataSource={CATEGORIES_MOCKS} columns={CATEGORIES_COLUMNS} size="middle" className="overflow-scroll"/>
         </Card>
     );
 };

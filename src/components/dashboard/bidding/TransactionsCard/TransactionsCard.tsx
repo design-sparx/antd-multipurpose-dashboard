@@ -1,13 +1,15 @@
-import {CardProps, Table, Typography, Image, Space} from "antd";
+import {CardProps, Table, Typography, Image, Space, Alert} from "antd";
 import {AuctionTransactions} from "../../../../types";
 import {SwapRightOutlined} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
+import {ReactNode} from "react";
 
 const TRANSACTIONS_COLUMNS = [
     {
         title: 'Type',
         dataIndex: 'transaction_type',
-        key: 'transaction_type'
+        key: 'transaction_type',
+        render: (_: any) => <span className="text-capitalize">{_}</span>
     },
     {
         title: 'Image',
@@ -20,17 +22,18 @@ const TRANSACTIONS_COLUMNS = [
         title: 'From/To',
         dataIndex: 'seller',
         key: 'from_to',
-        render: (_: any, {buyer, seller, profit}: any) => <Space>
-            <Typography.Text>{seller}</Typography.Text>
-            <SwapRightOutlined style={{color: profit > 0 ? 'green' : 'red'}}/>
-            <Typography.Text>{buyer}</Typography.Text>
-        </Space>
+        render: (_: any, {buyer, seller, profit}: any) =>
+            <Space style={{width: 240}}>
+                <Typography.Link>@{seller}</Typography.Link>
+                <SwapRightOutlined style={{color: profit > 0 ? 'green' : 'red'}}/>
+                <Typography.Link>@{buyer}</Typography.Link>
+            </Space>
     },
     {
         title: 'Profit',
         dataIndex: 'profit',
         key: 'profit',
-        render: (_: any, {profit}: any) => <Typography.Text>{profit}</Typography.Text>
+        render: (_: any, {profit}: any) => <Typography.Text>${profit}</Typography.Text>
     },
     {
         title: 'Value',
@@ -52,16 +55,25 @@ const TRANSACTIONS_COLUMNS = [
 
 type Props = {
     data: AuctionTransactions[]
+    loading: boolean
+    error: ReactNode
 } & CardProps
 
-const TransactionsCard = ({data, ...others}: Props) => {
+const TransactionsCard = ({data, loading, error, ...others}: Props) => {
     return (
-        <Card
-            title="Recent transactions"
-            {...others}
-        >
-            <Table dataSource={data} columns={TRANSACTIONS_COLUMNS}/>
-        </Card>
+        error ?
+            <Alert
+                message="Error"
+                description={error.toString()}
+                type="error"
+                showIcon
+            /> :
+            <Card
+                title="Recent transactions"
+                {...others}
+            >
+                <Table dataSource={data} columns={TRANSACTIONS_COLUMNS} loading={loading} className="overflow-scroll"/>
+            </Card>
     );
 };
 

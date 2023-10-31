@@ -16,13 +16,10 @@ import {
     PageHeader,
     TruckListCard
 } from "../../components";
-import TruckDeliveryData from "../../../public/mocks/TruckDeliveries.json";
-import DeliveryAnalyticsData from "../../../public/mocks/DeliveryAnalytics.json";
-import TrucksData from "../../../public/mocks/Trucks.json"
-import DeliveryRequests from "../../../public/mocks/TruckDeliveryRequest.json";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
+import {useFetchData} from "../../hooks";
 
 const STATS = [
     {
@@ -74,6 +71,27 @@ const ROW_PROPS: RowProps = {
 }
 
 const LogisticsDashboardPage = () => {
+    const {
+        data: trucksDeliveryData,
+        loading: trucksDeliveryDataLoading,
+        error: trucksDeliveryDataError
+    } = useFetchData('../mocks/TruckDeliveries.json')
+    const {
+        data: deliveryAnalyticsData,
+        loading: deliveryAnalyticsDataLoading,
+        error: deliveryAnalyticsDataError
+    } = useFetchData('../mocks/DeliveryAnalytics.json')
+    const {
+        data: trucksData,
+        loading: trucksDataLoading,
+        error: trucksDataError
+    } = useFetchData('../mocks/Trucks.json')
+    const {
+        data: trucksDeliveryRequestData,
+        loading: trucksDeliveryRequestDataLoading,
+        error: trucksDeliveryRequestDataError
+    } = useFetchData('../mocks/TruckDeliveryRequest.json')
+
     return (
         <div>
             <Helmet>
@@ -107,19 +125,31 @@ const LogisticsDashboardPage = () => {
                     </Col>
                 ))}
                 <Col xs={24} lg={12}>
-                    <DeliveryAnalyticsCard data={DeliveryAnalyticsData}/>
+                    <DeliveryAnalyticsCard
+                        data={deliveryAnalyticsData}
+                        loading={deliveryAnalyticsDataLoading}
+                        error={deliveryAnalyticsDataError}
+                    />
                 </Col>
                 <Col xs={24} lg={12}>
                     <DailyPlanCard data={PLAN_DATA}/>
                 </Col>
                 <Col span={24}>
-                    <DeliveryTableCard data={TruckDeliveryData}/>
+                    <DeliveryTableCard
+                        data={trucksDeliveryData}
+                        error={trucksDeliveryDataError}
+                        loading={trucksDeliveryDataLoading}
+                    />
                 </Col>
                 <Col xs={24} lg={12}>
-                    <TruckListCard data={TrucksData}/>
+                    <TruckListCard data={trucksData} loading={trucksDataLoading} error={trucksDataError}/>
                 </Col>
                 <Col xs={24} lg={12}>
-                    <DeliveryRequestCard data={DeliveryRequests}/>
+                    <DeliveryRequestCard
+                        data={trucksDeliveryRequestData}
+                        loading={trucksDeliveryRequestDataLoading}
+                        error={trucksDeliveryRequestDataError}
+                    />
                 </Col>
             </Row>
         </div>

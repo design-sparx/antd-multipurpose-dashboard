@@ -1,4 +1,4 @@
-import {Button, CardProps, Space, Typography} from "antd";
+import {Button, CardProps} from "antd";
 import {RightOutlined} from "@ant-design/icons";
 import {Area} from "@ant-design/charts";
 import {Card} from "../../../index.ts";
@@ -65,12 +65,7 @@ type Props = CardProps
 const VisitorsChartCard = ({...others}: Props) => {
     return (
         <Card
-            title={
-                <Space direction="vertical">
-                    <Typography.Title level={5}>Visitors from websites</Typography.Title>
-                    <Typography.Text>Website visitor traffic and analytics</Typography.Text>
-                </Space>
-            }
+            title="Website visitor traffic and analytics"
             extra={<Button>More details <RightOutlined/></Button>}
             {...others}
         >
