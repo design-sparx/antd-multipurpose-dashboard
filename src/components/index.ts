@@ -1,5 +1,5 @@
-import Logo from "./Logo/Logo.tsx"
-import MoreMenu from "./MoreMenu/MoreMenu.tsx";
+import Logo from "./Logo/Logo"
+import MoreMenu from "./MoreMenu/MoreMenu";
 import {
     ProjectsTable,
     ProjectsCountCard,
@@ -49,11 +49,11 @@ import {
     TasksChartCard,
     TasksListCard
 } from "./dashboard"
-import UserAvatar from "./UserAvatar/UserAvatar.tsx";
+import UserAvatar from "./UserAvatar/UserAvatar";
 import NotificationsItem from "./NotificationsItem/NotificationsItem";
 import NotificationsCard from "./NotificationsCard/NotificationsCard";
-import Card from "./Card/Card.tsx";
-import PageHeader from "./PageHeader/PageHeader.tsx";
+import Card from "./Card/Card";
+import PageHeader from "./PageHeader/PageHeader";
 import {Bar, Container, Nprogress} from "./Nprogress"
 import EmployeeCard from "./EmployeeCard/EmployeeCard";
 import BlogsListCard from "./corporate/BlogsListCard/BlogsListCard";
@@ -62,8 +62,9 @@ import FaqCollapse from "./FaqCollapse/FaqCollapse";
 import ContactForm from "./ContactForm/ContactForm";
 import PricingTable from "./PricingTable/PricingTable";
 import SitemapCard from "./SitemapCard/SitemapCard";
-import Flex from "./Flex/Flex.tsx"
-import TimelineCard from "./TimelineCard/TimelineCard.tsx"
+import Flex from "./Flex/Flex"
+import TimelineCard from "./TimelineCard/TimelineCard"
+import Loader from "./Loader/Loader"
 
 export {
     Logo,
@@ -131,5 +132,6 @@ export {
     ContactForm,
     PricingTable,
     SitemapCard,
-    Flex
+    Flex,
+    Loader
 }

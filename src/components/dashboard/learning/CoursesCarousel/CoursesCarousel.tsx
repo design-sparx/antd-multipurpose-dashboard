@@ -1,8 +1,18 @@
-import {Button, Card as AntdCard, CardProps, Carousel, CarouselProps, Space, Tag, Typography} from "antd";
+import {Alert, Button, Card as AntdCard, CardProps, Carousel, CarouselProps, Flex, Space, Tag, Typography} from "antd";
 import {RecommendedCourses} from "../../../../types";
-import {useEffect, useRef, useState} from "react";
-import {BookOutlined, ClockCircleOutlined, LockOutlined, TagFilled} from "@ant-design/icons";
-import {Card} from "../../../index.ts";
+import {ReactNode, useEffect, useRef, useState} from "react";
+import {
+    BookOutlined,
+    ClockCircleOutlined,
+    LeftCircleOutlined,
+    LockOutlined,
+    RightCircleOutlined,
+    TagFilled
+} from "@ant-design/icons";
+import {Card, Loader} from "../../../index.ts";
+
+import "./styles.css"
+import {useMediaQuery} from "react-responsive";
 
 type CardItemProps = {
     data: RecommendedCourses
@@ -59,11 +69,11 @@ const CardItem = ({data}: CardItemProps) => {
                         <Typography.Text>{duration} Hours</Typography.Text>
                     </Space>
                 </Space>
-                <Space size="small">
+                <Flex wrap="wrap" gap="small">
                     <Tag icon={<TagFilled/>}>{category}</Tag>
                     <Tag bordered={true} color={levelColor} style={{textTransform: 'capitalize'}}>{level}</Tag>
-                </Space>
-                <Button icon={<LockOutlined/>}>Enroll Now</Button>
+                </Flex>
+                <Button icon={<LockOutlined/>} type="primary" block>Enroll Now</Button>
             </Space>
         </AntdCard>
     )
@@ -71,14 +81,17 @@ const CardItem = ({data}: CardItemProps) => {
 
 type Props = {
     data: RecommendedCourses[]
+    loading: boolean
+    error: ReactNode
 } & CardProps
 
-const CoursesCarousel = ({data, ...others}: Props) => {
+const CoursesCarousel = ({data, loading, error, ...others}: Props) => {
     const sliderRef = useRef<any>()
+    const isXlScreen = useMediaQuery({maxWidth: 1200})
 
     const settings: CarouselProps = {
         arrows: false,
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         infinite: true,
         dots: false,
@@ -87,7 +100,7 @@ const CoursesCarousel = ({data, ...others}: Props) => {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToScroll: 1,
                     infinite: true,
                     dots: true
                 }
@@ -123,18 +136,37 @@ const CoursesCarousel = ({data, ...others}: Props) => {
             title="Recommended for you"
             extra={
                 <Space>
-                    <Button onClick={handlePrevious}>Previous</Button>
-                    <Button onClick={handleNext}>Next</Button>
+                    {isXlScreen ?
+                        <>
+                            <Button onClick={handlePrevious}>Previous</Button>
+                            <Button onClick={handleNext}>Next</Button>
+                        </> :
+                        <>
+                            <Button onClick={handlePrevious} icon={<LeftCircleOutlined/>}/>
+                            <Button onClick={handleNext} icon={<RightCircleOutlined/>}/>
+                        </>
+                    }
                 </Space>
             }
+            className="courses-carousel-card card"
             {...others}
         >
-            <Carousel
-                ref={sliderRef}
-                {...settings}
-            >
-                {data.map(d => <CardItem key={d.id} data={d}/>)}
-            </Carousel>
+            {error ?
+                <Alert
+                    message="Error"
+                    description={error.toString()}
+                    type="error"
+                    showIcon
+                /> :
+                loading ?
+                    <Loader/> :
+                    <Carousel
+                        ref={sliderRef}
+                        {...settings}
+                    >
+                        {data.map(d => <CardItem key={d.id} data={d}/>)}
+                    </Carousel>
+            }
         </Card>
     );
 };

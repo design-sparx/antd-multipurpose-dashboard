@@ -1,5 +1,5 @@
 import {Card, CardProps, Col, Progress, ProgressProps, Row, Space, SpaceProps, Statistic, Tooltip} from "antd";
-import ProjectsData from "../../../../mocks/Projects.json"
+import ProjectsData from "../../../../../public/mocks/Projects.json"
 import "./styles.scss";
 
 const PROGRESS_PROPS: ProgressProps = {

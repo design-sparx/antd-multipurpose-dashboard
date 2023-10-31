@@ -1,4 +1,4 @@
-import {CardProps} from "antd";
+import {CardProps, Typography} from "antd";
 import {useEffect, useState} from "react";
 import {Line} from "@ant-design/charts";
 import {Card} from "../../../index.ts";
@@ -218,19 +218,19 @@ const LineChart = ({type}: LineProps) => {
 const TAB_LIST = [
     {
         key: 'all',
-        tab: 'all',
+        tab: 'All',
     },
     {
         key: 'followers',
-        tab: 'followers',
+        tab: 'Followers',
     },
     {
         key: 'following',
-        tab: 'following',
+        tab: 'Following',
     },
     {
         key: 'blocked',
-        tab: 'blocked'
+        tab: 'Blocked'
     }
 ];
 
@@ -255,6 +255,10 @@ const FollowersChart = ({...others}: Props) => {
             tabList={TAB_LIST}
             activeTabKey={activeTabKey}
             onTabChange={onTabChange}
+            tabBarExtraContent={<Typography.Title level={5} className="m-0">Account activity</Typography.Title>}
+            tabProps={{
+                size: 'large',
+            }}
             {...others}
         >
             {TAB_CONTENT[activeTabKey]}

@@ -2,7 +2,7 @@ function path(root: string, sublink: string) {
     return `${root}${sublink}`
 }
 
-const ROOTS_LANDING = '/home'
+const ROOTS_LANDING = '/'
 const ROOTS_DASHBOARD = '/dashboards'
 const ROOTS_SITEMAP = '/sitemap'
 const ROOTS_LAYOUT = '/layouts'
@@ -200,4 +200,16 @@ export const PATH_CHANGELOG = {
 
 export const PATH_GITHUB = {
     org: "https://github.com/design-sparx",
+    personal: "https://github.com/kelvink96",
+    repo: "https://github.com/design-sparx/antd-multipurpose-dashboard"
+}
+
+export const PATH_SOCIALS = {
+    behance: "https://www.behance.net/kelvink96",
+    dribbble: "https://dribbble.com/kelvink96",
+    facebook: "https://www.facebook.com/kelvinkk96",
+    instagram: "https://www.instagram.com/kelvink_96/",
+    linkedin: "https://www.linkedin.com/in/kelvink96/",
+    youtube: "https://twitter.com/kelvink_96"
+
 }

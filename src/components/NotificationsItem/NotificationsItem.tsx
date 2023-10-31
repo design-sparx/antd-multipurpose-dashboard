@@ -1,5 +1,5 @@
 import {Notifications} from "../../types";
-import {Avatar, Space, Tag, Typography} from "antd";
+import {Avatar, Flex, Tag, Typography} from "antd";
 import {ContainerOutlined, MailOutlined, PhoneOutlined} from "@ant-design/icons";
 
 type Props = {
@@ -17,14 +17,11 @@ const NotificationsItem = ({data}: Props) => {
     } = data
 
     return (
-        <div style={{display: "flex"}}>
+        <Flex gap="small">
             <Avatar src={notification_image}/>
-            <div style={{display: "flex", flexDirection: "column", alignSelf: "center"}}>
-                <div style={{display: "flex", alignItems: "center"}}>
-                    <Typography.Text
-                        strong
-                        style={{flexGrow: 1}}
-                    >
+            <Flex vertical gap="small" style={{flexGrow: 1}}>
+                <Flex align="center" justify="space-between">
+                    <Typography.Text>
                         {notification_message.slice(0, 30)}...
                     </Typography.Text>
                     <Tag
@@ -40,13 +37,13 @@ const NotificationsItem = ({data}: Props) => {
                     >
                         {notification_type}
                     </Tag>
-                </div>
-                <Space>
+                </Flex>
+                <Flex justify="space-between" align="center">
                     <Tag bordered={true} color={color}>{notification_category}</Tag>
                     <Typography.Text>{notification_date}</Typography.Text>
-                </Space>
-            </div>
-        </div>
+                </Flex>
+            </Flex>
+        </Flex>
     );
 };
 

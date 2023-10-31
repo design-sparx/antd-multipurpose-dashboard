@@ -1,25 +1,29 @@
-import {Col, Row, RowProps} from "antd";
+import {Col, Row} from "antd";
 import {
-    MarketingSocialStatsCard,
-    MarketingStatsCard,
-    VisitorsChartCard,
+    AudienceLocationChart,
     CampaignsActivity,
     CampaignsAdsCard,
-    AudienceLocationChart, PageHeader
+    MarketingSocialStatsCard,
+    MarketingStatsCard,
+    PageHeader,
+    VisitorsChartCard
 } from "../../components";
 import {HomeOutlined, PieChartOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
-
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
+import {useStylesContext} from "../../context";
+import {useFetchData} from "../../hooks";
 
 const MarketingDashboardPage = () => {
+    const stylesContext = useStylesContext()
+    const {
+        data: campaignAds,
+        error: campaignAdsError,
+        loading: campaignAdsLoading
+    } = useFetchData('../mocks/CampaignAds.json')
+
+
     return (
         <div>
             <Helmet>
@@ -46,7 +50,7 @@ const MarketingDashboardPage = () => {
                     }
                 ]}
             />
-            <Row {...ROW_PROPS}>
+            <Row {...stylesContext?.rowProps}>
                 <Col xs={24} sm={12} lg={6}>
                     <MarketingStatsCard data={[274, 337, 81, 497]} title='impressions' diff={12.5} value={2216869}/>
                 </Col>
@@ -63,16 +67,16 @@ const MarketingDashboardPage = () => {
                     <VisitorsChartCard/>
                 </Col>
                 <Col xs={24} lg={12}>
-                    <MarketingSocialStatsCard/>
+                    <MarketingSocialStatsCard style={{height: "100%"}}/>
                 </Col>
-                <Col xs={24} lg={8}>
+                <Col xs={24} lg={12}>
+                    <AudienceLocationChart/>
+                </Col>
+                <Col xs={24} lg={12}>
                     <CampaignsActivity/>
                 </Col>
-                <Col xs={24} lg={14}>
-                    <CampaignsAdsCard/>
-                </Col>
-                <Col xs={24} lg={10}>
-                    <AudienceLocationChart/>
+                <Col span={24}>
+                    <CampaignsAdsCard data={campaignAds} loading={campaignAdsLoading} error={campaignAdsError}/>
                 </Col>
             </Row>
         </div>

@@ -150,6 +150,7 @@ type Props = CardProps
 const LikesChart = ({...others}: Props) => {
     return (
         <Card
+            title="Posts activity"
             {...others}
         >
             <ColumnChart/>

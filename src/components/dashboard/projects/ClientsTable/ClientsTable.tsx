@@ -1,17 +1,19 @@
 import {Table, Typography} from "antd";
 import {Clients} from "../../../../types";
+import {UserAvatar} from "../../../index.ts";
 
 const COLUMNS = [
     {
         title: 'Client Name',
         dataIndex: 'client_name',
-        key: 'client_name',
-        render: (_: any, {first_name, last_name}: Clients) => <Typography.Text>{first_name} {last_name}</Typography.Text>
+        key: 'c_name',
+        render: (_: any, {first_name, last_name}: Clients) => <UserAvatar fullName={`${first_name} ${last_name}`}/>
     },
     {
         title: 'Amount',
         dataIndex: 'total_price',
-        key: 'amount',
+        key: 'client_amount',
+        render: (_: any) => <Typography.Text>$ {_}</Typography.Text>
     },
 ];
 
@@ -19,10 +21,8 @@ type Props = {
     data: Clients[]
 }
 
-const ClientsTable = ({data}: Props) => {
-    return (
-        <Table dataSource={data} columns={COLUMNS}/>
-    );
-};
+const ClientsTable = ({data}: Props) => (
+    <Table dataSource={data} columns={COLUMNS} key="client_table"/>
+);
 
 export default ClientsTable;

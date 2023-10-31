@@ -1,9 +1,9 @@
-import {CardProps} from "antd";
+import {Alert, CardProps} from "antd";
 import {Column} from "@ant-design/charts";
 import {DeliveryAnalytics} from "../../../../types";
-import {useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import * as _ from "lodash";
-import {Card} from "../../../index.ts";
+import {Card, Loader} from "../../../index.ts";
 
 type ChartProps = {
     data: DeliveryAnalytics[]
@@ -80,15 +80,27 @@ const MultiLineChart = ({data}: ChartProps) => {
 
 type Props = {
     data: DeliveryAnalytics[]
+    loading: boolean
+    error: ReactNode
 } & CardProps
 
-const DeliveryAnalyticsCard = ({data, ...others}: Props) => {
+const DeliveryAnalyticsCard = ({data, loading, error, ...others}: Props) => {
     return (
         <Card
             title="Analytics"
             {...others}
         >
-            <MultiLineChart data={data}/>
+            {error ?
+                <Alert
+                    message="Error"
+                    description={error.toString()}
+                    type="error"
+                    showIcon
+                /> : (loading ?
+                        <Loader/> :
+                        <MultiLineChart data={data}/>
+                )
+            }
         </Card>
     );
 };

@@ -1,97 +1,83 @@
-import {Card as AntdCard, Button, CardProps, Space, Tag, Typography, theme, List} from "antd";
-import {
-    FacebookOutlined,
-    InstagramOutlined,
-    LinkedinOutlined, RightOutlined,
-    TwitterOutlined,
-    YoutubeOutlined
-} from "@ant-design/icons";
+import {Card as AntdCard, CardProps, Flex, List, Space, Tag, Typography} from "antd";
+import {FacebookFilled, InstagramFilled, LinkedinFilled, TwitterOutlined, YoutubeFilled} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
+import {createElement} from "react";
 
 const SOCIALS_DATA = [
     {
-        icon: <FacebookOutlined/>,
+        icon: FacebookFilled,
         title: 'facebook',
         diff: 12.3,
         value: 216869
     },
     {
-        icon: <InstagramOutlined/>,
+        icon: InstagramFilled,
         title: 'instagram',
         diff: 4.8,
         value: 978342
     },
     {
-        icon: <TwitterOutlined/>,
+        icon: TwitterOutlined,
         title: 'twitter',
         diff: -2.4,
         value: 567323
     },
     {
-        icon: <LinkedinOutlined/>,
+        icon: LinkedinFilled,
         title: 'linkedIn',
         diff: 3.79,
         value: 738382
     },
     {
-        icon: <YoutubeOutlined/>,
+        icon: YoutubeFilled,
         title: 'youtube',
         diff: -5.3,
         value: 892123
     }
 ]
 
-const gridStyle: React.CSSProperties = {
-    width: '100%',
-    textAlign: 'left',
-    display: 'flex',
-    flexDirection: 'column'
-};
-
 type Props = CardProps
 
-const SocialStatsCard = ({...others}: Props) => {
-    const {
-        token: {borderRadius},
-    } = theme.useToken();
-
-    return (
-        <Card
-            actions={[
-                <Button>View details report <RightOutlined/></Button>
-            ]}
-            {...others}
-        >
-            <List
-                grid={{
-                    gutter: 16,
-                    xs: 1,
-                    sm: 2,
-                    md: 4,
-                    lg: 4,
-                    xl: 6,
-                    xxl: 3,
-                }}
-                dataSource={SOCIALS_DATA}
-                renderItem={(item, i ) => (
-                    <AntdCard.Grid
+const SocialStatsCard = ({...others}: Props) => (
+    <Card
+        title="Social media analytics"
+        {...others}
+    >
+        <List
+            grid={{
+                gutter: 16,
+                xs: 1,
+                sm: 1,
+                md: 2,
+                lg: 2,
+                xl: 2,
+                xxl: 2,
+            }}
+            dataSource={SOCIALS_DATA}
+            renderItem={(item, i) => (
+                <List.Item>
+                    <AntdCard
                         key={`${item.title}-${i}`}
                         hoverable={false}
-                        style={{borderRadius, ...gridStyle}}
                     >
-                        <Space>
-                            <Typography.Text>{item.title}</Typography.Text>
-                            <Tag color={item.diff < 0 ? 'error' : 'success'}>{item.diff}</Tag>
-                        </Space>
-                        <Space>
-                            <Typography.Title level={4} style={{margin: 0}}>{item.value}</Typography.Title>
-                            <Typography.Text color="secondary">visitors</Typography.Text>
-                        </Space>
-                    </AntdCard.Grid>
-                )}
-            />
-        </Card>
-    );
-};
+                        <Flex vertical gap="middle" justify="center">
+                            <Flex align="center" justify="space-between">
+                                <Space>
+                                    {createElement(item.icon)}
+                                    <Typography.Text className="text-capitalize">{item.title}</Typography.Text>
+                                </Space>
+                                <Tag color={item.diff < 0 ? 'red-inverse' : 'green-inverse'}>{item.diff}%</Tag>
+                            </Flex>
+                            <Flex justify="space-between">
+                                <Typography.Title level={3} className="m-0">{item.value}</Typography.Title>
+                                <Typography.Text color="secondary">visitors</Typography.Text>
+                            </Flex>
+                        </Flex>
+                    </AntdCard>
+                </List.Item>
+            )}
+        />
+    </Card>
+);
 
 export default SocialStatsCard;

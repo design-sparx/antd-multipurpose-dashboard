@@ -1,6 +1,7 @@
-import {CardProps, Image, Space, Table, Typography} from "antd";
+import {Alert, CardProps, Flex, Image, Table, Typography} from "antd";
 import {AuctionSales} from "../../../../types";
 import {Card} from "../../../index.ts";
+import {ReactNode} from "react";
 
 const SALES_COLUMNS = [
     {
@@ -8,13 +9,13 @@ const SALES_COLUMNS = [
         dataIndex: 'title',
         key: 'title',
         render: (_: any, {image_url, owner, title}: any) => (
-            <Space>
+            <Flex align="center" gap="small">
                 <Image src={image_url} height={24} width={24} preview={false}/>
-                <Space direction="vertical" size={0}>
-                    <Typography.Text strong>{title}</Typography.Text>
+                <Flex vertical style={{width: 160}}>
+                    <Typography.Text strong className="text-capitalize">{title}</Typography.Text>
                     <Typography.Text type="secondary">@{owner.split(' ')[0]}</Typography.Text>
-                </Space>
-            </Space>
+                </Flex>
+            </Flex>
         )
     },
     {
@@ -47,16 +48,25 @@ const SALES_COLUMNS = [
 
 type Props = {
     data: AuctionSales[]
+    loading: boolean
+    error: ReactNode
 } & CardProps
 
-const TopItemsCard = ({data, ...others}: Props) => {
+const TopItemsCard = ({data, loading, error, ...others}: Props) => {
     return (
-        <Card
-            title="Top selling items"
-            {...others}
-        >
-            <Table dataSource={data} columns={SALES_COLUMNS}/>
-        </Card>
+        error ?
+            <Alert
+                message="Error"
+                description={error.toString()}
+                type="error"
+                showIcon
+            /> :
+            <Card
+                title="Top selling items"
+                {...others}
+            >
+                <Table dataSource={data} columns={SALES_COLUMNS} loading={loading} className="overflow-scroll"/>
+            </Card>
     );
 };
 

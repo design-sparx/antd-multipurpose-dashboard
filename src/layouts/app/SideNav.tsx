@@ -9,13 +9,13 @@ import {
     FileOutlined,
     GroupOutlined,
     HeartOutlined,
-    HomeOutlined,
     IdcardOutlined,
     MailOutlined,
     PieChartOutlined,
     ProfileOutlined,
     ReadOutlined,
-    SecurityScanOutlined, SnippetsOutlined,
+    SecurityScanOutlined,
+    SnippetsOutlined,
     SolutionOutlined,
     TeamOutlined,
     UserOutlined,
@@ -30,7 +30,8 @@ import {
     PATH_CAREERS,
     PATH_CONTACTS,
     PATH_CORPORATE,
-    PATH_DASHBOARD, PATH_DOCS,
+    PATH_DASHBOARD,
+    PATH_DOCS,
     PATH_ERROR,
     PATH_FILE,
     PATH_INBOX,
@@ -59,8 +60,6 @@ const getItem = (label: React.ReactNode, key: React.Key, icon?: React.ReactNode,
 }
 
 const items: MenuProps['items'] = [
-    getItem(<Link to={PATH_LANDING.root}>Home</Link>, 'home', <HomeOutlined/>),
-
     getItem('Dashboards', 'dashboards', <PieChartOutlined/>, [
         getItem(<Link to={PATH_DASHBOARD.default}>Default</Link>, 'default', null),
         getItem(<Link to={PATH_DASHBOARD.projects}>Projects</Link>, 'projects', null),
@@ -233,14 +232,12 @@ const SideNav = ({...others}: SideNavProps) => {
         >
             <Logo
                 color="black"
-                style={{
-                    display: 'flex',
-                    gap: '8px',
-                    justifyContent: 'center',
-                    width: '100%',
-                    alignItems: 'center',
-                    padding: '1rem 0'
-                }}
+                asLink
+                href={PATH_LANDING.root}
+                justify="center"
+                gap="small"
+                imgSize={{h: 36, w: 36}}
+                style={{padding: "1rem 0"}}
             />
             <ConfigProvider
                 theme={{

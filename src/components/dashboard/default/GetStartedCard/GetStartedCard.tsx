@@ -1,4 +1,4 @@
-import {Button, CardProps, Image, Space, Typography} from "antd";
+import {Button, CardProps, Flex, Image, Typography} from "antd";
 import {RightOutlined} from "@ant-design/icons";
 import {Card} from "../../../index";
 
@@ -7,23 +7,20 @@ type Props = CardProps
 const GetStartedCard = ({...others}: Props) => {
     return (
         <Card {...others}>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: 8,
-                }}
+            <Flex
+                justify="space-between"
+                align="center"
+                gap="middle"
             >
-                <Space direction="vertical" size="large">
+                <Flex vertical gap="large" align="flex-start">
                     <Typography.Title level={4} style={{margin: 0}}>You have 2 projects to finish this
                         week</Typography.Title>
                     <Typography.Text>You have already completed 68% of your monthly target. Keep going to achieve your
                         goal.</Typography.Text>
-                    <Button type="primary">More{' '}<RightOutlined/></Button>
-                </Space>
+                    <Button type="primary" size="large">Get started{' '}<RightOutlined/></Button>
+                </Flex>
                 <Image src="/get-started.png" height={180} preview={false} style={{objectFit: 'cover'}}/>
-            </div>
+            </Flex>
         </Card>
     );
 };

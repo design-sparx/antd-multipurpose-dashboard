@@ -1,53 +1,64 @@
-import {Avatar, Button, CardProps, List, Space, Tag, theme, Typography} from "antd";
-import {ArrowRightOutlined, CommentOutlined, DeleteOutlined, LikeOutlined} from "@ant-design/icons";
+import {ReactNode} from "react";
+import {Alert, Button, CardProps, Flex, List, Space, Tag, Typography} from "antd";
+import {ArrowRightOutlined, CommentOutlined, DeleteOutlined, EyeOutlined, LikeOutlined} from "@ant-design/icons";
 import {Comments} from "../../../../types";
-import {getNameInitials} from "../../../../utils";
-import {Card} from "../../../index.ts";
+import {Card, Loader, UserAvatar} from "../../../index";
 
-type Props = {data: Comments[]} & CardProps
+import "./styles.css"
 
-const CommentsCard = ({data, ...others}: Props) => {
-    const {token} = theme.useToken()
+type Props = { data: Comments[], error: ReactNode, loading: boolean } & CardProps
 
-    return (
-        <Card
-            title="Comments"
-            actions={[<Button>View all{' '}<ArrowRightOutlined/></Button>]}
-            {...others}
-        >
-            <List
-                itemLayout="vertical"
-                size="large"
-                pagination={false}
-                dataSource={data}
-                renderItem={(item: Comments) => (
-                    <List.Item
-                        key={item.id}
-                        style={{padding: '.5rem 0 1rem 0'}}
-                    >
-                        <Space direction="vertical" size="small">
-                            <Space>
-                                <Avatar style={{backgroundColor: token.colorPrimary}}>{getNameInitials(item.author)}</Avatar>
-                                <Space direction="vertical" size={0}>
-                                    <Typography.Title level={5} style={{margin: 0}}>{item.author}</Typography.Title>
-                                    <Tag>{item.activity_type}</Tag>
+const CommentsCard = ({data, error, loading, ...others}: Props) => (
+    <Card
+        title="recent comments"
+        actions={[<Button>View all{' '}<ArrowRightOutlined/></Button>]}
+        className="comments-lists-card card"
+        {...others}
+    >
+        {error ?
+            <Alert
+                message="Error"
+                description={error.toString()}
+                type="error"
+                showIcon
+            /> :
+            (loading ?
+                    <Loader/> :
+                    <List
+                        itemLayout="vertical"
+                        size="large"
+                        pagination={false}
+                        dataSource={data}
+                        renderItem={(item: Comments) => (
+                            <List.Item
+                                key={item.id}
+                            >
+                                <Space direction="vertical" size="small">
+                                    <Flex justify="space-between">
+                                        <UserAvatar fullName={item.author} size="middle" style={{fontWeight: 500}}/>
+                                        <Tag className="text-capitalize" bordered={false}>{item.activity_type}</Tag>
+                                    </Flex>
+                                    <Typography.Paragraph
+                                        ellipsis={{rows: 3}}
+                                        className="m-0"
+                                    >
+                                        {item.post_content}
+                                    </Typography.Paragraph>
+                                    <Flex justify="space-between">
+                                        <Space size="small">
+                                            <Button shape="circle" type="text"><LikeOutlined/></Button>
+                                            <Button shape="circle" type="text"><CommentOutlined/></Button>
+                                            <Button type="text" icon={<EyeOutlined/>}>See Post</Button>
+                                        </Space>
+                                        <Button shape="circle" type="text" danger><DeleteOutlined/></Button>
+                                    </Flex>
                                 </Space>
-                            </Space>
-                            <Typography.Paragraph ellipsis={{rows: 3}} style={{margin: 0}}>{item.post_content}</Typography.Paragraph>
-                            <Space>
-                                <Space size="small">
-                                    <Button shape="circle"><LikeOutlined/></Button>
-                                    <Button shape="circle"><CommentOutlined/></Button>
-                                    <Button shape="circle"><DeleteOutlined/></Button>
-                                </Space>
-                                <Button>See Post</Button>
-                            </Space>
-                        </Space>
-                    </List.Item>
-                )}
-            />
-        </Card>
-    );
-};
+                            </List.Item>
+                        )}
+                    />
+            )
+        }
+    </Card>
+);
 
 export default CommentsCard;

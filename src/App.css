@@ -62,7 +62,39 @@
 }
 
 .text-highlight {
-    background: -webkit-linear-gradient(45deg, #8e44ad , #3498db);
+    background: -webkit-linear-gradient(45deg, #8e44ad, #3498db);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.overflow-scroll {
+    overflow: auto;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.w-100 {
+    width: 100%;
 }

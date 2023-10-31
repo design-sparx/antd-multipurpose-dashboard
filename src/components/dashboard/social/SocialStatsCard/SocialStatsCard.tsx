@@ -1,14 +1,16 @@
-import {CardProps, Space, Typography} from "antd";
+import {Alert, CardProps, Space, Typography} from "antd";
 import {CommentOutlined, LikeOutlined, UserAddOutlined, UserOutlined, UserSwitchOutlined} from "@ant-design/icons";
-import {ReactElement} from "react";
-import {Card} from "../../../index.ts";
+import {ReactElement, ReactNode} from "react";
+import {Card, Loader} from "../../../index";
 
 type Props = {
     title: 'followers' | 'following' | 'likes' | 'comments',
     value: number,
+    error: ReactNode
+    loading: boolean
 } & CardProps
 
-const SocialStatsCard = ({value, title, ...others}: Props) => {
+const SocialStatsCard = ({value, title, loading, error, ...others}: Props) => {
     const Icon = (): ReactElement => {
         let i;
         switch (title) {
@@ -35,15 +37,23 @@ const SocialStatsCard = ({value, title, ...others}: Props) => {
     return (
         <Card
             title={title}
+            extra={<Icon/>}
             {...others}
         >
-            <Space>
-                <Space direction="vertical">
-                    <Typography.Title>{value}</Typography.Title>
-                    <Typography.Text>{title}</Typography.Text>
-                </Space>
-                <Icon/>
-            </Space>
+            {error ?
+                <Alert
+                    message="Error"
+                    description={error.toString()}
+                    type="error"
+                    showIcon
+                /> :
+                (loading ?
+                        <Loader/> :
+                        <Space direction="vertical">
+                            <Typography.Title className="m-0">{value}</Typography.Title>
+                        </Space>
+                )
+            }
         </Card>
     );
 };

@@ -1,6 +1,6 @@
-import {Button, Calendar, CalendarProps, CardProps, Space, Typography} from "antd";
+import {Button, Calendar, CalendarProps, CardProps, Popover} from "antd";
 import type {Dayjs} from 'dayjs';
-import {RightOutlined} from "@ant-design/icons";
+import {QuestionOutlined} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
 
 const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
@@ -12,13 +12,10 @@ type Props = CardProps
 const CampaignsActivity = ({...others}: Props) => {
     return (
         <Card
-            title={
-                <Space direction="vertical">
-                    <Typography.Title level={5}>Campaign activity</Typography.Title>
-                    <Typography.Text>Check the campaign activity schedule</Typography.Text>
-                </Space>
-            }
-            extra={<Button>More details{' '}<RightOutlined/></Button>}
+            title="Campaign activity"
+            extra={<Popover content="Check the campaign activity schedule">
+                <Button icon={<QuestionOutlined/>} type="text"/>
+            </Popover>}
             {...others}
         >
             <Calendar fullscreen={false} onPanelChange={onPanelChange}/>

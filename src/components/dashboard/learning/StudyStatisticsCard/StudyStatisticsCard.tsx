@@ -1,8 +1,8 @@
-import {CardProps} from "antd";
+import {Alert, CardProps} from "antd";
 import {Heatmap} from "@ant-design/plots";
-import {useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import * as _ from "lodash";
-import {Card} from "../../../index.ts";
+import {Card, Loader} from "../../../index.ts";
 
 type StudyStatistics = {
     id: string
@@ -41,9 +41,9 @@ const ColumnChart = ({data}: ColumnChartProps) => {
     }, [data]);
 
     const config = {
-        width: 650,
-        height: 500,
-        autoFit: false,
+        // width: 650,
+        // height: 400,
+        autoFit: true,
         data: refinedData,
         xField: 'month',
         yField: 'category',
@@ -62,15 +62,28 @@ const ColumnChart = ({data}: ColumnChartProps) => {
 
 type Props = {
     data: StudyStatistics[]
+    loading: boolean
+    error: ReactNode
 } & CardProps
 
-const StudyStatisticsCard = ({data, ...others}: Props) => {
+const StudyStatisticsCard = ({data, error, loading, ...others}: Props) => {
     return (
         <Card
             title="Study statistics"
             {...others}
         >
-            <ColumnChart data={data}/>
+            {
+                error ?
+                    <Alert
+                        message="Error"
+                        description={error.toString()}
+                        type="error"
+                        showIcon
+                    /> : (
+                        loading ?
+                            <Loader/> :
+                            <ColumnChart data={data}/>
+                    )}
         </Card>
     );
 };

@@ -1,15 +1,14 @@
-import {Button, Col, Row, Segmented, Space} from "antd";
-import {Card, ClientsTable, PageHeader, ProjectsCard, ProjectsTable, RevenueCard} from "../../components";
+import {Alert, Button, Col, Row, Segmented, Space} from "antd";
+import {Card, ClientsTable, Loader, PageHeader, ProjectsCard, ProjectsTable, RevenueCard} from "../../components";
 import {Column} from "@ant-design/plots";
 import 'react-calendar-timeline/lib/Timeline.css'
-import ProjectsData from "../../mocks/Projects.json";
-import ClientsData from "../../mocks/Clients.json"
 import {Projects} from "../../types";
 import {useState} from "react";
 import {CloudUploadOutlined, HomeOutlined, PieChartOutlined, PlusOutlined} from "@ant-design/icons";
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
+import {useFetchData} from "../../hooks";
 
 const RevenueColumnChart = () => {
     const data = [
@@ -134,14 +133,30 @@ const PROJECT_TABS = [
     },
 ];
 
-const PROJECT_TABS_CONTENT: Record<string, React.ReactNode> = {
-    all: <ProjectsTable data={ProjectsData}/>,
-    inProgress: <ProjectsTable data={ProjectsData.filter(_ => _.status === 'in progress')}/>,
-    onHold: <ProjectsTable data={ProjectsData.filter(_ => _.status === 'on hold')}/>,
-};
-
 const ProjectsDashboardPage = () => {
+    const {
+        data: projectsData,
+        error: projectsDataError,
+        loading: projectsDataLoading
+    } = useFetchData('../mocks/Projects.json');
+    const {
+        data: clientsData,
+        error: clientsDataError,
+        loading: clientsDataLoading
+    } = useFetchData('../mocks/Clients.json');
     const [projectTabsKey, setProjectsTabKey] = useState<string>('all');
+
+    const PROJECT_TABS_CONTENT: Record<string, React.ReactNode> = {
+        all: <ProjectsTable key="all-projects-table" data={projectsData}/>,
+        inProgress: <ProjectsTable
+            key="in-progress-projects-table"
+            data={projectsData.filter((_: Projects) => _.status === 'in progress')}
+        />,
+        onHold: <ProjectsTable
+            key="on-hold-projects-table"
+            data={projectsData.filter((_: Projects) => _.status === 'on hold')}
+        />,
+    };
 
     const onProjectsTabChange = (key: string) => {
         setProjectsTabKey(key);
@@ -191,15 +206,25 @@ const ProjectsDashboardPage = () => {
                         title="Recently added projects"
                         extra={<Button>View all projects</Button>}
                     >
-                        <Row gutter={[16, 16]}>
-                            {ProjectsData.slice(0, 4).map((_: Projects) => {
-                                return (
-                                    <Col xs={24} sm={12} lg={6} key={_.project_id}>
-                                        <ProjectsCard project={_} type="inner"/>
-                                    </Col>
-                                )
-                            })}
-                        </Row>
+                        {projectsDataError ?
+                            <Alert
+                                message="Error"
+                                description={projectsDataError.toString()}
+                                type="error"
+                                showIcon
+                            /> : (
+                                projectsDataLoading ?
+                                    <Loader/> :
+                                    <Row gutter={[16, 16]}>
+                                        {projectsData.slice(0, 4).map((o: Projects) => {
+                                            return (
+                                                <Col xs={24} sm={12} xl={6} key={o.project_id}>
+                                                    <ProjectsCard project={o} type="inner" style={{height: "100%"}}/>
+                                                </Col>
+                                            )
+                                        })}
+                                    </Row>
+                            )}
                     </Card>
                 </Col>
                 <Col xs={24} lg={16}>
@@ -210,9 +235,19 @@ const ProjectsDashboardPage = () => {
                         <RevenueColumnChart/>
                     </Card>
                 </Col>
-                <Col xs={24} lg={16}>
+                <Col xs={24} lg={8}>
                     <Card title="Top clients">
-                        <ClientsTable data={ClientsData.slice(0, 5)}/>
+                        {clientsDataError ?
+                            <Alert
+                                message="Error"
+                                description={clientsDataError.toString()}
+                                type="error"
+                                showIcon
+                            /> : (
+                                clientsDataLoading ?
+                                    <Loader/> :
+                                    <ClientsTable data={clientsData.slice(0, 5)}/>
+                            )}
                     </Card>
                 </Col>
                 <Col span={24}>

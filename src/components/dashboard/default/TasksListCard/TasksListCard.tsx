@@ -1,15 +1,17 @@
-import {Badge, Button, Card as AntdCard, CardProps, List, Space, Tag, Typography} from "antd";
+import {Alert, Badge, Button, Card as AntdCard, CardProps, Flex, List, Space, Tag, Typography} from "antd";
 import {Tasks} from "../../../../types";
 import {CalendarOutlined, FlagOutlined} from "@ant-design/icons";
-import {Card, UserAvatar} from "../../../index.ts";
+import {Card, Loader, UserAvatar} from "../../../index";
 
 import "./styles.css";
 
 type Props = {
     data: Tasks[]
+    loading: boolean
+    error: any
 } & CardProps
 
-const TasksListCard = ({data, ...others}: Props) => {
+const TasksListCard = ({data, error, loading, ...others}: Props) => {
     return (
         <Card
             title="Tasks"
@@ -17,78 +19,84 @@ const TasksListCard = ({data, ...others}: Props) => {
             className="tasks-list-card card"
             {...others}
         >
-            <List
-                grid={{
-                    gutter: 16,
-                    xs: 1,
-                    sm: 1,
-                    md: 2,
-                    lg: 3,
-                    xl: 3,
-                    xxl: 4,
-                }}
-                pagination={{
-                    onChange: (page) => {
-                        console.log(page);
-                    },
-                    pageSize: 6,
-                    align: "center"
-                }}
-                dataSource={data}
-                renderItem={(item) => (
-                    <List.Item
-                        key={item.name}
-                        style={{height: "100%"}}
-                    >
-                        <AntdCard
-                            hoverable={true}
-                            bordered={true}
-                            style={{height: "100%", background: "white"}}
-                        >
-                            <Space direction="vertical">
-                                <Space style={{justifyContent: "space-between", width: "100%"}}>
-                                    <Typography.Title
-                                        level={5}
-                                        style={{margin: 0, textTransform: "capitalize"}}
-                                    >
-                                        {item.name.slice(0, 20)}...
-                                    </Typography.Title>
-                                    <Tag style={{textTransform: "capitalize"}}>{item.category}</Tag>
-                                </Space>
-                                <Typography.Paragraph
-                                    ellipsis={{rows: 2}}
-                                    style={{marginBottom: 0}}
+            {error ?
+                <Alert
+                    message="Error"
+                    description={error.toString()}
+                    type="error"
+                    showIcon
+                /> : (loading ?
+                        <Loader/> :
+                        <List
+                            grid={{
+                                gutter: 16,
+                                xs: 1,
+                                sm: 1,
+                                md: 2,
+                                lg: 2,
+                                xl: 3,
+                                xxl: 4,
+                            }}
+                            pagination={{
+                                onChange: (page) => {
+                                    console.log(page);
+                                },
+                                pageSize: 6,
+                                align: "center"
+                            }}
+                            dataSource={data}
+                            renderItem={(item) => (
+                                <List.Item
+                                    key={item.name}
+                                    style={{height: "100%"}}
                                 >
-                                    {item.description}
-                                </Typography.Paragraph>
-                                <Space style={{justifyContent: "space-between", width: "100%"}}>
-                                    <Tag
-                                        icon={<FlagOutlined/>}
-                                        color={item.color}
-                                        style={{textTransform: "capitalize"}}
+                                    <AntdCard
+                                        hoverable
+                                        bordered
+                                        type="inner"
+                                        style={{height: "100%"}}
                                     >
-                                        {item.priority}
-                                    </Tag>
-                                    <Badge
-                                        status={
-                                            item.status.toLowerCase() === "completed"
-                                                ? "success"
-                                                : item.status.toLowerCase() === "in progress"
-                                                    ? "processing"
-                                                    : "warning"
-                                        }
-                                        text={<span style={{textTransform: "capitalize"}}>{item.status}</span>}
-                                    />
-                                </Space>
-                                <Space style={{justifyContent: "space-between", width: "100%"}}>
-                                    <Typography.Text><CalendarOutlined/>{' '}{item.due_date}</Typography.Text>
-                                    <UserAvatar fullName={item.assigned_to} size="medium"/>
-                                </Space>
-                            </Space>
-                        </AntdCard>
-                    </List.Item>
+                                        <Flex vertical gap="middle">
+                                            <Flex justify="space-between" align="center">
+                                                <Typography.Text
+                                                    strong
+                                                    className="text-capitalize"
+                                                >
+                                                    {item.name.slice(0, 20)}...
+                                                </Typography.Text>
+                                                <Tag className="text-capitalize">{item.category}</Tag>
+                                            </Flex>
+                                            <Flex justify="space-between" align="center">
+                                                <Tag
+                                                    icon={<FlagOutlined/>}
+                                                    color={item.color}
+                                                    style={{textTransform: "capitalize"}}
+                                                >
+                                                    {item.priority}
+                                                </Tag>
+                                                <Badge
+                                                    className="text-capitalize"
+                                                    status={
+                                                        item.status.toLowerCase() === "completed"
+                                                            ? "success"
+                                                            : item.status.toLowerCase() === "in progress"
+                                                                ? "processing"
+                                                                : "warning"
+                                                    }
+                                                    text={item.status}
+                                                />
+                                            </Flex>
+                                            <Space>
+                                                <CalendarOutlined/>
+                                                <Typography.Text>{item.due_date}</Typography.Text>
+                                            </Space>
+                                            <UserAvatar fullName={item.assigned_to} size="middle"/>
+                                        </Flex>
+                                    </AntdCard>
+                                </List.Item>
+                            )}
+                        />
                 )}
-            />
         </Card>
     );
 };

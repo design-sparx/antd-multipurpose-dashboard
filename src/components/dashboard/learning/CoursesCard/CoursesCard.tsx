@@ -1,9 +1,9 @@
-import {Avatar, CardProps, Space, Table, Typography} from "antd";
+import {Alert, CardProps, Space, Table, Typography} from "antd";
 import {LearningCourses} from "../../../../types";
 import {CalendarOutlined, SwapRightOutlined} from "@ant-design/icons";
-import {colourNameToHex, getNameInitials, isColorLight} from "../../../../utils";
 import {ColumnsType} from "antd/es/table";
-import {Card} from "../../../index.ts";
+import {Card, UserAvatar} from "../../../index.ts";
+import {ReactNode} from "react";
 
 const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     {
@@ -42,17 +42,7 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
         dataIndex: 'instructor_name',
         key: 'instructor_name',
         render: (_: any, {instructor_name, favorite_color}: any) => (
-            <Space>
-                <Avatar
-                    style={{
-                        backgroundColor: favorite_color,
-                        color: isColorLight(colourNameToHex(favorite_color)) ? 'black' : 'white'
-                    }}
-                >
-                    {getNameInitials(instructor_name)}
-                </Avatar>
-                <Typography.Text>{instructor_name}</Typography.Text>
-            </Space>
+            <UserAvatar fullName={instructor_name} color={favorite_color}/>
         )
     },
     {
@@ -62,15 +52,23 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     }
 ]
 
-type Props = { data: LearningCourses[] } & CardProps
+type Props = { data: LearningCourses[], loading: boolean, error: ReactNode } & CardProps
 
-const CoursesCard = ({data, ...others}: Props) => {
+const CoursesCard = ({data, loading, error, ...others}: Props) => {
     return (
         <Card
-            title="Courses your're taking"
+            title="My courses"
             {...others}
         >
-            <Table dataSource={data} columns={COURSES_COLUMNS}/>
+            {error ?
+                <Alert
+                    message="Error"
+                    description={error.toString()}
+                    type="error"
+                    showIcon
+                /> :
+                <Table dataSource={data} columns={COURSES_COLUMNS} loading={loading} className="overflow-scroll"/>
+            }
         </Card>
     );
 };

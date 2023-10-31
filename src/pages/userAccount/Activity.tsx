@@ -1,5 +1,5 @@
 import {TimelineCard} from "../../components";
-import TimelineActivityData from "../../mocks/TimelineActivity.json"
+import TimelineActivityData from "../../../public/mocks/TimelineActivity.json"
 
 const UserProfileActivityPage = () => {
     return (

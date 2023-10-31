@@ -1,14 +1,13 @@
-import {Affix, Button, Input, Layout, Space, theme, Tooltip} from "antd";
+import {Button, Flex, FloatButton, Input, Layout, Space, theme, Tooltip} from "antd";
 import {useLocation} from "react-router-dom";
 import {ReactNode, useEffect, useRef, useState} from "react";
-import {AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MessageOutlined, UpOutlined} from "@ant-design/icons";
+import {AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MessageOutlined} from "@ant-design/icons";
 import {CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import {useMediaQuery} from "react-responsive";
 import SideNav from "./SideNav.tsx";
 import HeaderNav from "./HeaderNav.tsx";
 import FooterNav from "./FooterNav.tsx";
 import {Nprogress} from "../../components";
-import {goToTop} from "../../utils";
 
 const {Content} = Layout
 
@@ -22,11 +21,11 @@ const AppLayout = ({children}: AppLayoutProps) => {
     } = theme.useToken();
     const isMobile = useMediaQuery({maxWidth: 769})
     const [collapsed, setCollapsed] = useState(true);
-    const [showTopBtn, setShowTopBtn] = useState(false);
     const [navFill, setNavFill] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const location = useLocation()
     const nodeRef = useRef(null)
+    const floatBtnRef = useRef(null)
 
     useEffect(() => {
         setCollapsed(isMobile)
@@ -34,12 +33,6 @@ const AppLayout = ({children}: AppLayoutProps) => {
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                setShowTopBtn(true);
-            } else {
-                setShowTopBtn(false);
-            }
-
             if (window.scrollY > 5) {
                 setNavFill(true)
             } else {
@@ -96,7 +89,7 @@ const AppLayout = ({children}: AppLayoutProps) => {
                             transition: "all .25s"
                         }}
                     >
-                        <Space align="center" style={{width: "100%"}}>
+                        <Flex align="center">
                             <Tooltip title={`${collapsed ? "Expand" : "Collapse"} Sidebar`}>
                                 <Button
                                     type="text"
@@ -113,11 +106,10 @@ const AppLayout = ({children}: AppLayoutProps) => {
                                 placeholder="search"
                                 style={{
                                     width: isMobile ? "100%" : "400px",
-                                    marginTop: "10px"
                                 }}
-                                size="large"
+                                size="middle"
                             />
-                        </Space>
+                        </Flex>
                         <Space align="center">
                             <Tooltip title="Apps">
                                 <Button icon={<AppstoreOutlined/>} type="text"/>
@@ -160,20 +152,9 @@ const AppLayout = ({children}: AppLayoutProps) => {
                                 </CSSTransition>
                             </SwitchTransition>
                         </TransitionGroup>
-                        {showTopBtn &&
-                            <Affix offsetBottom={10} style={{textAlign: 'end', transition: "width 2s"}}>
-                                <Tooltip title="Scroll to top of the screen">
-                                    <Button
-                                        type="primary"
-                                        onClick={goToTop}
-                                        icon={<UpOutlined/>}
-                                        shape={isMobile ? "circle" : "default"}
-                                        size={isMobile ? "large" : "middle"}>
-                                        {!isMobile && "Scroll to top"}
-                                    </Button>
-                                </Tooltip>
-                            </Affix>
-                        }
+                        <div ref={floatBtnRef}>
+                            <FloatButton.BackTop/>
+                        </div>
                     </Content>
                     <FooterNav
                         style={{

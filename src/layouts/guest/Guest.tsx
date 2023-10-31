@@ -1,12 +1,12 @@
-import {Affix, Button, ConfigProvider, Layout, Menu, theme, Tooltip} from "antd";
+import {Affix, Button, ConfigProvider, Flex, Layout, Menu, theme, Tooltip} from "antd";
 import {CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
-import {LoginOutlined, UpOutlined} from "@ant-design/icons";
+import {GithubOutlined, LoginOutlined, UpOutlined} from "@ant-design/icons";
 import {useMediaQuery} from "react-responsive";
 import {Logo, Nprogress} from "../../components";
 import {goToTop} from "../../utils";
-import {PATH_DASHBOARD, PATH_LANDING} from "../../constants";
+import {PATH_DASHBOARD, PATH_GITHUB, PATH_LANDING} from "../../constants";
 
 const {Header, Content, Footer} = Layout
 
@@ -68,10 +68,7 @@ const GuestLayout = () => {
                         top: 0
                     }}
                 >
-                    <Logo
-                        color="black"
-                        style={{display: "flex", alignItems: "center", gap: 8}}
-                    />
+                    <Logo color="black" asLink href={PATH_LANDING.root}/>
                     <ConfigProvider
                         theme={{
                             components: {
@@ -90,9 +87,14 @@ const GuestLayout = () => {
                             }))}
                         />
                     </ConfigProvider>
-                    <Link to={PATH_DASHBOARD.default}>
-                        <Button icon={<LoginOutlined/>} type="primary" size="large">Live Preview</Button>
-                    </Link>
+                    <Flex gap="small">
+                        <Link to={PATH_DASHBOARD.default}>
+                            <Button icon={<LoginOutlined/>} type="primary">Live Preview</Button>
+                        </Link>
+                        <a href={PATH_GITHUB.personal} target="_blank">
+                            <Button icon={<GithubOutlined/>}>Github</Button>
+                        </a>
+                    </Flex>
                 </Header>
                 <Content
                     style={{
@@ -143,10 +145,10 @@ const GuestLayout = () => {
                 <Footer
                     style={{
                         textAlign: 'center',
-                        background: "none"
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
                     }}
                 >
-                   AntD Dashboard &copy; {new Date().getFullYear()} Created by Design Sparx
+                    AntD Dashboard &copy; {new Date().getFullYear()} Created by Design Sparx
                 </Footer>
             </Layout>
         </>

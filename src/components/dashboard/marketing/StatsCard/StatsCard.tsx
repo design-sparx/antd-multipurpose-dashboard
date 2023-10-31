@@ -1,4 +1,4 @@
-import {CardProps, Col, Row, Space, Tag, Typography} from "antd";
+import {CardProps, Col, Flex, Row, Tag, Typography} from "antd";
 import {TinyColumn} from "@ant-design/charts";
 import {Card} from "../../../index.ts";
 
@@ -34,21 +34,22 @@ type Props = {
 
 const StatsCard = ({data, diff, title, value, ...others}: Props) => {
     return (
-        <Card title={title} {...others}>
-            <Space direction="vertical">
+        <Card {...others}>
+            <Flex vertical>
+                <Typography.Title level={5} className="text-capitalize m-0">{title}</Typography.Title>
                 <Row>
-                    <Col span={12}>
-                        <Typography.Title>{value}</Typography.Title>
+                    <Col span={14}>
+                        <Typography.Title level={2}>{value}</Typography.Title>
                     </Col>
-                    <Col span={12}>
+                    <Col span={10}>
                         <ColumnChart data={data}/>
                     </Col>
                 </Row>
-                <Space>
-                    <Tag color={diff < 0 ? 'error' : 'success'}>{diff}%</Tag>
-                    <Typography.Text>Total {title} compared to last month.</Typography.Text>
-                </Space>
-            </Space>
+                <Flex>
+                    <Tag color={diff < 0 ? 'red' : 'green'}>{diff}%</Tag>
+                    <Typography.Text>compared to last month.</Typography.Text>
+                </Flex>
+            </Flex>
         </Card>
     );
 };

@@ -1,6 +1,6 @@
 import {Col, Row, RowProps, Space, Typography} from "antd";
 import {Card, FaqCollapse} from "../../components";
-import FaqsData from "../../mocks/Faqs.json";
+import FaqsData from "../../../public/mocks/Faqs.json";
 import * as _ from "lodash";
 import {useEffect, useState} from "react";
 import {Faq} from "../../types";

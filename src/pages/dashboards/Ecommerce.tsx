@@ -1,24 +1,43 @@
-import {Button, Col, Image, Popover, Progress, Row, RowProps, Space, Table, Tag, Typography} from "antd";
-import {Card, CustomerReviewsCard, PageHeader, RevenueCard} from "../../components";
+import {
+    Alert,
+    Button,
+    ButtonProps,
+    Col,
+    Flex,
+    Image,
+    Popover,
+    Progress,
+    Row,
+    Space,
+    Table,
+    Tag,
+    TagProps,
+    Typography
+} from "antd";
+import {Card, CustomerReviewsCard, PageHeader, RevenueCard, UserAvatar} from "../../components";
 import {Area, Bullet} from "@ant-design/charts";
 import {
     ArrowDownOutlined,
     ArrowUpOutlined,
-    EyeOutlined,
-    HomeOutlined, PieChartOutlined,
+    CheckCircleOutlined,
+    ClockCircleOutlined,
+    ExclamationCircleOutlined,
+    HomeOutlined,
+    PieChartOutlined,
     QuestionOutlined,
-    RightOutlined
+    StarFilled,
+    SyncOutlined,
 } from "@ant-design/icons";
 import {Pie} from "@ant-design/plots";
-import TopSellingProductsData from "../../mocks/TopProducts.json"
-import TopCategoriesData from "../../mocks/TopCategories.json"
-import TopSellerData from "../../mocks/TopSeller.json"
-import RecentOrdersData from "../../mocks/RecentOrders.json"
 import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
+import {useStylesContext} from "../../context";
+import {createElement, CSSProperties} from "react";
+import {useFetchData} from "../../hooks";
+import {blue, green, red, yellow} from "@ant-design/colors"
 
-const {Paragraph, Text, Title} = Typography
+const {Text, Title} = Typography
 
 const SalesChart = () => {
     const data = [
@@ -345,26 +364,29 @@ const PRODUCTS_COLUMNS = [
         dataIndex: 'product_name',
         key: 'product_name',
         render: (_: any, {product_name, brand}: any) => (
-            <Space>
+            <Flex gap="small" align="center">
                 <Image src={brand} width={16} height={16}/>
-                <Text>{product_name}</Text>
-            </Space>
+                <Text style={{width: 160}}>{product_name}</Text>
+            </Flex>
         )
     },
     {
         title: 'Category',
         dataIndex: 'category',
-        key: 'category'
+        key: 'category',
+        render: (_: any) => <span className="text-capitalize">{_}</span>
     },
     {
         title: 'Price',
         dataIndex: 'price',
-        key: 'price'
+        key: 'price',
+        render: (_: any) => <span>$ {_}</span>
     },
     {
         title: 'Avg rating',
         dataIndex: 'average_rating',
-        key: 'average_rating'
+        key: 'average_rating',
+        render: (_: any) => <Flex align="center" gap="small">{_}<StarFilled style={{fontSize: 12}}/> </Flex>
     },
 ]
 
@@ -377,31 +399,31 @@ const CATEGORIES_COLUMNS = [
     {
         title: 'Price',
         dataIndex: 'price',
-        key: 'price'
+        key: 'price',
+        render: (_: any) => <span>$ {_}</span>
     },
     {
         title: 'Avg rating',
         dataIndex: 'rating',
-        key: 'rating'
+        key: 'rating',
+        render: (_: any) => <Flex align="center" gap="small">{_}<StarFilled style={{fontSize: 12}}/> </Flex>
     },
 ]
 
 const SELLER_COLUMNS = [
     {
-        title: 'name',
+        title: 'Name',
         dataIndex: 'first_name',
         key: 'first_name',
         render: (_: any, {first_name, last_name}: any) => (
-            <Space>
-                <Image/>
-                <Text>{first_name}{' '}{last_name}</Text>
-            </Space>
-        )
+            <UserAvatar fullName={`${first_name} ${last_name}`}/>
+        ),
     },
     {
         title: 'Email',
         dataIndex: 'email',
-        key: 'email'
+        key: 'email',
+        render: (_: any) => <Link to={`mailto:${_}`}>{_}</Link>
     },
     {
         title: 'Region',
@@ -414,35 +436,51 @@ const SELLER_COLUMNS = [
         key: 'country'
     },
     {
-        title: 'Sales volume',
+        title: 'Volume',
         dataIndex: 'sales_volume',
         key: 'sales_volume'
     },
     {
-        title: 'Total sales',
+        title: 'Amount',
         dataIndex: 'total_sales',
-        key: 'total_sales'
+        key: 'total_sales',
+        render: (_: any) => <span>$ {_}</span>
     },
     {
         title: 'Satisfaction rate',
         dataIndex: 'customer_satisfaction',
         key: 'customer_satisfaction',
-        render: (_: any, {customer_satisfaction}: any) => (
-            <Progress percent={customer_satisfaction}/>
-        )
+        render: (_: any) => {
+            let color
+
+            if (_ < 20) {
+                color = red[5]
+            } else if (_ > 21 && _ < 50) {
+                color = yellow[6]
+            } else if (_ > 51 && _ < 70) {
+                color = blue[5]
+            } else {
+                color = green[6]
+            }
+
+            return <Progress percent={_} strokeColor={color}/>
+        }
     },
 ]
 
 const ORDERS_COLUMNS = [
     {
-        title: 'ID',
-        dataIndex: 'order_id',
-        key: 'order_id'
+        title: 'Tracking',
+        dataIndex: 'tracking_number',
+        key: 'tracking_number'
     },
     {
-        title: 'Name',
+        title: 'Customer',
         dataIndex: 'customer_name',
-        key: 'customer_name'
+        key: 'customer_name',
+        render: (_: any) => (
+            <UserAvatar fullName={_}/>
+        )
     },
     {
         title: 'Date',
@@ -452,7 +490,8 @@ const ORDERS_COLUMNS = [
     {
         title: 'Price',
         dataIndex: 'price',
-        key: 'price'
+        key: 'price',
+        render: (_: any) => <span>$ {_}</span>
     },
     {
         title: 'Quantity',
@@ -462,7 +501,26 @@ const ORDERS_COLUMNS = [
     {
         title: 'Status',
         dataIndex: 'status',
-        key: 'status'
+        key: 'status',
+        render: (_: any) => {
+            let color: TagProps["color"], icon: any
+
+            if (_ === 'shipped') {
+                color = "magenta-inverse"
+                icon = ClockCircleOutlined
+            } else if (_ === "processing") {
+                color = "blue-inverse"
+                icon = SyncOutlined
+            } else if (_ === "delivered") {
+                color = "green-inverse"
+                icon = CheckCircleOutlined
+            } else {
+                color = "volcano-inverse"
+                icon = ExclamationCircleOutlined
+            }
+
+            return <Tag className="text-capitalize" color={color} icon={createElement(icon)}>{_}</Tag>
+        }
     },
     {
         title: 'Country',
@@ -473,22 +531,40 @@ const ORDERS_COLUMNS = [
         title: 'Address',
         dataIndex: 'shipping_address',
         key: 'shipping_address'
-    },
-    {
-        title: 'Tracking',
-        dataIndex: 'tracking_number',
-        key: 'tracking_number'
-    },
+    }
 ]
 
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
+const POPOVER_BUTTON_PROPS: ButtonProps = {
+    type: "text",
+}
+
+const cardStyles: CSSProperties = {
+    height: "100%"
 }
 
 const EcommerceDashboardPage = () => {
+    const stylesContext = useStylesContext()
+    const {
+        data: topProducts,
+        error: topProductsError,
+        loading: topProductsLoading
+    } = useFetchData("../mocks/TopProducts.json")
+    const {
+        data: topCategories,
+        error: topCategoriesError,
+        loading: topCategoriesLoading
+    } = useFetchData("../mocks/TopCategories.json")
+    const {
+        data: topSellers,
+        error: topSellersError,
+        loading: topSellersLoading
+    } = useFetchData('../mocks/TopSeller.json')
+    const {
+        data: recentOrders,
+        error: recentOrdersError,
+        loading: recentOrdersLoading
+    } = useFetchData('../mocks/RecentOrders.json')
+
     return (
         <div>
             <Helmet>
@@ -515,193 +591,193 @@ const EcommerceDashboardPage = () => {
                     }
                 ]}
             />
-            <Row {...ROW_PROPS}>
-                <Col xs={24} lg={16}>
-                    <Row {...ROW_PROPS}>
-                        <Col xs={24} sm={12} lg={6}>
+            <Row {...stylesContext?.rowProps}>
+                <Col sm={24} lg={16}>
+                    <Row {...stylesContext?.rowProps}>
+                        <Col xs={24} sm={12}>
                             <RevenueCard title="Visitors" value="20,149" diff={5.54}/>
                         </Col>
-                        <Col xs={24} sm={12} lg={6}>
+                        <Col xs={24} sm={12}>
                             <RevenueCard title="Customers" value="5,834" diff={-12.3}/>
                         </Col>
-                        <Col xs={24} sm={12} lg={6}>
+                        <Col xs={24} sm={12}>
                             <RevenueCard title="Orders" value="3,270" diff={9.52}/>
                         </Col>
-                        <Col xs={24} sm={12} lg={6}>
+                        <Col xs={24} sm={12}>
                             <RevenueCard title="Sales" value="$ 1.324K" diff={2.34}/>
-                        </Col>
-                        <Col xs={24} lg={12}>
-                            <Card
-                                title={
-                                    <Space>
-                                        <Title level={5}>Total sales</Title>
-                                        <Popover content="Total sales over period x" title="Total sales">
-                                            <Button icon={<QuestionOutlined/>}/>
-                                        </Popover>
-                                    </Space>
-                                }
-                                extra={
-                                    <Button>View report{' '}
-                                        <RightOutlined/>
-                                    </Button>
-                                }
-                            >
-                                <Space>
-                                    <Title>$ 24,485.67</Title>
-                                    <Tag color="success" icon={<ArrowUpOutlined/>}>8.7%</Tag>
-                                </Space>
-                                <SalesChart/>
-                            </Card>
-                        </Col>
-                        <Col xs={24} lg={12}>
-                            <Card
-                                title={
-                                    <Space>
-                                        <Title level={5}>Categories</Title>
-                                        <Popover content="Total sales over period x" title="Total sales">
-                                            <Button icon={<QuestionOutlined/>}/>
-                                        </Popover>
-                                    </Space>
-                                }
-                                extra={
-                                    <Button>View statistic{' '}
-                                        <RightOutlined/>
-                                    </Button>
-                                }
-                            >
-                                <CategoriesChart/>
-                            </Card>
                         </Col>
                     </Row>
                 </Col>
-                <Col xs={24} lg={8}>
+                <Col sm={24} lg={8}>
                     <CustomerReviewsCard/>
                 </Col>
-                <Col xs={24} lg={8}>
+                <Col xs={24} lg={12}>
                     <Card
-                        title={
-                            <Space>
-                                <Title level={5}>Order status</Title>
-                                <Popover content="Total sales over period x" title="Total sales">
-                                    <Button icon={<QuestionOutlined/>}/>
-                                </Popover>
-                            </Space>
-                        }
+                        title="Overall sales"
                         extra={
-                            <Button>Compare{' '}
-                                <RightOutlined/>
-                            </Button>
+                            <Popover content="Total sales over period x" title="Total sales">
+                                <Button icon={<QuestionOutlined/>} {...POPOVER_BUTTON_PROPS}/>
+                            </Popover>
                         }
+                        style={cardStyles}
+                    >
+                        <Flex vertical gap="middle">
+                            <Space>
+                                <Title level={3} style={{margin: 0}}>$ 24,485.67</Title>
+                                <Tag color="green" icon={<ArrowUpOutlined/>}>8.7%</Tag>
+                            </Space>
+                            <SalesChart/>
+                        </Flex>
+                    </Card>
+                </Col>
+                <Col xs={24} lg={12}>
+                    <Card
+                        title="Categories"
+                        extra={
+                            <Popover content="Sales per categories" title="Categories sales">
+                                <Button icon={<QuestionOutlined/>} {...POPOVER_BUTTON_PROPS}/>
+                            </Popover>
+                        }
+                        style={cardStyles}
+                    >
+                        <CategoriesChart/>
+                    </Card>
+                </Col>
+                <Col xs={24} lg={12}>
+                    <Card
+                        title="Orders by status"
+                        extra={<Popover content="Orders by status" title="Orders">
+                            <Button icon={<QuestionOutlined/>} {...POPOVER_BUTTON_PROPS}/>
+                        </Popover>
+                        }
+                        style={cardStyles}
                     >
                         <OrdersStatusChart/>
                     </Card>
                 </Col>
-                <Col xs={24} lg={8}>
-                    <Card
-                        title={
-                            <Space>
-                                <Title level={5}>Conversion rate</Title>
-                                <Popover content="Total sales over period x" title="Total sales">
-                                    <Button icon={<QuestionOutlined/>}/>
-                                </Popover>
-                            </Space>
-                        }
-                        extra={
-                            <Button>Compare{' '}
-                                <RightOutlined/>
-                            </Button>
-                        }
-                    >
-                        <Typography.Title>8.48%</Typography.Title>
-                        <Space align="start" style={{width: '100%', justifyContent: 'space-between'}}>
-                            <Space direction="vertical">
-                                <Paragraph>Added to cart</Paragraph>
-                                <Text type="secondary">5 visits</Text>
-                            </Space>
-                            <Text>$27,483.70</Text>
-                            <Tag color="success" icon={<ArrowUpOutlined/>}>16.8%</Tag>
-                        </Space>
-                        <Space align="start" style={{width: '100%', justifyContent: 'space-between'}}>
-                            <Space direction="vertical">
-                                <Paragraph>Reached to Checkout</Paragraph>
-                                <Text type="secondary">23 visits</Text>
-                            </Space>
-                            <Text>$145,483.70</Text>
-                            <Tag color="error" icon={<ArrowDownOutlined/>}>-46.8%</Tag>
-                        </Space>
-                    </Card>
+                <Col xs={24} lg={12}>
+                    <Flex vertical gap="middle">
+                        <Card
+                            title="Conversion rate"
+                            extra={<Popover content="Customer conversion rate" title="Conversion rate">
+                                <Button icon={<QuestionOutlined/>} {...POPOVER_BUTTON_PROPS}/>
+                            </Popover>}
+                        >
+                            <Flex vertical gap="middle" justify="center">
+                                <Typography.Title style={{margin: 0}}>8.48%</Typography.Title>
+                                <Row>
+                                    <Col sm={24} lg={8}>
+                                        <Space direction="vertical">
+                                            <Text>Added to cart</Text>
+                                            <Text type="secondary">5 visits</Text>
+                                        </Space>
+                                    </Col>
+                                    <Col sm={24} lg={8}>
+                                        <Text className="text-end">$27,483.70</Text>
+                                    </Col>
+                                    <Col sm={24} lg={8}>
+                                        <Tag color="success" icon={<ArrowUpOutlined/>}>16.8%</Tag>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col sm={24} lg={8}>
+                                        <Space direction="vertical">
+                                            <Text>Reached to Checkout</Text>
+                                            <Text type="secondary">23 visits</Text>
+                                        </Space>
+                                    </Col>
+                                    <Col sm={24} lg={8}>
+                                        <Text className="text-end">$145,483.70</Text>
+                                    </Col>
+                                    <Col sm={24} lg={8}>
+                                        <Tag color="error" icon={<ArrowDownOutlined/>}>-46.8%</Tag>
+                                    </Col>
+                                </Row>
+                            </Flex>
+                        </Card>
+                        <Card
+                            title="Customer rate"
+                        >
+                            <div style={{height: 80, textAlign: 'center'}}>
+                                <CustomerRateChart/>
+                            </div>
+                        </Card>
+                    </Flex>
                 </Col>
-                <Col xs={24} lg={8}>
-                    <Card
-                        title={
-                            <Space>
-                                <Title level={5}>Customer rate</Title>
-                                <Popover content="Total sales over period x" title="Total sales">
-                                    <Button icon={<QuestionOutlined/>}/>
-                                </Popover>
-                            </Space>
+                <Col xs={24} lg={12}>
+                    <Card title="Popular products">
+                        {topProductsError ?
+                            <Alert
+                                message="Error"
+                                description={topProductsError.toString()}
+                                type="error"
+                                showIcon
+                            /> :
+                            <Table
+                                columns={PRODUCTS_COLUMNS}
+                                dataSource={topProducts}
+                                loading={topProductsLoading}
+                                className="overflow-scroll"
+                            />
                         }
-                        extra={
-                            <Button>Live view{' '}
-                                <EyeOutlined/>
-                            </Button>
-                        }
-                    >
-                        <div style={{height: 80, textAlign: 'center'}}>
-                            <CustomerRateChart/>
-                        </div>
                     </Card>
                 </Col>
                 <Col xs={24} lg={12}>
-                    <Card title={
-                        <Space>
-                            <Title level={5}>Top selling products</Title>
-                            <Popover content="Total sales over period x" title="Total sales">
-                                <Button icon={<QuestionOutlined/>}/>
-                            </Popover>
-                        </Space>
-                    }>
-                        <Table columns={PRODUCTS_COLUMNS} dataSource={TopSellingProductsData}/>
-                    </Card>
-                </Col>
-                <Col xs={24} lg={12}>
                     <Card
-                        title={
-                            <Space>
-                                <Title level={5}>Top categories</Title>
-                                <Popover content="Total sales over period x" title="Total sales">
-                                    <Button icon={<QuestionOutlined/>}/>
-                                </Popover>
-                            </Space>
-                        }
+                        title="Popular categories"
                     >
-                        <Table columns={CATEGORIES_COLUMNS} dataSource={TopCategoriesData}/>
+                        {topCategoriesError ?
+                            <Alert
+                                message="Error"
+                                description={topCategoriesError.toString()}
+                                type="error"
+                                showIcon
+                            /> :
+                            <Table
+                                columns={CATEGORIES_COLUMNS}
+                                dataSource={topCategories}
+                                loading={topCategoriesLoading}
+                                className="overflow-scroll"
+                            />
+                        }
                     </Card>
                 </Col>
                 <Col span={24}>
-                    <Card title={
-                        <Space>
-                            <Title level={5}>Top sellers</Title>
-                            <Popover content="Total sales over period x" title="Total sales">
-                                <Button icon={<QuestionOutlined/>}/>
-                            </Popover>
-                        </Space>
-                    }>
-                        <Table columns={SELLER_COLUMNS} dataSource={TopSellerData}/>
+                    <Card title="Top sellers">
+                        {topSellersError ?
+                            <Alert
+                                message="Error"
+                                description={topSellersError.toString()}
+                                type="error"
+                                showIcon
+                            /> :
+                            <Table
+                                columns={SELLER_COLUMNS}
+                                dataSource={topSellers}
+                                loading={topSellersLoading}
+                                className="overflow-scroll"
+                            />
+                        }
                     </Card>
                 </Col>
                 <Col span={24}>
                     <Card
-                        title={
-                            <Space>
-                                <Title level={5}>Recent orders</Title>
-                                <Popover content="Total sales over period x" title="Total sales">
-                                    <Button icon={<QuestionOutlined/>}/>
-                                </Popover>
-                            </Space>
-                        }
+                        title="Recent orders"
                     >
-                        <Table columns={ORDERS_COLUMNS} dataSource={RecentOrdersData}/>
+                        {recentOrdersError ?
+                            <Alert
+                                message="Error"
+                                description={recentOrdersError.toString()}
+                                type="error"
+                                showIcon
+                            /> :
+                            <Table
+                                columns={ORDERS_COLUMNS}
+                                dataSource={recentOrders}
+                                loading={recentOrdersLoading}
+                                className="overflow-scroll"
+                            />
+                        }
                     </Card>
                 </Col>
             </Row>

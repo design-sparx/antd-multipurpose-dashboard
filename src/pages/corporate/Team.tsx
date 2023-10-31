@@ -1,6 +1,6 @@
 import {Col, List, Row, RowProps} from "antd";
 import {Card, EmployeeCard} from "../../components";
-import EmployeesData from "../../mocks/Employees.json";
+import EmployeesData from "../../../public/mocks/Employees.json";
 import {Employee} from "../../types";
 
 const ROW_PROPS: RowProps = {

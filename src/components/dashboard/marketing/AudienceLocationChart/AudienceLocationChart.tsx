@@ -1,6 +1,7 @@
 import {CirclePacking} from "@ant-design/charts";
-import {CardProps, Space, Typography} from "antd";
+import {Button, CardProps, Popover} from "antd";
 import {Card} from "../../../index.ts";
+import {QuestionOutlined} from "@ant-design/icons";
 
 const CirclePackingChart = () => {
     const data = {
@@ -151,11 +152,11 @@ type Props = CardProps
 const AudienceLocationChart = ({...others}: Props) => {
     return (
         <Card
-            title={
-                <Space direction="vertical">
-                    <Typography.Title level={5}>Audience by location</Typography.Title>
-                    <Typography.Text>View your audience data by their location</Typography.Text>
-                </Space>
+            title="Audience by location"
+            extra={
+                <Popover content="View your audience data by their location">
+                    <Button icon={<QuestionOutlined/>} type="text"/>
+                </Popover>
             }
             {...others}
         >

@@ -1,6 +1,6 @@
 import {Card as AntCard, Col, Row, RowProps} from "antd";
 import {Card} from "../../components";
-import LicenceData from "../../mocks/License.json"
+import LicenceData from "../../../public/mocks/License.json"
 import {Typography} from "antd";
 
 const ROW_PROPS: RowProps = {

@@ -1,4 +1,4 @@
-import {Button, CardProps, Col, Dropdown, MenuProps, Row, Space, Typography} from "antd";
+import {Button, CardProps, Col, Dropdown, Flex, MenuProps, Row, Space, Typography} from "antd";
 import {RadialBar} from "@ant-design/charts";
 import {DownOutlined} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
@@ -21,7 +21,7 @@ const RadialChart = () => {
 
     const config = {
         data,
-        height: 200,
+        height: 240,
         xField: 'name',
         yField: 'count',
         maxAngle: 270,
@@ -91,37 +91,54 @@ const ProgressCard = ({...others}: Props) => {
                 </Dropdown>}
             {...others}
         >
-            <RadialChart/>
-            <Typography.Paragraph style={{textAlign: 'center'}}>Total hours: <b>10h 34min</b></Typography.Paragraph>
-            <Row>
-                <Col span={8}>
-                    <div style={{display: 'flex', gap: '4px'}}>
-                        <div style={{height: '20px', width: '8px', backgroundColor: '#36c361', borderRadius: '4px'}}/>
-                        <Space direction="vertical" size={2}>
-                            <Typography.Text strong>7100/9383</Typography.Text>
-                            <Typography.Text>Completed</Typography.Text>
-                        </Space>
-                    </div>
-                </Col>
-                <Col span={8}>
-                    <div style={{display: 'flex', gap: '4px', borderRadius: '4px'}}>
-                        <div style={{height: '20px', width: '8px', backgroundColor: '#2194ff', borderRadius: '4px'}}/>
-                        <Space direction="vertical" size={2}>
-                            <Typography.Text strong>1478/9383</Typography.Text>
-                            <Typography.Text>In progress</Typography.Text>
-                        </Space>
-                    </div>
-                </Col>
-                <Col span={8}>
-                    <div style={{display: 'flex', gap: '4px', borderRadius: '4px'}}>
-                        <div style={{height: '20px', width: '8px', backgroundColor: '#ff4d4f', borderRadius: '4px'}}/>
-                        <Space direction="vertical" size={2}>
-                            <Typography.Text strong>805/9383</Typography.Text>
-                            <Typography.Text>Not started</Typography.Text>
-                        </Space>
-                    </div>
-                </Col>
-            </Row>
+            <Flex vertical gap="middle">
+                <RadialChart/>
+                <Typography.Paragraph style={{textAlign: 'center'}}>Total hours: <b>10h 34min</b></Typography.Paragraph>
+                <Row>
+                    <Col span={8}>
+                        <div style={{display: 'flex', gap: '4px'}}>
+                            <div style={{
+                                height: '20px',
+                                width: '8px',
+                                backgroundColor: '#36c361',
+                                borderRadius: '4px'
+                            }}/>
+                            <Space direction="vertical" size={2}>
+                                <Typography.Text strong>7100/9383</Typography.Text>
+                                <Typography.Text>Completed</Typography.Text>
+                            </Space>
+                        </div>
+                    </Col>
+                    <Col span={8}>
+                        <div style={{display: 'flex', gap: '4px', borderRadius: '4px'}}>
+                            <div style={{
+                                height: '20px',
+                                width: '8px',
+                                backgroundColor: '#2194ff',
+                                borderRadius: '4px'
+                            }}/>
+                            <Space direction="vertical" size={2}>
+                                <Typography.Text strong>1478/9383</Typography.Text>
+                                <Typography.Text>In progress</Typography.Text>
+                            </Space>
+                        </div>
+                    </Col>
+                    <Col span={8}>
+                        <div style={{display: 'flex', gap: '4px', borderRadius: '4px'}}>
+                            <div style={{
+                                height: '20px',
+                                width: '8px',
+                                backgroundColor: '#ff4d4f',
+                                borderRadius: '4px'
+                            }}/>
+                            <Space direction="vertical" size={2}>
+                                <Typography.Text strong>805/9383</Typography.Text>
+                                <Typography.Text>Not started</Typography.Text>
+                            </Space>
+                        </div>
+                    </Col>
+                </Row>
+            </Flex>
         </Card>
     );
 };
