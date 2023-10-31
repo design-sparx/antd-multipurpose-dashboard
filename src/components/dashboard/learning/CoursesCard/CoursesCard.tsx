@@ -1,7 +1,6 @@
-import {Alert, Avatar, CardProps, Space, Table, Typography} from "antd";
+import {Alert, CardProps, Space, Table, Typography} from "antd";
 import {LearningCourses} from "../../../../types";
 import {CalendarOutlined, SwapRightOutlined} from "@ant-design/icons";
-import {colourNameToHex, getNameInitials, isColorLight} from "../../../../utils";
 import {ColumnsType} from "antd/es/table";
 import {Card, UserAvatar} from "../../../index.ts";
 import {ReactNode} from "react";

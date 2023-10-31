@@ -90,7 +90,7 @@ const TasksListCard = ({data, error, loading, ...others}: Props) => {
                                                 <CalendarOutlined/>
                                                 <Typography.Text>{item.due_date}</Typography.Text>
                                             </Space>
-                                            <UserAvatar fullName={item.assigned_to} size="medium"/>
+                                            <UserAvatar fullName={item.assigned_to} size="middle"/>
                                         </Flex>
                                     </AntdCard>
                                 </List.Item>
