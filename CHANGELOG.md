@@ -1,5 +1,23 @@
 # antd-multi-dashboard
 
+## 0.6.0
+
+### Minor Changes
+
+- 6d3b56b: - updated all dashboard designs - added fetch json data hooks with data, loading and error states - updated general theme configurations
+
+### Patch Changes
+
+- e616984: refined default dashboard page
+- 437011c: ### Added
+
+  - added fetch JSON data hooks with data, loading and error states
+
+  ### Updated
+
+  - updated all dashboard designs
+  - updated general theme configurations
+
 ## 0.5.0
 
 ### Minor Changes
