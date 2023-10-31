@@ -190,16 +190,16 @@ const ProjectsDashboardPage = () => {
             />
             <Row gutter={[{xs: 8, sm: 16, md: 24, lg: 32}, {xs: 8, sm: 16, md: 24, lg: 32}]}>
                 <Col xs={24} sm={12} lg={6}>
-                    <RevenueCard title="Total revenue" value='$ 1,556.30' diff={280}/>
+                    <RevenueCard title="Total revenue" value={1556.30} diff={280}/>
                 </Col>
                 <Col xs={24} sm={12} lg={6}>
-                    <RevenueCard title="Spent this week" value='$ 1806.30' diff={180}/>
+                    <RevenueCard title="Spent this week" value={1806.30} diff={180}/>
                 </Col>
                 <Col xs={24} sm={12} lg={6}>
-                    <RevenueCard title="Worked this week" value='35:12' diff={-10.00}/>
+                    <RevenueCard title="Worked this week" value="35:12" diff={-10.00}/>
                 </Col>
                 <Col xs={24} sm={12} lg={6}>
-                    <RevenueCard title="Worked today" value='05:30:00' diff={-20.10}/>
+                    <RevenueCard title="Worked today" value="05:30:00" diff={-20.10}/>
                 </Col>
                 <Col span={24}>
                     <Card
@@ -227,7 +227,7 @@ const ProjectsDashboardPage = () => {
                             )}
                     </Card>
                 </Col>
-                <Col xs={24} lg={16}>
+                <Col xs={24} sm={12} xl={16}>
                     <Card
                         title="Project stats"
                         extra={<Segmented options={['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']}/>}
@@ -235,7 +235,7 @@ const ProjectsDashboardPage = () => {
                         <RevenueColumnChart/>
                     </Card>
                 </Col>
-                <Col xs={24} lg={8}>
+                <Col xs={24} sm={12} xl={8}>
                     <Card title="Top clients">
                         {clientsDataError ?
                             <Alert

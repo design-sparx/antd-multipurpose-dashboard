@@ -18,6 +18,7 @@ import {Helmet} from "react-helmet-async";
 import {useStylesContext} from "../../context";
 import {useFetchData} from "../../hooks";
 import {Projects} from "../../types";
+import CountUp from "react-countup";
 
 const ACTIVITY_DATA = [
     {
@@ -197,7 +198,7 @@ const DefaultDashboardPage = () => {
                                         <Col xs={12} lg={24}>
                                             <Card>
                                                 <Flex vertical align="center" gap="middle">
-                                                    <Typography.Title style={{margin: 0}}>10+</Typography.Title>
+                                                    <Typography.Title style={{margin: 0}}><CountUp end={10}/>+</Typography.Title>
                                                     <Typography.Text>Projects</Typography.Text>
                                                 </Flex>
                                             </Card>
@@ -205,7 +206,7 @@ const DefaultDashboardPage = () => {
                                         <Col xs={12} lg={24}>
                                             <Card>
                                                 <Flex vertical align="center" gap="middle">
-                                                    <Typography.Title style={{margin: 0}}>60+</Typography.Title>
+                                                    <Typography.Title style={{margin: 0}}><CountUp end={60}/>+</Typography.Title>
                                                     <Typography.Text>Tasks</Typography.Text>
                                                 </Flex>
                                             </Card>

@@ -2,6 +2,7 @@ import {Card as AntdCard, CardProps, Flex, List, Space, Tag, Typography} from "a
 import {FacebookFilled, InstagramFilled, LinkedinFilled, TwitterOutlined, YoutubeFilled} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
 import {createElement} from "react";
+import CountUp from "react-countup";
 
 const SOCIALS_DATA = [
     {
@@ -68,8 +69,10 @@ const SocialStatsCard = ({...others}: Props) => (
                                 </Space>
                                 <Tag color={item.diff < 0 ? 'red-inverse' : 'green-inverse'}>{item.diff}%</Tag>
                             </Flex>
-                            <Flex justify="space-between">
-                                <Typography.Title level={3} className="m-0">{item.value}</Typography.Title>
+                            <Flex justify="space-between" align="center">
+                                <Typography.Title level={3} className="m-0">
+                                    <CountUp end={item.value}/>
+                                </Typography.Title>
                                 <Typography.Text color="secondary">visitors</Typography.Text>
                             </Flex>
                         </Flex>

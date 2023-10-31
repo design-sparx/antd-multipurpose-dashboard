@@ -25,6 +25,8 @@
     transition: opacity 300ms;
 }
 
+/*====*/
+
 .right-to-left-enter {
     transform: translateX(100%);
 }
@@ -43,6 +45,8 @@
     transition: all 300ms ease;
 }
 
+/*====*/
+
 .left-to-right-enter {
     transform: translateX(-100%);
 }
@@ -60,6 +64,48 @@
     transform: translateX(100%);
     transition: all 300ms ease;
 }
+
+/*===*/
+
+.top-to-bottom-enter {
+    transform: translateY(-100%);
+}
+
+.top-to-bottom-enter-active {
+    transform: translateY(0);
+    transition: all 300ms ease;
+}
+
+.top-to-bottom-exit {
+    transform: translateY(0);
+}
+
+.top-to-bottom-exit-active {
+    transform: translateY(100%);
+    transition: all 300ms ease;
+}
+
+/*===*/
+
+.bottom-to-top-enter {
+    transform: translateY(100%);
+}
+
+.bottom-to-top-enter-active {
+    transform: translateY(0);
+    transition: all 300ms ease;
+}
+
+.bottom-to-top-exit {
+    transform: translateY(0);
+}
+
+.bottom-to-top-exit-active {
+    transform: translateY(-100%);
+    transition: all 300ms ease;
+}
+
+/*UTILITIES*/
 
 .text-highlight {
     background: -webkit-linear-gradient(45deg, #8e44ad, #3498db);

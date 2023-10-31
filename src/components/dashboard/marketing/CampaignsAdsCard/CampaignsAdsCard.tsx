@@ -10,6 +10,7 @@ import {
 import {CampaignAds} from "../../../../types";
 import {createElement, ReactNode, useEffect, useState} from "react";
 import * as _ from "lodash";
+import {numberWithCommas} from "../../../../utils";
 
 type ParentDataType = {
     id: string,
@@ -53,24 +54,26 @@ const PARENT_TABLE_COLUMNS: TableColumnsType<ParentDataType> = [
     {
         title: 'Impressions',
         dataIndex: 'total_impressions',
-        key: 'total_marketing_impression'
+        key: 'total_marketing_impression',
+        render: (_: any) => <span>{numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Cost',
         dataIndex: 'total_cost',
         key: 'total_marketing_cost',
-        render: (_: any) => <span>$ {_}</span>
+        render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>,
     },
     {
         title: 'Revenue',
         dataIndex: 'total_revenue',
         key: 'marketing_revenue',
-        render: (_: any) => <span>$ {_}</span>
+        render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Clicks',
         dataIndex: 'total_clicks',
-        key: 'total_marketing_clicks'
+        key: 'total_marketing_clicks',
+        render: (_: any) => <span>{numberWithCommas(Number(_))}</span>
     }
 ]
 
@@ -78,24 +81,26 @@ const CHILD_TABLE_COLUMNS: TableColumnsType<ExpandedDataType> = [
     {
         title: 'Impressions',
         dataIndex: 'impressions',
-        key: 'marketing_impression'
+        key: 'marketing_impression',
+        render: (_: any) => <span>{numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Cost',
         dataIndex: 'cost',
         key: 'marketing_cost',
-        render: (_: any) => <span>$ {_}</span>
+        render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Revenue',
         dataIndex: 'revenue',
         key: 'marketing_revenue',
-        render: (_: any) => <span>$ {_}</span>
+        render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Clicks',
         dataIndex: 'clicks',
-        key: 'marketing_clicks'
+        key: 'marketing_clicks',
+        render: (_: any) => <span>{numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Conversion rate',

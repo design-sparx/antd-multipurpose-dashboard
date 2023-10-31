@@ -1,8 +1,9 @@
 import React from "react";
-import {CardProps, Space, Typography} from "antd";
+import {CardProps, Flex, Space, Typography} from "antd";
 import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons";
 import {green, red} from "@ant-design/colors"
 import {Card} from "../../../index.ts";
+import CountUp from "react-countup";
 
 type Props = {
     title: string
@@ -19,8 +20,10 @@ const StatsCard = ({icon, title, value, diff, ...others}: Props) => {
             <Space direction="vertical" size="large" style={{width: '100%'}}>
                 {React.createElement(icon, {style: {fontSize: 30}})}
                 <Typography.Text style={{textTransform: "capitalize"}}>{title}</Typography.Text>
-                <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between"}}>
-                    <Typography.Title level={3} style={{margin: 0}}>{value}</Typography.Title>
+                <Flex gap="small" align="center">
+                    <Typography.Title level={3} style={{margin: 0}}>
+                        <CountUp end={value}/>
+                    </Typography.Title>
                     <Typography.Text
                         strong
                         style={{color: diff > 0 ? green[5] : red[5]}}
@@ -31,7 +34,7 @@ const StatsCard = ({icon, title, value, diff, ...others}: Props) => {
                             : <ArrowDownOutlined/>
                         }
                     </Typography.Text>
-                </div>
+                </Flex>
             </Space>
         </Card>
     );

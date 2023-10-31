@@ -53,7 +53,7 @@ const MilestonesCard = ({...others}: Props) => {
                                     {React.createElement(item.icon, {style: {fontSize: 24, margin: 4}})}
                                 </Flex>
                             </Col>
-                            <Col xs={22} sm={10} lg={6}>
+                            <Col xs={22} sm={6} lg={6}>
                                 <Flex vertical gap="small" justify="center" style={{height: "100%"}}>
                                     <Typography.Title
                                         level={5}
@@ -64,7 +64,7 @@ const MilestonesCard = ({...others}: Props) => {
                                     <Typography.Text>{item.target}{' '}reached</Typography.Text>
                                 </Flex>
                             </Col>
-                            <Col xs={24} sm={10} lg={8}>
+                            <Col xs={24} sm={8} lg={8}>
                                 <Flex vertical justify="center" style={{height: "100%"}}>
                                     <Flex align="end" gap="small">
                                         <Typography.Title level={4} className="m-0">{item.progress}%</Typography.Title>
@@ -73,12 +73,12 @@ const MilestonesCard = ({...others}: Props) => {
                                     <Progress percent={item.progress} showInfo={false}/>
                                 </Flex>
                             </Col>
-                            <Col xs={12} sm={12} lg={4}>
+                            <Col xs={12} sm={4} lg={4}>
                                 <Flex align="center" style={{height: "100%"}}>
                                     <Typography.Text>Deadline: {item.deadline}</Typography.Text>
                                 </Flex>
                             </Col>
-                            <Col xs={12} sm={12} lg={4}>
+                            <Col xs={12} sm={4} lg={4}>
                                 <Flex align="center" style={{height: "100%"}}>
                                     <Button size="middle" type="link">View details</Button>
                                 </Flex>

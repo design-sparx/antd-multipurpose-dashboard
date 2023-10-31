@@ -1,4 +1,4 @@
-import {Col, Row, RowProps} from "antd";
+import {Col, Row} from "antd";
 import {
     FileProtectOutlined,
     FileSyncOutlined,
@@ -21,15 +21,10 @@ import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
 import {useFetchData} from "../../hooks";
-
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
+import {useStylesContext} from "../../context";
 
 const LearningDashboardPage = () => {
+    const stylesContext = useStylesContext()
     const {
         data: coursesData,
         loading: coursesDataLoading,
@@ -82,9 +77,9 @@ const LearningDashboardPage = () => {
                     }
                 ]}
             />
-            <Row {...ROW_PROPS}>
+            <Row {...stylesContext?.rowProps}>
                 <Col xs={24} xl={18}>
-                    <Row {...ROW_PROPS}>
+                    <Row {...stylesContext?.rowProps}>
                         <Col xs={24} sm={12} xl={6}>
                             <LearningStatsCard
                                 title="Courses in Progress"
@@ -137,7 +132,7 @@ const LearningDashboardPage = () => {
                     </Row>
                 </Col>
                 <Col xs={24} xl={6}>
-                    <Row {...ROW_PROPS}>
+                    <Row {...stylesContext?.rowProps}>
                         <Col span={24}>
                             <ExamsCard data={examsData} loading={examsDataLoading} error={examsDataError}/>
                         </Col>

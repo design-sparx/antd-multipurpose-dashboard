@@ -1,6 +1,6 @@
-import {Button, CardProps, Flex, Popover, Progress, ProgressProps, Rate, Space, Typography} from "antd";
+import {Button, CardProps, Flex, Popover, Progress, ProgressProps, Rate, Typography} from "antd";
 import {green, lime, orange, red, yellow} from '@ant-design/colors';
-import {QuestionOutlined, SyncOutlined} from "@ant-design/icons";
+import {QuestionOutlined} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
 
 const PROGRESS_PROPS: ProgressProps = {
@@ -14,15 +14,12 @@ type Props = CardProps
 const CustomerReviewsCard = ({...others}: Props) => {
     return (
         <Card
-            title={
-                <Space>
-                    <Typography.Title level={5} style={{margin: 0}}>Customer reviews</Typography.Title>
-                    <Popover content="Overall rating of 5k reviews" title="Review ratings">
-                        <Button icon={<QuestionOutlined/>} size="small" type="text"/>
-                    </Popover>
-                </Space>
+            title="Customer reviews"
+            extra={
+                <Popover content="Overall rating of 5k reviews" title="Review ratings">
+                    <Button icon={<QuestionOutlined/>} size="small" type="text"/>
+                </Popover>
             }
-            extra={<Button icon={<SyncOutlined/>}/>}
             actions={[
                 <Button>See all customer reviews</Button>
             ]}
@@ -30,7 +27,7 @@ const CustomerReviewsCard = ({...others}: Props) => {
         >
             <Flex vertical gap="middle">
                 <Flex align="center" gap="middle" justify="center">
-                    <Rate allowHalf value={4.6}/>
+                    <Rate allowHalf value={4.6} disabled/>
                     <Typography.Title level={2} style={{margin: 0}}>4.6/5</Typography.Title>
                 </Flex>
                 <Flex vertical gap="small">

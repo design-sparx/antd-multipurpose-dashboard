@@ -2,6 +2,7 @@ import {Alert, CardProps, Flex, Image, Table, Typography} from "antd";
 import {AuctionSales} from "../../../../types";
 import {Card} from "../../../index.ts";
 import {ReactNode} from "react";
+import {numberWithCommas} from "../../../../utils";
 
 const SALES_COLUMNS = [
     {
@@ -11,9 +12,9 @@ const SALES_COLUMNS = [
         render: (_: any, {image_url, owner, title}: any) => (
             <Flex align="center" gap="small">
                 <Image src={image_url} height={24} width={24} preview={false}/>
-                <Flex vertical style={{width: 160}}>
+                <Flex vertical gap={4} style={{width: 160}}>
                     <Typography.Text strong className="text-capitalize">{title}</Typography.Text>
-                    <Typography.Text type="secondary">@{owner.split(' ')[0]}</Typography.Text>
+                    <Typography.Link>@{owner.split(' ')[0]}</Typography.Link>
                 </Flex>
             </Flex>
         )
@@ -22,12 +23,13 @@ const SALES_COLUMNS = [
         title: 'Sales count',
         dataIndex: 'volume',
         key: 'sales_count',
+        render: (_: any) => <Typography.Text>{numberWithCommas(Number(_))}</Typography.Text>
     },
     {
         title: 'Price',
         dataIndex: 'price',
         key: 'price',
-        render: (text: any) => <Typography.Text>${text}</Typography.Text>
+        render: (_: any) => <Typography.Text>${numberWithCommas(Number(_))}</Typography.Text>
     },
     {
         title: 'Status',
@@ -43,6 +45,7 @@ const SALES_COLUMNS = [
         title: 'Owners',
         dataIndex: 'owners_count',
         key: 'owners_count',
+        render: (_: any) => <Typography.Text>{numberWithCommas(Number(_))}</Typography.Text>
     },
 ]
 

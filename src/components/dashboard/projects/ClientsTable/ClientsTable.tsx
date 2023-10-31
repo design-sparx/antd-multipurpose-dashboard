@@ -13,7 +13,7 @@ const COLUMNS = [
         title: 'Amount',
         dataIndex: 'total_price',
         key: 'client_amount',
-        render: (_: any) => <Typography.Text>$ {_}</Typography.Text>
+        render: (_: any) => <Typography.Text>${_}</Typography.Text>
     },
 ];
 
@@ -22,7 +22,7 @@ type Props = {
 }
 
 const ClientsTable = ({data}: Props) => (
-    <Table dataSource={data} columns={COLUMNS} key="client_table"/>
+    <Table dataSource={data} columns={COLUMNS} key="client_table" size="middle" className="overflow-scroll"/>
 );
 
 export default ClientsTable;

@@ -26,7 +26,6 @@ const CommentsCard = ({data, error, loading, ...others}: Props) => (
                     <Loader/> :
                     <List
                         itemLayout="vertical"
-                        size="large"
                         pagination={false}
                         dataSource={data}
                         renderItem={(item: Comments) => (
