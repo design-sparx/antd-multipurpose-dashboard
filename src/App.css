@@ -129,6 +129,14 @@
     text-align: right;
 }
 
+.text-white {
+    color: white !important;
+}
+
+.text-black {
+    color: black !important;
+}
+
 .overflow-scroll {
     overflow: auto;
 }

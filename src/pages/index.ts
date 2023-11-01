@@ -26,6 +26,7 @@ import {
     UserProfileHelpPage,
     UserProfileFeedbackPage
 } from "./userAccount"
+import {SignUpPage, SignInPage, WelcomePage, VerifyEmailPage, PasswordResetPage, AccountDeactivePage} from "./authentication"
 
 export {
     DefaultDashboardPage,
@@ -49,5 +50,11 @@ export {
     UserProfileActivityPage,
     UserProfileActionsPage,
     UserProfileHelpPage,
-    UserProfileFeedbackPage
+    UserProfileFeedbackPage,
+    SignUpPage,
+    SignInPage,
+    WelcomePage,
+    VerifyEmailPage,
+    PasswordResetPage,
+    AccountDeactivePage
 }

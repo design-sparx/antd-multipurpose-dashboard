@@ -1,5 +1,6 @@
 import {createBrowserRouter, useLocation} from "react-router-dom";
 import {
+    AccountDeactivePage,
     BiddingDashboardPage,
     CorporateAboutPage,
     CorporateContactPage,
@@ -10,8 +11,8 @@ import {
     DefaultDashboardPage,
     EcommerceDashboardPage,
     HomePage,
-    MarketingDashboardPage,
-    ProjectsDashboardPage,
+    MarketingDashboardPage, PasswordResetPage,
+    ProjectsDashboardPage, SignInPage, SignUpPage,
     SitemapPage,
     SocialDashboardPage,
     UserProfileActionsPage,
@@ -21,7 +22,7 @@ import {
     UserProfileHelpPage,
     UserProfileInformationPage,
     UserProfilePreferencesPage,
-    UserProfileSecurityPage
+    UserProfileSecurityPage, VerifyEmailPage, WelcomePage
 } from "../pages";
 import ErrorPage from "../pages/errors/Error.tsx";
 import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
@@ -192,7 +193,37 @@ const router = createBrowserRouter([
                 element: <UserProfileFeedbackPage/>
             },
         ]
-    }
+    },
+    {
+        path: "/auth",
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "signup",
+                element: <SignUpPage/>
+            },
+            {
+                path: "signin",
+                element: <SignInPage/>
+            },
+            {
+                path: "welcome",
+                element: <WelcomePage/>
+            },
+            {
+                path: "verify-email",
+                element: <VerifyEmailPage/>
+            },
+            {
+                path: "password-reset",
+                element: <PasswordResetPage/>
+            },
+            {
+                path: "account-delete",
+                element: <AccountDeactivePage/>
+            }
+        ]
+    },
 ]);
 
 export default router

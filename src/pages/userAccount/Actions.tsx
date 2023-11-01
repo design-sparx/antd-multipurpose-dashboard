@@ -36,7 +36,7 @@ const UserProfileActionsPage = () => {
 
     return (
         <Row {...context?.rowProps}>
-            <Col sm={24} lg={12} xl={8}>
+            <Col xs={24} lg={12} xl={8}>
                 <Card
                     title="Advanced"
                     style={{height: "100%"}}
@@ -67,7 +67,7 @@ const UserProfileActionsPage = () => {
                     </Flex>
                 </Card>
             </Col>
-            <Col sm={24} lg={12} xl={8}>
+            <Col xs={24} lg={12} xl={8}>
                 <Card
                     title="Export content"
                     style={{height: "100%"}}
@@ -102,7 +102,7 @@ const UserProfileActionsPage = () => {
                     </Flex>
                 </Card>
             </Col>
-            <Col sm={24} lg={12} xl={8}>
+            <Col xs={24} lg={12} xl={8}>
                 <Card
                     title="Danger zone"
                     style={{height: "100%"}}
