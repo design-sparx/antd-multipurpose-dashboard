@@ -141,7 +141,7 @@ const AppLayout = ({children}: AppLayoutProps) => {
                                         setIsLoading(false)
                                     }}
                                     timeout={300}
-                                    classNames="page"
+                                    classNames="bottom-to-top"
                                     unmountOnExit
                                 >
                                     {() => (

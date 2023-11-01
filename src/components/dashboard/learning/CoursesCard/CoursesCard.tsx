@@ -9,14 +9,15 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     {
         title: 'Courses Title',
         dataIndex: 'name',
-        key: 'courses_title'
+        key: 'courses_title',
+        render: (_: any) => <span className="text-capitalize">{_}</span>
     },
     {
         title: 'Lessons Completed',
         dataIndex: 'current_lessons',
         key: 'current_lessons',
         render: (_: any, {current_lessons, total_lessons}: any) => (
-            <Space size={2}>
+            <Space size={2} style={{width: 120}}>
                 <Typography.Text type="success">{current_lessons}</Typography.Text>
                 <Typography.Text>/</Typography.Text>
                 <Typography.Text>{total_lessons}</Typography.Text>
@@ -29,7 +30,7 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
         dataIndex: 'start_date',
         key: 'start_date',
         render: (_: any, {start_date, end_date}: any) => (
-            <Space size="small">
+            <Space size="small" style={{width: 200}}>
                 <CalendarOutlined/>
                 <Typography.Text>{start_date}</Typography.Text>
                 <SwapRightOutlined/>
@@ -42,7 +43,7 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
         dataIndex: 'instructor_name',
         key: 'instructor_name',
         render: (_: any, {instructor_name, favorite_color}: any) => (
-            <UserAvatar fullName={instructor_name} color={favorite_color}/>
+            <UserAvatar fullName={instructor_name} color={favorite_color} textWidth={120}/>
         )
     },
     {

@@ -91,9 +91,9 @@ const Section = ({tab}: SectionProps) => {
     }, [tab]);
 
     return <>
-        <Col xs={24} lg={18}>
+        <Col xs={24} xl={16}>
             <Row {...ROW_PROPS}>
-                <Col xs={24} sm={12} lg={6}>
+                <Col xs={24} md={12} lg={6}>
                     <SocialStatsCard
                         key='followers-card'
                         title='followers'
@@ -103,7 +103,7 @@ const Section = ({tab}: SectionProps) => {
                         style={{height: "100%"}}
                     />
                 </Col>
-                <Col xs={24} sm={12} lg={6}>
+                <Col xs={24} md={12} lg={6}>
                     <SocialStatsCard
                         key='following-card'
                         title='following'
@@ -113,7 +113,7 @@ const Section = ({tab}: SectionProps) => {
                         style={{height: "100%"}}
                     />
                 </Col>
-                <Col xs={24} sm={12} lg={6}>
+                <Col xs={24} md={12} lg={6}>
                     <SocialStatsCard
                         key='likes-card'
                         title='likes'
@@ -123,7 +123,7 @@ const Section = ({tab}: SectionProps) => {
                         style={{height: "100%"}}
                     />
                 </Col>
-                <Col xs={24} sm={12} lg={6}>
+                <Col xs={24} md={12} lg={6}>
                     <SocialStatsCard
                         key='comments-card'
                         title='comments'
@@ -133,13 +133,13 @@ const Section = ({tab}: SectionProps) => {
                         style={{height: "100%"}}
                     />
                 </Col>
-                <Col xs={24} lg={12}>
+                <Col xs={24} xl={12}>
                     <FollowersChart/>
                 </Col>
-                <Col xs={24} lg={12}>
+                <Col xs={24} xl={12}>
                     <LikesChart style={{height: "100%"}}/>
                 </Col>
-                <Col xs={24} lg={12}>
+                <Col xs={24} sm={24} xl={12}>
                     <PostsCard
                         title='Scheduled Posts'
                         as="scheduled"
@@ -148,7 +148,7 @@ const Section = ({tab}: SectionProps) => {
                         error={scheduledPostsDataError}
                     />
                 </Col>
-                <Col xs={24} lg={12}>
+                <Col xs={24} sm={24} xl={12}>
                     <Row gutter={[{xs: 8, sm: 12, md: 20, lg: 24}, {xs: 4, sm: 8, md: 12, lg: 16}]}>
                         <Col span={24}>
                             <DevicesCardChart/>
@@ -160,7 +160,7 @@ const Section = ({tab}: SectionProps) => {
                 </Col>
             </Row>
         </Col>
-        <Col xs={24} lg={6}>
+        <Col xs={24} xl={8}>
             <CommentsCard
                 data={socialCommentsData.filter((_: Comments) => _.platform.toLowerCase() === title)?.slice(0, 7)}
                 loading={socialsCommentsDataLoading}

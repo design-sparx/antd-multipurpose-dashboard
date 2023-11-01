@@ -12,7 +12,7 @@ const COLUMNS: TableColumnsType<AuctionCreator> = [
         dataIndex: 'first_name',
         title: 'Creator',
         render: (_, {first_name, last_name, favorite_color}) =>
-            <UserAvatar fullName={`${first_name} ${last_name}`} color={favorite_color} verified/>
+            <UserAvatar fullName={`${first_name} ${last_name}`} color={favorite_color} verified textWidth="auto"/>
     },
     {
         key: 'sold_items',

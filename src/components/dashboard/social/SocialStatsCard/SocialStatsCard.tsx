@@ -1,7 +1,8 @@
-import {Alert, CardProps, Space, Typography} from "antd";
+import {Alert, CardProps, Flex, Typography} from "antd";
 import {CommentOutlined, LikeOutlined, UserAddOutlined, UserOutlined, UserSwitchOutlined} from "@ant-design/icons";
 import {ReactElement, ReactNode} from "react";
 import {Card, Loader} from "../../../index";
+import CountUp from "react-countup";
 
 type Props = {
     title: 'followers' | 'following' | 'likes' | 'comments',
@@ -15,19 +16,19 @@ const SocialStatsCard = ({value, title, loading, error, ...others}: Props) => {
         let i;
         switch (title) {
             case "following":
-                i = <UserAddOutlined/>
+                i = <UserAddOutlined style={{fontSize: 30}}/>
                 break;
             case "followers":
-                i = <UserSwitchOutlined/>
+                i = <UserSwitchOutlined style={{fontSize: 30}}/>
                 break;
             case "likes":
-                i = <LikeOutlined/>
+                i = <LikeOutlined style={{fontSize: 30}}/>
                 break;
             case "comments":
-                i = <CommentOutlined/>
+                i = <CommentOutlined style={{fontSize: 30}}/>
                 break
             default:
-                i = <UserOutlined/>
+                i = <UserOutlined style={{fontSize: 30}}/>
                 break
         }
 
@@ -36,8 +37,6 @@ const SocialStatsCard = ({value, title, loading, error, ...others}: Props) => {
 
     return (
         <Card
-            title={title}
-            extra={<Icon/>}
             {...others}
         >
             {error ?
@@ -49,9 +48,13 @@ const SocialStatsCard = ({value, title, loading, error, ...others}: Props) => {
                 /> :
                 (loading ?
                         <Loader/> :
-                        <Space direction="vertical">
-                            <Typography.Title className="m-0">{value}</Typography.Title>
-                        </Space>
+                        <Flex vertical gap="middle">
+                            <Icon/>
+                            <Typography.Text className="text-capitalize">{title}</Typography.Text>
+                            <Typography.Title level={2} className="m-0">
+                                <CountUp end={value}/>
+                            </Typography.Title>
+                        </Flex>
                 )
             }
         </Card>

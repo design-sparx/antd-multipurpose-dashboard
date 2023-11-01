@@ -1,4 +1,4 @@
-import {Col, Row, RowProps} from "antd";
+import {Col, Row} from "antd";
 import {
     BlockOutlined,
     CarOutlined,
@@ -20,6 +20,7 @@ import {DASHBOARD_ITEMS} from "../../constants";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
 import {useFetchData} from "../../hooks";
+import {useStylesContext} from "../../context";
 
 const STATS = [
     {
@@ -63,14 +64,8 @@ const PLAN_DATA = [
     },
 ];
 
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
-
 const LogisticsDashboardPage = () => {
+    const stylesContext = useStylesContext()
     const {
         data: trucksDeliveryData,
         loading: trucksDeliveryDataLoading,
@@ -118,20 +113,20 @@ const LogisticsDashboardPage = () => {
                     }
                 ]}
             />
-            <Row {...ROW_PROPS}>
+            <Row {...stylesContext?.rowProps}>
                 {STATS.map(s => (
-                    <Col xs={24} sm={12} lg={6} key={s.title}>
+                    <Col xs={24} sm={12} xl={6} key={s.title}>
                         <LogisticsStatsCard {...s}/>
                     </Col>
                 ))}
-                <Col xs={24} lg={12}>
+                <Col xs={24} xl={12}>
                     <DeliveryAnalyticsCard
                         data={deliveryAnalyticsData}
                         loading={deliveryAnalyticsDataLoading}
                         error={deliveryAnalyticsDataError}
                     />
                 </Col>
-                <Col xs={24} lg={12}>
+                <Col xs={24} xl={12}>
                     <DailyPlanCard data={PLAN_DATA}/>
                 </Col>
                 <Col span={24}>
@@ -141,10 +136,10 @@ const LogisticsDashboardPage = () => {
                         loading={trucksDeliveryDataLoading}
                     />
                 </Col>
-                <Col xs={24} lg={12}>
+                <Col xs={24} xl={12}>
                     <TruckListCard data={trucksData} loading={trucksDataLoading} error={trucksDataError}/>
                 </Col>
-                <Col xs={24} lg={12}>
+                <Col xs={24} xl={12}>
                     <DeliveryRequestCard
                         data={trucksDeliveryRequestData}
                         loading={trucksDeliveryRequestDataLoading}

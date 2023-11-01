@@ -36,6 +36,8 @@ import {useStylesContext} from "../../context";
 import {createElement, CSSProperties} from "react";
 import {useFetchData} from "../../hooks";
 import {blue, green, red, yellow} from "@ant-design/colors"
+import CountUp from "react-countup";
+import {numberWithCommas} from "../../utils";
 
 const {Text, Title} = Typography
 
@@ -438,13 +440,14 @@ const SELLER_COLUMNS = [
     {
         title: 'Volume',
         dataIndex: 'sales_volume',
-        key: 'sales_volume'
+        key: 'sales_volume',
+        render: (_: any) => <span>{numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Amount',
         dataIndex: 'total_sales',
         key: 'total_sales',
-        render: (_: any) => <span>$ {_}</span>
+        render: (_: any) => <span>${numberWithCommas(Number(_))}</span>
     },
     {
         title: 'Satisfaction rate',
@@ -595,13 +598,13 @@ const EcommerceDashboardPage = () => {
                 <Col sm={24} lg={16}>
                     <Row {...stylesContext?.rowProps}>
                         <Col xs={24} sm={12}>
-                            <RevenueCard title="Visitors" value="20,149" diff={5.54}/>
+                            <RevenueCard title="Visitors" value={20149} diff={5.54}/>
                         </Col>
                         <Col xs={24} sm={12}>
-                            <RevenueCard title="Customers" value="5,834" diff={-12.3}/>
+                            <RevenueCard title="Customers" value={5834} diff={-12.3}/>
                         </Col>
                         <Col xs={24} sm={12}>
-                            <RevenueCard title="Orders" value="3,270" diff={9.52}/>
+                            <RevenueCard title="Orders" value={3270} diff={9.52}/>
                         </Col>
                         <Col xs={24} sm={12}>
                             <RevenueCard title="Sales" value="$ 1.324K" diff={2.34}/>
@@ -623,8 +626,8 @@ const EcommerceDashboardPage = () => {
                     >
                         <Flex vertical gap="middle">
                             <Space>
-                                <Title level={3} style={{margin: 0}}>$ 24,485.67</Title>
-                                <Tag color="green" icon={<ArrowUpOutlined/>}>8.7%</Tag>
+                                <Title level={3} style={{margin: 0}}>$ <CountUp end={24485.67}/></Title>
+                                <Tag color="green-inverse" icon={<ArrowUpOutlined/>}>8.7%</Tag>
                             </Space>
                             <SalesChart/>
                         </Flex>
@@ -673,10 +676,10 @@ const EcommerceDashboardPage = () => {
                                         </Space>
                                     </Col>
                                     <Col sm={24} lg={8}>
-                                        <Text className="text-end">$27,483.70</Text>
+                                        <Text className="text-end" strong>$ <CountUp end={27483.70} decimals={2}/></Text>
                                     </Col>
                                     <Col sm={24} lg={8}>
-                                        <Tag color="success" icon={<ArrowUpOutlined/>}>16.8%</Tag>
+                                        <Tag color="green-inverse" icon={<ArrowUpOutlined/>}>16.8%</Tag>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -687,10 +690,10 @@ const EcommerceDashboardPage = () => {
                                         </Space>
                                     </Col>
                                     <Col sm={24} lg={8}>
-                                        <Text className="text-end">$145,483.70</Text>
+                                        <Text className="text-end" strong>$ <CountUp end={145483.70} decimals={2}/></Text>
                                     </Col>
                                     <Col sm={24} lg={8}>
-                                        <Tag color="error" icon={<ArrowDownOutlined/>}>-46.8%</Tag>
+                                        <Tag color="red-inverse" icon={<ArrowDownOutlined/>}>-46.8%</Tag>
                                     </Col>
                                 </Row>
                             </Flex>

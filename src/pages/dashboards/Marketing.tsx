@@ -52,16 +52,39 @@ const MarketingDashboardPage = () => {
             />
             <Row {...stylesContext?.rowProps}>
                 <Col xs={24} sm={12} lg={6}>
-                    <MarketingStatsCard data={[274, 337, 81, 497]} title='impressions' diff={12.5} value={2216869}/>
+                    <MarketingStatsCard
+                        data={[274, 337, 81, 497]}
+                        title='impressions'
+                        diff={12.5}
+                        value={16826}
+                        style={{height: "100%"}}
+                    />
                 </Col>
                 <Col xs={24} sm={12} lg={6}>
-                    <MarketingStatsCard data={[20, 40, 80, 50]} title='clicks' diff={-2.1} value={2216869}/>
+                    <MarketingStatsCard
+                        data={[20, 40, 80, 50]}
+                        title='clicks'
+                        diff={-2.1} value={2216869}
+                        style={{height: "100%"}}
+                    />
                 </Col>
                 <Col xs={24} sm={12} lg={6}>
-                    <MarketingStatsCard data={[497, 81, 274, 337,]} title='revenue' diff={34.6} value='$9,321.92'/>
+                    <MarketingStatsCard
+                        data={[497, 81, 274, 337,]}
+                        title='revenue' diff={34.6}
+                        value={9321.92}
+                        asCurrency
+                        style={{height: "100%"}}
+                    />
                 </Col>
                 <Col xs={24} sm={12} lg={6}>
-                    <MarketingStatsCard data={[337, 274, 497, 81]} title='cost' diff={6.3} value='$5,550.00'/>
+                    <MarketingStatsCard
+                        data={[337, 274, 497, 81]}
+                        title='cost' diff={6.3}
+                        value={5550.00}
+                        asCurrency
+                        style={{height: "100%"}}
+                    />
                 </Col>
                 <Col xs={24} lg={12}>
                     <VisitorsChartCard/>

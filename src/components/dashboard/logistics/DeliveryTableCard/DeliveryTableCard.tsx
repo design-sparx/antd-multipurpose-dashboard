@@ -1,8 +1,9 @@
-import {Alert, Button, CardProps, Table, TableProps, Typography} from "antd";
+import {Alert, Button, CardProps, Table, TableProps} from "antd";
 import {TruckDelivery} from "../../../../types";
 import {ReactNode, useState} from "react";
 import {ColumnsType} from "antd/es/table";
 import {Card, UserAvatar} from "../../../index.ts";
+import {numberWithCommas} from "../../../../utils";
 
 type TabKeys = "all" | "in transit" | "delayed" | "delivered" | string
 
@@ -32,7 +33,7 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
         title: 'Id',
         dataIndex: 'shipment_id',
         key: 'shipment_id',
-        render: (text: any) => <Typography.Text>{text.split("-")[0]}</Typography.Text>
+        render: (text: any) => text.split("-")[0]
     },
     {
         title: 'Destination',
@@ -59,7 +60,7 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
         title: 'Cost',
         dataIndex: 'shipment_cost',
         key: 'shipment_cost',
-        render: (_: any) => <span>${_}</span>
+        render: (_: any) => <span>${numberWithCommas(_)}</span>
     },
     {
         title: 'Delivery date',
@@ -74,7 +75,7 @@ type DeliveryTableProps = {
 
 const DeliveryTable = ({data, ...others}: DeliveryTableProps) => {
     return (
-        <Table dataSource={data} columns={DELIVERY_TABLE_COLUMNS} {...others}/>
+        <Table dataSource={data} columns={DELIVERY_TABLE_COLUMNS} className="overflow-scroll" {...others}/>
     )
 }
 
