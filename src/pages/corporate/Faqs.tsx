@@ -1,22 +1,22 @@
-import {Col, Row, RowProps, Space, Typography} from "antd";
-import {Card, FaqCollapse} from "../../components";
-import FaqsData from "../../../public/mocks/Faqs.json";
+import {Alert, Col, Row, Space, Typography} from "antd";
+import {Card, FaqCollapse, Loader} from "../../components";
 import * as _ from "lodash";
 import {useEffect, useState} from "react";
 import {Faq} from "../../types";
-
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
+import {useStylesContext} from "../../context";
+import {useFetchData} from "../../hooks";
 
 const CorporateFaqPage = () => {
+    const {
+        data: faqsData,
+        loading: faqsDataLoading,
+        error: faqsDataError
+    } = useFetchData("../mocks/Faqs.json")
     const [faqs, setFaqs] = useState<{ category: string, items: Faq[] }[]>([])
+    const stylesContext = useStylesContext()
 
     useEffect(() => {
-        const data = _.chain(FaqsData)
+        const data = _.chain(faqsData)
             .groupBy("category")
             .map((items, category) => {
                 return {
@@ -34,28 +34,37 @@ const CorporateFaqPage = () => {
             .value()
 
         setFaqs(data)
-    }, [FaqsData]);
+    }, [faqsData]);
 
     return (
         <div>
-            <Row {...ROW_PROPS}>
+            <Row {...stylesContext?.rowProps}>
                 <Col span={24}>
                     <Card title="Frequently askes questions (FAQs)">
-                        <Space direction="vertical" size="middle" style={{width: "100%"}}>
-                            {faqs.map(f => (
-                                <>
-                                    <Typography.Text
-                                        strong
-                                    >
-                                        {f.category}
-                                    </Typography.Text>
-                                    <FaqCollapse
-                                        items={f.items}
-                                        accordion
-                                    />
-                                </>
-                            ))}
-                        </Space>
+                        {faqsDataError ?
+                            <Alert
+                                message="Error"
+                                description={faqsDataError.toString()}
+                                type="error"
+                                showIcon
+                            /> : (faqsDataLoading ?
+                                    <Loader/> :
+                                    <Space direction="vertical" size="middle" style={{width: "100%"}}>
+                                        {faqs.map(f => (
+                                            <>
+                                                <Typography.Text
+                                                    strong
+                                                >
+                                                    {f.category}
+                                                </Typography.Text>
+                                                <FaqCollapse
+                                                    items={f.items}
+                                                    accordion
+                                                />
+                                            </>
+                                        ))}
+                                    </Space>
+                            )}
                     </Card>
                 </Col>
             </Row>

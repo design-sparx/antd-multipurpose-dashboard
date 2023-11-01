@@ -1,10 +1,16 @@
 import {PricingTable} from "../../components";
-import PricingData from "../../../public/mocks/Pricing.json"
+import {useFetchData} from "../../hooks";
 
 const CorporatePricingPage = () => {
+    const {
+        data: pricingData,
+        error: pricingDataError,
+        loading: pricingDataLoading
+    } = useFetchData("../mocks/Pricing.json")
+
     return (
         <div>
-            <PricingTable data={PricingData}/>
+            <PricingTable data={pricingData} error={pricingDataError} loading={pricingDataLoading}/>
         </div>
     );
 };
