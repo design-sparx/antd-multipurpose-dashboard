@@ -26,6 +26,15 @@ import {
     UserProfileHelpPage,
     UserProfileFeedbackPage
 } from "./userAccount"
+import {
+    SignUpPage,
+    SignInPage,
+    WelcomePage,
+    VerifyEmailPage,
+    PasswordResetPage,
+    AccountDeactivePage
+} from "./authentication"
+import {Error404Page, Error500Page, Error403Page, Error400Page, Error503Page, ErrorPage} from "./errors"
 
 export {
     DefaultDashboardPage,
@@ -49,5 +58,17 @@ export {
     UserProfileActivityPage,
     UserProfileActionsPage,
     UserProfileHelpPage,
-    UserProfileFeedbackPage
+    UserProfileFeedbackPage,
+    SignUpPage,
+    SignInPage,
+    WelcomePage,
+    VerifyEmailPage,
+    PasswordResetPage,
+    AccountDeactivePage,
+    Error500Page,
+    Error404Page,
+    Error403Page,
+    Error503Page,
+    Error400Page,
+    ErrorPage
 }

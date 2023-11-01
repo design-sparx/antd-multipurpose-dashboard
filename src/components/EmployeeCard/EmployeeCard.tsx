@@ -1,6 +1,5 @@
 import {Employee} from "../../types";
-import {Card as AntdCard, CardProps, Typography} from "antd";
-import {Card} from "../index.ts";
+import {Card as AntdCard, CardProps, Flex, Typography} from "antd";
 
 const {Meta} = AntdCard
 
@@ -13,7 +12,7 @@ const EmployeeCard = ({data, showInfo, ...others}: Props) => {
     const {avatar, first_name, middle_name, last_name, role, age, country, title, email, hire_date} = data
 
     return (
-        <Card
+        <AntdCard
             hoverable
             cover={
                 <img
@@ -26,8 +25,8 @@ const EmployeeCard = ({data, showInfo, ...others}: Props) => {
             {...others}
         >
             <Meta title={`${title}. ${first_name} ${middle_name} ${last_name}`}/>
-            <div style={{display: "flex", flexDirection: "column", gap: "8px", marginTop: "8px"}}>
-                <Typography.Text>Role: {role}</Typography.Text>
+            <Flex vertical gap="small" style={{ marginTop: "8px"}}>
+                <Typography.Text>{role}</Typography.Text>
                 {showInfo && (
                     <>
                         <Typography.Text>Email: {email}</Typography.Text>
@@ -36,8 +35,8 @@ const EmployeeCard = ({data, showInfo, ...others}: Props) => {
                         <Typography.Text>Join date: {hire_date}</Typography.Text>
                     </>
                 )}
-            </div>
-        </Card>
+            </Flex>
+        </AntdCard>
     );
 };
 

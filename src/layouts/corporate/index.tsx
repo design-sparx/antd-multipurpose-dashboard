@@ -1,6 +1,6 @@
 import {AppLayout} from "../index.ts";
 import {Button, Col, Row, RowProps, Typography} from "antd";
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useLocation} from "react-router-dom";
 import {BlogsListCard, Card, PageHeader, SocialMediaCard} from "../../components";
 import {HomeOutlined, IdcardOutlined} from "@ant-design/icons";
 import {CORPORATE_ITEMS} from "../../constants";
@@ -15,6 +15,8 @@ const ROW_PROPS: RowProps = {
 }
 
 const CorporateLayout = () => {
+    const {pathname} = useLocation()
+
     return (
         <>
             {/*@ts-ignore*/}
@@ -36,15 +38,15 @@ const CorporateLayout = () => {
                             }
                         },
                         {
-                            title: "about"
+                            title: pathname.split('/')[pathname.split('/').length - 1] || ''
                         }
                     ]}
                 />
                 <Row {...ROW_PROPS}>
-                    <Col sm={24} lg={18}>
-                        <Outlet />
+                    <Col xs={24} md={16} xl={18}>
+                        <Outlet/>
                     </Col>
-                    <Col sm={24} lg={6}>
+                    <Col xs={24} md={8} xl={6}>
                         <Row {...ROW_PROPS}>
                             <Col span={24}>
                                 <Card title="Careers" actions={[<Button>Explore more</Button>]}>

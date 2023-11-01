@@ -29,7 +29,7 @@ const SitemapPage = () => {
                 <Typography.Title level={3}><BranchesOutlined/>{' '}Sitemap</Typography.Title>
                 <Row {...context?.rowProps}>
                     {SITES.map(s =>
-                        <Col xs={24} sm={12} md={8} lg={6} key={`col-${s.title}`}>
+                        <Col xs={24} sm={12} md={8} xl={6} key={`col-${s.title}`}>
                             <SitemapCard data={s}/>
                         </Col>
                     )}

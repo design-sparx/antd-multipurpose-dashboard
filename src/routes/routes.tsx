@@ -1,5 +1,6 @@
 import {createBrowserRouter, useLocation} from "react-router-dom";
 import {
+    AccountDeactivePage,
     BiddingDashboardPage,
     CorporateAboutPage,
     CorporateContactPage,
@@ -9,9 +10,18 @@ import {
     CorporateTeamPage,
     DefaultDashboardPage,
     EcommerceDashboardPage,
+    Error400Page,
+    Error403Page,
+    Error404Page,
+    Error500Page,
+    Error503Page,
+    ErrorPage,
     HomePage,
     MarketingDashboardPage,
+    PasswordResetPage,
     ProjectsDashboardPage,
+    SignInPage,
+    SignUpPage,
     SitemapPage,
     SocialDashboardPage,
     UserProfileActionsPage,
@@ -21,9 +31,10 @@ import {
     UserProfileHelpPage,
     UserProfileInformationPage,
     UserProfilePreferencesPage,
-    UserProfileSecurityPage
+    UserProfileSecurityPage,
+    VerifyEmailPage,
+    WelcomePage
 } from "../pages";
-import ErrorPage from "../pages/errors/Error.tsx";
 import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
@@ -190,6 +201,62 @@ const router = createBrowserRouter([
             {
                 path: "feedback",
                 element: <UserProfileFeedbackPage/>
+            },
+        ]
+    },
+    {
+        path: "/auth",
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "signup",
+                element: <SignUpPage/>
+            },
+            {
+                path: "signin",
+                element: <SignInPage/>
+            },
+            {
+                path: "welcome",
+                element: <WelcomePage/>
+            },
+            {
+                path: "verify-email",
+                element: <VerifyEmailPage/>
+            },
+            {
+                path: "password-reset",
+                element: <PasswordResetPage/>
+            },
+            {
+                path: "account-delete",
+                element: <AccountDeactivePage/>
+            }
+        ]
+    },
+    {
+        path: "errors",
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "400",
+                element: <Error400Page/>
+            },
+            {
+                path: "403",
+                element: <Error403Page/>
+            },
+            {
+                path: "404",
+                element: <Error404Page/>
+            },
+            {
+                path: "500",
+                element: <Error500Page/>
+            },
+            {
+                path: "503",
+                element: <Error503Page/>
             },
         ]
     }

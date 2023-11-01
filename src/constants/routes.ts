@@ -126,9 +126,11 @@ export const PATH_AUTH = {
 
 export const PATH_ERROR = {
     root: ROOTS_ERRORS,
+    error400: path(ROOTS_ERRORS, '/400'),
     error403: path(ROOTS_ERRORS, '/403'),
     error404: path(ROOTS_ERRORS, '/404'),
     error500: path(ROOTS_ERRORS, '/500'),
+    error503: path(ROOTS_ERRORS, '/503'),
 }
 
 export const PATH_PROJECTS = {

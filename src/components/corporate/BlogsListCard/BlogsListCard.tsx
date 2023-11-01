@@ -7,7 +7,7 @@ import "./styles.css"
 
 const data = Array.from({ length: 23 }).map((_, i) => ({
     href: 'https://ant.design',
-    title: `ant design part ${i}`,
+    title: `Lorem ipsum ${i}`,
     avatar: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${i}`,
     description:
         'Ant Design, a design language for background applications, is refined by Ant UED Team.',
@@ -28,7 +28,7 @@ const BlogsListCard = ({...others}: Props) => {
     return (
         <Card
             title="Blogs"
-            actions={[<Button>Explore now</Button>]}
+            actions={[<Button>Explore more</Button>]}
             className="card blogs-list-card"
             {...others}
         >
@@ -52,8 +52,8 @@ const BlogsListCard = ({...others}: Props) => {
                             <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
                         ]}
                     >
-                        <Typography.Title level={5}>{item.title}</Typography.Title>
-                        <Typography.Paragraph ellipsis={{rows: 3}}>
+                        <Typography.Title level={5} className="m-0">{item.title}</Typography.Title>
+                        <Typography.Paragraph ellipsis={{rows: 3}} className="m-0">
                             {item.content}
                         </Typography.Paragraph>
                     </List.Item>
