@@ -1,5 +1,13 @@
 # antd-multi-dashboard
 
+## 0.6.1
+
+### Patch Changes
+
+- 1fe9b04: ### Added
+  - added react-countup to add counter animation to dashboard statistics
+- 3fe41d9: added react-countup to add counter animation to dashboard statistics
+
 ## 0.6.0
 
 ### Minor Changes
