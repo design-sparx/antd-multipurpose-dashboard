@@ -147,7 +147,7 @@ const SignUpPage = () => {
                             </Col>
                         </Row>
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" size="large" loading={loading}>
+                            <Button type="primary" htmlType="submit" size="middle" loading={loading}>
                                 Submit
                             </Button>
                         </Form.Item>

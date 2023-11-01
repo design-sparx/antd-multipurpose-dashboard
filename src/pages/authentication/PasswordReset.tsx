@@ -84,10 +84,10 @@ const PasswordResetPage = () => {
                         </Form.Item>
                         <Form.Item>
                             <Flex align="center" gap="small">
-                                <Button type="primary" htmlType="submit" size="large" loading={loading}>
+                                <Button type="primary" htmlType="submit" size="middle" loading={loading}>
                                     Submit
                                 </Button>
-                                <Button type="text" size="large" loading={loading}>
+                                <Button type="text" size="middle" loading={loading}>
                                     Cancel
                                 </Button>
                             </Flex>

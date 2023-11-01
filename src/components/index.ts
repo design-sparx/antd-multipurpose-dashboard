@@ -65,6 +65,8 @@ import SitemapCard from "./SitemapCard/SitemapCard";
 import Flex from "./Flex/Flex"
 import TimelineCard from "./TimelineCard/TimelineCard"
 import Loader from "./Loader/Loader"
+import BackBtn from "./BackBtn/BackBtn.tsx";
+import RefreshBtn from "./RefreshBtn/RefreshBtn.tsx";
 
 export {
     Logo,
@@ -133,5 +135,7 @@ export {
     PricingTable,
     SitemapCard,
     Flex,
-    Loader
+    Loader,
+    BackBtn,
+    RefreshBtn
 }

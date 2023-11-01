@@ -10,9 +10,18 @@ import {
     CorporateTeamPage,
     DefaultDashboardPage,
     EcommerceDashboardPage,
+    Error400Page,
+    Error403Page,
+    Error404Page,
+    Error500Page,
+    Error503Page,
+    ErrorPage,
     HomePage,
-    MarketingDashboardPage, PasswordResetPage,
-    ProjectsDashboardPage, SignInPage, SignUpPage,
+    MarketingDashboardPage,
+    PasswordResetPage,
+    ProjectsDashboardPage,
+    SignInPage,
+    SignUpPage,
     SitemapPage,
     SocialDashboardPage,
     UserProfileActionsPage,
@@ -22,9 +31,10 @@ import {
     UserProfileHelpPage,
     UserProfileInformationPage,
     UserProfilePreferencesPage,
-    UserProfileSecurityPage, VerifyEmailPage, WelcomePage
+    UserProfileSecurityPage,
+    VerifyEmailPage,
+    WelcomePage
 } from "../pages";
-import ErrorPage from "../pages/errors/Error.tsx";
 import {CorporateLayout, DashboardLayout, GuestLayout, UserAccountLayout} from "../layouts";
 import {LearningDashboardPage, LogisticsDashboardPage} from "../pages/dashboards";
 import React, {ReactNode, useEffect} from "react";
@@ -224,6 +234,32 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "errors",
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "400",
+                element: <Error400Page/>
+            },
+            {
+                path: "403",
+                element: <Error403Page/>
+            },
+            {
+                path: "404",
+                element: <Error404Page/>
+            },
+            {
+                path: "500",
+                element: <Error500Page/>
+            },
+            {
+                path: "503",
+                element: <Error503Page/>
+            },
+        ]
+    }
 ]);
 
 export default router

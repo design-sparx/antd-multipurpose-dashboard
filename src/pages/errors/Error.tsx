@@ -1,4 +1,8 @@
 import {useRouteError} from "react-router-dom";
+import {Result, Typography} from "antd";
+import {BackBtn, RefreshBtn} from "../../components";
+
+const {Paragraph, Text} = Typography;
 
 type Error = unknown | any
 
@@ -7,13 +11,31 @@ const ErrorPage = () => {
     console.error(error);
 
     return (
-        <div id="error-page">
-            <h1>Oops!</h1>
-            <p>Sorry, an unexpected error has occurred.</p>
-            <p>
-                <i>{error.statusText || error.message}</i>
-            </p>
-        </div>
+        <Result
+            status="error"
+            title="Oops!"
+            subTitle="Sorry, an unexpected error has occurred."
+            extra={[
+                <BackBtn type="primary"/>,
+                <RefreshBtn/>
+            ]}
+        >
+            <div className="desc">
+                <Paragraph>
+                    <Text
+                        strong
+                        style={{
+                            fontSize: 16,
+                        }}
+                    >
+                        The page you tried to open has the following error:
+                    </Text>
+                </Paragraph>
+                <Paragraph copyable>
+                    {error.statusText || error.message}
+                </Paragraph>
+            </div>
+        </Result>
     );
 };
 

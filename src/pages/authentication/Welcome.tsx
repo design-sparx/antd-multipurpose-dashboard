@@ -12,7 +12,7 @@ const WelcomePage = () => {
                 React, TypeScript, and
                 Vite.</Typography.Text>
             <Link to={PATH_DASHBOARD.default}>
-                <Button type="primary" size="large">Go to Homepage</Button>
+                <Button type="primary" size="middle">Go to Homepage</Button>
             </Link>
         </Flex>
     );

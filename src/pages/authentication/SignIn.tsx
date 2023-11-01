@@ -110,7 +110,7 @@ const SignInPage = () => {
                         </Row>
                         <Form.Item>
                             <Flex align="center" justify="space-between">
-                                <Button type="primary" htmlType="submit" size="large" loading={loading}>
+                                <Button type="primary" htmlType="submit" size="middle" loading={loading}>
                                     Continue
                                 </Button>
                                 <Link href={PATH_AUTH.passwordReset}>

@@ -118,9 +118,11 @@ const items: MenuProps['items'] = [
     ]),
 
     getItem('Errors', 'errors', <BugOutlined/>, [
-        getItem(<Link to={PATH_ERROR.error403}>403</Link>, 'error-403', null),
-        getItem(<Link to={PATH_ERROR.error403}>404</Link>, 'error-404', null),
-        getItem(<Link to={PATH_ERROR.error500}>500</Link>, 'error-500', null),
+        getItem(<Link to={PATH_ERROR.error400}>400</Link>, '400', null),
+        getItem(<Link to={PATH_ERROR.error403}>403</Link>, '403', null),
+        getItem(<Link to={PATH_ERROR.error404}>404</Link>, '404', null),
+        getItem(<Link to={PATH_ERROR.error500}>500</Link>, '500', null),
+        getItem(<Link to={PATH_ERROR.error503}>503</Link>, '503', null),
     ]),
 
     /*getItem(
