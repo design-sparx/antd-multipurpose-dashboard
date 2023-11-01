@@ -1,5 +1,18 @@
 # antd-multi-dashboard
 
+## 0.7.0
+
+### Minor Changes
+
+- 7814be6: added error result pages
+- 5bac9b4: added authentication pages
+
+### Patch Changes
+
+- 31c1d95: - added dynamic path on page header
+- dcf2f3e: ui changes to user profile pages
+- f7b5198: - added path resolver to set active side bar link
+
 ## 0.6.1
 
 ### Patch Changes
