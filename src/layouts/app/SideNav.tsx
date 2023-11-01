@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {ConfigProvider, Layout, Menu, MenuProps, SiderProps} from "antd";
 import {
     BookOutlined,
@@ -21,7 +21,7 @@ import {
     UserOutlined,
 } from "@ant-design/icons";
 import {Logo} from "../../components";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {
     PATH_ACCOUNT,
     PATH_AUTH,
@@ -44,6 +44,7 @@ import {
     PATH_USER_MGMT,
     PATH_USER_PROFILE
 } from "../../constants";
+import {COLOR} from "../../App.tsx";
 
 const {Sider} = Layout
 
@@ -89,7 +90,7 @@ const items: MenuProps['items'] = [
         getItem(<Link to={PATH_CORPORATE.license}>License</Link>, 'license', null),
     ]),
 
-    getItem('User profile', 'user profile', <UserOutlined/>, [
+    getItem('User profile', 'user-profile', <UserOutlined/>, [
         getItem(<Link to={PATH_USER_PROFILE.details}>Details</Link>, 'user-details', null),
         getItem(<Link to={PATH_USER_PROFILE.preferences}>Preferences</Link>, 'user-preferences', null),
         getItem(<Link to={PATH_USER_PROFILE.personalInformation}>Information</Link>, 'user-personal-information', null),
@@ -215,13 +216,34 @@ const items: MenuProps['items'] = [
     getItem(<Link to={PATH_DOCS.root}>Documentation</Link>, 'documentation', <SnippetsOutlined/>),
 ];
 
+const rootSubmenuKeys = ['dashboards', 'corporate', 'user-profile'];
+
 type SideNavProps = SiderProps
 
 const SideNav = ({...others}: SideNavProps) => {
     const nodeRef = useRef(null);
+    const {pathname} = useLocation()
+    const [openKeys, setOpenKeys] = useState(['']);
+    const [current, setCurrent] = useState('');
+
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
     };
+
+    const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
+        const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+        if (latestOpenKey && rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
+            setOpenKeys(keys);
+        } else {
+            setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+        }
+    };
+
+    useEffect(() => {
+        const paths = pathname.split('/')
+        setOpenKeys(paths)
+        setCurrent(paths[paths.length - 1])
+    }, [pathname]);
 
     return (
         <Sider
@@ -243,16 +265,21 @@ const SideNav = ({...others}: SideNavProps) => {
                 theme={{
                     components: {
                         Menu: {
-                            itemBg: "none"
+                            itemBg: "none",
+                            subMenuItemBg: COLOR["50"],
+                            itemSelectedBg: COLOR["100"],
+                            itemHoverBg: COLOR["100"],
+                            itemSelectedColor: COLOR["600"]
                         }
                     }
                 }}>
                 <Menu
-                    onClick={onClick}
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
                     mode="inline"
                     items={items}
+                    onClick={onClick}
+                    openKeys={openKeys}
+                    onOpenChange={onOpenChange}
+                    selectedKeys={[current]}
                     style={{border: "none"}}
                 />
             </ConfigProvider>
