@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Image, theme, Typography} from "antd";
+import {Flex, Image, theme, Typography} from "antd";
 import {useMediaQuery} from "react-responsive";
 
 const {Title, Text} = Typography
@@ -13,6 +13,7 @@ const HomePage = () => {
         isXLarge = useMediaQuery({minWidth: 1200}),
         isXXLarge = useMediaQuery({minWidth: 1400})
     const [containerWidth, setContainerWidth] = useState<string>()
+    const isMobile = useMediaQuery({maxWidth: 769})
 
     useEffect(() => {
         // sort from large to small devices
@@ -38,16 +39,15 @@ const HomePage = () => {
                 minHeight: "100vh",
             }}
         >
-            <div
+            <Flex
+                vertical
+                align="center"
+                justify="center"
                 style={{
                     height: '100%',
                     width: '100%',
-                    padding: "80px 0",
+                    padding: isMobile ? "2rem 1rem" : "5rem 0",
                     backgroundColor: 'rgba(255, 255, 255, 0.85)',
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center"
                 }}
             >
                 <div
@@ -60,7 +60,7 @@ const HomePage = () => {
                 >
                     <section
                         style={{
-                            width: `calc(${containerWidth} - 200px)`,
+                            width: isMobile ? "100%" : `calc(${containerWidth} - 200px)`,
                             margin: "0 auto 40px auto"
                         }}
                     >
@@ -80,7 +80,7 @@ const HomePage = () => {
                         <Title
                             style={{
                                 margin: "3rem",
-                                fontSize: 48,
+                                fontSize: isMobile ? 36 : 48,
                                 fontWeight: 700,
                             }}
                         >
@@ -101,7 +101,7 @@ const HomePage = () => {
                         }}
                     />
                 </div>
-            </div>
+            </Flex>
         </div>
     );
 };

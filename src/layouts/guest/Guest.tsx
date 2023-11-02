@@ -1,11 +1,10 @@
-import {Affix, Button, ConfigProvider, Flex, Layout, Menu, theme, Tooltip} from "antd";
+import {Button, ConfigProvider, Divider, Drawer, Flex, FloatButton, Layout, Menu, theme, Tooltip} from "antd";
 import {CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
-import {GithubOutlined, LoginOutlined, UpOutlined} from "@ant-design/icons";
+import {GithubOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
 import {useMediaQuery} from "react-responsive";
 import {Logo, Nprogress} from "../../components";
-import {goToTop} from "../../utils";
 import {PATH_DASHBOARD, PATH_GITHUB, PATH_LANDING} from "../../constants";
 
 const {Header, Content, Footer} = Layout
@@ -26,16 +25,18 @@ const GuestLayout = () => {
     const location = useLocation()
     const nodeRef = useRef(null)
     const [navFill, setNavFill] = useState(false)
-    const [showTopBtn, setShowTopBtn] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
+
+    const onClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                setShowTopBtn(true);
-            } else {
-                setShowTopBtn(false);
-            }
-
             if (window.scrollY > 50) {
                 setNavFill(true)
             } else {
@@ -65,36 +66,53 @@ const GuestLayout = () => {
                         backdropFilter: navFill ? "blur(8px)" : "none",
                         gap: 12,
                         position: "sticky",
-                        top: 0
+                        top: 0,
+                        padding: isMobile ? "0 1rem" : "0 2rem"
                     }}
                 >
                     <Logo color="black" asLink href={PATH_LANDING.root}/>
-                    <ConfigProvider
-                        theme={{
-                            components: {
-                                Menu: {
-                                    itemBg: "none",
-                                    lineType: "none"
-                                }
-                            }
-                        }}>
-                        <Menu
-                            mode="horizontal"
-                            defaultSelectedKeys={['2']}
-                            items={ROUTES.map(r => ({
-                                key: r.title,
-                                label: <Link to={r.path}>{r.title}</Link>,
-                            }))}
+                    <Tooltip title={`${open ? "Expand" : "Collapse"} Sidebar`}>
+                        <Button
+                            type="text"
+                            icon={open ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
+                            onClick={showDrawer}
+                            style={{
+                                fontSize: '16px',
+                                width: 48,
+                                height: 48,
+                            }}
                         />
-                    </ConfigProvider>
-                    <Flex gap="small">
-                        <Link to={PATH_DASHBOARD.default}>
-                            <Button icon={<LoginOutlined/>} type="primary">Live Preview</Button>
-                        </Link>
-                        <a href={PATH_GITHUB.personal} target="_blank">
-                            <Button icon={<GithubOutlined/>}>Github</Button>
-                        </a>
-                    </Flex>
+                    </Tooltip>
+                    {!isMobile &&
+                        <>
+                            <ConfigProvider
+                                theme={{
+                                    components: {
+                                        Menu: {
+                                            itemBg: "none",
+                                            lineType: "none"
+                                        }
+                                    }
+                                }}>
+                                <Menu
+                                    mode="horizontal"
+                                    defaultSelectedKeys={['2']}
+                                    items={ROUTES.map(r => ({
+                                        key: r.title,
+                                        label: <Link to={r.path}>{r.title}</Link>,
+                                    }))}
+                                />
+                            </ConfigProvider>
+                            <Flex gap="small">
+                                <Link to={PATH_DASHBOARD.default}>
+                                    <Button icon={<LoginOutlined/>} type="primary">Live Preview</Button>
+                                </Link>
+                                <a href={PATH_GITHUB.personal} target="_blank">
+                                    <Button icon={<GithubOutlined/>}>Github</Button>
+                                </a>
+                            </Flex>
+                        </>
+                    }
                 </Header>
                 <Content
                     style={{
@@ -127,20 +145,7 @@ const GuestLayout = () => {
                             </CSSTransition>
                         </SwitchTransition>
                     </TransitionGroup>
-                    {showTopBtn &&
-                        <Affix offsetBottom={10} style={{textAlign: 'end', transition: "width 2s"}}>
-                            <Tooltip title="Scroll to top of the screen">
-                                <Button
-                                    type="primary"
-                                    onClick={goToTop}
-                                    icon={<UpOutlined/>}
-                                    shape={isMobile ? "circle" : "default"}
-                                    size={isMobile ? "large" : "middle"}>
-                                    {!isMobile && "Scroll to top"}
-                                </Button>
-                            </Tooltip>
-                        </Affix>
-                    }
+                    <FloatButton.BackTop/>
                 </Content>
                 <Footer
                     style={{
@@ -151,6 +156,26 @@ const GuestLayout = () => {
                     AntD Dashboard &copy; {new Date().getFullYear()} Created by Design Sparx
                 </Footer>
             </Layout>
+            <Drawer title="Menu" placement="left" onClose={onClose} open={open}>
+                <>
+                    <Flex gap="middle" vertical>
+                        {ROUTES.map(r => (
+                            <Link key={r.path} to={r.path}>
+                                <Button type="text" block>
+                                    {r.title}
+                                </Button>
+                            </Link>
+                        ))}
+                        <Divider className="m-0"/>
+                        <Link to={PATH_DASHBOARD.default}>
+                            <Button icon={<LoginOutlined/>} type="primary" block>Live Preview</Button>
+                        </Link>
+                        <Link to={PATH_GITHUB.personal} target="_blank">
+                            <Button icon={<GithubOutlined/>} block>Github</Button>
+                        </Link>
+                    </Flex>
+                </>
+            </Drawer>
         </>
     );
 };

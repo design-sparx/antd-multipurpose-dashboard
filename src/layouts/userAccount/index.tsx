@@ -101,7 +101,7 @@ const UserAccountLayout = () => {
                     ]}
                 >
                     <Row {...stylesContext?.rowProps}>
-                        <Col lg={4}>
+                        <Col xs={24} sm={8} lg={4}>
                             <Image
                                 src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
                                 alt="user profile image"
@@ -110,8 +110,12 @@ const UserAccountLayout = () => {
                                 style={{borderRadius}}
                             />
                         </Col>
-                        <Col lg={20}>
-                            <Descriptions title="User Info" items={DESCRIPTION_ITEMS}/>
+                        <Col xs={24} sm={16} lg={20}>
+                            <Descriptions
+                                title="User Info"
+                                          items={DESCRIPTION_ITEMS}
+                                column={{ xs: 1, sm: 2, md: 2, lg: 3, xl: 3, xxl: 4 }}
+                            />
                         </Col>
                     </Row>
                 </Card>

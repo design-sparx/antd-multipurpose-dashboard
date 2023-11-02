@@ -1,13 +1,23 @@
-import {Button, Flex, FloatButton, Input, Layout, Space, theme, Tooltip} from "antd";
-import {useLocation} from "react-router-dom";
+import {Button, Dropdown, Flex, FloatButton, Input, Layout, MenuProps, message, theme, Tooltip} from "antd";
+import {useLocation, useNavigate} from "react-router-dom";
 import {ReactNode, useEffect, useRef, useState} from "react";
-import {AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MessageOutlined} from "@ant-design/icons";
+import {
+    AppstoreOutlined,
+    LogoutOutlined,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+    MessageOutlined,
+    QuestionOutlined,
+    SettingOutlined,
+    UserOutlined
+} from "@ant-design/icons";
 import {CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import {useMediaQuery} from "react-responsive";
 import SideNav from "./SideNav.tsx";
 import HeaderNav from "./HeaderNav.tsx";
 import FooterNav from "./FooterNav.tsx";
 import {Nprogress} from "../../components";
+import {PATH_LANDING} from "../../constants";
 
 const {Content} = Layout
 
@@ -24,8 +34,46 @@ const AppLayout = ({children}: AppLayoutProps) => {
     const [navFill, setNavFill] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const location = useLocation()
+    const navigate = useNavigate()
     const nodeRef = useRef(null)
     const floatBtnRef = useRef(null)
+
+    const items: MenuProps['items'] = [
+        {
+            key: 'user-profile-link',
+            label: "profile",
+            icon: <UserOutlined/>
+        },
+        {
+            key: 'user-settings-link',
+            label: "settings",
+            icon: <SettingOutlined/>
+        },
+        {
+            key: 'user-help-link',
+            label: "help center",
+            icon: <QuestionOutlined/>
+        },
+        {
+            type: 'divider',
+        },
+        {
+            key: 'user-logout-link',
+            label: "logout",
+            icon: <LogoutOutlined/>,
+            danger: true,
+            onClick: () => {
+                message.open({
+                    type: "loading",
+                    content: "signing you out"
+                })
+
+                setTimeout(() => {
+                    navigate(PATH_LANDING.root)
+                }, 1000)
+            }
+        },
+    ];
 
     useEffect(() => {
         setCollapsed(isMobile)
@@ -110,14 +158,25 @@ const AppLayout = ({children}: AppLayoutProps) => {
                                 size="middle"
                             />
                         </Flex>
-                        <Space align="center">
+                        <Flex align="center" gap="small">
                             <Tooltip title="Apps">
-                                <Button icon={<AppstoreOutlined/>} type="text"/>
+                                <Button icon={<AppstoreOutlined/>} type="text" size="large"/>
                             </Tooltip>
                             <Tooltip title="Messages">
-                                <Button icon={<MessageOutlined/>} type="text"/>
+                                <Button icon={<MessageOutlined/>} type="text" size="large"/>
                             </Tooltip>
-                        </Space>
+                            <Dropdown menu={{items}} trigger={['click']}>
+                                <Flex>
+                                    <img
+                                        src="/me.jpg"
+                                        alt="user profile photo"
+                                        height={36}
+                                        width={36}
+                                        style={{borderRadius, objectFit: "cover"}}
+                                    />
+                                </Flex>
+                            </Dropdown>
+                        </Flex>
                     </HeaderNav>
                     <Content
                         style={{
