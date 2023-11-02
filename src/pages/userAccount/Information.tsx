@@ -1,5 +1,5 @@
-import {Button, Checkbox, Col, DatePicker, Form, Input, Row, Select} from "antd";
-import {Card, Flex} from "../../components";
+import {Button, Checkbox, Col, DatePicker, Flex, Form, Input, Row, Select} from "antd";
+import {Card} from "../../components";
 import {MinusCircleOutlined, PlusOutlined, SaveOutlined} from "@ant-design/icons";
 import {useStylesContext} from "../../context";
 import * as dayjs from "dayjs";
@@ -124,7 +124,7 @@ const UserProfileInformationPage = () => {
                             {(fields, {add, remove}) => (
                                 <>
                                     {fields.map(({key, name, ...restField}) => (
-                                        <Flex key={key} alignItems='baseline' marginBottom={8}>
+                                        <Flex key={key} align='baseline' gap="small" style={{marginBottom: 8}}>
                                             <Form.Item
                                                 {...restField}
                                                 name={[name, 'social']}

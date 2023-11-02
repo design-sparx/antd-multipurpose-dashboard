@@ -1,5 +1,5 @@
-import {Button, Flex, Input, TabsProps, Typography} from "antd";
-import {Card, FaqCollapse} from "../../components";
+import {Alert, Button, Flex, Input, TabsProps, Typography} from "antd";
+import {Card, FaqCollapse, Loader} from "../../components";
 import {
     DollarOutlined,
     PullRequestOutlined,
@@ -11,6 +11,8 @@ import {createElement, useEffect, useState} from "react";
 import * as _ from "lodash";
 import FaqsData from "../../../public/mocks/Faqs.json";
 import {TitleProps} from "antd/es/typography/Title";
+import {useMediaQuery} from "react-responsive";
+import {useFetchData} from "../../hooks";
 
 const {Text, Title} = Typography
 
@@ -64,8 +66,10 @@ const TITLE_PROPS: TitleProps = {
 }
 
 const UserProfileHelpPage = () => {
-    const [activeTabKey, setActiveTabKey] = useState<string>('app');
+    const [activeTabKey, setActiveTabKey] = useState<string>('Account');
     const [tabList, setTabList] = useState<TabsProps["items"]>([])
+    const isMobile = useMediaQuery({maxWidth: 600})
+    const {data: faqsData, loading: faqsDataLoading, error: faqsDataError} = useFetchData("../mocks/Faqs.json")
 
     const onTabChange = (key: string) => {
         setActiveTabKey(key)
@@ -94,12 +98,12 @@ const UserProfileHelpPage = () => {
                     <Title {...TITLE_PROPS}>How can we help?</Title>
                     <Input.Search placeholder="search articles..."/>
                 </Flex>
-                <Flex gap="middle">
+                <Flex gap="middle" wrap={isMobile ? "wrap" : "nowrap"}>
                     {TOPICS.map(t =>
                         <Card
                             hoverable
                             style={{
-                                width: "25%",
+                                width: isMobile ? "100%" : "25%",
                                 textAlign: "center"
                             }}
                         >
@@ -110,7 +114,7 @@ const UserProfileHelpPage = () => {
                         </Card>
                     )}
                 </Flex>
-                <Flex gap="middle">
+                <Flex gap="middle" wrap={isMobile ? "wrap" : "nowrap"}>
                     {OTHER_TOPICS.map(t =>
                         <Card
                             key={t.title}
@@ -135,18 +139,28 @@ const UserProfileHelpPage = () => {
                         size: 'middle',
                     }}
                 >
-                    <FaqCollapse
-                        bordered={false}
-                        items={_.chain(FaqsData)
-                            .filter(d => d.category === activeTabKey)
-                            .slice(0, 5)
-                            .map((i) => ({
-                                label: `${i.question.slice(0, 50)}`,
-                                children: i.answer
-                            }))
-                            .value()
-                        }
-                    />
+                    {faqsDataError ?
+                        <Alert
+                            message="Error"
+                            description={faqsDataError.toString()}
+                            type="error"
+                            showIcon
+                        /> :
+                        (faqsDataLoading ?
+                                <Loader/> :
+                                <FaqCollapse
+                                    bordered
+                                    items={_.chain(faqsData)
+                                        .filter(d => d.category === activeTabKey)
+                                        .slice(0, 5)
+                                        .map((i) => ({
+                                            label: `${i.question.slice(0, 50)}`,
+                                            children: i.answer
+                                        }))
+                                        .value()
+                                    }
+                                />
+                        )}
                 </Card>
             </Flex>
         </div>

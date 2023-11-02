@@ -114,7 +114,7 @@ const items: MenuProps['items'] = [
         getItem(<Link to={PATH_AUTH.verifyEmail}>Verify email</Link>, 'auth-verify', null),
         getItem(<Link to={PATH_AUTH.passwordReset}>Password reset</Link>, 'auth-password-reset', null),
         // getItem(<Link to={PATH_AUTH.passwordConfirm}>Passsword confirmation</Link>, 'auth-password-confirmation', null),
-        getItem(<Link to={PATH_AUTH.accountDelete}>Account deactivation</Link>, 'auth-account-deactivation', null),
+        getItem(<Link to={PATH_AUTH.accountDelete}>Account deleted</Link>, 'auth-account-deactivation', null),
     ]),
 
     getItem('Errors', 'errors', <BugOutlined/>, [

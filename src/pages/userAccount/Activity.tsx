@@ -1,5 +1,4 @@
 import {TimelineCard} from "../../components";
-import TimelineActivityData from "../../../public/mocks/TimelineActivity.json"
 import {useFetchData} from "../../hooks";
 
 const UserProfileActivityPage = () => {

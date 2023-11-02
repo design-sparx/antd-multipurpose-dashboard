@@ -57,6 +57,23 @@ const USER_PROFILE_ITEMS = [
     {title: 'feedback', path: PATH_USER_PROFILE.feedback},
 ]
 
+const AUTHENTICATION_ITEMS = [
+    {title: 'sign in', path: PATH_AUTH.signin},
+    {title: 'sign up', path: PATH_AUTH.signup},
+    {title: 'welcome', path: PATH_AUTH.welcome},
+    {title: 'verify email', path: PATH_AUTH.verifyEmail},
+    {title: 'password reset', path: PATH_AUTH.passwordReset},
+    {title: 'account deleted', path: PATH_AUTH.accountDelete},
+]
+
+const ERROR_ITEMS = [
+    {title: '400', path: PATH_ERROR.error400},
+    {title: '403', path: PATH_ERROR.error403},
+    {title: '404', path: PATH_ERROR.error404},
+    {title: '500', path: PATH_ERROR.error500},
+    {title: '503', path: PATH_ERROR.error503},
+]
+
 export {
     PATH_CALENDAR,
     PATH_USER_MGMT,
@@ -85,5 +102,7 @@ export {
     DASHBOARD_ITEMS,
     CORPORATE_ITEMS,
     USER_PROFILE_ITEMS,
-    PATH_SOCIALS
+    PATH_SOCIALS,
+    AUTHENTICATION_ITEMS,
+    ERROR_ITEMS
 }

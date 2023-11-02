@@ -32,10 +32,10 @@ const UserProfileSecurityPage = () => {
     return <Row {...stylesContext?.rowProps}>
         <Col span={24}>
             <Row {...stylesContext?.rowProps}>
-                <Col xs={12} sm={12}>
+                <Col xs={24} sm={12}>
                     <Card
                         title="Additional security"
-                        extra={<Button type="text">Learn more</Button>}
+                        extra={<Button type="default">Learn more</Button>}
                         actions={[<Button>Turn on</Button>]}
                         style={{height: "100%"}}
                     >
@@ -45,10 +45,10 @@ const UserProfileSecurityPage = () => {
                         </Flex>
                     </Card>
                 </Col>
-                <Col xs={12} sm={12}>
+                <Col xs={24} sm={12}>
                     <Card
                         title="Additional security"
-                        extra={<Button type="text">Learn more</Button>}
+                        extra={<Button type="default">Learn more</Button>}
                         actions={[<Button>Turn off</Button>]}
                         style={{height: "100%"}}
                     >
@@ -58,7 +58,7 @@ const UserProfileSecurityPage = () => {
                         </Flex>
                     </Card>
                 </Col>
-                <Col xs={12} sm={12}>
+                <Col xs={24} sm={12}>
                     <Card
                         title="Sign me out"
                         actions={[<Button>Sign me out</Button>]}
@@ -70,7 +70,7 @@ const UserProfileSecurityPage = () => {
                         </Flex>
                     </Card>
                 </Col>
-                <Col xs={12} sm={12}>
+                <Col xs={24} sm={12}>
                     <Card
                         title="Recovery code"
                         actions={[<Button>Generate a new code</Button>]}
