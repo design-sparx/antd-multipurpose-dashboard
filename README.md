@@ -1,8 +1,8 @@
-<p style="text-align: center">
+<p align="center">
 <img src="public/logo-no-background.png" alt="logo" height="100"/>
 </p>
 
-<p style="text-align: center">
+<p align="center">
   <a href="https://github.com/design-sparx/antd-mutli-dashboard/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
   <a href="https://github.com/design-sparx/antd-mutli-dashboard/issues?q=is%3Aopen+is%3Aissue">
     <img src="https://img.shields.io/github/issues/design-sparx/antd-multipurpose-dashboard/open.svg" alt="GitHub issues open">
