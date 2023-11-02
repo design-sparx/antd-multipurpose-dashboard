@@ -3,18 +3,18 @@
 # Preview
 
 A professional Admin & Dashboard template based on [Ant design 5](https://ant.design/) that comes with hundreds of UI 
-components, forms, tables, charts, pages and icons. This templates is built using [React](https://react.dev/), 
+components, forms, tables, charts, pages and icons. This template is built using [React](https://react.dev/), 
 [Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/) and 
 [Ant Design Icons](https://ant.design/components/icon).
 
 ![preview image](public/landing-frame.jpg)
 
 # Features
-- **Customizable:** You don't need to be an expert to customize AdminKit. Our code is very readable and well documented.
+- **Customizable:** You don't need to be an expert to customize the template. Our code is very readable and well-documented.
 - **Fully Responsive:** With mobile, tablet & desktop support it doesn't matter what device you're using. AdminKit is responsive in all browsers.
 - **Cross-Browser:** Our themes are working perfectly with Chrome, Firefox, Opera, and Edge. We're working hard to support them.
-- **Clean Code:** We strictly follow Ant design's guidelines to make your integration as easy as possible. All code is handwritten.
-- **Regular Updates:** From time to time you'll receive an update containing new components, improvements, and bugfixes.
+- **Clean Code:** We strictly follow Ant Design's guidelines to make your integration as easy as possible. All code is handwritten.
+- **Regular Updates:** From time to time you'll receive an update containing new components, improvements, and bug fixes.
 
 # Quick start
 ## Download
@@ -43,7 +43,7 @@ npm run build
 ```
 
 # File structure
-Inside the zip-file you'll find the following directories and files. Both compiled and minified distribution files, as 
+Inside the zip file, you'll find the following directories and files. Both compiled and minified distribution files, as 
 well as the source files are included in the package.
 ```
 antd-multi-dashboard/
