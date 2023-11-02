@@ -1,5 +1,13 @@
 # antd-multi-dashboard
 
+## 0.7.3
+
+### Patch Changes
+
+- 54b7ee8: added license, preview link, github stats badges
+- fe6ce67: ### Added
+  - added license, preview link, GitHub stats badges
+
 ## 0.7.2
 
 ### Patch Changes
