@@ -71,19 +71,7 @@ const GuestLayout = () => {
                     }}
                 >
                     <Logo color="black" asLink href={PATH_LANDING.root}/>
-                    <Tooltip title={`${open ? "Expand" : "Collapse"} Sidebar`}>
-                        <Button
-                            type="text"
-                            icon={open ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
-                            onClick={showDrawer}
-                            style={{
-                                fontSize: '16px',
-                                width: 48,
-                                height: 48,
-                            }}
-                        />
-                    </Tooltip>
-                    {!isMobile &&
+                    {!isMobile ?
                         <>
                             <ConfigProvider
                                 theme={{
@@ -111,7 +99,19 @@ const GuestLayout = () => {
                                     <Button icon={<GithubOutlined/>}>Github</Button>
                                 </a>
                             </Flex>
-                        </>
+                        </> :
+                        <Tooltip title={`${open ? "Expand" : "Collapse"} Sidebar`}>
+                            <Button
+                                type="text"
+                                icon={open ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
+                                onClick={showDrawer}
+                                style={{
+                                    fontSize: '16px',
+                                    width: 48,
+                                    height: 48,
+                                }}
+                            />
+                        </Tooltip>
                     }
                 </Header>
                 <Content
