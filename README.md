@@ -12,10 +12,12 @@
   </a>
   <a href="https://antd-multipurpose-dashboard.netlify.app/" rel="nofollow"><img src="https://img.shields.io/badge/demo-online-green.svg" alt="Live Demo"></a>
   <a href="https://github.com/design-sparx/antd-multipurpose-dashboard/archive/refs/heads/ft/readme.zip">
-<img src="https://img.shields.io/static/v1?label=download&message=ZIP&color=green" alt="Download"></a>
+    <img src="https://img.shields.io/static/v1?label=download&message=ZIP&color=green" alt="Download"></a>
   <br>
 <a href="https://github.com/design-sparx/antd-mutli-dashboard"><img alt="GitHub stars" src="https://img.shields.io/github/stars/design-sparx/antd-multipurpose-dashboard?style=social"></a>
 </p>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/453b19f9-2043-402d-a715-41d55db6447a/deploy-status)](https://app.netlify.com/sites/antd-multipurpose-dashboard/deploys)
 
 # Preview
 
