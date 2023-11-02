@@ -1,5 +1,13 @@
 # antd-multi-dashboard
 
+## 0.7.2
+
+### Patch Changes
+
+- 7c4770b: ### Updated
+  - updated README.md
+- 55ad44c: updated README.md
+
 ## 0.7.1
 
 ### Patch Changes
