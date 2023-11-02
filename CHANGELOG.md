@@ -1,5 +1,28 @@
 # antd-multi-dashboard
 
+## 0.7.1
+
+### Patch Changes
+
+- 039010e: ### Added
+
+  - added user dropdown to app layout
+
+  ### Updated
+
+  - made landing page responsive
+
+- 5bc6548: made landing page responsive, added user dropdown to app layout
+- 862572f: ### Added
+
+  - added dynamic path on page header
+  - added path resolver to set active side bar link
+  - added authentication pages
+
+  ### Updated
+
+  - ui changes to user profile pages
+
 ## 0.7.0
 
 ### Minor Changes
