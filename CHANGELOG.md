@@ -1,5 +1,16 @@
 # antd-multi-dashboard
 
+## 1.2.0
+
+### Minor Changes
+
+- 3e88f3f: added storybook.js github action setup
+
+### Patch Changes
+
+- 9e8bb1d: # Added
+  added storybook.js github action setup
+
 ## 1.0.1
 
 ### Patch Changes
