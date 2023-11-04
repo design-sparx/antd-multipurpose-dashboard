@@ -1,5 +1,13 @@
 # antd-multi-dashboard
 
+## 1.0.1
+
+### Patch Changes
+
+- e8c3301: ### Added
+  - added chromatic package to publish storybook
+- d7591d9: added chromatic to publish storybook
+
 ## 1.0.0
 
 ### Major Changes
