@@ -1,7 +1,8 @@
-import {Button, CardProps, Flex, Typography} from "antd";
+import {CardProps, Flex, Typography} from "antd";
 import {Card} from "../index.ts";
 
 import "./styles.css"
+import {Link} from "react-router-dom";
 
 type Props = {
     data: {
@@ -14,19 +15,15 @@ const SitemapCard = ({data, ...others}: Props) => {
     return (
         <Card {...others}>
             <Flex vertical gap="middle">
-                <Typography.Title level={5} style={{margin: 0, textTransform: "capitalize"}}>
+                <Typography.Title level={5} className="m-0 text-capitalize">
                     {data.title}
                 </Typography.Title>
-                <Flex gap="small" wrap="wrap">
+                <Flex gap="middle" wrap="wrap">
                     {data.links.map(d =>
-                        <Button
-                            key={d.title}
-                            type="link"
-                            href={d.path}
-                            style={{textTransform: "capitalize"}}
-                        >
+                        <Link to={d.path} className="text-capitalize">
                             {d.title}
-                        </Button>)}
+                        </Link>
+                    )}
                 </Flex>
             </Flex>
         </Card>

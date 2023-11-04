@@ -1,4 +1,4 @@
-import {Card, CardProps, Typography} from "antd";
+import {Card, CardProps, Flex, Typography} from "antd";
 import {Column} from "@ant-design/plots";
 import {MoreMenu} from "../../../index.ts";
 
@@ -73,8 +73,10 @@ const ColumnChart = () => {
 const SubscribersChart = ({...others}: Props) => {
     return (
         <Card title="YouTube Subscribers" extra={<MoreMenu/>} {...others}>
-            <Typography.Text>75% activity growth</Typography.Text>
-            <ColumnChart/>
+            <Flex gap="middle" vertical>
+                <Typography.Text>75% activity growth</Typography.Text>
+                <ColumnChart/>
+            </Flex>
         </Card>
     );
 };

@@ -2,6 +2,7 @@ import {Avatar, AvatarProps, Flex, FlexProps, theme, Typography} from "antd";
 import {colourNameToHex, getNameInitials, isColorLight} from "../../utils";
 import {CheckCircleFilled, UserOutlined} from "@ant-design/icons";
 import {blue} from "@ant-design/colors"
+import {CSSProperties} from "react";
 
 /**
  * mark - not a full name user, just a single user name
@@ -11,15 +12,15 @@ type Props = {
     mark?: boolean
     size?: "small" | "middle" | "large"
     verified?: boolean
-    color?: string
-    textWidth?: number | string
+    color?: CSSProperties["color"]
+    textWidth?: CSSProperties["width"]
 } & Omit<FlexProps, "children">
 
 const UserAvatar = ({fullName, mark, size, verified, color, textWidth, ...others}: Props) => {
     const {token: {colorPrimary}} = theme.useToken()
 
     const avatarProps: AvatarProps = {
-        size: size === "large" ? 36 : size === "small" ? 16 : 24
+        size: size === "large" ? 36 : size === "small" ? 18 : 24
     }
 
     return (
@@ -43,7 +44,14 @@ const UserAvatar = ({fullName, mark, size, verified, color, textWidth, ...others
                     {getNameInitials(fullName)}
                 </Avatar>
             }
-            <Typography.Text style={{width: textWidth || 160}}>{fullName}</Typography.Text>
+            <Typography.Text
+                style={{
+                    fontSize: size === "large" ? 18 : size === "small" ? 14 : 16,
+                    width: textWidth || 160
+                }}
+            >
+                {fullName}
+            </Typography.Text>
             {verified && <CheckCircleFilled style={{fontSize: 14, color: blue[6]}}/>}
         </Flex>
     );

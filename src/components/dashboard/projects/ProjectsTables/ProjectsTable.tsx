@@ -1,4 +1,4 @@
-import {Badge, BadgeProps, Table, Tag, TagProps, Typography} from "antd";
+import {Badge, BadgeProps, Table, TableProps, Tag, TagProps, Typography} from "antd";
 import {Projects} from "../../../../types";
 
 const COLUMNS = [
@@ -77,11 +77,11 @@ const COLUMNS = [
 
 type Props = {
     data: Projects[]
-}
+} & TableProps<any>
 
-const ProjectsTable = ({data}: Props) => {
+const ProjectsTable = ({data, ...others}: Props) => {
     return (
-        <Table dataSource={data} columns={COLUMNS} className="overflow-scroll"/>
+        <Table dataSource={data} columns={COLUMNS} className="overflow-scroll" {...others}/>
     );
 };
 

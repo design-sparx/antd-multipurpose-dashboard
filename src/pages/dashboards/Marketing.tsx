@@ -22,8 +22,7 @@ const MarketingDashboardPage = () => {
         error: campaignAdsError,
         loading: campaignAdsLoading
     } = useFetchData('../mocks/CampaignAds.json')
-
-
+    
     return (
         <div>
             <Helmet>

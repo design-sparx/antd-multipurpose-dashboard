@@ -79,9 +79,9 @@ const MultiLineChart = ({data}: ChartProps) => {
 };
 
 type Props = {
-    data: DeliveryAnalytics[]
-    loading: boolean
-    error: ReactNode
+    data?: DeliveryAnalytics[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const DeliveryAnalyticsCard = ({data, loading, error, ...others}: Props) => {
@@ -98,7 +98,7 @@ const DeliveryAnalyticsCard = ({data, loading, error, ...others}: Props) => {
                     showIcon
                 /> : (loading ?
                         <Loader/> :
-                        <MultiLineChart data={data}/>
+                        <MultiLineChart data={data || []}/>
                 )
             }
         </Card>

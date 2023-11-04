@@ -50,9 +50,9 @@ const SALES_COLUMNS = [
 ]
 
 type Props = {
-    data: AuctionSales[]
-    loading: boolean
-    error: ReactNode
+    data?: AuctionSales[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const TopItemsCard = ({data, loading, error, ...others}: Props) => {

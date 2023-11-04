@@ -2,14 +2,14 @@ import {Alert, Avatar, Button, CardProps, List, Typography} from "antd";
 import {CommunityGroup} from "../../../../types";
 import {PlusOutlined} from "@ant-design/icons";
 import {Card} from "../../../index.ts";
-
-import "./styles.css";
 import {ReactNode} from "react";
 
+import "./styles.css";
+
 type Props = {
-    data: CommunityGroup[]
-    loading: boolean
-    error: ReactNode
+    data?: CommunityGroup[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const ExamsCard = ({data, loading, error, ...others}: Props) => {

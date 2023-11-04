@@ -4,6 +4,5 @@
 
 .auction-card .auction-card-header {
     height: 280px;
-    padding: 1rem;
     background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }

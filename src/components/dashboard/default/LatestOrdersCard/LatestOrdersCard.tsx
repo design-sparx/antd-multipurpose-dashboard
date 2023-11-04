@@ -1,8 +1,7 @@
-import CountryUsersData from "../../../../../public/mocks/CountryOrders.json"
-import {Card, CardProps, Table} from "antd";
+import {Alert, Card, CardProps, Table} from "antd";
 import {MoreMenu} from "../../../index.ts";
-
-const DATA_SOURCE = CountryUsersData;
+import {ReactNode} from "react";
+import {useFetchData} from "../../../../hooks";
 
 const COLUMNS = [
     {
@@ -32,12 +31,32 @@ const COLUMNS = [
     }
 ];
 
-type Props = CardProps
+type Props =
+    {
+        data?: any,
+        loading?: boolean,
+        error?: ReactNode
+    }
+    & CardProps
 
-const LatestOrdersCard = ({...others}: Props) => {
+const LatestOrdersCard = ({data, loading, error, ...others}: Props) => {
+    const {
+        data: ordersData,
+        loading: ordersDataLoading,
+        error: ordersDataError
+    } = useFetchData("/mocks/CountryOrders.json")
+    
     return (
         <Card title={`Latest Orders`} extra={<MoreMenu/>} {...others}>
-            <Table columns={COLUMNS} dataSource={DATA_SOURCE}/>
+            {ordersDataError || error ?
+                <Alert
+                    message="Error"
+                    description={error?.toString() || ordersDataError.toString()}
+                    type="error"
+                    showIcon
+                /> :
+                <Table columns={COLUMNS} dataSource={ordersData} loading={ordersDataLoading || loading}/>
+            }
         </Card>
     );
 };

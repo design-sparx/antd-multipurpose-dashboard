@@ -1,21 +1,26 @@
 import {AppLayout} from "../index.ts";
-import {Button, Col, Row, RowProps, Typography} from "antd";
+import {Button, Col, Row, Typography} from "antd";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import {BlogsListCard, Card, PageHeader, SocialMediaCard} from "../../components";
 import {HomeOutlined, IdcardOutlined} from "@ant-design/icons";
 import {CORPORATE_ITEMS} from "../../constants";
+import {useStylesContext} from "../../context";
 
 const {Text, Title} = Typography
 
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
+const BLOGS_DATA = Array.from({length: 23}).map((_, i) => ({
+    href: 'https://ant.design',
+    title: `Lorem ipsum ${i}`,
+    avatar: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${i}`,
+    description:
+        'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+    content:
+        'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+}));
 
 const CorporateLayout = () => {
     const {pathname} = useLocation()
+    const stylesContext = useStylesContext()
 
     return (
         <>
@@ -42,12 +47,12 @@ const CorporateLayout = () => {
                         }
                     ]}
                 />
-                <Row {...ROW_PROPS}>
+                <Row {...stylesContext?.rowProps}>
                     <Col xs={24} md={16} xl={18}>
                         <Outlet/>
                     </Col>
                     <Col xs={24} md={8} xl={6}>
-                        <Row {...ROW_PROPS}>
+                        <Row {...stylesContext?.rowProps}>
                             <Col span={24}>
                                 <Card title="Careers" actions={[<Button>Explore more</Button>]}>
                                     <Text>
@@ -77,7 +82,7 @@ const CorporateLayout = () => {
                                 </Card>
                             </Col>
                             <Col span={24}>
-                                <BlogsListCard/>
+                                <BlogsListCard data={BLOGS_DATA}/>
                             </Col>
                             <Col span={24}>
                                 <SocialMediaCard/>

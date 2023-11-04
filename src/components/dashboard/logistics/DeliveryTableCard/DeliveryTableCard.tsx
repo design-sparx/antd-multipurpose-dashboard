@@ -7,7 +7,10 @@ import {numberWithCommas} from "../../../../utils";
 
 type TabKeys = "all" | "in transit" | "delayed" | "delivered" | string
 
-type TabList = { key: TabKeys, tab: string }[]
+type TabList = {
+    key: TabKeys,
+    tab: string
+}[]
 
 const TAB_LIST: TabList = [
     {
@@ -70,19 +73,19 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
 ]
 
 type DeliveryTableProps = {
-    data: TruckDelivery[]
+    data?: TruckDelivery[]
 } & TableProps<any>
 
 const DeliveryTable = ({data, ...others}: DeliveryTableProps) => {
     return (
-        <Table dataSource={data} columns={DELIVERY_TABLE_COLUMNS} className="overflow-scroll" {...others}/>
+        <Table dataSource={data || []} columns={DELIVERY_TABLE_COLUMNS} className="overflow-scroll" {...others}/>
     )
 }
 
 type Props = {
-    data: TruckDelivery[]
-    loading: boolean
-    error: ReactNode
+    data?: TruckDelivery[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const DeliveryTableCard = ({data, loading, error, ...others}: Props) => {
@@ -109,7 +112,7 @@ const DeliveryTableCard = ({data, loading, error, ...others}: Props) => {
                     showIcon
                 /> :
                 <DeliveryTable
-                    data={activeTabKey !== "all" ? data.filter(d => d.delivery_status.toLowerCase() === activeTabKey) : data}
+                    data={activeTabKey !== "all" ? data?.filter(d => d.delivery_status.toLowerCase() === activeTabKey) : (data || [])}
                     loading={loading}
                 />
             }

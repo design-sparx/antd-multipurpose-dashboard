@@ -1,5 +1,5 @@
 import React from "react";
-import {CardProps, Flex, Space, Typography} from "antd";
+import {CardProps, Flex, Typography} from "antd";
 import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons";
 import {green, red} from "@ant-design/colors"
 import {Card} from "../../../index.ts";
@@ -17,11 +17,11 @@ const StatsCard = ({icon, title, value, diff, ...others}: Props) => {
         <Card
             {...others}
         >
-            <Space direction="vertical" size="large" style={{width: '100%'}}>
+            <Flex vertical gap="middle" style={{width: '100%'}}>
                 {React.createElement(icon, {style: {fontSize: 30}})}
                 <Typography.Text style={{textTransform: "capitalize"}}>{title}</Typography.Text>
-                <Flex gap="small" align="center">
-                    <Typography.Title level={3} style={{margin: 0}}>
+                <Flex gap="small" align="center" justify="space-between">
+                    <Typography.Title level={2} className="m-0">
                         <CountUp end={value}/>
                     </Typography.Title>
                     <Typography.Text
@@ -35,7 +35,7 @@ const StatsCard = ({icon, title, value, diff, ...others}: Props) => {
                         }
                     </Typography.Text>
                 </Flex>
-            </Space>
+            </Flex>
         </Card>
     );
 };

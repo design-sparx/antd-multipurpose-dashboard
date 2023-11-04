@@ -111,4 +111,10 @@ fabric.properties
 !.idea/codeStyles
 !.idea/runConfigurations
 
+### StorybookJs ###
+# gitignore template for the Storybook, UI guide for front apps
+# website: https://storybook.js.org/
+
+storybook-static/
+
 # End of https://www.toptal.com/developers/gitignore/api/webstorm+all

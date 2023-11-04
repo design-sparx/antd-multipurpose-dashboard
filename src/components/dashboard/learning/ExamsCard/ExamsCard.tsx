@@ -8,9 +8,9 @@ import {ReactNode} from "react";
 import {useMediaQuery} from "react-responsive";
 
 type Props = {
-    data: Exam[]
-    loading: boolean
-    error: ReactNode
+    data?: Exam[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const ExamsCard = ({data, loading, error, ...others}: Props) => {

@@ -54,9 +54,9 @@ const TRANSACTIONS_COLUMNS = [
 ]
 
 type Props = {
-    data: AuctionTransactions[]
-    loading: boolean
-    error: ReactNode
+    data?: AuctionTransactions[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const TransactionsCard = ({data, loading, error, ...others}: Props) => {

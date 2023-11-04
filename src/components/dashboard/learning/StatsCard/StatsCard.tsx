@@ -13,9 +13,7 @@ type Props = {
 
 const StatsCard = ({color, icon, title, value, progress, ...others}: Props) => {
     return (
-        <Card
-            {...others}
-        >
+        <Card{...others}>
             <Flex vertical gap="middle">
                 {React.createElement(icon, {style: {fontSize: 30}})}
                 <Typography.Text className="m-0 text-capitalize">{title}</Typography.Text>

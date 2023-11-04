@@ -1,6 +1,6 @@
 import {Alert, CardProps, Space, Table, Typography} from "antd";
 import {LearningCourses} from "../../../../types";
-import {CalendarOutlined, SwapRightOutlined} from "@ant-design/icons";
+import {SwapRightOutlined} from "@ant-design/icons";
 import {ColumnsType} from "antd/es/table";
 import {Card, UserAvatar} from "../../../index.ts";
 import {ReactNode} from "react";
@@ -26,12 +26,11 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
         )
     },
     {
-        title: 'Duration',
+        title: 'Duration (Start-End)',
         dataIndex: 'start_date',
         key: 'start_date',
         render: (_: any, {start_date, end_date}: any) => (
             <Space size="small" style={{width: 200}}>
-                <CalendarOutlined/>
                 <Typography.Text>{start_date}</Typography.Text>
                 <SwapRightOutlined/>
                 <Typography.Text>{end_date}</Typography.Text>
@@ -53,7 +52,7 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     }
 ]
 
-type Props = { data: LearningCourses[], loading: boolean, error: ReactNode } & CardProps
+type Props = { data?: LearningCourses[], loading?: boolean, error?: ReactNode } & CardProps
 
 const CoursesCard = ({data, loading, error, ...others}: Props) => {
     return (

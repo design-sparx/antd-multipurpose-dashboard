@@ -1,0 +1,7 @@
+.logo-link{
+    text-decoration: none;
+}
+
+.logo-link:hover, .logo-link:focus {
+    text-decoration: underline;
+}

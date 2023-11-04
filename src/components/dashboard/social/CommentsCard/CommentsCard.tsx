@@ -6,7 +6,7 @@ import {Card, Loader, UserAvatar} from "../../../index";
 
 import "./styles.css"
 
-type Props = { data: Comments[], error: ReactNode, loading: boolean } & CardProps
+type Props = { data?: Comments[], error?: ReactNode, loading?: boolean } & CardProps
 
 const CommentsCard = ({data, error, loading, ...others}: Props) => (
     <Card

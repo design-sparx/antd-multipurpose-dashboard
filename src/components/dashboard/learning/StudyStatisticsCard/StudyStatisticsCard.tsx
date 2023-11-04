@@ -61,9 +61,9 @@ const ColumnChart = ({data}: ColumnChartProps) => {
 };
 
 type Props = {
-    data: StudyStatistics[]
-    loading: boolean
-    error: ReactNode
+    data?: StudyStatistics[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const StudyStatisticsCard = ({data, error, loading, ...others}: Props) => {
@@ -82,7 +82,7 @@ const StudyStatisticsCard = ({data, error, loading, ...others}: Props) => {
                     /> : (
                         loading ?
                             <Loader/> :
-                            <ColumnChart data={data}/>
+                            <ColumnChart data={data || []}/>
                     )}
         </Card>
     );

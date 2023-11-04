@@ -1,10 +1,10 @@
-import {Card as AntdCard, CardProps, Descriptions, DescriptionsProps, Space, Tooltip, Typography} from "antd";
+import {Card as AntdCard, CardProps, Descriptions, DescriptionsProps, Flex, Tooltip, Typography} from "antd";
 import {CalendarOutlined, ClockCircleOutlined, UsergroupAddOutlined} from "@ant-design/icons";
 import {Projects} from "../../../../types";
 
 import "./styles.css";
 
-const {Text} = Typography
+const {Text, Title} = Typography
 
 type Props = {
     project: Projects
@@ -96,15 +96,21 @@ const ProjectsCard = (props: Props) => {
 
     return (
         size === "small" ?
-            <AntdCard className="project-small-card" {...others}>
-                <Space direction="vertical">
-                    <Text strong className="text-capitalize">{project_name.slice(0, 15)}</Text>
-                    <Text>Owner: {project_manager}</Text>
-                    <Text>Client: {client_name}</Text>
-                    <Text>Priority: {priority}</Text>
-                    <Text>Type: {project_type}</Text>
-                    <Text>Location: {project_location}</Text>
-                </Space>
+            <AntdCard
+                bordered
+                hoverable={true}
+                className="project-small-card"
+                {...others}
+            >
+                <Title level={5} className="text-capitalize m-0">{project_name.slice(0, 15)}</Title>
+                <br/>
+                <Flex wrap="wrap" gap="small" className="text-capitalize">
+                    <Text>Owner: <b>{project_manager},</b></Text>
+                    <Text>Client: <b>{client_name},</b></Text>
+                    <Text>Priority: <b>{priority},</b></Text>
+                    <Text>Type: <b>{project_type},</b></Text>
+                    <Text>Location: <b>{project_location}</b></Text>
+                </Flex>
             </AntdCard> :
             <AntdCard
                 bordered
