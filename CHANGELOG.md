@@ -1,5 +1,25 @@
 # antd-multi-dashboard
 
+## null
+
+### Patch Changes
+
+- 32ef4cd: ### Updated
+  - added storybook, test badge statuses
+- e980684: ### Added
+  - added storybook, test badge statuses
+
+## 1.2.0
+
+### Minor Changes
+
+- 3e88f3f: added storybook.js github action setup
+
+### Patch Changes
+
+- 9e8bb1d: # Added
+  added storybook.js github action setup
+
 ## 1.0.1
 
 ### Patch Changes
