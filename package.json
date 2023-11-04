@@ -1,7 +1,7 @@
 {
   "name": "antd-multi-dashboard",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "changeset": "changeset",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_7983ebd6a0ac0ac"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
@@ -66,5 +65,5 @@
     "vite": "^4.4.5"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "antd-multi-dashboard@0.7.4"
+  "_id": "antd-multi-dashboard@1.1.0"
 }
