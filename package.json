@@ -1,8 +1,8 @@
 {
   "name": "antd-multi-dashboard",
-  "private": true,
-  "version": "1.1.0",
+  "private": "false",
   "type": "module",
+  "version": "1.2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -63,7 +63,5 @@
     "storybook-react-context": "^0.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
-  },
-  "readme": "ERROR: No README data found!",
-  "_id": "antd-multi-dashboard@1.1.0"
+  }
 }
