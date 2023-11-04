@@ -1,5 +1,14 @@
 # antd-multi-dashboard
 
+## null
+
+### Patch Changes
+
+- 32ef4cd: ### Updated
+  - added storybook, test badge statuses
+- e980684: ### Added
+  - added storybook, test badge statuses
+
 ## 1.2.0
 
 ### Minor Changes
