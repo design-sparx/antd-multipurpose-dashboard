@@ -1,5 +1,33 @@
 # antd-multi-dashboard
 
+## 1.0.1
+
+### Patch Changes
+
+- e8c3301: ### Added
+  - added chromatic package to publish storybook
+- d7591d9: added chromatic to publish storybook
+
+## 1.0.0
+
+### Major Changes
+
+- db3184b: added storybook and setup custom component stories
+
+### Patch Changes
+
+- 5a1694a: ### Added
+  - setup storybook.js
+  - implemented component stories using storybook.js
+
+## 0.7.5
+
+### Patch Changes
+
+- 453b63d: added netlify badge to README.md
+- e21512f: ### Added
+  - added netlify badge to README.md
+
 ## 0.7.4
 
 ### Patch Changes
