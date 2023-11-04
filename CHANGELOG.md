@@ -1,5 +1,13 @@
 # antd-multi-dashboard
 
+## 0.7.5
+
+### Patch Changes
+
+- 453b63d: added netlify badge to README.md
+- e21512f: ### Added
+  - added netlify badge to README.md
+
 ## 0.7.4
 
 ### Patch Changes
