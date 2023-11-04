@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "changeset": "changeset",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_7983ebd6a0ac0ac"
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
@@ -52,6 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "chromatic": "^7.6.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
@@ -62,5 +64,7 @@
     "storybook-react-context": "^0.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "antd-multi-dashboard@0.7.4"
 }
