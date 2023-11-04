@@ -5,7 +5,7 @@ import {Notifications} from "../../types";
 import "./styles.css";
 
 type Props = {
-    data: Notifications[]
+    data?: Notifications[]
     loading?: boolean
     error?: any
 } & CardProps

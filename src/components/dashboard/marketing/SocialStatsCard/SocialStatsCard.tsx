@@ -69,7 +69,7 @@ const SocialStatsCard = ({...others}: Props) => (
                                 </Space>
                                 <Tag color={item.diff < 0 ? 'red-inverse' : 'green-inverse'}>{item.diff}%</Tag>
                             </Flex>
-                            <Flex justify="space-between" align="center">
+                            <Flex gap="small" align="flex-end">
                                 <Typography.Title level={3} className="m-0">
                                     <CountUp end={item.value}/>
                                 </Typography.Title>

@@ -5,9 +5,9 @@ import {Card, Loader} from "../index.ts";
 import {ReactNode} from "react";
 
 type Props = {
-    data: ActivityTimeline[]
-    loading: boolean
-    error: ReactNode
+    data?: ActivityTimeline[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const TimelineCard = ({data, error, loading, ...others}: Props) => {
@@ -24,7 +24,7 @@ const TimelineCard = ({data, error, loading, ...others}: Props) => {
                         <Timeline
                             mode="left"
                             items={
-                                data.map(_ => (
+                                data?.map(_ => (
                                     {
                                         dot: _.device_type === 'desktop' ?
                                             <LaptopOutlined/> :

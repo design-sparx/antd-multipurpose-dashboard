@@ -6,9 +6,9 @@ import {Card, Loader, UserAvatar} from "../../../index";
 import "./styles.css";
 
 type Props = {
-    data: Tasks[]
-    loading: boolean
-    error: any
+    data?: Tasks[]
+    loading?: boolean
+    error?: any
 } & CardProps
 
 const TasksListCard = ({data, error, loading, ...others}: Props) => {

@@ -10,15 +10,15 @@ import {
     TagFilled
 } from "@ant-design/icons";
 import {Card, Loader} from "../../../index.ts";
+import {useMediaQuery} from "react-responsive";
 
 import "./styles.css"
-import {useMediaQuery} from "react-responsive";
 
 type CardItemProps = {
     data: RecommendedCourses
 } & CardProps
 
-const CardItem = ({data}: CardItemProps) => {
+const CardItem = ({data, ...others}: CardItemProps) => {
     const [levelColor, setLevelColor] = useState<string>()
     const {duration, category, name, lessons, level} = data;
 
@@ -47,6 +47,7 @@ const CardItem = ({data}: CardItemProps) => {
             style={{
                 margin: `0 4px`
             }}
+            {...others}
         >
             <Space direction="vertical" size="large" style={{width: '100%'}}>
                 <Typography.Title
@@ -80,9 +81,9 @@ const CardItem = ({data}: CardItemProps) => {
 }
 
 type Props = {
-    data: RecommendedCourses[]
-    loading: boolean
-    error: ReactNode
+    data?: RecommendedCourses[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const CoursesCarousel = ({data, loading, error, ...others}: Props) => {
@@ -164,7 +165,7 @@ const CoursesCarousel = ({data, loading, error, ...others}: Props) => {
                         ref={sliderRef}
                         {...settings}
                     >
-                        {data.map(d => <CardItem key={d.id} data={d}/>)}
+                        {data?.map(d => <CardItem key={d.id} data={d}/>)}
                     </Carousel>
             }
         </Card>

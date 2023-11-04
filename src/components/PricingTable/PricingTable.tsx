@@ -15,9 +15,9 @@ const textStyles = (preferred?: boolean, primary?: string): React.CSSProperties 
 }
 
 type Props = {
-    data: Pricing[]
-    error: ReactNode
-    loading: boolean
+    data?: Pricing[]
+    error?: ReactNode
+    loading?: boolean
 } & CardProps
 
 const PricingTable = ({data, error, loading, ...others}: Props) => {
@@ -52,7 +52,7 @@ const PricingTable = ({data, error, loading, ...others}: Props) => {
                                 />
                             </div>
                             <Row {...stylesContext?.rowProps}>
-                                {data.map((d, i) => (
+                                {data?.map((d, i) => (
                                     <Col sm={24} lg={8} key={`${d.color}-${i}`}>
                                         <AntdCard
                                             style={{

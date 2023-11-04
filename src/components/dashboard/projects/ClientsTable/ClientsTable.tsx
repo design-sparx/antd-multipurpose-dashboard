@@ -1,4 +1,4 @@
-import {Table, Typography} from "antd";
+import {Table, TableProps, Typography} from "antd";
 import {Clients} from "../../../../types";
 import {UserAvatar} from "../../../index.ts";
 
@@ -19,10 +19,17 @@ const COLUMNS = [
 
 type Props = {
     data: Clients[]
-}
+} & TableProps<any>
 
-const ClientsTable = ({data}: Props) => (
-    <Table dataSource={data} columns={COLUMNS} key="client_table" size="middle" className="overflow-scroll"/>
+const ClientsTable = ({data, ...others}: Props) => (
+    <Table
+        dataSource={data}
+        columns={COLUMNS}
+        key="client_table"
+        size="middle"
+        className="overflow-scroll"
+        {...others}
+    />
 );
 
 export default ClientsTable;

@@ -26,7 +26,7 @@ const BarChart = ({data}: BarProps) => {
 };
 
 type Props = {
-    data: Plan[]
+    data?: Plan[]
 } & CardProps
 
 const DailyPlanCard = ({data, ...others}: Props) => {
@@ -35,7 +35,7 @@ const DailyPlanCard = ({data, ...others}: Props) => {
             title="Daily activities"
             {...others}
         >
-            <BarChart data={data}/>
+            <BarChart data={data || []}/>
         </Card>
     );
 };

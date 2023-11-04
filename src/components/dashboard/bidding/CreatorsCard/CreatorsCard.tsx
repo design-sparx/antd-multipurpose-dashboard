@@ -1,10 +1,9 @@
+import {ReactNode} from "react";
 import {Alert, Button, CardProps, Table, TableColumnsType} from "antd";
 import {AuctionCreator} from "../../../../types";
 import {Card, UserAvatar} from "../../../index";
-
-import "./styles.css"
 import {UserAddOutlined} from "@ant-design/icons";
-import {ReactNode} from "react";
+import "./styles.css"
 
 const COLUMNS: TableColumnsType<AuctionCreator> = [
     {
@@ -27,7 +26,7 @@ const COLUMNS: TableColumnsType<AuctionCreator> = [
     }
 ]
 
-type Props = { data: AuctionCreator[], loading: boolean, error: ReactNode } & CardProps
+type Props = { data?: AuctionCreator[], loading?: boolean, error?: ReactNode } & CardProps
 
 const CreatorsCard = ({data, loading, error, ...others}: Props) => {
     return (

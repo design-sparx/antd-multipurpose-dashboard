@@ -129,7 +129,7 @@ const ExpandedRowRender = ({data}: ExpandedProps) => {
     />
 };
 
-type Props = { data: CampaignAds[], loading: boolean, error: ReactNode } & CardProps
+type Props = { data?: CampaignAds[], loading?: boolean, error?: ReactNode } & CardProps
 
 const CampaignsAdsCard = ({error, data, loading, ...others}: Props) => {
     const [groupedData, setGroupedData] = useState<ParentDataType[]>([])

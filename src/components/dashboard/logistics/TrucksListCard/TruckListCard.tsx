@@ -1,14 +1,14 @@
 import {Alert, Badge, Button, CardProps, Col, List, Progress, Row, Space, Typography} from "antd";
 import {Truck} from "../../../../types";
 import {Card} from "../../../index.ts";
-
-import "./styles.css";
 import {ReactNode} from "react";
 
+import "./styles.css";
+
 type Props = {
-    data: Truck[]
-    loading: boolean
-    error: ReactNode
+    data?: Truck[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const TruckListCard = ({data, loading, error, ...others}: Props) => {

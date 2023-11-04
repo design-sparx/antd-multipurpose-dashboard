@@ -24,10 +24,6 @@ const ProjectsCountCard = ({...others}: Props) => {
 
     return (
         <Card
-            {...others}
-            style={{
-                height: '100%'
-            }}
             title='Project stats'
             bodyStyle={{
                 display: 'flex',
@@ -35,6 +31,11 @@ const ProjectsCountCard = ({...others}: Props) => {
                 justifyContent: 'space-between',
                 height: '80%'
             }}
+            className="card"
+            style={{
+                height: '100%'
+            }}
+            {...others}
         >
             <Row gutter={16}>
                 <Col span={8}>

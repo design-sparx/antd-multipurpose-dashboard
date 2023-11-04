@@ -16,9 +16,9 @@ const IconText = ({icon, text}: { icon: React.FC; text: string | number }) => (
 
 type Props = {
     as: "scheduled" | "active"
-    data: Posts[]
-    loading: boolean
-    error: ReactNode
+    data?: Posts[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const PostsCard = ({as, data, error, loading, ...others}: Props) => {

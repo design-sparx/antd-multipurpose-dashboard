@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Col, ConfigProvider, Row, RowProps, Tabs, TabsProps} from "antd";
+import {Col, ConfigProvider, Row, Tabs, TabsProps} from "antd";
 import {
     FacebookFilled,
     FacebookOutlined,
@@ -30,13 +30,7 @@ import {useMediaQuery} from "react-responsive";
 import {COLOR} from "../../App.tsx";
 import {useFetchData} from "../../hooks";
 import {Comments, Posts} from "../../types";
-
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
+import {useStylesContext} from "../../context";
 
 type TabKeys =
     'social-facebook-tab'
@@ -51,6 +45,7 @@ type SectionProps = {
 }
 
 const Section = ({tab}: SectionProps) => {
+    const stylesContext = useStylesContext()
     const [title, setTitle] = useState<string>('');
     const {
         data: socialsData,
@@ -92,7 +87,7 @@ const Section = ({tab}: SectionProps) => {
 
     return <>
         <Col xs={24} xl={16}>
-            <Row {...ROW_PROPS}>
+            <Row {...stylesContext?.rowProps}>
                 <Col xs={24} md={12} lg={6}>
                     <SocialStatsCard
                         key='followers-card'
@@ -171,6 +166,7 @@ const Section = ({tab}: SectionProps) => {
 }
 
 const SocialDashboardPage = () => {
+    const stylesContext = useStylesContext()
     const isMobile = useMediaQuery({maxWidth: 769})
     const [activeTabKey, setActiveTabKey] = useState<TabKeys>('social-facebook-tab');
 
@@ -273,7 +269,7 @@ const SocialDashboardPage = () => {
                     size="middle"
                 />
             </ConfigProvider>
-            <Row {...ROW_PROPS}>
+            <Row {...stylesContext?.rowProps}>
                 {TAB_CONTENT[activeTabKey]}
             </Row>
         </div>

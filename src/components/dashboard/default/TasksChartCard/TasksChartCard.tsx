@@ -47,7 +47,7 @@ const ColumnChart = ({data}: ChartProps) => {
 };
 
 type Props = {
-    data: Tasks[]
+    data?: Tasks[]
 } & CardProps
 
 const TasksChartCard = ({data, ...others}: Props) => {
@@ -57,7 +57,7 @@ const TasksChartCard = ({data, ...others}: Props) => {
             extra={<Button>See all</Button>}
             {...others}
         >
-            <ColumnChart data={data}/>
+            <ColumnChart data={data || []}/>
         </Card>
     );
 };

@@ -1,8 +1,7 @@
-import ChannelUsersData from "../../../../../public/mocks/ChannelUsers.json"
-import {Card, CardProps, Table, Typography} from "antd";
+import {Alert, Card, CardProps, Table, Typography} from "antd";
 import {MoreMenu} from "../../../index.ts";
-
-const DATA_SOURCE = ChannelUsersData;
+import {useFetchData} from "../../../../hooks";
+import {ReactNode} from "react";
 
 const COLUMNS = [
     {
@@ -30,12 +29,26 @@ const COLUMNS = [
     },
 ];
 
-type Props = CardProps
+type Props = {data?: any, loading?: boolean, error?: ReactNode} & CardProps
 
-const RecentUsersCard = ({...others}: Props) => {
+const RecentUsersCard = ({data, loading, error, ...others}: Props) => {
+    const {
+        data: usersData,
+        loading: usersDataLoading,
+        error: usersDataError
+    } = useFetchData("/mocks/ChannelUsers.json")
+    
     return (
         <Card title={`Recent Users`} extra={<MoreMenu/>} {...others}>
-            <Table columns={COLUMNS} dataSource={DATA_SOURCE}/>
+            {usersDataError || error ?
+                <Alert
+                    message="Error"
+                    description={error?.toString() || usersDataError.toString()}
+                    type="error"
+                    showIcon
+                /> :
+                <Table columns={COLUMNS} dataSource={usersData} loading={usersDataLoading || loading}/>
+            }
         </Card>
     );
 };

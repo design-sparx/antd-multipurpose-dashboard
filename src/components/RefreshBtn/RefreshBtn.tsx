@@ -1,5 +1,5 @@
 import {Button, ButtonProps} from "antd";
-import {LeftOutlined} from "@ant-design/icons";
+import {SyncOutlined} from "@ant-design/icons";
 
 type Props = {
     icon?: boolean
@@ -8,7 +8,7 @@ type Props = {
 const RefreshBtn = ({icon, ...others}: Props) => {
     return (
         <Button
-            icon={icon ? <LeftOutlined/> : null}
+            icon={icon ? <SyncOutlined/> : null}
             onClick={() => window.location.reload()}
             {...others}
         >

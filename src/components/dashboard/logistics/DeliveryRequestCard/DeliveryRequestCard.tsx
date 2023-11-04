@@ -7,9 +7,9 @@ import {ReactNode} from "react";
 import {CalendarOutlined} from "@ant-design/icons";
 
 type Props = {
-    data: DeliveryRequest[]
-    loading: boolean
-    error: ReactNode
+    data?: DeliveryRequest[]
+    loading?: boolean
+    error?: ReactNode
 } & CardProps
 
 const DeliveryRequestCard = ({data, loading, error, ...others}: Props) => {

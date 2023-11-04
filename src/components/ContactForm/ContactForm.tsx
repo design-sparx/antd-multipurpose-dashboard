@@ -1,25 +1,21 @@
-import {Button, Col, Form, FormProps, Input, Row, RowProps} from "antd";
+import {Button, Col, Form, FormProps, Input, Row} from "antd";
 import {SendOutlined} from "@ant-design/icons";
+import {useStylesContext} from "../../context";
 
 const {TextArea} = Input
-
-const ROW_PROPS: RowProps = {
-    gutter: [
-        {xs: 8, sm: 16, md: 24, lg: 32},
-        {xs: 8, sm: 16, md: 24, lg: 32}
-    ]
-}
 
 type Props = FormProps
 
 const ContactForm = ({...others}: Props) => {
+    const stylesContext = useStylesContext()
+    
     return (
         <div>
             <Form
                 layout="vertical"
                 {...others}
             >
-                <Row {...ROW_PROPS}>
+                <Row {...stylesContext?.rowProps}>
                     <Col sm={24} lg={12}>
                         <Form.Item label="Name" tooltip="This is a required field">
                             <Input/>

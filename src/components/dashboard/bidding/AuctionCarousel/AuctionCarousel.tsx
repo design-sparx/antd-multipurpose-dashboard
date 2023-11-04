@@ -1,16 +1,16 @@
+import {ReactNode} from "react";
 import {Alert, Button, CardProps, Carousel, CarouselProps, Flex, Space, Tag, theme, Typography} from "antd";
 import {ClockCircleOutlined} from "@ant-design/icons";
 import {Bidding} from "../../../../types";
 import {Card, Loader} from "../../../index.ts";
 
 import "./styles.css";
-import {ReactNode} from "react";
 
 type CardItemProps = {
     item: Bidding
 } & CardProps
 
-const CardItem = ({item}: CardItemProps) => {
+export const CardItem = ({item, ...others}: CardItemProps) => {
     const {token: {borderRadius}} = theme.useToken()
     const {
         auction_id,
@@ -24,7 +24,6 @@ const CardItem = ({item}: CardItemProps) => {
 
     return (
         <Card
-            style={{marginRight: 16}}
             cover={
                 <div
                     className='auction-card-header'
@@ -34,10 +33,10 @@ const CardItem = ({item}: CardItemProps) => {
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
                         borderTopLeftRadius: borderRadius,
-                        borderTopRightRadius: borderRadius
+                        borderTopRightRadius: borderRadius,
                     }}
                 >
-                    <Flex justify="space-between" align="flex-start">
+                    <Flex justify="space-between" align="flex-start" style={{margin: `0 1rem`, padding: `1rem 0`}}>
                         <Tag
                             color={status === "active" ? "green-inverse" : "volcano-inverse"}
                             className="text-capitalize m-0"
@@ -55,6 +54,8 @@ const CardItem = ({item}: CardItemProps) => {
                 </div>
             }
             className="auction-card card"
+            style={{marginRight: 16}}
+            {...others}
         >
             <Flex vertical gap="middle" style={{padding: "16px"}}>
                 <Typography.Title
@@ -75,7 +76,7 @@ const CardItem = ({item}: CardItemProps) => {
 
 type Props = {
     data: Bidding[]
-    loading: boolean
+    loading: boolean 
     error: ReactNode
 }
 

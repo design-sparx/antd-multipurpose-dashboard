@@ -1,12 +1,12 @@
 import {Notifications} from "../../types";
-import {Avatar, Flex, Tag, Typography} from "antd";
+import {Avatar, Flex, FlexProps, Tag, Typography} from "antd";
 import {ContainerOutlined, MailOutlined, PhoneOutlined} from "@ant-design/icons";
 
 type Props = {
     data: Notifications
-}
+} & Omit<FlexProps, "children">
 
-const NotificationsItem = ({data}: Props) => {
+const NotificationsItem = ({data, ...others}: Props) => {
     const {
         notification_type,
         notification_category,
@@ -17,7 +17,7 @@ const NotificationsItem = ({data}: Props) => {
     } = data
 
     return (
-        <Flex gap="small">
+        <Flex gap="small" {...others}>
             <Avatar src={notification_image}/>
             <Flex vertical gap="small" style={{flexGrow: 1}}>
                 <Flex align="center" justify="space-between">
