@@ -18,7 +18,7 @@ const GetStartedCard = ({...others}: Props) => {
                         week</Typography.Title>
                     <Typography.Text>You have already completed 68% of your monthly target. Keep going to achieve your
                         goal.</Typography.Text>
-                    <Button type="primary" size="large">Get started{' '}<RightOutlined/></Button>
+                    <Button type="primary" size="middle">Get started{' '}<RightOutlined/></Button>
                 </Flex>
                 <Image src="/get-started.png" height={180} preview={false} style={{objectFit: 'cover'}}/>
             </Flex>
