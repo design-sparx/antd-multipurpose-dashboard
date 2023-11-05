@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 1.3.1
+
+### Patch Changes
+
+- e73a01a: attempt fix to chromatic action
+
 ## 1.3.0
 
 ### Minor Changes
