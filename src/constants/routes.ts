@@ -193,7 +193,8 @@ export const PATH_START = {
 }
 
 export const PATH_DOCS = {
-    root: 'https://mantine-analytics-dashboard-docs.netlify.app/',
+    help: 'https://github.com/design-sparx/antd-multipurpose-dashboard/blob/main/README.md',
+    components: 'https://6546507b657a74164abf2db6-oniqlpqtfs.chromatic.com/',
 }
 
 export const PATH_CHANGELOG = {

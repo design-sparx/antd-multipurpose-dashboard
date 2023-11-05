@@ -1,8 +1,8 @@
 import {RouterProvider} from 'react-router-dom'
-import routes from "./routes/routes.tsx";
 import {ConfigProvider} from "antd";
 import {HelmetProvider} from "react-helmet-async"
 import {StylesContext} from "./context";
+import routes from "./routes/routes.tsx";
 
 import "./App.css"
 
@@ -32,7 +32,7 @@ function App() {
                     token: {
                         colorPrimary: COLOR["500"],
                         borderRadius: 6,
-                        fontFamily: "Libre Franklin, sans-serif"
+                        fontFamily: "Lato, sans-serif"
                     },
                     components: {
                         Breadcrumb: {
