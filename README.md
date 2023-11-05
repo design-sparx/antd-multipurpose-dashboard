@@ -39,8 +39,8 @@
 
 A professional Admin & Dashboard template based on [Ant design 5](https://ant.design/) that comes with hundreds of UI
 components, forms, tables, charts, pages and icons. This template is built using [React](https://react.dev/),
-[Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/) and
-[Ant Design Icons](https://ant.design/components/icon).
+[Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/),
+[Ant Design Icons](https://ant.design/components/icon) and [Storybook](https://storybook.js.org/).
 
 ![preview image](public/landing-frame.jpg)
 
@@ -124,6 +124,7 @@ antd-multi-dashboard/
 │   ├── routes/
 │   ├── types/
 │   ├── utils/
+|   |── stories/
 │   ├── App.css/
 │   ├── App.tsx/
 │   ├── index.css/
