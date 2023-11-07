@@ -23,9 +23,6 @@
   <a href="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/chromatic.yml">
     <img src="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/chromatic.yml/badge.svg" alt="Storybook Deployment Status">
   </a> 
-  <a href="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/test.yml">
-    <img src="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/test.yml/badge.svg?branch=main" alt="Test Status">
-  </a>
   <br>
   <a href="https://github.com/design-sparx/antd-mutli-dashboard">
     <img alt="GitHub stars" src="https://img.shields.io/github/stars/design-sparx/antd-multipurpose-dashboard?style=social">
