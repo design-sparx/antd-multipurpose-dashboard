@@ -1,3 +1,5 @@
+![behance](https://github.com/design-sparx/antd-multipurpose-dashboard/assets/26582923/cc9c94ee-488f-4ae5-bb17-bbfe230e8524)
+
 <p align="center">
 <img src="public/logo-no-background.png" alt="logo" height="100"/>
 </p>
@@ -39,8 +41,6 @@ A professional Admin & Dashboard template based on [Ant design 5](https://ant.de
 components, forms, tables, charts, pages and icons. This template is built using [React](https://react.dev/),
 [Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/),
 [Ant Design Icons](https://ant.design/components/icon) and [Storybook](https://storybook.js.org/).
-
-![preview image](public/landing-frame.jpg)
 
 # Features
 
