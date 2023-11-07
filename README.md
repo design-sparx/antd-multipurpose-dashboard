@@ -33,8 +33,9 @@
 </p>
 
 - [Live preview](https://antd-multipurpose-dashboard.netlify.app/)
-- [Components preview](https://6546507b657a74164abf2db6-oniqlpqtfs.chromatic.com/)
-
+- [Components]([https://6546507b657a74164abf2db6-oniqlpqtfs.chromatic.com/](https://6546507b657a74164abf2db6-iqmnggdrcl.chromatic.com/))
+- [Medium](https://medium.com/@kelvink96/designing-modern-dashboards-a-journey-through-react-vite-ant-design-and-storybook-2dac23e1e49a)
+  
 # About
 
 A professional Admin & Dashboard template based on [Ant design 5](https://ant.design/) that comes with hundreds of UI
