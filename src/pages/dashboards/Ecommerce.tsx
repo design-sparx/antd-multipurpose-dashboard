@@ -489,7 +489,7 @@ const SELLER_COLUMNS = [
 
 const ORDERS_COLUMNS = [
   {
-    title: "Tracking",
+    title: "Tracking No.",
     dataIndex: "tracking_number",
     key: "tracking_number",
   },
@@ -630,16 +630,40 @@ const EcommerceDashboardPage = () => {
         <Col sm={24} lg={16}>
           <Row {...stylesContext?.rowProps}>
             <Col xs={24} sm={12}>
-              <RevenueCard title="Visitors" value={20149} diff={5.54} />
+              <RevenueCard
+                title="Visitors"
+                value={20149}
+                diff={5.54}
+                height={180}
+                justify="space-between"
+              />
             </Col>
             <Col xs={24} sm={12}>
-              <RevenueCard title="Customers" value={5834} diff={-12.3} />
+              <RevenueCard
+                title="Customers"
+                value={5834}
+                diff={-12.3}
+                height={180}
+                justify="space-between"
+              />
             </Col>
             <Col xs={24} sm={12}>
-              <RevenueCard title="Orders" value={3270} diff={9.52} />
+              <RevenueCard
+                title="Orders"
+                value={3270}
+                diff={9.52}
+                height={180}
+                justify="space-between"
+              />
             </Col>
             <Col xs={24} sm={12}>
-              <RevenueCard title="Sales" value="$ 1.324K" diff={2.34} />
+              <RevenueCard
+                title="Sales"
+                value="$ 1.324K"
+                diff={2.34}
+                height={180}
+                justify="space-between"
+              />
             </Col>
           </Row>
         </Col>
@@ -759,7 +783,7 @@ const EcommerceDashboardPage = () => {
           </Flex>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="Popular products">
+          <Card title="Popular products" style={cardStyles}>
             {topProductsError ? (
               <Alert
                 message="Error"
@@ -778,7 +802,7 @@ const EcommerceDashboardPage = () => {
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="Popular categories">
+          <Card title="Popular categories" style={cardStyles}>
             {topCategoriesError ? (
               <Alert
                 message="Error"

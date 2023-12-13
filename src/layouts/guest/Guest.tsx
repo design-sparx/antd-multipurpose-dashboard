@@ -1,12 +1,9 @@
 import {
   Button,
-  ConfigProvider,
-  Divider,
   Drawer,
   Flex,
   FloatButton,
   Layout,
-  Menu,
   theme,
   Tooltip,
 } from "antd";
@@ -34,13 +31,6 @@ import {
 } from "../../constants";
 
 const { Header, Content, Footer } = Layout;
-
-const ROUTES = [
-  { title: "Why us", path: PATH_LANDING.why },
-  { title: "Pricing", path: PATH_LANDING.pricing },
-  { title: "About", path: PATH_LANDING.about },
-  { title: "Contact", path: PATH_LANDING.contact },
-];
 
 const GuestLayout = () => {
   const {
@@ -95,44 +85,26 @@ const GuestLayout = () => {
             position: "sticky",
             top: 0,
             padding: isMobile ? "0 1rem" : "0 2rem",
+            zIndex: 1,
           }}
         >
           <Logo color="black" asLink href={PATH_LANDING.root} />
           {!isMobile ? (
             <>
-              <ConfigProvider
-                theme={{
-                  components: {
-                    Menu: {
-                      itemBg: "none",
-                      lineType: "none",
-                    },
-                  },
-                }}
-              >
-                <Menu
-                  mode="horizontal"
-                  defaultSelectedKeys={["2"]}
-                  items={ROUTES.map((r) => ({
-                    key: r.title,
-                    label: <Link to={r.path}>{r.title}</Link>,
-                  }))}
-                />
-              </ConfigProvider>
               <Flex gap="small">
-                <Link to={PATH_DASHBOARD.default}>
-                  <Button icon={<LoginOutlined />} type="primary">
-                    Live Preview
-                  </Button>
-                </Link>
                 <Link to={PATH_DOCS.components} target="_blank">
                   <Button icon={<AppstoreAddOutlined />} type="link">
                     Components
                   </Button>
                 </Link>
-                <Link to={PATH_GITHUB.personal} target="_blank">
+                <Link to={PATH_GITHUB.repo} target="_blank">
                   <Button icon={<GithubOutlined />} type="link">
-                    Github
+                    Give us a star
+                  </Button>
+                </Link>
+                <Link to={PATH_DASHBOARD.default}>
+                  <Button icon={<LoginOutlined />} type="primary">
+                    Live Preview
                   </Button>
                 </Link>
               </Flex>
@@ -158,6 +130,7 @@ const GuestLayout = () => {
             background: "rgba(52, 152, 219, 0.35)",
             borderRadius,
             transition: "all .25s",
+            paddingBottom: "10rem",
           }}
         >
           <TransitionGroup>
@@ -201,27 +174,19 @@ const GuestLayout = () => {
       </Layout>
       <Drawer title="Menu" placement="left" onClose={onClose} open={open}>
         <>
-          <Flex gap="middle" vertical>
-            {ROUTES.map((r) => (
-              <Link key={r.path} to={r.path}>
-                <Button type="text" block>
-                  {r.title}
-                </Button>
-              </Link>
-            ))}
-            <Divider className="m-0" />
+          <Flex gap="small" vertical>
             <Link to={PATH_DASHBOARD.default}>
-              <Button icon={<LoginOutlined />} type="primary" block>
+              <Button icon={<LoginOutlined />} type="text">
                 Live Preview
               </Button>
             </Link>
             <Link to={PATH_DOCS.components} target="_blank">
-              <Button icon={<AppstoreAddOutlined />} type="default" block>
+              <Button icon={<AppstoreAddOutlined />} type="text">
                 Components
               </Button>
             </Link>
-            <Link to={PATH_GITHUB.personal} target="_blank">
-              <Button icon={<GithubOutlined />} type="default" block>
+            <Link to={PATH_GITHUB.repo} target="_blank">
+              <Button icon={<GithubOutlined />} type="text">
                 Github
               </Button>
             </Link>

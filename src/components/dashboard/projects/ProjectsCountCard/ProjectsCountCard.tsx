@@ -57,7 +57,7 @@ const ProjectsCountCard = ({ ...others }: Props) => {
             >
               <Progress
                 percent={Number(
-                  ((inProgress.length / ProjectsData.length) * 100).toFixed(2),
+                  ((inProgress.length / ProjectsData.length) * 100).toFixed(2)
                 )}
                 {...PROGRESS_PROPS}
               />
@@ -72,7 +72,7 @@ const ProjectsCountCard = ({ ...others }: Props) => {
             >
               <Progress
                 percent={Number(
-                  ((onHold.length / ProjectsData.length) * 100).toFixed(2),
+                  ((onHold.length / ProjectsData.length) * 100).toFixed(2)
                 )}
                 {...PROGRESS_PROPS}
               />
@@ -87,7 +87,7 @@ const ProjectsCountCard = ({ ...others }: Props) => {
             >
               <Progress
                 percent={Number(
-                  ((completed.length / ProjectsData.length) * 100).toFixed(2),
+                  ((completed.length / ProjectsData.length) * 100).toFixed(2)
                 )}
                 {...PROGRESS_PROPS}
               />

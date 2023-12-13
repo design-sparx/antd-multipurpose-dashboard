@@ -36,7 +36,7 @@ const Logo = ({
           height={imgSize?.h || 48}
         />
         <Typography.Title
-          level={5}
+          level={4}
           type="secondary"
           style={{
             color,
@@ -46,7 +46,7 @@ const Logo = ({
             borderRadius,
           }}
         >
-          Design Sparx
+          Antd Admin
         </Typography.Title>
       </Flex>
     </Link>
@@ -58,7 +58,7 @@ const Logo = ({
         height={imgSize?.h || 48}
       />
       <Typography.Title
-        level={5}
+        level={4}
         type="secondary"
         style={{
           color,
@@ -68,7 +68,7 @@ const Logo = ({
           borderRadius,
         }}
       >
-        Design Sparx
+        Antd Admin
       </Typography.Title>
     </Flex>
   );

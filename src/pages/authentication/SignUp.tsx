@@ -71,7 +71,7 @@ const SignUpPage = () => {
         >
           <Logo color="white" />
           <Title level={2} className="text-white">
-            Welcome to Ant Dashboard
+            Welcome to Antd Admin
           </Title>
           <Text className="text-white" style={{ fontSize: 18 }}>
             A dynamic and versatile multipurpose dashboard utilizing Ant Design,

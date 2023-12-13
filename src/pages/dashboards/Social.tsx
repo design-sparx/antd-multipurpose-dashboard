@@ -148,7 +148,7 @@ const Section = ({ tab }: SectionProps) => {
               title="Scheduled Posts"
               as="scheduled"
               data={scheduledPostsData?.filter(
-                (_: Posts) => _.platform.toLowerCase() === title,
+                (_: Posts) => _.platform.toLowerCase() === title
               )}
               loading={scheduledPostsDataLoading}
               error={scheduledPostsDataError}
@@ -188,7 +188,7 @@ const SocialDashboardPage = () => {
   const stylesContext = useStylesContext();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>(
-    "social-facebook-tab",
+    "social-facebook-tab"
   );
 
   const TAB_LIST: TabsProps["items"] = [
