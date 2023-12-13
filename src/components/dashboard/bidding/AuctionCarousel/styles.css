@@ -1,8 +1,8 @@
 .auction-card .ant-card-body {
-    padding: 2px;
+  padding: 2px;
 }
 
 .auction-card .auction-card-header {
-    height: 280px;
-    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  height: 280px;
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }

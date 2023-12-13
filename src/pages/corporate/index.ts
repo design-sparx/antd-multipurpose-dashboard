@@ -5,4 +5,11 @@ import CorporateContactPage from "./Contact.tsx";
 import CorporatePricingPage from "./Pricing.tsx";
 import CorporateLicensePage from "./Licence.tsx";
 
-export {CorporateAboutPage, CorporateTeamPage, CorporateFaqPage, CorporateContactPage, CorporatePricingPage, CorporateLicensePage}
+export {
+  CorporateAboutPage,
+  CorporateTeamPage,
+  CorporateFaqPage,
+  CorporateContactPage,
+  CorporatePricingPage,
+  CorporateLicensePage,
+};

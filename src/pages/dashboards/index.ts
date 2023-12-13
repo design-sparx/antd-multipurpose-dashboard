@@ -8,12 +8,12 @@ import LearningDashboardPage from "./Learning.tsx";
 import LogisticsDashboardPage from "./Logistics.tsx";
 
 export {
-    DefaultDashboardPage,
-    ProjectsDashboardPage,
-    EcommerceDashboardPage,
-    MarketingDashboardPage,
-    SocialDashboardPage,
-    BiddingDashboardPage,
-    LearningDashboardPage,
-    LogisticsDashboardPage
-}
+  DefaultDashboardPage,
+  ProjectsDashboardPage,
+  EcommerceDashboardPage,
+  MarketingDashboardPage,
+  SocialDashboardPage,
+  BiddingDashboardPage,
+  LearningDashboardPage,
+  LogisticsDashboardPage,
+};

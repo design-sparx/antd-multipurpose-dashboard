@@ -1,11 +1,9 @@
-import {Collapse, CollapseProps} from "antd";
+import { Collapse, CollapseProps } from "antd";
 
-type Props = CollapseProps
+type Props = CollapseProps;
 
-const FaqCollapse = ({...others}: Props) => {
-    return (
-        <Collapse {...others}/>
-    );
+const FaqCollapse = ({ ...others }: Props) => {
+  return <Collapse {...others} />;
 };
 
 export default FaqCollapse;

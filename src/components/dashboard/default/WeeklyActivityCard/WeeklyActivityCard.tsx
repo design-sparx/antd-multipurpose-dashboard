@@ -1,43 +1,40 @@
-import {Area} from "@ant-design/charts";
-import {CardProps} from "antd";
-import {Card} from "../../../index.ts";
+import { Area } from "@ant-design/charts";
+import { CardProps } from "antd";
+import { Card } from "../../../index.ts";
 
 type Activity = {
-    day: string
-    value: number
-}
+  day: string;
+  value: number;
+};
 
 type ChartProps = {
-    data: Activity[]
-}
+  data: Activity[];
+};
 
-const AreaChart = ({data}: ChartProps) => {
-    const config = {
-        data,
-        xField: 'day',
-        yField: 'value',
-        xAxis: {
-            range: [0, 1],
-        },
-        smooth: true
-    };
+const AreaChart = ({ data }: ChartProps) => {
+  const config = {
+    data,
+    xField: "day",
+    yField: "value",
+    xAxis: {
+      range: [0, 1],
+    },
+    smooth: true,
+  };
 
-    return <Area {...config} />;
-}
+  return <Area {...config} />;
+};
 
 type Props = {
-    data: Activity[]
-} & CardProps
+  data: Activity[];
+} & CardProps;
 
-const WeeklyActivityCard = ({data, ...others}: Props) => {
-    return (
-        <Card
-            title="Weekly activity"
-            {...others}
-        >
-            <AreaChart data={data}/>
-        </Card>
-    );
+const WeeklyActivityCard = ({ data, ...others }: Props) => {
+  return (
+    <Card title="Weekly activity" {...others}>
+      <AreaChart data={data} />
+    </Card>
+  );
 };
 
 export default WeeklyActivityCard;

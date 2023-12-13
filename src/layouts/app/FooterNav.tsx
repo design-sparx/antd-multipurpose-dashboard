@@ -1,13 +1,13 @@
-import {Layout} from "antd";
+import { Layout } from "antd";
 
-const {Footer} = Layout
+const { Footer } = Layout;
 
-type FooterNavProps = React.HTMLAttributes<HTMLDivElement>
+type FooterNavProps = React.HTMLAttributes<HTMLDivElement>;
 
-const FooterNav = ({...others}: FooterNavProps) => {
-    return (
-        <Footer {...others}>AntD Dashboard © 2023 Created by Design Sparx</Footer>
-    );
+const FooterNav = ({ ...others }: FooterNavProps) => {
+  return (
+    <Footer {...others}>AntD Dashboard © 2023 Created by Design Sparx</Footer>
+  );
 };
 
 export default FooterNav;

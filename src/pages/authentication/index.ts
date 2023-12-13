@@ -5,4 +5,11 @@ import VerifyEmailPage from "./VerifyEmail.tsx";
 import PasswordResetPage from "./PasswordReset.tsx";
 import AccountDeactivePage from "./AccountDeactivate.tsx";
 
-export {SignUpPage, SignInPage, WelcomePage, VerifyEmailPage, PasswordResetPage,AccountDeactivePage}
+export {
+  SignUpPage,
+  SignInPage,
+  WelcomePage,
+  VerifyEmailPage,
+  PasswordResetPage,
+  AccountDeactivePage,
+};

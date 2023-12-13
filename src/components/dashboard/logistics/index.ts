@@ -5,4 +5,11 @@ import DailyPlanCard from "./DailyPlanCard/DailyPlanCard.tsx";
 import TruckListCard from "./TrucksListCard/TruckListCard.tsx";
 import DeliveryRequestCard from "./DeliveryRequestCard/DeliveryRequestCard.tsx";
 
-export {StatsCard, DeliveryTableCard, DeliveryAnalyticsCard, DailyPlanCard, TruckListCard, DeliveryRequestCard}
+export {
+  StatsCard,
+  DeliveryTableCard,
+  DeliveryAnalyticsCard,
+  DailyPlanCard,
+  TruckListCard,
+  DeliveryRequestCard,
+};
