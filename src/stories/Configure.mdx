@@ -1,26 +1,28 @@
-import {Meta} from "@storybook/blocks";
+import { Meta } from "@storybook/blocks";
 
 import Landing from "/landing-frame.jpg";
 import Logo from "/logo-no-background.png";
 import Github from "./assets/github.svg";
 
-export const RightArrow = () => <svg
+export const RightArrow = () => (
+  <svg
     viewBox="0 0 14 14"
     width="8px"
     height="14px"
     style={{
-        marginLeft: '4px',
-        display: 'inline-block',
-        shapeRendering: 'inherit',
-        verticalAlign: 'middle',
-        fill: 'currentColor',
-        'path fill': 'currentColor'
+      marginLeft: "4px",
+      display: "inline-block",
+      shapeRendering: "inherit",
+      verticalAlign: "middle",
+      fill: "currentColor",
+      "path fill": "currentColor",
     }}
->
-    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z"/>
-</svg>
+  >
+    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+  </svg>
+);
 
-<Meta title="Welcome"/>
+<Meta title="Welcome" />
 
 <div className="sb-container">
     <div className='sb-section-title'>
@@ -36,6 +38,7 @@ export const RightArrow = () => <svg
             />
         </div>
     </div>
+
 </div>
 <div className="sb-container">
     <div className='sb-section-title'>
@@ -47,34 +50,32 @@ export const RightArrow = () => <svg
 </div>
 
 <div className="sb-container">
-    <div className='sb-section-title'>
-        # Features
-        <ul>
-            <li>
-                Customizable: You don't need to be an expert to customize the template. Our code is very readable and
-                well-documented.
-            </li>
-            <li>
-                Fully Responsive: With mobile, tablet & desktop support it doesn't matter what device you're using. Antd
-                Dashboard is responsive in all browsers.
-            </li>
-            <li>
-                Cross-Browser: Our themes are working perfectly with Chrome, Firefox, Opera, and Edge. We're working
-                hard to
-                support them.
-            </li>
-            <li>
-                Clean Code: We strictly follow Ant Design's guidelines to make your integration as easy as possible. All
-                code is
-                handwritten.
-            </li>
-            <li>
-                Regular Updates: From time to time you'll receive an update containing new components, improvements, and
-                bug
-                fixes.
-            </li>
-        </ul>
-    </div>
+  <div className="sb-section-title">
+    # Features
+    <ul>
+      <li>
+        Customizable: You don't need to be an expert to customize the template.
+        Our code is very readable and well-documented.
+      </li>
+      <li>
+        Fully Responsive: With mobile, tablet & desktop support it doesn't
+        matter what device you're using. Antd Dashboard is responsive in all
+        browsers.
+      </li>
+      <li>
+        Cross-Browser: Our themes are working perfectly with Chrome, Firefox,
+        Opera, and Edge. We're working hard to support them.
+      </li>
+      <li>
+        Clean Code: We strictly follow Ant Design's guidelines to make your
+        integration as easy as possible. All code is handwritten.
+      </li>
+      <li>
+        Regular Updates: From time to time you'll receive an update containing
+        new components, improvements, and bug fixes.
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div className="sb-section">
@@ -98,10 +99,11 @@ export const RightArrow = () => <svg
             >GitHub<RightArrow/></a>
         </div>
     </div>
+
 </div>
 
 <style>
-    {`
+  {`
       .sb-container {
         margin-bottom: 48px;
       }

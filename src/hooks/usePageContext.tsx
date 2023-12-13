@@ -1,7 +1,7 @@
-import {useOutletContext} from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 export type ContextType = { title: string | null };
 
 export function usePageContext() {
-    return useOutletContext<ContextType>();
+  return useOutletContext<ContextType>();
 }

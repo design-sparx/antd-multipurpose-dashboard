@@ -1,14 +1,16 @@
-import {Card as AntdCard, CardProps} from "antd";
+import { Card as AntdCard, CardProps } from "antd";
+import { ReactNode } from "react";
 
 import "./styles.css";
-import {ReactNode} from "react";
 
-type Props = { children: ReactNode } & CardProps
+type Props = { children: ReactNode } & CardProps;
 
-const Card = ({children, ...others}: Props) => {
-    return (
-        <AntdCard className="card" {...others}>{children}</AntdCard>
-    );
+const Card = ({ children, ...others }: Props) => {
+  return (
+    <AntdCard className="card" {...others}>
+      {children}
+    </AntdCard>
+  );
 };
 
 export default Card;

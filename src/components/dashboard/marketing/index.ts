@@ -5,4 +5,11 @@ import CampaignsActivity from "./CampaignsActivity/CampaignsActivity.tsx";
 import CampaignsAdsCard from "./CampaignsAdsCard/CampaignsAdsCard.tsx";
 import AudienceLocationChart from "./AudienceLocationChart/AudienceLocationChart.tsx";
 
-export {StatsCard, VisitorsChartCard, SocialStatsCard, CampaignsActivity, CampaignsAdsCard, AudienceLocationChart}
+export {
+  StatsCard,
+  VisitorsChartCard,
+  SocialStatsCard,
+  CampaignsActivity,
+  CampaignsAdsCard,
+  AudienceLocationChart,
+};

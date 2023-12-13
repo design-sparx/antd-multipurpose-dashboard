@@ -10,14 +10,14 @@ import TasksChartCard from "./TasksChartCard/TasksChartCard.tsx";
 import TasksListCard from "./TasksListCard/TasksListCard.tsx";
 
 export {
-    CampaignsCard,
-    LatestOrdersCard,
-    OrdersChart,
-    RecentUsersCard,
-    EarningsCard,
-    GetStartedCard,
-    SubscribersChart,
-    WeeklyActivityCard,
-    TasksChartCard,
-    TasksListCard
-}
+  CampaignsCard,
+  LatestOrdersCard,
+  OrdersChart,
+  RecentUsersCard,
+  EarningsCard,
+  GetStartedCard,
+  SubscribersChart,
+  WeeklyActivityCard,
+  TasksChartCard,
+  TasksListCard,
+};

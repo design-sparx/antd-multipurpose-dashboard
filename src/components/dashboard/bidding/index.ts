@@ -4,4 +4,10 @@ import TopItemsCard from "./TopItemsCard/TopItems.tsx";
 import TransactionsCard from "./TransactionsCard/TransactionsCard.tsx";
 import CategoriesCard from "./CategoriesCard/CategoriesCard.tsx";
 
-export {AuctionCarousel, CreatorsCard, TopItemsCard, TransactionsCard, CategoriesCard}
+export {
+  AuctionCarousel,
+  CreatorsCard,
+  TopItemsCard,
+  TransactionsCard,
+  CategoriesCard,
+};

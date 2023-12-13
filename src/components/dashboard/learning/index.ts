@@ -6,4 +6,12 @@ import ProgressCard from "./ProgressCard/ProgressCard.tsx";
 import ExamsCard from "./ExamsCard/ExamsCard.tsx";
 import CommunityGroupCard from "./CommunityGroupsCard/CommunityGroupCard.tsx";
 
-export {StatsCard, CoursesCard, CoursesCarousel, StudyStatisticsCard, ProgressCard, ExamsCard, CommunityGroupCard}
+export {
+  StatsCard,
+  CoursesCard,
+  CoursesCarousel,
+  StudyStatisticsCard,
+  ProgressCard,
+  ExamsCard,
+  CommunityGroupCard,
+};

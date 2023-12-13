@@ -1,3 +1,3 @@
-import {StylesContext, useStylesContext} from "./styles";
+import { StylesContext, useStylesContext } from "./styles";
 
-export {StylesContext, useStylesContext}
+export { StylesContext, useStylesContext };

@@ -1,3 +1,3 @@
 import AppLayout from "./App.tsx";
 
-export {AppLayout}
+export { AppLayout };

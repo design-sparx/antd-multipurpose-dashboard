@@ -1,28 +1,26 @@
-import {useNProgress} from "@tanem/react-nprogress";
-import {Bar, Container, Nspinner} from "./index.ts";
+import { useNProgress } from "@tanem/react-nprogress";
+import { Bar, Container, Nspinner } from "./index.ts";
 
 type Props = {
-    isAnimating?: boolean
-}
+  isAnimating?: boolean;
+};
 
-const Progress = ({isAnimating}: Props) => {
-    const {animationDuration, isFinished, progress} = useNProgress({
-        isAnimating,
-    })
+const Progress = ({ isAnimating }: Props) => {
+  const { animationDuration, isFinished, progress } = useNProgress({
+    isAnimating,
+  });
 
-
-    return (
-        <Container animationDuration={animationDuration} isFinished={isFinished}>
-            <Bar animationDuration={animationDuration} progress={progress}/>
-            <Nspinner/>
-            {/*
+  return (
+    <Container animationDuration={animationDuration} isFinished={isFinished}>
+      <Bar animationDuration={animationDuration} progress={progress} />
+      <Nspinner />
+      {/*
               This example doesn't use a spinner component so the UI stays
               tidy. You're free to render whatever is appropriate for your
               use-case.
-              */
-            }
-        </Container>
-    )
-}
+              */}
+    </Container>
+  );
+};
 
-export default Progress
+export default Progress;

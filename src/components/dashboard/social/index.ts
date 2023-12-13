@@ -5,4 +5,11 @@ import DevicesCardChart from "./DevicesCardChart/DevicesCardChart.tsx";
 import MilestonesCard from "./MilestonesCard/MilestonesCard.tsx";
 import CommentsCard from "./CommentsCard/CommentsCard.tsx";
 
-export {SocialStatsCard, FollowersChart, LikesChart, DevicesCardChart, MilestonesCard, CommentsCard}
+export {
+  SocialStatsCard,
+  FollowersChart,
+  LikesChart,
+  DevicesCardChart,
+  MilestonesCard,
+  CommentsCard,
+};

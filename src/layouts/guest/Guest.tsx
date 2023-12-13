@@ -1,36 +1,56 @@
-import {Button, ConfigProvider, Divider, Drawer, Flex, FloatButton, Layout, Menu, theme, Tooltip} from "antd";
-import {CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
-import {Link, Outlet, useLocation} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {
+  Button,
+  ConfigProvider,
+  Divider,
+  Drawer,
+  Flex,
+  FloatButton,
+  Layout,
+  Menu,
+  theme,
+  Tooltip,
+} from "antd";
+import {
+  CSSTransition,
+  SwitchTransition,
+  TransitionGroup,
+} from "react-transition-group";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import {
   AppstoreAddOutlined,
   GithubOutlined,
   LoginOutlined,
   MenuFoldOutlined,
-  MenuUnfoldOutlined
+  MenuUnfoldOutlined,
 } from "@ant-design/icons";
-import {useMediaQuery} from "react-responsive";
-import {Logo, Nprogress} from "../../components";
-import {PATH_DASHBOARD, PATH_DOCS, PATH_GITHUB, PATH_LANDING} from "../../constants";
+import { useMediaQuery } from "react-responsive";
+import { Logo, Nprogress } from "../../components";
+import {
+  PATH_DASHBOARD,
+  PATH_DOCS,
+  PATH_GITHUB,
+  PATH_LANDING,
+} from "../../constants";
 
-const {Header, Content, Footer} = Layout
+const { Header, Content, Footer } = Layout;
 
 const ROUTES = [
-  {title: "Why us", path: PATH_LANDING.why},
-  {title: "Pricing", path: PATH_LANDING.pricing},
-  {title: "About", path: PATH_LANDING.about},
-  {title: "Contact", path: PATH_LANDING.contact},
-]
+  { title: "Why us", path: PATH_LANDING.why },
+  { title: "Pricing", path: PATH_LANDING.pricing },
+  { title: "About", path: PATH_LANDING.about },
+  { title: "Contact", path: PATH_LANDING.contact },
+];
 
 const GuestLayout = () => {
   const {
-    token: {borderRadius},
+    token: { borderRadius },
   } = theme.useToken();
-  const isMobile = useMediaQuery({maxWidth: 769})
-  const [isLoading, setIsLoading] = useState(false)
-  const location = useLocation()
-  const nodeRef = useRef(null)
-  const [navFill, setNavFill] = useState(false)
+  const isMobile = useMediaQuery({ maxWidth: 769 });
+  const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+  const nodeRef = useRef(null);
+  const [navFill, setNavFill] = useState(false);
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -42,56 +62,58 @@ const GuestLayout = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
-        setNavFill(true)
+        setNavFill(true);
       } else {
-        setNavFill(false)
+        setNavFill(false);
       }
     });
   }, []);
 
   return (
     <>
-      <Nprogress isAnimating={isLoading} key={location.key}/>
+      <Nprogress isAnimating={isLoading} key={location.key} />
       <Layout
         className="layout"
         style={{
-          minHeight: '100vh',
-          backgroundColor: 'rgba(52, 152, 219, 0.05)',
-          backgroundImage: 'radial-gradient(at 47% 33%, hsl(197.95, 0%, 100%) 0, transparent 59%),\n' +
-            'radial-gradient(at 82% 65%, hsl(204.07, 70%, 53%) 0, transparent 55%)',
+          minHeight: "100vh",
+          backgroundColor: "rgba(52, 152, 219, 0.05)",
+          backgroundImage:
+            "radial-gradient(at 47% 33%, hsl(197.95, 0%, 100%) 0, transparent 59%),\n" +
+            "radial-gradient(at 82% 65%, hsl(204.07, 70%, 53%) 0, transparent 55%)",
         }}
       >
         <Header
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
             background: navFill ? "rgba(255, 255, 255, .5)" : "none",
             backdropFilter: navFill ? "blur(8px)" : "none",
             gap: 12,
             position: "sticky",
             top: 0,
-            padding: isMobile ? "0 1rem" : "0 2rem"
+            padding: isMobile ? "0 1rem" : "0 2rem",
           }}
         >
-          <Logo color="black" asLink href={PATH_LANDING.root}/>
-          {!isMobile ?
+          <Logo color="black" asLink href={PATH_LANDING.root} />
+          {!isMobile ? (
             <>
               <ConfigProvider
                 theme={{
                   components: {
                     Menu: {
                       itemBg: "none",
-                      lineType: "none"
-                    }
-                  }
-                }}>
+                      lineType: "none",
+                    },
+                  },
+                }}
+              >
                 <Menu
                   mode="horizontal"
-                  defaultSelectedKeys={['2']}
-                  items={ROUTES.map(r => ({
+                  defaultSelectedKeys={["2"]}
+                  items={ROUTES.map((r) => ({
                     key: r.title,
                     label: <Link to={r.path}>{r.title}</Link>,
                   }))}
@@ -99,29 +121,36 @@ const GuestLayout = () => {
               </ConfigProvider>
               <Flex gap="small">
                 <Link to={PATH_DASHBOARD.default}>
-                  <Button icon={<LoginOutlined/>} type="primary">Live Preview</Button>
+                  <Button icon={<LoginOutlined />} type="primary">
+                    Live Preview
+                  </Button>
                 </Link>
                 <Link to={PATH_DOCS.components} target="_blank">
-                  <Button icon={<AppstoreAddOutlined/>} type="link">Components</Button>
+                  <Button icon={<AppstoreAddOutlined />} type="link">
+                    Components
+                  </Button>
                 </Link>
                 <Link to={PATH_GITHUB.personal} target="_blank">
-                  <Button icon={<GithubOutlined/>} type="link">Github</Button>
+                  <Button icon={<GithubOutlined />} type="link">
+                    Github
+                  </Button>
                 </Link>
               </Flex>
-            </> :
+            </>
+          ) : (
             <Tooltip title={`${open ? "Expand" : "Collapse"} Sidebar`}>
               <Button
                 type="text"
-                icon={open ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
+                icon={open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={showDrawer}
                 style={{
-                  fontSize: '16px',
+                  fontSize: "16px",
                   width: 48,
                   height: 48,
                 }}
               />
             </Tooltip>
-          }
+          )}
         </Header>
         <Content
           style={{
@@ -137,53 +166,64 @@ const GuestLayout = () => {
                 key={`css-transition-${location.key}`}
                 nodeRef={nodeRef}
                 onEnter={() => {
-                  setIsLoading(true)
+                  setIsLoading(true);
                 }}
                 onEntered={() => {
-                  setIsLoading(false)
+                  setIsLoading(false);
                 }}
                 timeout={300}
                 classNames="page"
                 unmountOnExit
               >
                 {() => (
-                  <div ref={nodeRef} className="site-layout-content" style={{background: 'none'}}>
-                    <Outlet/>
+                  <div
+                    ref={nodeRef}
+                    className="site-layout-content"
+                    style={{ background: "none" }}
+                  >
+                    <Outlet />
                   </div>
                 )}
               </CSSTransition>
             </SwitchTransition>
           </TransitionGroup>
-          <FloatButton.BackTop/>
+          <FloatButton.BackTop />
         </Content>
         <Footer
           style={{
-            textAlign: 'center',
-            backgroundColor: 'rgba(52, 152, 219, 0.2)',
+            textAlign: "center",
+            backgroundColor: "rgba(52, 152, 219, 0.2)",
           }}
         >
-          AntD Dashboard &copy; {new Date().getFullYear()} Created by Design Sparx
+          AntD Dashboard &copy; {new Date().getFullYear()} Created by Design
+          Sparx
         </Footer>
       </Layout>
       <Drawer title="Menu" placement="left" onClose={onClose} open={open}>
         <>
           <Flex gap="middle" vertical>
-            {ROUTES.map(r => (
+            {ROUTES.map((r) => (
               <Link key={r.path} to={r.path}>
                 <Button type="text" block>
                   {r.title}
                 </Button>
               </Link>
             ))}
-            <Divider className="m-0"/>
+            <Divider className="m-0" />
             <Link to={PATH_DASHBOARD.default}>
-              <Button icon={<LoginOutlined/>} type="primary" block>Live Preview</Button>
+              <Button icon={<LoginOutlined />} type="primary" block>
+                Live Preview
+              </Button>
             </Link>
             <Link to={PATH_DOCS.components} target="_blank">
-              <Button icon={<AppstoreAddOutlined/>} type="default" block>Components</Button>
+              <Button icon={<AppstoreAddOutlined />} type="default" block>
+                Components
+              </Button>
             </Link>
             <Link to={PATH_GITHUB.personal} target="_blank">
-              <Button icon={<GithubOutlined/>} type="default" block>Github</Button>
+              <Button icon={<GithubOutlined />} type="default" block>
+                Github
+              </Button>
             </Link>
           </Flex>
         </>
