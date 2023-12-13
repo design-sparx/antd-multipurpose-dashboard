@@ -1,3 +1,5 @@
+![behance](https://github.com/design-sparx/antd-multipurpose-dashboard/assets/26582923/cc9c94ee-488f-4ae5-bb17-bbfe230e8524)
+
 <p align="center">
 <img src="public/logo-no-background.png" alt="logo" height="100"/>
 </p>
@@ -23,9 +25,6 @@
   <a href="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/chromatic.yml">
     <img src="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/chromatic.yml/badge.svg" alt="Storybook Deployment Status">
   </a> 
-  <a href="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/test.yml">
-    <img src="https://github.com/design-sparx/antd-multipurpose-dashboard/actions/workflows/test.yml/badge.svg?branch=main" alt="Test Status">
-  </a>
   <br>
   <a href="https://github.com/design-sparx/antd-mutli-dashboard">
     <img alt="GitHub stars" src="https://img.shields.io/github/stars/design-sparx/antd-multipurpose-dashboard?style=social">
@@ -33,16 +32,15 @@
 </p>
 
 - [Live preview](https://antd-multipurpose-dashboard.netlify.app/)
-- [Components preview](https://6546507b657a74164abf2db6-oniqlpqtfs.chromatic.com/)
-
+- [Components preview](https://6546507b657a74164abf2db6-iqmnggdrcl.chromatic.com/)
+- [Medium](https://medium.com/@kelvink96/designing-modern-dashboards-a-journey-through-react-vite-ant-design-and-storybook-2dac23e1e49a)
+  
 # About
 
 A professional Admin & Dashboard template based on [Ant design 5](https://ant.design/) that comes with hundreds of UI
 components, forms, tables, charts, pages and icons. This template is built using [React](https://react.dev/),
-[Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/) and
-[Ant Design Icons](https://ant.design/components/icon).
-
-![preview image](public/landing-frame.jpg)
+[Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/),
+[Ant Design Icons](https://ant.design/components/icon) and [Storybook](https://storybook.js.org/).
 
 # Features
 
@@ -124,6 +122,7 @@ antd-multi-dashboard/
 │   ├── routes/
 │   ├── types/
 │   ├── utils/
+|   |── stories/
 │   ├── App.css/
 │   ├── App.tsx/
 │   ├── index.css/

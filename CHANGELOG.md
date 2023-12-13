@@ -1,5 +1,17 @@
 # antd-multi-dashboard
 
+## 1.3.1
+
+### Patch Changes
+
+- e73a01a: attempt fix to chromatic action
+
+## 1.3.0
+
+### Minor Changes
+
+- 42371ab: updated font to use Lato, updated home page content, minor UI updates
+
 ## null
 
 ### Patch Changes
