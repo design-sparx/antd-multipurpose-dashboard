@@ -33,7 +33,7 @@ const getItem = (
   key: React.Key,
   icon?: React.ReactNode,
   children?: MenuItem[],
-  type?: "group",
+  type?: "group"
 ): MenuItem => {
   return {
     key,
@@ -50,36 +50,36 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_DASHBOARD.projects}>Projects</Link>,
       "projects",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_DASHBOARD.ecommerce}>eCommerce</Link>,
       "ecommerce",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_DASHBOARD.marketing}>Marketing</Link>,
       "marketing",
-      null,
+      null
     ),
     getItem(<Link to={PATH_DASHBOARD.social}>Social</Link>, "social", null),
     getItem(<Link to={PATH_DASHBOARD.bidding}>Bidding</Link>, "bidding", null),
     getItem(
       <Link to={PATH_DASHBOARD.learning}>Learning</Link>,
       "learning",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_DASHBOARD.logistics}>Logistics</Link>,
       "logistics",
-      null,
+      null
     ),
   ]),
 
   getItem(
     <Link to={PATH_SITEMAP.root}>Sitemap</Link>,
     "sitemap",
-    <BranchesOutlined />,
+    <BranchesOutlined />
   ),
 
   getItem("Pages", "pages", null, [], "group"),
@@ -91,7 +91,7 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_CORPORATE.contact}>Contact us</Link>,
       "contact us",
-      null,
+      null
     ),
     getItem(<Link to={PATH_CORPORATE.pricing}>Pricing</Link>, "pricing", null),
     getItem(<Link to={PATH_CORPORATE.license}>License</Link>, "license", null),
@@ -101,38 +101,38 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_USER_PROFILE.details}>Details</Link>,
       "details",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.preferences}>Preferences</Link>,
       "preferences",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.personalInformation}>Information</Link>,
       "personal-information",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.security}>Security</Link>,
       "security",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.activity}>Activity</Link>,
       "activity",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.action}>Actions</Link>,
       "actions",
-      null,
+      null
     ),
     getItem(<Link to={PATH_USER_PROFILE.help}>Help</Link>, "help", null),
     getItem(
       <Link to={PATH_USER_PROFILE.feedback}>Feedback</Link>,
       "feedback",
-      null,
+      null
     ),
   ]),
 
@@ -172,18 +172,18 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_AUTH.verifyEmail}>Verify email</Link>,
       "auth-verify",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_AUTH.passwordReset}>Password reset</Link>,
       "auth-password-reset",
-      null,
+      null
     ),
     // getItem(<Link to={PATH_AUTH.passwordConfirm}>Passsword confirmation</Link>, 'auth-password-confirmation', null),
     getItem(
       <Link to={PATH_AUTH.accountDelete}>Account deleted</Link>,
       "auth-account-deactivation",
-      null,
+      null
     ),
   ]),
 
@@ -262,14 +262,14 @@ const items: MenuProps["items"] = [
       Components
     </Link>,
     "components",
-    <AppstoreAddOutlined />,
+    <AppstoreAddOutlined />
   ),
   getItem(
     <Link to={PATH_DOCS.help} target="_blank">
       Documentation
     </Link>,
     "documentation",
-    <SnippetsOutlined />,
+    <SnippetsOutlined />
   ),
 ];
 

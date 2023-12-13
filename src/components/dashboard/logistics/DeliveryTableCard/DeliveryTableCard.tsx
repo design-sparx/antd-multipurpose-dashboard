@@ -121,7 +121,7 @@ const DeliveryTableCard = ({ data, loading, error, ...others }: Props) => {
           data={
             activeTabKey !== "all"
               ? data?.filter(
-                  (d) => d.delivery_status.toLowerCase() === activeTabKey,
+                  (d) => d.delivery_status.toLowerCase() === activeTabKey
                 )
               : data || []
           }

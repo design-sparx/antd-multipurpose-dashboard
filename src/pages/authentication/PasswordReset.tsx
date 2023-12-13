@@ -59,7 +59,7 @@ const PasswordResetPage = () => {
         >
           <Logo color="white" />
           <Title level={2} className="text-white">
-            Welcome back to Ant Dashboard
+            Welcome back to Antd Admin
           </Title>
           <Text className="text-white" style={{ fontSize: 18 }}>
             A dynamic and versatile multipurpose dashboard utilizing Ant Design,
