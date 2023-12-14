@@ -54,7 +54,7 @@ import NotificationsItem from "./NotificationsItem/NotificationsItem";
 import NotificationsCard from "./NotificationsCard/NotificationsCard";
 import Card from "./Card/Card";
 import PageHeader from "./PageHeader/PageHeader";
-import { Bar, Container, Nprogress } from "./Nprogress";
+import { Bar, Container as NContainer, Nprogress } from "./Nprogress";
 import EmployeeCard from "./EmployeeCard/EmployeeCard";
 import BlogsListCard from "./corporate/BlogsListCard/BlogsListCard";
 import SocialMediaCard from "./SocialMediaCard/SocialMediaCard";
@@ -67,6 +67,7 @@ import TimelineCard from "./TimelineCard/TimelineCard";
 import Loader from "./Loader/Loader";
 import BackBtn from "./BackBtn/BackBtn.tsx";
 import RefreshBtn from "./RefreshBtn/RefreshBtn.tsx";
+import Container from "./Container";
 
 export {
   Logo,
@@ -125,7 +126,7 @@ export {
   Card,
   PageHeader,
   Bar,
-  Container,
+  NContainer,
   Nprogress,
   EmployeeCard,
   BlogsListCard,
@@ -138,4 +139,5 @@ export {
   Loader,
   BackBtn,
   RefreshBtn,
+  Container,
 };

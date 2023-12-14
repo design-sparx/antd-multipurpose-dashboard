@@ -34,15 +34,15 @@
 - [Live preview](https://antd-multipurpose-dashboard.netlify.app/)
 - [Components preview](https://6546507b657a74164abf2db6-iqmnggdrcl.chromatic.com/)
 - [Medium](https://medium.com/@kelvink96/designing-modern-dashboards-a-journey-through-react-vite-ant-design-and-storybook-2dac23e1e49a)
-  
-# About
+
+## Introduction
 
 A professional Admin & Dashboard template based on [Ant design 5](https://ant.design/) that comes with hundreds of UI
 components, forms, tables, charts, pages and icons. This template is built using [React](https://react.dev/),
 [Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/),
 [Ant Design Icons](https://ant.design/components/icon) and [Storybook](https://storybook.js.org/).
 
-# Features
+## Features
 
 - **Customizable:** You don't need to be an expert to customize the template. Our code is very readable and
   well-documented.
@@ -55,19 +55,69 @@ components, forms, tables, charts, pages and icons. This template is built using
 - **Regular Updates:** From time to time you'll receive an update containing new components, improvements, and bug
   fixes.
 
-# Quick start
+## Tech stack
 
-## Download
+This project features all the latest tools and good practices in web development!
+
+### Framework
+
+- [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+
+#### Design System and Animations
+
+- [Ant design](https://ant.design/) - An enterprise-class UI design language and React UI library provides high-quality
+  components.
+- [Ant design icons](https://ant.design/components/icon/) - Semantic vector graphics.
+
+#### Charts
+
+- [Ant design charts](https://charts.ant.design/)
+
+<details>
+<summary>View more stacks</summary>
+
+#### Routing
+
+- [React router](https://reactrouter.com/en/main)
+
+#### Design Patterns
+
+- [ESLint](https://eslint.org/)
+- [Husky](https://github.com/typicode/husky)
+- [Lint staged](https://github.com/lint-staged/lint-staged)
+- [Prettier](https://prettier.io/)
+
+#### Components docs
+
+- [Storybook](https://storybook.js.org/)
+
+#### Date formatting
+
+- [moment](https://momentjs.com/)
+- [dayjs](https://day.js.org/)
+
+#### Utils
+
+- [lodash](https://lodash.com/)
+- [react-countup](https://github.com/glennreyes/react-countup)
+
+</details>
+
+## Quick start
+
+#### Download
 
 - Clone this repo git clone `https://github.com/design-sparx/antd-multipurpose-dashboard.git`
 - [Download from GitHub](https://github.com/design-sparx/antd-multipurpose-dashboard/archive/refs/heads/main.zip)
 
-## Build tools
+### Build tools
 
 You'll need to install Node.js.
 Once Node.js is installed, run npm install to install the rest of the template's dependencies. All dependencies will be
 downloaded to the node_modules directory.
 
+<details>
+<summary>View commands</summary>
 ```bash copy
 npm install
 ```
@@ -85,48 +135,54 @@ Compile, optimize, minify and uglify all source files to build/
 npm run build
 ```
 
+</details>
+
 # File structure
 
 Inside the zip-file you'll find the following directories and files. Both compiled and minified distribution files, as
 Inside the zip file, you'll find the following directories and files. Both compiled and minified distribution files, as
 well as the source files are included in the package.
 
-```
-antd-multi-dashboard/
-├── .changeset
-├── .github
-├── .gitignore
-├── eslintrc.cjs
-├── README.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── LICENSE
-├── index.html
-├── package.json
-├── tsconfig.json
-├── tsconfig.node.json
-├── vite.config.ts
-├── yarn.lock
-├── public/
-│   ├── mocks/
-│   ├── _redirects
-│   ├── favicon.ico
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── constants/
-│   ├── context/
-│   ├── hooks/
-│   ├── layouts/
-│   ├── pages/
-│   ├── routes/
-│   ├── types/
-│   ├── utils/
-|   |── stories/
-│   ├── App.css/
-│   ├── App.tsx/
-│   ├── index.css/
-│   ├── main.tsx/
-│   ├── vite-env.d.ts/
-└──
-```
+<details>
+<summary>View file tree</summary>
+📂 antd-multi-dashboard/
+┣ 📂 .github/                   # GitHub's folder configs **
+┣ 📂 .husky/                    # Husky's folder
+┃ ┣ 📃 commit-msg               # Commitlint git hook
+┃ ┗ 📃 pre-commit               # Lint-staged git hook
+┣ 📂 .vscode/                   # VSCode's workspace **
+┣ 📂 .idea/                     # Intellij's webstorm workspace **
+┣ 📂 .storybook/                # Storybook folder config **
+┣ 📂 public/                    # Public folder
+┃ ┣ 📂 mocks/                   # Mock data folder **
+┃ ┣ 📂 showcase/                # Showcase images folder **
+┃ ┣ 📃 favicon.ico              # Icon tab browser
+┣ 📂 src/
+┃ ┣ 📂 assets/                  # Assets folder **
+┃ ┣ 📂 components/              # App Components **
+┃ ┣ 📂 constants/               # App Components **
+┃ ┃ ┗ 📃 routes.ts              # All routes declarations **
+┃ ┣ 📂 context/                 # React state conexts **
+┃ ┣ 📂 hooks/                   # React Hooks **
+┃ ┃ ┗ 📃 useFetch.ts            # Data fetch hook (optional) **
+┃ ┣ 📂 layouts/                 # Page layouts folder **
+┃ ┣ 📂 pages/                   # Pages **
+┃ ┣ 📂 routes/                  # Routes config folder **
+┃ ┣ 📂 stories/                 # Storybook folder **
+┃ ┣ 📂 types/                   # Typescript types/interfaces **
+┃ ┣ 📂 utils/                   # Useful functions folder **
+┣ 📃 .editorconfig              # Editor config
+┣ 📃 .eslintrc                  # ESLint config
+┣ 📃 .gitignore                 # Git ignore
+┣ 📃 .prettierignore            # Prettier ignore
+┣ 📃 .prettierrc                # Prettier ignore
+┣ 📃 .versionrc                 # Versioning config
+┣ 📃 .commitlintrc              # Commitlint config
+┣ 📃 CHANGELOG.md               # Changelogs
+┣ 📃 CONTRIBUTING.md            # Contributing
+┣ 📃 LICENSE                    # License of the project
+┣ 📃 vite.config.js             # Vite config
+┣ 📃 README.md                  # Main README
+┣ 📃 renovate.json              # Renovate Bot config **
+┣ 📃 tsconfig.json              # TypeScript config
+</details>

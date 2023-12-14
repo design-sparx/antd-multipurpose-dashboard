@@ -4,6 +4,7 @@ import {
   AppstoreAddOutlined,
   BranchesOutlined,
   BugOutlined,
+  GithubOutlined,
   IdcardOutlined,
   PieChartOutlined,
   SecurityScanOutlined,
@@ -18,6 +19,7 @@ import {
   PATH_DASHBOARD,
   PATH_DOCS,
   PATH_ERROR,
+  PATH_GITHUB,
   PATH_LANDING,
   PATH_SITEMAP,
   PATH_USER_PROFILE,
@@ -33,7 +35,7 @@ const getItem = (
   key: React.Key,
   icon?: React.ReactNode,
   children?: MenuItem[],
-  type?: "group",
+  type?: "group"
 ): MenuItem => {
   return {
     key,
@@ -50,36 +52,36 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_DASHBOARD.projects}>Projects</Link>,
       "projects",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_DASHBOARD.ecommerce}>eCommerce</Link>,
       "ecommerce",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_DASHBOARD.marketing}>Marketing</Link>,
       "marketing",
-      null,
+      null
     ),
     getItem(<Link to={PATH_DASHBOARD.social}>Social</Link>, "social", null),
     getItem(<Link to={PATH_DASHBOARD.bidding}>Bidding</Link>, "bidding", null),
     getItem(
       <Link to={PATH_DASHBOARD.learning}>Learning</Link>,
       "learning",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_DASHBOARD.logistics}>Logistics</Link>,
       "logistics",
-      null,
+      null
     ),
   ]),
 
   getItem(
     <Link to={PATH_SITEMAP.root}>Sitemap</Link>,
     "sitemap",
-    <BranchesOutlined />,
+    <BranchesOutlined />
   ),
 
   getItem("Pages", "pages", null, [], "group"),
@@ -91,7 +93,7 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_CORPORATE.contact}>Contact us</Link>,
       "contact us",
-      null,
+      null
     ),
     getItem(<Link to={PATH_CORPORATE.pricing}>Pricing</Link>, "pricing", null),
     getItem(<Link to={PATH_CORPORATE.license}>License</Link>, "license", null),
@@ -101,38 +103,38 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_USER_PROFILE.details}>Details</Link>,
       "details",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.preferences}>Preferences</Link>,
       "preferences",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.personalInformation}>Information</Link>,
       "personal-information",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.security}>Security</Link>,
       "security",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.activity}>Activity</Link>,
       "activity",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_USER_PROFILE.action}>Actions</Link>,
       "actions",
-      null,
+      null
     ),
     getItem(<Link to={PATH_USER_PROFILE.help}>Help</Link>, "help", null),
     getItem(
       <Link to={PATH_USER_PROFILE.feedback}>Feedback</Link>,
       "feedback",
-      null,
+      null
     ),
   ]),
 
@@ -172,18 +174,18 @@ const items: MenuProps["items"] = [
     getItem(
       <Link to={PATH_AUTH.verifyEmail}>Verify email</Link>,
       "auth-verify",
-      null,
+      null
     ),
     getItem(
       <Link to={PATH_AUTH.passwordReset}>Password reset</Link>,
       "auth-password-reset",
-      null,
+      null
     ),
     // getItem(<Link to={PATH_AUTH.passwordConfirm}>Passsword confirmation</Link>, 'auth-password-confirmation', null),
     getItem(
       <Link to={PATH_AUTH.accountDelete}>Account deleted</Link>,
       "auth-account-deactivation",
-      null,
+      null
     ),
   ]),
 
@@ -195,66 +197,6 @@ const items: MenuProps["items"] = [
     getItem(<Link to={PATH_ERROR.error503}>503</Link>, "503", null),
   ]),
 
-  /*getItem(
-      'Apps',
-      'apps',
-      null,
-      [],
-      'group'),*/
-
-  /*getItem('Projects', 'projects-m', <BookOutlined/>, [
-      getItem(<Link to={PATH_PROJECTS.root}>List</Link>, 'projects-list', null),
-      getItem(<Link to={PATH_PROJECTS.details(1)}>View</Link>, 'projects-view', null),
-  ]),*/
-
-  /*getItem('Contacts', 'contacts', <SolutionOutlined/>, [
-      getItem(<Link to={PATH_CONTACTS.root}>Home</Link>, 'contact-home', null),
-      getItem(<Link to={PATH_CONTACTS.new}>Add contact</Link>, 'contact-add', null),
-      getItem(<Link to={PATH_CONTACTS.editDetails(1)}>Edit contact</Link>, 'contact-edit', null),
-      getItem(<Link to={PATH_CONTACTS.details(1)}>View contact</Link>, 'contact-view', null),
-  ]),*/
-
-  /*getItem('User management', 'users-mgmt', <TeamOutlined/>, [
-      getItem('Users', 'user-mgmt-users', null, [
-          getItem(<Link to={PATH_USER_MGMT.users.all}>Users list</Link>, 'user-mgmt-users-list', null),
-          getItem(<Link to={PATH_USER_MGMT.users.details('')}>View user</Link>, 'user-mgmt-view-users', null),
-      ]),
-      getItem('Roles', 'user-mgmt-roles', null, [
-          getItem(<Link to={PATH_USER_MGMT.roles.all}>Roles list</Link>, 'user-mgmt-roles-list', null),
-          getItem(<Link to={PATH_USER_MGMT.roles.details('')}>View role</Link>, 'user-mgmt-view-role', null),
-      ]),
-      getItem(<Link to={PATH_USER_MGMT.permissions}>Permissions</Link>, 'user-mgmt-users-perms', null),
-  ]),*/
-
-  /* getItem('Invoice', 'invoice', <ProfileOutlined/>, [
-       getItem(<Link to={PATH_INVOICE.root}>Invoices</Link>, 'invoices-home', null),
-       getItem('Templates', 'invoices-templates', null, [
-           getItem(<Link to={PATH_INVOICE.details(1)}>Invoice 1</Link>, 'invoice-temp-1', null),
-           getItem(<Link to={PATH_INVOICE.details(2)}>Invoice 2</Link>, 'invoice-temp-2', null),
-           getItem(<Link to={PATH_INVOICE.details(3)}>Invoice 3</Link>, 'invoice-temp-3', null),
-       ]),
-       getItem(<Link to={PATH_INVOICE.new}>Create invoice</Link>, 'invoices-create', null),
-   ]),*/
-
-  /*getItem('File manager', 'file-manager', <FileOutlined/>, [
-      getItem(<Link to={PATH_FILE.files}>Files</Link>, 'files-home', null),
-      getItem(<Link to={PATH_FILE.blank}>Blank</Link>, 'files-blank', null),
-  ]),*/
-
-  /*getItem('Inbox', 'inbox', <MailOutlined/>, [
-      getItem(<Link to={PATH_INBOX.root}>Messages</Link>, 'inbox-messages', null),
-      getItem(<Link to={PATH_INBOX.new}>New message</Link>, 'inbox-new', null),
-      getItem(<Link to={PATH_INBOX.details(1)}>View message</Link>, 'inbox-view', null),
-  ]),*/
-
-  // getItem(<Link to={PATH_CALENDAR.root}>Calendar</Link>, 'calendar', <CalendarOutlined/>),
-
-  /*getItem('Subscriptions', 'subscriptions', <GroupOutlined/>, [
-      getItem(<Link to={PATH_SUBSCRIPTION.list}>List</Link>, 'sub-list', null),
-      getItem(<Link to={PATH_SUBSCRIPTION.new}>Add</Link>, 'sub-new', null),
-      getItem(<Link to={PATH_SUBSCRIPTION.details(1)}>View</Link>, 'sub-details', null),
-  ]),*/
-
   getItem("Help", "help", null, [], "group"),
 
   getItem(
@@ -262,14 +204,21 @@ const items: MenuProps["items"] = [
       Components
     </Link>,
     "components",
-    <AppstoreAddOutlined />,
+    <AppstoreAddOutlined />
   ),
   getItem(
     <Link to={PATH_DOCS.help} target="_blank">
       Documentation
     </Link>,
     "documentation",
-    <SnippetsOutlined />,
+    <SnippetsOutlined />
+  ),
+  getItem(
+    <Link to={PATH_GITHUB.repo} target="_blank">
+      Give us a star
+    </Link>,
+    "give-us-a-star",
+    <GithubOutlined />
   ),
 ];
 

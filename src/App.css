@@ -156,3 +156,18 @@
 .w-100 {
   width: 100%;
 }
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.fw-bolder {
+  font-weight: bolder;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .overflow-scroll {
+    overflow: hidden;
+  }
+}

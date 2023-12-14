@@ -280,7 +280,7 @@ const DefaultDashboardPage = () => {
                     {projectsData
                       .filter(
                         (o: Projects) =>
-                          o.status.toLowerCase() === "in progress",
+                          o.status.toLowerCase() === "in progress"
                       )
                       .slice(0, 4)
                       .map((o: Projects) => (
@@ -318,7 +318,7 @@ const DefaultDashboardPage = () => {
                   >
                     {projectsData
                       .filter(
-                        (o: Projects) => o.status.toLowerCase() === "on hold",
+                        (o: Projects) => o.status.toLowerCase() === "on hold"
                       )
                       .slice(0, 4)
                       .map((o: Projects) => (

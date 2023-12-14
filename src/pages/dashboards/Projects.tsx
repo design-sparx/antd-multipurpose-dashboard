@@ -9,7 +9,6 @@ import {
   RevenueCard,
 } from "../../components";
 import { Column } from "@ant-design/plots";
-import "react-calendar-timeline/lib/Timeline.css";
 import { Projects } from "../../types";
 import { useState } from "react";
 import {

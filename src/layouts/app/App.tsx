@@ -172,6 +172,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
                 placeholder="search"
                 style={{
                   width: isMobile ? "100%" : "400px",
+                  marginLeft: isMobile ? 0 : ".5rem",
                 }}
                 size="middle"
               />

@@ -19,7 +19,7 @@ import CountUp from "react-countup";
 
 const textStyles = (
   preferred?: boolean,
-  primary?: string,
+  primary?: string
 ): React.CSSProperties => {
   return {
     color: preferred ? "white" : primary ? primary : "initial",
@@ -39,7 +39,7 @@ const PricingTable = ({ data, error, loading, ...others }: Props) => {
     token: { colorPrimary, colorFillSecondary },
   } = theme.useToken();
   const [value, setValue] = useState<"monthly" | "annually" | string | number>(
-    "monthly",
+    "monthly"
   );
   const stylesContext = useStylesContext();
 
