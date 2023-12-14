@@ -118,6 +118,7 @@ downloaded to the node_modules directory.
 
 <details>
 <summary>View commands</summary>
+  
 ```bash copy
 npm install
 ```
@@ -145,6 +146,8 @@ well as the source files are included in the package.
 
 <details>
 <summary>View file tree</summary>
+
+```
 📂 antd-multi-dashboard/
 ┣ 📂 .github/                   # GitHub's folder configs **
 ┣ 📂 .husky/                    # Husky's folder
@@ -185,4 +188,6 @@ well as the source files are included in the package.
 ┣ 📃 README.md                  # Main README
 ┣ 📃 renovate.json              # Renovate Bot config **
 ┣ 📃 tsconfig.json              # TypeScript config
+```
+
 </details>
