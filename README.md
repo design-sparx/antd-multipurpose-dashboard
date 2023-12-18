@@ -139,12 +139,14 @@ npm run build
 
 # File structure
 
-Inside the zip-file you'll find the following directories and files. Both compiled and minified distribution files, as
-Inside the zip file, you'll find the following directories and files. Both compiled and minified distribution files, as
-well as the source files are included in the package.
+Inside the zip file you'll find the following directories and files. Both compiled and minified distribution files, as
+Inside the zip file, you'll find the following directories and files. Both compiled and minified distribution files and
+the source files are included in the package.
 
 <details>
 <summary>View file tree</summary>
+
+```files
 📂 antd-multi-dashboard/
 ┣ 📂 .github/                   # GitHub's folder configs **
 ┣ 📂 .husky/                    # Husky's folder
@@ -185,4 +187,5 @@ well as the source files are included in the package.
 ┣ 📃 README.md                  # Main README
 ┣ 📃 renovate.json              # Renovate Bot config **
 ┣ 📃 tsconfig.json              # TypeScript config
+```
 </details>
