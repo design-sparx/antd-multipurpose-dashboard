@@ -1,5 +1,30 @@
 # antd-multi-dashboard
 
+## 1.3.0
+
+### Minor Changes
+
+- 882edb4: feat: updated landing page design
+
+### Patch Changes
+
+- 5819900: chore: removed react-calendar-timeline and history packages, marked as unused
+- 58496dd: feat: added prettier, lint staged and husky
+- b280442: feat: added prettier, lint-staged and husky
+- 1c99e57: docs: updated readme
+- be6253a: ### Added
+
+  - ci: initialised basic js project, added commitlint and husky to lint commit messages
+  - ci: added commit workflow
+  - feat(github link): added github link to side navigation
+
+  ### Updated
+
+  - chore: removed react-calendar-timeline and history packages, marked as absolute
+  - feat: updated landing page design
+  - docs: updated readme
+  - feat(github link): added github link to side navigation
+
 ## 1.3.1
 
 ### Patch Changes
