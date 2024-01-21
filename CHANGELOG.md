@@ -1,5 +1,13 @@
 # antd-multi-dashboard
 
+## 1.3.1
+
+### Patch Changes
+
+- 4bc7545: docs: added product roadmap link to README.md
+- 2bf40c3: Bump vite from 4.4.9 to 4.5.2
+- 789f4f0: Bump vite from 4.4.9 to 4.5.2
+
 ## 1.3.0
 
 ### Minor Changes
