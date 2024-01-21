@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 1.3.2
+
+### Patch Changes
+
+- a4f860c: Bump postcss from 8.4.29 to 8.4.33
+
 ## 1.3.1
 
 ### Patch Changes
