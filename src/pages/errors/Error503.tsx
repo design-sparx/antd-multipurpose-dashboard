@@ -1,5 +1,5 @@
-import { Result } from "antd";
-import { BackBtn, RefreshBtn } from "../../components";
+import { Result } from 'antd';
+import { BackBtn, RefreshBtn } from '../../components';
 
 const Error503Page = () => {
   return (

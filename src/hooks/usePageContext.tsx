@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext } from 'react-router-dom';
 
 export type ContextType = { title: string | null };
 

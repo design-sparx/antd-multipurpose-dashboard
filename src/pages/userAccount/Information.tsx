@@ -8,29 +8,29 @@ import {
   Input,
   Row,
   Select,
-} from "antd";
-import { Card } from "../../components";
+} from 'antd';
+import { Card } from '../../components';
 import {
   MinusCircleOutlined,
   PlusOutlined,
   SaveOutlined,
-} from "@ant-design/icons";
-import { useStylesContext } from "../../context";
-import * as dayjs from "dayjs";
+} from '@ant-design/icons';
+import { useStylesContext } from '../../context';
+import * as dayjs from 'dayjs';
 
 const SOCIALS = [
-  "Facebook",
-  "Instagram",
-  "Twitter",
-  "LinkedIn",
-  "Mastodon",
-  "Threads",
-  "YouTube",
-  "WhatsApp",
-  "Tiktok",
-  "Telegram",
-  "QQ",
-  "WeChat",
+  'Facebook',
+  'Instagram',
+  'Twitter',
+  'LinkedIn',
+  'Mastodon',
+  'Threads',
+  'YouTube',
+  'WhatsApp',
+  'Tiktok',
+  'Telegram',
+  'QQ',
+  'WeChat',
 ];
 
 type FieldType = {
@@ -49,11 +49,11 @@ type BirthdayFieldType = {
 const UserProfileInformationPage = () => {
   const context = useStylesContext();
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    console.log('Success:', values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
@@ -64,10 +64,10 @@ const UserProfileInformationPage = () => {
             name="user-profile-address-form"
             layout="vertical"
             initialValues={{
-              country: "Kenya",
-              addressLine1: "828, 18282 ABC Drive, XYZ Rd",
-              city: "Nairobi",
-              postalCode: "00100",
+              country: 'Kenya',
+              addressLine1: '828, 18282 ABC Drive, XYZ Rd',
+              city: 'Nairobi',
+              postalCode: '00100',
               preferred: true,
             }}
             onFinish={onFinish}
@@ -83,7 +83,7 @@ const UserProfileInformationPage = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please select your country or region!",
+                      message: 'Please select your country or region!',
                     },
                   ]}
                 >
@@ -95,7 +95,7 @@ const UserProfileInformationPage = () => {
                   label="City"
                   name="city"
                   rules={[
-                    { required: true, message: "Please enter your city!" },
+                    { required: true, message: 'Please enter your city!' },
                   ]}
                 >
                   <Input />
@@ -108,7 +108,7 @@ const UserProfileInformationPage = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please enter your address line!",
+                      message: 'Please enter your address line!',
                     },
                   ]}
                 >
@@ -122,7 +122,7 @@ const UserProfileInformationPage = () => {
                   rules={[
                     {
                       required: false,
-                      message: "Please enter your address line!",
+                      message: 'Please enter your address line!',
                     },
                   ]}
                 >
@@ -136,7 +136,7 @@ const UserProfileInformationPage = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please enter your postal code!",
+                      message: 'Please enter your postal code!',
                     },
                   ]}
                 >
@@ -179,8 +179,8 @@ const UserProfileInformationPage = () => {
                     >
                       <Form.Item
                         {...restField}
-                        name={[name, "social"]}
-                        rules={[{ required: true, message: "Missing social" }]}
+                        name={[name, 'social']}
+                        rules={[{ required: true, message: 'Missing social' }]}
                         style={{ width: 200 }}
                       >
                         <Select
@@ -190,9 +190,9 @@ const UserProfileInformationPage = () => {
                       </Form.Item>
                       <Form.Item
                         {...restField}
-                        name={[name, "username"]}
+                        name={[name, 'username']}
                         rules={[
-                          { required: true, message: "Missing username" },
+                          { required: true, message: 'Missing username' },
                         ]}
                       >
                         <Input placeholder="username" />
@@ -231,7 +231,7 @@ const UserProfileInformationPage = () => {
             name="user-profile-birhday-form"
             layout="vertical"
             initialValues={{
-              dob: dayjs("1996/04/27"),
+              dob: dayjs('1996/04/27'),
             }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -242,7 +242,7 @@ const UserProfileInformationPage = () => {
               label="Birth date"
               name="dob"
               rules={[
-                { required: true, message: "Please select your birthday!" },
+                { required: true, message: 'Please select your birthday!' },
               ]}
             >
               <DatePicker />

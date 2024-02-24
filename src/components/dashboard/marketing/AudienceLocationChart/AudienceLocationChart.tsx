@@ -1,122 +1,122 @@
-import { CirclePacking } from "@ant-design/charts";
-import { Button, CardProps, Popover } from "antd";
-import { Card } from "../../../index.ts";
-import { QuestionOutlined } from "@ant-design/icons";
+import { CirclePacking } from '@ant-design/charts';
+import { Button, CardProps, Popover } from 'antd';
+import { Card } from '../../../index.ts';
+import { QuestionOutlined } from '@ant-design/icons';
 
 const CirclePackingChart = () => {
   const data = {
-    name: "root",
+    name: 'root',
     children: [
       {
-        name: "US",
+        name: 'US',
         value: 1046790,
       },
       {
-        name: "China",
+        name: 'China',
         value: 1039358,
       },
       {
-        name: "Canada",
+        name: 'Canada',
         value: 461880,
       },
       {
-        name: "France",
+        name: 'France',
         value: 308136,
       },
       {
-        name: "India",
+        name: 'India',
         value: 270578,
       },
       {
-        name: "Germany",
+        name: 'Germany',
         value: 226334,
       },
       {
-        name: "UK",
+        name: 'UK',
         value: 197342,
       },
       {
-        name: "Brazil",
+        name: 'Brazil',
         value: 189739,
       },
       {
-        name: "South Africa",
+        name: 'South Africa',
         value: 175272,
       },
       {
-        name: "Spain",
+        name: 'Spain',
         value: 150621,
       },
       {
-        name: "Russia",
+        name: 'Russia',
         value: 138255,
       },
       {
-        name: "Egypt",
+        name: 'Egypt',
         value: 121216,
       },
       {
-        name: "Australia",
+        name: 'Australia',
         value: 119912,
       },
       {
-        name: "Japan",
+        name: 'Japan',
         value: 102488,
       },
       {
-        name: "New Zealand",
+        name: 'New Zealand',
         value: 90157,
       },
       {
-        name: "Netherlands",
+        name: 'Netherlands',
         value: 59307,
       },
       {
-        name: "Italy",
+        name: 'Italy',
         value: 58999,
       },
       {
-        name: "Switzerland",
+        name: 'Switzerland',
         value: 52776,
       },
       {
-        name: "Sweden",
+        name: 'Sweden',
         value: 50800,
       },
       {
-        name: "Greece",
+        name: 'Greece',
         value: 22614,
       },
       {
-        name: "Morocco",
+        name: 'Morocco',
         value: 22026,
       },
       {
-        name: "Mexico",
+        name: 'Mexico',
         value: 19706,
       },
       {
-        name: "Saudi Arabia",
+        name: 'Saudi Arabia',
         value: 18274,
       },
       {
-        name: "Poland",
+        name: 'Poland',
         value: 16108,
       },
       {
-        name: "Algeria",
+        name: 'Algeria',
         value: 12535,
       },
       {
-        name: "Israel",
+        name: 'Israel',
         value: 12240,
       },
       {
-        name: "Argentina",
+        name: 'Argentina',
         value: 1992,
       },
       {
-        name: "Portugal",
+        name: 'Portugal',
         value: 36,
       },
     ],
@@ -125,19 +125,19 @@ const CirclePackingChart = () => {
     autoFit: true,
     padding: 0,
     data,
-    sizeField: "r",
-    color: "rgb(252, 253, 191)-rgb(231, 82, 99)-rgb(183, 55, 121)",
+    sizeField: 'r',
+    color: 'rgb(252, 253, 191)-rgb(231, 82, 99)-rgb(183, 55, 121)',
     // 自定义 label 样式
     label: {
       formatter: ({ name }: any) => {
-        return name !== "root" ? name : "";
+        return name !== 'root' ? name : '';
       },
       // 偏移
       offsetY: 8,
       style: {
         fontSize: 12,
-        textAlign: "center",
-        fill: "rgba(0,0,0,0.65)",
+        textAlign: 'center',
+        fill: 'rgba(0,0,0,0.65)',
       },
     },
     legend: false,

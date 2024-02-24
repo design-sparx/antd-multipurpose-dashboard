@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Row } from 'antd';
 import {
   BlockOutlined,
   CarOutlined,
@@ -6,7 +6,7 @@ import {
   HomeOutlined,
   PieChartOutlined,
   ShoppingOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 import {
   DailyPlanCard,
   DeliveryAnalyticsCard,
@@ -15,51 +15,51 @@ import {
   LogisticsStatsCard,
   PageHeader,
   TruckListCard,
-} from "../../components";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useFetchData } from "../../hooks";
-import { useStylesContext } from "../../context";
+} from '../../components';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useFetchData } from '../../hooks';
+import { useStylesContext } from '../../context';
 
 const STATS = [
   {
     icon: BlockOutlined,
     value: 1245,
-    title: "new packages",
+    title: 'new packages',
     diff: 16,
   },
   {
     icon: ShoppingOutlined,
     value: 8482,
-    title: "ready for shipping",
+    title: 'ready for shipping',
     diff: 18,
   },
   {
     icon: CarOutlined,
     value: 747,
-    title: "in transit",
+    title: 'in transit',
     diff: -20,
   },
   {
     icon: GroupOutlined,
     value: 10747,
-    title: "delivered",
+    title: 'delivered',
     diff: -4.1,
   },
 ];
 
 const PLAN_DATA = [
   {
-    type: "Shipment processed",
+    type: 'Shipment processed',
     value: 38,
   },
   {
-    type: "Orders processed",
+    type: 'Orders processed',
     value: 52,
   },
   {
-    type: "Requests queue",
+    type: 'Requests queue',
     value: 61,
   },
 ];
@@ -70,22 +70,22 @@ const LogisticsDashboardPage = () => {
     data: trucksDeliveryData,
     loading: trucksDeliveryDataLoading,
     error: trucksDeliveryDataError,
-  } = useFetchData("../mocks/TruckDeliveries.json");
+  } = useFetchData('../mocks/TruckDeliveries.json');
   const {
     data: deliveryAnalyticsData,
     loading: deliveryAnalyticsDataLoading,
     error: deliveryAnalyticsDataError,
-  } = useFetchData("../mocks/DeliveryAnalytics.json");
+  } = useFetchData('../mocks/DeliveryAnalytics.json');
   const {
     data: trucksData,
     loading: trucksDataLoading,
     error: trucksDataError,
-  } = useFetchData("../mocks/Trucks.json");
+  } = useFetchData('../mocks/Trucks.json');
   const {
     data: trucksDeliveryRequestData,
     loading: trucksDeliveryRequestDataLoading,
     error: trucksDeliveryRequestDataError,
-  } = useFetchData("../mocks/TruckDeliveryRequest.json");
+  } = useFetchData('../mocks/TruckDeliveryRequest.json');
 
   return (
     <div>
@@ -102,7 +102,7 @@ const LogisticsDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -119,7 +119,7 @@ const LogisticsDashboardPage = () => {
             },
           },
           {
-            title: "logistics",
+            title: 'logistics',
           },
         ]}
       />

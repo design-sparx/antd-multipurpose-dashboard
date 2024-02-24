@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Row } from 'antd';
 import {
   AudienceLocationChart,
   CampaignsActivity,
@@ -7,13 +7,13 @@ import {
   MarketingStatsCard,
   PageHeader,
   VisitorsChartCard,
-} from "../../components";
-import { HomeOutlined, PieChartOutlined } from "@ant-design/icons";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useStylesContext } from "../../context";
-import { useFetchData } from "../../hooks";
+} from '../../components';
+import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useStylesContext } from '../../context';
+import { useFetchData } from '../../hooks';
 
 const MarketingDashboardPage = () => {
   const stylesContext = useStylesContext();
@@ -21,7 +21,7 @@ const MarketingDashboardPage = () => {
     data: campaignAds,
     error: campaignAdsError,
     loading: campaignAdsLoading,
-  } = useFetchData("../mocks/CampaignAds.json");
+  } = useFetchData('../mocks/CampaignAds.json');
 
   return (
     <div>
@@ -38,7 +38,7 @@ const MarketingDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -55,7 +55,7 @@ const MarketingDashboardPage = () => {
             },
           },
           {
-            title: "marketing",
+            title: 'marketing',
           },
         ]}
       />
@@ -66,7 +66,7 @@ const MarketingDashboardPage = () => {
             title="impressions"
             diff={12.5}
             value={16826}
-            style={{ height: "100%" }}
+            style={{ height: '100%' }}
           />
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -75,7 +75,7 @@ const MarketingDashboardPage = () => {
             title="clicks"
             diff={-2.1}
             value={2216869}
-            style={{ height: "100%" }}
+            style={{ height: '100%' }}
           />
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -85,7 +85,7 @@ const MarketingDashboardPage = () => {
             diff={34.6}
             value={9321.92}
             asCurrency
-            style={{ height: "100%" }}
+            style={{ height: '100%' }}
           />
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -95,14 +95,14 @@ const MarketingDashboardPage = () => {
             diff={6.3}
             value={5550.0}
             asCurrency
-            style={{ height: "100%" }}
+            style={{ height: '100%' }}
           />
         </Col>
         <Col xs={24} lg={12}>
           <VisitorsChartCard />
         </Col>
         <Col xs={24} lg={12}>
-          <MarketingSocialStatsCard style={{ height: "100%" }} />
+          <MarketingSocialStatsCard style={{ height: '100%' }} />
         </Col>
         <Col xs={24} lg={12}>
           <AudienceLocationChart />

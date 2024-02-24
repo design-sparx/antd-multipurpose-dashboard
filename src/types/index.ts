@@ -3,41 +3,41 @@ import type {
   ProjectCategory,
   ProjectStatus,
   ProjectPriority,
-} from "./projects";
-import type { Clients } from "./clients";
-import type { CampaignAds } from "./campaigns";
-import type { PostPlatform, Posts, PostCategory } from "./posts";
+} from './projects';
+import type { Clients } from './clients';
+import type { CampaignAds } from './campaigns';
+import type { PostPlatform, Posts, PostCategory } from './posts';
 import type {
   CommentsType,
   CommentGender,
   CommentsPlatform,
   Comments,
-} from "./comments";
+} from './comments';
 import type {
   Bidding,
   AuctionCreator,
   AuctionSales,
   AuctionTransactions,
-} from "./bidding";
+} from './bidding';
 import type {
   LearningCourses,
   RecommendedCourses,
   Exam,
   CommunityGroup,
-} from "./learnings.ts";
+} from './learnings.ts';
 import type {
   TruckDelivery,
   DeliveryAnalytics,
   Truck,
   DeliveryRequest,
-} from "./logistics.ts";
-import type { Tasks } from "./dashboard";
-import type { Notifications } from "./notifications";
-import type { Employee } from "./employee";
-import type { Faq } from "./faq";
-import type { Pricing } from "./pricing";
-import type { Session } from "./session";
-import type { ActivityTimeline } from "./timeline";
+} from './logistics.ts';
+import type { Tasks } from './dashboard';
+import type { Notifications } from './notifications';
+import type { Employee } from './employee';
+import type { Faq } from './faq';
+import type { Pricing } from './pricing';
+import type { Session } from './session';
+import type { ActivityTimeline } from './timeline';
 
 export type {
   Projects,

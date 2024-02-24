@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import MoreMenu from "./MoreMenu.tsx";
+import MoreMenu from './MoreMenu.tsx';
 
 const meta = {
-  title: "Components/More menu",
+  title: 'Components/More menu',
   component: MoreMenu,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof MoreMenu>;
 

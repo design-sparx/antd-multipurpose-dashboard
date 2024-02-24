@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import RefreshBtn from "./RefreshBtn.tsx";
+import RefreshBtn from './RefreshBtn.tsx';
 
 const meta = {
-  title: "Components/Refresh button",
+  title: 'Components/Refresh button',
   component: RefreshBtn,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof RefreshBtn>;
 
 export default meta;

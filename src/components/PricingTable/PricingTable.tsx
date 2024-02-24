@@ -1,4 +1,4 @@
-import { Pricing } from "../../types";
+import { Pricing } from '../../types';
 import {
   Alert,
   Card as AntdCard,
@@ -10,21 +10,21 @@ import {
   Space,
   theme,
   Typography,
-} from "antd";
-import { CheckCircleOutlined } from "@ant-design/icons";
-import { Card, Loader } from "../index.ts";
-import { ReactNode, useState } from "react";
-import { useStylesContext } from "../../context";
-import CountUp from "react-countup";
+} from 'antd';
+import { CheckCircleOutlined } from '@ant-design/icons';
+import { Card, Loader } from '../index.ts';
+import { ReactNode, useState } from 'react';
+import { useStylesContext } from '../../context';
+import CountUp from 'react-countup';
 
 const textStyles = (
   preferred?: boolean,
   primary?: string
 ): React.CSSProperties => {
   return {
-    color: preferred ? "white" : primary ? primary : "initial",
-    textTransform: "capitalize",
-    textAlign: "center",
+    color: preferred ? 'white' : primary ? primary : 'initial',
+    textTransform: 'capitalize',
+    textAlign: 'center',
   };
 };
 
@@ -38,8 +38,8 @@ const PricingTable = ({ data, error, loading, ...others }: Props) => {
   const {
     token: { colorPrimary, colorFillSecondary },
   } = theme.useToken();
-  const [value, setValue] = useState<"monthly" | "annually" | string | number>(
-    "monthly"
+  const [value, setValue] = useState<'monthly' | 'annually' | string | number>(
+    'monthly'
   );
   const stylesContext = useStylesContext();
 
@@ -66,11 +66,11 @@ const PricingTable = ({ data, error, loading, ...others }: Props) => {
         <>
           <div
             className="text-capitalize text-center"
-            style={{ marginBottom: "1rem" }}
+            style={{ marginBottom: '1rem' }}
           >
             <Segmented
               size="large"
-              options={["monthly", "annually"]}
+              options={['monthly', 'annually']}
               value={value}
               onChange={setValue}
             />
@@ -96,22 +96,22 @@ const PricingTable = ({ data, error, loading, ...others }: Props) => {
                     {d.plan}
                   </Typography.Text>
                   <Typography.Title
-                    style={{ margin: "1rem 0", ...textStyles(d.preferred) }}
+                    style={{ margin: '1rem 0', ...textStyles(d.preferred) }}
                   >
-                    ${" "}
+                    ${' '}
                     <CountUp
                       decimals={2}
-                      end={value === "monthly" ? d.monthly : d.annually}
+                      end={value === 'monthly' ? d.monthly : d.annually}
                     />
                     /
                     <small
                       style={{
                         fontSize: 16,
                         fontWeight: 400,
-                        textTransform: "lowercase",
+                        textTransform: 'lowercase',
                       }}
                     >
-                      per {value === "monthly" ? "month" : "year"}
+                      per {value === 'monthly' ? 'month' : 'year'}
                     </small>
                   </Typography.Title>
                   <List

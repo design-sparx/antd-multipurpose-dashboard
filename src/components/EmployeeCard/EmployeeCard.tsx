@@ -1,5 +1,5 @@
-import { Employee } from "../../types";
-import { Card as AntdCard, CardProps, Flex, Typography } from "antd";
+import { Employee } from '../../types';
+import { Card as AntdCard, CardProps, Flex, Typography } from 'antd';
 
 const { Meta } = AntdCard;
 
@@ -30,13 +30,13 @@ const EmployeeCard = ({ data, showInfo, ...others }: Props) => {
           alt={`${first_name} image`}
           src={avatar}
           height={240}
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: 'cover' }}
         />
       }
       {...others}
     >
       <Meta title={`${title}. ${first_name} ${middle_name} ${last_name}`} />
-      <Flex vertical gap="small" style={{ marginTop: "8px" }}>
+      <Flex vertical gap="small" style={{ marginTop: '8px' }}>
         <Typography.Text>{role}</Typography.Text>
         {showInfo && (
           <>

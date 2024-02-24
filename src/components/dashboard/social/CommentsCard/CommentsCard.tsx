@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 import {
   Alert,
   Button,
@@ -8,18 +8,18 @@ import {
   Space,
   Tag,
   Typography,
-} from "antd";
+} from 'antd';
 import {
   ArrowRightOutlined,
   CommentOutlined,
   DeleteOutlined,
   EyeOutlined,
   LikeOutlined,
-} from "@ant-design/icons";
-import { Comments } from "../../../../types";
-import { Card, Loader, UserAvatar } from "../../../index";
+} from '@ant-design/icons';
+import { Comments } from '../../../../types';
+import { Card, Loader, UserAvatar } from '../../../index';
 
-import "./styles.css";
+import './styles.css';
 
 type Props = {
   data?: Comments[];

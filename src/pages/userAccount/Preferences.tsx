@@ -7,15 +7,15 @@ import {
   Row,
   Switch,
   Typography,
-} from "antd";
-import { Card } from "../../components";
-import { useStylesContext } from "../../context";
-import { useMediaQuery } from "react-responsive";
+} from 'antd';
+import { Card } from '../../components';
+import { useStylesContext } from '../../context';
+import { useMediaQuery } from 'react-responsive';
 
 const { Text } = Typography;
 
 const BUTTON_PROPS: ButtonProps = {
-  type: "dashed",
+  type: 'dashed',
 };
 
 const UserProfilePreferencesPage = () => {
@@ -32,7 +32,7 @@ const UserProfilePreferencesPage = () => {
         <Flex vertical gap="small">
           <Flex
             vertical={isMobile}
-            align={isMobile ? "flex-start" : "center"}
+            align={isMobile ? 'flex-start' : 'center'}
             gap={4}
           >
             <Text style={{ width: 200 }}>Display Language</Text>
@@ -40,7 +40,7 @@ const UserProfilePreferencesPage = () => {
           </Flex>
           <Flex
             vertical={isMobile}
-            align={isMobile ? "flex-start" : "center"}
+            align={isMobile ? 'flex-start' : 'center'}
             gap={4}
           >
             <Text style={{ width: 200 }}>Preferred Language</Text>
@@ -48,12 +48,12 @@ const UserProfilePreferencesPage = () => {
           </Flex>
           <Flex
             vertical={isMobile}
-            align={isMobile ? "flex-start" : "center"}
+            align={isMobile ? 'flex-start' : 'center'}
             gap={4}
           >
             <Text style={{ width: 200 }}>Regional Format</Text>
             <Button {...BUTTON_PROPS}>
-              English (Kenya) - {new Date().toLocaleDateString()} :{" "}
+              English (Kenya) - {new Date().toLocaleDateString()} :{' '}
               {new Date().toLocaleTimeString()}
             </Button>
           </Flex>
@@ -62,7 +62,7 @@ const UserProfilePreferencesPage = () => {
       <Card title="manage notifications">
         <Row {...context?.rowProps}>
           <Col sm={24} lg={12}>
-            <AntdCard title="activities" style={{ marginBottom: "1rem" }}>
+            <AntdCard title="activities" style={{ marginBottom: '1rem' }}>
               <Flex vertical gap="middle">
                 <Flex align="center" justify="space-between">
                   <Text>Someone comments on my content</Text>

@@ -1,5 +1,5 @@
-import Logo from "./Logo/Logo";
-import MoreMenu from "./MoreMenu/MoreMenu";
+import Logo from './Logo/Logo';
+import MoreMenu from './MoreMenu/MoreMenu';
 import {
   ProjectsTable,
   ProjectsCountCard,
@@ -48,26 +48,26 @@ import {
   WeeklyActivityCard,
   TasksChartCard,
   TasksListCard,
-} from "./dashboard";
-import UserAvatar from "./UserAvatar/UserAvatar";
-import NotificationsItem from "./NotificationsItem/NotificationsItem";
-import NotificationsCard from "./NotificationsCard/NotificationsCard";
-import Card from "./Card/Card";
-import PageHeader from "./PageHeader/PageHeader";
-import { Bar, Container as NContainer, Nprogress } from "./Nprogress";
-import EmployeeCard from "./EmployeeCard/EmployeeCard";
-import BlogsListCard from "./corporate/BlogsListCard/BlogsListCard";
-import SocialMediaCard from "./SocialMediaCard/SocialMediaCard";
-import FaqCollapse from "./FaqCollapse/FaqCollapse";
-import ContactForm from "./ContactForm/ContactForm";
-import PricingTable from "./PricingTable/PricingTable";
-import SitemapCard from "./SitemapCard/SitemapCard";
-import Flex from "./Flex/Flex";
-import TimelineCard from "./TimelineCard/TimelineCard";
-import Loader from "./Loader/Loader";
-import BackBtn from "./BackBtn/BackBtn.tsx";
-import RefreshBtn from "./RefreshBtn/RefreshBtn.tsx";
-import Container from "./Container";
+} from './dashboard';
+import UserAvatar from './UserAvatar/UserAvatar';
+import NotificationsItem from './NotificationsItem/NotificationsItem';
+import NotificationsCard from './NotificationsCard/NotificationsCard';
+import Card from './Card/Card';
+import PageHeader from './PageHeader/PageHeader';
+import { Bar, Container as NContainer, Nprogress } from './Nprogress';
+import EmployeeCard from './EmployeeCard/EmployeeCard';
+import BlogsListCard from './corporate/BlogsListCard/BlogsListCard';
+import SocialMediaCard from './SocialMediaCard/SocialMediaCard';
+import FaqCollapse from './FaqCollapse/FaqCollapse';
+import ContactForm from './ContactForm/ContactForm';
+import PricingTable from './PricingTable/PricingTable';
+import SitemapCard from './SitemapCard/SitemapCard';
+import Flex from './Flex/Flex';
+import TimelineCard from './TimelineCard/TimelineCard';
+import Loader from './Loader/Loader';
+import BackBtn from './BackBtn/BackBtn.tsx';
+import RefreshBtn from './RefreshBtn/RefreshBtn.tsx';
+import Container from './Container';
 
 export {
   Logo,

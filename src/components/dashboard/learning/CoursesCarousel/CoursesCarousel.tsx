@@ -9,9 +9,9 @@ import {
   Space,
   Tag,
   Typography,
-} from "antd";
-import { RecommendedCourses } from "../../../../types";
-import { ReactNode, useEffect, useRef, useState } from "react";
+} from 'antd';
+import { RecommendedCourses } from '../../../../types';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   BookOutlined,
   ClockCircleOutlined,
@@ -19,11 +19,11 @@ import {
   LockOutlined,
   RightCircleOutlined,
   TagFilled,
-} from "@ant-design/icons";
-import { Card, Loader } from "../../../index.ts";
-import { useMediaQuery } from "react-responsive";
+} from '@ant-design/icons';
+import { Card, Loader } from '../../../index.ts';
+import { useMediaQuery } from 'react-responsive';
 
-import "./styles.css";
+import './styles.css';
 
 type CardItemProps = {
   data: RecommendedCourses;
@@ -35,20 +35,20 @@ const CardItem = ({ data, ...others }: CardItemProps) => {
 
   useEffect(() => {
     switch (level) {
-      case "beginner":
-        setLevelColor("geekblue");
+      case 'beginner':
+        setLevelColor('geekblue');
         break;
-      case "intermediate":
-        setLevelColor("magenta");
+      case 'intermediate':
+        setLevelColor('magenta');
         break;
-      case "advanced":
-        setLevelColor("volcano");
+      case 'advanced':
+        setLevelColor('volcano');
         break;
-      case "expert":
-        setLevelColor("red");
+      case 'expert':
+        setLevelColor('red');
         break;
       default:
-        setLevelColor("warning");
+        setLevelColor('warning');
         break;
     }
   }, [level]);
@@ -60,12 +60,12 @@ const CardItem = ({ data, ...others }: CardItemProps) => {
       }}
       {...others}
     >
-      <Space direction="vertical" size="large" style={{ width: "100%" }}>
+      <Space direction="vertical" size="large" style={{ width: '100%' }}>
         <Typography.Title
           level={4}
           style={{
             margin: 0,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
           }}
         >
           {name.slice(0, 30)}...
@@ -86,7 +86,7 @@ const CardItem = ({ data, ...others }: CardItemProps) => {
           <Tag
             bordered={true}
             color={levelColor}
-            style={{ textTransform: "capitalize" }}
+            style={{ textTransform: 'capitalize' }}
           >
             {level}
           </Tag>

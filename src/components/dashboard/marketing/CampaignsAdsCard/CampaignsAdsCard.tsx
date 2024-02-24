@@ -6,8 +6,8 @@ import {
   Space,
   Table,
   TableColumnsType,
-} from "antd";
-import { Card } from "../../../index.ts";
+} from 'antd';
+import { Card } from '../../../index.ts';
 import {
   FacebookFilled,
   InstagramFilled,
@@ -15,11 +15,11 @@ import {
   QuestionCircleFilled,
   QuestionOutlined,
   TwitterCircleFilled,
-} from "@ant-design/icons";
-import { CampaignAds } from "../../../../types";
-import { createElement, ReactNode, useEffect, useState } from "react";
-import * as _ from "lodash";
-import { numberWithCommas } from "../../../../utils";
+} from '@ant-design/icons';
+import { CampaignAds } from '../../../../types';
+import { createElement, ReactNode, useEffect, useState } from 'react';
+import * as _ from 'lodash';
+import { numberWithCommas } from '../../../../utils';
 
 type ParentDataType = {
   id: string;
@@ -35,20 +35,20 @@ type ExpandedDataType = CampaignAds;
 
 const PARENT_TABLE_COLUMNS: TableColumnsType<ParentDataType> = [
   {
-    title: "Source",
-    dataIndex: "ad_source",
-    key: "total_marketing_source",
+    title: 'Source',
+    dataIndex: 'ad_source',
+    key: 'total_marketing_source',
     render: (_) => {
       const social = _.toLowerCase();
       let icon: any;
 
-      if (social.includes("facebook")) {
+      if (social.includes('facebook')) {
         icon = FacebookFilled;
-      } else if (social.includes("linkedin")) {
+      } else if (social.includes('linkedin')) {
         icon = LinkedinFilled;
-      } else if (social.includes("twitter")) {
+      } else if (social.includes('twitter')) {
         icon = TwitterCircleFilled;
-      } else if (social.includes("instagram")) {
+      } else if (social.includes('instagram')) {
         icon = InstagramFilled;
       } else {
         icon = QuestionCircleFilled;
@@ -63,66 +63,66 @@ const PARENT_TABLE_COLUMNS: TableColumnsType<ParentDataType> = [
     },
   },
   {
-    title: "Impressions",
-    dataIndex: "total_impressions",
-    key: "total_marketing_impression",
+    title: 'Impressions',
+    dataIndex: 'total_impressions',
+    key: 'total_marketing_impression',
     render: (_: any) => <span>{numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Cost",
-    dataIndex: "total_cost",
-    key: "total_marketing_cost",
+    title: 'Cost',
+    dataIndex: 'total_cost',
+    key: 'total_marketing_cost',
     render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Revenue",
-    dataIndex: "total_revenue",
-    key: "marketing_revenue",
+    title: 'Revenue',
+    dataIndex: 'total_revenue',
+    key: 'marketing_revenue',
     render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Clicks",
-    dataIndex: "total_clicks",
-    key: "total_marketing_clicks",
+    title: 'Clicks',
+    dataIndex: 'total_clicks',
+    key: 'total_marketing_clicks',
     render: (_: any) => <span>{numberWithCommas(Number(_))}</span>,
   },
 ];
 
 const CHILD_TABLE_COLUMNS: TableColumnsType<ExpandedDataType> = [
   {
-    title: "Impressions",
-    dataIndex: "impressions",
-    key: "marketing_impression",
+    title: 'Impressions',
+    dataIndex: 'impressions',
+    key: 'marketing_impression',
     render: (_: any) => <span>{numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Cost",
-    dataIndex: "cost",
-    key: "marketing_cost",
+    title: 'Cost',
+    dataIndex: 'cost',
+    key: 'marketing_cost',
     render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Revenue",
-    dataIndex: "revenue",
-    key: "marketing_revenue",
+    title: 'Revenue',
+    dataIndex: 'revenue',
+    key: 'marketing_revenue',
     render: (_: any) => <span>$ {numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Clicks",
-    dataIndex: "clicks",
-    key: "marketing_clicks",
+    title: 'Clicks',
+    dataIndex: 'clicks',
+    key: 'marketing_clicks',
     render: (_: any) => <span>{numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Conversion rate",
-    dataIndex: "conversion_rate",
-    key: "conversion_rate",
+    title: 'Conversion rate',
+    dataIndex: 'conversion_rate',
+    key: 'conversion_rate',
     render: (_: any) => <span>{_}%</span>,
   },
   {
-    title: "ROI",
-    dataIndex: "roi",
-    key: "marketing_roi",
+    title: 'ROI',
+    dataIndex: 'roi',
+    key: 'marketing_roi',
     render: (_: any) => <span>{_}%</span>,
   },
 ];
@@ -136,7 +136,7 @@ const ExpandedRowRender = ({ data }: ExpandedProps) => {
       dataSource={data}
       pagination={{
         pageSize: 5,
-        position: ["bottomRight"],
+        position: ['bottomRight'],
       }}
     />
   );
@@ -153,15 +153,15 @@ const CampaignsAdsCard = ({ error, data, loading, ...others }: Props) => {
 
   useEffect(() => {
     const dd = _.chain(data)
-      .groupBy("ad_source")
+      .groupBy('ad_source')
       .map((items: CampaignAds[], source: string) => ({
         id: source,
         ad_source: source,
         items,
-        total_impressions: _.sumBy(items, "impressions").toFixed(2),
-        total_clicks: _.sumBy(items, "clicks").toFixed(2),
-        total_cost: _.sumBy(items, "cost").toFixed(2),
-        total_revenue: _.sumBy(items, "revenue").toFixed(2),
+        total_impressions: _.sumBy(items, 'impressions').toFixed(2),
+        total_clicks: _.sumBy(items, 'clicks').toFixed(2),
+        total_cost: _.sumBy(items, 'cost').toFixed(2),
+        total_revenue: _.sumBy(items, 'revenue').toFixed(2),
       }))
       .value();
 

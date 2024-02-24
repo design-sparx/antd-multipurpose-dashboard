@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import CustomerReviewsCard from "./CustomerReviewsCard.tsx";
+import CustomerReviewsCard from './CustomerReviewsCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Ecommerce/Customer reviews card",
+  title: 'Components/Dashboard/Ecommerce/Customer reviews card',
   component: CustomerReviewsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof CustomerReviewsCard>;
 

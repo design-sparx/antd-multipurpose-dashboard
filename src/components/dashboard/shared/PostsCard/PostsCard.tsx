@@ -12,20 +12,20 @@ import {
   Space,
   theme,
   Typography,
-} from "antd";
-import { Posts } from "../../../../types";
+} from 'antd';
+import { Posts } from '../../../../types';
 import {
   CommentOutlined,
   DeleteFilled,
   EditFilled,
   LikeOutlined,
   ShareAltOutlined,
-} from "@ant-design/icons";
-import React, { ReactNode } from "react";
-import { getNameInitials } from "../../../../utils";
-import { Card, Loader } from "../../../index.ts";
+} from '@ant-design/icons';
+import React, { ReactNode } from 'react';
+import { getNameInitials } from '../../../../utils';
+import { Card, Loader } from '../../../index.ts';
 
-import "./styles.css";
+import './styles.css';
 
 const IconText = ({
   icon,
@@ -41,7 +41,7 @@ const IconText = ({
 );
 
 type Props = {
-  as: "scheduled" | "active";
+  as: 'scheduled' | 'active';
   data?: Posts[];
   loading?: boolean;
   error?: ReactNode;
@@ -70,11 +70,11 @@ const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
               console.log(page);
             },
             pageSize: 5,
-            align: "center",
+            align: 'center',
           }}
           dataSource={data}
           renderItem={(item: Posts) =>
-            as === "active" ? (
+            as === 'active' ? (
               <List.Item
                 key={item.title}
                 actions={[
@@ -103,7 +103,7 @@ const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
                     </Avatar>
                   }
                   title={
-                    <Typography.Link style={{ textTransform: "capitalize" }}>
+                    <Typography.Link style={{ textTransform: 'capitalize' }}>
                       {item.title.slice(0, 30)}...
                     </Typography.Link>
                   }
@@ -128,7 +128,7 @@ const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
                     <Flex
                       justify="center"
                       align="center"
-                      style={{ height: "100%" }}
+                      style={{ height: '100%' }}
                     >
                       <Image
                         src={item.image_url}

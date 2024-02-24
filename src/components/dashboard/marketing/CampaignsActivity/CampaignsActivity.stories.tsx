@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import CampaignsActivity from "./CampaignsActivity.tsx";
+import CampaignsActivity from './CampaignsActivity.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Marketing/Campaigns/Calendar",
+  title: 'Components/Dashboard/Marketing/Campaigns/Calendar',
   component: CampaignsActivity,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof CampaignsActivity>;
 

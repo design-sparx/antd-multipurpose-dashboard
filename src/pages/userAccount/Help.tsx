@@ -1,82 +1,82 @@
-import { Alert, Button, Flex, Input, TabsProps, Typography } from "antd";
-import { Card, FaqCollapse, Loader } from "../../components";
+import { Alert, Button, Flex, Input, TabsProps, Typography } from 'antd';
+import { Card, FaqCollapse, Loader } from '../../components';
 import {
   DollarOutlined,
   PullRequestOutlined,
   RocketOutlined,
   SettingOutlined,
   UnorderedListOutlined,
-} from "@ant-design/icons";
-import { createElement, useEffect, useState } from "react";
-import * as _ from "lodash";
-import FaqsData from "../../../public/mocks/Faqs.json";
-import { TitleProps } from "antd/es/typography/Title";
-import { useMediaQuery } from "react-responsive";
-import { useFetchData } from "../../hooks";
+} from '@ant-design/icons';
+import { createElement, useEffect, useState } from 'react';
+import * as _ from 'lodash';
+import FaqsData from '../../../public/mocks/Faqs.json';
+import { TitleProps } from 'antd/es/typography/Title';
+import { useMediaQuery } from 'react-responsive';
+import { useFetchData } from '../../hooks';
 
 const { Text, Title } = Typography;
 
 const TOPICS = [
   {
-    title: "get started",
+    title: 'get started',
     image: RocketOutlined,
   },
   {
-    title: "features",
+    title: 'features',
     image: UnorderedListOutlined,
   },
   {
-    title: "billing",
+    title: 'billing',
     image: DollarOutlined,
   },
   {
-    title: "troubleshooting",
+    title: 'troubleshooting',
     image: SettingOutlined,
   },
   {
-    title: "integrations",
+    title: 'integrations',
     image: PullRequestOutlined,
   },
 ];
 
 const OTHER_TOPICS = [
   {
-    title: "Getting started guide",
+    title: 'Getting started guide',
     description:
       "Not sure where to start? Get going with our easy-to-follow beginner's guide to Antd Dashboard.",
-    action: "Get started",
+    action: 'Get started',
   },
   {
     title: "What's new",
     description:
-      "All the upgrades and improvements that‘ll better help you organize it all.",
+      'All the upgrades and improvements that‘ll better help you organize it all.',
     action: "See what's new",
   },
   {
-    title: "Known issues",
+    title: 'Known issues',
     description:
-      "The bugs with fixes in the works. Check here before shooting us a message.",
-    action: "Consult the list",
+      'The bugs with fixes in the works. Check here before shooting us a message.',
+    action: 'Consult the list',
   },
 ];
 
 const TITLE_PROPS: TitleProps = {
   style: {
     marginBottom: 0,
-    textAlign: "center",
+    textAlign: 'center',
   },
   level: 3,
 };
 
 const UserProfileHelpPage = () => {
-  const [activeTabKey, setActiveTabKey] = useState<string>("Account");
-  const [tabList, setTabList] = useState<TabsProps["items"]>([]);
+  const [activeTabKey, setActiveTabKey] = useState<string>('Account');
+  const [tabList, setTabList] = useState<TabsProps['items']>([]);
   const isMobile = useMediaQuery({ maxWidth: 600 });
   const {
     data: faqsData,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData("../mocks/Faqs.json");
+  } = useFetchData('../mocks/Faqs.json');
 
   const onTabChange = (key: string) => {
     setActiveTabKey(key);
@@ -84,8 +84,8 @@ const UserProfileHelpPage = () => {
 
   useEffect(() => {
     const tabs = _.chain(FaqsData)
-      .orderBy("category")
-      .uniqBy("category")
+      .orderBy('category')
+      .uniqBy('category')
       .map((d) => ({
         key: d.category,
         label: d.category,
@@ -103,25 +103,25 @@ const UserProfileHelpPage = () => {
           <Title {...TITLE_PROPS}>How can we help?</Title>
           <Input.Search placeholder="search articles..." />
         </Flex>
-        <Flex gap="middle" wrap={isMobile ? "wrap" : "nowrap"}>
+        <Flex gap="middle" wrap={isMobile ? 'wrap' : 'nowrap'}>
           {TOPICS.map((t) => (
             <Card
               hoverable
               style={{
-                width: isMobile ? "100%" : "25%",
-                textAlign: "center",
+                width: isMobile ? '100%' : '25%',
+                textAlign: 'center',
               }}
             >
               <Flex vertical gap="middle">
                 {createElement(t.image, {
-                  style: { fontSize: "1.5rem", margin: "auto" },
+                  style: { fontSize: '1.5rem', margin: 'auto' },
                 })}
-                <Text style={{ textTransform: "capitalize" }}>{t.title}</Text>
+                <Text style={{ textTransform: 'capitalize' }}>{t.title}</Text>
               </Flex>
             </Card>
           ))}
         </Flex>
-        <Flex gap="middle" wrap={isMobile ? "wrap" : "nowrap"}>
+        <Flex gap="middle" wrap={isMobile ? 'wrap' : 'nowrap'}>
           {OTHER_TOPICS.map((t) => (
             <Card
               key={t.title}
@@ -144,7 +144,7 @@ const UserProfileHelpPage = () => {
           tabBarExtraContent={<Button type="link">Go to FAQs</Button>}
           onTabChange={onTabChange}
           tabProps={{
-            size: "middle",
+            size: 'middle',
           }}
         >
           {faqsDataError ? (

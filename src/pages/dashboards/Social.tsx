@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Col, ConfigProvider, Row, Tabs, TabsProps } from "antd";
+import { useEffect, useState } from 'react';
+import { Col, ConfigProvider, Row, Tabs, TabsProps } from 'antd';
 import {
   FacebookFilled,
   FacebookOutlined,
@@ -13,7 +13,7 @@ import {
   TwitterOutlined,
   YoutubeFilled,
   YoutubeOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 import {
   CommentsCard,
   DevicesCardChart,
@@ -23,21 +23,21 @@ import {
   PageHeader,
   PostsCard,
   SocialStatsCard,
-} from "../../components";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
-import { COLOR } from "../../App.tsx";
-import { useFetchData } from "../../hooks";
-import { Comments, Posts } from "../../types";
-import { useStylesContext } from "../../context";
+} from '../../components';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { COLOR } from '../../App.tsx';
+import { useFetchData } from '../../hooks';
+import { Comments, Posts } from '../../types';
+import { useStylesContext } from '../../context';
 
 type TabKeys =
-  | "social-facebook-tab"
-  | "social-twitter-tab"
-  | "social-instagram-tab"
-  | "social-linkedin-tab"
-  | "social-youtube-tab"
+  | 'social-facebook-tab'
+  | 'social-twitter-tab'
+  | 'social-instagram-tab'
+  | 'social-linkedin-tab'
+  | 'social-youtube-tab'
   | string;
 
 type SectionProps = {
@@ -46,42 +46,42 @@ type SectionProps = {
 
 const Section = ({ tab }: SectionProps) => {
   const stylesContext = useStylesContext();
-  const [title, setTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>('');
   const {
     data: socialsData,
     loading: socialsDataLoading,
     error: socialsDataError,
-  } = useFetchData("../mocks/SocialMedia.json");
+  } = useFetchData('../mocks/SocialMedia.json');
   const {
     data: socialCommentsData,
     loading: socialsCommentsDataLoading,
     error: socialsCommentsDataError,
-  } = useFetchData("../mocks/SocialComments.json");
+  } = useFetchData('../mocks/SocialComments.json');
   const {
     data: scheduledPostsData,
     loading: scheduledPostsDataLoading,
     error: scheduledPostsDataError,
-  } = useFetchData("../mocks/ScheduledPosts.json");
+  } = useFetchData('../mocks/ScheduledPosts.json');
 
   useEffect(() => {
     switch (tab) {
-      case "social-facebook-tab":
-        setTitle("facebook");
+      case 'social-facebook-tab':
+        setTitle('facebook');
         break;
-      case "social-twitter-tab":
-        setTitle("twitter");
+      case 'social-twitter-tab':
+        setTitle('twitter');
         break;
-      case "social-instagram-tab":
-        setTitle("instagram");
+      case 'social-instagram-tab':
+        setTitle('instagram');
         break;
-      case "social-linkedin-tab":
-        setTitle("linkedin");
+      case 'social-linkedin-tab':
+        setTitle('linkedin');
         break;
-      case "social-youtube-tab":
-        setTitle("youtube");
+      case 'social-youtube-tab':
+        setTitle('youtube');
         break;
       default:
-        setTitle("");
+        setTitle('');
     }
   }, [tab]);
 
@@ -98,7 +98,7 @@ const Section = ({ tab }: SectionProps) => {
               }
               error={socialsDataError}
               loading={socialsDataLoading}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             />
           </Col>
           <Col xs={24} md={12} lg={6}>
@@ -110,7 +110,7 @@ const Section = ({ tab }: SectionProps) => {
               }
               error={socialsDataError}
               loading={socialsDataLoading}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             />
           </Col>
           <Col xs={24} md={12} lg={6}>
@@ -122,7 +122,7 @@ const Section = ({ tab }: SectionProps) => {
               }
               error={socialsDataError}
               loading={socialsDataLoading}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             />
           </Col>
           <Col xs={24} md={12} lg={6}>
@@ -134,14 +134,14 @@ const Section = ({ tab }: SectionProps) => {
               }
               error={socialsDataError}
               loading={socialsDataLoading}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             />
           </Col>
           <Col xs={24} xl={12}>
             <FollowersChart />
           </Col>
           <Col xs={24} xl={12}>
-            <LikesChart style={{ height: "100%" }} />
+            <LikesChart style={{ height: '100%' }} />
           </Col>
           <Col xs={24} sm={24} xl={12}>
             <PostsCard
@@ -188,15 +188,15 @@ const SocialDashboardPage = () => {
   const stylesContext = useStylesContext();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>(
-    "social-facebook-tab"
+    'social-facebook-tab'
   );
 
-  const TAB_LIST: TabsProps["items"] = [
+  const TAB_LIST: TabsProps['items'] = [
     {
-      key: "social-facebook-tab",
+      key: 'social-facebook-tab',
       label: (
         <span>
-          {activeTabKey === "social-facebook-tab" ? (
+          {activeTabKey === 'social-facebook-tab' ? (
             <FacebookFilled />
           ) : (
             <FacebookOutlined />
@@ -206,10 +206,10 @@ const SocialDashboardPage = () => {
       ),
     },
     {
-      key: "social-twitter-tab",
+      key: 'social-twitter-tab',
       label: (
         <span>
-          {activeTabKey === "social-twitter-tab" ? (
+          {activeTabKey === 'social-twitter-tab' ? (
             <TwitterCircleFilled />
           ) : (
             <TwitterOutlined />
@@ -219,10 +219,10 @@ const SocialDashboardPage = () => {
       ),
     },
     {
-      key: "social-instagram-tab",
+      key: 'social-instagram-tab',
       label: (
         <span>
-          {activeTabKey === "social-instagram-tab" ? (
+          {activeTabKey === 'social-instagram-tab' ? (
             <InstagramFilled />
           ) : (
             <InstagramOutlined />
@@ -232,10 +232,10 @@ const SocialDashboardPage = () => {
       ),
     },
     {
-      key: "social-linkedin-tab",
+      key: 'social-linkedin-tab',
       label: (
         <span>
-          {activeTabKey === "social-linkedin-tab" ? (
+          {activeTabKey === 'social-linkedin-tab' ? (
             <LinkedinFilled />
           ) : (
             <LinkedinOutlined />
@@ -245,10 +245,10 @@ const SocialDashboardPage = () => {
       ),
     },
     {
-      key: "social-youtube-tab",
+      key: 'social-youtube-tab',
       label: (
         <span>
-          {activeTabKey === "social-youtube-tab" ? (
+          {activeTabKey === 'social-youtube-tab' ? (
             <YoutubeFilled />
           ) : (
             <YoutubeOutlined />
@@ -260,11 +260,11 @@ const SocialDashboardPage = () => {
   ];
 
   const TAB_CONTENT: Record<TabKeys, React.ReactNode> = {
-    "social-facebook-tab": <Section tab={activeTabKey} />,
-    "social-twitter-tab": <Section tab={activeTabKey} />,
-    "social-instagram-tab": <Section tab={activeTabKey} />,
-    "social-linkedin-tab": <Section tab={activeTabKey} />,
-    "social-youtube-tab": <Section tab={activeTabKey} />,
+    'social-facebook-tab': <Section tab={activeTabKey} />,
+    'social-twitter-tab': <Section tab={activeTabKey} />,
+    'social-instagram-tab': <Section tab={activeTabKey} />,
+    'social-linkedin-tab': <Section tab={activeTabKey} />,
+    'social-youtube-tab': <Section tab={activeTabKey} />,
   };
 
   const onTabChange = (key: TabKeys) => {
@@ -283,7 +283,7 @@ const SocialDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -300,7 +300,7 @@ const SocialDashboardPage = () => {
             },
           },
           {
-            title: "social",
+            title: 'social',
           },
         ]}
       />
@@ -308,10 +308,10 @@ const SocialDashboardPage = () => {
         theme={{
           components: {
             Tabs: {
-              cardBg: COLOR["50"],
-              colorBgContainer: COLOR["500"],
-              itemSelectedColor: "#FFFFFF",
-              itemHoverColor: COLOR["500"],
+              cardBg: COLOR['50'],
+              colorBgContainer: COLOR['500'],
+              itemSelectedColor: '#FFFFFF',
+              itemHoverColor: COLOR['500'],
             },
           },
         }}

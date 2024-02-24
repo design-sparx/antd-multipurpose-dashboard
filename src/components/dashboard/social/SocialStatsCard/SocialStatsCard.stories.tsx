@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import SocialStatsCard from "./SocialStatsCard.tsx";
+import SocialStatsCard from './SocialStatsCard.tsx';
 
 const DATA = {
-  title: "followers",
+  title: 'followers',
   value: 3432,
 };
 
 const meta = {
-  title: "Components/Dashboard/Social/Stats",
+  title: 'Components/Dashboard/Social/Stats',
   component: SocialStatsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof SocialStatsCard>;
 
 export default meta;
@@ -38,7 +38,7 @@ export const Loading: Story = {
 export const Error: Story = {
   args: {
     ...DATA,
-    error: "Error fetching items",
+    error: 'Error fetching items',
     style: { width: 300 },
   },
 };

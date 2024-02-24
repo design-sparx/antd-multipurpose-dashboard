@@ -1,6 +1,6 @@
-import { Button, Col, Form, FormProps, Input, Row } from "antd";
-import { SendOutlined } from "@ant-design/icons";
-import { useStylesContext } from "../../context";
+import { Button, Col, Form, FormProps, Input, Row } from 'antd';
+import { SendOutlined } from '@ant-design/icons';
+import { useStylesContext } from '../../context';
 
 const { TextArea } = Input;
 

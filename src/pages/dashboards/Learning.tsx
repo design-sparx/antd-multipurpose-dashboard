@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Row } from 'antd';
 import {
   FileProtectOutlined,
   FileSyncOutlined,
@@ -6,7 +6,7 @@ import {
   PieChartOutlined,
   SafetyCertificateOutlined,
   UsergroupAddOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 import {
   CommunityGroupCard,
   CoursesCard,
@@ -16,12 +16,12 @@ import {
   PageHeader,
   ProgressCard,
   StudyStatisticsCard,
-} from "../../components";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useFetchData } from "../../hooks";
-import { useStylesContext } from "../../context";
+} from '../../components';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useFetchData } from '../../hooks';
+import { useStylesContext } from '../../context';
 
 const LearningDashboardPage = () => {
   const stylesContext = useStylesContext();
@@ -29,27 +29,27 @@ const LearningDashboardPage = () => {
     data: coursesData,
     loading: coursesDataLoading,
     error: coursesDataError,
-  } = useFetchData("../mocks/Courses.json");
+  } = useFetchData('../mocks/Courses.json');
   const {
     data: studyData,
     loading: studyDataLoading,
     error: studyDataError,
-  } = useFetchData("../mocks/StudyStatistics.json");
+  } = useFetchData('../mocks/StudyStatistics.json');
   const {
     data: recommendedCoursesData,
     loading: recommendedCoursesDataLoading,
     error: recommendedCoursesDataError,
-  } = useFetchData("../mocks/RecommendedCourses.json");
+  } = useFetchData('../mocks/RecommendedCourses.json');
   const {
     data: examsData,
     loading: examsDataLoading,
     error: examsDataError,
-  } = useFetchData("../mocks/Exams.json");
+  } = useFetchData('../mocks/Exams.json');
   const {
     data: communitiesData,
     loading: communitiesDataLoading,
     error: communitiesDataError,
-  } = useFetchData("../mocks/CommunityGroups.json");
+  } = useFetchData('../mocks/CommunityGroups.json');
 
   return (
     <div>
@@ -66,7 +66,7 @@ const LearningDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -83,7 +83,7 @@ const LearningDashboardPage = () => {
             },
           },
           {
-            title: "learning",
+            title: 'learning',
           },
         ]}
       />
@@ -97,7 +97,7 @@ const LearningDashboardPage = () => {
                 icon={FileSyncOutlined}
                 color="teal"
                 progress={30}
-                style={{ height: "100%" }}
+                style={{ height: '100%' }}
               />
             </Col>
             <Col xs={24} sm={12} xl={6}>
@@ -107,7 +107,7 @@ const LearningDashboardPage = () => {
                 icon={FileProtectOutlined}
                 color="green"
                 progress={90}
-                style={{ height: "100%" }}
+                style={{ height: '100%' }}
               />
             </Col>
             <Col xs={24} sm={12} xl={6}>
@@ -117,7 +117,7 @@ const LearningDashboardPage = () => {
                 icon={SafetyCertificateOutlined}
                 color="blue"
                 progress={76}
-                style={{ height: "100%" }}
+                style={{ height: '100%' }}
               />
             </Col>
             <Col xs={24} sm={12} xl={6}>
@@ -127,11 +127,11 @@ const LearningDashboardPage = () => {
                 icon={UsergroupAddOutlined}
                 color="purple"
                 progress={78}
-                style={{ height: "100%" }}
+                style={{ height: '100%' }}
               />
             </Col>
             <Col xs={24} xl={12}>
-              <ProgressCard style={{ height: "100%" }} />
+              <ProgressCard style={{ height: '100%' }} />
             </Col>
             <Col xs={24} xl={12}>
               <StudyStatisticsCard

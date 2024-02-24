@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import LikesChart from "./LikesChart.tsx";
+import LikesChart from './LikesChart.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Social/Likes",
+  title: 'Components/Dashboard/Social/Likes',
   component: LikesChart,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof LikesChart>;
 

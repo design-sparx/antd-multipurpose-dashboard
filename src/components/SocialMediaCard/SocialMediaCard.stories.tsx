@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import SocialMediaCard from "./SocialMediaCard.tsx";
+import SocialMediaCard from './SocialMediaCard.tsx';
 
 const meta = {
-  title: "Components/Social media",
+  title: 'Components/Social media',
   component: SocialMediaCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof SocialMediaCard>;
 

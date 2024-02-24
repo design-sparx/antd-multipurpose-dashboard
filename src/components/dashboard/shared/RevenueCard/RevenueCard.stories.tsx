@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import RevenueCard from "./RevenueCard.tsx";
+import RevenueCard from './RevenueCard.tsx';
 
 const meta = {
-  title: "Components/Revenue",
+  title: 'Components/Revenue',
   component: RevenueCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof RevenueCard>;
 
 export default meta;
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "Visitors",
+    title: 'Visitors',
     value: 20149,
     diff: 5.54,
     style: { width: 320 },

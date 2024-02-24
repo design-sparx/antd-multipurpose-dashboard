@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import GetStartedCard from "./GetStartedCard.tsx";
+import GetStartedCard from './GetStartedCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Default/Get started card",
+  title: 'Components/Dashboard/Default/Get started card',
   component: GetStartedCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof GetStartedCard>;
 

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 import {
   Alert,
   Button,
@@ -11,12 +11,12 @@ import {
   Tag,
   theme,
   Typography,
-} from "antd";
-import { ClockCircleOutlined } from "@ant-design/icons";
-import { Bidding } from "../../../../types";
-import { Card, Loader } from "../../../index.ts";
+} from 'antd';
+import { ClockCircleOutlined } from '@ant-design/icons';
+import { Bidding } from '../../../../types';
+import { Card, Loader } from '../../../index.ts';
 
-import "./styles.css";
+import './styles.css';
 
 type CardItemProps = {
   item: Bidding;
@@ -44,9 +44,9 @@ export const CardItem = ({ item, ...others }: CardItemProps) => {
             className="auction-card-header"
             style={{
               backgroundImage: `linear-gradient(to bottom, rgba(75, 75, 75, .8) 0%, rgba(72, 85, 99, 0) 50%), url(${nft_image})`,
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
               borderTopLeftRadius: borderRadius,
               borderTopRightRadius: borderRadius,
             }}
@@ -58,7 +58,7 @@ export const CardItem = ({ item, ...others }: CardItemProps) => {
             >
               <Tag
                 color={
-                  status === "active" ? "green-inverse" : "volcano-inverse"
+                  status === 'active' ? 'green-inverse' : 'volcano-inverse'
                 }
                 className="text-capitalize m-0"
               >
@@ -69,7 +69,7 @@ export const CardItem = ({ item, ...others }: CardItemProps) => {
                 color="magenta-inverse"
                 className="m-0"
               >
-                {time_left.split(" ")[0]} left
+                {time_left.split(' ')[0]} left
               </Tag>
             </Flex>
           </div>
@@ -77,14 +77,14 @@ export const CardItem = ({ item, ...others }: CardItemProps) => {
         className="auction-card card"
         {...others}
       >
-        <Flex vertical gap="middle" style={{ padding: "16px" }}>
+        <Flex vertical gap="middle" style={{ padding: '16px' }}>
           <Typography.Title level={5} className="text-capitalize m-0">
-            {nft_name.split(" ")[0]} {nft_name.split(" ")[1]} #
+            {nft_name.split(' ')[0]} {nft_name.split(' ')[1]} #
             {auction_id.slice(0, 4)}
           </Typography.Title>
           <Space>
             <Typography.Text>
-              {is_highest_bid_mine ? "Your Bid" : "Highest Bid"}
+              {is_highest_bid_mine ? 'Your Bid' : 'Highest Bid'}
             </Typography.Text>
             <Typography.Text>${winning_bid}</Typography.Text>
           </Space>
@@ -92,7 +92,7 @@ export const CardItem = ({ item, ...others }: CardItemProps) => {
             block
             type="primary"
             disabled={is_highest_bid_mine}
-            onClick={() => message.success("You placed your bid")}
+            onClick={() => message.success('You placed your bid')}
           >
             Place Bid
           </Button>
@@ -112,7 +112,7 @@ const AuctionCarousel = ({ data, error, loading }: Props) => {
   const settings: CarouselProps = {
     autoplay: false,
     dots: true,
-    dotPosition: "bottom",
+    dotPosition: 'bottom',
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -142,8 +142,8 @@ const AuctionCarousel = ({ data, error, loading }: Props) => {
         },
       },
     ],
-    cssEase: "linear",
-    className: "auction-carousel",
+    cssEase: 'linear',
+    className: 'auction-carousel',
   };
 
   return error ? (

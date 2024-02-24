@@ -1,19 +1,19 @@
-import { Flex, FlexProps, theme, Typography } from "antd";
-import { Link } from "react-router-dom";
-import { CSSProperties } from "react";
+import { Flex, FlexProps, theme, Typography } from 'antd';
+import { Link } from 'react-router-dom';
+import { CSSProperties } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
 type LogoProps = {
-  color: CSSProperties["color"];
+  color: CSSProperties['color'];
   imgSize?: {
     h?: number | string;
     w?: number | string;
   };
   asLink?: boolean;
   href?: string;
-  bgColor?: CSSProperties["backgroundColor"];
-} & Omit<FlexProps, "children">;
+  bgColor?: CSSProperties['backgroundColor'];
+} & Omit<FlexProps, 'children'>;
 
 const Logo = ({
   asLink,
@@ -28,8 +28,8 @@ const Logo = ({
   } = theme.useToken();
 
   return asLink ? (
-    <Link to={href || "#"} className="logo-link">
-      <Flex gap={others.gap || "small"} align="center" {...others}>
+    <Link to={href || '#'} className="logo-link">
+      <Flex gap={others.gap || 'small'} align="center" {...others}>
         <img
           src="/logo-no-background.png"
           alt="design sparx logo"
@@ -51,7 +51,7 @@ const Logo = ({
       </Flex>
     </Link>
   ) : (
-    <Flex gap={others.gap || "small"} align="center" {...others}>
+    <Flex gap={others.gap || 'small'} align="center" {...others}>
       <img
         src="/logo-no-background.png"
         alt="design sparx logo"

@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import FollowersChart from "./FollowersChart.tsx";
+import FollowersChart from './FollowersChart.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Social/Followers chart",
+  title: 'Components/Dashboard/Social/Followers chart',
   component: FollowersChart,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof FollowersChart>;
 

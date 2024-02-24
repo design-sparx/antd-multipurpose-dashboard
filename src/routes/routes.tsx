@@ -1,4 +1,4 @@
-import { createBrowserRouter, useLocation } from "react-router-dom";
+import { createBrowserRouter, useLocation } from 'react-router-dom';
 import {
   AccountDeactivePage,
   BiddingDashboardPage,
@@ -34,18 +34,18 @@ import {
   UserProfileSecurityPage,
   VerifyEmailPage,
   WelcomePage,
-} from "../pages";
+} from '../pages';
 import {
   CorporateLayout,
   DashboardLayout,
   GuestLayout,
   UserAccountLayout,
-} from "../layouts";
+} from '../layouts';
 import {
   LearningDashboardPage,
   LogisticsDashboardPage,
-} from "../pages/dashboards";
-import React, { ReactNode, useEffect } from "react";
+} from '../pages/dashboards';
+import React, { ReactNode, useEffect } from 'react';
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -55,7 +55,7 @@ export const ScrollToTop: React.FC = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     }); // Scroll to the top when the location changes
   }, [pathname]);
 
@@ -79,193 +79,193 @@ const PageWrapper = ({ children }: PageProps) => {
 // Create the router
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <PageWrapper children={<GuestLayout />} />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        path: "",
+        path: '',
         element: <HomePage />,
       },
     ],
   },
   {
-    path: "/dashboards",
+    path: '/dashboards',
     element: <PageWrapper children={<DashboardLayout />} />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        path: "default",
+        path: 'default',
         element: <DefaultDashboardPage />,
       },
       {
-        path: "projects",
+        path: 'projects',
         element: <ProjectsDashboardPage />,
       },
       {
-        path: "ecommerce",
+        path: 'ecommerce',
         element: <EcommerceDashboardPage />,
       },
       {
-        path: "marketing",
+        path: 'marketing',
         element: <MarketingDashboardPage />,
       },
       {
-        path: "social",
+        path: 'social',
         element: <SocialDashboardPage />,
       },
       {
-        path: "bidding",
+        path: 'bidding',
         element: <BiddingDashboardPage />,
       },
       {
-        path: "learning",
+        path: 'learning',
         element: <LearningDashboardPage />,
       },
       {
-        path: "logistics",
+        path: 'logistics',
         element: <LogisticsDashboardPage />,
       },
     ],
   },
   {
-    path: "/sitemap",
+    path: '/sitemap',
     element: <PageWrapper children={<DashboardLayout />} />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        path: "",
+        path: '',
         element: <SitemapPage />,
       },
     ],
   },
   {
-    path: "/corporate",
+    path: '/corporate',
     element: <PageWrapper children={<CorporateLayout />} />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        path: "about",
+        path: 'about',
         element: <CorporateAboutPage />,
       },
       {
-        path: "team",
+        path: 'team',
         element: <CorporateTeamPage />,
       },
       {
-        path: "faqs",
+        path: 'faqs',
         element: <CorporateFaqPage />,
       },
       {
-        path: "contact",
+        path: 'contact',
         element: <CorporateContactPage />,
       },
       {
-        path: "pricing",
+        path: 'pricing',
         element: <CorporatePricingPage />,
       },
       {
-        path: "license",
+        path: 'license',
         element: <CorporateLicensePage />,
       },
     ],
   },
   {
-    path: "/user-profile",
+    path: '/user-profile',
     element: <PageWrapper children={<UserAccountLayout />} />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        path: "details",
+        path: 'details',
         element: <UserProfileDetailsPage />,
       },
       {
-        path: "preferences",
+        path: 'preferences',
         element: <UserProfilePreferencesPage />,
       },
       {
-        path: "information",
+        path: 'information',
         element: <UserProfileInformationPage />,
       },
       {
-        path: "security",
+        path: 'security',
         element: <UserProfileSecurityPage />,
       },
       {
-        path: "activity",
+        path: 'activity',
         element: <UserProfileActivityPage />,
       },
       {
-        path: "actions",
+        path: 'actions',
         element: <UserProfileActionsPage />,
       },
       {
-        path: "help",
+        path: 'help',
         element: <UserProfileHelpPage />,
       },
       {
-        path: "feedback",
+        path: 'feedback',
         element: <UserProfileFeedbackPage />,
       },
     ],
   },
   {
-    path: "/auth",
+    path: '/auth',
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "signup",
+        path: 'signup',
         element: <SignUpPage />,
       },
       {
-        path: "signin",
+        path: 'signin',
         element: <SignInPage />,
       },
       {
-        path: "welcome",
+        path: 'welcome',
         element: <WelcomePage />,
       },
       {
-        path: "verify-email",
+        path: 'verify-email',
         element: <VerifyEmailPage />,
       },
       {
-        path: "password-reset",
+        path: 'password-reset',
         element: <PasswordResetPage />,
       },
       {
-        path: "account-delete",
+        path: 'account-delete',
         element: <AccountDeactivePage />,
       },
     ],
   },
   {
-    path: "errors",
+    path: 'errors',
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "400",
+        path: '400',
         element: <Error400Page />,
       },
       {
-        path: "403",
+        path: '403',
         element: <Error403Page />,
       },
       {
-        path: "404",
+        path: '404',
         element: <Error404Page />,
       },
       {
-        path: "500",
+        path: '500',
         element: <Error500Page />,
       },
       {
-        path: "503",
+        path: '503',
         element: <Error503Page />,
       },
     ],

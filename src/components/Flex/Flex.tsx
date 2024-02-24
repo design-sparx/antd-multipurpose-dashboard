@@ -1,10 +1,10 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode } from 'react';
 
 type Props = {
-  gap?: "small" | "middle" | "large" | number;
-  justifyContent?: CSSProperties["justifyContent"];
-  alignItems?: CSSProperties["alignItems"];
-  flexDirection?: CSSProperties["flexDirection"];
+  gap?: 'small' | 'middle' | 'large' | number;
+  justifyContent?: CSSProperties['justifyContent'];
+  alignItems?: CSSProperties['alignItems'];
+  flexDirection?: CSSProperties['flexDirection'];
   children: ReactNode;
 } & CSSProperties;
 
@@ -19,19 +19,19 @@ const Flex = ({
   return (
     <div
       style={{
-        width: "100%",
-        display: "flex",
+        width: '100%',
+        display: 'flex',
         flexDirection,
         justifyContent,
         alignItems,
         gap:
-          typeof gap === "number"
+          typeof gap === 'number'
             ? gap
-            : gap === "large"
-              ? "24px"
-              : gap === "small"
-                ? "8px"
-                : "16px",
+            : gap === 'large'
+              ? '24px'
+              : gap === 'small'
+                ? '8px'
+                : '16px',
         ...others,
       }}
     >

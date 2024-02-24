@@ -1,12 +1,12 @@
 export type PostPlatform =
-  | "Facebook"
-  | "Twitter"
-  | "Instagram"
-  | "LinkedIn"
-  | "YouTube"
+  | 'Facebook'
+  | 'Twitter'
+  | 'Instagram'
+  | 'LinkedIn'
+  | 'YouTube'
   | string;
 
-export type PostCategory = "News" | "Events" | "Promotions" | string;
+export type PostCategory = 'News' | 'Events' | 'Promotions' | string;
 
 export type Posts = {
   id: string;

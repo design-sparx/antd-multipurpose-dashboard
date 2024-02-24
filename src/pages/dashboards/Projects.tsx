@@ -1,4 +1,4 @@
-import { Alert, Button, Col, Row, Segmented, Space } from "antd";
+import { Alert, Button, Col, Row, Segmented, Space } from 'antd';
 import {
   Card,
   ClientsTable,
@@ -7,100 +7,100 @@ import {
   ProjectsCard,
   ProjectsTable,
   RevenueCard,
-} from "../../components";
-import { Column } from "@ant-design/plots";
-import { Projects } from "../../types";
-import { useState } from "react";
+} from '../../components';
+import { Column } from '@ant-design/charts';
+import { Projects } from '../../types';
+import { useState } from 'react';
 import {
   CloudUploadOutlined,
   HomeOutlined,
   PieChartOutlined,
   PlusOutlined,
-} from "@ant-design/icons";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useFetchData } from "../../hooks";
+} from '@ant-design/icons';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useFetchData } from '../../hooks';
 
 const RevenueColumnChart = () => {
   const data = [
     {
-      name: "Income",
-      period: "Mon",
+      name: 'Income',
+      period: 'Mon',
       value: 18.9,
     },
     {
-      name: "Income",
-      period: "Tue",
+      name: 'Income',
+      period: 'Tue',
       value: 28.8,
     },
     {
-      name: "Income",
-      period: "Wed",
+      name: 'Income',
+      period: 'Wed',
       value: 39.3,
     },
     {
-      name: "Income",
-      period: "Thur",
+      name: 'Income',
+      period: 'Thur',
       value: 81.4,
     },
     {
-      name: "Income",
-      period: "Fri",
+      name: 'Income',
+      period: 'Fri',
       value: 47,
     },
     {
-      name: "Income",
-      period: "Sat",
+      name: 'Income',
+      period: 'Sat',
       value: 20.3,
     },
     {
-      name: "Income",
-      period: "Sun",
+      name: 'Income',
+      period: 'Sun',
       value: 24,
     },
     {
-      name: "Spent",
-      period: "Mon",
+      name: 'Spent',
+      period: 'Mon',
       value: 12.4,
     },
     {
-      name: "Spent",
-      period: "Tue",
+      name: 'Spent',
+      period: 'Tue',
       value: 23.2,
     },
     {
-      name: "Spent",
-      period: "Wed",
+      name: 'Spent',
+      period: 'Wed',
       value: 34.5,
     },
     {
-      name: "Spent",
-      period: "Thur",
+      name: 'Spent',
+      period: 'Thur',
       value: 99.7,
     },
     {
-      name: "Spent",
-      period: "Fri",
+      name: 'Spent',
+      period: 'Fri',
       value: 52.6,
     },
     {
-      name: "Spent",
-      period: "Sat",
+      name: 'Spent',
+      period: 'Sat',
       value: 35.5,
     },
     {
-      name: "Spent",
-      period: "Sun",
+      name: 'Spent',
+      period: 'Sun',
       value: 37.4,
     },
   ];
   const config = {
     data,
     isGroup: true,
-    xField: "period",
-    yField: "value",
-    seriesField: "name",
+    xField: 'period',
+    yField: 'value',
+    seriesField: 'name',
 
     /** set color */
     // color: ['#1ca9e6', '#f88c24'],
@@ -109,19 +109,19 @@ const RevenueColumnChart = () => {
     // marginRatio: 0.1,
     label: {
       // Label data label position can be manually configured
-      position: "middle",
+      position: 'middle',
       // 'top', 'middle', 'bottom'
       // Configurable additional layout method
       layout: [
         // Column chart data label position automatically adjusted
         {
-          type: "interval-adjust-position",
+          type: 'interval-adjust-position',
         }, // Data label anti-obstruction
         {
-          type: "interval-hide-overlap",
+          type: 'interval-hide-overlap',
         }, // Data label text color automatically adjusted
         {
-          type: "adjust-color",
+          type: 'adjust-color',
         },
       ],
     },
@@ -132,16 +132,16 @@ const RevenueColumnChart = () => {
 
 const PROJECT_TABS = [
   {
-    key: "all",
-    label: "All projects",
+    key: 'all',
+    label: 'All projects',
   },
   {
-    key: "inProgress",
-    label: "Active",
+    key: 'inProgress',
+    label: 'Active',
   },
   {
-    key: "onHold",
-    label: "On Hold",
+    key: 'onHold',
+    label: 'On Hold',
   },
 ];
 
@@ -150,26 +150,26 @@ const ProjectsDashboardPage = () => {
     data: projectsData,
     error: projectsDataError,
     loading: projectsDataLoading,
-  } = useFetchData("../mocks/Projects.json");
+  } = useFetchData('../mocks/Projects.json');
   const {
     data: clientsData,
     error: clientsDataError,
     loading: clientsDataLoading,
-  } = useFetchData("../mocks/Clients.json");
-  const [projectTabsKey, setProjectsTabKey] = useState<string>("all");
+  } = useFetchData('../mocks/Clients.json');
+  const [projectTabsKey, setProjectsTabKey] = useState<string>('all');
 
   const PROJECT_TABS_CONTENT: Record<string, React.ReactNode> = {
     all: <ProjectsTable key="all-projects-table" data={projectsData} />,
     inProgress: (
       <ProjectsTable
         key="in-progress-projects-table"
-        data={projectsData.filter((_: Projects) => _.status === "in progress")}
+        data={projectsData.filter((_: Projects) => _.status === 'in progress')}
       />
     ),
     onHold: (
       <ProjectsTable
         key="on-hold-projects-table"
-        data={projectsData.filter((_: Projects) => _.status === "on hold")}
+        data={projectsData.filter((_: Projects) => _.status === 'on hold')}
       />
     ),
   };
@@ -193,7 +193,7 @@ const ProjectsDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -210,7 +210,7 @@ const ProjectsDashboardPage = () => {
             },
           },
           {
-            title: "projects",
+            title: 'projects',
           },
         ]}
       />
@@ -254,7 +254,7 @@ const ProjectsDashboardPage = () => {
                       <ProjectsCard
                         project={o}
                         type="inner"
-                        style={{ height: "100%" }}
+                        style={{ height: '100%' }}
                       />
                     </Col>
                   );
@@ -268,7 +268,7 @@ const ProjectsDashboardPage = () => {
             title="Project stats"
             extra={
               <Segmented
-                options={["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"]}
+                options={['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']}
               />
             }
           >

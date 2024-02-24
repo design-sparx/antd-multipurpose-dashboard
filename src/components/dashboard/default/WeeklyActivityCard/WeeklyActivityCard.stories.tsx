@@ -1,43 +1,43 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import WeeklyActivityCard from "./WeeklyActivityCard.tsx";
+import WeeklyActivityCard from './WeeklyActivityCard.tsx';
 
 const ACTIVITY_DATA = [
   {
-    day: "Monday",
+    day: 'Monday',
     value: 10,
   },
   {
-    day: "Tuesday",
+    day: 'Tuesday',
     value: 22,
   },
   {
-    day: "Wednesday",
+    day: 'Wednesday',
     value: 25,
   },
   {
-    day: "Thursday",
+    day: 'Thursday',
     value: 26,
   },
   {
-    day: "Friday",
+    day: 'Friday',
     value: 15,
   },
   {
-    day: "Saturday",
+    day: 'Saturday',
     value: 12,
   },
   {
-    day: "Sunday",
+    day: 'Sunday',
     value: 3,
   },
 ];
 
 const meta = {
-  title: "Components/Dashboard/Default/Activity card",
+  title: 'Components/Dashboard/Default/Activity card',
   component: WeeklyActivityCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof WeeklyActivityCard>;
 

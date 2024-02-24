@@ -8,7 +8,7 @@ export type Bidding = {
   end_price: number;
   start_date: string;
   end_date: string;
-  status: "active" | "ending soon" | string;
+  status: 'active' | 'ending soon' | string;
   is_highest_bid_mine: boolean;
   winning_bid: number;
   time_left: string;

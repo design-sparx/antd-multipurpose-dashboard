@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import TasksListData from "../../../../../public/mocks/TasksList.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import TasksListData from '../../../../../public/mocks/TasksList.json';
 
-import TasksListCard from "./TasksListCard.tsx";
+import TasksListCard from './TasksListCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Default/Tasks/List",
+  title: 'Components/Dashboard/Default/Tasks/List',
   component: TasksListCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof TasksListCard>;
 
 export default meta;
@@ -32,7 +32,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error fetching items",
+    error: 'Error fetching items',
     style: { width: 800 },
   },
 };

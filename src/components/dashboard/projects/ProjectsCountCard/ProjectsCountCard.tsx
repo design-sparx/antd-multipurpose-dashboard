@@ -9,42 +9,42 @@ import {
   SpaceProps,
   Statistic,
   Tooltip,
-} from "antd";
-import ProjectsData from "../../../../../public/mocks/Projects.json";
-import "./styles.scss";
+} from 'antd';
+import ProjectsData from '../../../../../public/mocks/Projects.json';
+import './styles.scss';
 
 const PROGRESS_PROPS: ProgressProps = {
-  type: "circle",
+  type: 'circle',
   showInfo: false,
   size: 24,
   style: {
-    paddingBottom: ".35rem",
+    paddingBottom: '.35rem',
   },
 };
 
 const SPACE_PROPS: SpaceProps = {
-  align: "end",
+  align: 'end',
 };
 
 type Props = CardProps;
 
 const ProjectsCountCard = ({ ...others }: Props) => {
-  const completed = ProjectsData.filter((_) => _.status === "completed"),
-    inProgress = ProjectsData.filter((_) => _.status === "in progress"),
-    onHold = ProjectsData.filter((_) => _.status === "on hold");
+  const completed = ProjectsData.filter((_) => _.status === 'completed'),
+    inProgress = ProjectsData.filter((_) => _.status === 'in progress'),
+    onHold = ProjectsData.filter((_) => _.status === 'on hold');
 
   return (
     <Card
       title="Project stats"
       bodyStyle={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        height: "80%",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '80%',
       }}
       className="card"
       style={{
-        height: "100%",
+        height: '100%',
       }}
       {...others}
     >

@@ -7,7 +7,7 @@ import {
   RowProps,
   Select,
   Typography,
-} from "antd";
+} from 'antd';
 import {
   AuctionCarousel,
   BiddingCategoriesCard,
@@ -16,16 +16,16 @@ import {
   PageHeader,
   TopItemsCard,
   TransactionsCard,
-} from "../../components";
+} from '../../components';
 import {
   HomeOutlined,
   PieChartOutlined,
   QuestionOutlined,
-} from "@ant-design/icons";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useFetchData } from "../../hooks";
+} from '@ant-design/icons';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useFetchData } from '../../hooks';
 
 const ROW_PROPS: RowProps = {
   gutter: [
@@ -39,22 +39,22 @@ const BiddingDashboardPage = () => {
     data: auctionData,
     loading: auctionDataLoading,
     error: auctionDataError,
-  } = useFetchData("../mocks/LiveAuction.json");
+  } = useFetchData('../mocks/LiveAuction.json');
   const {
     data: auctionCreatorsData,
     loading: auctionCreatorsDataLoading,
     error: auctionCreatorsDataError,
-  } = useFetchData("../mocks/AuctionCreators.json");
+  } = useFetchData('../mocks/AuctionCreators.json');
   const {
     data: topSellersData,
     loading: topSellersDataLoading,
     error: topSellersDataError,
-  } = useFetchData("../mocks/BiddingTopSellers.json");
+  } = useFetchData('../mocks/BiddingTopSellers.json');
   const {
     data: transactionsData,
     loading: transactionsDataLoading,
     error: transactionsDataError,
-  } = useFetchData("../mocks/BiddingTransactions.json");
+  } = useFetchData('../mocks/BiddingTransactions.json');
 
   return (
     <div>
@@ -71,7 +71,7 @@ const BiddingDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -88,7 +88,7 @@ const BiddingDashboardPage = () => {
             },
           },
           {
-            title: "bidding",
+            title: 'bidding',
           },
         ]}
       />
@@ -100,10 +100,10 @@ const BiddingDashboardPage = () => {
               defaultValue="Popular"
               style={{ width: 120 }}
               options={[
-                { value: "Popular", label: "Popular" },
-                { value: "Trending", label: "Trending" },
-                { value: "Following", label: "Following" },
-                { value: "Price", label: "Price" },
+                { value: 'Popular', label: 'Popular' },
+                { value: 'Trending', label: 'Trending' },
+                { value: 'Following', label: 'Following' },
+                { value: 'Price', label: 'Price' },
               ]}
             />
           </Flex>
@@ -160,14 +160,14 @@ const BiddingDashboardPage = () => {
           />
         </Col>
         <Col xs={24} xl={12}>
-          <BiddingCategoriesCard style={{ height: "100%" }} />
+          <BiddingCategoriesCard style={{ height: '100%' }} />
         </Col>
         <Col xs={24} xl={12}>
           <TopItemsCard
             data={topSellersData}
             loading={topSellersDataLoading}
             error={topSellersDataError}
-            style={{ height: "100%" }}
+            style={{ height: '100%' }}
           />
         </Col>
         <Col xs={24} xl={12}>
@@ -175,7 +175,7 @@ const BiddingDashboardPage = () => {
             data={transactionsData}
             loading={transactionsDataLoading}
             error={transactionsDataError}
-            style={{ height: "100%" }}
+            style={{ height: '100%' }}
           />
         </Col>
       </Row>

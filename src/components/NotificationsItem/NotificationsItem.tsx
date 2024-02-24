@@ -1,14 +1,14 @@
-import { Notifications } from "../../types";
-import { Avatar, Flex, FlexProps, Tag, Typography } from "antd";
+import { Notifications } from '../../types';
+import { Avatar, Flex, FlexProps, Tag, Typography } from 'antd';
 import {
   ContainerOutlined,
   MailOutlined,
   PhoneOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 type Props = {
   data: Notifications;
-} & Omit<FlexProps, "children">;
+} & Omit<FlexProps, 'children'>;
 
 const NotificationsItem = ({ data, ...others }: Props) => {
   const {
@@ -31,15 +31,15 @@ const NotificationsItem = ({ data, ...others }: Props) => {
           <Tag
             bordered={true}
             icon={
-              notification_type === "voice" ? (
+              notification_type === 'voice' ? (
                 <PhoneOutlined />
-              ) : notification_type === "email" ? (
+              ) : notification_type === 'email' ? (
                 <MailOutlined />
               ) : (
                 <ContainerOutlined />
               )
             }
-            style={{ textTransform: "capitalize" }}
+            style={{ textTransform: 'capitalize' }}
           >
             {notification_type}
           </Tag>

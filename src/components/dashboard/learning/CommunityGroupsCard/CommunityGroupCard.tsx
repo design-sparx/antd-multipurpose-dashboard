@@ -1,10 +1,10 @@
-import { Alert, Avatar, Button, CardProps, List, Typography } from "antd";
-import { CommunityGroup } from "../../../../types";
-import { PlusOutlined } from "@ant-design/icons";
-import { Card } from "../../../index.ts";
-import { ReactNode } from "react";
+import { Alert, Avatar, Button, CardProps, List, Typography } from 'antd';
+import { CommunityGroup } from '../../../../types';
+import { PlusOutlined } from '@ant-design/icons';
+import { Card } from '../../../index.ts';
+import { ReactNode } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
 type Props = {
   data?: CommunityGroup[];
@@ -37,7 +37,7 @@ const ExamsCard = ({ data, loading, error, ...others }: Props) => {
               console.log(page);
             },
             pageSize: 5,
-            align: "center",
+            align: 'center',
           }}
           dataSource={data}
           renderItem={(item) => (

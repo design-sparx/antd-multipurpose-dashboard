@@ -1,8 +1,8 @@
-import { Alert, CardProps } from "antd";
-import { Heatmap } from "@ant-design/plots";
-import { ReactNode, useEffect, useState } from "react";
-import * as _ from "lodash";
-import { Card, Loader } from "../../../index.ts";
+import { Alert, CardProps } from 'antd';
+import { Heatmap } from '@ant-design/charts';
+import { ReactNode, useEffect, useState } from 'react';
+import * as _ from 'lodash';
+import { Card, Loader } from '../../../index.ts';
 
 type StudyStatistics = {
   id: string;
@@ -45,13 +45,13 @@ const ColumnChart = ({ data }: ColumnChartProps) => {
     // height: 400,
     autoFit: true,
     data: refinedData,
-    xField: "month",
-    yField: "category",
-    colorField: "value",
+    xField: 'month',
+    yField: 'category',
+    colorField: 'value',
     // color: ['#174c83', '#7eb6d4', '#efefeb', '#efa759', '#9b4d16'],
     meta: {
-      "Month of Year": {
-        type: "cat",
+      'Month of Year': {
+        type: 'cat',
       },
     },
   };

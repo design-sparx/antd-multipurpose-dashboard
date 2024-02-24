@@ -7,12 +7,12 @@ import {
   List,
   Row,
   Typography,
-} from "antd";
-import { Card, EmployeeCard } from "../../components";
-import { Employee } from "../../types";
-import { useStylesContext } from "../../context";
-import CountUp from "react-countup";
-import { useFetchData } from "../../hooks";
+} from 'antd';
+import { Card, EmployeeCard } from '../../components';
+import { Employee } from '../../types';
+import { useStylesContext } from '../../context';
+import CountUp from 'react-countup';
+import { useFetchData } from '../../hooks';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -22,7 +22,7 @@ const CorporateAboutPage = () => {
     data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData("../mocks/Employees.json");
+  } = useFetchData('../mocks/Employees.json');
 
   return (
     <div>
@@ -85,7 +85,7 @@ const CorporateAboutPage = () => {
                     console.log(page);
                   },
                   pageSize: 4,
-                  align: "center",
+                  align: 'center',
                 }}
                 dataSource={employeesData}
                 loading={employeesDataLoading}

@@ -1,12 +1,12 @@
-import { PricingTable } from "../../components";
-import { useFetchData } from "../../hooks";
+import { PricingTable } from '../../components';
+import { useFetchData } from '../../hooks';
 
 const CorporatePricingPage = () => {
   const {
     data: pricingData,
     error: pricingDataError,
     loading: pricingDataLoading,
-  } = useFetchData("../mocks/Pricing.json");
+  } = useFetchData('../mocks/Pricing.json');
 
   return (
     <div>

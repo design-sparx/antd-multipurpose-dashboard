@@ -8,12 +8,12 @@ import {
   Row,
   theme,
   Typography,
-} from "antd";
-import { Logo } from "../../components";
-import { useMediaQuery } from "react-responsive";
-import { PATH_DASHBOARD } from "../../constants";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+} from 'antd';
+import { Logo } from '../../components';
+import { useMediaQuery } from 'react-responsive';
+import { PATH_DASHBOARD } from '../../constants';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const { Title, Text } = Typography;
 
@@ -30,12 +30,12 @@ const PasswordResetPage = () => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    console.log('Success:', values);
     setLoading(true);
 
     message.open({
-      type: "success",
-      content: "Password reset link sent successfully",
+      type: 'success',
+      content: 'Password reset link sent successfully',
     });
 
     setTimeout(() => {
@@ -44,18 +44,18 @@ const PasswordResetPage = () => {
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
-    <Row style={{ minHeight: isMobile ? "auto" : "100vh", overflow: "hidden" }}>
+    <Row style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: 'hidden' }}>
       <Col xs={24} lg={12}>
         <Flex
           vertical
           align="center"
           justify="center"
           className="text-center"
-          style={{ background: colorPrimary, height: "100%", padding: "1rem" }}
+          style={{ background: colorPrimary, height: '100%', padding: '1rem' }}
         >
           <Logo color="white" />
           <Title level={2} className="text-white">
@@ -70,10 +70,10 @@ const PasswordResetPage = () => {
       <Col xs={24} lg={12}>
         <Flex
           vertical
-          align={isMobile ? "center" : "flex-start"}
+          align={isMobile ? 'center' : 'flex-start'}
           justify="center"
           gap="middle"
-          style={{ height: "100%", width: "100%", padding: "2rem" }}
+          style={{ height: '100%', width: '100%', padding: '2rem' }}
         >
           <Title className="m-0">Forgot password</Title>
           <Text>Enter your email to rest your password.</Text>
@@ -87,12 +87,12 @@ const PasswordResetPage = () => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
             requiredMark={false}
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           >
             <Form.Item<FieldType>
               label="Email"
               name="email"
-              rules={[{ required: true, message: "Please input your email" }]}
+              rules={[{ required: true, message: 'Please input your email' }]}
             >
               <Input />
             </Form.Item>

@@ -1,7 +1,7 @@
-import { CardProps, Col, Flex, Row, Tag, Typography } from "antd";
-import { TinyColumn } from "@ant-design/charts";
-import { Card } from "../../../index.ts";
-import CountUp from "react-countup";
+import { CardProps, Col, Flex, Row, Tag, Typography } from 'antd';
+import { TinyColumn } from '@ant-design/charts';
+import { Card } from '../../../index.ts';
+import CountUp from 'react-countup';
 
 type ChartData = [number, number, number, number];
 
@@ -11,7 +11,7 @@ type StatsColumnChartProps = {
 };
 
 const ColumnChart = ({ data, color }: StatsColumnChartProps) => {
-  const brandColor = color || "#5B8FF9";
+  const brandColor = color || '#5B8FF9';
   const config = {
     height: 64,
     autoFit: true,
@@ -51,7 +51,7 @@ const StatsCard = ({
         <Row>
           <Col span={14}>
             <Typography.Title level={2}>
-              {typeof value === "number" ? (
+              {typeof value === 'number' ? (
                 <>
                   {asCurrency && <span>$</span>}
                   <CountUp end={value} />
@@ -66,7 +66,7 @@ const StatsCard = ({
           </Col>
         </Row>
         <Flex align="center">
-          <Tag color={diff < 0 ? "red" : "green"}>{diff}%</Tag>
+          <Tag color={diff < 0 ? 'red' : 'green'}>{diff}%</Tag>
           <Typography.Text>compared to last month.</Typography.Text>
         </Flex>
       </Flex>

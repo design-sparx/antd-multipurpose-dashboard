@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import PostsData from "../../../../../public/mocks/ScheduledPosts.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import PostsData from '../../../../../public/mocks/ScheduledPosts.json';
 
-import PostsCard from "./PostsCard.tsx";
+import PostsCard from './PostsCard.tsx';
 
 const meta = {
-  title: "Components/Posts list",
+  title: 'Components/Posts list',
   component: PostsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof PostsCard>;
 
 export default meta;
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Active: Story = {
   args: {
-    as: "active",
+    as: 'active',
     data: PostsData.slice(0, 10),
     style: { width: 600 },
   },
@@ -26,7 +26,7 @@ export const Active: Story = {
 
 export const Scheduled: Story = {
   args: {
-    as: "scheduled",
+    as: 'scheduled',
     data: PostsData.slice(0, 10),
     style: { width: 600 },
   },

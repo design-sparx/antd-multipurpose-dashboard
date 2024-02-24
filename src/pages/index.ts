@@ -5,8 +5,8 @@ import {
   MarketingDashboardPage,
   ProjectsDashboardPage,
   SocialDashboardPage,
-} from "./dashboards";
-import HomePage from "./Home.tsx";
+} from './dashboards';
+import HomePage from './Home.tsx';
 import {
   CorporateAboutPage,
   CorporateContactPage,
@@ -14,8 +14,8 @@ import {
   CorporateLicensePage,
   CorporatePricingPage,
   CorporateTeamPage,
-} from "./corporate";
-import SitemapPage from "./Sitemap.tsx";
+} from './corporate';
+import SitemapPage from './Sitemap.tsx';
 import {
   UserProfileDetailsPage,
   UserProfilePreferencesPage,
@@ -25,7 +25,7 @@ import {
   UserProfileActionsPage,
   UserProfileHelpPage,
   UserProfileFeedbackPage,
-} from "./userAccount";
+} from './userAccount';
 import {
   SignUpPage,
   SignInPage,
@@ -33,7 +33,7 @@ import {
   VerifyEmailPage,
   PasswordResetPage,
   AccountDeactivePage,
-} from "./authentication";
+} from './authentication';
 import {
   Error404Page,
   Error500Page,
@@ -41,7 +41,7 @@ import {
   Error400Page,
   Error503Page,
   ErrorPage,
-} from "./errors";
+} from './errors';
 
 export {
   DefaultDashboardPage,

@@ -9,9 +9,9 @@ import {
   message,
   theme,
   Tooltip,
-} from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
-import { ReactNode, useEffect, useRef, useState } from "react";
+} from 'antd';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   AppstoreOutlined,
   LogoutOutlined,
@@ -21,18 +21,18 @@ import {
   QuestionOutlined,
   SettingOutlined,
   UserOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 import {
   CSSTransition,
   SwitchTransition,
   TransitionGroup,
-} from "react-transition-group";
-import { useMediaQuery } from "react-responsive";
-import SideNav from "./SideNav.tsx";
-import HeaderNav from "./HeaderNav.tsx";
-import FooterNav from "./FooterNav.tsx";
-import { Nprogress } from "../../components";
-import { PATH_LANDING } from "../../constants";
+} from 'react-transition-group';
+import { useMediaQuery } from 'react-responsive';
+import SideNav from './SideNav.tsx';
+import HeaderNav from './HeaderNav.tsx';
+import FooterNav from './FooterNav.tsx';
+import { Nprogress } from '../../components';
+import { PATH_LANDING } from '../../constants';
 
 const { Content } = Layout;
 
@@ -53,34 +53,34 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   const nodeRef = useRef(null);
   const floatBtnRef = useRef(null);
 
-  const items: MenuProps["items"] = [
+  const items: MenuProps['items'] = [
     {
-      key: "user-profile-link",
-      label: "profile",
+      key: 'user-profile-link',
+      label: 'profile',
       icon: <UserOutlined />,
     },
     {
-      key: "user-settings-link",
-      label: "settings",
+      key: 'user-settings-link',
+      label: 'settings',
       icon: <SettingOutlined />,
     },
     {
-      key: "user-help-link",
-      label: "help center",
+      key: 'user-help-link',
+      label: 'help center',
       icon: <QuestionOutlined />,
     },
     {
-      type: "divider",
+      type: 'divider',
     },
     {
-      key: "user-logout-link",
-      label: "logout",
+      key: 'user-logout-link',
+      label: 'logout',
       icon: <LogoutOutlined />,
       danger: true,
       onClick: () => {
         message.open({
-          type: "loading",
-          content: "signing you out",
+          type: 'loading',
+          content: 'signing you out',
         });
 
         setTimeout(() => {
@@ -95,7 +95,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   }, [isMobile]);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 5) {
         setNavFill(true);
       } else {
@@ -109,11 +109,11 @@ const AppLayout = ({ children }: AppLayoutProps) => {
       <Nprogress isAnimating={isLoading} key={location.key} />
       <Layout
         style={{
-          minHeight: "100vh",
-          backgroundColor: "rgba(52, 152, 219, 0.1)",
+          minHeight: '100vh',
+          backgroundColor: 'rgba(52, 152, 219, 0.1)',
           backgroundImage:
-            "radial-gradient(at 47% 33%, hsl(197.95, 0%, 100%) 0, transparent 59%),\n" +
-            "radial-gradient(at 82% 65%, hsl(204.07, 70%, 75%) 0, transparent 55%)",
+            'radial-gradient(at 47% 33%, hsl(197.95, 0%, 100%) 0, transparent 59%),\n' +
+            'radial-gradient(at 82% 65%, hsl(204.07, 70%, 75%) 0, transparent 55%)',
         }}
       >
         <SideNav
@@ -122,39 +122,39 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
           style={{
-            overflow: "auto",
-            position: "fixed",
+            overflow: 'auto',
+            position: 'fixed',
             left: 0,
             top: 0,
             bottom: 0,
-            background: "none",
-            border: "none",
-            transition: "all .2s",
+            background: 'none',
+            border: 'none',
+            transition: 'all .2s',
           }}
         />
         <Layout
           style={{
-            background: "none",
+            background: 'none',
           }}
         >
           <HeaderNav
             style={{
-              marginLeft: collapsed ? 0 : "200px",
-              padding: "0 2rem 0 0",
-              background: navFill ? "#eaf5fc" : "none",
-              backdropFilter: navFill ? "blur(8px)" : "none",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              position: "sticky",
+              marginLeft: collapsed ? 0 : '200px',
+              padding: '0 2rem 0 0',
+              background: navFill ? '#eaf5fc' : 'none',
+              backdropFilter: navFill ? 'blur(8px)' : 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              position: 'sticky',
               top: 0,
               zIndex: 1,
               gap: 8,
-              transition: "all .25s",
+              transition: 'all .25s',
             }}
           >
             <Flex align="center">
-              <Tooltip title={`${collapsed ? "Expand" : "Collapse"} Sidebar`}>
+              <Tooltip title={`${collapsed ? 'Expand' : 'Collapse'} Sidebar`}>
                 <Button
                   type="text"
                   icon={
@@ -162,7 +162,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
                   }
                   onClick={() => setCollapsed(!collapsed)}
                   style={{
-                    fontSize: "16px",
+                    fontSize: '16px',
                     width: 64,
                     height: 64,
                   }}
@@ -171,8 +171,8 @@ const AppLayout = ({ children }: AppLayoutProps) => {
               <Input.Search
                 placeholder="search"
                 style={{
-                  width: isMobile ? "100%" : "400px",
-                  marginLeft: isMobile ? 0 : ".5rem",
+                  width: isMobile ? '100%' : '400px',
+                  marginLeft: isMobile ? 0 : '.5rem',
                 }}
                 size="middle"
               />
@@ -184,14 +184,14 @@ const AppLayout = ({ children }: AppLayoutProps) => {
               <Tooltip title="Messages">
                 <Button icon={<MessageOutlined />} type="text" size="large" />
               </Tooltip>
-              <Dropdown menu={{ items }} trigger={["click"]}>
+              <Dropdown menu={{ items }} trigger={['click']}>
                 <Flex>
                   <img
                     src="/me.jpg"
                     alt="user profile photo"
                     height={36}
                     width={36}
-                    style={{ borderRadius, objectFit: "cover" }}
+                    style={{ borderRadius, objectFit: 'cover' }}
                   />
                 </Flex>
               </Dropdown>
@@ -199,11 +199,11 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           </HeaderNav>
           <Content
             style={{
-              margin: `0 0 0 ${collapsed ? 0 : "200px"}`,
-              background: "rgba(52, 152, 219, 0.35)",
+              margin: `0 0 0 ${collapsed ? 0 : '200px'}`,
+              background: 'rgba(52, 152, 219, 0.35)',
               borderRadius: collapsed ? 0 : borderRadius,
-              transition: "all .25s",
-              padding: "24px 32px",
+              transition: 'all .25s',
+              padding: '24px 32px',
               minHeight: 360,
             }}
           >
@@ -223,7 +223,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
                   unmountOnExit
                 >
                   {() => (
-                    <div ref={nodeRef} style={{ background: "none" }}>
+                    <div ref={nodeRef} style={{ background: 'none' }}>
                       {children}
                     </div>
                   )}
@@ -236,9 +236,9 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           </Content>
           <FooterNav
             style={{
-              textAlign: "center",
-              marginLeft: collapsed ? 0 : "200px",
-              background: "none",
+              textAlign: 'center',
+              marginLeft: collapsed ? 0 : '200px',
+              background: 'none',
             }}
           />
         </Layout>

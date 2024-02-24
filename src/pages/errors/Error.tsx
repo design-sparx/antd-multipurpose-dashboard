@@ -1,6 +1,6 @@
-import { useRouteError } from "react-router-dom";
-import { Result, Typography } from "antd";
-import { BackBtn, RefreshBtn } from "../../components";
+import { useRouteError } from 'react-router-dom';
+import { Result, Typography } from 'antd';
+import { BackBtn, RefreshBtn } from '../../components';
 
 const { Paragraph, Text } = Typography;
 

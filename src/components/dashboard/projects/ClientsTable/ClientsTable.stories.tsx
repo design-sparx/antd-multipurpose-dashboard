@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import ClientsData from "../../../../../public/mocks/Clients.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import ClientsData from '../../../../../public/mocks/Clients.json';
 
-import ClientsTable from "./ClientsTable.tsx";
+import ClientsTable from './ClientsTable.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Projects/Clients",
+  title: 'Components/Dashboard/Projects/Clients',
   component: ClientsTable,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof ClientsTable>;
 

@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { Button, ButtonProps, Tooltip } from "antd";
-import { LeftOutlined } from "@ant-design/icons";
+import { useNavigate } from 'react-router-dom';
+import { Button, ButtonProps, Tooltip } from 'antd';
+import { LeftOutlined } from '@ant-design/icons';
 
 type Props = {
   wIcon?: boolean;
@@ -17,7 +17,7 @@ const BackBtn = ({ wIcon, iconOnly, ...others }: Props) => {
         onClick={() => navigate(-1)}
         {...others}
       >
-        {!iconOnly && "Go back"}
+        {!iconOnly && 'Go back'}
       </Button>
     </Tooltip>
   );

@@ -1,7 +1,7 @@
-import { Button, Flex, Typography } from "antd";
-import { Logo } from "../../components";
-import { Link } from "react-router-dom";
-import { PATH_DASHBOARD } from "../../constants";
+import { Button, Flex, Typography } from 'antd';
+import { Logo } from '../../components';
+import { Link } from 'react-router-dom';
+import { PATH_DASHBOARD } from '../../constants';
 
 const WelcomePage = () => {
   return (
@@ -10,7 +10,7 @@ const WelcomePage = () => {
       gap="large"
       align="center"
       justify="center"
-      style={{ height: "80vh" }}
+      style={{ height: '80vh' }}
     >
       <Logo color="black" />
       <Typography.Title className="m-0">Welcome to Antd</Typography.Title>

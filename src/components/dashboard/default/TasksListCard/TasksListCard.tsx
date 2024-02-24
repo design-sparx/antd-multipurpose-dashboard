@@ -9,12 +9,12 @@ import {
   Space,
   Tag,
   Typography,
-} from "antd";
-import { Tasks } from "../../../../types";
-import { CalendarOutlined, FlagOutlined } from "@ant-design/icons";
-import { Card, Loader, UserAvatar } from "../../../index";
+} from 'antd';
+import { Tasks } from '../../../../types';
+import { CalendarOutlined, FlagOutlined } from '@ant-design/icons';
+import { Card, Loader, UserAvatar } from '../../../index';
 
-import "./styles.css";
+import './styles.css';
 
 type Props = {
   data?: Tasks[];
@@ -55,16 +55,16 @@ const TasksListCard = ({ data, error, loading, ...others }: Props) => {
               console.log(page);
             },
             pageSize: 6,
-            align: "center",
+            align: 'center',
           }}
           dataSource={data}
           renderItem={(item) => (
-            <List.Item key={item.name} style={{ height: "100%" }}>
+            <List.Item key={item.name} style={{ height: '100%' }}>
               <AntdCard
                 hoverable
                 bordered
                 type="inner"
-                style={{ height: "100%" }}
+                style={{ height: '100%' }}
               >
                 <Flex vertical gap="middle">
                   <Flex justify="space-between" align="center">
@@ -77,18 +77,18 @@ const TasksListCard = ({ data, error, loading, ...others }: Props) => {
                     <Tag
                       icon={<FlagOutlined />}
                       color={item.color}
-                      style={{ textTransform: "capitalize" }}
+                      style={{ textTransform: 'capitalize' }}
                     >
                       {item.priority}
                     </Tag>
                     <Badge
                       className="text-capitalize"
                       status={
-                        item.status.toLowerCase() === "completed"
-                          ? "success"
-                          : item.status.toLowerCase() === "in progress"
-                            ? "processing"
-                            : "warning"
+                        item.status.toLowerCase() === 'completed'
+                          ? 'success'
+                          : item.status.toLowerCase() === 'in progress'
+                            ? 'processing'
+                            : 'warning'
                       }
                       text={item.status}
                     />

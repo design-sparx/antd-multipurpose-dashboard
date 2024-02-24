@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import DeliveryAnalytics from "../../../../../public/mocks/DeliveryAnalytics.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import DeliveryAnalytics from '../../../../../public/mocks/DeliveryAnalytics.json';
 
-import DeliveryAnalyticsCard from "./DeliveryAnalyticsCard.tsx";
+import DeliveryAnalyticsCard from './DeliveryAnalyticsCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Logistics/Delivery/Analytics",
+  title: 'Components/Dashboard/Logistics/Delivery/Analytics',
   component: DeliveryAnalyticsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof DeliveryAnalyticsCard>;
 
 export default meta;
@@ -33,7 +33,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error loading items",
+    error: 'Error loading items',
     data: [],
     style: { width: 600 },
   },

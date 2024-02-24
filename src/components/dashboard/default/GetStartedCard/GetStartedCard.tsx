@@ -1,7 +1,7 @@
-import { Button, CardProps, Flex, Image, Typography } from "antd";
-import { RightOutlined } from "@ant-design/icons";
-import { Card } from "../../../index";
-import CountUp from "react-countup";
+import { Button, CardProps, Flex, Image, Typography } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { Card } from '../../../index';
+import CountUp from 'react-countup';
 
 type Props = CardProps;
 
@@ -25,7 +25,7 @@ const GetStartedCard = ({ ...others }: Props) => {
           src="/get-started.png"
           height={180}
           preview={false}
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: 'cover' }}
         />
       </Flex>
     </Card>

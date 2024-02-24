@@ -11,68 +11,68 @@ import {
   TagProps,
   theme,
   Typography,
-} from "antd";
-import { ReactNode, useEffect, useState } from "react";
-import CampaignsData from "../../../../../public/mocks/Campaigns.json";
-import { CalendarOutlined, PlusOutlined } from "@ant-design/icons";
-import { Loader } from "../../../index.ts";
-import { blue, green, orange } from "@ant-design/colors";
+} from 'antd';
+import { ReactNode, useEffect, useState } from 'react';
+import { CalendarOutlined, PlusOutlined } from '@ant-design/icons';
+import { blue, green, orange } from '@ant-design/colors';
+import CampaignsData from '../../../../../public/mocks/Campaigns.json';
+import { Loader } from '../../../index.ts';
 
 // socials - Facebook, Instagram, Twitter, LinkedIn
 // target audience - men, women, young adults, parents
 // statuses - active, inactive, pending, completed, cancelled
 
 enum Status {
-  Pending = "pending",
-  Inactive = "inactive",
-  Active = "active",
-  Cancelled = "cancelled",
-  Completed = "completed",
+  Pending = 'pending',
+  Inactive = 'inactive',
+  Active = 'active',
+  Cancelled = 'cancelled',
+  Completed = 'completed',
 }
 
 const DATA_SOURCE = CampaignsData;
 
 const COLUMNS = [
   {
-    title: "Name",
-    dataIndex: "campaign_name",
-    key: "name",
+    title: 'Name',
+    dataIndex: 'campaign_name',
+    key: 'name',
     render: (_: any) => <span className="text-capitalize">{_}</span>,
   },
   {
-    title: "Audience",
-    dataIndex: "target_audience",
-    key: "audience",
+    title: 'Audience',
+    dataIndex: 'target_audience',
+    key: 'audience',
     render: (_: any) => <span className="text-capitalize">{_}</span>,
   },
   {
-    title: "Objective",
-    dataIndex: "campaign_objective",
-    key: "objective",
+    title: 'Objective',
+    dataIndex: 'campaign_objective',
+    key: 'objective',
     render: (_: any) => <span className="text-capitalize">{_}</span>,
   },
   {
-    title: "Platform",
-    dataIndex: "platform",
-    key: "platform",
+    title: 'Platform',
+    dataIndex: 'platform',
+    key: 'platform',
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
     render: (_: any) => {
-      let color: TagProps["color"];
+      let color: TagProps['color'];
 
-      if (_ === "pending") {
-        color = "orange";
-      } else if (_ === "active") {
-        color = "blue";
-      } else if (_ === "completed") {
-        color = "green";
-      } else if (_ === "cancelled") {
-        color = "red";
+      if (_ === 'pending') {
+        color = 'orange';
+      } else if (_ === 'active') {
+        color = 'blue';
+      } else if (_ === 'completed') {
+        color = 'green';
+      } else if (_ === 'cancelled') {
+        color = 'red';
       } else {
-        color = "default";
+        color = 'default';
       }
 
       return (
@@ -83,9 +83,9 @@ const COLUMNS = [
     },
   },
   {
-    title: "Start - End Date",
-    dataIndex: "start_date",
-    key: "status",
+    title: 'Start - End Date',
+    dataIndex: 'start_date',
+    key: 'status',
     render: (_: any, { start_date, end_date }: any) => (
       <Space>
         <CalendarOutlined />
@@ -102,12 +102,12 @@ const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
-  const [activeTabKey, setActiveTabKey] = useState<string>("allCampaigns");
+  const [activeTabKey, setActiveTabKey] = useState<string>('allCampaigns');
   const [campaignsData, setCampaignsData] = useState<any>([]);
 
   const TAB_LIST = [
     {
-      key: "allCampaigns",
+      key: 'allCampaigns',
       label: (
         <Space>
           <Typography.Text>All Campaigns</Typography.Text>
@@ -120,7 +120,7 @@ const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
       ),
     },
     {
-      key: "pending",
+      key: 'pending',
       label: (
         <Space>
           <Typography.Text>Pending</Typography.Text>
@@ -139,7 +139,7 @@ const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
       ),
     },
     {
-      key: "active",
+      key: 'active',
       label: (
         <Space>
           <Typography.Text>Active</Typography.Text>
@@ -158,7 +158,7 @@ const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
       ),
     },
     {
-      key: "completed",
+      key: 'completed',
       label: (
         <Space>
           <Typography.Text>Completed</Typography.Text>
@@ -184,7 +184,7 @@ const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
 
   useEffect(() => {
     const dd = data.length > 0 ? data : DATA_SOURCE;
-    if (activeTabKey !== "allCampaigns") {
+    if (activeTabKey !== 'allCampaigns') {
       setCampaignsData(dd.filter((_: any) => _.status === activeTabKey));
     } else {
       setCampaignsData(dd);
@@ -193,7 +193,7 @@ const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
 
   return (
     <Card
-      style={{ width: "100%" }}
+      style={{ width: '100%' }}
       tabList={TAB_LIST}
       activeTabKey={activeTabKey}
       tabBarExtraContent={

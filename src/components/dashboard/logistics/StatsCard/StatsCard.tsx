@@ -1,9 +1,9 @@
-import React from "react";
-import { CardProps, Flex, Typography } from "antd";
-import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
-import { green, red } from "@ant-design/colors";
-import { Card } from "../../../index.ts";
-import CountUp from "react-countup";
+import React from 'react';
+import { CardProps, Flex, Typography } from 'antd';
+import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
+import { green, red } from '@ant-design/colors';
+import { Card } from '../../../index.ts';
+import CountUp from 'react-countup';
 
 type Props = {
   title: string;
@@ -15,9 +15,9 @@ type Props = {
 const StatsCard = ({ icon, title, value, diff, ...others }: Props) => {
   return (
     <Card {...others}>
-      <Flex vertical gap="middle" style={{ width: "100%" }}>
+      <Flex vertical gap="middle" style={{ width: '100%' }}>
         {React.createElement(icon, { style: { fontSize: 30 } })}
-        <Typography.Text style={{ textTransform: "capitalize" }}>
+        <Typography.Text style={{ textTransform: 'capitalize' }}>
           {title}
         </Typography.Text>
         <Flex gap="small" align="center" justify="space-between">

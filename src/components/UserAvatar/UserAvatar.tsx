@@ -1,8 +1,8 @@
-import { Avatar, AvatarProps, Flex, FlexProps, theme, Typography } from "antd";
-import { colourNameToHex, getNameInitials, isColorLight } from "../../utils";
-import { CheckCircleFilled, UserOutlined } from "@ant-design/icons";
-import { blue } from "@ant-design/colors";
-import { CSSProperties } from "react";
+import { Avatar, AvatarProps, Flex, FlexProps, theme, Typography } from 'antd';
+import { colourNameToHex, getNameInitials, isColorLight } from '../../utils';
+import { CheckCircleFilled, UserOutlined } from '@ant-design/icons';
+import { blue } from '@ant-design/colors';
+import { CSSProperties } from 'react';
 
 /**
  * mark - not a full name user, just a single user name
@@ -10,11 +10,11 @@ import { CSSProperties } from "react";
 type Props = {
   fullName: string;
   mark?: boolean;
-  size?: "small" | "middle" | "large";
+  size?: 'small' | 'middle' | 'large';
   verified?: boolean;
-  color?: CSSProperties["color"];
-  textWidth?: CSSProperties["width"];
-} & Omit<FlexProps, "children">;
+  color?: CSSProperties['color'];
+  textWidth?: CSSProperties['width'];
+} & Omit<FlexProps, 'children'>;
 
 const UserAvatar = ({
   fullName,
@@ -30,7 +30,7 @@ const UserAvatar = ({
   } = theme.useToken();
 
   const avatarProps: AvatarProps = {
-    size: size === "large" ? 36 : size === "small" ? 18 : 24,
+    size: size === 'large' ? 36 : size === 'small' ? 18 : 24,
   };
 
   return (
@@ -40,8 +40,8 @@ const UserAvatar = ({
           style={{
             backgroundColor: color || colorPrimary,
             color: isColorLight(colourNameToHex(color || colorPrimary))
-              ? "black"
-              : "white",
+              ? 'black'
+              : 'white',
           }}
           icon={<UserOutlined />}
           {...avatarProps}
@@ -51,8 +51,8 @@ const UserAvatar = ({
           style={{
             backgroundColor: color || colorPrimary,
             color: isColorLight(colourNameToHex(color || colorPrimary))
-              ? "black"
-              : "white",
+              ? 'black'
+              : 'white',
           }}
           {...avatarProps}
         >
@@ -61,7 +61,7 @@ const UserAvatar = ({
       )}
       <Typography.Text
         style={{
-          fontSize: size === "large" ? 18 : size === "small" ? 14 : 16,
+          fontSize: size === 'large' ? 18 : size === 'small' ? 14 : 16,
           width: textWidth || 160,
         }}
       >

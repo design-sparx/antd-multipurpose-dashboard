@@ -1,53 +1,53 @@
-import { Card, CardProps, Flex, Typography } from "antd";
-import { Column } from "@ant-design/plots";
-import { MoreMenu } from "../../../index.ts";
+import { Card, CardProps, Flex, Typography } from 'antd';
+import { Column } from '@ant-design/charts';
+import { MoreMenu } from '../../../index.ts';
 
 type Props = CardProps;
 
 const ColumnChart = () => {
   const data = [
     {
-      type: "1 July",
+      type: '1 July',
       subscribers: 38,
     },
     {
-      type: "8 July",
+      type: '8 July',
       subscribers: 52,
     },
     {
-      type: "15 July",
+      type: '15 July',
       subscribers: 61,
     },
     {
-      type: "22 July",
+      type: '22 July',
       subscribers: 145,
     },
     {
-      type: "29 July",
+      type: '29 July',
       subscribers: 48,
     },
     {
-      type: "5 Aug",
+      type: '5 Aug',
       subscribers: 38,
     },
     {
-      type: "12 Aug",
+      type: '12 Aug',
       subscribers: 38,
     },
     {
-      type: "19 Aug",
+      type: '19 Aug',
       subscribers: 38,
     },
   ];
   const config = {
     data,
-    xField: "type",
-    yField: "subscribers",
+    xField: 'type',
+    yField: 'subscribers',
     label: {
-      position: "middle",
+      position: 'middle',
 
       style: {
-        fill: "#FFFFFF",
+        fill: '#FFFFFF',
         opacity: 0.6,
       },
     },
@@ -59,10 +59,10 @@ const ColumnChart = () => {
     },
     meta: {
       type: {
-        alias: "Subscribers",
+        alias: 'Subscribers',
       },
       subscribers: {
-        alias: "count",
+        alias: 'count',
       },
     },
   };

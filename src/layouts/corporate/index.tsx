@@ -1,26 +1,26 @@
-import { AppLayout } from "../index.ts";
-import { Button, Col, Row, Typography } from "antd";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { AppLayout } from '../index.ts';
+import { Button, Col, Row, Typography } from 'antd';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
   BlogsListCard,
   Card,
   PageHeader,
   SocialMediaCard,
-} from "../../components";
-import { HomeOutlined, IdcardOutlined } from "@ant-design/icons";
-import { CORPORATE_ITEMS } from "../../constants";
-import { useStylesContext } from "../../context";
+} from '../../components';
+import { HomeOutlined, IdcardOutlined } from '@ant-design/icons';
+import { CORPORATE_ITEMS } from '../../constants';
+import { useStylesContext } from '../../context';
 
 const { Text, Title } = Typography;
 
 const BLOGS_DATA = Array.from({ length: 23 }).map((_, i) => ({
-  href: "https://ant.design",
+  href: 'https://ant.design',
   title: `Lorem ipsum ${i}`,
   avatar: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${i}`,
   description:
-    "Ant Design, a design language for background applications, is refined by Ant UED Team.",
+    'Ant Design, a design language for background applications, is refined by Ant UED Team.',
   content:
-    "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+    'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
 }));
 
 const CorporateLayout = () => {
@@ -41,7 +41,7 @@ const CorporateLayout = () => {
                   <span>home</span>
                 </>
               ),
-              path: "/",
+              path: '/',
             },
             {
               title: (
@@ -58,7 +58,7 @@ const CorporateLayout = () => {
               },
             },
             {
-              title: pathname.split("/")[pathname.split("/").length - 1] || "",
+              title: pathname.split('/')[pathname.split('/').length - 1] || '',
             },
           ]}
         />

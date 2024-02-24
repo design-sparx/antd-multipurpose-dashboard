@@ -1,21 +1,21 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import StatsCard from "./StatsCard.tsx";
+import StatsCard from './StatsCard.tsx';
 
 const STATS = {
   data: [274, 337, 81, 497],
-  title: "impressions",
+  title: 'impressions',
   diff: 12.5,
   value: 16826,
 };
 
 const meta = {
-  title: "Components/Dashboard/Marketing/Stats",
+  title: 'Components/Dashboard/Marketing/Stats',
   component: StatsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof StatsCard>;
 
 export default meta;
@@ -33,7 +33,7 @@ export const Default: Story = {
 export const AsCurrency: Story = {
   args: {
     ...STATS,
-    title: "Revenue",
+    title: 'Revenue',
     data: [274, 337, 81, 497],
     asCurrency: true,
     diff: -2.5,

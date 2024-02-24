@@ -1,6 +1,6 @@
-import { Spin, theme } from "antd";
+import { Spin, theme } from 'antd';
 
-import "./styles.css";
+import './styles.css';
 
 const Loader = () => {
   const {

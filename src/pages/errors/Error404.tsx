@@ -1,5 +1,5 @@
-import { Result } from "antd";
-import { BackBtn } from "../../components";
+import { Result } from 'antd';
+import { BackBtn } from '../../components';
 
 const Error404Page = () => {
   return (

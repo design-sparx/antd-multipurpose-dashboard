@@ -1,5 +1,5 @@
-import { Button, ButtonProps } from "antd";
-import { SyncOutlined } from "@ant-design/icons";
+import { Button, ButtonProps } from 'antd';
+import { SyncOutlined } from '@ant-design/icons';
 
 type Props = {
   icon?: boolean;

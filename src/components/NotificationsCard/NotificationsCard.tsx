@@ -1,8 +1,8 @@
-import { Alert, Button, CardProps, List } from "antd";
-import { Card, Loader, NotificationsItem } from "../index.ts";
-import { Notifications } from "../../types";
+import { Alert, Button, CardProps, List } from 'antd';
+import { Card, Loader, NotificationsItem } from '../index.ts';
+import { Notifications } from '../../types';
 
-import "./styles.css";
+import './styles.css';
 
 type Props = {
   data?: Notifications[];
@@ -36,7 +36,7 @@ const NotificationsCard = ({ data, loading, error, ...others }: Props) => {
               console.log(page);
             },
             pageSize: 5,
-            align: "center",
+            align: 'center',
           }}
           dataSource={data}
           renderItem={(item) => (

@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import TransactionsData from "../../../../../public/mocks/BiddingTransactions.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import TransactionsData from '../../../../../public/mocks/BiddingTransactions.json';
 
-import TransactionsCard from "./TransactionsCard.tsx";
+import TransactionsCard from './TransactionsCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Bidding/Transactions table",
+  title: 'Components/Dashboard/Bidding/Transactions table',
   component: TransactionsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof TransactionsCard>;
 
 export default meta;
@@ -32,7 +32,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error loading items",
+    error: 'Error loading items',
     style: { width: 800 },
   },
 };

@@ -1,10 +1,10 @@
-import { Button, Calendar, CalendarProps, CardProps, Popover } from "antd";
-import type { Dayjs } from "dayjs";
-import { QuestionOutlined } from "@ant-design/icons";
-import { Card } from "../../../index.ts";
+import { Button, Calendar, CalendarProps, CardProps, Popover } from 'antd';
+import type { Dayjs } from 'dayjs';
+import { QuestionOutlined } from '@ant-design/icons';
+import { Card } from '../../../index.ts';
 
-const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>["mode"]) => {
-  console.log(value.format("YYYY-MM-DD"), mode);
+const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
+  console.log(value.format('YYYY-MM-DD'), mode);
 };
 
 type Props = CardProps;
