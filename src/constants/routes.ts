@@ -200,6 +200,8 @@ export const PATH_START = {
 export const PATH_DOCS = {
   help: 'https://github.com/design-sparx/antd-multipurpose-dashboard/blob/main/README.md',
   components: 'https://6546507b657a74164abf2db6-oniqlpqtfs.chromatic.com/',
+  productRoadmap:
+    'https://kelvink96.notion.site/Antd-multipurpose-dashboard-Product-roadmap-92163e05b8ea444a8f87b7f834933069?pvs=74',
 };
 
 export const PATH_CHANGELOG = {

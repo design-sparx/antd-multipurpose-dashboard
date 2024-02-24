@@ -7,6 +7,7 @@ import {
   GithubOutlined,
   IdcardOutlined,
   PieChartOutlined,
+  ProductOutlined,
   SecurityScanOutlined,
   SnippetsOutlined,
   UserOutlined,
@@ -198,7 +199,13 @@ const items: MenuProps['items'] = [
   ]),
 
   getItem('Help', 'help', null, [], 'group'),
-
+  getItem(
+    <Link to={PATH_DOCS.productRoadmap} target="_blank">
+      Roadmap
+    </Link>,
+    'product-roadmap',
+    <ProductOutlined />
+  ),
   getItem(
     <Link to={PATH_DOCS.components} target="_blank">
       Components

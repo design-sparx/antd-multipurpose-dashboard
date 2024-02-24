@@ -20,6 +20,7 @@ import {
   LoginOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  ProductOutlined,
 } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
 import { Logo, Nprogress } from '../../components';
@@ -92,6 +93,11 @@ const GuestLayout = () => {
           {!isMobile ? (
             <>
               <Flex gap="small">
+                <Link to={PATH_DOCS.productRoadmap} target="_blank">
+                  <Button icon={<ProductOutlined />} type="link">
+                    Product Roadmap
+                  </Button>
+                </Link>
                 <Link to={PATH_DOCS.components} target="_blank">
                   <Button icon={<AppstoreAddOutlined />} type="link">
                     Components
@@ -175,6 +181,11 @@ const GuestLayout = () => {
       <Drawer title="Menu" placement="left" onClose={onClose} open={open}>
         <>
           <Flex gap="small" vertical>
+            <Link to={PATH_DOCS.productRoadmap} target="_blank">
+              <Button icon={<ProductOutlined />} type="link">
+                Roadmap
+              </Button>
+            </Link>
             <Link to={PATH_DASHBOARD.default}>
               <Button icon={<LoginOutlined />} type="text">
                 Live Preview
