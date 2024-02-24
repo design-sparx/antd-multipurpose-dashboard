@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import NotificationsData from "../../../public/mocks/Notifications.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import NotificationsData from '../../../public/mocks/Notifications.json';
 
-import NotificationsCard from "./NotificationsCard.tsx";
+import NotificationsCard from './NotificationsCard.tsx';
 
 const meta = {
-  title: "Components/Notifications/List",
+  title: 'Components/Notifications/List',
   component: NotificationsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof NotificationsCard>;
 
@@ -31,7 +31,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error fetching items",
+    error: 'Error fetching items',
     style: { width: 500 },
   },
 };

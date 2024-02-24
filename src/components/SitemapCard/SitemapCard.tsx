@@ -1,8 +1,8 @@
-import { CardProps, Flex, Typography } from "antd";
-import { Card } from "../index.ts";
+import { CardProps, Flex, Typography } from 'antd';
+import { Card } from '../index.ts';
 
-import "./styles.css";
-import { Link } from "react-router-dom";
+import './styles.css';
+import { Link } from 'react-router-dom';
 
 type Props = {
   data: {

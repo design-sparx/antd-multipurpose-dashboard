@@ -4,22 +4,22 @@ name: Test
 on:
   push:
     branches:
-      - "**" # make it run on any branch
-      - "!main" # but exclude the 'main' and 'master' branches
-      - "!master"
+      - '**' # make it run on any branch
+      - '!main' # but exclude the 'main' and 'master' branches
+      - '!master'
   pull_request:
     branches:
-      - "**"
-      - "!main"
-      - "!master"
+      - '**'
+      - '!main'
+      - '!master'
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
-          - "16.x"
-          - "18.x" # whichever node versions you support
+          - '16.x'
+          - '18.x' # whichever node versions you support
     steps:
       - uses: actions/checkout@v3
 

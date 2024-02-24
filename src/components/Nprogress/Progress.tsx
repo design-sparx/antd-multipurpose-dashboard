@@ -1,5 +1,5 @@
-import { useNProgress } from "@tanem/react-nprogress";
-import { Bar, Container, Nspinner } from "./index.ts";
+import { useNProgress } from '@tanem/react-nprogress';
+import { Bar, Container, Nspinner } from './index.ts';
 
 type Props = {
   isAnimating?: boolean;

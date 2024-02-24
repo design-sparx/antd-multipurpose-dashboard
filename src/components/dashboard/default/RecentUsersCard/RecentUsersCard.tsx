@@ -1,13 +1,13 @@
-import { Alert, Card, CardProps, Table, Typography } from "antd";
-import { MoreMenu } from "../../../index.ts";
-import { useFetchData } from "../../../../hooks";
-import { ReactNode } from "react";
+import { Alert, Card, CardProps, Table, Typography } from 'antd';
+import { MoreMenu } from '../../../index.ts';
+import { useFetchData } from '../../../../hooks';
+import { ReactNode } from 'react';
 
 const COLUMNS = [
   {
-    title: "Names",
-    dataIndex: "first_name",
-    key: "name",
+    title: 'Names',
+    dataIndex: 'first_name',
+    key: 'name',
     render: (_: any, { first_name, last_name }: any) => (
       <Typography.Text>
         {first_name} {last_name}
@@ -15,19 +15,19 @@ const COLUMNS = [
     ),
   },
   {
-    title: "Gender",
-    dataIndex: "gender",
-    key: "gender",
+    title: 'Gender',
+    dataIndex: 'gender',
+    key: 'gender',
   },
   {
-    title: "Country",
-    dataIndex: "country",
-    key: "country",
+    title: 'Country',
+    dataIndex: 'country',
+    key: 'country',
   },
   {
-    title: "Birth date",
-    dataIndex: "birthdate",
-    key: "birthdate",
+    title: 'Birth date',
+    dataIndex: 'birthdate',
+    key: 'birthdate',
   },
 ];
 
@@ -38,7 +38,7 @@ const RecentUsersCard = ({ data, loading, error, ...others }: Props) => {
     data: usersData,
     loading: usersDataLoading,
     error: usersDataError,
-  } = useFetchData("/mocks/ChannelUsers.json");
+  } = useFetchData('/mocks/ChannelUsers.json');
 
   return (
     <Card title={`Recent Users`} extra={<MoreMenu />} {...others}>

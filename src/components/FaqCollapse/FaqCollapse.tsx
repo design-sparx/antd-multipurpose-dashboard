@@ -1,4 +1,4 @@
-import { Collapse, CollapseProps } from "antd";
+import { Collapse, CollapseProps } from 'antd';
 
 type Props = CollapseProps;
 

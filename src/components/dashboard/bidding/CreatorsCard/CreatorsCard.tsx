@@ -1,15 +1,15 @@
-import { ReactNode } from "react";
-import { Alert, Button, CardProps, Table, TableColumnsType } from "antd";
-import { AuctionCreator } from "../../../../types";
-import { Card, UserAvatar } from "../../../index";
-import { UserAddOutlined } from "@ant-design/icons";
-import "./styles.css";
+import { ReactNode } from 'react';
+import { Alert, Button, CardProps, Table, TableColumnsType } from 'antd';
+import { AuctionCreator } from '../../../../types';
+import { Card, UserAvatar } from '../../../index';
+import { UserAddOutlined } from '@ant-design/icons';
+import './styles.css';
 
 const COLUMNS: TableColumnsType<AuctionCreator> = [
   {
-    key: "creators_name",
-    dataIndex: "first_name",
-    title: "Creator",
+    key: 'creators_name',
+    dataIndex: 'first_name',
+    title: 'Creator',
     render: (_, { first_name, last_name, favorite_color }) => (
       <UserAvatar
         fullName={`${first_name} ${last_name}`}
@@ -20,14 +20,14 @@ const COLUMNS: TableColumnsType<AuctionCreator> = [
     ),
   },
   {
-    key: "sold_items",
-    dataIndex: "sales_count",
-    title: "Items",
+    key: 'sold_items',
+    dataIndex: 'sales_count',
+    title: 'Items',
   },
   {
-    key: "creator_actions",
-    dataIndex: "actions",
-    title: "Actions",
+    key: 'creator_actions',
+    dataIndex: 'actions',
+    title: 'Actions',
     render: () => (
       <Button type="link" icon={<UserAddOutlined />}>
         Follow

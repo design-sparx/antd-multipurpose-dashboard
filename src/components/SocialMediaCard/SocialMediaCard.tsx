@@ -1,17 +1,17 @@
-import { Button, ButtonProps, CardProps, Flex } from "antd";
-import { Card } from "../index.ts";
+import { Button, ButtonProps, CardProps, Flex } from 'antd';
+import { Card } from '../index.ts';
 import {
   FacebookFilled,
   GithubFilled,
   InstagramFilled,
   LinkedinFilled,
   TwitterCircleFilled,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const BUTTON_PROPS: ButtonProps = {
-  type: "link",
+  type: 'link',
   style: {
-    textAlign: "start",
+    textAlign: 'start',
   },
 };
 

@@ -34,7 +34,7 @@
 - [Live preview](https://antd-multipurpose-dashboard.netlify.app/)
 - [Components preview](https://6546507b657a74164abf2db6-iqmnggdrcl.chromatic.com/)
 - [Medium](https://medium.com/@kelvink96/designing-modern-dashboards-a-journey-through-react-vite-ant-design-and-storybook-2dac23e1e49a)
-- [Product roadmap](https://kelvink96.notion.site/Antd-multipurpose-dashboard-Product-roadmap-92163e05b8ea444a8f87b7f834933069) * **New** *
+- [Product roadmap](https://kelvink96.notion.site/Antd-multipurpose-dashboard-Product-roadmap-92163e05b8ea444a8f87b7f834933069) _ **New** _
 
 ## Introduction
 
@@ -189,4 +189,5 @@ the source files are included in the package.
 ┣ 📃 renovate.json              # Renovate Bot config **
 ┣ 📃 tsconfig.json              # TypeScript config
 ```
+
 </details>

@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import SocialStatsCard from "./SocialStatsCard.tsx";
+import SocialStatsCard from './SocialStatsCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Marketing/Social stats",
+  title: 'Components/Dashboard/Marketing/Social stats',
   component: SocialStatsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof SocialStatsCard>;
 

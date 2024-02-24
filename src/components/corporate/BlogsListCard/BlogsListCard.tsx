@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import { Alert, Button, CardProps, List, Space, Typography } from "antd";
-import { Card } from "../../index.ts";
-import { LikeOutlined, MessageOutlined, StarOutlined } from "@ant-design/icons";
+import React, { ReactNode } from 'react';
+import { Alert, Button, CardProps, List, Space, Typography } from 'antd';
+import { Card } from '../../index.ts';
+import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 
-import "./styles.css";
+import './styles.css';
 
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
   <Space>
@@ -38,7 +38,7 @@ const BlogsListCard = ({ data, loading, error, ...others }: Props) => {
               console.log(page);
             },
             pageSize: 3,
-            align: "center",
+            align: 'center',
           }}
           dataSource={data}
           loading={loading}

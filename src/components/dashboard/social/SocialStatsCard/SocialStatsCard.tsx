@@ -1,17 +1,17 @@
-import { Alert, CardProps, Flex, Typography } from "antd";
+import { Alert, CardProps, Flex, Typography } from 'antd';
 import {
   CommentOutlined,
   LikeOutlined,
   UserAddOutlined,
   UserOutlined,
   UserSwitchOutlined,
-} from "@ant-design/icons";
-import { ReactElement, ReactNode } from "react";
-import { Card, Loader } from "../../../index";
-import CountUp from "react-countup";
+} from '@ant-design/icons';
+import { ReactElement, ReactNode } from 'react';
+import { Card, Loader } from '../../../index';
+import CountUp from 'react-countup';
 
 type Props = {
-  title: "followers" | "following" | "likes" | "comments" | string;
+  title: 'followers' | 'following' | 'likes' | 'comments' | string;
   value?: number;
   error?: ReactNode;
   loading?: boolean;
@@ -27,16 +27,16 @@ const SocialStatsCard = ({
   const Icon = (): ReactElement => {
     let i;
     switch (title) {
-      case "following":
+      case 'following':
         i = <UserAddOutlined style={{ fontSize: 30 }} />;
         break;
-      case "followers":
+      case 'followers':
         i = <UserSwitchOutlined style={{ fontSize: 30 }} />;
         break;
-      case "likes":
+      case 'likes':
         i = <LikeOutlined style={{ fontSize: 30 }} />;
         break;
-      case "comments":
+      case 'comments':
         i = <CommentOutlined style={{ fontSize: 30 }} />;
         break;
       default:

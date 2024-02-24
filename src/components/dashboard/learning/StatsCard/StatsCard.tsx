@@ -1,7 +1,7 @@
-import React from "react";
-import { CardProps, Flex, Progress, Typography } from "antd";
-import { Card } from "../../../index.ts";
-import CountUp from "react-countup";
+import React from 'react';
+import { CardProps, Flex, Progress, Typography } from 'antd';
+import { Card } from '../../../index.ts';
+import CountUp from 'react-countup';
 
 type Props = {
   title: string;

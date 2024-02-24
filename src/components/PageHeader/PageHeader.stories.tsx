@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { HomeOutlined, PieChartOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { withRouter } from "storybook-addon-react-router-v6";
-import { DASHBOARD_ITEMS } from "../../constants";
+import type { Meta, StoryObj } from '@storybook/react';
+import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'storybook-addon-react-router-v6';
+import { DASHBOARD_ITEMS } from '../../constants';
 
-import PageHeader from "./PageHeader.tsx";
+import PageHeader from './PageHeader.tsx';
 
 const meta = {
-  title: "Components/Page header",
+  title: 'Components/Page header',
   component: PageHeader,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   decorators: [withRouter],
 } satisfies Meta<typeof PageHeader>;
 
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Simple: Story = {
   args: {
-    title: "Dashboard",
+    title: 'Dashboard',
     breadcrumbs: [
       {
         title: (
@@ -31,10 +31,10 @@ export const Simple: Story = {
             <span>home</span>
           </>
         ),
-        path: "/",
+        path: '/',
       },
       {
-        title: "default dashboard",
+        title: 'default dashboard',
       },
     ],
     style: { width: 800 },
@@ -43,7 +43,7 @@ export const Simple: Story = {
 
 export const Complex: Story = {
   args: {
-    title: "Dashboard",
+    title: 'Dashboard',
     breadcrumbs: [
       {
         title: (
@@ -52,7 +52,7 @@ export const Complex: Story = {
             <span>home</span>
           </>
         ),
-        path: "/",
+        path: '/',
       },
       {
         title: (
@@ -69,7 +69,7 @@ export const Complex: Story = {
         },
       },
       {
-        title: "default",
+        title: 'default',
       },
     ],
     style: { width: 800 },

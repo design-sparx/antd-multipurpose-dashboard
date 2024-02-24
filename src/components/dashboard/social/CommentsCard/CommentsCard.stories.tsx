@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import SocialsCommentsData from "../../../../../public/mocks/SocialComments.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import SocialsCommentsData from '../../../../../public/mocks/SocialComments.json';
 
-import CommentsCard from "./CommentsCard.tsx";
+import CommentsCard from './CommentsCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Social/Comments",
+  title: 'Components/Dashboard/Social/Comments',
   component: CommentsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof CommentsCard>;
 
 export default meta;
@@ -32,7 +32,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error fetching items",
+    error: 'Error fetching items',
     style: { width: 600 },
   },
 };

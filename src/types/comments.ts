@@ -1,14 +1,14 @@
-export type CommentsType = "post" | "like" | "comment" | string;
+export type CommentsType = 'post' | 'like' | 'comment' | string;
 
 export type CommentsPlatform =
-  | "facebook"
-  | "twitter"
-  | "instagram"
-  | "linkedin"
-  | "youtube"
+  | 'facebook'
+  | 'twitter'
+  | 'instagram'
+  | 'linkedin'
+  | 'youtube'
   | string;
 
-export type CommentGender = "Female" | "Male" | "Non-binary" | string;
+export type CommentGender = 'Female' | 'Male' | 'Non-binary' | string;
 
 export type Comments = {
   id: string;

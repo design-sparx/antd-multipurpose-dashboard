@@ -1,33 +1,33 @@
-import { Alert, Card, CardProps, Table } from "antd";
-import { MoreMenu } from "../../../index.ts";
-import { ReactNode } from "react";
-import { useFetchData } from "../../../../hooks";
+import { Alert, Card, CardProps, Table } from 'antd';
+import { MoreMenu } from '../../../index.ts';
+import { ReactNode } from 'react';
+import { useFetchData } from '../../../../hooks';
 
 const COLUMNS = [
   {
-    title: "Customer name",
-    dataIndex: "customer_name",
-    key: "customer_name",
+    title: 'Customer name',
+    dataIndex: 'customer_name',
+    key: 'customer_name',
   },
   {
-    title: "Product",
-    dataIndex: "product_name",
-    key: "product_name",
+    title: 'Product',
+    dataIndex: 'product_name',
+    key: 'product_name',
   },
   {
-    title: "Orders",
-    dataIndex: "orders",
-    key: "orders",
+    title: 'Orders',
+    dataIndex: 'orders',
+    key: 'orders',
   },
   {
-    title: "Country",
-    dataIndex: "country",
-    key: "country",
+    title: 'Country',
+    dataIndex: 'country',
+    key: 'country',
   },
   {
-    title: "Shipping address",
-    dataIndex: "shipping_address",
-    key: "shipping_address",
+    title: 'Shipping address',
+    dataIndex: 'shipping_address',
+    key: 'shipping_address',
   },
 ];
 
@@ -42,7 +42,7 @@ const LatestOrdersCard = ({ data, loading, error, ...others }: Props) => {
     data: ordersData,
     loading: ordersDataLoading,
     error: ordersDataError,
-  } = useFetchData("/mocks/CountryOrders.json");
+  } = useFetchData('/mocks/CountryOrders.json');
 
   return (
     <Card title={`Latest Orders`} extra={<MoreMenu />} {...others}>

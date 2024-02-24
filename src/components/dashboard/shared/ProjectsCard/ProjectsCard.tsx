@@ -6,21 +6,21 @@ import {
   Flex,
   Tooltip,
   Typography,
-} from "antd";
+} from 'antd';
 import {
   CalendarOutlined,
   ClockCircleOutlined,
   UsergroupAddOutlined,
-} from "@ant-design/icons";
-import { Projects } from "../../../../types";
+} from '@ant-design/icons';
+import { Projects } from '../../../../types';
 
-import "./styles.css";
+import './styles.css';
 
 const { Text, Title } = Typography;
 
 type Props = {
   project: Projects;
-  size?: "small" | "default";
+  size?: 'small' | 'default';
 } & CardProps;
 
 const ProjectsCard = (props: Props) => {
@@ -41,51 +41,51 @@ const ProjectsCard = (props: Props) => {
     ...others
   } = props;
 
-  const items: DescriptionsProps["items"] = [
+  const items: DescriptionsProps['items'] = [
     {
-      key: "project_name",
-      label: "Title",
+      key: 'project_name',
+      label: 'Title',
       children: (
         <span className="text-capitalize">{project_name.slice(0, 36)}...</span>
       ),
       span: 24,
     },
     {
-      key: "project_manager",
-      label: "Manager",
+      key: 'project_manager',
+      label: 'Manager',
       children: project_manager,
       span: 24,
     },
     {
-      key: "project_client",
-      label: "Client",
+      key: 'project_client',
+      label: 'Client',
       children: client_name,
       span: 24,
     },
     {
-      key: "project_type",
-      label: "Type",
+      key: 'project_type',
+      label: 'Type',
       children: <span className="text-capitalize">{project_type}</span>,
       span: 24,
     },
     {
-      key: "project_location",
-      label: "Location",
+      key: 'project_location',
+      label: 'Location',
       children: project_location,
       span: 24,
     },
     {
-      key: "project_priority",
-      label: "Priority",
+      key: 'project_priority',
+      label: 'Priority',
       children: <span className="text-capitalize">{priority}</span>,
     },
     {
-      key: "project_status",
-      label: "Status",
+      key: 'project_status',
+      label: 'Status',
       children: <span className="text-capitalize">{status}</span>,
     },
     {
-      key: "team_size",
+      key: 'team_size',
       label: <UsergroupAddOutlined />,
       children: (
         <Tooltip title="Team size">
@@ -94,7 +94,7 @@ const ProjectsCard = (props: Props) => {
       ),
     },
     {
-      key: "period",
+      key: 'period',
       label: <ClockCircleOutlined />,
       children: (
         <Tooltip title="Project duration (months)">
@@ -103,7 +103,7 @@ const ProjectsCard = (props: Props) => {
       ),
     },
     {
-      key: "end_date",
+      key: 'end_date',
       label: <CalendarOutlined />,
       children: (
         <Tooltip title="Project end date">
@@ -113,7 +113,7 @@ const ProjectsCard = (props: Props) => {
     },
   ];
 
-  return size === "small" ? (
+  return size === 'small' ? (
     <AntdCard
       bordered
       hoverable={true}

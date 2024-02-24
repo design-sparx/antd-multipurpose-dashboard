@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import CommunityGroupsData from "../../../../../public/mocks/CommunityGroups.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import CommunityGroupsData from '../../../../../public/mocks/CommunityGroups.json';
 
-import CommunityGroupCard from "./CommunityGroupCard.tsx";
+import CommunityGroupCard from './CommunityGroupCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Learning/Communities card",
+  title: 'Components/Dashboard/Learning/Communities card',
   component: CommunityGroupCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof CommunityGroupCard>;
 
 export default meta;
@@ -33,7 +33,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error loading items",
+    error: 'Error loading items',
     data: [],
     style: { width: 600 },
   },

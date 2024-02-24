@@ -9,10 +9,10 @@ import {
   WeeklyActivityCard,
   TasksChartCard,
   TasksListCard,
-} from "./default";
-import { RevenueCard, PostsCard, ProjectsCard } from "./shared";
-import { CustomerReviewsCard } from "./ecommerce";
-import { ProjectsCountCard, ProjectsTable, ClientsTable } from "./projects";
+} from './default';
+import { RevenueCard, PostsCard, ProjectsCard } from './shared';
+import { CustomerReviewsCard } from './ecommerce';
+import { ProjectsCountCard, ProjectsTable, ClientsTable } from './projects';
 import {
   StatsCard as MarketingStatsCard,
   VisitorsChartCard,
@@ -20,7 +20,7 @@ import {
   CampaignsActivity,
   CampaignsAdsCard,
   AudienceLocationChart,
-} from "./marketing";
+} from './marketing';
 import {
   SocialStatsCard,
   FollowersChart,
@@ -28,14 +28,14 @@ import {
   DevicesCardChart,
   MilestonesCard,
   CommentsCard,
-} from "./social";
+} from './social';
 import {
   AuctionCarousel,
   CreatorsCard,
   TopItemsCard,
   TransactionsCard,
   CategoriesCard as BiddingCategoriesCard,
-} from "./bidding";
+} from './bidding';
 import {
   StatsCard as LearningStatsCard,
   CoursesCard,
@@ -44,7 +44,7 @@ import {
   ProgressCard,
   ExamsCard,
   CommunityGroupCard,
-} from "./learning";
+} from './learning';
 import {
   StatsCard as LogisticsStatsCard,
   DeliveryTableCard,
@@ -52,7 +52,7 @@ import {
   DailyPlanCard,
   TruckListCard,
   DeliveryRequestCard,
-} from "./logistics";
+} from './logistics';
 
 export {
   CampaignsCard,

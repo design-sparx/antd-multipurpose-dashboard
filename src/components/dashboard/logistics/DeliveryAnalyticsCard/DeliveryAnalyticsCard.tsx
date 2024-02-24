@@ -1,9 +1,9 @@
-import { Alert, CardProps } from "antd";
-import { Column } from "@ant-design/charts";
-import { DeliveryAnalytics } from "../../../../types";
-import { ReactNode, useEffect, useState } from "react";
-import * as _ from "lodash";
-import { Card, Loader } from "../../../index.ts";
+import { Alert, CardProps } from 'antd';
+import { Column } from '@ant-design/charts';
+import { DeliveryAnalytics } from '../../../../types';
+import { ReactNode, useEffect, useState } from 'react';
+import * as _ from 'lodash';
+import { Card, Loader } from '../../../index.ts';
 
 type ChartProps = {
   data: DeliveryAnalytics[];
@@ -38,28 +38,28 @@ const MultiLineChart = ({ data }: ChartProps) => {
   const config = {
     data: refinedData,
     isStack: true,
-    xField: "month",
-    yField: "value",
-    seriesField: "status",
+    xField: 'month',
+    yField: 'value',
+    seriesField: 'status',
     radius: 0.2,
     label: {
       // 可手动配置 label 数据标签位置
-      position: "top", // 'top', 'bottom', 'middle',
+      position: 'top', // 'top', 'bottom', 'middle',
       offset: 10,
       style: {
-        fill: "transparent",
+        fill: 'transparent',
       },
     },
     interactions: [
       {
-        type: "active-region",
+        type: 'active-region',
         enable: false,
       },
     ],
     connectedArea: {
       style: (oldStyle: any) => {
         return {
-          fill: "rgba(0,0,0,0.25)",
+          fill: 'rgba(0,0,0,0.25)',
           stroke: oldStyle.fill,
           lineWidth: 0.5,
         };
@@ -70,7 +70,7 @@ const MultiLineChart = ({ data }: ChartProps) => {
       end: 0.5,
     },
     barStyle: {
-      lineCap: "round",
+      lineCap: 'round',
     },
   };
 

@@ -9,26 +9,26 @@ import {
   Input,
   Row,
   Typography,
-} from "antd";
-import { useStylesContext } from "../../context";
-import { Card, Flex, Loader } from "../../components";
-import { Session } from "../../types";
+} from 'antd';
+import { useStylesContext } from '../../context';
+import { Card, Flex, Loader } from '../../components';
+import { Session } from '../../types';
 import {
   LaptopOutlined,
   MobileOutlined,
   SaveOutlined,
   TabletOutlined,
-} from "@ant-design/icons";
-import { useFetchData } from "../../hooks";
+} from '@ant-design/icons';
+import { useFetchData } from '../../hooks';
 
 const { Text } = Typography;
 
 const onFinish = (values: any) => {
-  console.log("Success:", values);
+  console.log('Success:', values);
 };
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
+  console.log('Failed:', errorInfo);
 };
 
 type FieldType = {
@@ -43,7 +43,7 @@ const UserProfileSecurityPage = () => {
     data: sessionActivityData,
     loading: sessionActivityDataLoading,
     error: sessionActivityDataError,
-  } = useFetchData("../mocks/SessionActivity.json");
+  } = useFetchData('../mocks/SessionActivity.json');
 
   return (
     <Row {...stylesContext?.rowProps}>
@@ -54,7 +54,7 @@ const UserProfileSecurityPage = () => {
               title="Additional security"
               extra={<Button type="default">Learn more</Button>}
               actions={[<Button>Turn on</Button>]}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             >
               <Flex flexDirection="column">
                 <Text>Passwordless account</Text>
@@ -67,7 +67,7 @@ const UserProfileSecurityPage = () => {
               title="Additional security"
               extra={<Button type="default">Learn more</Button>}
               actions={[<Button>Turn off</Button>]}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             >
               <Flex flexDirection="column">
                 <Text>Two-step verification</Text>
@@ -79,7 +79,7 @@ const UserProfileSecurityPage = () => {
             <Card
               title="Sign me out"
               actions={[<Button>Sign me out</Button>]}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             >
               <Flex flexDirection="column">
                 <Text>
@@ -93,7 +93,7 @@ const UserProfileSecurityPage = () => {
             <Card
               title="Recovery code"
               actions={[<Button>Generate a new code</Button>]}
-              style={{ height: "100%" }}
+              style={{ height: '100%' }}
             >
               <Flex flexDirection="column">
                 <Text>
@@ -124,7 +124,7 @@ const UserProfileSecurityPage = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your current password!",
+                  message: 'Please input your current password!',
                 },
               ]}
             >
@@ -135,7 +135,7 @@ const UserProfileSecurityPage = () => {
               label="New password"
               name="newPassword"
               rules={[
-                { required: true, message: "Please input your new password!" },
+                { required: true, message: 'Please input your new password!' },
               ]}
             >
               <Input.Password />
@@ -147,7 +147,7 @@ const UserProfileSecurityPage = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please re-input your new password!!",
+                  message: 'Please re-input your new password!!',
                 },
               ]}
             >
@@ -193,47 +193,47 @@ const UserProfileSecurityPage = () => {
                     column={{ xs: 1, sm: 2, md: 2, lg: 3, xl: 3, xxl: 4 }}
                     items={[
                       {
-                        key: "session_device",
-                        label: "Device",
+                        key: 'session_device',
+                        label: 'Device',
                         children: s.device_type,
                       },
                       {
-                        key: "session_browser",
-                        label: "Browser",
+                        key: 'session_browser',
+                        label: 'Browser',
                         children: s.browser,
                       },
                       {
-                        key: "session_ip",
-                        label: "IP address",
+                        key: 'session_ip',
+                        label: 'IP address',
                         children: s.ip_address,
                       },
                       {
-                        key: "session_status",
-                        label: "Status",
+                        key: 'session_status',
+                        label: 'Status',
                         children: <Badge status="processing" text={s.status} />,
                       },
                       {
-                        key: "session_location",
-                        label: "Location",
+                        key: 'session_location',
+                        label: 'Location',
                         children: s.login_location,
                       },
                       {
-                        key: "session_duration",
-                        label: "Session duration (mins)",
+                        key: 'session_duration',
+                        label: 'Session duration (mins)',
                         children: s.login_duration,
                       },
                       {
-                        key: "session_login_attempts",
-                        label: "Login attempts",
+                        key: 'session_login_attempts',
+                        label: 'Login attempts',
                         children: s.login_attempts,
                       },
                     ]}
                   />
                 ),
                 extra:
-                  s.device_type === "desktop" ? (
+                  s.device_type === 'desktop' ? (
                     <LaptopOutlined />
-                  ) : s.device_type === "tablet" ? (
+                  ) : s.device_type === 'tablet' ? (
                     <TabletOutlined />
                   ) : (
                     <MobileOutlined />

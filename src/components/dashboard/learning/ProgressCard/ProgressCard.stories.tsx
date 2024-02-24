@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import ProgressCard from "./ProgressCard.tsx";
+import ProgressCard from './ProgressCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Learning/Progress card",
+  title: 'Components/Dashboard/Learning/Progress card',
   component: ProgressCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof ProgressCard>;
 

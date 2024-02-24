@@ -1,21 +1,21 @@
-import { Alert, CardProps, Space, Table, Typography } from "antd";
-import { LearningCourses } from "../../../../types";
-import { SwapRightOutlined } from "@ant-design/icons";
-import { ColumnsType } from "antd/es/table";
-import { Card, UserAvatar } from "../../../index.ts";
-import { ReactNode } from "react";
+import { Alert, CardProps, Space, Table, Typography } from 'antd';
+import { LearningCourses } from '../../../../types';
+import { SwapRightOutlined } from '@ant-design/icons';
+import { ColumnsType } from 'antd/es/table';
+import { Card, UserAvatar } from '../../../index.ts';
+import { ReactNode } from 'react';
 
 const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
   {
-    title: "Courses Title",
-    dataIndex: "name",
-    key: "courses_title",
+    title: 'Courses Title',
+    dataIndex: 'name',
+    key: 'courses_title',
     render: (_: any) => <span className="text-capitalize">{_}</span>,
   },
   {
-    title: "Lessons Completed",
-    dataIndex: "current_lessons",
-    key: "current_lessons",
+    title: 'Lessons Completed',
+    dataIndex: 'current_lessons',
+    key: 'current_lessons',
     render: (_: any, { current_lessons, total_lessons }: any) => (
       <Space size={2} style={{ width: 120 }}>
         <Typography.Text type="success">{current_lessons}</Typography.Text>
@@ -28,9 +28,9 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     ),
   },
   {
-    title: "Duration (Start-End)",
-    dataIndex: "start_date",
-    key: "start_date",
+    title: 'Duration (Start-End)',
+    dataIndex: 'start_date',
+    key: 'start_date',
     render: (_: any, { start_date, end_date }: any) => (
       <Space size="small" style={{ width: 200 }}>
         <Typography.Text>{start_date}</Typography.Text>
@@ -40,9 +40,9 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     ),
   },
   {
-    title: "Instructor",
-    dataIndex: "instructor_name",
-    key: "instructor_name",
+    title: 'Instructor',
+    dataIndex: 'instructor_name',
+    key: 'instructor_name',
     render: (_: any, { instructor_name, favorite_color }: any) => (
       <UserAvatar
         fullName={instructor_name}
@@ -52,9 +52,9 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     ),
   },
   {
-    title: "Prerequisites",
-    dataIndex: "prerequisites",
-    key: "prerequisites",
+    title: 'Prerequisites',
+    dataIndex: 'prerequisites',
+    key: 'prerequisites',
   },
 ];
 

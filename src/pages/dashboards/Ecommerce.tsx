@@ -13,15 +13,15 @@ import {
   Tag,
   TagProps,
   Typography,
-} from "antd";
+} from 'antd';
 import {
   Card,
   CustomerReviewsCard,
   PageHeader,
   RevenueCard,
   UserAvatar,
-} from "../../components";
-import { Area, Bullet } from "@ant-design/charts";
+} from '../../components';
+import { Area, Bullet, Pie } from '@ant-design/charts';
 import {
   ArrowDownOutlined,
   ArrowUpOutlined,
@@ -33,149 +33,148 @@ import {
   QuestionOutlined,
   StarFilled,
   SyncOutlined,
-} from "@ant-design/icons";
-import { Pie } from "@ant-design/plots";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useStylesContext } from "../../context";
-import { createElement, CSSProperties } from "react";
-import { useFetchData } from "../../hooks";
-import { blue, green, red, yellow } from "@ant-design/colors";
-import CountUp from "react-countup";
-import { numberWithCommas } from "../../utils";
+} from '@ant-design/icons';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useStylesContext } from '../../context';
+import { createElement, CSSProperties } from 'react';
+import { useFetchData } from '../../hooks';
+import { blue, green, red, yellow } from '@ant-design/colors';
+import CountUp from 'react-countup';
+import { numberWithCommas } from '../../utils';
 
 const { Text, Title } = Typography;
 
 const SalesChart = () => {
   const data = [
     {
-      country: "Online Store",
-      date: "Jan",
+      country: 'Online Store',
+      date: 'Jan',
       value: 1390.5,
     },
     {
-      country: "Online Store",
-      date: "Feb",
+      country: 'Online Store',
+      date: 'Feb',
       value: 1469.5,
     },
     {
-      country: "Online Store",
-      date: "Mar",
+      country: 'Online Store',
+      date: 'Mar',
       value: 1521.7,
     },
     {
-      country: "Online Store",
-      date: "Apr",
+      country: 'Online Store',
+      date: 'Apr',
       value: 1615.9,
     },
     {
-      country: "Online Store",
-      date: "May",
+      country: 'Online Store',
+      date: 'May',
       value: 1703.7,
     },
     {
-      country: "Online Store",
-      date: "Jun",
+      country: 'Online Store',
+      date: 'Jun',
       value: 1767.8,
     },
     {
-      country: "Online Store",
-      date: "Jul",
+      country: 'Online Store',
+      date: 'Jul',
       value: 1806.2,
     },
     {
-      country: "Online Store",
-      date: "Aug",
+      country: 'Online Store',
+      date: 'Aug',
       value: 1903.5,
     },
     {
-      country: "Online Store",
-      date: "Sept",
+      country: 'Online Store',
+      date: 'Sept',
       value: 1986.6,
     },
     {
-      country: "Online Store",
-      date: "Oct",
+      country: 'Online Store',
+      date: 'Oct',
       value: 1952,
     },
     {
-      country: "Online Store",
-      date: "Nov",
+      country: 'Online Store',
+      date: 'Nov',
       value: 1910.4,
     },
     {
-      country: "Online Store",
-      date: "Dec",
+      country: 'Online Store',
+      date: 'Dec',
       value: 2015.8,
     },
     {
-      country: "Facebook",
-      date: "Jan",
+      country: 'Facebook',
+      date: 'Jan',
       value: 109.2,
     },
     {
-      country: "Facebook",
-      date: "Feb",
+      country: 'Facebook',
+      date: 'Feb',
       value: 115.7,
     },
     {
-      country: "Facebook",
-      date: "Mar",
+      country: 'Facebook',
+      date: 'Mar',
       value: 120.5,
     },
     {
-      country: "Facebook",
-      date: "Apr",
+      country: 'Facebook',
+      date: 'Apr',
       value: 128,
     },
     {
-      country: "Facebook",
-      date: "May",
+      country: 'Facebook',
+      date: 'May',
       value: 134.4,
     },
     {
-      country: "Facebook",
-      date: "Jun",
+      country: 'Facebook',
+      date: 'Jun',
       value: 142.2,
     },
     {
-      country: "Facebook",
-      date: "Jul",
+      country: 'Facebook',
+      date: 'Jul',
       value: 157.5,
     },
     {
-      country: "Facebook",
-      date: "Aug",
+      country: 'Facebook',
+      date: 'Aug',
       value: 169.5,
     },
     {
-      country: "Facebook",
-      date: "Sept",
+      country: 'Facebook',
+      date: 'Sept',
       value: 186.3,
     },
     {
-      country: "Facebook",
-      date: "Oct",
+      country: 'Facebook',
+      date: 'Oct',
       value: 195.5,
     },
     {
-      country: "Facebook",
-      date: "Nov",
+      country: 'Facebook',
+      date: 'Nov',
       value: 198,
     },
     {
-      country: "Facebook",
-      date: "Dec",
+      country: 'Facebook',
+      date: 'Dec',
       value: 211.7,
     },
   ];
 
   const config = {
     data,
-    xField: "date",
-    yField: "value",
-    seriesField: "country",
+    xField: 'date',
+    yField: 'value',
+    seriesField: 'country',
     slider: {
       start: 0.1,
       end: 0.9,
@@ -188,27 +187,27 @@ const SalesChart = () => {
 const CategoriesChart = () => {
   const data = [
     {
-      type: "Appliances",
+      type: 'Appliances',
       value: 27,
     },
     {
-      type: "Electronics",
+      type: 'Electronics',
       value: 25,
     },
     {
-      type: "Clothing",
+      type: 'Clothing',
       value: 18,
     },
     {
-      type: "Shoes",
+      type: 'Shoes',
       value: 15,
     },
     {
-      type: "Food",
+      type: 'Food',
       value: 10,
     },
     {
-      type: "Cosmetice",
+      type: 'Cosmetice',
       value: 5,
     },
   ];
@@ -216,37 +215,37 @@ const CategoriesChart = () => {
   const config = {
     appendPadding: 10,
     data,
-    angleField: "value",
-    colorField: "type",
+    angleField: 'value',
+    colorField: 'type',
     radius: 1,
     innerRadius: 0.5,
     label: {
-      type: "inner",
-      offset: "-50%",
-      content: "{value}%",
+      type: 'inner',
+      offset: '-50%',
+      content: '{value}%',
       style: {
-        textAlign: "center",
+        textAlign: 'center',
         fontSize: 16,
       },
     },
     interactions: [
       {
-        type: "element-selected",
+        type: 'element-selected',
       },
       {
-        type: "element-active",
+        type: 'element-active',
       },
     ],
     statistic: {
       title: false,
       content: {
         style: {
-          whiteSpace: "pre-wrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
+          whiteSpace: 'pre-wrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
           fontSize: 18,
         },
-        content: "18,935\nsales",
+        content: '18,935\nsales',
       },
     },
   };
@@ -258,7 +257,7 @@ const CategoriesChart = () => {
 const CustomerRateChart = () => {
   const data = [
     {
-      title: "",
+      title: '',
       ranges: [40, 70, 100],
       measures: [30, 70],
       target: 100,
@@ -266,20 +265,20 @@ const CustomerRateChart = () => {
   ];
   const config = {
     data,
-    measureField: "measures",
-    rangeField: "ranges",
-    targetField: "target",
-    xField: "title",
+    measureField: 'measures',
+    rangeField: 'ranges',
+    targetField: 'target',
+    xField: 'title',
     color: {
-      range: ["#FFbcb8", "#FFe0b0", "#bfeec8"],
-      measure: ["#5B8FF9", "#61DDAA"],
-      target: "#39a3f4",
+      range: ['#FFbcb8', '#FFe0b0', '#bfeec8'],
+      measure: ['#5B8FF9', '#61DDAA'],
+      target: '#39a3f4',
     },
     label: {
       measure: {
-        position: "middle",
+        position: 'middle',
         style: {
-          fill: "#fff",
+          fill: '#fff',
         },
       },
     },
@@ -294,26 +293,26 @@ const CustomerRateChart = () => {
     // customize legend
     legend: {
       custom: true,
-      position: "bottom",
+      position: 'bottom',
       items: [
         {
-          value: "First time",
-          name: "First time buying",
+          value: 'First time',
+          name: 'First time buying',
           marker: {
-            symbol: "square",
+            symbol: 'square',
             style: {
-              fill: "#5B8FF9",
+              fill: '#5B8FF9',
               r: 5,
             },
           },
         },
         {
-          value: "Returning",
-          name: "Returning",
+          value: 'Returning',
+          name: 'Returning',
           marker: {
-            symbol: "square",
+            symbol: 'square',
             style: {
-              fill: "#61DDAA",
+              fill: '#61DDAA',
               r: 5,
             },
           },
@@ -328,36 +327,36 @@ const CustomerRateChart = () => {
 const OrdersStatusChart = () => {
   const data = [
     {
-      type: "Success",
+      type: 'Success',
       value: 27,
     },
     {
-      type: "Pending",
+      type: 'Pending',
       value: 55,
     },
     {
-      type: "Failed",
+      type: 'Failed',
       value: 18,
     },
   ];
   const config = {
     appendPadding: 10,
     data,
-    angleField: "value",
-    colorField: "type",
+    angleField: 'value',
+    colorField: 'type',
     radius: 0.9,
     label: {
-      type: "inner",
-      offset: "-30%",
+      type: 'inner',
+      offset: '-30%',
       content: ({ percent }: any) => `${(percent * 100).toFixed(0)}%`,
       style: {
         fontSize: 14,
-        textAlign: "center",
+        textAlign: 'center',
       },
     },
     interactions: [
       {
-        type: "element-active",
+        type: 'element-active',
       },
     ],
   };
@@ -368,9 +367,9 @@ const OrdersStatusChart = () => {
 
 const PRODUCTS_COLUMNS = [
   {
-    title: "Name",
-    dataIndex: "product_name",
-    key: "product_name",
+    title: 'Name',
+    dataIndex: 'product_name',
+    key: 'product_name',
     render: (_: any, { product_name, brand }: any) => (
       <Flex gap="small" align="center">
         <Image src={brand} width={16} height={16} />
@@ -379,25 +378,25 @@ const PRODUCTS_COLUMNS = [
     ),
   },
   {
-    title: "Category",
-    dataIndex: "category",
-    key: "category",
+    title: 'Category',
+    dataIndex: 'category',
+    key: 'category',
     render: (_: any) => <span className="text-capitalize">{_}</span>,
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price",
+    title: 'Price',
+    dataIndex: 'price',
+    key: 'price',
     render: (_: any) => <span>$ {_}</span>,
   },
   {
-    title: "Avg rating",
-    dataIndex: "average_rating",
-    key: "average_rating",
+    title: 'Avg rating',
+    dataIndex: 'average_rating',
+    key: 'average_rating',
     render: (_: any) => (
       <Flex align="center" gap="small">
         {_}
-        <StarFilled style={{ fontSize: 12 }} />{" "}
+        <StarFilled style={{ fontSize: 12 }} />{' '}
       </Flex>
     ),
   },
@@ -405,24 +404,24 @@ const PRODUCTS_COLUMNS = [
 
 const CATEGORIES_COLUMNS = [
   {
-    title: "Category",
-    dataIndex: "category",
-    key: "category",
+    title: 'Category',
+    dataIndex: 'category',
+    key: 'category',
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price",
+    title: 'Price',
+    dataIndex: 'price',
+    key: 'price',
     render: (_: any) => <span>$ {_}</span>,
   },
   {
-    title: "Avg rating",
-    dataIndex: "rating",
-    key: "rating",
+    title: 'Avg rating',
+    dataIndex: 'rating',
+    key: 'rating',
     render: (_: any) => (
       <Flex align="center" gap="small">
         {_}
-        <StarFilled style={{ fontSize: 12 }} />{" "}
+        <StarFilled style={{ fontSize: 12 }} />{' '}
       </Flex>
     ),
   },
@@ -430,45 +429,45 @@ const CATEGORIES_COLUMNS = [
 
 const SELLER_COLUMNS = [
   {
-    title: "Name",
-    dataIndex: "first_name",
-    key: "first_name",
+    title: 'Name',
+    dataIndex: 'first_name',
+    key: 'first_name',
     render: (_: any, { first_name, last_name }: any) => (
       <UserAvatar fullName={`${first_name} ${last_name}`} />
     ),
   },
   {
-    title: "Email",
-    dataIndex: "email",
-    key: "email",
+    title: 'Email',
+    dataIndex: 'email',
+    key: 'email',
     render: (_: any) => <Link to={`mailto:${_}`}>{_}</Link>,
   },
   {
-    title: "Region",
-    dataIndex: "sales_region",
-    key: "sales_region",
+    title: 'Region',
+    dataIndex: 'sales_region',
+    key: 'sales_region',
   },
   {
-    title: "Country",
-    dataIndex: "country",
-    key: "country",
+    title: 'Country',
+    dataIndex: 'country',
+    key: 'country',
   },
   {
-    title: "Volume",
-    dataIndex: "sales_volume",
-    key: "sales_volume",
+    title: 'Volume',
+    dataIndex: 'sales_volume',
+    key: 'sales_volume',
     render: (_: any) => <span>{numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Amount",
-    dataIndex: "total_sales",
-    key: "total_sales",
+    title: 'Amount',
+    dataIndex: 'total_sales',
+    key: 'total_sales',
     render: (_: any) => <span>${numberWithCommas(Number(_))}</span>,
   },
   {
-    title: "Satisfaction rate",
-    dataIndex: "customer_satisfaction",
-    key: "customer_satisfaction",
+    title: 'Satisfaction rate',
+    dataIndex: 'customer_satisfaction',
+    key: 'customer_satisfaction',
     render: (_: any) => {
       let color;
 
@@ -489,50 +488,50 @@ const SELLER_COLUMNS = [
 
 const ORDERS_COLUMNS = [
   {
-    title: "Tracking No.",
-    dataIndex: "tracking_number",
-    key: "tracking_number",
+    title: 'Tracking No.',
+    dataIndex: 'tracking_number',
+    key: 'tracking_number',
   },
   {
-    title: "Customer",
-    dataIndex: "customer_name",
-    key: "customer_name",
+    title: 'Customer',
+    dataIndex: 'customer_name',
+    key: 'customer_name',
     render: (_: any) => <UserAvatar fullName={_} />,
   },
   {
-    title: "Date",
-    dataIndex: "order_date",
-    key: "order_date",
+    title: 'Date',
+    dataIndex: 'order_date',
+    key: 'order_date',
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price",
+    title: 'Price',
+    dataIndex: 'price',
+    key: 'price',
     render: (_: any) => <span>$ {_}</span>,
   },
   {
-    title: "Quantity",
-    dataIndex: "quantity",
-    key: "quantity",
+    title: 'Quantity',
+    dataIndex: 'quantity',
+    key: 'quantity',
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
     render: (_: any) => {
-      let color: TagProps["color"], icon: any;
+      let color: TagProps['color'], icon: any;
 
-      if (_ === "shipped") {
-        color = "magenta-inverse";
+      if (_ === 'shipped') {
+        color = 'magenta-inverse';
         icon = ClockCircleOutlined;
-      } else if (_ === "processing") {
-        color = "blue-inverse";
+      } else if (_ === 'processing') {
+        color = 'blue-inverse';
         icon = SyncOutlined;
-      } else if (_ === "delivered") {
-        color = "green-inverse";
+      } else if (_ === 'delivered') {
+        color = 'green-inverse';
         icon = CheckCircleOutlined;
       } else {
-        color = "volcano-inverse";
+        color = 'volcano-inverse';
         icon = ExclamationCircleOutlined;
       }
 
@@ -548,23 +547,23 @@ const ORDERS_COLUMNS = [
     },
   },
   {
-    title: "Country",
-    dataIndex: "country",
-    key: "country",
+    title: 'Country',
+    dataIndex: 'country',
+    key: 'country',
   },
   {
-    title: "Address",
-    dataIndex: "shipping_address",
-    key: "shipping_address",
+    title: 'Address',
+    dataIndex: 'shipping_address',
+    key: 'shipping_address',
   },
 ];
 
 const POPOVER_BUTTON_PROPS: ButtonProps = {
-  type: "text",
+  type: 'text',
 };
 
 const cardStyles: CSSProperties = {
-  height: "100%",
+  height: '100%',
 };
 
 const EcommerceDashboardPage = () => {
@@ -573,22 +572,22 @@ const EcommerceDashboardPage = () => {
     data: topProducts,
     error: topProductsError,
     loading: topProductsLoading,
-  } = useFetchData("../mocks/TopProducts.json");
+  } = useFetchData('../mocks/TopProducts.json');
   const {
     data: topCategories,
     error: topCategoriesError,
     loading: topCategoriesLoading,
-  } = useFetchData("../mocks/TopCategories.json");
+  } = useFetchData('../mocks/TopCategories.json');
   const {
     data: topSellers,
     error: topSellersError,
     loading: topSellersLoading,
-  } = useFetchData("../mocks/TopSeller.json");
+  } = useFetchData('../mocks/TopSeller.json');
   const {
     data: recentOrders,
     error: recentOrdersError,
     loading: recentOrdersLoading,
-  } = useFetchData("../mocks/RecentOrders.json");
+  } = useFetchData('../mocks/RecentOrders.json');
 
   return (
     <div>
@@ -605,7 +604,7 @@ const EcommerceDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -622,7 +621,7 @@ const EcommerceDashboardPage = () => {
             },
           },
           {
-            title: "ecommerce",
+            title: 'ecommerce',
           },
         ]}
       />
@@ -776,7 +775,7 @@ const EcommerceDashboardPage = () => {
               </Flex>
             </Card>
             <Card title="Customer rate">
-              <div style={{ height: 80, textAlign: "center" }}>
+              <div style={{ height: 80, textAlign: 'center' }}>
                 <CustomerRateChart />
               </div>
             </Card>

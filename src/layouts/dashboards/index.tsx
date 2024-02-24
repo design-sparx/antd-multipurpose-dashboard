@@ -1,5 +1,5 @@
-import { AppLayout } from "../app";
-import { Outlet } from "react-router-dom";
+import { AppLayout } from '../app';
+import { Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
   return (

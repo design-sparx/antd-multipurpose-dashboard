@@ -1,10 +1,10 @@
-import { Badge, Button, CardProps, Flex, List, Space, Typography } from "antd";
-import { DeliveryRequest } from "../../../../types";
-import { Card, UserAvatar } from "../../../index.ts";
+import { Badge, Button, CardProps, Flex, List, Space, Typography } from 'antd';
+import { DeliveryRequest } from '../../../../types';
+import { Card, UserAvatar } from '../../../index.ts';
 
-import "./styles.css";
-import { ReactNode } from "react";
-import { CalendarOutlined } from "@ant-design/icons";
+import './styles.css';
+import { ReactNode } from 'react';
+import { CalendarOutlined } from '@ant-design/icons';
 
 type Props = {
   data?: DeliveryRequest[];
@@ -28,14 +28,14 @@ const DeliveryRequestCard = ({ data, loading, error, ...others }: Props) => {
             console.log(page);
           },
           pageSize: 5,
-          align: "center",
+          align: 'center',
         }}
         dataSource={data}
         renderItem={(item) => (
           <List.Item key={item.id}>
-            <Space style={{ justifyContent: "space-between", width: "100%" }}>
+            <Space style={{ justifyContent: 'space-between', width: '100%' }}>
               <Flex vertical gap="small">
-                <Typography.Text strong style={{ textTransform: "capitalize" }}>
+                <Typography.Text strong style={{ textTransform: 'capitalize' }}>
                   {item.name}
                 </Typography.Text>
                 <Badge

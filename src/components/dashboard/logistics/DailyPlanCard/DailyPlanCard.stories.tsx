@@ -1,27 +1,27 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import DailyPlanCard from "./DailyPlanCard.tsx";
+import DailyPlanCard from './DailyPlanCard.tsx';
 
 const PLAN_DATA = [
   {
-    type: "Shipment processed",
+    type: 'Shipment processed',
     value: 38,
   },
   {
-    type: "Orders processed",
+    type: 'Orders processed',
     value: 52,
   },
   {
-    type: "Requests queue",
+    type: 'Requests queue',
     value: 61,
   },
 ];
 
 const meta = {
-  title: "Components/Dashboard/Logistics/Daily plan",
+  title: 'Components/Dashboard/Logistics/Daily plan',
   component: DailyPlanCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof DailyPlanCard>;
 

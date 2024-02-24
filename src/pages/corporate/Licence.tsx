@@ -1,7 +1,7 @@
-import { Alert, Card as AntCard, Col, Row, Typography } from "antd";
-import { Card, Loader } from "../../components";
-import { useStylesContext } from "../../context";
-import { useFetchData } from "../../hooks";
+import { Alert, Card as AntCard, Col, Row, Typography } from 'antd';
+import { Card, Loader } from '../../components';
+import { useStylesContext } from '../../context';
+import { useFetchData } from '../../hooks';
 
 const CorporateLicensePage = () => {
   const stylesContext = useStylesContext();
@@ -9,7 +9,7 @@ const CorporateLicensePage = () => {
     data: licenseData,
     error: licenseDataError,
     loading: licenseDataLoading,
-  } = useFetchData("../mocks/License.json");
+  } = useFetchData('../mocks/License.json');
 
   return (
     <div>
@@ -30,7 +30,7 @@ const CorporateLicensePage = () => {
                 <AntCard
                   title={`${l.title} plan license`}
                   bordered={true}
-                  style={{ marginBottom: "1rem" }}
+                  style={{ marginBottom: '1rem' }}
                 >
                   <Typography.Text>{l.description}</Typography.Text>
                 </AntCard>

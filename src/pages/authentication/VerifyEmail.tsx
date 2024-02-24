@@ -1,7 +1,7 @@
-import { Button, Flex, Typography } from "antd";
-import { Logo } from "../../components";
-import { Link } from "react-router-dom";
-import { PATH_DASHBOARD } from "../../constants";
+import { Button, Flex, Typography } from 'antd';
+import { Logo } from '../../components';
+import { Link } from 'react-router-dom';
+import { PATH_DASHBOARD } from '../../constants';
 
 const VerifyEmailPage = () => {
   return (
@@ -10,15 +10,15 @@ const VerifyEmailPage = () => {
       gap="large"
       align="center"
       justify="center"
-      style={{ height: "80vh" }}
+      style={{ height: '80vh' }}
     >
       <Logo color="black" />
       <Typography.Title className="m-0">Verify Your Email</Typography.Title>
       <Typography.Text>
-        We have sent an email to{" "}
+        We have sent an email to{' '}
         <Link to="mailto:kelvin.kiprop96@gmail.com">
           kelvin.kiprop96@gmail.com
-        </Link>{" "}
+        </Link>{' '}
         plase follow a link to verify your email.
       </Typography.Text>
       <Link to={PATH_DASHBOARD.default}>

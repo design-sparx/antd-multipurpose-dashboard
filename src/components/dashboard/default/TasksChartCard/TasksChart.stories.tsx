@@ -1,85 +1,85 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import TasksChartCard from "./TasksChartCard.tsx";
+import TasksChartCard from './TasksChartCard.tsx';
 
 const TASKS_DATA = [
   {
-    day: "Monday",
+    day: 'Monday',
     value: 33,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Tuesday",
+    day: 'Tuesday',
     value: 44,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Wednesday",
+    day: 'Wednesday',
     value: 35,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Thursday",
+    day: 'Thursday',
     value: 55,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Friday",
+    day: 'Friday',
     value: 49,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Saturday",
+    day: 'Saturday',
     value: 63,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Sunday",
+    day: 'Sunday',
     value: 72,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Monday",
+    day: 'Monday',
     value: 69,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Tuesday",
+    day: 'Tuesday',
     value: 81,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Wednesday",
+    day: 'Wednesday',
     value: 34,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Thursday",
+    day: 'Thursday',
     value: 25,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Friday",
+    day: 'Friday',
     value: 39,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Saturday",
+    day: 'Saturday',
     value: 45,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Sunday",
+    day: 'Sunday',
     value: 60,
-    status: "in progress",
+    status: 'in progress',
   },
 ];
 
 const meta = {
-  title: "Components/Dashboard/Default/Tasks/Chart",
+  title: 'Components/Dashboard/Default/Tasks/Chart',
   component: TasksChartCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof TasksChartCard>;
 

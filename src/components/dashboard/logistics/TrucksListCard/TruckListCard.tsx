@@ -9,12 +9,12 @@ import {
   Row,
   Space,
   Typography,
-} from "antd";
-import { Truck } from "../../../../types";
-import { Card } from "../../../index.ts";
-import { ReactNode } from "react";
+} from 'antd';
+import { Truck } from '../../../../types';
+import { Card } from '../../../index.ts';
+import { ReactNode } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
 type Props = {
   data?: Truck[];
@@ -47,25 +47,25 @@ const TruckListCard = ({ data, loading, error, ...others }: Props) => {
               console.log(page);
             },
             pageSize: 5,
-            align: "center",
+            align: 'center',
           }}
           dataSource={data}
           renderItem={(item) => (
             <List.Item key={item.truck_id}>
-              <Space style={{ marginBottom: ".5rem" }}>
-                <Typography.Text strong style={{ textTransform: "uppercase" }}>
-                  {item.truck_id.split("-")[0]}
+              <Space style={{ marginBottom: '.5rem' }}>
+                <Typography.Text strong style={{ textTransform: 'uppercase' }}>
+                  {item.truck_id.split('-')[0]}
                 </Typography.Text>
                 <Badge
                   status={
-                    item.status.toLowerCase() === "delivered"
-                      ? "success"
-                      : item.status.toLowerCase() === "in transit"
-                        ? "processing"
-                        : "warning"
+                    item.status.toLowerCase() === 'delivered'
+                      ? 'success'
+                      : item.status.toLowerCase() === 'in transit'
+                        ? 'processing'
+                        : 'warning'
                   }
                   text={
-                    <span style={{ textTransform: "capitalize" }}>
+                    <span style={{ textTransform: 'capitalize' }}>
                       {item.status}
                     </span>
                   }

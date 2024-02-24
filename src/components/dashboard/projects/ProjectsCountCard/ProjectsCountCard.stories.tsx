@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import ProjectsCountCard from "./ProjectsCountCard.tsx";
+import ProjectsCountCard from './ProjectsCountCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Projects/Project count",
+  title: 'Components/Dashboard/Projects/Project count',
   component: ProjectsCountCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof ProjectsCountCard>;
 

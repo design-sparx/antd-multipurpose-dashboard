@@ -4,8 +4,8 @@ import {
   ReactNode,
   useEffect,
   useState,
-} from "react";
-import { useMediaQuery } from "react-responsive";
+} from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 type ContainerProps = {
   children: ReactNode;
@@ -22,15 +22,15 @@ const Container = ({ children, style, ...others }: ContainerProps) => {
   useEffect(() => {
     // sort from large to small devices
     if (isXXLarge) {
-      setContainerWidth("1320px");
+      setContainerWidth('1320px');
     } else if (isXLarge) {
-      setContainerWidth("1140px");
+      setContainerWidth('1140px');
     } else if (isLarge) {
-      setContainerWidth("960px");
+      setContainerWidth('960px');
     } else if (isMedium) {
-      setContainerWidth("720px");
+      setContainerWidth('720px');
     } else {
-      setContainerWidth("100%");
+      setContainerWidth('100%');
     }
   }, [isLarge, isXLarge, isXXLarge, isMedium]);
 
@@ -39,7 +39,7 @@ const Container = ({ children, style, ...others }: ContainerProps) => {
       {...others}
       style={{
         width: containerWidth,
-        margin: "0 auto",
+        margin: '0 auto',
         ...style,
       }}
     >

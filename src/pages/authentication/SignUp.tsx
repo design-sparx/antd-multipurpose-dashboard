@@ -10,17 +10,17 @@ import {
   Row,
   theme,
   Typography,
-} from "antd";
+} from 'antd';
 import {
   FacebookFilled,
   GoogleOutlined,
   TwitterOutlined,
-} from "@ant-design/icons";
-import { Logo } from "../../components";
-import { useMediaQuery } from "react-responsive";
-import { PATH_AUTH, PATH_DASHBOARD } from "../../constants";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+} from '@ant-design/icons';
+import { Logo } from '../../components';
+import { useMediaQuery } from 'react-responsive';
+import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const { Title, Text, Link } = Typography;
 
@@ -42,12 +42,12 @@ const SignUpPage = () => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    console.log('Success:', values);
     setLoading(true);
 
     message.open({
-      type: "success",
-      content: "Account signup successful",
+      type: 'success',
+      content: 'Account signup successful',
     });
 
     setTimeout(() => {
@@ -56,18 +56,18 @@ const SignUpPage = () => {
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
-    <Row style={{ minHeight: isMobile ? "auto" : "100vh", overflow: "hidden" }}>
+    <Row style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: 'hidden' }}>
       <Col xs={24} lg={12}>
         <Flex
           vertical
           align="center"
           justify="center"
           className="text-center"
-          style={{ background: colorPrimary, height: "100%", padding: "1rem" }}
+          style={{ background: colorPrimary, height: '100%', padding: '1rem' }}
         >
           <Logo color="white" />
           <Title level={2} className="text-white">
@@ -82,10 +82,10 @@ const SignUpPage = () => {
       <Col xs={24} lg={12}>
         <Flex
           vertical
-          align={isMobile ? "center" : "flex-start"}
+          align={isMobile ? 'center' : 'flex-start'}
           justify="center"
           gap="middle"
-          style={{ height: "100%", padding: "2rem" }}
+          style={{ height: '100%', padding: '2rem' }}
         >
           <Title className="m-0">Create an account</Title>
           <Flex gap={4}>
@@ -96,7 +96,7 @@ const SignUpPage = () => {
             vertical={isMobile}
             gap="small"
             wrap="wrap"
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           >
             <Button icon={<GoogleOutlined />}>Sign up with Google</Button>
             <Button icon={<FacebookFilled />}>Sign up with Facebook</Button>
@@ -122,7 +122,7 @@ const SignUpPage = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please input your first name!",
+                      message: 'Please input your first name!',
                     },
                   ]}
                 >
@@ -134,7 +134,7 @@ const SignUpPage = () => {
                   label="Last name"
                   name="lastName"
                   rules={[
-                    { required: true, message: "Please input your last name!" },
+                    { required: true, message: 'Please input your last name!' },
                   ]}
                 >
                   <Input />
@@ -145,7 +145,7 @@ const SignUpPage = () => {
                   label="Email"
                   name="email"
                   rules={[
-                    { required: true, message: "Please input your email" },
+                    { required: true, message: 'Please input your email' },
                   ]}
                 >
                   <Input />
@@ -156,7 +156,7 @@ const SignUpPage = () => {
                   label="Password"
                   name="password"
                   rules={[
-                    { required: true, message: "Please input your password!" },
+                    { required: true, message: 'Please input your password!' },
                   ]}
                 >
                   <Input.Password />
@@ -169,7 +169,7 @@ const SignUpPage = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please ensure passwords match!",
+                      message: 'Please ensure passwords match!',
                     },
                   ]}
                 >

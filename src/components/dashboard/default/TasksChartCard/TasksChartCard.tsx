@@ -1,6 +1,6 @@
-import { Column } from "@ant-design/plots";
-import { Button, CardProps } from "antd";
-import { Card } from "../../../index.ts";
+import { Column } from '@ant-design/charts';
+import { Button, CardProps } from 'antd';
+import { Card } from '../../../index.ts';
 
 type Tasks = {
   day: string;
@@ -16,29 +16,29 @@ const ColumnChart = ({ data }: ChartProps) => {
   const config = {
     data,
     isStack: true,
-    xField: "day",
-    yField: "value",
-    seriesField: "status",
+    xField: 'day',
+    yField: 'value',
+    seriesField: 'status',
     label: {
-      position: "top", // 'top', 'bottom', 'middle'
+      position: 'top', // 'top', 'bottom', 'middle'
       offset: 10,
       style: {
-        fill: "transparent",
+        fill: 'transparent',
       },
     },
     interactions: [
       {
-        type: "active-region",
+        type: 'active-region',
         enable: false,
       },
     ],
     columnBackground: {
       style: {
-        fill: "rgba(0,0,0,0.1)",
+        fill: 'rgba(0,0,0,0.1)',
       },
     },
     legend: {
-      position: "bottom",
+      position: 'bottom',
     },
   };
 

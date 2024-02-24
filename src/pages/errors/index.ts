@@ -1,9 +1,9 @@
-import ErrorPage from "./Error.tsx";
-import Error400Page from "./Error400.tsx";
-import Error403Page from "./Error403.tsx";
-import Error404Page from "./Error404.tsx";
-import Error500Page from "./Error500.tsx";
-import Error503Page from "./Error503.tsx";
+import ErrorPage from './Error.tsx';
+import Error400Page from './Error400.tsx';
+import Error403Page from './Error403.tsx';
+import Error404Page from './Error404.tsx';
+import Error500Page from './Error500.tsx';
+import Error503Page from './Error503.tsx';
 
 export {
   ErrorPage,

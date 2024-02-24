@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import DevicesCardChart from "./DevicesCardChart.tsx";
+import DevicesCardChart from './DevicesCardChart.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Social/Devices chart",
+  title: 'Components/Dashboard/Social/Devices chart',
   component: DevicesCardChart,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof DevicesCardChart>;
 

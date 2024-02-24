@@ -1,34 +1,34 @@
-import { Alert, Col, Row, Space, Typography } from "antd";
-import { Card, FaqCollapse, Loader } from "../../components";
-import * as _ from "lodash";
-import { useEffect, useState } from "react";
-import { Faq } from "../../types";
-import { useStylesContext } from "../../context";
-import { useFetchData } from "../../hooks";
+import { Alert, Col, Row, Space, Typography } from 'antd';
+import { Card, FaqCollapse, Loader } from '../../components';
+import * as _ from 'lodash';
+import { useEffect, useState } from 'react';
+import { Faq } from '../../types';
+import { useStylesContext } from '../../context';
+import { useFetchData } from '../../hooks';
 
 const CorporateFaqPage = () => {
   const {
     data: faqsData,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData("../mocks/Faqs.json");
+  } = useFetchData('../mocks/Faqs.json');
   const [faqs, setFaqs] = useState<{ category: string; items: Faq[] }[]>([]);
   const stylesContext = useStylesContext();
 
   useEffect(() => {
     const data = _.chain(faqsData)
-      .groupBy("category")
+      .groupBy('category')
       .map((items, category) => {
         return {
           category,
           items: items.slice(0, 4).map((i) => ({
             ...i,
-            label: i.question.slice(0, 50) + "...?",
+            label: i.question.slice(0, 50) + '...?',
             children: i.answer,
           })),
         };
       })
-      .orderBy("category")
+      .orderBy('category')
       .value();
 
     setFaqs(data);
@@ -52,7 +52,7 @@ const CorporateFaqPage = () => {
               <Space
                 direction="vertical"
                 size="middle"
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
               >
                 {faqs.map((f) => (
                   <>

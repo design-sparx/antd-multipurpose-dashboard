@@ -1,7 +1,7 @@
-import { Result, Typography } from "antd";
-import { CloseCircleOutlined } from "@ant-design/icons";
-import { red } from "@ant-design/colors";
-import { BackBtn, RefreshBtn } from "../../components";
+import { Result, Typography } from 'antd';
+import { CloseCircleOutlined } from '@ant-design/icons';
+import { red } from '@ant-design/colors';
+import { BackBtn, RefreshBtn } from '../../components';
 
 const { Paragraph, Text } = Typography;
 

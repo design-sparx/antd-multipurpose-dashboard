@@ -1,31 +1,31 @@
-import { Button, Dropdown, MenuProps } from "antd";
+import { Button, Dropdown, MenuProps } from 'antd';
 import {
   DeleteOutlined,
   ExpandOutlined,
   MinusOutlined,
   MoreOutlined,
   SyncOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
-const items: MenuProps["items"] = [
+const items: MenuProps['items'] = [
   {
-    label: "Expand",
-    key: "1",
+    label: 'Expand',
+    key: '1',
     icon: <ExpandOutlined />,
   },
   {
-    label: "Minimize",
-    key: "2",
+    label: 'Minimize',
+    key: '2',
     icon: <MinusOutlined />,
   },
   {
-    label: "Reload",
-    key: "3",
+    label: 'Reload',
+    key: '3',
     icon: <SyncOutlined />,
   },
   {
-    label: "Remove",
-    key: "4",
+    label: 'Remove',
+    key: '4',
     icon: <DeleteOutlined />,
     danger: true,
   },

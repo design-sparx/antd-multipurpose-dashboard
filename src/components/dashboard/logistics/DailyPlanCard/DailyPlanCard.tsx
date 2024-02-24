@@ -1,6 +1,6 @@
-import { Bar } from "@ant-design/charts";
-import { CardProps } from "antd";
-import { Card } from "../../../index.ts";
+import { Bar } from '@ant-design/charts';
+import { CardProps } from 'antd';
+import { Card } from '../../../index.ts';
 
 type Plan = {
   type: string;
@@ -14,11 +14,11 @@ type BarProps = {
 const BarChart = ({ data }: BarProps) => {
   const config = {
     data,
-    xField: "value",
-    yField: "type",
-    seriesField: "type",
+    xField: 'value',
+    yField: 'type',
+    seriesField: 'type',
     legend: {
-      position: "top-left",
+      position: 'top-left',
     },
   };
   // @ts-ignore

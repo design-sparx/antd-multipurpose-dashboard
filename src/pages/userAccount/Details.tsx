@@ -1,6 +1,6 @@
-import { Button, Col, Form, Input, Radio, Row, Select, Typography } from "antd";
-import { Card } from "../../components";
-import { SaveOutlined } from "@ant-design/icons";
+import { Button, Col, Form, Input, Radio, Row, Select, Typography } from 'antd';
+import { Card } from '../../components';
+import { SaveOutlined } from '@ant-design/icons';
 
 type FieldType = {
   username?: string;
@@ -11,18 +11,18 @@ type FieldType = {
   lastName?: string;
   company?: string;
   email?: string;
-  subscription?: "free" | "pro" | "enterprise" | "custom";
+  subscription?: 'free' | 'pro' | 'enterprise' | 'custom';
   id?: string;
-  status?: "active" | "inactive";
+  status?: 'active' | 'inactive';
 };
 
 const UserProfileDetailsPage = () => {
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    console.log('Success:', values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
@@ -31,15 +31,15 @@ const UserProfileDetailsPage = () => {
         name="user-profile-details-form"
         layout="vertical"
         initialValues={{
-          id: "474e2cd2-fc79-49b8-98fe-dab443facede",
-          username: "kelvink96",
-          firstName: "Kelvin",
-          middleName: "Kiptum",
-          lastName: "Kiprop",
-          company: "Design Sparx",
-          email: "kelvin.kiprop96@gmail.com",
-          subscription: "pro",
-          status: "active",
+          id: '474e2cd2-fc79-49b8-98fe-dab443facede',
+          username: 'kelvink96',
+          firstName: 'Kelvin',
+          middleName: 'Kiptum',
+          lastName: 'Kiprop',
+          company: 'Design Sparx',
+          email: 'kelvin.kiprop96@gmail.com',
+          subscription: 'pro',
+          status: 'active',
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -51,13 +51,13 @@ const UserProfileDetailsPage = () => {
             <Form.Item<FieldType>
               label="User ID"
               name="id"
-              rules={[{ required: true, message: "Please input your id!" }]}
+              rules={[{ required: true, message: 'Please input your id!' }]}
             >
               <Input
                 readOnly={true}
                 suffix={
                   <Typography.Paragraph
-                    copyable={{ text: "474e2cd2-fc79-49b8-98fe-dab443facede" }}
+                    copyable={{ text: '474e2cd2-fc79-49b8-98fe-dab443facede' }}
                     style={{ margin: 0 }}
                   ></Typography.Paragraph>
                 }
@@ -69,7 +69,7 @@ const UserProfileDetailsPage = () => {
               label="First name"
               name="firstName"
               rules={[
-                { required: true, message: "Please input your first name!" },
+                { required: true, message: 'Please input your first name!' },
               ]}
             >
               <Input />
@@ -80,7 +80,7 @@ const UserProfileDetailsPage = () => {
               label="Middle name"
               name="middleName"
               rules={[
-                { required: true, message: "Please input your middle name!" },
+                { required: true, message: 'Please input your middle name!' },
               ]}
             >
               <Input />
@@ -91,7 +91,7 @@ const UserProfileDetailsPage = () => {
               label="Last name"
               name="lastName"
               rules={[
-                { required: true, message: "Please input your last name!" },
+                { required: true, message: 'Please input your last name!' },
               ]}
             >
               <Input />
@@ -101,7 +101,7 @@ const UserProfileDetailsPage = () => {
             <Form.Item<FieldType>
               label="Email"
               name="email"
-              rules={[{ required: true, message: "Please input your email!" }]}
+              rules={[{ required: true, message: 'Please input your email!' }]}
             >
               <Input />
             </Form.Item>
@@ -111,7 +111,7 @@ const UserProfileDetailsPage = () => {
               label="Username"
               name="username"
               rules={[
-                { required: true, message: "Please input your username!" },
+                { required: true, message: 'Please input your username!' },
               ]}
             >
               <Input />
@@ -122,7 +122,7 @@ const UserProfileDetailsPage = () => {
               label="Company"
               name="company"
               rules={[
-                { required: true, message: "Please input your company!" },
+                { required: true, message: 'Please input your company!' },
               ]}
             >
               <Input />
@@ -133,15 +133,15 @@ const UserProfileDetailsPage = () => {
               label="Subscription"
               name="subscription"
               rules={[
-                { required: true, message: "Please select your subscription!" },
+                { required: true, message: 'Please select your subscription!' },
               ]}
             >
               <Select
                 options={[
-                  { value: "free", label: "Free" },
-                  { value: "pro", label: "Pro" },
-                  { value: "enterprise", label: "Enterprise" },
-                  { value: "custom", label: "Custom", disabled: true },
+                  { value: 'free', label: 'Free' },
+                  { value: 'pro', label: 'Pro' },
+                  { value: 'enterprise', label: 'Enterprise' },
+                  { value: 'custom', label: 'Custom', disabled: true },
                 ]}
               />
             </Form.Item>
@@ -151,7 +151,7 @@ const UserProfileDetailsPage = () => {
               label="Status"
               name="status"
               rules={[
-                { required: true, message: "Please select your status!" },
+                { required: true, message: 'Please select your status!' },
               ]}
             >
               <Radio.Group>

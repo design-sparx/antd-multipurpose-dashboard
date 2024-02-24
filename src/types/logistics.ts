@@ -43,9 +43,9 @@ export type DeliveryRequest = {
   delivery_location: string;
   delivery_date: string;
   delivery_time: number;
-  truck_type: "small" | "medium" | "large" | string;
+  truck_type: 'small' | 'medium' | 'large' | string;
   cargo_weight: number;
-  delivery_status: "pending" | "in transit" | "delivered" | string;
+  delivery_status: 'pending' | 'in transit' | 'delivered' | string;
   driver_name: string;
   contact_number: string;
 };

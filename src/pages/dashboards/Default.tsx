@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 import {
   Card,
   GetStartedCard,
@@ -9,7 +9,7 @@ import {
   TasksChartCard,
   TasksListCard,
   WeeklyActivityCard,
-} from "../../components";
+} from '../../components';
 import {
   Alert,
   Button,
@@ -20,117 +20,117 @@ import {
   Flex,
   Row,
   Typography,
-} from "antd";
-import { HomeOutlined, PieChartOutlined } from "@ant-design/icons";
-import { DASHBOARD_ITEMS } from "../../constants";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useStylesContext } from "../../context";
-import { useFetchData } from "../../hooks";
-import { Projects } from "../../types";
-import CountUp from "react-countup";
+} from 'antd';
+import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
+import { DASHBOARD_ITEMS } from '../../constants';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useStylesContext } from '../../context';
+import { useFetchData } from '../../hooks';
+import { Projects } from '../../types';
+import CountUp from 'react-countup';
 
 const ACTIVITY_DATA = [
   {
-    day: "Monday",
+    day: 'Monday',
     value: 10,
   },
   {
-    day: "Tuesday",
+    day: 'Tuesday',
     value: 22,
   },
   {
-    day: "Wednesday",
+    day: 'Wednesday',
     value: 25,
   },
   {
-    day: "Thursday",
+    day: 'Thursday',
     value: 26,
   },
   {
-    day: "Friday",
+    day: 'Friday',
     value: 15,
   },
   {
-    day: "Saturday",
+    day: 'Saturday',
     value: 12,
   },
   {
-    day: "Sunday",
+    day: 'Sunday',
     value: 3,
   },
 ];
 
 const TASKS_DATA = [
   {
-    day: "Monday",
+    day: 'Monday',
     value: 33,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Tuesday",
+    day: 'Tuesday',
     value: 44,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Wednesday",
+    day: 'Wednesday',
     value: 35,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Thursday",
+    day: 'Thursday',
     value: 55,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Friday",
+    day: 'Friday',
     value: 49,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Saturday",
+    day: 'Saturday',
     value: 63,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Sunday",
+    day: 'Sunday',
     value: 72,
-    status: "new",
+    status: 'new',
   },
   {
-    day: "Monday",
+    day: 'Monday',
     value: 69,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Tuesday",
+    day: 'Tuesday',
     value: 81,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Wednesday",
+    day: 'Wednesday',
     value: 34,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Thursday",
+    day: 'Thursday',
     value: 25,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Friday",
+    day: 'Friday',
     value: 39,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Saturday",
+    day: 'Saturday',
     value: 45,
-    status: "in progress",
+    status: 'in progress',
   },
   {
-    day: "Sunday",
+    day: 'Sunday',
     value: 60,
-    status: "in progress",
+    status: 'in progress',
   },
 ];
 
@@ -141,10 +141,10 @@ const CAROUSEL_PROPS: CarouselProps = {
 
 const CARD_PROPS: CardProps = {
   style: {
-    height: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     gap: 8,
   },
 };
@@ -157,17 +157,17 @@ const DefaultDashboardPage = () => {
     data: tasksListData = [],
     error: tasksListError,
     loading: tasksListLoading,
-  } = useFetchData("../mocks/TasksList.json");
+  } = useFetchData('../mocks/TasksList.json');
   const {
     data: projectsData = [],
     error: projectsError,
     loading: projectsLoading,
-  } = useFetchData("../mocks/Projects.json");
+  } = useFetchData('../mocks/Projects.json');
   const {
     data: notificationsData = [],
     error: notificationsError,
     loading: notificationsLoading,
-  } = useFetchData("../mocks/Notifications.json");
+  } = useFetchData('../mocks/Notifications.json');
 
   return (
     <div>
@@ -184,7 +184,7 @@ const DefaultDashboardPage = () => {
                 <span>home</span>
               </>
             ),
-            path: "/",
+            path: '/',
           },
           {
             title: (
@@ -201,7 +201,7 @@ const DefaultDashboardPage = () => {
             },
           },
           {
-            title: "default",
+            title: 'default',
           },
         ]}
       />
@@ -280,7 +280,7 @@ const DefaultDashboardPage = () => {
                     {projectsData
                       .filter(
                         (o: Projects) =>
-                          o.status.toLowerCase() === "in progress"
+                          o.status.toLowerCase() === 'in progress'
                       )
                       .slice(0, 4)
                       .map((o: Projects) => (
@@ -318,7 +318,7 @@ const DefaultDashboardPage = () => {
                   >
                     {projectsData
                       .filter(
-                        (o: Projects) => o.status.toLowerCase() === "on hold"
+                        (o: Projects) => o.status.toLowerCase() === 'on hold'
                       )
                       .slice(0, 4)
                       .map((o: Projects) => (

@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import PricingData from "../../../public/mocks/Pricing.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import PricingData from '../../../public/mocks/Pricing.json';
 
-import PricingTable from "./PricingTable.tsx";
+import PricingTable from './PricingTable.tsx';
 
 const meta = {
-  title: "Components/Pricing table",
+  title: 'Components/Pricing table',
   component: PricingTable,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof PricingTable>;
 
 export default meta;
@@ -32,7 +32,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error fetching items",
+    error: 'Error fetching items',
     style: { width: 1000 },
   },
 };

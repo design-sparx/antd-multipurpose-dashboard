@@ -1,11 +1,11 @@
-import { Button, Col, Flex, Form, Input, Rate, Row, Typography } from "antd";
-import { SendOutlined } from "@ant-design/icons";
-import { Card } from "../../components";
-import { useState } from "react";
+import { Button, Col, Flex, Form, Input, Rate, Row, Typography } from 'antd';
+import { SendOutlined } from '@ant-design/icons';
+import { Card } from '../../components';
+import { useState } from 'react';
 
 const { Text } = Typography;
 
-const RATING_DESC = ["terrible", "bad", "average", "very good", "wonderful"];
+const RATING_DESC = ['terrible', 'bad', 'average', 'very good', 'wonderful'];
 
 type FieldType = {
   rating?: number;
@@ -16,16 +16,16 @@ const UserProfileFeedbackPage = () => {
   const [value, setValue] = useState(3);
 
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    console.log('Success:', values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
     <div>
-      <Card title="Feedback form" style={{ width: "50%" }}>
+      <Card title="Feedback form" style={{ width: '50%' }}>
         <Flex vertical gap="middle">
           <Text>
             Your input is valuable in helping us better understand your needs
@@ -36,7 +36,7 @@ const UserProfileFeedbackPage = () => {
             layout="vertical"
             initialValues={{
               rating: 0,
-              comment: "",
+              comment: '',
             }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -49,7 +49,7 @@ const UserProfileFeedbackPage = () => {
                   label=""
                   name="rating"
                   rules={[
-                    { required: true, message: "Please enter your ratings!" },
+                    { required: true, message: 'Please enter your ratings!' },
                   ]}
                 >
                   <Flex>
@@ -65,7 +65,7 @@ const UserProfileFeedbackPage = () => {
                         {RATING_DESC[Math.round(value) - 1]}
                       </span>
                     ) : (
-                      ""
+                      ''
                     )}
                   </Flex>
                 </Form.Item>
@@ -75,7 +75,7 @@ const UserProfileFeedbackPage = () => {
                   label="Comment"
                   name="comment"
                   rules={[
-                    { required: true, message: "Please enter your comment!" },
+                    { required: true, message: 'Please enter your comment!' },
                   ]}
                 >
                   <Input.TextArea />

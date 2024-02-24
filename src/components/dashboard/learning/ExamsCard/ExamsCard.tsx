@@ -1,11 +1,11 @@
-import { Alert, Button, CardProps, Flex, List, Typography } from "antd";
-import { Exam } from "../../../../types";
-import { RightOutlined } from "@ant-design/icons";
+import { Alert, Button, CardProps, Flex, List, Typography } from 'antd';
+import { Exam } from '../../../../types';
+import { RightOutlined } from '@ant-design/icons';
 
-import "./styles.css";
-import { Card } from "../../../index.ts";
-import { ReactNode } from "react";
-import { useMediaQuery } from "react-responsive";
+import './styles.css';
+import { Card } from '../../../index.ts';
+import { ReactNode } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 type Props = {
   data?: Exam[];
@@ -39,13 +39,13 @@ const ExamsCard = ({ data, loading, error, ...others }: Props) => {
               console.log(page);
             },
             pageSize: 5,
-            align: "center",
+            align: 'center',
           }}
           dataSource={data}
           renderItem={(item) => (
             <List.Item key={item.student_id}>
               <Flex align="center" justify="space-between">
-                <Flex vertical={!isLarge} gap={!isLarge ? "small" : "middle"}>
+                <Flex vertical={!isLarge} gap={!isLarge ? 'small' : 'middle'}>
                   <Typography.Title level={5} style={{ margin: 0 }}>
                     {item.course} - {item.course_code}
                   </Typography.Title>

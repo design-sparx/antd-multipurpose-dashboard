@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import CampaignsData from "../../../../../public/mocks/CampaignAds.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import CampaignsData from '../../../../../public/mocks/CampaignAds.json';
 
-import CampaignsAdsCard from "./CampaignsAdsCard.tsx";
+import CampaignsAdsCard from './CampaignsAdsCard.tsx';
 
 const meta = {
-  title: "Components/Dashboard/Marketing/Campaigns/Ads stats",
+  title: 'Components/Dashboard/Marketing/Campaigns/Ads stats',
   component: CampaignsAdsCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof CampaignsAdsCard>;
 
 export default meta;
@@ -33,7 +33,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error loading items",
+    error: 'Error loading items',
     data: [],
     style: { width: 1000 },
   },

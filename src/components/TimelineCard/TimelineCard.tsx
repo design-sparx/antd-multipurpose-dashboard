@@ -1,12 +1,12 @@
-import { Alert, CardProps, Flex, Timeline, Typography } from "antd";
+import { Alert, CardProps, Flex, Timeline, Typography } from 'antd';
 import {
   LaptopOutlined,
   MobileOutlined,
   TabletOutlined,
-} from "@ant-design/icons";
-import { ActivityTimeline } from "../../types";
-import { Card, Loader } from "../index.ts";
-import { ReactNode } from "react";
+} from '@ant-design/icons';
+import { ActivityTimeline } from '../../types';
+import { Card, Loader } from '../index.ts';
+import { ReactNode } from 'react';
 
 type Props = {
   data?: ActivityTimeline[];
@@ -31,9 +31,9 @@ const TimelineCard = ({ data, error, loading, ...others }: Props) => {
           mode="left"
           items={data?.map((_) => ({
             dot:
-              _.device_type === "desktop" ? (
+              _.device_type === 'desktop' ? (
                 <LaptopOutlined />
-              ) : _.device_type === "tablet" ? (
+              ) : _.device_type === 'tablet' ? (
                 <TabletOutlined />
               ) : (
                 <MobileOutlined />

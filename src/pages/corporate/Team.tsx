@@ -1,8 +1,8 @@
-import { Alert, Col, List, Row } from "antd";
-import { Card, EmployeeCard } from "../../components";
-import { Employee } from "../../types";
-import { useFetchData } from "../../hooks";
-import { useStylesContext } from "../../context";
+import { Alert, Col, List, Row } from 'antd';
+import { Card, EmployeeCard } from '../../components';
+import { Employee } from '../../types';
+import { useFetchData } from '../../hooks';
+import { useStylesContext } from '../../context';
 
 const CorporateTeamPage = () => {
   const stylesContext = useStylesContext();
@@ -10,7 +10,7 @@ const CorporateTeamPage = () => {
     data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData("../mocks/Employees.json");
+  } = useFetchData('../mocks/Employees.json');
 
   return (
     <div>
@@ -40,7 +40,7 @@ const CorporateTeamPage = () => {
                     console.log(page);
                   },
                   pageSize: 10,
-                  align: "center",
+                  align: 'center',
                 }}
                 loading={employeesDataLoading}
                 dataSource={employeesData}

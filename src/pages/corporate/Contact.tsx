@@ -1,6 +1,6 @@
-import { Col, Row, RowProps, Space, Typography } from "antd";
-import { Card, ContactForm } from "../../components";
-import { MailFilled, PhoneFilled } from "@ant-design/icons";
+import { Col, Row, RowProps, Space, Typography } from 'antd';
+import { Card, ContactForm } from '../../components';
+import { MailFilled, PhoneFilled } from '@ant-design/icons';
 
 const { Link, Text, Paragraph } = Typography;
 
@@ -12,12 +12,12 @@ const ROW_PROPS: RowProps = {
 };
 
 const textStyles: React.CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
+  display: 'flex',
+  justifyContent: 'space-between',
 };
 
 const cardStyles: React.CSSProperties = {
-  height: "100%",
+  height: '100%',
 };
 
 const CorporateContactPage = () => {
@@ -26,7 +26,7 @@ const CorporateContactPage = () => {
       <Row {...ROW_PROPS}>
         <Col sm={24} lg={12}>
           <Card title="Phone" extra={<PhoneFilled />} style={cardStyles}>
-            <Space direction="vertical" style={{ width: "100%" }}>
+            <Space direction="vertical" style={{ width: '100%' }}>
               <Text style={textStyles}>
                 Nairobi: <Link strong>(254) 000-0000</Link>
               </Text>
@@ -37,7 +37,7 @@ const CorporateContactPage = () => {
                 Dodoma: <Link strong>(256) 000-0000</Link>
               </Text>
             </Space>
-            <Paragraph style={{ textAlign: "center", margin: "1rem 0 0 0" }}>
+            <Paragraph style={{ textAlign: 'center', margin: '1rem 0 0 0' }}>
               We are available during weekdays and office hours (8AM-5PM), feel
               free to leave us a call.
             </Paragraph>
@@ -45,7 +45,7 @@ const CorporateContactPage = () => {
         </Col>
         <Col sm={24} lg={12}>
           <Card title="Email" extra={<MailFilled />} style={cardStyles}>
-            <Space direction="vertical" style={{ width: "100%" }}>
+            <Space direction="vertical" style={{ width: '100%' }}>
               <Text style={textStyles}>
                 Sales: <Link strong>biz@sparx.com</Link>
               </Text>
@@ -53,7 +53,7 @@ const CorporateContactPage = () => {
                 Support: <Link strong>help@sparx.com</Link>
               </Text>
             </Space>
-            <Paragraph style={{ textAlign: "center", margin: "1rem 0 0 0" }}>
+            <Paragraph style={{ textAlign: 'center', margin: '1rem 0 0 0' }}>
               We are available everyday, feel free to write to us.
             </Paragraph>
           </Card>

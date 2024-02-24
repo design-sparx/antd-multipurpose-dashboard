@@ -1,6 +1,6 @@
-import { Area } from "@ant-design/charts";
-import { CardProps } from "antd";
-import { Card } from "../../../index.ts";
+import { Area } from '@ant-design/charts';
+import { CardProps } from 'antd';
+import { Card } from '../../../index.ts';
 
 type Activity = {
   day: string;
@@ -14,8 +14,8 @@ type ChartProps = {
 const AreaChart = ({ data }: ChartProps) => {
   const config = {
     data,
-    xField: "day",
-    yField: "value",
+    xField: 'day',
+    yField: 'value',
     xAxis: {
       range: [0, 1],
     },

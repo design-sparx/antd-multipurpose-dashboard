@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import TimelineData from "../../../public/mocks/TimelineActivity.json";
+import type { Meta, StoryObj } from '@storybook/react';
+import TimelineData from '../../../public/mocks/TimelineActivity.json';
 
-import TimelineCard from "./TimelineCard.tsx";
+import TimelineCard from './TimelineCard.tsx';
 
 const meta = {
-  title: "Components/Timeline",
+  title: 'Components/Timeline',
   component: TimelineCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof TimelineCard>;
 
 export default meta;
@@ -32,7 +32,7 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: {
-    error: "Error fetching items",
+    error: 'Error fetching items',
     style: { width: 600 },
   },
 };

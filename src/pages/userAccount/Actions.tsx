@@ -1,8 +1,8 @@
-import { Card, Flex } from "../../components";
-import { Button, Col, Divider, Row, Switch, Typography } from "antd";
-import { CSSProperties, ReactNode } from "react";
-import { QuestionCircleOutlined, SyncOutlined } from "@ant-design/icons";
-import { useStylesContext } from "../../context";
+import { Card, Flex } from '../../components';
+import { Button, Col, Divider, Row, Switch, Typography } from 'antd';
+import { CSSProperties, ReactNode } from 'react';
+import { QuestionCircleOutlined, SyncOutlined } from '@ant-design/icons';
+import { useStylesContext } from '../../context';
 
 const { Text } = Typography;
 
@@ -37,7 +37,7 @@ const UserProfileActionsPage = () => {
   return (
     <Row {...context?.rowProps}>
       <Col xs={24} lg={12} xl={8}>
-        <Card title="Advanced" style={{ height: "100%" }}>
+        <Card title="Advanced" style={{ height: '100%' }}>
           <Flex flexDirection="column">
             <ActionItem
               title="Auto accept project invites"
@@ -73,7 +73,7 @@ const UserProfileActionsPage = () => {
         </Card>
       </Col>
       <Col xs={24} lg={12} xl={8}>
-        <Card title="Export content" style={{ height: "100%" }}>
+        <Card title="Export content" style={{ height: '100%' }}>
           <Flex flexDirection="column">
             <ActionItem
               title="Export workspace content"
@@ -105,7 +105,7 @@ const UserProfileActionsPage = () => {
         </Card>
       </Col>
       <Col xs={24} lg={12} xl={8}>
-        <Card title="Danger zone" style={{ height: "100%" }}>
+        <Card title="Danger zone" style={{ height: '100%' }}>
           <ActionItem
             title="Delete account"
             extra={
