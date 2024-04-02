@@ -201,7 +201,7 @@ export const PATH_DOCS = {
   help: 'https://github.com/design-sparx/antd-multipurpose-dashboard/blob/main/README.md',
   components: 'https://6546507b657a74164abf2db6-oniqlpqtfs.chromatic.com/',
   productRoadmap:
-    'https://kelvink96.notion.site/Antd-multipurpose-dashboard-Product-roadmap-92163e05b8ea444a8f87b7f834933069?pvs=74',
+    'https://kelvink96.notion.site/1af2c000eb4f4b1688684cb2d88d5ee4?v=eb14f3050b7d4357821dbcb4bb61b636&p=752cacbf390f4d1cbc0e625550391d9b&pm=s',
 };
 
 export const PATH_CHANGELOG = {
