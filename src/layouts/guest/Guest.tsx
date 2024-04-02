@@ -25,6 +25,7 @@ import {
 import { useMediaQuery } from 'react-responsive';
 import { Logo, Nprogress } from '../../components';
 import {
+  PATH_AUTH,
   PATH_DASHBOARD,
   PATH_DOCS,
   PATH_GITHUB,
@@ -108,7 +109,7 @@ const GuestLayout = () => {
                     Give us a star
                   </Button>
                 </Link>
-                <Link to={PATH_DASHBOARD.default}>
+                <Link to={PATH_AUTH.signin}>
                   <Button icon={<LoginOutlined />} type="primary">
                     Live Preview
                   </Button>

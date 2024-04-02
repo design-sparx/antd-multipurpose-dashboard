@@ -94,7 +94,11 @@ const SignInPage = () => {
             layout="vertical"
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
-            initialValues={{ remember: true }}
+            initialValues={{
+              email: 'demo@email.com',
+              password: 'demo123',
+              remember: true,
+            }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
