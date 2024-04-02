@@ -266,7 +266,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
         href={PATH_LANDING.root}
         justify="center"
         gap="small"
-        imgSize={{ h: 36, w: 36 }}
+        imgSize={{ h: 28, w: 28 }}
         style={{ padding: '1rem 0' }}
       />
       <ConfigProvider
@@ -274,9 +274,8 @@ const SideNav = ({ ...others }: SideNavProps) => {
           components: {
             Menu: {
               itemBg: 'none',
-              subMenuItemBg: COLOR['50'],
               itemSelectedBg: COLOR['100'],
-              itemHoverBg: COLOR['100'],
+              itemHoverBg: COLOR['50'],
               itemSelectedColor: COLOR['600'],
             },
           },

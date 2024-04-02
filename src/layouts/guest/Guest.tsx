@@ -70,10 +70,7 @@ const GuestLayout = () => {
         className="layout"
         style={{
           minHeight: '100vh',
-          backgroundColor: 'rgba(52, 152, 219, 0.05)',
-          backgroundImage:
-            'radial-gradient(at 47% 33%, hsl(197.95, 0%, 100%) 0, transparent 59%),\n' +
-            'radial-gradient(at 82% 65%, hsl(204.07, 70%, 53%) 0, transparent 55%)',
+          backgroundColor: 'white',
         }}
       >
         <Header
@@ -83,6 +80,7 @@ const GuestLayout = () => {
             justifyContent: 'space-between',
             background: navFill ? 'rgba(255, 255, 255, .5)' : 'none',
             backdropFilter: navFill ? 'blur(8px)' : 'none',
+            boxShadow: navFill ? '0 0 8px 2px rgba(0, 0, 0, 0.05)' : 'none',
             gap: 12,
             position: 'sticky',
             top: 0,
@@ -133,8 +131,7 @@ const GuestLayout = () => {
         </Header>
         <Content
           style={{
-            // padding: '0 50px',
-            background: 'rgba(52, 152, 219, 0.35)',
+            background: 'rgba(255, 255, 255, 1)',
             borderRadius,
             transition: 'all .25s',
             paddingBottom: '10rem',
