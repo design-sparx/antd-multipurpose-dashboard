@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 1.3.4
+
+### Patch Changes
+
+- 8a5f6ef: chore: change onboarding flow. From landing → login → home
+
 ## 1.3.3
 
 ### Patch Changes
