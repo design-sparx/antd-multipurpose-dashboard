@@ -220,7 +220,7 @@ const HomePage = () => {
                 vertical={isMobile}
                 style={{ marginTop: '1.5rem' }}
               >
-                <Link to={PATH_DASHBOARD.default}>
+                <Link to={PATH_AUTH.signin}>
                   <Button
                     icon={<LoginOutlined />}
                     type="primary"

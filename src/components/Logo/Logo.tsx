@@ -13,7 +13,7 @@ type LogoProps = {
   asLink?: boolean;
   href?: string;
   bgColor?: CSSProperties['backgroundColor'];
-} & Omit<FlexProps, 'children'>;
+} & Partial<FlexProps>;
 
 const Logo = ({
   asLink,
@@ -36,7 +36,7 @@ const Logo = ({
           height={imgSize?.h || 48}
         />
         <Typography.Title
-          level={4}
+          level={5}
           type="secondary"
           style={{
             color,

@@ -17,16 +17,17 @@ const { VITE_APP_VAPID_KEY } = import.meta.env;
 // This is for reference purposes
 
 export const COLOR = {
-  50: '#dfefff',
-  100: '#b9d2f8',
-  200: '#90b9ef',
-  300: '#66a2e5',
-  400: '#3c8cdc',
-  500: '#2378c3',
-  600: '#175498',
-  700: '#0b366e',
-  800: '#011b45',
-  900: '#00061d',
+  50: '#e0f1ff',
+  100: '#b0d2ff',
+  200: '#7fb0ff',
+  300: '#4d8bff',
+  400: '#1e79fe',
+  500: '#076ee5',
+  600: '#0062b3',
+  700: '#004f81',
+  800: '#003650',
+  900: '#001620',
+  borderColor: '#E7EAF3B2',
 };
 
 function App() {
@@ -87,7 +88,7 @@ function App() {
             },
             Card: {
               colorBgContainer: 'none',
-              colorBorderSecondary: COLOR['100'],
+              colorBorderSecondary: COLOR['borderColor'],
             },
             Carousel: {
               colorBgContainer: COLOR['800'],
