@@ -34,7 +34,7 @@ type Props = {
   loading?: boolean;
 } & CardProps;
 
-const PricingTable = ({ data, error, loading, ...others }: Props) => {
+export const PricingTable = ({ data, error, loading, ...others }: Props) => {
   const {
     token: { colorPrimary, colorFillSecondary },
   } = theme.useToken();
@@ -143,5 +143,3 @@ const PricingTable = ({ data, error, loading, ...others }: Props) => {
     </Card>
   );
 };
-
-export default PricingTable;

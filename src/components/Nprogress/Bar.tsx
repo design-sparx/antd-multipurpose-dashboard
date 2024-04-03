@@ -3,7 +3,7 @@ type Props = {
   progress: number;
 };
 
-const Bar = ({ animationDuration, progress }: Props) => (
+export const Bar = ({ animationDuration, progress }: Props) => (
   <div
     style={{
       background: '#29d',
@@ -31,5 +31,3 @@ const Bar = ({ animationDuration, progress }: Props) => (
     />
   </div>
 );
-
-export default Bar;

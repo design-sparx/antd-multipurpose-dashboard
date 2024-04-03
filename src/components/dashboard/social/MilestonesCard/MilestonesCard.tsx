@@ -39,7 +39,7 @@ const MOCK_DATA = [
 
 type Props = CardProps;
 
-const MilestonesCard = ({ ...others }: Props) => {
+export const MilestonesCard = ({ ...others }: Props) => {
   return (
     <Card
       title="Milestones"
@@ -116,5 +116,3 @@ const MilestonesCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default MilestonesCard;

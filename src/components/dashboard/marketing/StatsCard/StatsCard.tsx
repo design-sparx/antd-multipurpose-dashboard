@@ -34,7 +34,7 @@ type Props = {
   asCurrency?: boolean;
 } & CardProps;
 
-const StatsCard = ({
+export const StatsCard = ({
   data,
   diff,
   title,
@@ -73,5 +73,3 @@ const StatsCard = ({
     </Card>
   );
 };
-
-export default StatsCard;

@@ -8,7 +8,7 @@ type Props = {
   breadcrumbs: BreadcrumbProps['items'];
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const PageHeader = ({ breadcrumbs, title, ...others }: Props) => {
+export const PageHeader = ({ breadcrumbs, title, ...others }: Props) => {
   return (
     <div {...others}>
       <Space direction="vertical" size="small">
@@ -26,5 +26,3 @@ const PageHeader = ({ breadcrumbs, title, ...others }: Props) => {
     </div>
   );
 };
-
-export default PageHeader;

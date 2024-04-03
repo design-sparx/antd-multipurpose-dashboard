@@ -1,13 +1,5 @@
-import AuctionCarousel from './AuctionCarousel/AuctionCarousel.tsx';
-import CreatorsCard from './CreatorsCard/CreatorsCard.tsx';
-import TopItemsCard from './TopItemsCard/TopItems.tsx';
-import TransactionsCard from './TransactionsCard/TransactionsCard.tsx';
-import CategoriesCard from './CategoriesCard/CategoriesCard.tsx';
-
-export {
-  AuctionCarousel,
-  CreatorsCard,
-  TopItemsCard,
-  TransactionsCard,
-  CategoriesCard,
-};
+export { AuctionCarousel } from './AuctionCarousel/AuctionCarousel.tsx';
+export { CreatorsCard } from './CreatorsCard/CreatorsCard.tsx';
+export { TopItemsCard } from './TopItemsCard/TopItems.tsx';
+export { TransactionsCard } from './TransactionsCard/TransactionsCard.tsx';
+export { CategoriesCard } from './CategoriesCard/CategoriesCard.tsx';

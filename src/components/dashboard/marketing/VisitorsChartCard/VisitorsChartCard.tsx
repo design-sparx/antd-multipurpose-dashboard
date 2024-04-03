@@ -62,7 +62,7 @@ const AreaChart = () => {
 
 type Props = CardProps;
 
-const VisitorsChartCard = ({ ...others }: Props) => {
+export const VisitorsChartCard = ({ ...others }: Props) => {
   return (
     <Card
       title="Website visitor traffic and analytics"
@@ -77,5 +77,3 @@ const VisitorsChartCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default VisitorsChartCard;

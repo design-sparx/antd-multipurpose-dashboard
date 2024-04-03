@@ -37,7 +37,12 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const LatestOrdersCard = ({ data, loading, error, ...others }: Props) => {
+export const LatestOrdersCard = ({
+  data,
+  loading,
+  error,
+  ...others
+}: Props) => {
   const {
     data: ordersData,
     loading: ordersDataLoading,
@@ -63,5 +68,3 @@ const LatestOrdersCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default LatestOrdersCard;

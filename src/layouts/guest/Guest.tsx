@@ -23,7 +23,7 @@ import {
   ProductOutlined,
 } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
-import { Logo, Nprogress } from '../../components';
+import { Logo, NProgress } from '../../components';
 import {
   PATH_AUTH,
   PATH_DASHBOARD,
@@ -34,7 +34,7 @@ import {
 
 const { Header, Content, Footer } = Layout;
 
-const GuestLayout = () => {
+export const GuestLayout = () => {
   const {
     token: { borderRadius },
   } = theme.useToken();
@@ -65,7 +65,7 @@ const GuestLayout = () => {
 
   return (
     <>
-      <Nprogress isAnimating={isLoading} key={location.key} />
+      <NProgress isAnimating={isLoading} key={location.key} />
       <Layout
         className="layout"
         style={{
@@ -205,5 +205,3 @@ const GuestLayout = () => {
     </>
   );
 };
-
-export default GuestLayout;

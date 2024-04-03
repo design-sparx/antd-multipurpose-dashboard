@@ -11,7 +11,7 @@ type Props = {
   progress: number;
 } & CardProps;
 
-const StatsCard = ({
+export const StatsCard = ({
   color,
   icon,
   title,
@@ -34,5 +34,3 @@ const StatsCard = ({
     </Card>
   );
 };
-
-export default StatsCard;

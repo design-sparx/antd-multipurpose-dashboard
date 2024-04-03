@@ -31,7 +31,7 @@ const items: MenuProps['items'] = [
   },
 ];
 
-const MoreMenu = () => {
+export const MoreMenu = () => {
   return (
     <Dropdown menu={{ items }} placement="bottomLeft">
       <Button>
@@ -40,5 +40,3 @@ const MoreMenu = () => {
     </Dropdown>
   );
 };
-
-export default MoreMenu;

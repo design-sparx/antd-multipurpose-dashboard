@@ -14,7 +14,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const TimelineCard = ({ data, error, loading, ...others }: Props) => {
+export const TimelineCard = ({ data, error, loading, ...others }: Props) => {
   return (
     <Card title="Latest activities" {...others}>
       {error ? (
@@ -60,5 +60,3 @@ const TimelineCard = ({ data, error, loading, ...others }: Props) => {
     </Card>
   );
 };
-
-export default TimelineCard;

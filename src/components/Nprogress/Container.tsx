@@ -6,7 +6,11 @@ type Props = {
   children: ReactNode;
 };
 
-const Container = ({ animationDuration, children, isFinished }: Props) => (
+export const NContainer = ({
+  animationDuration,
+  children,
+  isFinished,
+}: Props) => (
   <div
     style={{
       opacity: isFinished ? 0 : 1,
@@ -17,5 +21,3 @@ const Container = ({ animationDuration, children, isFinished }: Props) => (
     {children}
   </div>
 );
-
-export default Container;

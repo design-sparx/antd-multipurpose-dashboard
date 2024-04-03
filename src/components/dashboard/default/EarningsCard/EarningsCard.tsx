@@ -10,7 +10,7 @@ type Props = {
   diff: number;
 } & CardProps;
 
-const EarningsCard = ({ data, title, diff, ...others }: Props) => {
+export const EarningsCard = ({ data, title, diff, ...others }: Props) => {
   const config = {
     appendPadding: 10,
     data,
@@ -83,5 +83,3 @@ const EarningsCard = ({ data, title, diff, ...others }: Props) => {
     </Card>
   );
 };
-
-export default EarningsCard;

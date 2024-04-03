@@ -243,7 +243,7 @@ const TAB_CONTENT: Record<TabKeys, React.ReactNode> = {
 
 type Props = CardProps;
 
-const FollowersChart = ({ ...others }: Props) => {
+export const FollowersChart = ({ ...others }: Props) => {
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>('all');
 
   const onTabChange = (key: TabKeys) => {
@@ -269,5 +269,3 @@ const FollowersChart = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default FollowersChart;

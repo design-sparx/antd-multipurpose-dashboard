@@ -12,7 +12,7 @@ type ContainerProps = {
   style?: CSSProperties;
 } & HTMLProps<HTMLDivElement>;
 
-const Container = ({ children, style, ...others }: ContainerProps) => {
+export const Container = ({ children, style, ...others }: ContainerProps) => {
   const [containerWidth, setContainerWidth] = useState<string>();
   const isMedium = useMediaQuery({ minWidth: 769 }),
     isLarge = useMediaQuery({ minWidth: 992 }),
@@ -47,5 +47,3 @@ const Container = ({ children, style, ...others }: ContainerProps) => {
     </div>
   );
 };
-
-export default Container;

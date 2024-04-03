@@ -1,23 +1,10 @@
-import CampaignsCard from './CampaignsCard/CampaignsCard.tsx';
-import EarningsCard from './EarningsCard/EarningsCard.tsx';
-import GetStartedCard from './GetStartedCard/GetStartedCard.tsx';
-import LatestOrdersCard from './LatestOrdersCard/LatestOrdersCard.tsx';
-import OrdersChart from './OrdersChart/OrdersChart.tsx';
-import RecentUsersCard from './RecentUsersCard/RecentUsersCard.tsx';
-import SubscribersChart from './SubscribersChart/SubscribersChart.tsx';
-import WeeklyActivityCard from './WeeklyActivityCard/WeeklyActivityCard.tsx';
-import TasksChartCard from './TasksChartCard/TasksChartCard.tsx';
-import TasksListCard from './TasksListCard/TasksListCard.tsx';
-
-export {
-  CampaignsCard,
-  LatestOrdersCard,
-  OrdersChart,
-  RecentUsersCard,
-  EarningsCard,
-  GetStartedCard,
-  SubscribersChart,
-  WeeklyActivityCard,
-  TasksChartCard,
-  TasksListCard,
-};
+export { CampaignsCard } from './CampaignsCard/CampaignsCard.tsx';
+export { EarningsCard } from './EarningsCard/EarningsCard.tsx';
+export { GetStartedCard } from './GetStartedCard/GetStartedCard.tsx';
+export { LatestOrdersCard } from './LatestOrdersCard/LatestOrdersCard.tsx';
+export { OrdersChart } from './OrdersChart/OrdersChart.tsx';
+export { RecentUsersCard } from './RecentUsersCard/RecentUsersCard.tsx';
+export { SubscribersChart } from './SubscribersChart/SubscribersChart.tsx';
+export { WeeklyActivityCard } from './WeeklyActivityCard/WeeklyActivityCard.tsx';
+export { TasksChartCard } from './TasksChartCard/TasksChartCard.tsx';
+export { TasksListCard } from './TasksListCard/TasksListCard.tsx';

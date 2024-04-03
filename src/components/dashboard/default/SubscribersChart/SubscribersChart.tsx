@@ -70,7 +70,7 @@ const ColumnChart = () => {
   return <Column {...config} />;
 };
 
-const SubscribersChart = ({ ...others }: Props) => {
+export const SubscribersChart = ({ ...others }: Props) => {
   return (
     <Card title="YouTube Subscribers" extra={<MoreMenu />} {...others}>
       <Flex gap="middle" vertical>
@@ -80,5 +80,3 @@ const SubscribersChart = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default SubscribersChart;

@@ -1,6 +1,6 @@
 import './spinner.css';
 
-const Spinner = () => (
+export const NSpinner = () => (
   <div
     style={{
       display: 'block',
@@ -25,5 +25,3 @@ const Spinner = () => (
     />
   </div>
 );
-
-export default Spinner;

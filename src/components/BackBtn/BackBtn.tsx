@@ -7,7 +7,7 @@ type Props = {
   iconOnly?: boolean;
 } & ButtonProps;
 
-const BackBtn = ({ wIcon, iconOnly, ...others }: Props) => {
+export const BackBtn = ({ wIcon, iconOnly, ...others }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -22,5 +22,3 @@ const BackBtn = ({ wIcon, iconOnly, ...others }: Props) => {
     </Tooltip>
   );
 };
-
-export default BackBtn;

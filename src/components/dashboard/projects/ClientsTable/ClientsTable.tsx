@@ -23,7 +23,7 @@ type Props = {
   data: Clients[];
 } & TableProps<any>;
 
-const ClientsTable = ({ data, ...others }: Props) => (
+export const ClientsTable = ({ data, ...others }: Props) => (
   <Table
     dataSource={data}
     columns={COLUMNS}
@@ -33,5 +33,3 @@ const ClientsTable = ({ data, ...others }: Props) => (
     {...others}
   />
 );
-
-export default ClientsTable;

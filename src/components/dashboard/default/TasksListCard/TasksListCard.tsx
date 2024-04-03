@@ -22,7 +22,7 @@ type Props = {
   error?: any;
 } & CardProps;
 
-const TasksListCard = ({ data, error, loading, ...others }: Props) => {
+export const TasksListCard = ({ data, error, loading, ...others }: Props) => {
   return (
     <Card
       title="Tasks"
@@ -107,5 +107,3 @@ const TasksListCard = ({ data, error, loading, ...others }: Props) => {
     </Card>
   );
 };
-
-export default TasksListCard;

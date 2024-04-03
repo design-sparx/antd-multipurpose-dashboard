@@ -171,7 +171,7 @@ const CATEGORIES_COLUMNS = [
 
 type Props = CardProps;
 
-const CategoriesCard = ({ ...others }: Props) => {
+export const CategoriesCard = ({ ...others }: Props) => {
   return (
     <Card title="categories" className="card" {...others}>
       <Table
@@ -183,5 +183,3 @@ const CategoriesCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default CategoriesCard;

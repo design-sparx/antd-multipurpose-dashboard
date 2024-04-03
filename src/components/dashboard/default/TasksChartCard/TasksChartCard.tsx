@@ -50,12 +50,10 @@ type Props = {
   data?: Tasks[];
 } & CardProps;
 
-const TasksChartCard = ({ data, ...others }: Props) => {
+export const TasksChartCard = ({ data, ...others }: Props) => {
   return (
     <Card title="Tasks stats" extra={<Button>See all</Button>} {...others}>
       <ColumnChart data={data || []} />
     </Card>
   );
 };
-
-export default TasksChartCard;

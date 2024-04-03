@@ -5,12 +5,10 @@ import './styles.css';
 
 type Props = { children: ReactNode } & CardProps;
 
-const Card = ({ children, ...others }: Props) => {
+export const Card = ({ children, ...others }: Props) => {
   return (
     <AntdCard className="card" {...others}>
       {children}
     </AntdCard>
   );
 };
-
-export default Card;

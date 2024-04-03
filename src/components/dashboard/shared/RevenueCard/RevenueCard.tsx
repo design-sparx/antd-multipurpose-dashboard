@@ -13,7 +13,7 @@ type Props = {
   height?: number;
 } & CardProps;
 
-const RevenueCard = (props: Props) => {
+export const RevenueCard = (props: Props) => {
   const { title, value, diff, justify, height, ...others } = props;
 
   return (
@@ -52,5 +52,3 @@ const RevenueCard = (props: Props) => {
     </Card>
   );
 };
-
-export default RevenueCard;

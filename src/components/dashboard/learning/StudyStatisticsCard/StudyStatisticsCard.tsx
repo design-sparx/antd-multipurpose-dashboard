@@ -66,7 +66,12 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const StudyStatisticsCard = ({ data, error, loading, ...others }: Props) => {
+export const StudyStatisticsCard = ({
+  data,
+  error,
+  loading,
+  ...others
+}: Props) => {
   return (
     <Card title="Study statistics" {...others}>
       {error ? (
@@ -84,5 +89,3 @@ const StudyStatisticsCard = ({ data, error, loading, ...others }: Props) => {
     </Card>
   );
 };
-
-export default StudyStatisticsCard;

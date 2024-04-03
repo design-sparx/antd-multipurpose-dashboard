@@ -42,7 +42,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const CreatorsCard = ({ data, loading, error, ...others }: Props) => {
+export const CreatorsCard = ({ data, loading, error, ...others }: Props) => {
   return error ? (
     <Alert
       message="Error"
@@ -67,5 +67,3 @@ const CreatorsCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default CreatorsCard;

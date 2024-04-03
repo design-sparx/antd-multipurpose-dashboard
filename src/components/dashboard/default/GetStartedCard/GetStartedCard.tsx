@@ -5,7 +5,7 @@ import CountUp from 'react-countup';
 
 type Props = CardProps;
 
-const GetStartedCard = ({ ...others }: Props) => {
+export const GetStartedCard = ({ ...others }: Props) => {
   return (
     <Card {...others}>
       <Flex justify="space-between" align="center" gap="middle">
@@ -31,5 +31,3 @@ const GetStartedCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default GetStartedCard;

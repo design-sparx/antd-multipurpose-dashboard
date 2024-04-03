@@ -96,7 +96,7 @@ type Props = {
   data: Projects[];
 } & TableProps<any>;
 
-const ProjectsTable = ({ data, ...others }: Props) => {
+export const ProjectsTable = ({ data, ...others }: Props) => {
   return (
     <Table
       dataSource={data}
@@ -106,5 +106,3 @@ const ProjectsTable = ({ data, ...others }: Props) => {
     />
   );
 };
-
-export default ProjectsTable;

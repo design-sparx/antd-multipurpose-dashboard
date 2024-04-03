@@ -11,7 +11,7 @@ type Props = {
   };
 } & CardProps;
 
-const SitemapCard = ({ data, ...others }: Props) => {
+export const SitemapCard = ({ data, ...others }: Props) => {
   return (
     <Card {...others}>
       <Flex vertical gap="middle">
@@ -29,5 +29,3 @@ const SitemapCard = ({ data, ...others }: Props) => {
     </Card>
   );
 };
-
-export default SitemapCard;

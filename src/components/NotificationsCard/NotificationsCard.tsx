@@ -10,7 +10,12 @@ type Props = {
   error?: any;
 } & CardProps;
 
-const NotificationsCard = ({ data, loading, error, ...others }: Props) => {
+export const NotificationsCard = ({
+  data,
+  loading,
+  error,
+  ...others
+}: Props) => {
   return (
     <Card
       title="Notifications"
@@ -49,5 +54,3 @@ const NotificationsCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default NotificationsCard;

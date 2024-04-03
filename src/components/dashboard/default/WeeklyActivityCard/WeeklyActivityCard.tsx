@@ -29,12 +29,10 @@ type Props = {
   data: Activity[];
 } & CardProps;
 
-const WeeklyActivityCard = ({ data, ...others }: Props) => {
+export const WeeklyActivityCard = ({ data, ...others }: Props) => {
   return (
     <Card title="Weekly activity" {...others}>
       <AreaChart data={data} />
     </Card>
   );
 };
-
-export default WeeklyActivityCard;

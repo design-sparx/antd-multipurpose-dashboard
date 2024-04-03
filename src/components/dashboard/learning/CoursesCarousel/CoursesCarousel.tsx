@@ -105,7 +105,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const CoursesCarousel = ({ data, loading, error, ...others }: Props) => {
+export const CoursesCarousel = ({ data, loading, error, ...others }: Props) => {
   const sliderRef = useRef<any>();
   const isXlScreen = useMediaQuery({ maxWidth: 1200 });
 
@@ -189,5 +189,3 @@ const CoursesCarousel = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default CoursesCarousel;

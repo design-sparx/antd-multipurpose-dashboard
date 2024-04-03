@@ -47,7 +47,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
+export const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
   const { token } = theme.useToken();
 
   return (
@@ -178,5 +178,3 @@ const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
     </Card>
   );
 };
-
-export default PostsCard;

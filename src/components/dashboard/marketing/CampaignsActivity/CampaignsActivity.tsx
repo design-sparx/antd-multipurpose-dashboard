@@ -9,7 +9,7 @@ const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
 
 type Props = CardProps;
 
-const CampaignsActivity = ({ ...others }: Props) => {
+export const CampaignsActivity = ({ ...others }: Props) => {
   return (
     <Card
       title="Campaign activity"
@@ -24,5 +24,3 @@ const CampaignsActivity = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default CampaignsActivity;

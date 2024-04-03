@@ -15,7 +15,7 @@ type LogoProps = {
   bgColor?: CSSProperties['backgroundColor'];
 } & Partial<FlexProps>;
 
-const Logo = ({
+export const Logo = ({
   asLink,
   color,
   href,
@@ -73,5 +73,3 @@ const Logo = ({
     </Flex>
   );
 };
-
-export default Logo;

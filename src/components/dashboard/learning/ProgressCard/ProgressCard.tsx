@@ -86,7 +86,7 @@ const items: MenuProps['items'] = [
 
 type Props = CardProps;
 
-const ProgressCard = ({ ...others }: Props) => {
+export const ProgressCard = ({ ...others }: Props) => {
   return (
     <Card
       title="My Progress"
@@ -161,5 +161,3 @@ const ProgressCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default ProgressCard;

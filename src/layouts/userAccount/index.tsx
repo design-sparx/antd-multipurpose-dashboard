@@ -1,4 +1,4 @@
-import { AppLayout } from '../index.ts';
+import { AppLayout } from '../app';
 import {
   Col,
   ConfigProvider,
@@ -71,7 +71,7 @@ const TAB_ITEMS: TabsProps['items'] = USER_PROFILE_ITEMS.map((u) => ({
   label: u.title,
 }));
 
-const UserAccountLayout = () => {
+export const UserAccountLayout = () => {
   const {
     token: { borderRadius },
   } = theme.useToken();
@@ -144,5 +144,3 @@ const UserAccountLayout = () => {
     </>
   );
 };
-
-export default UserAccountLayout;
