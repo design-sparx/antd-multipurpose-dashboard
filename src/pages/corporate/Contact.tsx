@@ -20,7 +20,7 @@ const cardStyles: React.CSSProperties = {
   height: '100%',
 };
 
-const CorporateContactPage = () => {
+export const CorporateContactPage = () => {
   return (
     <div>
       <Row {...ROW_PROPS}>
@@ -67,5 +67,3 @@ const CorporateContactPage = () => {
     </div>
   );
 };
-
-export default CorporateContactPage;

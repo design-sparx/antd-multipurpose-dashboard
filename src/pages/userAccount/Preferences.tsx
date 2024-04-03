@@ -18,7 +18,7 @@ const BUTTON_PROPS: ButtonProps = {
   type: 'dashed',
 };
 
-const UserProfilePreferencesPage = () => {
+export const UserProfilePreferencesPage = () => {
   const context = useStylesContext();
   const isMobile = useMediaQuery({ maxWidth: 600 });
 
@@ -152,5 +152,3 @@ const UserProfilePreferencesPage = () => {
     </Flex>
   );
 };
-
-export default UserProfilePreferencesPage;

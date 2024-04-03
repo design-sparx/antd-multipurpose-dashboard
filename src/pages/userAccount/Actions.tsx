@@ -27,7 +27,7 @@ const ActionItem = ({ children, extra, title }: ActionItemProps) => {
   );
 };
 
-const UserProfileActionsPage = () => {
+export const UserProfileActionsPage = () => {
   const context = useStylesContext();
 
   const onChange = (checked: boolean) => {
@@ -124,5 +124,3 @@ const UserProfileActionsPage = () => {
     </Row>
   );
 };
-
-export default UserProfileActionsPage;

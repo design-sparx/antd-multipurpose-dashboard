@@ -37,7 +37,7 @@ type FieldType = {
   reEnterPassword?: string;
 };
 
-const UserProfileSecurityPage = () => {
+export const UserProfileSecurityPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: sessionActivityData,
@@ -246,5 +246,3 @@ const UserProfileSecurityPage = () => {
     </Row>
   );
 };
-
-export default UserProfileSecurityPage;

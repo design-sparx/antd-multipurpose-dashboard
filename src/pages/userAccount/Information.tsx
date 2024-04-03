@@ -46,7 +46,7 @@ type BirthdayFieldType = {
   dob?: string;
 };
 
-const UserProfileInformationPage = () => {
+export const UserProfileInformationPage = () => {
   const context = useStylesContext();
   const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -259,5 +259,3 @@ const UserProfileInformationPage = () => {
     </Row>
   );
 };
-
-export default UserProfileInformationPage;

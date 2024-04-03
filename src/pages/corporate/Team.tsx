@@ -4,7 +4,7 @@ import { Employee } from '../../types';
 import { useFetchData } from '../../hooks';
 import { useStylesContext } from '../../context';
 
-const CorporateTeamPage = () => {
+export const CorporateTeamPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: employeesData,
@@ -57,5 +57,3 @@ const CorporateTeamPage = () => {
     </div>
   );
 };
-
-export default CorporateTeamPage;

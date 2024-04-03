@@ -22,6 +22,7 @@ const ROOTS_FILE_MGMT = '/file-manager';
 const ROOTS_INBOX = '/inbox';
 const ROOTS_CALENDAR = '/calendar';
 const ROOTS_ERRORS = '/errors';
+const ROOTS_ABOUT = '/about';
 
 export const PATH_LANDING = {
   root: ROOTS_LANDING,
@@ -221,4 +222,8 @@ export const PATH_SOCIALS = {
   instagram: 'https://www.instagram.com/kelvink_96/',
   linkedin: 'https://www.linkedin.com/in/kelvink96/',
   youtube: 'https://twitter.com/kelvink_96',
+};
+
+export const PATH_ABOUT = {
+  root: ROOTS_ABOUT,
 };

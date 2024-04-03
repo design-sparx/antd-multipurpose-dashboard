@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
 
-const MarketingDashboardPage = () => {
+export const MarketingDashboardPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: campaignAds,
@@ -121,5 +121,3 @@ const MarketingDashboardPage = () => {
     </div>
   );
 };
-
-export default MarketingDashboardPage;

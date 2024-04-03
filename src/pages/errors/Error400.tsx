@@ -5,7 +5,7 @@ import { BackBtn, RefreshBtn } from '../../components';
 
 const { Paragraph, Text } = Typography;
 
-const Error400Page = () => {
+export const Error400Page = () => {
   return (
     <Result
       status="error"
@@ -37,5 +37,3 @@ const Error400Page = () => {
     </Result>
   );
 };
-
-export default Error400Page;

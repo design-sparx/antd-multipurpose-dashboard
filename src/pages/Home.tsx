@@ -151,7 +151,7 @@ const FEATURES = [
   },
 ];
 
-const HomePage = () => {
+export const HomePage = () => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
@@ -359,5 +359,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;

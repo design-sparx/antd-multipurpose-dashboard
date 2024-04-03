@@ -12,7 +12,7 @@ type FieldType = {
   comment?: string;
 };
 
-const UserProfileFeedbackPage = () => {
+export const UserProfileFeedbackPage = () => {
   const [value, setValue] = useState(3);
 
   const onFinish = (values: any) => {
@@ -94,5 +94,3 @@ const UserProfileFeedbackPage = () => {
     </div>
   );
 };
-
-export default UserProfileFeedbackPage;

@@ -24,6 +24,7 @@ import {
   PATH_LANDING,
   PATH_SITEMAP,
   PATH_SOCIALS,
+  PATH_ABOUT,
 } from './routes.ts';
 
 const DASHBOARD_ITEMS = [
@@ -105,4 +106,5 @@ export {
   PATH_SOCIALS,
   AUTHENTICATION_ITEMS,
   ERROR_ITEMS,
+  PATH_ABOUT,
 };

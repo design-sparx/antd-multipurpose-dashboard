@@ -21,7 +21,7 @@ type FieldType = {
   email?: string;
 };
 
-const PasswordResetPage = () => {
+export const PasswordResetPage = () => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
@@ -117,5 +117,3 @@ const PasswordResetPage = () => {
     </Row>
   );
 };
-
-export default PasswordResetPage;

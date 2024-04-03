@@ -6,6 +6,7 @@ import {
   BugOutlined,
   GithubOutlined,
   IdcardOutlined,
+  InfoCircleOutlined,
   PieChartOutlined,
   ProductOutlined,
   SecurityScanOutlined,
@@ -15,6 +16,7 @@ import {
 import { Logo } from '../../components';
 import { Link, useLocation } from 'react-router-dom';
 import {
+  PATH_ABOUT,
   PATH_AUTH,
   PATH_CORPORATE,
   PATH_DASHBOARD,
@@ -78,7 +80,11 @@ const items: MenuProps['items'] = [
       null
     ),
   ]),
-
+  getItem(
+    <Link to={PATH_ABOUT.root}>Sitemap</Link>,
+    'about',
+    <InfoCircleOutlined />
+  ),
   getItem(
     <Link to={PATH_SITEMAP.root}>Sitemap</Link>,
     'sitemap',
@@ -138,35 +144,6 @@ const items: MenuProps['items'] = [
       null
     ),
   ]),
-
-  /*getItem('Social', 'socials', <HeartOutlined/>, [
-      getItem(<Link to={PATH_SOCIAL.feed}>Feed</Link>, 's-feed', null),
-      getItem(<Link to={PATH_SOCIAL.activity}>Activity</Link>, 's-activity', null),
-      getItem(<Link to={PATH_SOCIAL.followers}>Followers</Link>, 's-followers', null),
-      getItem(<Link to={PATH_SOCIAL.settings}>Settings</Link>, 's-settings', null),
-  ]),*/
-
-  /*getItem('Blog', 'blog', <ReadOutlined/>, [
-      getItem(<Link to={PATH_BLOG.root}>Home</Link>, 'b-home', null),
-      getItem(<Link to={PATH_BLOG.details(1)}>Post</Link>, 'b-post', null),
-  ]),*/
-
-  /*getItem('Careers', 'careers', <ContactsOutlined/>, [
-      getItem(<Link to={PATH_CAREERS.root}>List</Link>, 'careers-list', null),
-      getItem(<Link to={PATH_CAREERS.new}>Apply</Link>, 'careers-apply', null),
-  ]),*/
-
-  /*getItem('Account', 'account', <UserOutlined/>, [
-      getItem(<Link to={PATH_ACCOUNT.root}>Overview</Link>, 'account-overview', null),
-      getItem(<Link to={PATH_ACCOUNT.settings}>Settings</Link>, 'account-settings', null),
-      getItem(<Link to={PATH_ACCOUNT.security}>Security</Link>, 'account-security', null),
-      getItem(<Link to={PATH_ACCOUNT.activity}>Activity</Link>, 'account-activity', null),
-      getItem(<Link to={PATH_ACCOUNT.billing}>Billing</Link>, 'account-billing', null),
-      getItem(<Link to={PATH_ACCOUNT.statements}>Statements</Link>, 'account-statements', null),
-      getItem(<Link to={PATH_ACCOUNT.referral}>Referrals</Link>, 'account-referrals', null),
-      getItem(<Link to={PATH_ACCOUNT.api}>API Keys</Link>, 'account-api', null),
-      getItem(<Link to={PATH_ACCOUNT.logs}>Logs</Link>, 'account-logs', null),
-  ]),*/
 
   getItem('Authentication', 'authentication', <SecurityScanOutlined />, [
     getItem(<Link to={PATH_AUTH.signin}>Sign In</Link>, 'auth-signin', null),

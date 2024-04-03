@@ -23,7 +23,7 @@ import { Helmet } from 'react-helmet-async';
 import { useFetchData } from '../../hooks';
 import { useStylesContext } from '../../context';
 
-const LearningDashboardPage = () => {
+export const LearningDashboardPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: coursesData,
@@ -178,5 +178,3 @@ const LearningDashboardPage = () => {
     </div>
   );
 };
-
-export default LearningDashboardPage;

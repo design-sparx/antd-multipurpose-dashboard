@@ -3,7 +3,7 @@ import { Logo } from '../../components';
 import { Link } from 'react-router-dom';
 import { PATH_DASHBOARD } from '../../constants';
 
-const VerifyEmailPage = () => {
+export const VerifyEmailPage = () => {
   return (
     <Flex
       vertical
@@ -31,5 +31,3 @@ const VerifyEmailPage = () => {
     </Flex>
   );
 };
-
-export default VerifyEmailPage;

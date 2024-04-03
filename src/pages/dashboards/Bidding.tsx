@@ -34,7 +34,7 @@ const ROW_PROPS: RowProps = {
   ],
 };
 
-const BiddingDashboardPage = () => {
+export const BiddingDashboardPage = () => {
   const {
     data: auctionData,
     loading: auctionDataLoading,
@@ -182,5 +182,3 @@ const BiddingDashboardPage = () => {
     </div>
   );
 };
-
-export default BiddingDashboardPage;

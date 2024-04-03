@@ -30,7 +30,7 @@ type FieldType = {
   remember?: boolean;
 };
 
-const SignInPage = () => {
+export const SignInPage = () => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
@@ -163,5 +163,3 @@ const SignInPage = () => {
     </Row>
   );
 };
-
-export default SignInPage;

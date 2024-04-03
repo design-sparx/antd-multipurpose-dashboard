@@ -1,7 +1,7 @@
 import { Result } from 'antd';
 import { BackBtn } from '../../components';
 
-const Error403Page = () => {
+export const Error403Page = () => {
   return (
     <Result
       status="403"
@@ -11,5 +11,3 @@ const Error403Page = () => {
     />
   );
 };
-
-export default Error403Page;

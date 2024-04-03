@@ -1,7 +1,7 @@
 import { TimelineCard } from '../../components';
 import { useFetchData } from '../../hooks';
 
-const UserProfileActivityPage = () => {
+export const UserProfileActivityPage = () => {
   const {
     data: timelineData,
     loading: timelineDataLoading,
@@ -17,5 +17,3 @@ const UserProfileActivityPage = () => {
     />
   );
 };
-
-export default UserProfileActivityPage;

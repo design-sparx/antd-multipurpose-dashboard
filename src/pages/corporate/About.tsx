@@ -16,7 +16,7 @@ import { useFetchData } from '../../hooks';
 
 const { Title, Text, Paragraph } = Typography;
 
-const CorporateAboutPage = () => {
+export const CorporateAboutPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: employeesData,
@@ -132,5 +132,3 @@ const CorporateAboutPage = () => {
     </div>
   );
 };
-
-export default CorporateAboutPage;

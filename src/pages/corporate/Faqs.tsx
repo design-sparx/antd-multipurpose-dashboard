@@ -6,7 +6,7 @@ import { Faq } from '../../types';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
 
-const CorporateFaqPage = () => {
+export const CorporateFaqPage = () => {
   const {
     data: faqsData,
     loading: faqsDataLoading,
@@ -68,5 +68,3 @@ const CorporateFaqPage = () => {
     </div>
   );
 };
-
-export default CorporateFaqPage;
