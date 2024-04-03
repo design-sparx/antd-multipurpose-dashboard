@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 1.3.7
+
+### Patch Changes
+
+- f61b0e2: chore: cleaned up imports and refactors
+- 4c88ff7: chore: cleaned up imports and refactors
+
 ## 1.3.6
 
 ### Patch Changes
