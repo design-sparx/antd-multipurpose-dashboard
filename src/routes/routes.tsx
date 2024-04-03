@@ -34,6 +34,8 @@ import {
   UserProfileSecurityPage,
   VerifyEmailPage,
   WelcomePage,
+  LearningDashboardPage,
+  LogisticsDashboardPage,
 } from '../pages';
 import {
   CorporateLayout,
@@ -41,11 +43,8 @@ import {
   GuestLayout,
   UserAccountLayout,
 } from '../layouts';
-import {
-  LearningDashboardPage,
-  LogisticsDashboardPage,
-} from '../pages/dashboards';
 import React, { ReactNode, useEffect } from 'react';
+import { AboutPage } from '../pages/About.tsx';
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -267,6 +266,18 @@ const router = createBrowserRouter([
       {
         path: '503',
         element: <Error503Page />,
+      },
+    ],
+  },
+  {
+    path: '/about',
+    element: <PageWrapper children={<DashboardLayout />} />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        path: '',
+        element: <AboutPage />,
       },
     ],
   },

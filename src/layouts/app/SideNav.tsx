@@ -81,7 +81,7 @@ const items: MenuProps['items'] = [
     ),
   ]),
   getItem(
-    <Link to={PATH_ABOUT.root}>Sitemap</Link>,
+    <Link to={PATH_ABOUT.root}>About</Link>,
     'about',
     <InfoCircleOutlined />
   ),
