@@ -72,7 +72,7 @@
     "storybook-addon-react-router-v6": "^2.0.8",
     "storybook-react-context": "^0.6.0",
     "typescript": "^5.0.2",
-    "vite": "^4.5.2"
+    "vite": "^4.5.3"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
