@@ -93,7 +93,7 @@ export const AboutPage = () => {
         <Row {...context?.rowProps}>
           {SITES.map((s) => (
             <Col xs={24} sm={12} key={`col-${s.title}`}>
-              <a href={s.link} target="_blank">
+              <a href={s.link} target="_blank" rel="noopener noreferrer">
                 <Card hoverable>
                   <Flex vertical gap="small">
                     {createElement(s.icon, { style: { fontSize: 24 } })}
