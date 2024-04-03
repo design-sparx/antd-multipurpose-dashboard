@@ -1,5 +1,23 @@
 # antd-multi-dashboard
 
+## 1.4.0
+
+### Minor Changes
+
+- dbfcb7e: optimized imports, added project about page and made UI simple and minimal
+
+### Patch Changes
+
+- 0608bd2: ### Code optimization & bug fixes
+  - chore: change onboarding flow. From landing → login → home
+  - feat(ui): made general user interface simple and minimal
+  - chore: cleaned up imports and refactors
+  - chore(deps-dev): bump vite from 4.5.2 to 4.5.3
+  - chore: refactored pages imports and exports
+  - chore: refactored stories imports and exports
+  - feat(page): added about project page
+  - chore(docs): added CONTRIBUTING.md docs
+
 ## 1.3.7
 
 ### Patch Changes
