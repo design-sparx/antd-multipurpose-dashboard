@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 import { DASHBOARD_ITEMS } from '../../constants';
 
-import SitemapCard from './SitemapCard.tsx';
+import { SitemapCard } from './SitemapCard.tsx';
 
 const meta = {
   title: 'Components/Sitemap',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import DeliveryAnalytics from '../../../../../public/mocks/DeliveryAnalytics.json';
 
-import DeliveryAnalyticsCard from './DeliveryAnalyticsCard.tsx';
+import { DeliveryAnalyticsCard } from './DeliveryAnalyticsCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Logistics/Delivery/Analytics',

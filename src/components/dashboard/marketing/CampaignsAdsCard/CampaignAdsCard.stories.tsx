@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CampaignsData from '../../../../../public/mocks/CampaignAds.json';
 
-import CampaignsAdsCard from './CampaignsAdsCard.tsx';
+import { CampaignsAdsCard } from './CampaignsAdsCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Marketing/Campaigns/Ads stats',

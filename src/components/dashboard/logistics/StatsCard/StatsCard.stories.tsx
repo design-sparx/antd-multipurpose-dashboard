@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { BlockOutlined } from '@ant-design/icons';
 
-import StatsCard from './StatsCard.tsx';
+import { StatsCard } from './StatsCard.tsx';
 
 const STATS = {
   icon: BlockOutlined,

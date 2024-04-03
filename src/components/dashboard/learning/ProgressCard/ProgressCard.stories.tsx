@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ProgressCard from './ProgressCard.tsx';
+import { ProgressCard } from './ProgressCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Learning/Progress card',

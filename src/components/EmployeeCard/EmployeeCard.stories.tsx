@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import EmployeeCard from './EmployeeCard.tsx';
+import { EmployeeCard } from './EmployeeCard.tsx';
 
 const DATA = {
   employee_id: '24e4e64c-bf09-459f-8cea-f9d2de99d15b',

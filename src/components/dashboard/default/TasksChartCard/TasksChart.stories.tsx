@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TasksChartCard from './TasksChartCard.tsx';
+import { TasksChartCard } from './TasksChartCard.tsx';
 
 const TASKS_DATA = [
   {

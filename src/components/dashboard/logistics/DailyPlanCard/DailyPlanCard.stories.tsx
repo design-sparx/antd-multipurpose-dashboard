@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DailyPlanCard from './DailyPlanCard.tsx';
+import { DailyPlanCard } from './DailyPlanCard.tsx';
 
 const PLAN_DATA = [
   {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CommunityGroupsData from '../../../../../public/mocks/CommunityGroups.json';
 
-import CommunityGroupCard from './CommunityGroupCard.tsx';
+import { CommunityGroupCard } from './CommunityGroupCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Learning/Communities card',

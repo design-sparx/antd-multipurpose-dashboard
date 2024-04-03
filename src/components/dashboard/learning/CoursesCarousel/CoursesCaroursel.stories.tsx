@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CoursesData from '../../../../../public/mocks/RecommendedCourses.json';
 
-import CoursesCarousel from './CoursesCarousel.tsx';
+import { CoursesCarousel } from './CoursesCarousel.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Learning/Courses/Carousel',

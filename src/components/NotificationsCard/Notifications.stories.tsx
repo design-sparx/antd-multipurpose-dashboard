@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import NotificationsData from '../../../public/mocks/Notifications.json';
 
-import NotificationsCard from './NotificationsCard.tsx';
+import { NotificationsCard } from './NotificationsCard.tsx';
 
 const meta = {
   title: 'Components/Notifications/List',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CampaignsActivity from './CampaignsActivity.tsx';
+import { CampaignsActivity } from './CampaignsActivity.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Marketing/Campaigns/Calendar',

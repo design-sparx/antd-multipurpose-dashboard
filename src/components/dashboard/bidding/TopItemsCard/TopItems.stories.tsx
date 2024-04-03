@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TopItemsData from '../../../../../public/mocks/BiddingTopSellers.json';
 
-import TopItems from './TopItems.tsx';
+import { TopItems } from './TopItems.tsx';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {

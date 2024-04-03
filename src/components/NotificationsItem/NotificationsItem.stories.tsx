@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import NotificationsItem from './NotificationsItem.tsx';
+import { NotificationsItem } from './NotificationsItem.tsx';
 
 const DATA = {
   notification_id: 'dcffd2c4-63d7-4b70-88c2-e079fc7cde6f',

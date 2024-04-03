@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 
-import BlogsListCard from './BlogsListCard.tsx';
+import { BlogsListCard } from './BlogsListCard.tsx';
 
 const MOCK_DATA = Array.from({ length: 5 }).map((_, i) => ({
   href: 'https://ant.design',

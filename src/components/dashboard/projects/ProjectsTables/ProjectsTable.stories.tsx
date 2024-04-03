@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProjectsData from '../../../../../public/mocks/Projects.json';
 
-import ProjectsTable from './ProjectsTable.tsx';
+import { ProjectsTable } from './ProjectsTable.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Projects/Projects table',

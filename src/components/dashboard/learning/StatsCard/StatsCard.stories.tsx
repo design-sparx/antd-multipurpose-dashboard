@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FileSyncOutlined } from '@ant-design/icons';
 
-import StatsCard from './StatsCard.tsx';
+import { StatsCard } from './StatsCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Learning/Stats card',

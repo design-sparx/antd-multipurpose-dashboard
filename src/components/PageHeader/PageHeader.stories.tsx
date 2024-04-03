@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'storybook-addon-react-router-v6';
 import { DASHBOARD_ITEMS } from '../../constants';
 
-import PageHeader from './PageHeader.tsx';
+import { PageHeader } from './PageHeader.tsx';
 
 const meta = {
   title: 'Components/Page header',

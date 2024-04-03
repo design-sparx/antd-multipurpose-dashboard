@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CreatorsData from '../../../../../public/mocks/AuctionCreators.json';
 
-import CreatorsCard from './CreatorsCard.tsx';
+import { CreatorsCard } from './CreatorsCard.tsx';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {

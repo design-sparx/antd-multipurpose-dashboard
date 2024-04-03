@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import StatsCard from './StatsCard.tsx';
+import { StatsCard } from './StatsCard.tsx';
 
 const STATS = {
   data: [274, 337, 81, 497],

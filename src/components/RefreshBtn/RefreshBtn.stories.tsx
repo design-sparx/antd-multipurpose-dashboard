@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import RefreshBtn from './RefreshBtn.tsx';
+import { RefreshBtn } from './RefreshBtn.tsx';
 
 const meta = {
   title: 'Components/Refresh button',

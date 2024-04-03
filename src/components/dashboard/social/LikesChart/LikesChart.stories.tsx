@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LikesChart from './LikesChart.tsx';
+import { LikesChart } from './LikesChart.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Social/Likes',

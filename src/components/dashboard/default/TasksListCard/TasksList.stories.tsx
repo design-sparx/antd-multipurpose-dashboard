@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TasksListData from '../../../../../public/mocks/TasksList.json';
 
-import TasksListCard from './TasksListCard.tsx';
+import { TasksListCard } from './TasksListCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Default/Tasks/List',

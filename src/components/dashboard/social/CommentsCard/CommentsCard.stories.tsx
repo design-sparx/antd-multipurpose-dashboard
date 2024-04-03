@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import SocialsCommentsData from '../../../../../public/mocks/SocialComments.json';
 
-import CommentsCard from './CommentsCard.tsx';
+import { CommentsCard } from './CommentsCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Social/Comments',

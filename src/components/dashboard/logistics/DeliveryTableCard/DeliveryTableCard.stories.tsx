@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TruckDeliveryRequest from '../../../../../public/mocks/TruckDeliveries.json';
 
-import DeliveryTableCard from './DeliveryTableCard.tsx';
+import { DeliveryTableCard } from './DeliveryTableCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Logistics/Delivery/Table',
