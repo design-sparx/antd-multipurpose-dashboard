@@ -16,7 +16,7 @@ type Props = {
   textWidth?: CSSProperties['width'];
 } & Omit<FlexProps, 'children'>;
 
-const UserAvatar = ({
+export const UserAvatar = ({
   fullName,
   mark,
   size,
@@ -73,5 +73,3 @@ const UserAvatar = ({
     </Flex>
   );
 };
-
-export default UserAvatar;

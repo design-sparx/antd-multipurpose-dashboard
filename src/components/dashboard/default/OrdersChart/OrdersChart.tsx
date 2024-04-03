@@ -62,12 +62,10 @@ const AreaChart = () => {
 
 type Props = CardProps;
 
-const OrdersChart = ({ ...others }: Props) => {
+export const OrdersChart = ({ ...others }: Props) => {
   return (
     <Card title="Orders value" extra={<MoreMenu />} {...others}>
       <AreaChart />
     </Card>
   );
 };
-
-export default OrdersChart;

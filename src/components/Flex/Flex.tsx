@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode;
 } & CSSProperties;
 
-const Flex = ({
+export const Flex = ({
   flexDirection,
   alignItems,
   gap,
@@ -39,5 +39,3 @@ const Flex = ({
     </div>
   );
 };
-
-export default Flex;

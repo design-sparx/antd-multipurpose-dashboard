@@ -28,7 +28,7 @@ const SPACE_PROPS: SpaceProps = {
 
 type Props = CardProps;
 
-const ProjectsCountCard = ({ ...others }: Props) => {
+export const ProjectsCountCard = ({ ...others }: Props) => {
   const completed = ProjectsData.filter((_) => _.status === 'completed'),
     inProgress = ProjectsData.filter((_) => _.status === 'in progress'),
     onHold = ProjectsData.filter((_) => _.status === 'on hold');
@@ -98,5 +98,3 @@ const ProjectsCountCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default ProjectsCountCard;

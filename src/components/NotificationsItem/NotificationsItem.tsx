@@ -10,7 +10,7 @@ type Props = {
   data: Notifications;
 } & Omit<FlexProps, 'children'>;
 
-const NotificationsItem = ({ data, ...others }: Props) => {
+export const NotificationsItem = ({ data, ...others }: Props) => {
   const {
     notification_type,
     notification_category,
@@ -54,5 +54,3 @@ const NotificationsItem = ({ data, ...others }: Props) => {
     </Flex>
   );
 };
-
-export default NotificationsItem;

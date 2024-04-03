@@ -19,7 +19,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/colors": "^7.0.2",
-    "@ant-design/icons": "^5.2.6",
+    "@ant-design/icons": "^5.3.0",
     "@changesets/cli": "^2.26.2",
     "@tanem/react-nprogress": "^5.0.51",
     "antd": "^5.10.1",

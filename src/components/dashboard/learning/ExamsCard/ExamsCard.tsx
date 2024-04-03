@@ -13,7 +13,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const ExamsCard = ({ data, loading, error, ...others }: Props) => {
+export const ExamsCard = ({ data, loading, error, ...others }: Props) => {
   const isLarge = useMediaQuery({ maxWidth: 1024 });
 
   return (
@@ -64,5 +64,3 @@ const ExamsCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default ExamsCard;

@@ -22,7 +22,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const TruckListCard = ({ data, loading, error, ...others }: Props) => {
+export const TruckListCard = ({ data, loading, error, ...others }: Props) => {
   return (
     <Card
       title="Available Trucks"
@@ -110,5 +110,3 @@ const TruckListCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default TruckListCard;

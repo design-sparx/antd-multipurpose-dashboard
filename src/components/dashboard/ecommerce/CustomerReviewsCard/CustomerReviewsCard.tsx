@@ -20,7 +20,7 @@ const PROGRESS_PROPS: ProgressProps = {
 
 type Props = CardProps;
 
-const CustomerReviewsCard = ({ ...others }: Props) => {
+export const CustomerReviewsCard = ({ ...others }: Props) => {
   return (
     <Card
       title="Customer reviews"
@@ -73,5 +73,3 @@ const CustomerReviewsCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default CustomerReviewsCard;

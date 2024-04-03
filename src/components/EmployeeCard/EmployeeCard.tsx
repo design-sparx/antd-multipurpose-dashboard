@@ -8,7 +8,7 @@ type Props = {
   showInfo?: boolean;
 } & CardProps;
 
-const EmployeeCard = ({ data, showInfo, ...others }: Props) => {
+export const EmployeeCard = ({ data, showInfo, ...others }: Props) => {
   const {
     avatar,
     first_name,
@@ -50,5 +50,3 @@ const EmployeeCard = ({ data, showInfo, ...others }: Props) => {
     </AntdCard>
   );
 };
-
-export default EmployeeCard;

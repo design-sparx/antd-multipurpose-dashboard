@@ -12,7 +12,7 @@ type Props = {
   icon: any;
 } & CardProps;
 
-const StatsCard = ({ icon, title, value, diff, ...others }: Props) => {
+export const StatsCard = ({ icon, title, value, diff, ...others }: Props) => {
   return (
     <Card {...others}>
       <Flex vertical gap="middle" style={{ width: '100%' }}>
@@ -36,5 +36,3 @@ const StatsCard = ({ icon, title, value, diff, ...others }: Props) => {
     </Card>
   );
 };
-
-export default StatsCard;

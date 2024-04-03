@@ -29,12 +29,10 @@ type Props = {
   data?: Plan[];
 } & CardProps;
 
-const DailyPlanCard = ({ data, ...others }: Props) => {
+export const DailyPlanCard = ({ data, ...others }: Props) => {
   return (
     <Card title="Daily activities" {...others}>
       <BarChart data={data || []} />
     </Card>
   );
 };
-
-export default DailyPlanCard;

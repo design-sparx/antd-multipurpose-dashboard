@@ -14,7 +14,7 @@ const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
 
 type Props = { data: any; loading?: boolean; error?: ReactNode } & CardProps;
 
-const BlogsListCard = ({ data, loading, error, ...others }: Props) => {
+export const BlogsListCard = ({ data, loading, error, ...others }: Props) => {
   return (
     <Card
       title="Blogs"
@@ -76,5 +76,3 @@ const BlogsListCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default BlogsListCard;

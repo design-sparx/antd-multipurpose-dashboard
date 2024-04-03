@@ -2,7 +2,7 @@ import { Spin, theme } from 'antd';
 
 import './styles.css';
 
-const Loader = () => {
+export const Loader = () => {
   const {
     token: { borderRadius },
   } = theme.useToken();
@@ -15,5 +15,3 @@ const Loader = () => {
     </div>
   );
 };
-
-export default Loader;

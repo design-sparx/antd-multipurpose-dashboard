@@ -17,7 +17,7 @@ type Props = {
   loading?: boolean;
 } & CardProps;
 
-const SocialStatsCard = ({
+export const SocialStatsCard = ({
   value,
   title,
   loading,
@@ -70,5 +70,3 @@ const SocialStatsCard = ({
     </Card>
   );
 };
-
-export default SocialStatsCard;

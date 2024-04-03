@@ -6,7 +6,7 @@ const { TextArea } = Input;
 
 type Props = FormProps;
 
-const ContactForm = ({ ...others }: Props) => {
+export const ContactForm = ({ ...others }: Props) => {
   const stylesContext = useStylesContext();
 
   return (
@@ -39,5 +39,3 @@ const ContactForm = ({ ...others }: Props) => {
     </div>
   );
 };
-
-export default ContactForm;

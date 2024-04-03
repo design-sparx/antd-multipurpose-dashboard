@@ -23,7 +23,7 @@ type Props = {
   size?: 'small' | 'default';
 } & CardProps;
 
-const ProjectsCard = (props: Props) => {
+export const ProjectsCard = (props: Props) => {
   const {
     size,
     project: {
@@ -151,5 +151,3 @@ const ProjectsCard = (props: Props) => {
     </AntdCard>
   );
 };
-
-export default ProjectsCard;

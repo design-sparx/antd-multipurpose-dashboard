@@ -129,7 +129,7 @@ const CHILD_TABLE_COLUMNS: TableColumnsType<ExpandedDataType> = [
 
 type ExpandedProps = { data: CampaignAds[] };
 
-const ExpandedRowRender = ({ data }: ExpandedProps) => {
+export const ExpandedRowRender = ({ data }: ExpandedProps) => {
   return (
     <Table
       columns={CHILD_TABLE_COLUMNS}
@@ -148,7 +148,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const CampaignsAdsCard = ({ error, data, loading, ...others }: Props) => {
+export const CampaignsAdsCard = ({ error, data, ...others }: Props) => {
   const [groupedData, setGroupedData] = useState<ParentDataType[]>([]);
 
   useEffect(() => {
@@ -199,5 +199,3 @@ const CampaignsAdsCard = ({ error, data, loading, ...others }: Props) => {
     </Card>
   );
 };
-
-export default CampaignsAdsCard;

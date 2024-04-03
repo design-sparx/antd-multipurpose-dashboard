@@ -108,7 +108,7 @@ type Props = {
   error: ReactNode;
 };
 
-const AuctionCarousel = ({ data, error, loading }: Props) => {
+export const AuctionCarousel = ({ data, error, loading }: Props) => {
   const settings: CarouselProps = {
     autoplay: false,
     dots: true,
@@ -163,5 +163,3 @@ const AuctionCarousel = ({ data, error, loading }: Props) => {
     </Carousel>
   );
 };
-
-export default AuctionCarousel;

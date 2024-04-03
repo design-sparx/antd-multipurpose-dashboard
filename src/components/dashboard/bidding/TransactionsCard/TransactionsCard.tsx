@@ -69,7 +69,12 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const TransactionsCard = ({ data, loading, error, ...others }: Props) => {
+export const TransactionsCard = ({
+  data,
+  loading,
+  error,
+  ...others
+}: Props) => {
   return error ? (
     <Alert
       message="Error"
@@ -88,5 +93,3 @@ const TransactionsCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default TransactionsCard;

@@ -17,7 +17,7 @@ const BUTTON_PROPS: ButtonProps = {
 
 type Props = CardProps;
 
-const SocialMediaCard = ({ ...others }: Props) => {
+export const SocialMediaCard = ({ ...others }: Props) => {
   return (
     <Card title="Social Media" {...others}>
       <Flex vertical gap="small">
@@ -40,5 +40,3 @@ const SocialMediaCard = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default SocialMediaCard;

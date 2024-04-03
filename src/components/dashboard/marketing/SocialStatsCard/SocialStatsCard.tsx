@@ -53,7 +53,7 @@ const SOCIALS_DATA = [
 
 type Props = CardProps;
 
-const SocialStatsCard = ({ ...others }: Props) => (
+export const SocialStatsCard = ({ ...others }: Props) => (
   <Card title="Social media analytics" {...others}>
     <List
       grid={{
@@ -94,5 +94,3 @@ const SocialStatsCard = ({ ...others }: Props) => (
     />
   </Card>
 );
-
-export default SocialStatsCard;

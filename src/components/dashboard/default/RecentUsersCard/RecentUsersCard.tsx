@@ -33,7 +33,7 @@ const COLUMNS = [
 
 type Props = { data?: any; loading?: boolean; error?: ReactNode } & CardProps;
 
-const RecentUsersCard = ({ data, loading, error, ...others }: Props) => {
+export const RecentUsersCard = ({ data, loading, error, ...others }: Props) => {
   const {
     data: usersData,
     loading: usersDataLoading,
@@ -59,5 +59,3 @@ const RecentUsersCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default RecentUsersCard;

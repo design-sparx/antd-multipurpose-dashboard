@@ -23,7 +23,7 @@ const BLOGS_DATA = Array.from({ length: 23 }).map((_, i) => ({
     'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
 }));
 
-const CorporateLayout = () => {
+export const CorporateLayout = () => {
   const { pathname } = useLocation();
   const stylesContext = useStylesContext();
 
@@ -107,5 +107,3 @@ const CorporateLayout = () => {
     </>
   );
 };
-
-export default CorporateLayout;

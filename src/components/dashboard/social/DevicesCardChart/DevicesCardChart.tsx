@@ -74,7 +74,7 @@ const PieChart = () => {
 
 type Props = CardProps;
 
-const DevicesCardChart = ({ ...others }: Props) => {
+export const DevicesCardChart = ({ ...others }: Props) => {
   return (
     <Card
       title="Flow on device"
@@ -131,5 +131,3 @@ const DevicesCardChart = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default DevicesCardChart;

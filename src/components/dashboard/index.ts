@@ -1,4 +1,4 @@
-import {
+export {
   CampaignsCard,
   RecentUsersCard,
   GetStartedCard,
@@ -10,10 +10,10 @@ import {
   TasksChartCard,
   TasksListCard,
 } from './default';
-import { RevenueCard, PostsCard, ProjectsCard } from './shared';
-import { CustomerReviewsCard } from './ecommerce';
-import { ProjectsCountCard, ProjectsTable, ClientsTable } from './projects';
-import {
+export { RevenueCard, PostsCard, ProjectsCard } from './shared';
+export { CustomerReviewsCard } from './ecommerce';
+export { ProjectsCountCard, ProjectsTable, ClientsTable } from './projects';
+export {
   StatsCard as MarketingStatsCard,
   VisitorsChartCard,
   SocialStatsCard as MarketingSocialStatsCard,
@@ -21,7 +21,7 @@ import {
   CampaignsAdsCard,
   AudienceLocationChart,
 } from './marketing';
-import {
+export {
   SocialStatsCard,
   FollowersChart,
   LikesChart,
@@ -29,14 +29,14 @@ import {
   MilestonesCard,
   CommentsCard,
 } from './social';
-import {
+export {
   AuctionCarousel,
   CreatorsCard,
   TopItemsCard,
   TransactionsCard,
   CategoriesCard as BiddingCategoriesCard,
 } from './bidding';
-import {
+export {
   StatsCard as LearningStatsCard,
   CoursesCard,
   CoursesCarousel,
@@ -45,7 +45,7 @@ import {
   ExamsCard,
   CommunityGroupCard,
 } from './learning';
-import {
+export {
   StatsCard as LogisticsStatsCard,
   DeliveryTableCard,
   DeliveryAnalyticsCard,
@@ -53,53 +53,3 @@ import {
   TruckListCard,
   DeliveryRequestCard,
 } from './logistics';
-
-export {
-  CampaignsCard,
-  LatestOrdersCard,
-  ProjectsCountCard,
-  RevenueCard,
-  ProjectsCard,
-  OrdersChart,
-  ProjectsTable,
-  CustomerReviewsCard,
-  ClientsTable,
-  EarningsCard,
-  GetStartedCard,
-  RecentUsersCard,
-  SubscribersChart,
-  MarketingStatsCard,
-  VisitorsChartCard,
-  SocialStatsCard,
-  CampaignsActivity,
-  CampaignsAdsCard,
-  AudienceLocationChart,
-  MarketingSocialStatsCard,
-  FollowersChart,
-  LikesChart,
-  DevicesCardChart,
-  PostsCard,
-  MilestonesCard,
-  CommentsCard,
-  AuctionCarousel,
-  CreatorsCard,
-  TopItemsCard,
-  TransactionsCard,
-  BiddingCategoriesCard,
-  LearningStatsCard,
-  CoursesCard,
-  CoursesCarousel,
-  StudyStatisticsCard,
-  ProgressCard,
-  ExamsCard,
-  CommunityGroupCard,
-  LogisticsStatsCard,
-  DeliveryTableCard,
-  DeliveryAnalyticsCard,
-  DailyPlanCard,
-  TruckListCard,
-  DeliveryRequestCard,
-  WeeklyActivityCard,
-  TasksChartCard,
-  TasksListCard,
-};

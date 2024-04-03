@@ -12,7 +12,7 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const DeliveryRequestCard = ({ data, loading, error, ...others }: Props) => {
+export const DeliveryRequestCard = ({ data, ...others }: Props) => {
   return (
     <Card
       title="Recent request"
@@ -79,5 +79,3 @@ const DeliveryRequestCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default DeliveryRequestCard;

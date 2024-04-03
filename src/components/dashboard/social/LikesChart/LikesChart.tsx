@@ -147,12 +147,10 @@ const ColumnChart = () => {
 
 type Props = CardProps;
 
-const LikesChart = ({ ...others }: Props) => {
+export const LikesChart = ({ ...others }: Props) => {
   return (
     <Card title="Posts activity" {...others}>
       <ColumnChart />
     </Card>
   );
 };
-
-export default LikesChart;

@@ -27,7 +27,7 @@ type Props = {
   loading?: boolean;
 } & CardProps;
 
-const CommentsCard = ({ data, error, loading, ...others }: Props) => (
+export const CommentsCard = ({ data, error, loading, ...others }: Props) => (
   <Card
     title="recent comments"
     actions={[
@@ -91,5 +91,3 @@ const CommentsCard = ({ data, error, loading, ...others }: Props) => (
     )}
   </Card>
 );
-
-export default CommentsCard;

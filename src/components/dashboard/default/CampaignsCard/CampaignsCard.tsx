@@ -98,7 +98,7 @@ const COLUMNS = [
 
 type Props = { data?: any; loading?: boolean; error?: ReactNode } & CardProps;
 
-const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
+export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
@@ -219,5 +219,3 @@ const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
     </Card>
   );
 };
-
-export default CampaignsCard;

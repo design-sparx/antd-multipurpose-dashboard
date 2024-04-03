@@ -31,7 +31,7 @@ import { useMediaQuery } from 'react-responsive';
 import SideNav from './SideNav.tsx';
 import HeaderNav from './HeaderNav.tsx';
 import FooterNav from './FooterNav.tsx';
-import { Nprogress } from '../../components';
+import { NProgress } from '../../components';
 import { PATH_LANDING } from '../../constants';
 
 const { Content } = Layout;
@@ -40,7 +40,7 @@ type AppLayoutProps = {
   children: ReactNode;
 };
 
-const AppLayout = ({ children }: AppLayoutProps) => {
+export const AppLayout = ({ children }: AppLayoutProps) => {
   const {
     token: { borderRadius },
   } = theme.useToken();
@@ -106,7 +106,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <>
-      <Nprogress isAnimating={isLoading} key={location.key} />
+      <NProgress isAnimating={isLoading} key={location.key} />
       <Layout
         style={{
           minHeight: '100vh',
@@ -244,5 +244,3 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     </>
   );
 };
-
-export default AppLayout;

@@ -149,7 +149,7 @@ const CirclePackingChart = () => {
 
 type Props = CardProps;
 
-const AudienceLocationChart = ({ ...others }: Props) => {
+export const AudienceLocationChart = ({ ...others }: Props) => {
   return (
     <Card
       title="Audience by location"
@@ -164,5 +164,3 @@ const AudienceLocationChart = ({ ...others }: Props) => {
     </Card>
   );
 };
-
-export default AudienceLocationChart;

@@ -12,7 +12,12 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const ExamsCard = ({ data, loading, error, ...others }: Props) => {
+export const CommunityGroupCard = ({
+  data,
+  loading,
+  error,
+  ...others
+}: Props) => {
   return (
     <Card
       title="Community Groups"
@@ -62,5 +67,3 @@ const ExamsCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default ExamsCard;

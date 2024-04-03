@@ -5,7 +5,7 @@ type Props = {
   icon?: boolean;
 } & ButtonProps;
 
-const RefreshBtn = ({ icon, ...others }: Props) => {
+export const RefreshBtn = ({ icon, ...others }: Props) => {
   return (
     <Button
       icon={icon ? <SyncOutlined /> : null}
@@ -16,5 +16,3 @@ const RefreshBtn = ({ icon, ...others }: Props) => {
     </Button>
   );
 };
-
-export default RefreshBtn;

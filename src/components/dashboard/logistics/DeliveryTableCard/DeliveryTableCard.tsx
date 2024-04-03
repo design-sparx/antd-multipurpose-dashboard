@@ -93,7 +93,12 @@ type Props = {
   error?: ReactNode;
 } & CardProps;
 
-const DeliveryTableCard = ({ data, loading, error, ...others }: Props) => {
+export const DeliveryTableCard = ({
+  data,
+  loading,
+  error,
+  ...others
+}: Props) => {
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>('all');
 
   const onTabChange = (key: string) => {
@@ -131,5 +136,3 @@ const DeliveryTableCard = ({ data, loading, error, ...others }: Props) => {
     </Card>
   );
 };
-
-export default DeliveryTableCard;
