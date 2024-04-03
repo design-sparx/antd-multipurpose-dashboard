@@ -184,7 +184,7 @@ const Section = ({ tab }: SectionProps) => {
   );
 };
 
-const SocialDashboardPage = () => {
+export const SocialDashboardPage = () => {
   const stylesContext = useStylesContext();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>(
@@ -329,5 +329,3 @@ const SocialDashboardPage = () => {
     </div>
   );
 };
-
-export default SocialDashboardPage;

@@ -3,7 +3,7 @@ import { Card, Loader } from '../../components';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
 
-const CorporateLicensePage = () => {
+export const CorporateLicensePage = () => {
   const stylesContext = useStylesContext();
   const {
     data: licenseData,
@@ -68,5 +68,3 @@ const CorporateLicensePage = () => {
     </div>
   );
 };
-
-export default CorporateLicensePage;

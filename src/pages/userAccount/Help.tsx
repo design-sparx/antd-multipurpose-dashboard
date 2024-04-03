@@ -68,7 +68,7 @@ const TITLE_PROPS: TitleProps = {
   level: 3,
 };
 
-const UserProfileHelpPage = () => {
+export const UserProfileHelpPage = () => {
   const [activeTabKey, setActiveTabKey] = useState<string>('Account');
   const [tabList, setTabList] = useState<TabsProps['items']>([]);
   const isMobile = useMediaQuery({ maxWidth: 600 });
@@ -174,5 +174,3 @@ const UserProfileHelpPage = () => {
     </div>
   );
 };
-
-export default UserProfileHelpPage;

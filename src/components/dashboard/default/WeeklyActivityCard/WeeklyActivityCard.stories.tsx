@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import WeeklyActivityCard from './WeeklyActivityCard.tsx';
+import { WeeklyActivityCard } from './WeeklyActivityCard.tsx';
 
 const ACTIVITY_DATA = [
   {

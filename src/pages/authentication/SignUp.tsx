@@ -33,7 +33,7 @@ type FieldType = {
   terms?: boolean;
 };
 
-const SignUpPage = () => {
+export const SignUpPage = () => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
@@ -201,5 +201,3 @@ const SignUpPage = () => {
     </Row>
   );
 };
-
-export default SignUpPage;

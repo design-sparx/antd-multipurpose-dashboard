@@ -16,7 +16,7 @@ type FieldType = {
   status?: 'active' | 'inactive';
 };
 
-const UserProfileDetailsPage = () => {
+export const UserProfileDetailsPage = () => {
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
@@ -171,5 +171,3 @@ const UserProfileDetailsPage = () => {
     </Card>
   );
 };
-
-export default UserProfileDetailsPage;

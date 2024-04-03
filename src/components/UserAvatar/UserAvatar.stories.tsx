@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import UserAvatar from './UserAvatar.tsx';
+import { UserAvatar } from './UserAvatar.tsx';
 
 const meta = {
   title: 'Components/User avatar',

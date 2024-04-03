@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CampaignsData from '../../../../../public/mocks/Campaigns.json';
 
-import LatestOrdersCard from './LatestOrdersCard.tsx';
+import { LatestOrdersCard } from './LatestOrdersCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Default/Orders/Table',

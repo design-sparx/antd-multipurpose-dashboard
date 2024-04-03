@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import SocialStatsCard from './SocialStatsCard.tsx';
+import { SocialStatsCard } from './SocialStatsCard.tsx';
 
 const DATA = {
   title: 'followers',

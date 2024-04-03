@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ProjectsCountCard from './ProjectsCountCard.tsx';
+import { ProjectsCountCard } from './ProjectsCountCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Projects/Project count',

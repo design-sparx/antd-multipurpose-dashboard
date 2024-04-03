@@ -3,7 +3,7 @@ import { Logo } from '../../components';
 import { Link } from 'react-router-dom';
 import { PATH_DASHBOARD } from '../../constants';
 
-const WelcomePage = () => {
+export const WelcomePage = () => {
   return (
     <Flex
       vertical
@@ -26,5 +26,3 @@ const WelcomePage = () => {
     </Flex>
   );
 };
-
-export default WelcomePage;

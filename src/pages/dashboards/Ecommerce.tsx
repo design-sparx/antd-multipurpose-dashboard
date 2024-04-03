@@ -566,7 +566,7 @@ const cardStyles: CSSProperties = {
   height: '100%',
 };
 
-const EcommerceDashboardPage = () => {
+export const EcommerceDashboardPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: topProducts,
@@ -861,5 +861,3 @@ const EcommerceDashboardPage = () => {
     </div>
   );
 };
-
-export default EcommerceDashboardPage;

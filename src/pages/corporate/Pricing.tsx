@@ -1,7 +1,7 @@
 import { PricingTable } from '../../components';
 import { useFetchData } from '../../hooks';
 
-const CorporatePricingPage = () => {
+export const CorporatePricingPage = () => {
   const {
     data: pricingData,
     error: pricingDataError,
@@ -18,5 +18,3 @@ const CorporatePricingPage = () => {
     </div>
   );
 };
-
-export default CorporatePricingPage;

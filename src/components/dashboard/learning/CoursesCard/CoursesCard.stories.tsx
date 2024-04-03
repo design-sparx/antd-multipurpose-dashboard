@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CoursesData from '../../../../../public/mocks/Courses.json';
 
-import CoursesCard from './CoursesCard.tsx';
+import { CoursesCard } from './CoursesCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Learning/Courses/Table',

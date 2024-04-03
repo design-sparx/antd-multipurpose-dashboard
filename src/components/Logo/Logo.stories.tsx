@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 
-import Logo from './Logo.tsx';
+import { Logo } from './Logo.tsx';
 
 const meta = {
   title: 'Components/Logo',

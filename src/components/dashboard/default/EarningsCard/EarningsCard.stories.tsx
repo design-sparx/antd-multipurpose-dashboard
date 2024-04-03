@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import EarningsCard from './EarningsCard.tsx';
+import { EarningsCard } from './EarningsCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Default/Earnings card',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import RevenueCard from './RevenueCard.tsx';
+import { RevenueCard } from './RevenueCard.tsx';
 
 const meta = {
   title: 'Components/Revenue',

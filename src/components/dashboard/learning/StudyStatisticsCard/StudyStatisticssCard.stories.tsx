@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import StudyData from '../../../../../public/mocks/StudyStatistics.json';
 
-import StudyStatisticsCard from './StudyStatisticsCard.tsx';
+import { StudyStatisticsCard } from './StudyStatisticsCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Learning/Study stats card',

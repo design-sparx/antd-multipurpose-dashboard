@@ -145,7 +145,7 @@ const PROJECT_TABS = [
   },
 ];
 
-const ProjectsDashboardPage = () => {
+export const ProjectsDashboardPage = () => {
   const {
     data: projectsData,
     error: projectsDataError,
@@ -311,5 +311,3 @@ const ProjectsDashboardPage = () => {
     </div>
   );
 };
-
-export default ProjectsDashboardPage;

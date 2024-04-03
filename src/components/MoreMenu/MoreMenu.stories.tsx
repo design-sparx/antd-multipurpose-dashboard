@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MoreMenu from './MoreMenu.tsx';
+import { MoreMenu } from './MoreMenu.tsx';
 
 const meta = {
   title: 'Components/More menu',

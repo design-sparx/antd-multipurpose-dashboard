@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ProjectsCard from './ProjectsCard.tsx';
+import { ProjectsCard } from './ProjectsCard.tsx';
 
 const DATA = {
   project_id: 'ea74b32d-6466-4ef7-87cb-a17e0c38c1a8',

@@ -149,7 +149,7 @@ const CARD_PROPS: CardProps = {
   },
 };
 
-const DefaultDashboardPage = () => {
+export const DefaultDashboardPage = () => {
   const stylesContext = useStylesContext();
   const sliderRef1 = useRef<any>(null);
   const sliderRef2 = useRef<any>(null);
@@ -346,5 +346,3 @@ const DefaultDashboardPage = () => {
     </div>
   );
 };
-
-export default DefaultDashboardPage;

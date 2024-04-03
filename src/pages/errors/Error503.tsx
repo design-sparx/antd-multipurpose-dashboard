@@ -1,7 +1,7 @@
 import { Result } from 'antd';
 import { BackBtn, RefreshBtn } from '../../components';
 
-const Error503Page = () => {
+export const Error503Page = () => {
   return (
     <Result
       status="500"
@@ -11,5 +11,3 @@ const Error503Page = () => {
     />
   );
 };
-
-export default Error503Page;

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import PricingData from '../../../public/mocks/Pricing.json';
 
-import PricingTable from './PricingTable.tsx';
+import { PricingTable } from './PricingTable.tsx';
 
 const meta = {
   title: 'Components/Pricing table',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import VisitorsChartCard from './VisitorsChartCard.tsx';
+import { VisitorsChartCard } from './VisitorsChartCard.tsx';
 
 const meta = {
   title: 'Components/Dashboard/Marketing/Visitors',

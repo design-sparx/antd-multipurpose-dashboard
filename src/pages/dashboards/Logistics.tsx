@@ -64,7 +64,7 @@ const PLAN_DATA = [
   },
 ];
 
-const LogisticsDashboardPage = () => {
+export const LogisticsDashboardPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: trucksDeliveryData,
@@ -164,5 +164,3 @@ const LogisticsDashboardPage = () => {
     </div>
   );
 };
-
-export default LogisticsDashboardPage;

@@ -3,7 +3,7 @@ import { Logo } from '../../components';
 import { Link } from 'react-router-dom';
 import { PATH_DASHBOARD } from '../../constants';
 
-const AccountDeactivePage = () => {
+export const AccountDeactivePage = () => {
   return (
     <Flex
       vertical
@@ -25,5 +25,3 @@ const AccountDeactivePage = () => {
     </Flex>
   );
 };
-
-export default AccountDeactivePage;

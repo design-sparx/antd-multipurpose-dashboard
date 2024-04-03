@@ -6,7 +6,7 @@ const { Paragraph, Text } = Typography;
 
 type Error = unknown | any;
 
-const ErrorPage = () => {
+export const ErrorPage = () => {
   const error: Error = useRouteError();
   console.error(error);
 
@@ -33,5 +33,3 @@ const ErrorPage = () => {
     </Result>
   );
 };
-
-export default ErrorPage;

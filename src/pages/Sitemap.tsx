@@ -33,7 +33,7 @@ const SITES = [
   },
 ];
 
-const SitemapPage = () => {
+export const SitemapPage = () => {
   const context = useStylesContext();
 
   return (
@@ -53,5 +53,3 @@ const SitemapPage = () => {
     </div>
   );
 };
-
-export default SitemapPage;
