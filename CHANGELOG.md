@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 1.3.6
+
+### Patch Changes
+
+- 3e3e46a: chore(deps-dev): bump vite from 4.5.2 to 4.5.3
+
 ## 1.3.5
 
 ### Patch Changes

@@ -4,7 +4,7 @@
   "type": "module",
   "readme": "ERROR: No README data found!",
   "_id": "antd-multi-dashboard@1.1.0",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
