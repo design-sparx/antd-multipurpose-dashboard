@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 1.4.1
+
+### Patch Changes
+
+- 6279a2a: chore(deps): bump tar from 6.2.0 to 6.2.1
+
 ## 1.4.0
 
 ### Minor Changes
