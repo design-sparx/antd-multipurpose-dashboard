@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 1.4.2
+
+### Patch Changes
+
+- 4a788cd: chore(deps): bump ejs from 3.1.9 to 3.1.10
+
 ## 1.4.1
 
 ### Patch Changes
