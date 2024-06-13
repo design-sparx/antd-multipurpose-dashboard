@@ -40,8 +40,8 @@ function App() {
           },
           components: {
             Breadcrumb: {
-              linkColor: 'rgba(0,0,0,.8)',
-              itemColor: 'rgba(0,0,0,.8)',
+              // linkColor: 'rgba(0,0,0,.8)',
+              // itemColor: 'rgba(0,0,0,.8)',
             },
             Button: {
               colorLink: COLOR['500'],
@@ -52,7 +52,6 @@ function App() {
               colorBgContainer: 'none',
             },
             Card: {
-              colorBgContainer: 'none',
               colorBorderSecondary: COLOR['borderColor'],
             },
             Carousel: {

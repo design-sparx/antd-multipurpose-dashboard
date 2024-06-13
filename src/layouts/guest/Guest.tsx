@@ -88,7 +88,7 @@ export const GuestLayout = () => {
             zIndex: 1,
           }}
         >
-          <Logo color="black" asLink href={PATH_LANDING.root} />
+          <Logo color="blue" asLink href={PATH_LANDING.root} />
           {!isMobile ? (
             <>
               <Flex gap="small">
