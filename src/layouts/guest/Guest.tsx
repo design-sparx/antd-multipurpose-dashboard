@@ -70,7 +70,7 @@ export const GuestLayout = () => {
         className="layout"
         style={{
           minHeight: '100vh',
-          backgroundColor: 'white',
+          // backgroundColor: 'white',
         }}
       >
         <Header
@@ -78,7 +78,7 @@ export const GuestLayout = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            background: navFill ? 'rgba(255, 255, 255, .5)' : 'none',
+            // background: navFill ? 'rgba(255, 255, 255, .5)' : 'none',
             backdropFilter: navFill ? 'blur(8px)' : 'none',
             boxShadow: navFill ? '0 0 8px 2px rgba(0, 0, 0, 0.05)' : 'none',
             gap: 12,
@@ -131,7 +131,7 @@ export const GuestLayout = () => {
         </Header>
         <Content
           style={{
-            background: 'rgba(255, 255, 255, 1)',
+            // background: 'rgba(255, 255, 255, 1)',
             borderRadius,
             transition: 'all .25s',
             paddingBottom: '10rem',

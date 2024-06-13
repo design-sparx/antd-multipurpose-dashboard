@@ -1,8 +1,10 @@
 import { RouterProvider } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme as antdTheme } from 'antd';
+
 import { HelmetProvider } from 'react-helmet-async';
 import { StylesContext } from './context';
 import routes from './routes/routes.tsx';
+import { useSelector } from 'react-redux';
 
 import './App.css';
 
@@ -25,6 +27,8 @@ export const COLOR = {
 };
 
 function App() {
+  const { mytheme } = useSelector((state: RootState) => state.theme);
+
   return (
     <HelmetProvider>
       <ConfigProvider
@@ -83,6 +87,10 @@ function App() {
               linkHoverDecoration: 'underline',
             },
           },
+          algorithm:
+            mytheme === 'dark'
+              ? antdTheme.darkAlgorithm
+              : antdTheme.defaultAlgorithm,
         }}
       >
         <StylesContext.Provider
