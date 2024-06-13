@@ -182,7 +182,7 @@ export const HomePage = () => {
           height: isTablet ? 600 : 800,
           width: '100%',
           padding: isMobile ? '2rem 1rem' : '5rem 0',
-          backgroundColor: 'rgba(255, 255, 255, 0.85)',
+          // backgroundColor: 'rgba(255, 255, 255, 0.85)',
         }}
       >
         <Container>

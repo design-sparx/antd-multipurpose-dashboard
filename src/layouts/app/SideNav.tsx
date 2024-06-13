@@ -238,7 +238,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
   return (
     <Sider ref={nodeRef} breakpoint="lg" collapsedWidth="0" {...others}>
       <Logo
-        color="black"
+        color="blue"
         asLink
         href={PATH_LANDING.root}
         justify="center"

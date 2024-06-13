@@ -12,7 +12,7 @@ export const WelcomePage = () => {
       justify="center"
       style={{ height: '80vh' }}
     >
-      <Logo color="black" />
+      <Logo color="blue" />
       <Typography.Title className="m-0">Welcome to Antd</Typography.Title>
       <Typography.Text style={{ fontSize: 18 }}>
         A dynamic and versatile multipurpose dashboard utilizing Ant Design,

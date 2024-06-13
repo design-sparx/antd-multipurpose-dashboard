@@ -12,7 +12,7 @@ export const AccountDeactivePage = () => {
       justify="center"
       style={{ height: '80vh' }}
     >
-      <Logo color="black" />
+      <Logo color="blue" />
       <Typography.Title className="m-0">Deactivated Account</Typography.Title>
       <Typography.Text style={{ fontSize: 18 }}>
         Looking for answers? Check the <Link to="#">Help Center</Link>.
