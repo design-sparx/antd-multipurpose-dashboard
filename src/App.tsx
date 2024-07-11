@@ -1,8 +1,10 @@
 import { RouterProvider } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme as antdTheme } from 'antd';
+
 import { HelmetProvider } from 'react-helmet-async';
 import { StylesContext } from './context';
 import routes from './routes/routes.tsx';
+import { useSelector } from 'react-redux';
 
 import './App.css';
 
@@ -25,6 +27,8 @@ export const COLOR = {
 };
 
 function App() {
+  const { mytheme } = useSelector((state: RootState) => state.theme);
+
   return (
     <HelmetProvider>
       <ConfigProvider
@@ -36,8 +40,8 @@ function App() {
           },
           components: {
             Breadcrumb: {
-              linkColor: 'rgba(0,0,0,.8)',
-              itemColor: 'rgba(0,0,0,.8)',
+              // linkColor: 'rgba(0,0,0,.8)',
+              // itemColor: 'rgba(0,0,0,.8)',
             },
             Button: {
               colorLink: COLOR['500'],
@@ -48,7 +52,6 @@ function App() {
               colorBgContainer: 'none',
             },
             Card: {
-              colorBgContainer: 'none',
               colorBorderSecondary: COLOR['borderColor'],
             },
             Carousel: {
@@ -83,6 +86,10 @@ function App() {
               linkHoverDecoration: 'underline',
             },
           },
+          algorithm:
+            mytheme === 'dark'
+              ? antdTheme.darkAlgorithm
+              : antdTheme.defaultAlgorithm,
         }}
       >
         <StylesContext.Provider

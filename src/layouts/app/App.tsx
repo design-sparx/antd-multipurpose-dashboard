@@ -9,6 +9,7 @@ import {
   message,
   theme,
   Tooltip,
+  Switch,
 } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactNode, useEffect, useRef, useState } from 'react';
@@ -21,6 +22,8 @@ import {
   QuestionOutlined,
   SettingOutlined,
   UserOutlined,
+  MoonOutlined,
+  SunOutlined,
 } from '@ant-design/icons';
 import {
   CSSTransition,
@@ -33,6 +36,8 @@ import HeaderNav from './HeaderNav.tsx';
 import FooterNav from './FooterNav.tsx';
 import { NProgress } from '../../components';
 import { PATH_LANDING } from '../../constants';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../../redux/theme/themeSlice.ts';
 
 const { Content } = Layout;
 
@@ -52,7 +57,8 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const navigate = useNavigate();
   const nodeRef = useRef(null);
   const floatBtnRef = useRef(null);
-
+  const dispatch = useDispatch();
+  const { mytheme } = useSelector((state: RootState) => state.theme);
   const items: MenuProps['items'] = [
     {
       key: 'user-profile-link',
@@ -110,7 +116,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       <Layout
         style={{
           minHeight: '100vh',
-          backgroundColor: 'white',
+          // backgroundColor: 'white',
         }}
       >
         <SideNav
@@ -130,9 +136,11 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           }}
         />
         <Layout
-          style={{
-            background: 'none',
-          }}
+          style={
+            {
+              // background: 'none',
+            }
+          }
         >
           <HeaderNav
             style={{
@@ -182,6 +190,15 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               <Tooltip title="Messages">
                 <Button icon={<MessageOutlined />} type="text" size="large" />
               </Tooltip>
+              <Tooltip title="Theme">
+                <Switch
+                  className=" hidden sm:inline py-1"
+                  checkedChildren={<MoonOutlined />}
+                  unCheckedChildren={<SunOutlined />}
+                  checked={mytheme === 'light' ? true : false}
+                  onClick={() => dispatch(toggleTheme())}
+                />
+              </Tooltip>
               <Dropdown menu={{ items }} trigger={['click']}>
                 <Flex>
                   <img
@@ -198,7 +215,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           <Content
             style={{
               margin: `0 0 0 ${collapsed ? 0 : '200px'}`,
-              background: '#ebedf0',
+              // background: '#ebedf0',
               borderRadius: collapsed ? 0 : borderRadius,
               transition: 'all .25s',
               padding: '24px 32px',
