@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 1.4.3
+
+### Patch Changes
+
+- ad15140: ### Added
+  - feat(ui): added support for dark mode.
+
 ## 1.4.2
 
 ### Patch Changes
