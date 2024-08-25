@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface ThemeState {
+export interface ThemeState {
   mytheme: string;
 }
 

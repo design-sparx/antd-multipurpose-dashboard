@@ -5,7 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { StylesContext } from './context';
 import routes from './routes/routes.tsx';
 import { useSelector } from 'react-redux';
-
+import { RootState } from './redux/store';
 import './App.css';
 
 // color palettes: triadic #A1A7CB, #CBA1A7, #A7CBA1
