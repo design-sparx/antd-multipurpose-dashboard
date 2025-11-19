@@ -5,6 +5,7 @@
 ### Patch Changes
 
 - 53ff25c: chore(deps): bump ws from 6.2.2 to 6.2.3
+- d44ac06: chore(deps): bump tar-fs from 2.1.1 to 2.1.4
 - c93a415: chore(deps): bump braces from 3.0.2 to 3.0.3
 - 234ac92: styles: remove global `,` character
 - ad15140: ### Added
