@@ -9,7 +9,7 @@ import {
   RevenueCard,
 } from '../../components';
 import { Column } from '@ant-design/charts';
-import { Projects } from '../../types';
+import { Projects, Clients } from '../../types';
 import { useState } from 'react';
 import {
   CloudUploadOutlined,
@@ -146,16 +146,22 @@ const PROJECT_TABS = [
 ];
 
 export const ProjectsDashboardPage = () => {
+  // Fetch projects data with proper typing
   const {
-    data: projectsData = [],
+    data: projectsDataRaw,
     error: projectsDataError,
     loading: projectsDataLoading,
   } = useFetchData<Projects[]>('../mocks/Projects.json');
+  const projectsData = projectsDataRaw ?? [];
+
+  // Fetch clients data with proper typing
   const {
-    data: clientsData = [],
+    data: clientsDataRaw,
     error: clientsDataError,
     loading: clientsDataLoading,
-  } = useFetchData('../mocks/Clients.json');
+  } = useFetchData<Clients[]>('../mocks/Clients.json');
+  const clientsData = clientsDataRaw ?? [];
+
   const [projectTabsKey, setProjectsTabKey] = useState<string>('all');
 
   const PROJECT_TABS_CONTENT: Record<string, React.ReactNode> = {

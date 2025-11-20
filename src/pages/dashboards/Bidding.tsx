@@ -26,6 +26,12 @@ import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFetchData } from '../../hooks';
+import {
+  Bidding,
+  AuctionCreator,
+  AuctionSales,
+  AuctionTransactions,
+} from '../../types';
 
 const ROW_PROPS: RowProps = {
   gutter: [
@@ -35,26 +41,37 @@ const ROW_PROPS: RowProps = {
 };
 
 export const BiddingDashboardPage = () => {
+  // Fetch live auction data with proper typing
   const {
-    data: auctionData,
+    data: auctionDataRaw,
     loading: auctionDataLoading,
     error: auctionDataError,
-  } = useFetchData('../mocks/LiveAuction.json');
+  } = useFetchData<Bidding[]>('../mocks/LiveAuction.json');
+  const auctionData = auctionDataRaw ?? [];
+
+  // Fetch auction creators data with proper typing
   const {
-    data: auctionCreatorsData,
+    data: auctionCreatorsDataRaw,
     loading: auctionCreatorsDataLoading,
     error: auctionCreatorsDataError,
-  } = useFetchData('../mocks/AuctionCreators.json');
+  } = useFetchData<AuctionCreator[]>('../mocks/AuctionCreators.json');
+  const auctionCreatorsData = auctionCreatorsDataRaw ?? [];
+
+  // Fetch top sellers data with proper typing
   const {
-    data: topSellersData,
+    data: topSellersDataRaw,
     loading: topSellersDataLoading,
     error: topSellersDataError,
-  } = useFetchData('../mocks/BiddingTopSellers.json');
+  } = useFetchData<AuctionSales[]>('../mocks/BiddingTopSellers.json');
+  const topSellersData = topSellersDataRaw ?? [];
+
+  // Fetch transactions data with proper typing
   const {
-    data: transactionsData,
+    data: transactionsDataRaw,
     loading: transactionsDataLoading,
     error: transactionsDataError,
-  } = useFetchData('../mocks/BiddingTransactions.json');
+  } = useFetchData<AuctionTransactions[]>('../mocks/BiddingTransactions.json');
+  const transactionsData = transactionsDataRaw ?? [];
 
   return (
     <div>

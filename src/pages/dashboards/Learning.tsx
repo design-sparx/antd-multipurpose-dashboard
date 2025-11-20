@@ -22,34 +22,56 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFetchData } from '../../hooks';
 import { useStylesContext } from '../../context';
+import {
+  LearningCourses,
+  StudyStatistics,
+  RecommendedCourses,
+  Exam,
+  CommunityGroup,
+} from '../../types';
 
 export const LearningDashboardPage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch courses data with proper typing
   const {
-    data: coursesData,
+    data: coursesDataRaw,
     loading: coursesDataLoading,
     error: coursesDataError,
-  } = useFetchData('../mocks/Courses.json');
+  } = useFetchData<LearningCourses[]>('../mocks/Courses.json');
+  const coursesData = coursesDataRaw ?? [];
+
+  // Fetch study statistics data with proper typing
   const {
-    data: studyData,
+    data: studyDataRaw,
     loading: studyDataLoading,
     error: studyDataError,
-  } = useFetchData('../mocks/StudyStatistics.json');
+  } = useFetchData<StudyStatistics[]>('../mocks/StudyStatistics.json');
+  const studyData = studyDataRaw ?? [];
+
+  // Fetch recommended courses data with proper typing
   const {
-    data: recommendedCoursesData,
+    data: recommendedCoursesDataRaw,
     loading: recommendedCoursesDataLoading,
     error: recommendedCoursesDataError,
-  } = useFetchData('../mocks/RecommendedCourses.json');
+  } = useFetchData<RecommendedCourses[]>('../mocks/RecommendedCourses.json');
+  const recommendedCoursesData = recommendedCoursesDataRaw ?? [];
+
+  // Fetch exams data with proper typing
   const {
-    data: examsData,
+    data: examsDataRaw,
     loading: examsDataLoading,
     error: examsDataError,
-  } = useFetchData('../mocks/Exams.json');
+  } = useFetchData<Exam[]>('../mocks/Exams.json');
+  const examsData = examsDataRaw ?? [];
+
+  // Fetch communities data with proper typing
   const {
-    data: communitiesData,
+    data: communitiesDataRaw,
     loading: communitiesDataLoading,
     error: communitiesDataError,
-  } = useFetchData('../mocks/CommunityGroups.json');
+  } = useFetchData<CommunityGroup[]>('../mocks/CommunityGroups.json');
+  const communitiesData = communitiesDataRaw ?? [];
 
   return (
     <div>

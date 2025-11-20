@@ -24,6 +24,7 @@ import type {
   RecommendedCourses,
   Exam,
   CommunityGroup,
+  StudyStatistics,
 } from './learnings.ts';
 import type {
   TruckDelivery,
@@ -31,26 +32,19 @@ import type {
   Truck,
   DeliveryRequest,
 } from './logistics.ts';
-import type {
-  Tasks,
-  TaskPriority,
-  TaskStatus,
-  TaskCategory,
-  TaskColor,
-} from './dashboard';
+import type { Tasks, CountryOrder, ChannelUser } from './dashboard';
 import type { Notifications } from './notifications';
 import type { Employee } from './employee';
 import type { Faq } from './faq';
-import type { Pricing } from './pricing';
+import type { Pricing, License } from './pricing';
 import type { Session } from './session';
 import type { ActivityTimeline } from './timeline';
 import type {
-  ApiResponse,
-  TasksApiResponse,
-  ProjectsApiResponse,
-  PaginationMeta,
-  SingleItemApiResponse,
-} from './api';
+  TopProduct,
+  TopCategory,
+  TopSeller,
+  RecentOrder,
+} from './ecommerce';
 
 export type {
   Projects,
@@ -74,24 +68,23 @@ export type {
   RecommendedCourses,
   Exam,
   CommunityGroup,
+  StudyStatistics,
   TruckDelivery,
   DeliveryAnalytics,
   Truck,
   DeliveryRequest,
   Tasks,
-  TaskPriority,
-  TaskStatus,
-  TaskCategory,
-  TaskColor,
+  CountryOrder,
+  ChannelUser,
   Notifications,
   Employee,
   Faq,
   Pricing,
+  License,
   Session,
   ActivityTimeline,
-  ApiResponse,
-  TasksApiResponse,
-  ProjectsApiResponse,
-  PaginationMeta,
-  SingleItemApiResponse,
+  TopProduct,
+  TopCategory,
+  TopSeller,
+  RecentOrder,
 };

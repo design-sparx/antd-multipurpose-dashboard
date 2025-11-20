@@ -2,14 +2,18 @@ import { Alert, Card as AntCard, Col, Row, Typography } from 'antd';
 import { Card, Loader } from '../../components';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
+import { License } from '../../types';
 
 export const CorporateLicensePage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch license data with proper typing
   const {
-    data: licenseData,
+    data: licenseDataRaw,
     error: licenseDataError,
     loading: licenseDataLoading,
-  } = useFetchData('../mocks/License.json');
+  } = useFetchData<License[]>('../mocks/License.json');
+  const licenseData = licenseDataRaw ?? [];
 
   return (
     <div>
@@ -26,7 +30,7 @@ export const CorporateLicensePage = () => {
             ) : licenseDataLoading ? (
               <Loader />
             ) : (
-              licenseData.map((l: any) => (
+              licenseData.map((l: License) => (
                 <AntCard
                   title={`${l.title} plan license`}
                   bordered={true}

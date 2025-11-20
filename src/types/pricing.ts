@@ -7,3 +7,8 @@ export type Pricing = {
   color: string;
   preferred?: boolean;
 };
+
+export type License = {
+  title: string;
+  description: string;
+};

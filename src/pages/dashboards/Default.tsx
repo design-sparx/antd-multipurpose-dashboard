@@ -153,21 +153,30 @@ export const DefaultDashboardPage = () => {
   const stylesContext = useStylesContext();
   const sliderRef1 = useRef<any>(null);
   const sliderRef2 = useRef<any>(null);
+
+  // Fetch tasks data with proper typing
   const {
-    data: tasksListData = [],
+    data: tasksListDataRaw,
     error: tasksListError,
     loading: tasksListLoading,
   } = useFetchData<Tasks[]>('../mocks/TasksList.json');
+  const tasksListData = tasksListDataRaw ?? [];
+
+  // Fetch projects data with proper typing
   const {
-    data: projectsData,
+    data: projectsDataRaw,
     error: projectsError,
     loading: projectsLoading,
   } = useFetchData<Projects[]>('../mocks/Projects.json');
+  const projectsData = projectsDataRaw ?? [];
+
+  // Fetch notifications data with proper typing
   const {
-    data: notificationsData = [],
+    data: notificationsDataRaw,
     error: notificationsError,
     loading: notificationsLoading,
   } = useFetchData<Notifications[]>('../mocks/Notifications.json');
+  const notificationsData = notificationsDataRaw ?? [];
 
   return (
     <div>

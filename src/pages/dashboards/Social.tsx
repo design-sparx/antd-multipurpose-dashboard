@@ -47,21 +47,30 @@ type SectionProps = {
 const Section = ({ tab }: SectionProps) => {
   const stylesContext = useStylesContext();
   const [title, setTitle] = useState<string>('');
+
+  // Fetch social media data with proper typing
   const {
-    data: socialsData,
+    data: socialsDataRaw,
     loading: socialsDataLoading,
     error: socialsDataError,
-  } = useFetchData('../mocks/SocialMedia.json');
+  } = useFetchData<Posts[]>('../mocks/SocialMedia.json');
+  const socialsData = socialsDataRaw ?? [];
+
+  // Fetch social comments data with proper typing
   const {
-    data: socialCommentsData,
+    data: socialCommentsDataRaw,
     loading: socialsCommentsDataLoading,
     error: socialsCommentsDataError,
-  } = useFetchData('../mocks/SocialComments.json');
+  } = useFetchData<Comments[]>('../mocks/SocialComments.json');
+  const socialCommentsData = socialCommentsDataRaw ?? [];
+
+  // Fetch scheduled posts data with proper typing
   const {
-    data: scheduledPostsData,
+    data: scheduledPostsDataRaw,
     loading: scheduledPostsDataLoading,
     error: scheduledPostsDataError,
-  } = useFetchData('../mocks/ScheduledPosts.json');
+  } = useFetchData<Posts[]>('../mocks/ScheduledPosts.json');
+  const scheduledPostsData = scheduledPostsDataRaw ?? [];
 
   useEffect(() => {
     switch (tab) {
