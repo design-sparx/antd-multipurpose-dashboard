@@ -144,6 +144,40 @@ const { data, loading, error } = useFetchData('/mocks/YourMockData.json');
 
 The hook will automatically use the correct endpoint based on the current mode.
 
+#### Mock-Only Endpoints (Backend Not Implemented Yet)
+
+For endpoints that don't have a backend implementation yet, use the `mockOnly` flag. These endpoints will **always return mock data, even in Live Mode**:
+
+```typescript
+export const API_ENDPOINTS = {
+  notifications: {
+    mock: '/Notifications.json',
+    prod: '/notifications',
+    mockOnly: true, // Backend endpoint not implemented yet
+  },
+};
+```
+
+**How it works:**
+- In **Demo Mode**: Uses mock data (normal behavior)
+- In **Live Mode**: Uses mock data + shows console warning
+- Console warning: `⚠️ Endpoint "notifications" is mock-only (backend not implemented). Using mock data in Live Mode.`
+
+**When to use mockOnly:**
+- Backend endpoint is planned but not implemented yet
+- Feature is UI-only and doesn't require backend support
+- Testing UI while waiting for backend development
+- Gradual migration from mock to live data
+
+**Example use cases:**
+- Notifications system not implemented on backend
+- UI prototypes and demos
+- Features in development
+- Static content that doesn't change
+
+**When backend is ready:**
+Simply remove the `mockOnly: true` flag and the endpoint will start using the live API!
+
 #### Using the Toggle Component
 
 ```typescript

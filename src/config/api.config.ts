@@ -26,6 +26,9 @@ export const getApiBasePath = (): string => {
 /**
  * API Endpoints mapping
  * Maps resource names to their respective endpoints
+ *
+ * Set mockOnly: true for endpoints that aren't implemented on the backend yet.
+ * These will always return mock data, even in Live Mode.
  */
 export const API_ENDPOINTS = {
   // Dashboard - Default
@@ -40,6 +43,7 @@ export const API_ENDPOINTS = {
   notifications: {
     mock: '/Notifications.json',
     prod: '/notifications',
+    mockOnly: true, // Backend endpoint not implemented yet
   },
   countryOrders: {
     mock: '/CountryOrders.json',
@@ -159,11 +163,21 @@ export const API_ENDPOINTS = {
  * Get the appropriate endpoint based on the current mode
  */
 export const getEndpoint = (resource: keyof typeof API_ENDPOINTS, useMockData: boolean): string => {
-  const endpoint = API_ENDPOINTS[resource];
+  const endpoint = API_ENDPOINTS[resource] as any;
 
   if (!endpoint) {
     console.warn(`No endpoint configuration found for resource: ${resource}`);
     return '';
+  }
+
+  // Check if this endpoint is mock-only (not implemented on backend)
+  if (endpoint.mockOnly) {
+    if (!useMockData) {
+      console.warn(
+        `[API Config] ⚠️ Endpoint "${resource}" is mock-only (backend not implemented). Using mock data in Live Mode.`
+      );
+    }
+    return `${API_CONFIG.MOCK_BASE_URL}${endpoint.mock}`;
   }
 
   if (useMockData) {
