@@ -9,14 +9,14 @@ export enum AntdTaskStatus {
   Todo = 'todo',
   InProgress = 'in_progress',
   Completed = 'completed',
-  Cancelled = 'cancelled'
+  Cancelled = 'cancelled',
 }
 
 export enum AntdTaskPriority {
   Low = 'low',
   Medium = 'medium',
   High = 'high',
-  Urgent = 'urgent'
+  Urgent = 'urgent',
 }
 
 export enum AntdTaskCategory {
@@ -25,7 +25,7 @@ export enum AntdTaskCategory {
   Marketing = 'marketing',
   Sales = 'sales',
   Support = 'support',
-  Other = 'other'
+  Other = 'other',
 }
 
 export enum AntdTaskColor {
@@ -34,7 +34,7 @@ export enum AntdTaskColor {
   Red = 'red',
   Orange = 'orange',
   Purple = 'purple',
-  Gray = 'gray'
+  Gray = 'gray',
 }
 
 export enum ProjectState {
@@ -42,7 +42,7 @@ export enum ProjectState {
   Active = 'active',
   OnHold = 'on_hold',
   Completed = 'completed',
-  Cancelled = 'cancelled'
+  Cancelled = 'cancelled',
 }
 
 export enum OrderStatus {
@@ -50,7 +50,7 @@ export enum OrderStatus {
   Processing = 'processing',
   Shipped = 'shipped',
   Delivered = 'delivered',
-  Cancelled = 'cancelled'
+  Cancelled = 'cancelled',
 }
 
 export enum InvoiceStatus {
@@ -58,7 +58,7 @@ export enum InvoiceStatus {
   Sent = 'sent',
   Paid = 'paid',
   Overdue = 'overdue',
-  Cancelled = 'cancelled'
+  Cancelled = 'cancelled',
 }
 
 export enum PaymentMethod {
@@ -66,7 +66,7 @@ export enum PaymentMethod {
   DebitCard = 'debit_card',
   PayPal = 'paypal',
   BankTransfer = 'bank_transfer',
-  Cash = 'cash'
+  Cash = 'cash',
 }
 
 // ==================== PRODUCT TYPES ====================
@@ -639,21 +639,4 @@ export interface AntdDeliveryAnalyticUpdateDto {
   successfulDeliveries: number;
   failedDeliveries: number;
   averageDeliveryTime: number;
-}
-
-// ==================== PAGINATION ====================
-
-export interface PaginationMeta {
-  currentPage: number;
-  pageSize: number;
-  totalPages: number;
-  totalCount: number;
-  hasNextPage: boolean;
-  hasPreviousPage: boolean;
-}
-
-export interface PaginatedResponse<T> {
-  success: boolean;
-  data: T[];
-  pagination: PaginationMeta;
 }

@@ -3,19 +3,19 @@
  * Handles all authentication-related API calls
  */
 
+import { ApiResponseOfObject } from '../../types/api/generic.ts';
+import {
+  ChangePasswordRequestDto,
+  ForgotPasswordRequestDto,
+  LoginDto,
+  LoginResponse,
+  RefreshTokenResponse,
+  RegisterDto,
+  ResetPasswordRequestDto,
+} from '../../types/api/auth.types';
 import { apiRequest } from '../api/apiClient';
 import { API_ENDPOINTS } from '../api/endpoints';
 import { tokenStorage } from './tokenStorage';
-import type {
-  LoginDto,
-  RegisterDto,
-  LoginResponse,
-  RefreshTokenResponse,
-  ForgotPasswordRequestDto,
-  ResetPasswordRequestDto,
-  ChangePasswordRequestDto,
-  ApiResponseOfObject,
-} from '../../types/api';
 
 export const authService = {
   /**

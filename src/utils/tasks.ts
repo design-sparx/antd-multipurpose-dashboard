@@ -3,7 +3,12 @@
  * Helper functions to work with task data from the API
  */
 
-import type { TaskPriority, TaskStatus, TaskCategory, TaskColor } from '../types';
+import {
+  TaskCategory,
+  TaskColor,
+  TaskPriority,
+  TaskStatus,
+} from '../types/dashboard.ts';
 
 /**
  * Map task priority number to label

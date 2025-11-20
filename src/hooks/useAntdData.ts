@@ -9,14 +9,14 @@ import {
   UseQueryOptions,
 } from '@tanstack/react-query';
 import { antdService } from '../services/dashboard';
-import type {
-  AntdProductDto,
-  AntdOrderDto,
-  AntdSellerDto,
-  AntdProjectDto,
+import {
   AntdClientDto,
+  AntdOrderDto,
+  AntdProductDto,
+  AntdProjectDto,
+  AntdSellerDto,
   TaskDto,
-} from '../types/api';
+} from '../types/api/antd.types';
 
 // Query Keys
 export const queryKeys = {

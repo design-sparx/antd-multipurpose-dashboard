@@ -19,7 +19,7 @@ export interface RegisterDto {
 }
 
 export interface LoginResponse {
-  accessToken: string;
+  token: string;
   refreshToken: string;
   tokenType: string;
   expiresIn: number;
@@ -102,20 +102,4 @@ export interface UpdateProfileDto {
 export interface ClaimDto {
   type: string;
   value: string;
-}
-
-// ==================== API RESPONSE WRAPPER ====================
-
-export interface ApiResponseOfObject<T = any> {
-  success: boolean;
-  message?: string;
-  data?: T;
-  errors?: string[];
-}
-
-export interface ApiErrorResponse {
-  success: false;
-  message: string;
-  errors?: string[];
-  statusCode?: number;
 }

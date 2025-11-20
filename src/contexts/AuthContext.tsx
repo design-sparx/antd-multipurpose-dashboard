@@ -11,8 +11,12 @@ import React, {
   useCallback,
 } from 'react';
 import { authService } from '../services/auth/authService';
-import type { LoginDto, RegisterDto, UserProfileDto } from '../types/api';
 import { tokenStorage } from '../services/auth/tokenStorage';
+import {
+  LoginDto,
+  RegisterDto,
+  UserProfileDto,
+} from '../types/api/auth.types.ts';
 
 interface AuthContextType {
   user: UserProfileDto | null;

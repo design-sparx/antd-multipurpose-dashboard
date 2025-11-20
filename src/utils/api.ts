@@ -3,21 +3,12 @@
  * Helper functions for working with API responses
  */
 
-import type {
+import {
   ApiResponse,
-  TasksApiResponse,
-  ProjectsApiResponse,
   PaginationMeta,
-} from '../types';
-
-/**
- * Check if a response is successful
- */
-export const isApiSuccess = <T>(
-  response: ApiResponse<T> | TasksApiResponse<T> | ProjectsApiResponse<T>
-): boolean => {
-  return Boolean(response.success || response.succeeded);
-};
+  ProjectsApiResponse,
+  TasksApiResponse,
+} from '../types/api';
 
 /**
  * Extract data from an API response

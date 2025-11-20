@@ -1,10 +1,7 @@
 import { Switch, Tooltip, Tag, Flex } from 'antd';
 import { DatabaseOutlined, ApiOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  toggleDataMode,
-  enableMockData,
-} from '../../redux/dataMode/dataModeSlice';
+import { toggleDataMode } from '../../redux/dataMode/dataModeSlice';
 import { setLoginModalOpen } from '../../redux/auth/authSlice';
 import { RootState } from '../../redux/store';
 

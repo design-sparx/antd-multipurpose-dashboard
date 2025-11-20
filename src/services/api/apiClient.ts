@@ -13,13 +13,12 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 import { tokenStorage } from '../auth/tokenStorage';
-import type { ApiErrorResponse } from '../../types/api';
+import { ApiErrorResponse } from '../../types/api/generic';
 
 // API Configuration
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ||
   'https://admin-hub-api-production.up.railway.app/api/v1';
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
 
 /**
  * Create axios instance with default configuration
