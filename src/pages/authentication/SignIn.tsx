@@ -6,6 +6,7 @@ import {
   Divider,
   Flex,
   Form,
+  FormProps,
   Input,
   message,
   Row,
@@ -44,7 +45,9 @@ export const SignInPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const onFinish = async (values: FieldType) => {
+  const onFinish: FormProps<FieldType>['onFinish'] = async (
+    values: FieldType
+  ) => {
     setLoading(true);
     setError(null);
 
@@ -58,19 +61,23 @@ export const SignInPage = () => {
       message.success('Login successful! Welcome back.');
 
       // Redirect to the page they were trying to access, or dashboard
-      const from = (location.state as any)?.from?.pathname || PATH_DASHBOARD.default;
+      const from = location.state?.from?.pathname || PATH_DASHBOARD.default;
       navigate(from, { replace: true });
-    } catch (err: any) {
+    } catch (err) {
       console.error('Login error:', err);
       const apiError = handleApiError(err);
-      setError(apiError.message || 'Invalid email or password. Please try again.');
+      setError(
+        apiError.message || 'Invalid email or password. Please try again.'
+      );
       message.error(apiError.message || 'Login failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  const onFinishFailed = (errorInfo: any) => {
+  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (
+    errorInfo
+  ) => {
     console.log('Form validation failed:', errorInfo);
   };
 
@@ -123,8 +130,8 @@ export const SignInPage = () => {
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             initialValues={{
-              email: '',
-              password: '',
+              email: 'demo@adminhub.com',
+              password: 'Demo@Pass1',
               remember: true,
             }}
             onFinish={onFinish}
@@ -139,7 +146,10 @@ export const SignInPage = () => {
                   name="email"
                   rules={[
                     { required: true, message: 'Please input your email' },
-                    { type: 'email', message: 'Please enter a valid email address' },
+                    {
+                      type: 'email',
+                      message: 'Please enter a valid email address',
+                    },
                   ]}
                 >
                   <Input placeholder="Enter your email" />
@@ -151,7 +161,10 @@ export const SignInPage = () => {
                   name="password"
                   rules={[
                     { required: true, message: 'Please input your password!' },
-                    { min: 6, message: 'Password must be at least 6 characters' },
+                    {
+                      min: 6,
+                      message: 'Password must be at least 6 characters',
+                    },
                   ]}
                 >
                   <Input.Password placeholder="Enter your password" />

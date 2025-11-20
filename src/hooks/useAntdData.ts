@@ -2,8 +2,13 @@
  * Custom React Query hooks for Antd Dashboard data
  */
 
-import { useQuery, useMutation, useQueryClient, UseQueryOptions } from '@tanstack/react-query';
-import { antdService } from '../../services/dashboard/antdService';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  UseQueryOptions,
+} from '@tanstack/react-query';
+import { antdService } from '../services/dashboard';
 import type {
   AntdProductDto,
   AntdOrderDto,
@@ -11,7 +16,7 @@ import type {
   AntdProjectDto,
   AntdClientDto,
   TaskDto,
-} from '../../types/api';
+} from '../types/api';
 
 // Query Keys
 export const queryKeys = {
@@ -205,7 +210,9 @@ export const useUpdateTask = () => {
       antdService.tasks.update(id, data),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all });
-      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.detail(variables.id) });
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.tasks.detail(variables.id),
+      });
     },
   });
 };

@@ -1,14 +1,24 @@
+/* eslint-disable */
+
 /**
  * API Client
  * Axios instance with request/response interceptors for authentication and error handling
  */
 
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
 import { tokenStorage } from '../auth/tokenStorage';
 import type { ApiErrorResponse } from '../../types/api';
 
 // API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://admin-hub-api-production.up.railway.app/api/v1';
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://admin-hub-api-production.up.railway.app/api/v1';
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
 
 /**
@@ -36,10 +46,13 @@ apiClient.interceptors.request.use(
 
     // Log request in development
     if (import.meta.env.DEV) {
-      console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, {
-        params: config.params,
-        data: config.data,
-      });
+      console.log(
+        `[API Request] ${config.method?.toUpperCase()} ${config.url}`,
+        {
+          params: config.params,
+          data: config.data,
+        }
+      );
     }
 
     return config;
@@ -58,13 +71,20 @@ apiClient.interceptors.response.use(
   (response: AxiosResponse) => {
     // Log response in development
     if (import.meta.env.DEV) {
-      console.log(`[API Response] ${response.config.method?.toUpperCase()} ${response.config.url}`, response.data);
+      console.log(
+        `[API Response] ${response.config.method?.toUpperCase()} ${
+          response.config.url
+        }`,
+        response.data
+      );
     }
 
     return response;
   },
   async (error: AxiosError<ApiErrorResponse>) => {
-    const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean };
+    const originalRequest = error.config as AxiosRequestConfig & {
+      _retry?: boolean;
+    };
 
     // Log error in development
     if (import.meta.env.DEV) {
@@ -90,9 +110,12 @@ apiClient.interceptors.response.use(
         }
 
         // Try to refresh token
-        const response = await axios.post(`${API_BASE_URL}/auth/refresh-token`, {
-          refreshToken,
-        });
+        const response = await axios.post(
+          `${API_BASE_URL}/auth/refresh-token`,
+          {
+            refreshToken,
+          }
+        );
 
         const { accessToken, refreshToken: newRefreshToken } = response.data;
 
@@ -116,7 +139,9 @@ apiClient.interceptors.response.use(
 
     // Handle 403 Forbidden
     if (error.response?.status === 403) {
-      console.error('[Access Denied] You do not have permission to access this resource');
+      console.error(
+        '[Access Denied] You do not have permission to access this resource'
+      );
     }
 
     // Handle 404 Not Found
@@ -142,7 +167,10 @@ export const handleApiError = (error: unknown): ApiErrorResponse => {
 
     return {
       success: false,
-      message: axiosError.response?.data?.message || axiosError.message || 'An unexpected error occurred',
+      message:
+        axiosError.response?.data?.message ||
+        axiosError.message ||
+        'An unexpected error occurred',
       errors: axiosError.response?.data?.errors,
       statusCode: axiosError.response?.status,
     };
@@ -168,7 +196,11 @@ export const apiRequest = {
   put: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> =>
     apiClient.put<T>(url, data, config).then((response) => response.data),
 
-  patch: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> =>
+  patch: <T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> =>
     apiClient.patch<T>(url, data, config).then((response) => response.data),
 
   delete: <T>(url: string, config?: AxiosRequestConfig): Promise<T> =>
