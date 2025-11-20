@@ -102,7 +102,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const updateUser = useCallback((updatedUser: UserProfileDto): void => {
     setUser(updatedUser);
     // Update in storage as well
-    authService.getCurrentUser();
+    const { tokenStorage } = require('../services/auth/tokenStorage');
+    tokenStorage.setUser(updatedUser);
   }, []);
 
   const value: AuthContextType = {
