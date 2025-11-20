@@ -31,13 +31,26 @@ import type {
   Truck,
   DeliveryRequest,
 } from './logistics.ts';
-import type { Tasks } from './dashboard';
+import type {
+  Tasks,
+  TaskPriority,
+  TaskStatus,
+  TaskCategory,
+  TaskColor,
+} from './dashboard';
 import type { Notifications } from './notifications';
 import type { Employee } from './employee';
 import type { Faq } from './faq';
 import type { Pricing } from './pricing';
 import type { Session } from './session';
 import type { ActivityTimeline } from './timeline';
+import type {
+  ApiResponse,
+  TasksApiResponse,
+  ProjectsApiResponse,
+  PaginationMeta,
+  SingleItemApiResponse,
+} from './api';
 
 export type {
   Projects,
@@ -66,10 +79,19 @@ export type {
   Truck,
   DeliveryRequest,
   Tasks,
+  TaskPriority,
+  TaskStatus,
+  TaskCategory,
+  TaskColor,
   Notifications,
   Employee,
   Faq,
   Pricing,
   Session,
   ActivityTimeline,
+  ApiResponse,
+  TasksApiResponse,
+  ProjectsApiResponse,
+  PaginationMeta,
+  SingleItemApiResponse,
 };
