@@ -26,8 +26,9 @@ import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../context';
-import { useFetchData } from '../../hooks';
+import { useFetchData, useTasks, useProjects } from '../../hooks';
 import { Projects } from '../../types';
+import type { AntdProjectDto } from '../../types/api';
 import CountUp from 'react-countup';
 
 const ACTIVITY_DATA = [
@@ -153,16 +154,22 @@ export const DefaultDashboardPage = () => {
   const stylesContext = useStylesContext();
   const sliderRef1 = useRef<any>(null);
   const sliderRef2 = useRef<any>(null);
+
+  // Fetch tasks from API using React Query
   const {
     data: tasksListData = [],
     error: tasksListError,
-    loading: tasksListLoading,
-  } = useFetchData('../mocks/TasksList.json');
+    isLoading: tasksListLoading,
+  } = useTasks();
+
+  // Fetch projects from API using React Query
   const {
     data: projectsData = [],
     error: projectsError,
-    loading: projectsLoading,
-  } = useFetchData('../mocks/Projects.json');
+    isLoading: projectsLoading,
+  } = useProjects();
+
+  // Keep notifications as mock data (no API endpoint available yet)
   const {
     data: notificationsData = [],
     error: notificationsError,
@@ -219,7 +226,13 @@ export const DefaultDashboardPage = () => {
                       <Card>
                         <Flex vertical align="center" gap="middle">
                           <Typography.Title style={{ margin: 0 }}>
-                            <CountUp end={10} />+
+                            {projectsLoading ? (
+                              '...'
+                            ) : (
+                              <>
+                                <CountUp end={projectsData.length} />+
+                              </>
+                            )}
                           </Typography.Title>
                           <Typography.Text>Projects</Typography.Text>
                         </Flex>
@@ -229,7 +242,13 @@ export const DefaultDashboardPage = () => {
                       <Card>
                         <Flex vertical align="center" gap="middle">
                           <Typography.Title style={{ margin: 0 }}>
-                            <CountUp end={60} />+
+                            {tasksListLoading ? (
+                              '...'
+                            ) : (
+                              <>
+                                <CountUp end={tasksListData.length} />+
+                              </>
+                            )}
                           </Typography.Title>
                           <Typography.Text>Tasks</Typography.Text>
                         </Flex>
