@@ -10,7 +10,13 @@ const useFetchData = (url: string) => {
       const response = await fetch(url);
       const json = await response.json();
 
-      setData(json);
+      // Check if the response has a nested 'data' property (API format)
+      // Otherwise, use the response as-is (direct array format from mocks)
+      if (json && typeof json === 'object' && 'data' in json && !Array.isArray(json)) {
+        setData(json.data);
+      } else {
+        setData(json);
+      }
     } catch (error) {
       setError(error);
     } finally {
