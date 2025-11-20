@@ -26,9 +26,8 @@ import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../context';
-import { useFetchData, useTasks, useProjects } from '../../hooks';
-import { Projects } from '../../types';
-import type { AntdProjectDto } from '../../types/api';
+import { useFetchData } from '../../hooks';
+import { Projects, Tasks, Notifications } from '../../types';
 import CountUp from 'react-countup';
 
 const ACTIVITY_DATA = [
@@ -154,27 +153,21 @@ export const DefaultDashboardPage = () => {
   const stylesContext = useStylesContext();
   const sliderRef1 = useRef<any>(null);
   const sliderRef2 = useRef<any>(null);
-
-  // Fetch tasks from API using React Query
   const {
     data: tasksListData = [],
     error: tasksListError,
-    isLoading: tasksListLoading,
-  } = useTasks();
-
-  // Fetch projects from API using React Query
+    loading: tasksListLoading,
+  } = useFetchData<Tasks[]>('../mocks/TasksList.json');
   const {
     data: projectsData = [],
     error: projectsError,
-    isLoading: projectsLoading,
-  } = useProjects();
-
-  // Keep notifications as mock data (no API endpoint available yet)
+    loading: projectsLoading,
+  } = useFetchData<Projects[]>('../mocks/Projects.json');
   const {
     data: notificationsData = [],
     error: notificationsError,
     loading: notificationsLoading,
-  } = useFetchData('../mocks/Notifications.json');
+  } = useFetchData<Notifications[]>('../mocks/Notifications.json');
 
   return (
     <div>
@@ -226,13 +219,7 @@ export const DefaultDashboardPage = () => {
                       <Card>
                         <Flex vertical align="center" gap="middle">
                           <Typography.Title style={{ margin: 0 }}>
-                            {projectsLoading ? (
-                              '...'
-                            ) : (
-                              <>
-                                <CountUp end={projectsData.length} />+
-                              </>
-                            )}
+                            <CountUp end={10} />+
                           </Typography.Title>
                           <Typography.Text>Projects</Typography.Text>
                         </Flex>
@@ -242,13 +229,7 @@ export const DefaultDashboardPage = () => {
                       <Card>
                         <Flex vertical align="center" gap="middle">
                           <Typography.Title style={{ margin: 0 }}>
-                            {tasksListLoading ? (
-                              '...'
-                            ) : (
-                              <>
-                                <CountUp end={tasksListData.length} />+
-                              </>
-                            )}
+                            <CountUp end={60} />+
                           </Typography.Title>
                           <Typography.Text>Tasks</Typography.Text>
                         </Flex>
@@ -297,7 +278,7 @@ export const DefaultDashboardPage = () => {
                     {...CAROUSEL_PROPS}
                   >
                     {projectsData
-                      ?.filter(
+                      .filter(
                         (o: Projects) =>
                           o.status.toLowerCase() === 'in progress'
                       )
