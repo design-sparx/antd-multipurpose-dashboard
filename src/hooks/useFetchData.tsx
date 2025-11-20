@@ -28,7 +28,7 @@ const isWrappedResponse = (json: any): json is ApiResponse => {
 };
 
 const useFetchData = (url: string) => {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<any>(null);
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -80,10 +80,16 @@ const useFetchData = (url: string) => {
         }
         // Extract the actual data
         console.log(`[useFetchData] Unwrapped API response: ${json.message}`);
-        setData(json.data);
+        console.log(`[useFetchData] Data type: ${Array.isArray(json.data) ? 'array' : typeof json.data}`);
+
+        // Ensure data is in the correct format
+        const extractedData = json.data ?? [];
+        setData(extractedData);
       } else {
         // This is direct data (mock files or unwrapped response)
-        setData(json);
+        console.log(`[useFetchData] Direct data type: ${Array.isArray(json) ? 'array' : typeof json}`);
+        const finalData = json ?? [];
+        setData(finalData);
       }
     } catch (error) {
       console.error(`Error fetching data from ${url}:`, error);
@@ -97,7 +103,13 @@ const useFetchData = (url: string) => {
     fetchData();
   }, [fetchData]);
 
-  return { data, error, loading };
+  // Return data with safe fallback for components expecting arrays
+  // If data is null/undefined and components try to iterate, provide empty array
+  return {
+    data: data ?? [],
+    error,
+    loading
+  };
 };
 
 export default useFetchData;
