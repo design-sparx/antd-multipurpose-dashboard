@@ -39,6 +39,8 @@ apiClient.interceptors.request.use(
       console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, {
         params: config.params,
         data: config.data,
+        hasToken: !!token,
+        tokenPreview: token ? `${token.substring(0, 20)}...` : 'NO TOKEN',
       });
     }
 

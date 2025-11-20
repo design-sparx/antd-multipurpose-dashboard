@@ -27,10 +27,29 @@ export const authService = {
       credentials
     );
 
-    // Store tokens and user data
-    if (response.accessToken && response.refreshToken) {
-      tokenStorage.setTokens(response.accessToken, response.refreshToken);
+    // Store tokens and user data (API returns "token" not "accessToken")
+    if (response.token) {
+      // Use the same token for both access and refresh since API doesn't provide separate refresh token
+      const refreshToken = response.refreshToken || response.token;
+
+      if (import.meta.env.DEV) {
+        console.log('[Auth Service] Storing tokens:', {
+          hasToken: !!response.token,
+          tokenPreview: response.token.substring(0, 20) + '...',
+          user: response.user,
+        });
+      }
+
+      tokenStorage.setTokens(response.token, refreshToken);
       tokenStorage.setUser(response.user);
+
+      // Verify storage
+      if (import.meta.env.DEV) {
+        console.log('[Auth Service] Tokens stored. Verification:', {
+          storedToken: tokenStorage.getAccessToken()?.substring(0, 20) + '...',
+          isAuthenticated: tokenStorage.isAuthenticated(),
+        });
+      }
     }
 
     return response;

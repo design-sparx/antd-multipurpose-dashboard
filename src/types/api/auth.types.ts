@@ -19,11 +19,18 @@ export interface RegisterDto {
 }
 
 export interface LoginResponse {
-  accessToken: string;
-  refreshToken: string;
-  tokenType: string;
-  expiresIn: number;
-  user: UserProfileDto;
+  token: string;  // API returns "token" not "accessToken"
+  expiration: string;  // ISO date string
+  user: {
+    username: string;
+    userId: string;
+    email: string;
+  };
+  roles: string[];
+  // These don't exist in the actual API response
+  refreshToken?: string;
+  tokenType?: string;
+  expiresIn?: number;
 }
 
 export interface RefreshTokenRequestDto {
@@ -64,15 +71,17 @@ export interface ChangePasswordRequestDto {
 // ==================== USER TYPES ====================
 
 export interface UserProfileDto {
-  id: string;
+  id?: string;           // Some endpoints use "id"
+  userId?: string;       // Login endpoint uses "userId"
+  username?: string;     // Login endpoint includes username
   email: string;
   firstName?: string;
   lastName?: string;
   phoneNumber?: string;
   avatarUrl?: string;
-  roles: string[];
+  roles?: string[];
   claims?: ClaimDto[];
-  createdAt: string;
+  createdAt?: string;
   updatedAt?: string;
 }
 
