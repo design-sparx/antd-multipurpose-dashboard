@@ -45,6 +45,7 @@ import {
 } from '../layouts';
 import React, { ReactNode, useEffect } from 'react';
 import { AboutPage } from '../pages/About.tsx';
+import { ProtectedRoute } from '../utils/ProtectedRoute';
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -91,7 +92,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboards',
-    element: <PageWrapper children={<DashboardLayout />} />,
+    element: (
+      <ProtectedRoute>
+        <PageWrapper children={<DashboardLayout />} />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -131,7 +136,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/sitemap',
-    element: <PageWrapper children={<DashboardLayout />} />,
+    element: (
+      <ProtectedRoute>
+        <PageWrapper children={<DashboardLayout />} />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -175,7 +184,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/user-profile',
-    element: <PageWrapper children={<UserAccountLayout />} />,
+    element: (
+      <ProtectedRoute>
+        <PageWrapper children={<UserAccountLayout />} />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -219,11 +232,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'signup',
-        element: <SignUpPage />,
+        element: (
+          <ProtectedRoute requireAuth={false}>
+            <SignUpPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'signin',
-        element: <SignInPage />,
+        element: (
+          <ProtectedRoute requireAuth={false}>
+            <SignInPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'welcome',
