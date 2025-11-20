@@ -40,22 +40,28 @@ export const antdService = {
     /**
      * Get all products
      */
-    getAll: () => apiRequest.get<AntdProductDto[]>(API_ENDPOINTS.ANTD.PRODUCTS.LIST),
+    getAll: () =>
+      apiRequest.get<AntdProductDto[]>(API_ENDPOINTS.ANTD.PRODUCTS.LIST),
 
     /**
      * Get top products
      */
-    getTop: () => apiRequest.get<AntdProductDto[]>(API_ENDPOINTS.ANTD.PRODUCTS.TOP),
+    getTop: () =>
+      apiRequest.get<AntdProductDto[]>(API_ENDPOINTS.ANTD.PRODUCTS.TOP),
 
     /**
      * Get product categories
      */
-    getCategories: () => apiRequest.get<AntdCategoryListResponse>(API_ENDPOINTS.ANTD.PRODUCTS.CATEGORIES),
+    getCategories: () =>
+      apiRequest.get<AntdCategoryListResponse>(
+        API_ENDPOINTS.ANTD.PRODUCTS.CATEGORIES
+      ),
 
     /**
      * Get single product by ID
      */
-    getById: (id: string) => apiRequest.get<AntdProductDto>(API_ENDPOINTS.ANTD.PRODUCTS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<AntdProductDto>(API_ENDPOINTS.ANTD.PRODUCTS.GET(id)),
 
     /**
      * Create new product
@@ -72,7 +78,8 @@ export const antdService = {
     /**
      * Delete product
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.PRODUCTS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.PRODUCTS.DELETE(id)),
   },
 
   // ==================== ORDERS ====================
@@ -80,17 +87,20 @@ export const antdService = {
     /**
      * Get all orders
      */
-    getAll: () => apiRequest.get<AntdOrderDto[]>(API_ENDPOINTS.ANTD.ORDERS.LIST),
+    getAll: () =>
+      apiRequest.get<AntdOrderDto[]>(API_ENDPOINTS.ANTD.ORDERS.LIST),
 
     /**
      * Get recent orders
      */
-    getRecent: () => apiRequest.get<AntdOrderDto[]>(API_ENDPOINTS.ANTD.ORDERS.RECENT),
+    getRecent: () =>
+      apiRequest.get<AntdOrderDto[]>(API_ENDPOINTS.ANTD.ORDERS.RECENT),
 
     /**
      * Get single order by ID
      */
-    getById: (id: string) => apiRequest.get<AntdOrderDto>(API_ENDPOINTS.ANTD.ORDERS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<AntdOrderDto>(API_ENDPOINTS.ANTD.ORDERS.GET(id)),
 
     /**
      * Create new order
@@ -107,7 +117,8 @@ export const antdService = {
     /**
      * Delete order
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.ORDERS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.ORDERS.DELETE(id)),
   },
 
   // ==================== SELLERS ====================
@@ -115,17 +126,20 @@ export const antdService = {
     /**
      * Get all sellers
      */
-    getAll: () => apiRequest.get<AntdSellerDto[]>(API_ENDPOINTS.ANTD.SELLERS.LIST),
+    getAll: () =>
+      apiRequest.get<AntdSellerDto[]>(API_ENDPOINTS.ANTD.SELLERS.LIST),
 
     /**
      * Get top sellers
      */
-    getTop: () => apiRequest.get<AntdSellerDto[]>(API_ENDPOINTS.ANTD.SELLERS.TOP),
+    getTop: () =>
+      apiRequest.get<AntdSellerDto[]>(API_ENDPOINTS.ANTD.SELLERS.TOP),
 
     /**
      * Get single seller by ID
      */
-    getById: (id: string) => apiRequest.get<AntdSellerDto>(API_ENDPOINTS.ANTD.SELLERS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<AntdSellerDto>(API_ENDPOINTS.ANTD.SELLERS.GET(id)),
 
     /**
      * Create new seller
@@ -142,7 +156,8 @@ export const antdService = {
     /**
      * Delete seller
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.SELLERS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.SELLERS.DELETE(id)),
   },
 
   // ==================== PROJECTS ====================
@@ -150,12 +165,14 @@ export const antdService = {
     /**
      * Get all projects
      */
-    getAll: () => apiRequest.get<AntdProjectDto[]>(API_ENDPOINTS.ANTD.PROJECTS.LIST),
+    getAll: () =>
+      apiRequest.get<AntdProjectDto[]>(API_ENDPOINTS.ANTD.PROJECTS.LIST),
 
     /**
-     * Get single project by ID
+     * Get a single project by ID
      */
-    getById: (id: string) => apiRequest.get<AntdProjectDto>(API_ENDPOINTS.ANTD.PROJECTS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<AntdProjectDto>(API_ENDPOINTS.ANTD.PROJECTS.GET(id)),
 
     /**
      * Create new project
@@ -172,7 +189,8 @@ export const antdService = {
     /**
      * Delete project
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.PROJECTS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.PROJECTS.DELETE(id)),
   },
 
   // ==================== CLIENTS ====================
@@ -180,12 +198,14 @@ export const antdService = {
     /**
      * Get all clients
      */
-    getAll: () => apiRequest.get<AntdClientDto[]>(API_ENDPOINTS.ANTD.CLIENTS.LIST),
+    getAll: () =>
+      apiRequest.get<AntdClientDto[]>(API_ENDPOINTS.ANTD.CLIENTS.LIST),
 
     /**
      * Get single client by ID
      */
-    getById: (id: string) => apiRequest.get<AntdClientDto>(API_ENDPOINTS.ANTD.CLIENTS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<AntdClientDto>(API_ENDPOINTS.ANTD.CLIENTS.GET(id)),
 
     /**
      * Create new client
@@ -202,7 +222,8 @@ export const antdService = {
     /**
      * Delete client
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.CLIENTS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.CLIENTS.DELETE(id)),
   },
 
   // ==================== TASKS ====================
@@ -215,12 +236,14 @@ export const antdService = {
     /**
      * Get single task by ID
      */
-    getById: (id: string) => apiRequest.get<TaskDto>(API_ENDPOINTS.ANTD.TASKS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<TaskDto>(API_ENDPOINTS.ANTD.TASKS.GET(id)),
 
     /**
      * Create new task
      */
-    create: (data: Partial<TaskDto>) => apiRequest.post(API_ENDPOINTS.ANTD.TASKS.CREATE, data),
+    create: (data: Partial<TaskDto>) =>
+      apiRequest.post(API_ENDPOINTS.ANTD.TASKS.CREATE, data),
 
     /**
      * Update task
@@ -231,7 +254,8 @@ export const antdService = {
     /**
      * Delete task
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.TASKS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.TASKS.DELETE(id)),
   },
 
   // ==================== CAMPAIGN ADS ====================
@@ -239,13 +263,16 @@ export const antdService = {
     /**
      * Get all campaign ads
      */
-    getAll: () => apiRequest.get<AntdCampaignAdDto[]>(API_ENDPOINTS.ANTD.CAMPAIGN_ADS.LIST),
+    getAll: () =>
+      apiRequest.get<AntdCampaignAdDto[]>(API_ENDPOINTS.ANTD.CAMPAIGN_ADS.LIST),
 
     /**
      * Get single campaign ad by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdCampaignAdDto>(API_ENDPOINTS.ANTD.CAMPAIGN_ADS.GET(id)),
+      apiRequest.get<AntdCampaignAdDto>(
+        API_ENDPOINTS.ANTD.CAMPAIGN_ADS.GET(id)
+      ),
 
     /**
      * Create new campaign ad
@@ -262,7 +289,8 @@ export const antdService = {
     /**
      * Delete campaign ad
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.CAMPAIGN_ADS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.CAMPAIGN_ADS.DELETE(id)),
   },
 
   // ==================== LEARNING/EDUCATION ====================
@@ -270,12 +298,14 @@ export const antdService = {
     /**
      * Get all courses
      */
-    getAll: () => apiRequest.get<AntdCourseDto[]>(API_ENDPOINTS.ANTD.COURSES.LIST),
+    getAll: () =>
+      apiRequest.get<AntdCourseDto[]>(API_ENDPOINTS.ANTD.COURSES.LIST),
 
     /**
      * Get single course by ID
      */
-    getById: (id: string) => apiRequest.get<AntdCourseDto>(API_ENDPOINTS.ANTD.COURSES.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<AntdCourseDto>(API_ENDPOINTS.ANTD.COURSES.GET(id)),
   },
 
   recommendedCourses: {
@@ -283,13 +313,17 @@ export const antdService = {
      * Get all recommended courses
      */
     getAll: () =>
-      apiRequest.get<AntdRecommendedCourseDto[]>(API_ENDPOINTS.ANTD.RECOMMENDED_COURSES.LIST),
+      apiRequest.get<AntdRecommendedCourseDto[]>(
+        API_ENDPOINTS.ANTD.RECOMMENDED_COURSES.LIST
+      ),
 
     /**
      * Get single recommended course by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdRecommendedCourseDto>(API_ENDPOINTS.ANTD.RECOMMENDED_COURSES.GET(id)),
+      apiRequest.get<AntdRecommendedCourseDto>(
+        API_ENDPOINTS.ANTD.RECOMMENDED_COURSES.GET(id)
+      ),
   },
 
   exams: {
@@ -301,7 +335,8 @@ export const antdService = {
     /**
      * Get single exam by ID
      */
-    getById: (id: string) => apiRequest.get<AntdExamDto>(API_ENDPOINTS.ANTD.EXAMS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get<AntdExamDto>(API_ENDPOINTS.ANTD.EXAMS.GET(id)),
   },
 
   studyStatistics: {
@@ -309,13 +344,17 @@ export const antdService = {
      * Get all study statistics
      */
     getAll: () =>
-      apiRequest.get<AntdStudyStatisticDto[]>(API_ENDPOINTS.ANTD.STUDY_STATISTICS.LIST),
+      apiRequest.get<AntdStudyStatisticDto[]>(
+        API_ENDPOINTS.ANTD.STUDY_STATISTICS.LIST
+      ),
 
     /**
      * Get single study statistic by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdStudyStatisticDto>(API_ENDPOINTS.ANTD.STUDY_STATISTICS.GET(id)),
+      apiRequest.get<AntdStudyStatisticDto>(
+        API_ENDPOINTS.ANTD.STUDY_STATISTICS.GET(id)
+      ),
   },
 
   communityGroups: {
@@ -323,13 +362,17 @@ export const antdService = {
      * Get all community groups
      */
     getAll: () =>
-      apiRequest.get<AntdCommunityGroupDto[]>(API_ENDPOINTS.ANTD.COMMUNITY_GROUPS.LIST),
+      apiRequest.get<AntdCommunityGroupDto[]>(
+        API_ENDPOINTS.ANTD.COMMUNITY_GROUPS.LIST
+      ),
 
     /**
      * Get single community group by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdCommunityGroupDto>(API_ENDPOINTS.ANTD.COMMUNITY_GROUPS.GET(id)),
+      apiRequest.get<AntdCommunityGroupDto>(
+        API_ENDPOINTS.ANTD.COMMUNITY_GROUPS.GET(id)
+      ),
   },
 
   // ==================== SOCIAL MEDIA ====================
@@ -356,13 +399,17 @@ export const antdService = {
      * Get all social media stats
      */
     getAll: () =>
-      apiRequest.get<AntdSocialMediaStatsDto[]>(API_ENDPOINTS.ANTD.SOCIAL_MEDIA_STATS.LIST),
+      apiRequest.get<AntdSocialMediaStatsDto[]>(
+        API_ENDPOINTS.ANTD.SOCIAL_MEDIA_STATS.LIST
+      ),
 
     /**
      * Get single social media stat by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdSocialMediaStatsDto>(API_ENDPOINTS.ANTD.SOCIAL_MEDIA_STATS.GET(id)),
+      apiRequest.get<AntdSocialMediaStatsDto>(
+        API_ENDPOINTS.ANTD.SOCIAL_MEDIA_STATS.GET(id)
+      ),
   },
 
   scheduledPosts: {
@@ -370,13 +417,17 @@ export const antdService = {
      * Get all scheduled posts
      */
     getAll: () =>
-      apiRequest.get<AntdScheduledPostDto[]>(API_ENDPOINTS.ANTD.SCHEDULED_POSTS.LIST),
+      apiRequest.get<AntdScheduledPostDto[]>(
+        API_ENDPOINTS.ANTD.SCHEDULED_POSTS.LIST
+      ),
 
     /**
      * Get single scheduled post by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdScheduledPostDto>(API_ENDPOINTS.ANTD.SCHEDULED_POSTS.GET(id)),
+      apiRequest.get<AntdScheduledPostDto>(
+        API_ENDPOINTS.ANTD.SCHEDULED_POSTS.GET(id)
+      ),
   },
 
   // ==================== BIDDING/AUCTION ====================
@@ -384,13 +435,18 @@ export const antdService = {
     /**
      * Get all live auctions
      */
-    getAll: () => apiRequest.get<AntdLiveAuctionDto[]>(API_ENDPOINTS.ANTD.LIVE_AUCTIONS.LIST),
+    getAll: () =>
+      apiRequest.get<AntdLiveAuctionDto[]>(
+        API_ENDPOINTS.ANTD.LIVE_AUCTIONS.LIST
+      ),
 
     /**
      * Get single live auction by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdLiveAuctionDto>(API_ENDPOINTS.ANTD.LIVE_AUCTIONS.GET(id)),
+      apiRequest.get<AntdLiveAuctionDto>(
+        API_ENDPOINTS.ANTD.LIVE_AUCTIONS.GET(id)
+      ),
   },
 
   auctionCreators: {
@@ -398,13 +454,17 @@ export const antdService = {
      * Get all auction creators
      */
     getAll: () =>
-      apiRequest.get<AntdAuctionCreatorDto[]>(API_ENDPOINTS.ANTD.AUCTION_CREATORS.LIST),
+      apiRequest.get<AntdAuctionCreatorDto[]>(
+        API_ENDPOINTS.ANTD.AUCTION_CREATORS.LIST
+      ),
 
     /**
      * Get single auction creator by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdAuctionCreatorDto>(API_ENDPOINTS.ANTD.AUCTION_CREATORS.GET(id)),
+      apiRequest.get<AntdAuctionCreatorDto>(
+        API_ENDPOINTS.ANTD.AUCTION_CREATORS.GET(id)
+      ),
   },
 
   biddingTopSellers: {
@@ -412,13 +472,17 @@ export const antdService = {
      * Get all bidding top sellers
      */
     getAll: () =>
-      apiRequest.get<AntdBiddingTopSellerDto[]>(API_ENDPOINTS.ANTD.BIDDING_TOP_SELLERS.LIST),
+      apiRequest.get<AntdBiddingTopSellerDto[]>(
+        API_ENDPOINTS.ANTD.BIDDING_TOP_SELLERS.LIST
+      ),
 
     /**
      * Get single bidding top seller by ID
      */
     getById: (id: string) =>
-      apiRequest.get<AntdBiddingTopSellerDto>(API_ENDPOINTS.ANTD.BIDDING_TOP_SELLERS.GET(id)),
+      apiRequest.get<AntdBiddingTopSellerDto>(
+        API_ENDPOINTS.ANTD.BIDDING_TOP_SELLERS.GET(id)
+      ),
   },
 
   biddingTransactions: {
@@ -454,17 +518,20 @@ export const antdService = {
     /**
      * Create new truck
      */
-    create: (data: any) => apiRequest.post(API_ENDPOINTS.ANTD.TRUCKS.CREATE, data),
+    create: (data: any) =>
+      apiRequest.post(API_ENDPOINTS.ANTD.TRUCKS.CREATE, data),
 
     /**
      * Update truck
      */
-    update: (id: string, data: any) => apiRequest.put(API_ENDPOINTS.ANTD.TRUCKS.UPDATE(id), data),
+    update: (id: string, data: any) =>
+      apiRequest.put(API_ENDPOINTS.ANTD.TRUCKS.UPDATE(id), data),
 
     /**
      * Delete truck
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.TRUCKS.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.TRUCKS.DELETE(id)),
   },
 
   truckDeliveries: {
@@ -476,12 +543,14 @@ export const antdService = {
     /**
      * Get single truck delivery by ID
      */
-    getById: (id: string) => apiRequest.get(API_ENDPOINTS.ANTD.TRUCK_DELIVERIES.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get(API_ENDPOINTS.ANTD.TRUCK_DELIVERIES.GET(id)),
 
     /**
      * Create new truck delivery
      */
-    create: (data: any) => apiRequest.post(API_ENDPOINTS.ANTD.TRUCK_DELIVERIES.CREATE, data),
+    create: (data: any) =>
+      apiRequest.post(API_ENDPOINTS.ANTD.TRUCK_DELIVERIES.CREATE, data),
 
     /**
      * Update truck delivery
@@ -492,14 +561,16 @@ export const antdService = {
     /**
      * Delete truck delivery
      */
-    delete: (id: string) => apiRequest.delete(API_ENDPOINTS.ANTD.TRUCK_DELIVERIES.DELETE(id)),
+    delete: (id: string) =>
+      apiRequest.delete(API_ENDPOINTS.ANTD.TRUCK_DELIVERIES.DELETE(id)),
   },
 
   truckDeliveryRequests: {
     /**
      * Get all truck delivery requests
      */
-    getAll: () => apiRequest.get(API_ENDPOINTS.ANTD.TRUCK_DELIVERY_REQUESTS.LIST),
+    getAll: () =>
+      apiRequest.get(API_ENDPOINTS.ANTD.TRUCK_DELIVERY_REQUESTS.LIST),
 
     /**
      * Get single truck delivery request by ID
@@ -517,7 +588,10 @@ export const antdService = {
      * Update truck delivery request
      */
     update: (id: string, data: any) =>
-      apiRequest.put(API_ENDPOINTS.ANTD.TRUCK_DELIVERY_REQUESTS.UPDATE(id), data),
+      apiRequest.put(
+        API_ENDPOINTS.ANTD.TRUCK_DELIVERY_REQUESTS.UPDATE(id),
+        data
+      ),
 
     /**
      * Delete truck delivery request
@@ -535,12 +609,14 @@ export const antdService = {
     /**
      * Get single delivery analytic by ID
      */
-    getById: (id: string) => apiRequest.get(API_ENDPOINTS.ANTD.DELIVERY_ANALYTICS.GET(id)),
+    getById: (id: string) =>
+      apiRequest.get(API_ENDPOINTS.ANTD.DELIVERY_ANALYTICS.GET(id)),
 
     /**
      * Create new delivery analytic
      */
-    create: (data: any) => apiRequest.post(API_ENDPOINTS.ANTD.DELIVERY_ANALYTICS.CREATE, data),
+    create: (data: any) =>
+      apiRequest.post(API_ENDPOINTS.ANTD.DELIVERY_ANALYTICS.CREATE, data),
 
     /**
      * Update delivery analytic

@@ -297,7 +297,7 @@ export const DefaultDashboardPage = () => {
                     {...CAROUSEL_PROPS}
                   >
                     {projectsData
-                      .filter(
+                      ?.filter(
                         (o: Projects) =>
                           o.status.toLowerCase() === 'in progress'
                       )
