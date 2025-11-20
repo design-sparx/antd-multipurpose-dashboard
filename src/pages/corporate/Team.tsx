@@ -6,11 +6,14 @@ import { useStylesContext } from '../../context';
 
 export const CorporateTeamPage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch employees data with proper typing
   const {
-    data: employeesData,
+    data: employeesDataRaw,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData('../mocks/Employees.json');
+  } = useFetchData<Employee[]>('../mocks/Employees.json');
+  const employeesData = employeesDataRaw ?? [];
 
   return (
     <div>

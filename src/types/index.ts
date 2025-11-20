@@ -32,11 +32,11 @@ import type {
   Truck,
   DeliveryRequest,
 } from './logistics.ts';
-import type { Tasks } from './dashboard';
+import type { Tasks, CountryOrder, ChannelUser } from './dashboard';
 import type { Notifications } from './notifications';
 import type { Employee } from './employee';
 import type { Faq } from './faq';
-import type { Pricing } from './pricing';
+import type { Pricing, License } from './pricing';
 import type { Session } from './session';
 import type { ActivityTimeline } from './timeline';
 import type {
@@ -74,10 +74,13 @@ export type {
   Truck,
   DeliveryRequest,
   Tasks,
+  CountryOrder,
+  ChannelUser,
   Notifications,
   Employee,
   Faq,
   Pricing,
+  License,
   Session,
   ActivityTimeline,
   TopProduct,

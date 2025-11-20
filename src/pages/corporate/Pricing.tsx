@@ -1,12 +1,15 @@
 import { PricingTable } from '../../components';
 import { useFetchData } from '../../hooks';
+import { Pricing } from '../../types';
 
 export const CorporatePricingPage = () => {
+  // Fetch pricing data with proper typing
   const {
-    data: pricingData,
+    data: pricingDataRaw,
     error: pricingDataError,
     loading: pricingDataLoading,
-  } = useFetchData('../mocks/Pricing.json');
+  } = useFetchData<Pricing[]>('../mocks/Pricing.json');
+  const pricingData = pricingDataRaw ?? [];
 
   return (
     <div>

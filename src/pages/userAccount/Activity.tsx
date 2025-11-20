@@ -1,12 +1,15 @@
 import { TimelineCard } from '../../components';
 import { useFetchData } from '../../hooks';
+import { ActivityTimeline } from '../../types';
 
 export const UserProfileActivityPage = () => {
+  // Fetch timeline activity data with proper typing
   const {
-    data: timelineData,
+    data: timelineDataRaw,
     loading: timelineDataLoading,
     error: timelineDataError,
-  } = useFetchData('../mocks/TimelineActivity.json');
+  } = useFetchData<ActivityTimeline[]>('../mocks/TimelineActivity.json');
+  const timelineData = timelineDataRaw ?? [];
 
   return (
     <TimelineCard

@@ -13,6 +13,7 @@ import FaqsData from '../../../public/mocks/Faqs.json';
 import { TitleProps } from 'antd/es/typography/Title';
 import { useMediaQuery } from 'react-responsive';
 import { useFetchData } from '../../hooks';
+import { Faq } from '../../types';
 
 const { Text, Title } = Typography;
 
@@ -72,11 +73,14 @@ export const UserProfileHelpPage = () => {
   const [activeTabKey, setActiveTabKey] = useState<string>('Account');
   const [tabList, setTabList] = useState<TabsProps['items']>([]);
   const isMobile = useMediaQuery({ maxWidth: 600 });
+
+  // Fetch FAQs data with proper typing
   const {
-    data: faqsData,
+    data: faqsDataRaw,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData('../mocks/Faqs.json');
+  } = useFetchData<Faq[]>('../mocks/Faqs.json');
+  const faqsData = faqsDataRaw ?? [];
 
   const onTabChange = (key: string) => {
     setActiveTabKey(key);
