@@ -66,21 +66,23 @@ const useFetchData = <T = any,>(
       const json = await response.json();
 
       // Check if response follows API wrapper pattern
+      // Must be a plain object (not an array) and have data field plus success/succeeded
       const isApiResponse =
         json &&
         typeof json === 'object' &&
-        ('data' in json) &&
+        !Array.isArray(json) &&
+        'data' in json &&
         ('success' in json || 'succeeded' in json);
 
       if (unwrap && isApiResponse) {
         // Extract data from API response wrapper
         const apiResponse = json as ApiResponse<T>;
-        setData(apiResponse.data);
+        setData(apiResponse.data ?? ([] as T));
         setMeta(apiResponse.meta);
         setMessage(apiResponse.message);
         setSuccess(apiResponse.success ?? apiResponse.succeeded);
       } else {
-        // Return raw response
+        // Return raw response (for mock files that are just arrays)
         setData(json);
       }
     } catch (error) {

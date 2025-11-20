@@ -147,12 +147,12 @@ const PROJECT_TABS = [
 
 export const ProjectsDashboardPage = () => {
   const {
-    data: projectsData,
+    data: projectsData = [],
     error: projectsDataError,
     loading: projectsDataLoading,
-  } = useFetchData('../mocks/Projects.json');
+  } = useFetchData<Projects[]>('../mocks/Projects.json');
   const {
-    data: clientsData,
+    data: clientsData = [],
     error: clientsDataError,
     loading: clientsDataLoading,
   } = useFetchData('../mocks/Clients.json');

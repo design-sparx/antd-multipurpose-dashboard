@@ -27,7 +27,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
-import { Projects } from '../../types';
+import { Projects, Tasks, Notifications } from '../../types';
 import CountUp from 'react-countup';
 
 const ACTIVITY_DATA = [
@@ -157,17 +157,17 @@ export const DefaultDashboardPage = () => {
     data: tasksListData = [],
     error: tasksListError,
     loading: tasksListLoading,
-  } = useFetchData('../mocks/TasksList.json');
+  } = useFetchData<Tasks[]>('../mocks/TasksList.json');
   const {
     data: projectsData = [],
     error: projectsError,
     loading: projectsLoading,
-  } = useFetchData('../mocks/Projects.json');
+  } = useFetchData<Projects[]>('../mocks/Projects.json');
   const {
     data: notificationsData = [],
     error: notificationsError,
     loading: notificationsLoading,
-  } = useFetchData('../mocks/Notifications.json');
+  } = useFetchData<Notifications[]>('../mocks/Notifications.json');
 
   return (
     <div>
