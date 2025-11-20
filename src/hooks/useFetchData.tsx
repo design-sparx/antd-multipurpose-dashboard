@@ -7,7 +7,7 @@ import authService from '../services/auth.service';
 /**
  * API Response wrapper format from backend
  */
-interface ApiResponse<T = any> {
+interface ApiResponse<T> {
   succeeded: boolean;
   message: string;
   data: T;
@@ -23,13 +23,38 @@ interface ApiResponse<T = any> {
 /**
  * Check if response is a wrapped API response
  */
-const isWrappedResponse = (json: any): json is ApiResponse => {
-  return json && typeof json === 'object' && 'data' in json && 'succeeded' in json;
-};
+function isWrappedResponse<T>(json: unknown): json is ApiResponse<T> {
+  return (
+    typeof json === 'object' &&
+    json !== null &&
+    'data' in json &&
+    'succeeded' in json &&
+    typeof (json as any).succeeded === 'boolean'
+  );
+}
 
-const useFetchData = (url: string) => {
-  const [data, setData] = useState<any>(null);
-  const [error, setError] = useState<any>(null);
+/**
+ * Hook for fetching data with automatic handling of mock vs live API responses
+ *
+ * @template T - The expected type of the data (e.g., Project[], User, etc.)
+ * @param url - The URL to fetch from (mock or will be converted to live endpoint)
+ * @returns Object containing data, error, and loading state
+ *
+ * @example
+ * // For array data
+ * const { data, loading, error } = useFetchData<Project[]>('/mocks/Projects.json');
+ *
+ * @example
+ * // For object data
+ * const { data, loading, error } = useFetchData<User>('/mocks/User.json');
+ */
+function useFetchData<T = unknown>(url: string): {
+  data: T | null;
+  error: Error | null;
+  loading: boolean;
+} {
+  const [data, setData] = useState<T | null>(null);
+  const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Get the current data mode from Redux
@@ -65,12 +90,12 @@ const useFetchData = (url: string) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const json = await response.json();
+      const json: unknown = await response.json();
 
       // Handle wrapped API response format from backend
       // Backend returns: { succeeded, message, data, errors, meta }
-      // Mock files return: [ ... ] or { ... } directly
-      if (isWrappedResponse(json)) {
+      // Mock files return: T directly (array or object)
+      if (isWrappedResponse<T>(json)) {
         // This is a wrapped API response
         if (!json.succeeded) {
           // API returned an error
@@ -78,22 +103,18 @@ const useFetchData = (url: string) => {
           const errors = json.errors?.length > 0 ? `\n${json.errors.join('\n')}` : '';
           throw new Error(errorMessage + errors);
         }
-        // Extract the actual data
+        // Extract and set the actual data
         console.log(`[useFetchData] Unwrapped API response: ${json.message}`);
-        console.log(`[useFetchData] Data type: ${Array.isArray(json.data) ? 'array' : typeof json.data}`);
-
-        // Ensure data is in the correct format
-        const extractedData = json.data ?? [];
-        setData(extractedData);
+        setData(json.data);
       } else {
         // This is direct data (mock files or unwrapped response)
-        console.log(`[useFetchData] Direct data type: ${Array.isArray(json) ? 'array' : typeof json}`);
-        const finalData = json ?? [];
-        setData(finalData);
+        // Cast is safe here because we're expecting either wrapped or direct data
+        setData(json as T);
       }
-    } catch (error) {
-      console.error(`Error fetching data from ${url}:`, error);
-      setError(error);
+    } catch (err) {
+      const errorObj = err instanceof Error ? err : new Error(String(err));
+      console.error(`Error fetching data from ${url}:`, errorObj);
+      setError(errorObj);
     } finally {
       setLoading(false);
     }
@@ -103,13 +124,11 @@ const useFetchData = (url: string) => {
     fetchData();
   }, [fetchData]);
 
-  // Return data with safe fallback for components expecting arrays
-  // If data is null/undefined and components try to iterate, provide empty array
   return {
-    data: data ?? [],
+    data,
     error,
-    loading
+    loading,
   };
-};
+}
 
 export default useFetchData;
