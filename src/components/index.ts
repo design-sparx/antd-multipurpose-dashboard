@@ -7,6 +7,7 @@ export { EmployeeCard } from './EmployeeCard/EmployeeCard';
 export { FaqCollapse } from './FaqCollapse/FaqCollapse';
 export { Flex } from './Flex/Flex';
 export { Loader } from './Loader/Loader';
+export { LoginModal } from './LoginModal/LoginModal';
 export { Logo } from './Logo/Logo';
 export { MoreMenu } from './MoreMenu/MoreMenu';
 export { NotificationsCard } from './NotificationsCard/NotificationsCard';

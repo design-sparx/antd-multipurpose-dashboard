@@ -16,6 +16,46 @@ The application now includes a global toggle switch in the header that allows us
 - **User-Friendly UI**: Toggle switch with clear visual indicators in the app header
 - **Persistent Preference**: User's choice is saved in localStorage via Redux Persist
 - **Environment Configuration**: Supports environment variables for different deployment scenarios
+- **JWT Authentication**: Secure authentication for Live Mode with automatic login prompts
+- **Token Management**: Automatic token refresh and session management
+- **Seamless Auth Flow**: Auto-prompts for login when switching to Live Mode
+
+## Authentication
+
+### Live Mode Authentication
+
+When switching to **Live Mode**, the application requires authentication to access real API endpoints. The authentication flow is:
+
+1. **User clicks toggle** to switch from Demo to Live mode
+2. **Login modal appears** if user is not authenticated
+3. **User enters credentials** (or clicks "Use Demo Credentials")
+4. **System authenticates** with the backend API
+5. **JWT token is stored** securely in localStorage
+6. **Mode switches to Live** automatically after successful login
+7. **All API requests** include the Bearer token in headers
+
+### Demo Credentials
+
+For testing purposes, use these demo credentials:
+- **Email**: `admin@adminhub.com`
+- **Password**: `Admin@Pass1`
+
+The login modal includes a "Use Demo Credentials" button for quick access.
+
+### Token Management
+
+- **JWT tokens** are stored in localStorage
+- **Automatic token refresh** when tokens expire
+- **Session persistence** across page reloads
+- **Secure logout** clears tokens and switches back to Demo Mode
+
+### Logout Behavior
+
+When logging out:
+1. API logout request is sent (if authenticated)
+2. Tokens are cleared from localStorage
+3. Application automatically switches back to Demo Mode
+4. User is redirected to the landing page
 
 ## Architecture
 
@@ -161,17 +201,24 @@ const MyComponent = () => {
 src/
 ├── config/
 │   └── api.config.ts                    # API configuration and endpoint mappings
+├── services/
+│   └── auth.service.ts                  # Authentication service (login, logout, tokens)
 ├── redux/
-│   ├── store.ts                         # Updated with dataMode reducer
-│   └── dataMode/
-│       └── dataModeSlice.ts            # Redux slice for data mode state
+│   ├── store.ts                         # Updated with dataMode and auth reducers
+│   ├── dataMode/
+│   │   └── dataModeSlice.ts            # Redux slice for data mode state
+│   └── auth/
+│       └── authSlice.ts                 # Redux slice for authentication state
 ├── hooks/
-│   └── useFetchData.tsx                 # Updated to support mode switching
+│   └── useFetchData.tsx                 # Updated to support mode switching and auth headers
 └── components/
     ├── DataModeToggle/
-    │   ├── DataModeToggle.tsx          # Toggle component
+    │   ├── DataModeToggle.tsx          # Toggle component with auth check
     │   └── index.ts                     # Export
-    └── index.ts                         # Updated with DataModeToggle export
+    ├── LoginModal/
+    │   ├── LoginModal.tsx               # Login modal component
+    │   └── index.ts                     # Export
+    └── index.ts                         # Updated exports
 ```
 
 ## Backend Implementation

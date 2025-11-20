@@ -34,10 +34,12 @@ import { useMediaQuery } from 'react-responsive';
 import SideNav from './SideNav.tsx';
 import HeaderNav from './HeaderNav.tsx';
 import FooterNav from './FooterNav.tsx';
-import { NProgress, DataModeToggle } from '../../components';
+import { NProgress, DataModeToggle, LoginModal } from '../../components';
 import { PATH_LANDING } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../redux/theme/themeSlice.ts';
+import { logoutUser } from '../../redux/auth/authSlice';
+import { enableMockData } from '../../redux/dataMode/dataModeSlice';
 import { RootState } from '../../redux/store.ts';
 const { Content } = Layout;
 
@@ -59,6 +61,27 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const floatBtnRef = useRef(null);
   const dispatch = useDispatch();
   const { mytheme } = useSelector((state: RootState) => state.theme);
+  const { user, isAuthenticated } = useSelector((state: RootState) => state.auth);
+
+  const handleLogout = async () => {
+    message.open({
+      type: 'loading',
+      content: 'signing you out',
+    });
+
+    // If authenticated, logout from API
+    if (isAuthenticated && user?.email) {
+      await dispatch(logoutUser(user.email) as any);
+    }
+
+    // Switch back to mock data mode
+    dispatch(enableMockData());
+
+    setTimeout(() => {
+      navigate(PATH_LANDING.root);
+    }, 1000);
+  };
+
   const items: MenuProps['items'] = [
     {
       key: 'user-profile-link',
@@ -83,16 +106,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       label: 'logout',
       icon: <LogoutOutlined />,
       danger: true,
-      onClick: () => {
-        message.open({
-          type: 'loading',
-          content: 'signing you out',
-        });
-
-        setTimeout(() => {
-          navigate(PATH_LANDING.root);
-        }, 1000);
-      },
+      onClick: handleLogout,
     },
   ];
 
@@ -259,6 +273,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           />
         </Layout>
       </Layout>
+      <LoginModal />
     </>
   );
 };

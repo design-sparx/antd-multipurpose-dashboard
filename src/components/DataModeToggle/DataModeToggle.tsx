@@ -1,7 +1,8 @@
 import { Switch, Tooltip, Tag, Flex } from 'antd';
 import { DatabaseOutlined, ApiOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDataMode } from '../../redux/dataMode/dataModeSlice';
+import { toggleDataMode, enableMockData } from '../../redux/dataMode/dataModeSlice';
+import { setLoginModalOpen } from '../../redux/auth/authSlice';
 import { RootState } from '../../redux/store';
 
 type DataModeToggleProps = {
@@ -15,8 +16,17 @@ export const DataModeToggle = ({
 }: DataModeToggleProps) => {
   const dispatch = useDispatch();
   const { useMockData } = useSelector((state: RootState) => state.dataMode);
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   const handleToggle = () => {
+    // If switching from mock to live mode, check authentication
+    if (useMockData && !isAuthenticated) {
+      // Show login modal
+      dispatch(setLoginModalOpen(true));
+      return;
+    }
+
+    // Toggle the data mode
     dispatch(toggleDataMode());
   };
 
