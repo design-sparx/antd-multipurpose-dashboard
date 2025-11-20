@@ -6,10 +6,21 @@
 export const API_CONFIG = {
   // Base URLs for different environments
   MOCK_BASE_URL: '/mocks',
-  PROD_BASE_URL: import.meta.env.VITE_API_BASE_URL || 'https://api.yourdomain.com/api',
+  PROD_BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000',
+
+  // API version and dashboard prefix
+  API_VERSION: '/api/v1',
+  DASHBOARD_PREFIX: '/antd',
 
   // Default to mock data (can be overridden by environment variable)
   USE_MOCK_DATA: import.meta.env.VITE_USE_MOCK_DATA === 'true' || import.meta.env.VITE_USE_MOCK_DATA === undefined,
+};
+
+/**
+ * Get the full API base path (includes version and dashboard prefix)
+ */
+export const getApiBasePath = (): string => {
+  return `${API_CONFIG.PROD_BASE_URL}${API_CONFIG.API_VERSION}${API_CONFIG.DASHBOARD_PREFIX}`;
 };
 
 /**
@@ -159,7 +170,8 @@ export const getEndpoint = (resource: keyof typeof API_ENDPOINTS, useMockData: b
     return `${API_CONFIG.MOCK_BASE_URL}${endpoint.mock}`;
   }
 
-  return `${API_CONFIG.PROD_BASE_URL}${endpoint.prod}`;
+  // Return full API path with version and dashboard prefix
+  return `${getApiBasePath()}${endpoint.prod}`;
 };
 
 /**
@@ -168,12 +180,14 @@ export const getEndpoint = (resource: keyof typeof API_ENDPOINTS, useMockData: b
 export const buildApiUrl = (url: string, useMockData: boolean): string => {
   // If URL is already absolute, return as is
   if (url.startsWith('http://') || url.startsWith('https://')) {
+    console.log(`[API Config] Using absolute URL: ${url}`);
     return url;
   }
 
   // If URL starts with /mocks or ../mocks, it's a mock URL
   if (url.includes('/mocks/')) {
     if (useMockData) {
+      console.log(`[API Config] Mock mode: ${url}`);
       return url;
     }
     // Extract the filename and try to find the corresponding endpoint
@@ -186,18 +200,27 @@ export const buildApiUrl = (url: string, useMockData: boolean): string => {
       });
 
       if (resourceKey) {
-        return getEndpoint(resourceKey as keyof typeof API_ENDPOINTS, useMockData);
+        const builtUrl = getEndpoint(resourceKey as keyof typeof API_ENDPOINTS, useMockData);
+        console.log(`[API Config] Live mode: ${url} → ${builtUrl}`);
+        return builtUrl;
       }
     }
-    // Fallback: convert mock path to prod path
+    // Fallback: convert mock path to prod path with full API prefix
     const resource = filename?.toLowerCase().replace(/([A-Z])/g, '-$1').toLowerCase();
-    return `${API_CONFIG.PROD_BASE_URL}/${resource}`;
+    const fallbackUrl = `${getApiBasePath()}/${resource}`;
+    console.log(`[API Config] Live mode (fallback): ${url} → ${fallbackUrl}`);
+    return fallbackUrl;
   }
 
   // If it's a relative URL, determine which base to use
   if (useMockData) {
-    return url.startsWith('/') ? url : `/${url}`;
+    const mockUrl = url.startsWith('/') ? url : `/${url}`;
+    console.log(`[API Config] Mock mode (relative): ${url} → ${mockUrl}`);
+    return mockUrl;
   }
 
-  return `${API_CONFIG.PROD_BASE_URL}${url.startsWith('/') ? url : `/${url}`}`;
+  // For production, add the full API path prefix
+  const prodUrl = `${getApiBasePath()}${url.startsWith('/') ? url : `/${url}`}`;
+  console.log(`[API Config] Live mode (relative): ${url} → ${prodUrl}`);
+  return prodUrl;
 };
