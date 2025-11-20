@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const useFetchData = (url: string) => {
-  const [data, setData] = useState<any>([]);
+const useFetchData = <T = any,>(url: string) => {
+  const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
