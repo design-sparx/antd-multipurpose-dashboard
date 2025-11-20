@@ -27,11 +27,11 @@ const useFetchData = (url: string) => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [fetchData]);
 
   return { data, error, loading };
 };
