@@ -14,14 +14,18 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
+import { CampaignAds } from '../../types';
 
 export const MarketingDashboardPage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch campaign ads data with proper typing
   const {
-    data: campaignAds,
+    data: campaignAdsRaw,
     error: campaignAdsError,
     loading: campaignAdsLoading,
-  } = useFetchData('../mocks/CampaignAds.json');
+  } = useFetchData<CampaignAds[]>('../mocks/CampaignAds.json');
+  const campaignAds = campaignAdsRaw ?? [];
 
   return (
     <div>
