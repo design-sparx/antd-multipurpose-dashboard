@@ -43,6 +43,7 @@ import { useFetchData } from '../../hooks';
 import { blue, green, red, yellow } from '@ant-design/colors';
 import CountUp from 'react-countup';
 import { numberWithCommas } from '../../utils';
+import { TopProduct, TopCategory, TopSeller, RecentOrder } from '../../types';
 
 const { Text, Title } = Typography;
 
@@ -568,26 +569,38 @@ const cardStyles: CSSProperties = {
 
 export const EcommerceDashboardPage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch top products data with proper typing
   const {
-    data: topProducts,
+    data: topProductsRaw,
     error: topProductsError,
     loading: topProductsLoading,
-  } = useFetchData('../mocks/TopProducts.json');
+  } = useFetchData<TopProduct[]>('../mocks/TopProducts.json');
+  const topProducts = topProductsRaw ?? [];
+
+  // Fetch top categories data with proper typing
   const {
-    data: topCategories,
+    data: topCategoriesRaw,
     error: topCategoriesError,
     loading: topCategoriesLoading,
-  } = useFetchData('../mocks/TopCategories.json');
+  } = useFetchData<TopCategory[]>('../mocks/TopCategories.json');
+  const topCategories = topCategoriesRaw ?? [];
+
+  // Fetch top sellers data with proper typing
   const {
-    data: topSellers,
+    data: topSellersRaw,
     error: topSellersError,
     loading: topSellersLoading,
-  } = useFetchData('../mocks/TopSeller.json');
+  } = useFetchData<TopSeller[]>('../mocks/TopSeller.json');
+  const topSellers = topSellersRaw ?? [];
+
+  // Fetch recent orders data with proper typing
   const {
-    data: recentOrders,
+    data: recentOrdersRaw,
     error: recentOrdersError,
     loading: recentOrdersLoading,
-  } = useFetchData('../mocks/RecentOrders.json');
+  } = useFetchData<RecentOrder[]>('../mocks/RecentOrders.json');
+  const recentOrders = recentOrdersRaw ?? [];
 
   return (
     <div>

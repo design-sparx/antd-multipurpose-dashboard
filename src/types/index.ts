@@ -24,6 +24,7 @@ import type {
   RecommendedCourses,
   Exam,
   CommunityGroup,
+  StudyStatistics,
 } from './learnings.ts';
 import type {
   TruckDelivery,
@@ -38,6 +39,12 @@ import type { Faq } from './faq';
 import type { Pricing } from './pricing';
 import type { Session } from './session';
 import type { ActivityTimeline } from './timeline';
+import type {
+  TopProduct,
+  TopCategory,
+  TopSeller,
+  RecentOrder,
+} from './ecommerce';
 
 export type {
   Projects,
@@ -61,6 +68,7 @@ export type {
   RecommendedCourses,
   Exam,
   CommunityGroup,
+  StudyStatistics,
   TruckDelivery,
   DeliveryAnalytics,
   Truck,
@@ -72,4 +80,8 @@ export type {
   Pricing,
   Session,
   ActivityTimeline,
+  TopProduct,
+  TopCategory,
+  TopSeller,
+  RecentOrder,
 };

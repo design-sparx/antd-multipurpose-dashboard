@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFetchData } from '../../hooks';
 import { useStylesContext } from '../../context';
+import { TruckDelivery, DeliveryAnalytics, Truck, DeliveryRequest } from '../../types';
 
 const STATS = [
   {
@@ -66,26 +67,38 @@ const PLAN_DATA = [
 
 export const LogisticsDashboardPage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch truck deliveries data with proper typing
   const {
-    data: trucksDeliveryData,
+    data: trucksDeliveryDataRaw,
     loading: trucksDeliveryDataLoading,
     error: trucksDeliveryDataError,
-  } = useFetchData('../mocks/TruckDeliveries.json');
+  } = useFetchData<TruckDelivery[]>('../mocks/TruckDeliveries.json');
+  const trucksDeliveryData = trucksDeliveryDataRaw ?? [];
+
+  // Fetch delivery analytics data with proper typing
   const {
-    data: deliveryAnalyticsData,
+    data: deliveryAnalyticsDataRaw,
     loading: deliveryAnalyticsDataLoading,
     error: deliveryAnalyticsDataError,
-  } = useFetchData('../mocks/DeliveryAnalytics.json');
+  } = useFetchData<DeliveryAnalytics[]>('../mocks/DeliveryAnalytics.json');
+  const deliveryAnalyticsData = deliveryAnalyticsDataRaw ?? [];
+
+  // Fetch trucks data with proper typing
   const {
-    data: trucksData,
+    data: trucksDataRaw,
     loading: trucksDataLoading,
     error: trucksDataError,
-  } = useFetchData('../mocks/Trucks.json');
+  } = useFetchData<Truck[]>('../mocks/Trucks.json');
+  const trucksData = trucksDataRaw ?? [];
+
+  // Fetch truck delivery requests data with proper typing
   const {
-    data: trucksDeliveryRequestData,
+    data: trucksDeliveryRequestDataRaw,
     loading: trucksDeliveryRequestDataLoading,
     error: trucksDeliveryRequestDataError,
-  } = useFetchData('../mocks/TruckDeliveryRequest.json');
+  } = useFetchData<DeliveryRequest[]>('../mocks/TruckDeliveryRequest.json');
+  const trucksDeliveryRequestData = trucksDeliveryRequestDataRaw ?? [];
 
   return (
     <div>
