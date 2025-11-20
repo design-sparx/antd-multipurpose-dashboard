@@ -19,10 +19,13 @@ interface ProtectedRouteProps {
  */
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   children,
-  requireAuth = true
+  requireAuth = true,
 }) => {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, user } = useAuth();
   const location = useLocation();
+
+  console.log('isAuthenticated', isAuthenticated);
+  console.log('user', user);
 
   // Show loading spinner while checking auth status
   if (isLoading) {

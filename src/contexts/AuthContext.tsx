@@ -3,9 +3,16 @@
  * Provides authentication state and methods throughout the application
  */
 
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from 'react';
 import { authService } from '../services/auth/authService';
 import type { LoginDto, RegisterDto, UserProfileDto } from '../types/api';
+import { tokenStorage } from '../services/auth/tokenStorage';
 
 interface AuthContextType {
   user: UserProfileDto | null;
@@ -102,7 +109,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const updateUser = useCallback((updatedUser: UserProfileDto): void => {
     setUser(updatedUser);
     // Update in storage as well
-    const { tokenStorage } = require('../services/auth/tokenStorage');
     tokenStorage.setUser(updatedUser);
   }, []);
 
