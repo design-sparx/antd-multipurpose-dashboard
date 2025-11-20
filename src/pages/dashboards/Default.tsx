@@ -159,7 +159,7 @@ export const DefaultDashboardPage = () => {
     loading: tasksListLoading,
   } = useFetchData<Tasks[]>('../mocks/TasksList.json');
   const {
-    data: projectsData = [],
+    data: projectsData,
     error: projectsError,
     loading: projectsLoading,
   } = useFetchData<Projects[]>('../mocks/Projects.json');
