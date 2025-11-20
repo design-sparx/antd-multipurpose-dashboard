@@ -6,5 +6,5 @@ export { usePageContext, useFetchData };
 // Auth hook (re-export from context)
 export { useAuth } from '../contexts/AuthContext';
 
-// Antd Dashboard data hooks
-export * from './useAntdData';
+// Dashboard data hooks
+export * from './useDashboardData';

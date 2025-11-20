@@ -5,21 +5,21 @@
 
 // ==================== ENUMS ====================
 
-export enum AntdTaskStatus {
+export enum TaskStatus {
   Todo = 'todo',
   InProgress = 'in_progress',
   Completed = 'completed',
   Cancelled = 'cancelled',
 }
 
-export enum AntdTaskPriority {
+export enum TaskPriority {
   Low = 'low',
   Medium = 'medium',
   High = 'high',
   Urgent = 'urgent',
 }
 
-export enum AntdTaskCategory {
+export enum TaskCategory {
   Development = 'development',
   Design = 'design',
   Marketing = 'marketing',
@@ -28,7 +28,7 @@ export enum AntdTaskCategory {
   Other = 'other',
 }
 
-export enum AntdTaskColor {
+export enum TaskColor {
   Blue = 'blue',
   Green = 'green',
   Red = 'red',
@@ -71,7 +71,7 @@ export enum PaymentMethod {
 
 // ==================== PRODUCT TYPES ====================
 
-export interface AntdProductDto {
+export interface ProductDto {
   product_id?: string;
   product_name?: string;
   brand?: string;
@@ -85,7 +85,7 @@ export interface AntdProductDto {
   image_url?: string;
 }
 
-export interface AntdProductDto2 {
+export interface ProductDto2 {
   id?: string;
   name?: string;
   description?: string;
@@ -97,37 +97,37 @@ export interface AntdProductDto2 {
   updatedAt?: string;
 }
 
-export interface AntdProductCreateResponse {
+export interface ProductCreateResponse {
   success: boolean;
   message?: string;
-  data?: AntdProductDto2;
+  data?: ProductDto2;
 }
 
-export interface AntdProductUpdateResponse {
+export interface ProductUpdateResponse {
   success: boolean;
   message?: string;
-  data?: AntdProductDto2;
+  data?: ProductDto2;
 }
 
-export interface AntdProductDeleteResponse {
+export interface ProductDeleteResponse {
   success: boolean;
   message?: string;
 }
 
-export interface AntdProductListResponse {
+export interface ProductListResponse {
   success: boolean;
-  data?: AntdProductDto[];
+  data?: ProductDto[];
   total: number;
   page: number;
   pageSize: number;
 }
 
-export interface AntdProductResponse {
+export interface ProductResponse {
   success: boolean;
-  data?: AntdProductDto2;
+  data?: ProductDto2;
 }
 
-export interface AntdCategoryDto {
+export interface CategoryDto {
   category_id?: string;
   category_name?: string;
   product_count: number;
@@ -135,14 +135,14 @@ export interface AntdCategoryDto {
   icon?: string;
 }
 
-export interface AntdCategoryListResponse {
+export interface CategoryListResponse {
   success: boolean;
-  data?: AntdCategoryDto[];
+  data?: CategoryDto[];
 }
 
 // ==================== ORDER TYPES ====================
 
-export interface AntdOrderDto {
+export interface OrderDto {
   order_id?: string;
   product_name?: string;
   customer?: string;
@@ -152,7 +152,7 @@ export interface AntdOrderDto {
   payment_method?: string;
 }
 
-export interface AntdOrderDto2 {
+export interface OrderDto2 {
   id?: string;
   orderNumber?: string;
   customerId?: string;
@@ -173,37 +173,37 @@ export interface OrderItemDto {
   price: number;
 }
 
-export interface AntdOrderCreateResponse {
+export interface OrderCreateResponse {
   success: boolean;
   message?: string;
-  data?: AntdOrderDto2;
+  data?: OrderDto2;
 }
 
-export interface AntdOrderUpdateResponse {
+export interface OrderUpdateResponse {
   success: boolean;
   message?: string;
-  data?: AntdOrderDto2;
+  data?: OrderDto2;
 }
 
-export interface AntdOrderDeleteResponse {
+export interface OrderDeleteResponse {
   success: boolean;
   message?: string;
 }
 
-export interface AntdOrderListResponse {
+export interface OrderListResponse {
   success: boolean;
-  data?: AntdOrderDto[];
+  data?: OrderDto[];
   total: number;
 }
 
-export interface AntdOrderResponse {
+export interface OrderResponse {
   success: boolean;
-  data?: AntdOrderDto2;
+  data?: OrderDto2;
 }
 
 // ==================== SELLER TYPES ====================
 
-export interface AntdSellerDto {
+export interface SellerDto {
   seller_id?: string;
   seller?: string;
   region?: string;
@@ -213,7 +213,7 @@ export interface AntdSellerDto {
   avatar_url?: string;
 }
 
-export interface AntdSellerDto2 {
+export interface SellerDto2 {
   id?: string;
   name?: string;
   email?: string;
@@ -225,36 +225,36 @@ export interface AntdSellerDto2 {
   createdAt?: string;
 }
 
-export interface AntdSellerCreateResponse {
+export interface SellerCreateResponse {
   success: boolean;
   message?: string;
-  data?: AntdSellerDto2;
+  data?: SellerDto2;
 }
 
-export interface AntdSellerUpdateResponse {
+export interface SellerUpdateResponse {
   success: boolean;
   message?: string;
-  data?: AntdSellerDto2;
+  data?: SellerDto2;
 }
 
-export interface AntdSellerDeleteResponse {
+export interface SellerDeleteResponse {
   success: boolean;
   message?: string;
 }
 
-export interface AntdSellerListResponse {
+export interface SellerListResponse {
   success: boolean;
-  data?: AntdSellerDto[];
+  data?: SellerDto[];
 }
 
-export interface AntdSellerResponse {
+export interface SellerResponse {
   success: boolean;
-  data?: AntdSellerDto2;
+  data?: SellerDto2;
 }
 
 // ==================== PROJECT TYPES ====================
 
-export interface AntdProjectDto {
+export interface ProjectDto {
   project_id?: string;
   project_name?: string;
   client?: string;
@@ -267,7 +267,7 @@ export interface AntdProjectDto {
   priority?: string;
 }
 
-export interface AntdProjectDto2 {
+export interface ProjectDto2 {
   id?: string;
   name?: string;
   description?: string;
@@ -283,36 +283,36 @@ export interface AntdProjectDto2 {
   updatedAt?: string;
 }
 
-export interface AntdProjectCreateResponse {
+export interface ProjectCreateResponse {
   success: boolean;
   message?: string;
-  data?: AntdProjectDto2;
+  data?: ProjectDto2;
 }
 
-export interface AntdProjectUpdateResponse {
+export interface ProjectUpdateResponse {
   success: boolean;
   message?: string;
-  data?: AntdProjectDto2;
+  data?: ProjectDto2;
 }
 
-export interface AntdProjectDeleteResponse {
+export interface ProjectDeleteResponse {
   success: boolean;
   message?: string;
 }
 
-export interface AntdProjectListResponse {
+export interface ProjectListResponse {
   success: boolean;
-  data?: AntdProjectDto[];
+  data?: ProjectDto[];
 }
 
-export interface AntdProjectResponse {
+export interface ProjectResponse {
   success: boolean;
-  data?: AntdProjectDto2;
+  data?: ProjectDto2;
 }
 
 // ==================== CLIENT TYPES ====================
 
-export interface AntdClientDto {
+export interface ClientDto {
   client_id?: string;
   client_name?: string;
   company?: string;
@@ -323,7 +323,7 @@ export interface AntdClientDto {
   status?: string;
 }
 
-export interface AntdClientDto2 {
+export interface ClientDto2 {
   id?: string;
   name?: string;
   company?: string;
@@ -336,31 +336,31 @@ export interface AntdClientDto2 {
   createdAt?: string;
 }
 
-export interface AntdClientCreateResponse {
+export interface ClientCreateResponse {
   success: boolean;
   message?: string;
-  data?: AntdClientDto2;
+  data?: ClientDto2;
 }
 
-export interface AntdClientUpdateResponse {
+export interface ClientUpdateResponse {
   success: boolean;
   message?: string;
-  data?: AntdClientDto2;
+  data?: ClientDto2;
 }
 
-export interface AntdClientDeleteResponse {
+export interface ClientDeleteResponse {
   success: boolean;
   message?: string;
 }
 
-export interface AntdClientListResponse {
+export interface ClientListResponse {
   success: boolean;
-  data?: AntdClientDto[];
+  data?: ClientDto[];
 }
 
-export interface AntdClientResponse {
+export interface ClientResponse {
   success: boolean;
-  data?: AntdClientDto2;
+  data?: ClientDto2;
 }
 
 // ==================== TASK TYPES ====================
@@ -369,9 +369,9 @@ export interface TaskDto {
   id?: string;
   title?: string;
   description?: string;
-  status: AntdTaskStatus;
-  priority: AntdTaskPriority;
-  category: AntdTaskCategory;
+  status: TaskStatus;
+  priority: TaskPriority;
+  category: TaskCategory;
   assignedTo?: string;
   dueDate?: string;
   createdAt?: string;
@@ -380,7 +380,7 @@ export interface TaskDto {
 
 // ==================== CAMPAIGN AD TYPES ====================
 
-export interface AntdCampaignAdDto {
+export interface CampaignAdDto {
   campaign_id?: string;
   campaign_name?: string;
   platform?: string;
@@ -395,7 +395,7 @@ export interface AntdCampaignAdDto {
   end_date?: string;
 }
 
-export interface AntdCampaignAdDto2 {
+export interface CampaignAdDto2 {
   id?: string;
   name?: string;
   platform?: string;
@@ -409,36 +409,36 @@ export interface AntdCampaignAdDto2 {
   endDate?: string;
 }
 
-export interface AntdCampaignAdCreateResponse {
+export interface CampaignAdCreateResponse {
   success: boolean;
   message?: string;
-  data?: AntdCampaignAdDto2;
+  data?: CampaignAdDto2;
 }
 
-export interface AntdCampaignAdUpdateResponse {
+export interface CampaignAdUpdateResponse {
   success: boolean;
   message?: string;
-  data?: AntdCampaignAdDto2;
+  data?: CampaignAdDto2;
 }
 
-export interface AntdCampaignAdDeleteResponse {
+export interface CampaignAdDeleteResponse {
   success: boolean;
   message?: string;
 }
 
-export interface AntdCampaignAdListResponse {
+export interface CampaignAdListResponse {
   success: boolean;
-  data?: AntdCampaignAdDto[];
+  data?: CampaignAdDto[];
 }
 
-export interface AntdCampaignAdResponse {
+export interface CampaignAdResponse {
   success: boolean;
-  data?: AntdCampaignAdDto2;
+  data?: CampaignAdDto2;
 }
 
 // ==================== COURSE TYPES ====================
 
-export interface AntdCourseDto {
+export interface CourseDto {
   course_id?: string;
   course_name?: string;
   instructor?: string;
@@ -450,7 +450,7 @@ export interface AntdCourseDto {
   thumbnail_url?: string;
 }
 
-export interface AntdRecommendedCourseDto {
+export interface RecommendedCourseDto {
   course_id?: string;
   course_name?: string;
   instructor?: string;
@@ -463,7 +463,7 @@ export interface AntdRecommendedCourseDto {
 
 // ==================== EXAM TYPES ====================
 
-export interface AntdExamDto {
+export interface ExamDto {
   exam_id?: string;
   exam_name?: string;
   subject?: string;
@@ -476,7 +476,7 @@ export interface AntdExamDto {
 
 // ==================== STUDY STATISTICS ====================
 
-export interface AntdStudyStatisticDto {
+export interface StudyStatisticDto {
   stat_id?: string;
   student_name?: string;
   courses_completed: number;
@@ -488,7 +488,7 @@ export interface AntdStudyStatisticDto {
 
 // ==================== COMMUNITY GROUPS ====================
 
-export interface AntdCommunityGroupDto {
+export interface CommunityGroupDto {
   group_id?: string;
   group_name?: string;
   category?: string;
@@ -500,7 +500,7 @@ export interface AntdCommunityGroupDto {
 
 // ==================== SOCIAL MEDIA ====================
 
-export interface AntdSocialMediaActivityDto {
+export interface SocialMediaActivityDto {
   activity_id?: string;
   platform?: string;
   post_type?: string;
@@ -513,7 +513,7 @@ export interface AntdSocialMediaActivityDto {
   posted_date?: string;
 }
 
-export interface AntdSocialMediaStatsDto {
+export interface SocialMediaStatsDto {
   stat_id?: string;
   platform?: string;
   followers: number;
@@ -523,7 +523,7 @@ export interface AntdSocialMediaStatsDto {
   impressions: number;
 }
 
-export interface AntdScheduledPostDto {
+export interface ScheduledPostDto {
   post_id?: string;
   platform?: string;
   content?: string;
@@ -535,7 +535,7 @@ export interface AntdScheduledPostDto {
 
 // ==================== BIDDING/AUCTION ====================
 
-export interface AntdLiveAuctionDto {
+export interface LiveAuctionDto {
   auction_id?: string;
   item_name?: string;
   current_bid: number;
@@ -547,7 +547,7 @@ export interface AntdLiveAuctionDto {
   seller?: string;
 }
 
-export interface AntdAuctionCreatorDto {
+export interface AuctionCreatorDto {
   creator_id?: string;
   creator_name?: string;
   total_auctions: number;
@@ -557,7 +557,7 @@ export interface AntdAuctionCreatorDto {
   avatar_url?: string;
 }
 
-export interface AntdBiddingTopSellerDto {
+export interface BiddingTopSellerDto {
   seller_id?: string;
   seller_name?: string;
   total_sales: number;
@@ -567,7 +567,7 @@ export interface AntdBiddingTopSellerDto {
   avatar_url?: string;
 }
 
-export interface AntdBiddingTransactionDto {
+export interface BiddingTransactionDto {
   transaction_id?: string;
   item_name?: string;
   buyer?: string;
@@ -579,21 +579,21 @@ export interface AntdBiddingTransactionDto {
 
 // ==================== LOGISTICS/DELIVERY ====================
 
-export interface AntdTruckCreateDto {
+export interface TruckCreateDto {
   licensePlate?: string;
   model?: string;
   capacity: number;
   status?: string;
 }
 
-export interface AntdTruckUpdateDto {
+export interface TruckUpdateDto {
   licensePlate?: string;
   model?: string;
   capacity: number;
   status?: string;
 }
 
-export interface AntdTruckDeliveryCreateDto {
+export interface TruckDeliveryCreateDto {
   truckId?: string;
   origin?: string;
   destination?: string;
@@ -601,7 +601,7 @@ export interface AntdTruckDeliveryCreateDto {
   status?: string;
 }
 
-export interface AntdTruckDeliveryUpdateDto {
+export interface TruckDeliveryUpdateDto {
   origin?: string;
   destination?: string;
   scheduledDate?: string;
@@ -609,7 +609,7 @@ export interface AntdTruckDeliveryUpdateDto {
   actualDeliveryDate?: string;
 }
 
-export interface AntdTruckDeliveryRequestCreateDto {
+export interface TruckDeliveryRequestCreateDto {
   customerId?: string;
   pickupLocation?: string;
   deliveryLocation?: string;
@@ -617,7 +617,7 @@ export interface AntdTruckDeliveryRequestCreateDto {
   cargo?: string;
 }
 
-export interface AntdTruckDeliveryRequestUpdateDto {
+export interface TruckDeliveryRequestUpdateDto {
   pickupLocation?: string;
   deliveryLocation?: string;
   requestedDate?: string;
@@ -625,7 +625,7 @@ export interface AntdTruckDeliveryRequestUpdateDto {
   status?: string;
 }
 
-export interface AntdDeliveryAnalyticCreateDto {
+export interface DeliveryAnalyticCreateDto {
   date?: string;
   totalDeliveries: number;
   successfulDeliveries: number;
@@ -633,7 +633,7 @@ export interface AntdDeliveryAnalyticCreateDto {
   averageDeliveryTime: number;
 }
 
-export interface AntdDeliveryAnalyticUpdateDto {
+export interface DeliveryAnalyticUpdateDto {
   date?: string;
   totalDeliveries: number;
   successfulDeliveries: number;

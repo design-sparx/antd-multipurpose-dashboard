@@ -63,8 +63,8 @@ export const API_ENDPOINTS = {
     UPDATE_STOCK: (id: string) => `/products/${id}/stock`,
   },
 
-  // ==================== ANTD DASHBOARD ====================
-  ANTD: {
+  // ==================== DASHBOARD ====================
+  DASHBOARD: {
     // Products
     PRODUCTS: {
       LIST: '/antd/products',

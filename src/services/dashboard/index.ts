@@ -3,4 +3,4 @@
  * Export all dashboard-related services
  */
 
-export { antdService } from './antdService';
+export { dashboardService } from './dashboardService';
