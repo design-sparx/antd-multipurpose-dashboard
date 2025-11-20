@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Admin Hub API",
-    "description": "## Introduction\n\nAdmin Hub API is a centralized backend service powering multiple administrative dashboards.\nBuilt with .NET 9.0 and PostgreSQL, it provides a robust foundation for enterprise administration.\n\n### Key Features\n\n- **Authentication & Security**: JWT-based authentication with token refresh and blacklisting\n- **Role-Based Access Control**: Fine-grained permissions with dynamic policy enforcement\n- **Audit Logging**: Complete audit trail of all user operations\n- **Multi-Dashboard Support**: Dedicated endpoints for Mantine and Ant Design dashboards\n\n### Getting Started\n\n1. **Authenticate**: POST to `/api/auth/login` with your credentials\n2. **Get Token**: Extract the JWT token from the response\n3. **Make Requests**: Include the token in subsequent requests\n\n### Authentication\n\nAll endpoints (except `/api/auth/login` and `/api/auth/register`) require authentication.\n\nInclude the JWT token in the `Authorization` header:\n```\nAuthorization: Bearer <your-token>\n```\n\n### Rate Limiting\n\nAPI requests are subject to rate limiting. If you receive a 429 response, please wait before retrying.\n\n### Support\n\nFor issues or questions, please contact the development team.",
+    "description": "## Introduction\r\n\r\nAdmin Hub API is a centralized backend service powering multiple administrative dashboards.\r\nBuilt with .NET 9.0 and PostgreSQL, it provides a robust foundation for enterprise administration.\r\n\r\n### Key Features\r\n\r\n- **Authentication & Security**: JWT-based authentication with token refresh and blacklisting\r\n- **Role-Based Access Control**: Fine-grained permissions with dynamic policy enforcement\r\n- **Audit Logging**: Complete audit trail of all user operations\r\n- **Multi-Dashboard Support**: Dedicated endpoints for Mantine and Ant Design dashboards\r\n\r\n### Getting Started\r\n\r\n1. **Authenticate**: POST to `/api/auth/login` with your credentials\r\n2. **Get Token**: Extract the JWT token from the response\r\n3. **Make Requests**: Include the token in subsequent requests\r\n\r\n### Authentication\r\n\r\nAll endpoints (except `/api/auth/login` and `/api/auth/register`) require authentication.\r\n\r\nInclude the JWT token in the `Authorization` header:\r\n```\r\nAuthorization: Bearer <your-token>\r\n```\r\n\r\n### Rate Limiting\r\n\r\nAPI requests are subject to rate limiting. If you receive a 429 response, please wait before retrying.\r\n\r\n### Support\r\n\r\nFor issues or questions, please contact the development team.",
     "contact": {
       "name": "Admin Hub Support",
       "url": "https://github.com/design-sparx/admin-hub-api",
@@ -14,6 +14,11 @@
     },
     "version": "v1"
   },
+  "servers": [
+    {
+      "url": "http://localhost:5080"
+    }
+  ],
   "paths": {
     "/api/v1/mantine/chats": {
       "get": {
@@ -6638,6 +6643,234 @@
         }
       }
     },
+    "/api/v1/antd/tasks": {
+      "get": {
+        "tags": ["Antd - Tasks"],
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Priority",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Color",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AssignedTo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DueDateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "DueDateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "MinDuration",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "MaxDuration",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Antd - Tasks"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/antd/tasks/{id}": {
+      "get": {
+        "tags": ["Antd - Tasks"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Antd - Tasks"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Antd - Tasks"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
     "/api/v1/antd/truck-deliveries": {
       "get": {
         "tags": ["AntdTruckDeliveries"],
@@ -7172,234 +7405,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/antd/tasks": {
-      "get": {
-        "tags": ["Antd - Tasks"],
-        "parameters": [
-          {
-            "name": "Page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Status",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Priority",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Category",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Color",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "AssignedTo",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "DueDateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "DueDateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "MinDuration",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "MaxDuration",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "SortBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SortOrder",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": ["Antd - Tasks"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskDto"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/antd/tasks/{id}": {
-      "get": {
-        "tags": ["Antd - Tasks"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": ["Antd - Tasks"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskDto"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": ["Antd - Tasks"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {}
-            }
           }
         }
       }
@@ -11467,6 +11472,9 @@
       "name": "AntdStudyStatistics"
     },
     {
+      "name": "Antd - Tasks"
+    },
+    {
       "name": "AntdTruckDeliveries"
     },
     {
@@ -11474,9 +11482,6 @@
     },
     {
       "name": "AntdTrucks"
-    },
-    {
-      "name": "Antd - Tasks"
     }
   ]
 }
