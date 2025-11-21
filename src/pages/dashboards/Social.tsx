@@ -27,10 +27,12 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import { COLOR } from '../../App.tsx';
 import { useFetchData } from '../../hooks';
 import { Comments, Posts } from '../../types';
 import { useStylesContext } from '../../context';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { getThemeColors } from '../../theme/colors';
 
 type TabKeys =
   | 'social-facebook-tab'
@@ -196,6 +198,8 @@ const Section = ({ tab }: SectionProps) => {
 export const SocialDashboardPage = () => {
   const stylesContext = useStylesContext();
   const isMobile = useMediaQuery({ maxWidth: 769 });
+  const { mytheme } = useSelector((state: RootState) => state.theme);
+  const colors = getThemeColors(mytheme);
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>(
     'social-facebook-tab'
   );
@@ -317,10 +321,10 @@ export const SocialDashboardPage = () => {
         theme={{
           components: {
             Tabs: {
-              cardBg: COLOR['50'],
-              colorBgContainer: COLOR['500'],
+              cardBg: colors[50],
+              colorBgContainer: colors[500],
               itemSelectedColor: '#FFFFFF',
-              itemHoverColor: COLOR['500'],
+              itemHoverColor: colors[500],
             },
           },
         }}
