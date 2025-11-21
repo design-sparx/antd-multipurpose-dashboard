@@ -575,7 +575,7 @@ export const EcommerceDashboardPage = () => {
     data: topProductsRaw,
     error: topProductsError,
     loading: topProductsLoading,
-  } = useFetchData<TopProduct[]>('../mocks/TopProducts.json');
+  } = useFetchData<TopProduct[]>('/antd/products/top');
   const topProducts = topProductsRaw ?? [];
 
   // Fetch top categories data with proper typing
@@ -583,7 +583,7 @@ export const EcommerceDashboardPage = () => {
     data: topCategoriesRaw,
     error: topCategoriesError,
     loading: topCategoriesLoading,
-  } = useFetchData<TopCategory[]>('../mocks/TopCategories.json');
+  } = useFetchData<TopCategory[]>('/antd/products/categories');
   const topCategories = topCategoriesRaw ?? [];
 
   // Fetch top sellers data with proper typing
@@ -591,7 +591,7 @@ export const EcommerceDashboardPage = () => {
     data: topSellersRaw,
     error: topSellersError,
     loading: topSellersLoading,
-  } = useFetchData<TopSeller[]>('../mocks/TopSeller.json');
+  } = useFetchData<TopSeller[]>('/antd/sellers/top');
   const topSellers = topSellersRaw ?? [];
 
   // Fetch recent orders data with proper typing
@@ -599,7 +599,7 @@ export const EcommerceDashboardPage = () => {
     data: recentOrdersRaw,
     error: recentOrdersError,
     loading: recentOrdersLoading,
-  } = useFetchData<RecentOrder[]>('../mocks/RecentOrders.json');
+  } = useFetchData<RecentOrder[]>('/antd/orders/recent');
   const recentOrders = recentOrdersRaw ?? [];
 
   return (

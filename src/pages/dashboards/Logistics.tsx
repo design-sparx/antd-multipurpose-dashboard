@@ -78,7 +78,7 @@ export const LogisticsDashboardPage = () => {
     data: trucksDeliveryDataRaw,
     loading: trucksDeliveryDataLoading,
     error: trucksDeliveryDataError,
-  } = useFetchData<TruckDelivery[]>('../mocks/TruckDeliveries.json');
+  } = useFetchData<TruckDelivery[]>('/antd/truck-deliveries');
   const trucksDeliveryData = trucksDeliveryDataRaw ?? [];
 
   // Fetch delivery analytics data with proper typing
@@ -86,7 +86,7 @@ export const LogisticsDashboardPage = () => {
     data: deliveryAnalyticsDataRaw,
     loading: deliveryAnalyticsDataLoading,
     error: deliveryAnalyticsDataError,
-  } = useFetchData<DeliveryAnalytics[]>('../mocks/DeliveryAnalytics.json');
+  } = useFetchData<DeliveryAnalytics[]>('/antd/delivery-analytics');
   const deliveryAnalyticsData = deliveryAnalyticsDataRaw ?? [];
 
   // Fetch trucks data with proper typing
@@ -94,7 +94,7 @@ export const LogisticsDashboardPage = () => {
     data: trucksDataRaw,
     loading: trucksDataLoading,
     error: trucksDataError,
-  } = useFetchData<Truck[]>('../mocks/Trucks.json');
+  } = useFetchData<Truck[]>('/antd/trucks');
   const trucksData = trucksDataRaw ?? [];
 
   // Fetch truck delivery requests data with proper typing
@@ -102,7 +102,7 @@ export const LogisticsDashboardPage = () => {
     data: trucksDeliveryRequestDataRaw,
     loading: trucksDeliveryRequestDataLoading,
     error: trucksDeliveryRequestDataError,
-  } = useFetchData<DeliveryRequest[]>('../mocks/TruckDeliveryRequest.json');
+  } = useFetchData<DeliveryRequest[]>('/antd/truck-delivery-requests');
   const trucksDeliveryRequestData = trucksDeliveryRequestDataRaw ?? [];
 
   return (

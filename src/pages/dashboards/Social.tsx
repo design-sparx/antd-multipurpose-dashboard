@@ -53,7 +53,7 @@ const Section = ({ tab }: SectionProps) => {
     data: socialsDataRaw,
     loading: socialsDataLoading,
     error: socialsDataError,
-  } = useFetchData<Posts[]>('../mocks/SocialMedia.json');
+  } = useFetchData<Posts[]>('/antd/social-media-activities');
   const socialsData = socialsDataRaw ?? [];
 
   // Fetch social comments data with proper typing
@@ -61,7 +61,7 @@ const Section = ({ tab }: SectionProps) => {
     data: socialCommentsDataRaw,
     loading: socialsCommentsDataLoading,
     error: socialsCommentsDataError,
-  } = useFetchData<Comments[]>('../mocks/SocialComments.json');
+  } = useFetchData<Comments[]>('/antd/social-comments');
   const socialCommentsData = socialCommentsDataRaw ?? [];
 
   // Fetch scheduled posts data with proper typing
@@ -69,7 +69,7 @@ const Section = ({ tab }: SectionProps) => {
     data: scheduledPostsDataRaw,
     loading: scheduledPostsDataLoading,
     error: scheduledPostsDataError,
-  } = useFetchData<Posts[]>('../mocks/ScheduledPosts.json');
+  } = useFetchData<Posts[]>('/antd/scheduled-posts');
   const scheduledPostsData = scheduledPostsDataRaw ?? [];
 
   useEffect(() => {

@@ -159,7 +159,7 @@ export const DefaultDashboardPage = () => {
     data: tasksListDataRaw,
     error: tasksListError,
     loading: tasksListLoading,
-  } = useFetchData<Tasks[]>('../mocks/TasksList.json');
+  } = useFetchData<Tasks[]>('/antd/tasks');
   const tasksListData = tasksListDataRaw ?? [];
 
   // Fetch projects data with proper typing
@@ -167,7 +167,7 @@ export const DefaultDashboardPage = () => {
     data: projectsDataRaw,
     error: projectsError,
     loading: projectsLoading,
-  } = useFetchData<Projects[]>('../mocks/Projects.json');
+  } = useFetchData<Projects[]>('/antd/projects');
   const projectsData = projectsDataRaw ?? [];
 
   // Fetch notifications data with proper typing
@@ -175,7 +175,7 @@ export const DefaultDashboardPage = () => {
     data: notificationsDataRaw,
     error: notificationsError,
     loading: notificationsLoading,
-  } = useFetchData<Notifications[]>('../mocks/Notifications.json');
+  } = useFetchData<Notifications[]>('/antd/notifications');
   const notificationsData = notificationsDataRaw ?? [];
 
   return (

@@ -151,7 +151,7 @@ export const ProjectsDashboardPage = () => {
     data: projectsDataRaw,
     error: projectsDataError,
     loading: projectsDataLoading,
-  } = useFetchData<Projects[]>('../mocks/Projects.json');
+  } = useFetchData<Projects[]>('/antd/projects');
   const projectsData = projectsDataRaw ?? [];
 
   // Fetch clients data with proper typing
@@ -159,7 +159,7 @@ export const ProjectsDashboardPage = () => {
     data: clientsDataRaw,
     error: clientsDataError,
     loading: clientsDataLoading,
-  } = useFetchData<Clients[]>('../mocks/Clients.json');
+  } = useFetchData<Clients[]>('/antd/clients');
   const clientsData = clientsDataRaw ?? [];
 
   const [projectTabsKey, setProjectsTabKey] = useState<string>('all');

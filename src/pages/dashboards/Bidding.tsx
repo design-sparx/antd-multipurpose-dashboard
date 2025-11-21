@@ -46,7 +46,7 @@ export const BiddingDashboardPage = () => {
     data: auctionDataRaw,
     loading: auctionDataLoading,
     error: auctionDataError,
-  } = useFetchData<Bidding[]>('../mocks/LiveAuction.json');
+  } = useFetchData<Bidding[]>('/antd/live-auctions');
   const auctionData = auctionDataRaw ?? [];
 
   // Fetch auction creators data with proper typing
@@ -54,7 +54,7 @@ export const BiddingDashboardPage = () => {
     data: auctionCreatorsDataRaw,
     loading: auctionCreatorsDataLoading,
     error: auctionCreatorsDataError,
-  } = useFetchData<AuctionCreator[]>('../mocks/AuctionCreators.json');
+  } = useFetchData<AuctionCreator[]>('/antd/auction-creators');
   const auctionCreatorsData = auctionCreatorsDataRaw ?? [];
 
   // Fetch top sellers data with proper typing
@@ -62,7 +62,7 @@ export const BiddingDashboardPage = () => {
     data: topSellersDataRaw,
     loading: topSellersDataLoading,
     error: topSellersDataError,
-  } = useFetchData<AuctionSales[]>('../mocks/BiddingTopSellers.json');
+  } = useFetchData<AuctionSales[]>('/antd/bidding-top-sellers');
   const topSellersData = topSellersDataRaw ?? [];
 
   // Fetch transactions data with proper typing
@@ -70,7 +70,7 @@ export const BiddingDashboardPage = () => {
     data: transactionsDataRaw,
     loading: transactionsDataLoading,
     error: transactionsDataError,
-  } = useFetchData<AuctionTransactions[]>('../mocks/BiddingTransactions.json');
+  } = useFetchData<AuctionTransactions[]>('/antd/bidding-transactions');
   const transactionsData = transactionsDataRaw ?? [];
 
   return (

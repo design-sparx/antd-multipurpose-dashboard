@@ -24,7 +24,7 @@ export const MarketingDashboardPage = () => {
     data: campaignAdsRaw,
     error: campaignAdsError,
     loading: campaignAdsLoading,
-  } = useFetchData<CampaignAds[]>('../mocks/CampaignAds.json');
+  } = useFetchData<CampaignAds[]>('/antd/campaign-ads');
   const campaignAds = campaignAdsRaw ?? [];
 
   return (
