@@ -5,13 +5,14 @@ import { useEffect, useState } from 'react';
 import { Faq } from '../../types';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
+import { API_ENDPOINTS } from '../../constants';
 
 export const CorporateFaqPage = () => {
   const {
     data: faqsData,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData('../mocks/Faqs.json');
+  } = useFetchData(API_ENDPOINTS.faqs);
   const [faqs, setFaqs] = useState<{ category: string; items: Faq[] }[]>([]);
   const stylesContext = useStylesContext();
 

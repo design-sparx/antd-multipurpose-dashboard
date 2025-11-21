@@ -3,17 +3,15 @@ import { Card, EmployeeCard } from '../../components';
 import { Employee } from '../../types';
 import { useFetchData } from '../../hooks';
 import { useStylesContext } from '../../context';
+import { API_ENDPOINTS } from '../../constants';
 
 export const CorporateTeamPage = () => {
   const stylesContext = useStylesContext();
-
-  // Fetch employees data with proper typing
   const {
-    data: employeesDataRaw,
+    data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData<Employee[]>('../mocks/Employees.json');
-  const employeesData = employeesDataRaw ?? [];
+  } = useFetchData(API_ENDPOINTS.employees);
 
   return (
     <div>
