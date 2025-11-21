@@ -27,12 +27,12 @@ export interface User {
 
 class AuthService {
   private readonly AUTH_ENDPOINTS = {
-    LOGIN: '/api/v1/auth/login',
-    REGISTER: '/api/v1/auth/register',
-    LOGOUT: '/api/v1/auth/logout',
-    REFRESH: '/api/v1/auth/refresh-token',
-    FORGOT_PASSWORD: '/api/v1/auth/forgot-password',
-    RESET_PASSWORD: '/api/v1/auth/reset-password',
+    LOGIN: '/auth/login',
+    REGISTER: '/auth/register',
+    LOGOUT: '/auth/logout',
+    REFRESH: '/auth/refresh-token',
+    FORGOT_PASSWORD: '/auth/forgot-password',
+    RESET_PASSWORD: '/auth/reset-password',
   };
 
   /**
@@ -41,7 +41,7 @@ class AuthService {
   async login(credentials: LoginRequest): Promise<AuthResponse> {
     try {
       const response = await fetch(
-        `${API_CONFIG.PROD_BASE_URL}${this.AUTH_ENDPOINTS.LOGIN}`,
+        `${API_CONFIG.PROD_BASE_URL}/api/v1${this.AUTH_ENDPOINTS.LOGIN}`,
         {
           method: 'POST',
           headers: {
@@ -81,7 +81,7 @@ class AuthService {
       const token = this.getToken();
       if (!token) return;
 
-      await fetch(`${API_CONFIG.PROD_BASE_URL}${this.AUTH_ENDPOINTS.LOGOUT}`, {
+      await fetch(`${API_CONFIG.PROD_BASE_URL}/api/v1${this.AUTH_ENDPOINTS.LOGOUT}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ class AuthService {
       if (!refreshToken) return null;
 
       const response = await fetch(
-        `${API_CONFIG.PROD_BASE_URL}${this.AUTH_ENDPOINTS.REFRESH}`,
+        `${API_CONFIG.PROD_BASE_URL}/api/v1${this.AUTH_ENDPOINTS.REFRESH}`,
         {
           method: 'POST',
           headers: {
