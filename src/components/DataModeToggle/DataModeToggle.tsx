@@ -19,13 +19,21 @@ export const DataModeToggle = ({
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   const handleToggle = () => {
+    console.log('[DataModeToggle] Toggle clicked:', {
+      currentMode: useMockData ? 'Mock' : 'Live',
+      isAuthenticated,
+      willToggle: !(useMockData && !isAuthenticated),
+    });
+
     // If switching from mock to live mode, check authentication
     if (useMockData && !isAuthenticated) {
+      console.log('[DataModeToggle] Blocked: User not authenticated, showing login modal');
       // Show login modal
       dispatch(setLoginModalOpen(true));
       return;
     }
 
+    console.log('[DataModeToggle] Dispatching toggleDataMode action');
     // Toggle the data mode
     dispatch(toggleDataMode());
   };

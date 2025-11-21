@@ -15,15 +15,20 @@ const dataModeSlice = createSlice({
   initialState,
   reducers: {
     toggleDataMode: (state: DataModeState) => {
+      console.log('[DataModeSlice] toggleDataMode called - BEFORE:', state.useMockData);
       state.useMockData = !state.useMockData;
+      console.log('[DataModeSlice] toggleDataMode called - AFTER:', state.useMockData);
     },
     setDataMode: (state: DataModeState, action: PayloadAction<boolean>) => {
+      console.log('[DataModeSlice] setDataMode called:', action.payload);
       state.useMockData = action.payload;
     },
     enableMockData: (state: DataModeState) => {
+      console.log('[DataModeSlice] enableMockData called');
       state.useMockData = true;
     },
     enableRealData: (state: DataModeState) => {
+      console.log('[DataModeSlice] enableRealData called');
       state.useMockData = false;
     },
   },
