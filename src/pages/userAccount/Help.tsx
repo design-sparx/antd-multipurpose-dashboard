@@ -9,11 +9,10 @@ import {
 } from '@ant-design/icons';
 import { createElement, useEffect, useState } from 'react';
 import * as _ from 'lodash';
-import FaqsData from '../../../public/mocks/Faqs.json';
 import { TitleProps } from 'antd/es/typography/Title';
 import { useMediaQuery } from 'react-responsive';
 import { useFetchData } from '../../hooks';
-import { Faq } from '../../types';
+import { API_ENDPOINTS } from '../../constants';
 
 const { Text, Title } = Typography;
 
@@ -73,32 +72,31 @@ export const UserProfileHelpPage = () => {
   const [activeTabKey, setActiveTabKey] = useState<string>('Account');
   const [tabList, setTabList] = useState<TabsProps['items']>([]);
   const isMobile = useMediaQuery({ maxWidth: 600 });
-
-  // Fetch FAQs data with proper typing
   const {
-    data: faqsDataRaw,
+    data: faqsData,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData<Faq[]>('../mocks/Faqs.json');
-  const faqsData = faqsDataRaw ?? [];
+  } = useFetchData(API_ENDPOINTS.faqs);
 
   const onTabChange = (key: string) => {
     setActiveTabKey(key);
   };
 
   useEffect(() => {
-    const tabs = _.chain(FaqsData)
-      .orderBy('category')
-      .uniqBy('category')
-      .map((d) => ({
-        key: d.category,
-        label: d.category,
-      }))
-      .value();
+    if (faqsData && faqsData.length > 0) {
+      const tabs = _.chain(faqsData)
+        .orderBy('category')
+        .uniqBy('category')
+        .map((d) => ({
+          key: d.category,
+          label: d.category,
+        }))
+        .value();
 
-    console.log(tabs);
-    setTabList(tabs);
-  }, []);
+      console.log(tabs);
+      setTabList(tabs);
+    }
+  }, [faqsData]);
 
   return (
     <div>
