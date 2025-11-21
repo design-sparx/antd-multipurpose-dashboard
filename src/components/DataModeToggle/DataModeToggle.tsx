@@ -1,6 +1,7 @@
 import { Switch, Tooltip, Tag, Flex } from 'antd';
 import { DatabaseOutlined, ApiOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
+import { useQueryClient } from '@tanstack/react-query';
 import { toggleDataMode } from '../../redux/dataMode/dataModeSlice';
 import { setLoginModalOpen } from '../../redux/auth/authSlice';
 import { RootState } from '../../redux/store';
@@ -15,6 +16,7 @@ export const DataModeToggle = ({
   size = 'default',
 }: DataModeToggleProps) => {
   const dispatch = useDispatch();
+  const queryClient = useQueryClient();
   const { useMockData } = useSelector((state: RootState) => state.dataMode);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
@@ -36,6 +38,10 @@ export const DataModeToggle = ({
     console.log('[DataModeToggle] Dispatching toggleDataMode action');
     // Toggle the data mode
     dispatch(toggleDataMode());
+
+    // CRITICAL: Invalidate all React Query caches to refetch data with new mode
+    console.log('[DataModeToggle] Invalidating all queries to refetch with new data mode');
+    queryClient.invalidateQueries();
   };
 
   return (
