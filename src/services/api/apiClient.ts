@@ -14,6 +14,11 @@ import axios, {
 } from 'axios';
 import { tokenStorage } from '../auth/tokenStorage';
 import { ApiErrorResponse } from '../../types/api/generic';
+import { store } from '../../redux/store';
+import {
+  convertToMockEndpoint,
+  isMockOnlyEndpoint,
+} from './mockEndpointMapper';
 
 // API Configuration
 const API_BASE_URL =
@@ -33,10 +38,54 @@ const apiClient: AxiosInstance = axios.create({
 
 /**
  * Request Interceptor
- * Adds authorization token to all requests
+ * - Checks dataMode to route to mock or real API
+ * - Adds authorization token to all requests
  */
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
+    // Get current data mode from Redux store
+    const state = store.getState();
+    const useMockData = state.dataMode?.useMockData ?? false;
+
+    // Get the request URL
+    const requestUrl = config.url || '';
+
+    // Check if this is a mock-only endpoint (always use mock)
+    const forceMock = isMockOnlyEndpoint(requestUrl);
+
+    // Determine if we should use mock data
+    const shouldUseMock = forceMock || useMockData;
+
+    if (shouldUseMock) {
+      // Convert to mock endpoint
+      const mockEndpoint = convertToMockEndpoint(requestUrl);
+
+      if (mockEndpoint) {
+        // Update config to use mock endpoint
+        config.url = mockEndpoint;
+        config.baseURL = ''; // Clear base URL for mock files (served from public/)
+
+        // Don't send auth token for mock requests
+        if (config.headers) {
+          delete config.headers.Authorization;
+        }
+
+        if (import.meta.env.DEV) {
+          console.log(
+            `[API Request - Mock Mode] ${config.method?.toUpperCase()}`,
+            {
+              original: requestUrl,
+              mock: mockEndpoint,
+              forcedMock: forceMock,
+            }
+          );
+        }
+
+        return config;
+      }
+    }
+
+    // For live mode or when no mock mapping exists
     const token = tokenStorage.getAccessToken();
 
     if (token && config.headers) {
@@ -46,7 +95,7 @@ apiClient.interceptors.request.use(
     // Log request in development
     if (import.meta.env.DEV) {
       console.log(
-        `[API Request] ${config.method?.toUpperCase()} ${config.url}`,
+        `[API Request - Live Mode] ${config.method?.toUpperCase()} ${config.url}`,
         {
           params: config.params,
           data: config.data,
