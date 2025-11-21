@@ -44,7 +44,7 @@ export const CorporateTeamPage = () => {
                   align: 'center',
                 }}
                 loading={employeesDataLoading}
-                dataSource={employeesData}
+                dataSource={employeesData || []}
                 renderItem={(item: Employee) => (
                   <List.Item key={item.employee_id}>
                     <EmployeeCard data={item} showInfo={true} />

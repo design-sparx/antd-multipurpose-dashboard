@@ -88,7 +88,7 @@ export const CorporateAboutPage = () => {
                   pageSize: 4,
                   align: 'center',
                 }}
-                dataSource={employeesData}
+                dataSource={employeesData || []}
                 loading={employeesDataLoading}
                 renderItem={(item: Employee) => (
                   <List.Item key={item.employee_id}>
