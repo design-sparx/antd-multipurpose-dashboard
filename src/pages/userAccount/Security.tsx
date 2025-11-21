@@ -39,11 +39,14 @@ type FieldType = {
 
 export const UserProfileSecurityPage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch session activity data with proper typing
   const {
-    data: sessionActivityData,
+    data: sessionActivityDataRaw,
     loading: sessionActivityDataLoading,
     error: sessionActivityDataError,
-  } = useFetchData('../mocks/SessionActivity.json');
+  } = useFetchData<Session[]>('../mocks/SessionActivity.json');
+  const sessionActivityData = sessionActivityDataRaw ?? [];
 
   return (
     <Row {...stylesContext?.rowProps}>

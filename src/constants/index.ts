@@ -26,6 +26,7 @@ import {
   PATH_SOCIALS,
   PATH_ABOUT,
 } from './routes.ts';
+import { API_BASE_URL, API_ENDPOINTS } from './api.ts';
 
 const DASHBOARD_ITEMS = [
   { title: 'default', path: PATH_DASHBOARD.default },
@@ -107,4 +108,6 @@ export {
   AUTHENTICATION_ITEMS,
   ERROR_ITEMS,
   PATH_ABOUT,
+  API_BASE_URL,
+  API_ENDPOINTS,
 };

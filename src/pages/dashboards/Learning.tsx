@@ -22,34 +22,56 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFetchData } from '../../hooks';
 import { useStylesContext } from '../../context';
+import {
+  LearningCourses,
+  StudyStatistics,
+  RecommendedCourses,
+  Exam,
+  CommunityGroup,
+} from '../../types';
 
 export const LearningDashboardPage = () => {
   const stylesContext = useStylesContext();
+
+  // Fetch courses data with proper typing
   const {
-    data: coursesData,
+    data: coursesDataRaw,
     loading: coursesDataLoading,
     error: coursesDataError,
-  } = useFetchData('../mocks/Courses.json');
+  } = useFetchData<LearningCourses[]>('/antd/courses');
+  const coursesData = coursesDataRaw ?? [];
+
+  // Fetch study statistics data with proper typing
   const {
-    data: studyData,
+    data: studyDataRaw,
     loading: studyDataLoading,
     error: studyDataError,
-  } = useFetchData('../mocks/StudyStatistics.json');
+  } = useFetchData<StudyStatistics[]>('/antd/study-statistics');
+  const studyData = studyDataRaw ?? [];
+
+  // Fetch recommended courses data with proper typing
   const {
-    data: recommendedCoursesData,
+    data: recommendedCoursesDataRaw,
     loading: recommendedCoursesDataLoading,
     error: recommendedCoursesDataError,
-  } = useFetchData('../mocks/RecommendedCourses.json');
+  } = useFetchData<RecommendedCourses[]>('/antd/recommended-courses');
+  const recommendedCoursesData = recommendedCoursesDataRaw ?? [];
+
+  // Fetch exams data with proper typing
   const {
-    data: examsData,
+    data: examsDataRaw,
     loading: examsDataLoading,
     error: examsDataError,
-  } = useFetchData('../mocks/Exams.json');
+  } = useFetchData<Exam[]>('/antd/exams');
+  const examsData = examsDataRaw ?? [];
+
+  // Fetch communities data with proper typing
   const {
-    data: communitiesData,
+    data: communitiesDataRaw,
     loading: communitiesDataLoading,
     error: communitiesDataError,
-  } = useFetchData('../mocks/CommunityGroups.json');
+  } = useFetchData<CommunityGroup[]>('/antd/community-groups');
+  const communitiesData = communitiesDataRaw ?? [];
 
   return (
     <div>

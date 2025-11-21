@@ -1,10 +1,12 @@
 import {
+  Alert,
   Button,
   Checkbox,
   Col,
   Divider,
   Flex,
   Form,
+  FormProps,
   Input,
   message,
   Row,
@@ -19,8 +21,10 @@ import {
 import { Logo } from '../../components';
 import { useMediaQuery } from 'react-responsive';
 import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '../../hooks';
+import { handleApiError } from '../../services/api/apiClient';
 
 const { Title, Text, Link } = Typography;
 
@@ -36,24 +40,45 @@ export const SignInPage = () => {
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+  const onFinish: FormProps<FieldType>['onFinish'] = async (
+    values: FieldType
+  ) => {
     setLoading(true);
+    setError(null);
 
-    message.open({
-      type: 'success',
-      content: 'Login successful',
-    });
+    try {
+      // Call the real authentication API
+      await login({
+        email: values.email!,
+        password: values.password!,
+      });
 
-    setTimeout(() => {
-      navigate(PATH_DASHBOARD.default);
-    }, 5000);
+      message.success('Login successful! Welcome back.');
+
+      // Redirect to the page they were trying to access, or dashboard
+      const from = location.state?.from?.pathname || PATH_DASHBOARD.default;
+      navigate(from, { replace: true });
+    } catch (err) {
+      console.error('Login error:', err);
+      const apiError = handleApiError(err);
+      setError(
+        apiError.message || 'Invalid email or password. Please try again.'
+      );
+      message.error(apiError.message || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (
+    errorInfo
+  ) => {
+    console.log('Form validation failed:', errorInfo);
   };
 
   return (
@@ -89,14 +114,24 @@ export const SignInPage = () => {
             <Text>Don't have an account?</Text>
             <Link href={PATH_AUTH.signup}>Create an account here</Link>
           </Flex>
+          {error && (
+            <Alert
+              message="Login Failed"
+              description={error}
+              type="error"
+              closable
+              onClose={() => setError(null)}
+              style={{ width: '100%' }}
+            />
+          )}
           <Form
             name="sign-up-form"
             layout="vertical"
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             initialValues={{
-              email: 'demo@email.com',
-              password: 'demo123',
+              email: 'demo@adminhub.com',
+              password: 'Demo@Pass1',
               remember: true,
             }}
             onFinish={onFinish}
@@ -111,9 +146,13 @@ export const SignInPage = () => {
                   name="email"
                   rules={[
                     { required: true, message: 'Please input your email' },
+                    {
+                      type: 'email',
+                      message: 'Please enter a valid email address',
+                    },
                   ]}
                 >
-                  <Input />
+                  <Input placeholder="Enter your email" />
                 </Form.Item>
               </Col>
               <Col xs={24}>
@@ -122,9 +161,13 @@ export const SignInPage = () => {
                   name="password"
                   rules={[
                     { required: true, message: 'Please input your password!' },
+                    {
+                      min: 6,
+                      message: 'Password must be at least 6 characters',
+                    },
                   ]}
                 >
-                  <Input.Password />
+                  <Input.Password placeholder="Enter your password" />
                 </Form.Item>
               </Col>
               <Col xs={24}>

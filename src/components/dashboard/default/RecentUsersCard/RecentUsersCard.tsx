@@ -2,6 +2,7 @@ import { Alert, Card, CardProps, Table, Typography } from 'antd';
 import { MoreMenu } from '../../../index.ts';
 import { useFetchData } from '../../../../hooks';
 import { ReactNode } from 'react';
+import { ChannelUser } from '../../../../types';
 
 const COLUMNS = [
   {
@@ -34,11 +35,13 @@ const COLUMNS = [
 type Props = { data?: any; loading?: boolean; error?: ReactNode } & CardProps;
 
 export const RecentUsersCard = ({ data, loading, error, ...others }: Props) => {
+  // Fetch channel users data with proper typing
   const {
-    data: usersData,
+    data: usersDataRaw,
     loading: usersDataLoading,
     error: usersDataError,
-  } = useFetchData('/mocks/ChannelUsers.json');
+  } = useFetchData<ChannelUser[]>('/mocks/ChannelUsers.json');
+  const usersData = usersDataRaw ?? [];
 
   return (
     <Card title={`Recent Users`} extra={<MoreMenu />} {...others}>
