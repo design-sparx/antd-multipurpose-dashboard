@@ -13,19 +13,17 @@ import { Employee } from '../../types';
 import { useStylesContext } from '../../context';
 import CountUp from 'react-countup';
 import { useFetchData } from '../../hooks';
+import { API_ENDPOINTS } from '../../constants';
 
 const { Title, Text, Paragraph } = Typography;
 
 export const CorporateAboutPage = () => {
   const stylesContext = useStylesContext();
-
-  // Fetch employees data with proper typing
   const {
-    data: employeesDataRaw,
+    data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData<Employee[]>('../mocks/Employees.json');
-  const employeesData = employeesDataRaw ?? [];
+  } = useFetchData(API_ENDPOINTS.employees);
 
   return (
     <div>
