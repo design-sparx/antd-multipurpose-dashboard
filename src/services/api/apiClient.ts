@@ -47,6 +47,14 @@ apiClient.interceptors.request.use(
     const state = store.getState();
     const useMockData = state.dataMode?.useMockData ?? false;
 
+    // DEBUG: Log the actual state value
+    console.log('[API Client Debug] Redux State:', {
+      fullState: state,
+      dataModeState: state.dataMode,
+      useMockData: useMockData,
+      storeExists: !!store,
+    });
+
     // Get the request URL
     const requestUrl = config.url || '';
 
