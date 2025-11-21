@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { apiClient } from '../services/api/apiClient';
+import apiClient from '../services/api/apiClient';
 import { RootState } from '../redux/store';
 
 const useFetchData = <T = any,>(url: string) => {
