@@ -24,11 +24,13 @@ import {
 console.log('[API Client] Module loaded!');
 
 // API Configuration
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ||
-  'https://admin-hub-api-production.up.railway.app/api/v1';
+const API_HOST = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+const API_BASE_URL = API_HOST.endsWith('/api/v1')
+  ? API_HOST
+  : `${API_HOST}/api/v1`;
 
 console.log('[API Client] Configuration:', {
+  API_HOST,
   API_BASE_URL,
   storeAvailable: !!store,
 });
