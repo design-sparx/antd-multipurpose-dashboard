@@ -3,6 +3,7 @@ import { Card, EmployeeCard } from '../../components';
 import { Employee } from '../../types';
 import { useFetchData } from '../../hooks';
 import { useStylesContext } from '../../context';
+import { API_ENDPOINTS } from '../../constants';
 
 export const CorporateTeamPage = () => {
   const stylesContext = useStylesContext();
@@ -10,7 +11,7 @@ export const CorporateTeamPage = () => {
     data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData('../mocks/Employees.json');
+  } = useFetchData(API_ENDPOINTS.employees);
 
   return (
     <div>
