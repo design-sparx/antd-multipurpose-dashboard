@@ -13,7 +13,6 @@ import { Employee } from '../../types';
 import { useStylesContext } from '../../context';
 import CountUp from 'react-countup';
 import { useFetchData } from '../../hooks';
-import { API_ENDPOINTS } from '../../constants';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -23,7 +22,7 @@ export const CorporateAboutPage = () => {
     data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData(API_ENDPOINTS.employees);
+  } = useFetchData('/antd/employees');
 
   return (
     <div>
