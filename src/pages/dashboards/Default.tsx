@@ -150,6 +150,7 @@ const CARD_PROPS: CardProps = {
 };
 
 export const DefaultDashboardPage = () => {
+  console.log('[DefaultDashboardPage] Rendering');
   const stylesContext = useStylesContext();
   const sliderRef1 = useRef<any>(null);
   const sliderRef2 = useRef<any>(null);
