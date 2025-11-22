@@ -49,24 +49,15 @@ export const SignInPage = () => {
 
   const onFinish = (values: any) => {
     console.log('Success:', values);
+    console.log('Navigating to:', PATH_DASHBOARD.default);
     setLoading(true);
-
-    message.open({
-      type: 'loading',
-      content: 'Signing you in...',
-      duration: 1.5,
-    });
 
     // Mock authentication - in production, this would be an API call
     setTimeout(() => {
-      message.destroy();
       message.success('Login successful!', 1);
-
-      setTimeout(() => {
-        setLoading(false);
-        navigate(PATH_DASHBOARD.default);
-      }, 1000);
-    }, 1500);
+      setLoading(false);
+      navigate(PATH_DASHBOARD.default, { replace: true });
+    }, 1000);
   };
 
   const onFinishFailed = (errorInfo: any) => {
