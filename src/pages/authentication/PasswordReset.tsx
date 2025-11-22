@@ -42,13 +42,21 @@ export const PasswordResetPage = () => {
     setLoading(true);
 
     message.open({
-      type: 'success',
-      content: 'Password reset link sent successfully',
+      type: 'loading',
+      content: 'Sending reset link...',
+      duration: 1.5,
     });
 
+    // Mock - in production, this would send an actual reset email
     setTimeout(() => {
-      navigate(PATH_DASHBOARD.default);
-    }, 5000);
+      message.destroy();
+      message.success('Password reset link sent to your email!', 2);
+
+      setTimeout(() => {
+        setLoading(false);
+        navigate(PATH_AUTH.signin);
+      }, 2000);
+    }, 1500);
   };
 
   const onFinishFailed = (errorInfo: any) => {

@@ -55,13 +55,21 @@ export const SignUpPage = () => {
     setLoading(true);
 
     message.open({
-      type: 'success',
-      content: 'Account signup successful',
+      type: 'loading',
+      content: 'Creating your account...',
+      duration: 1.5,
     });
 
+    // Mock authentication - in production, this would be an API call
     setTimeout(() => {
-      navigate(PATH_DASHBOARD.default);
-    }, 5000);
+      message.destroy();
+      message.success('Account created successfully!', 1);
+
+      setTimeout(() => {
+        setLoading(false);
+        navigate(PATH_DASHBOARD.default);
+      }, 1000);
+    }, 1500);
   };
 
   const onFinishFailed = (errorInfo: any) => {
