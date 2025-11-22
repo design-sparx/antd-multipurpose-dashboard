@@ -29,7 +29,7 @@ type FieldType = {
 
 export const PasswordResetPage = () => {
   const {
-    token: { colorPrimary },
+    token: { colorPrimary, colorBgContainer },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ export const PasswordResetPage = () => {
           align={isMobile ? 'center' : 'flex-start'}
           justify="center"
           gap="middle"
-          style={{ height: '100%', width: '100%', padding: '2rem' }}
+          style={{ height: '100%', width: '100%', padding: '2rem', background: colorBgContainer }}
         >
           <Title className="m-0">Forgot password</Title>
           <Text>Enter your email to rest your password.</Text>
