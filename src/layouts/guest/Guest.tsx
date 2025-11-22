@@ -36,7 +36,7 @@ const { Header, Content, Footer } = Layout;
 
 export const GuestLayout = () => {
   const {
-    token: { borderRadius },
+    token: { borderRadius, colorBgContainer },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [isLoading, setIsLoading] = useState(false);
@@ -78,7 +78,7 @@ export const GuestLayout = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            // background: navFill ? 'rgba(255, 255, 255, .5)' : 'none',
+            background: navFill ? `${colorBgContainer}CC` : 'none',
             backdropFilter: navFill ? 'blur(8px)' : 'none',
             boxShadow: navFill ? '0 0 8px 2px rgba(0, 0, 0, 0.05)' : 'none',
             gap: 12,
