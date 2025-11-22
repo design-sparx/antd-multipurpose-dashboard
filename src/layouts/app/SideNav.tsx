@@ -27,7 +27,9 @@ import {
   PATH_SITEMAP,
   PATH_USER_PROFILE,
 } from '../../constants';
-import { COLOR } from '../../App.tsx';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { getThemeColors } from '../../theme/colors';
 
 const { Sider } = Layout;
 
@@ -215,6 +217,8 @@ const SideNav = ({ ...others }: SideNavProps) => {
   const { pathname } = useLocation();
   const [openKeys, setOpenKeys] = useState(['']);
   const [current, setCurrent] = useState('');
+  const { mytheme } = useSelector((state: RootState) => state.theme);
+  const colors = getThemeColors(mytheme);
 
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
@@ -251,9 +255,9 @@ const SideNav = ({ ...others }: SideNavProps) => {
           components: {
             Menu: {
               itemBg: 'none',
-              itemSelectedBg: COLOR['100'],
-              itemHoverBg: COLOR['50'],
-              itemSelectedColor: COLOR['600'],
+              itemSelectedBg: colors[100],
+              itemHoverBg: colors[50],
+              itemSelectedColor: colors[600],
             },
           },
         }}

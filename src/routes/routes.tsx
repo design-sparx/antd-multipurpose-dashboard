@@ -1,4 +1,4 @@
-import { createBrowserRouter, useLocation } from 'react-router-dom';
+import { createBrowserRouter, Outlet, useLocation } from 'react-router-dom';
 import {
   AccountDeactivePage,
   BiddingDashboardPage,
@@ -85,7 +85,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '',
         element: <HomePage />,
       },
     ],
@@ -100,7 +99,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
         path: 'default',
         element: <DefaultDashboardPage />,
       },
@@ -145,7 +143,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '',
         element: <SitemapPage />,
       },
     ],
@@ -156,7 +153,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
         path: 'about',
         element: <CorporateAboutPage />,
       },
@@ -192,7 +188,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
         path: 'details',
         element: <UserProfileDetailsPage />,
       },
@@ -228,6 +223,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth',
+    element: <Outlet />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -266,6 +262,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'errors',
+    element: <Outlet />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -297,7 +294,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '',
         element: <AboutPage />,
       },
     ],

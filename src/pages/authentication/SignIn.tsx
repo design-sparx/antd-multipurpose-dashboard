@@ -6,16 +6,19 @@ import {
   Divider,
   Flex,
   Form,
-  FormProps,
   Input,
   message,
   Row,
+  Switch,
   theme,
+  Tooltip,
   Typography,
 } from 'antd';
 import {
   FacebookFilled,
   GoogleOutlined,
+  MoonOutlined,
+  SunOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
 import { Logo } from '../../components';
@@ -23,6 +26,9 @@ import { useMediaQuery } from 'react-responsive';
 import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../../redux/theme/themeSlice';
+import { RootState } from '../../redux/store';
 import { useAuth } from '../../hooks';
 import { handleApiError } from '../../services/api/apiClient';
 
@@ -36,18 +42,18 @@ type FieldType = {
 
 export const SignInPage = () => {
   const {
-    token: { colorPrimary },
+    token: { colorPrimary, colorBgContainer },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const { mytheme } = useSelector((state: RootState) => state.theme);
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const onFinish: FormProps<FieldType>['onFinish'] = async (
-    values: FieldType
-  ) => {
+  const onFinish = async (values: any) => {
     setLoading(true);
     setError(null);
 
@@ -75,14 +81,30 @@ export const SignInPage = () => {
     }
   };
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (
-    errorInfo
-  ) => {
-    console.log('Form validation failed:', errorInfo);
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
-    <Row style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: 'hidden' }}>
+    <Row
+      style={{
+        minHeight: isMobile ? 'auto' : '100vh',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      <div
+        style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10 }}
+      >
+        <Tooltip title="Toggle theme">
+          <Switch
+            checkedChildren={<MoonOutlined />}
+            unCheckedChildren={<SunOutlined />}
+            checked={mytheme === 'dark'}
+            onClick={() => dispatch(toggleTheme())}
+          />
+        </Tooltip>
+      </div>
       <Col xs={24} lg={12}>
         <Flex
           vertical
@@ -107,7 +129,7 @@ export const SignInPage = () => {
           align={isMobile ? 'center' : 'flex-start'}
           justify="center"
           gap="middle"
-          style={{ height: '100%', padding: '2rem' }}
+          style={{ height: '100%', padding: '2rem', background: colorBgContainer }}
         >
           <Title className="m-0">Login</Title>
           <Flex gap={4}>
@@ -146,13 +168,9 @@ export const SignInPage = () => {
                   name="email"
                   rules={[
                     { required: true, message: 'Please input your email' },
-                    {
-                      type: 'email',
-                      message: 'Please enter a valid email address',
-                    },
                   ]}
                 >
-                  <Input placeholder="Enter your email" />
+                  <Input />
                 </Form.Item>
               </Col>
               <Col xs={24}>
@@ -161,13 +179,9 @@ export const SignInPage = () => {
                   name="password"
                   rules={[
                     { required: true, message: 'Please input your password!' },
-                    {
-                      min: 6,
-                      message: 'Password must be at least 6 characters',
-                    },
                   ]}
                 >
-                  <Input.Password placeholder="Enter your password" />
+                  <Input.Password />
                 </Form.Item>
               </Col>
               <Col xs={24}>
