@@ -39,7 +39,7 @@ type FieldType = {
 
 export const SignInPage = () => {
   const {
-    token: { colorPrimary },
+    token: { colorPrimary, colorBgContainer },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
@@ -109,7 +109,7 @@ export const SignInPage = () => {
           align={isMobile ? 'center' : 'flex-start'}
           justify="center"
           gap="middle"
-          style={{ height: '100%', padding: '2rem' }}
+          style={{ height: '100%', padding: '2rem', background: colorBgContainer }}
         >
           <Title className="m-0">Login</Title>
           <Flex gap={4}>
