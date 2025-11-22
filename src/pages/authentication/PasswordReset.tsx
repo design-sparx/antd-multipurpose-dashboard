@@ -6,14 +6,20 @@ import {
   Input,
   message,
   Row,
+  Switch,
   theme,
+  Tooltip,
   Typography,
 } from 'antd';
+import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import { Logo } from '../../components';
 import { useMediaQuery } from 'react-responsive';
 import { PATH_DASHBOARD } from '../../constants';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../../redux/theme/themeSlice';
+import { RootState } from '../../redux/store';
 
 const { Title, Text } = Typography;
 
@@ -27,6 +33,8 @@ export const PasswordResetPage = () => {
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { mytheme } = useSelector((state: RootState) => state.theme);
   const [loading, setLoading] = useState(false);
 
   const onFinish = (values: any) => {
@@ -48,7 +56,17 @@ export const PasswordResetPage = () => {
   };
 
   return (
-    <Row style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: 'hidden' }}>
+    <Row style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10 }}>
+        <Tooltip title="Toggle theme">
+          <Switch
+            checkedChildren={<MoonOutlined />}
+            unCheckedChildren={<SunOutlined />}
+            checked={mytheme === 'dark'}
+            onClick={() => dispatch(toggleTheme())}
+          />
+        </Tooltip>
+      </div>
       <Col xs={24} lg={12}>
         <Flex
           vertical
