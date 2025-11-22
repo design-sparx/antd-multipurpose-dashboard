@@ -1,30 +1,33 @@
 import {
-  Alert,
   Button,
   Checkbox,
   Col,
   Divider,
   Flex,
   Form,
-  FormProps,
   Input,
   message,
   Row,
+  Switch,
   theme,
+  Tooltip,
   Typography,
 } from 'antd';
 import {
   FacebookFilled,
   GoogleOutlined,
+  MoonOutlined,
+  SunOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
 import { Logo } from '../../components';
 import { useMediaQuery } from 'react-responsive';
 import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth } from '../../hooks';
-import { handleApiError } from '../../services/api/apiClient';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../../redux/theme/themeSlice';
+import { RootState } from '../../redux/store';
 
 const { Title, Text, Link } = Typography;
 
@@ -40,49 +43,48 @@ export const SignInPage = () => {
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
-  const location = useLocation();
-  const { login } = useAuth();
+  const dispatch = useDispatch();
+  const { mytheme } = useSelector((state: RootState) => state.theme);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const onFinish: FormProps<FieldType>['onFinish'] = async (
-    values: FieldType
-  ) => {
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
     setLoading(true);
-    setError(null);
 
-    try {
-      // Call the real authentication API
-      await login({
-        email: values.email!,
-        password: values.password!,
-      });
+    message.open({
+      type: 'success',
+      content: 'Login successful',
+    });
 
-      message.success('Login successful! Welcome back.');
-
-      // Redirect to the page they were trying to access, or dashboard
-      const from = location.state?.from?.pathname || PATH_DASHBOARD.default;
-      navigate(from, { replace: true });
-    } catch (err) {
-      console.error('Login error:', err);
-      const apiError = handleApiError(err);
-      setError(
-        apiError.message || 'Invalid email or password. Please try again.'
-      );
-      message.error(apiError.message || 'Login failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    setTimeout(() => {
+      navigate(PATH_DASHBOARD.default);
+    }, 5000);
   };
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (
-    errorInfo
-  ) => {
-    console.log('Form validation failed:', errorInfo);
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
-    <Row style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: 'hidden' }}>
+    <Row
+      style={{
+        minHeight: isMobile ? 'auto' : '100vh',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      <div
+        style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10 }}
+      >
+        <Tooltip title="Toggle theme">
+          <Switch
+            checkedChildren={<MoonOutlined />}
+            unCheckedChildren={<SunOutlined />}
+            checked={mytheme === 'dark'}
+            onClick={() => dispatch(toggleTheme())}
+          />
+        </Tooltip>
+      </div>
       <Col xs={24} lg={12}>
         <Flex
           vertical
@@ -114,24 +116,14 @@ export const SignInPage = () => {
             <Text>Don't have an account?</Text>
             <Link href={PATH_AUTH.signup}>Create an account here</Link>
           </Flex>
-          {error && (
-            <Alert
-              message="Login Failed"
-              description={error}
-              type="error"
-              closable
-              onClose={() => setError(null)}
-              style={{ width: '100%' }}
-            />
-          )}
           <Form
             name="sign-up-form"
             layout="vertical"
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             initialValues={{
-              email: 'demo@adminhub.com',
-              password: 'Demo@Pass1',
+              email: 'demo@email.com',
+              password: 'demo123',
               remember: true,
             }}
             onFinish={onFinish}
@@ -146,13 +138,9 @@ export const SignInPage = () => {
                   name="email"
                   rules={[
                     { required: true, message: 'Please input your email' },
-                    {
-                      type: 'email',
-                      message: 'Please enter a valid email address',
-                    },
                   ]}
                 >
-                  <Input placeholder="Enter your email" />
+                  <Input />
                 </Form.Item>
               </Col>
               <Col xs={24}>
@@ -161,13 +149,9 @@ export const SignInPage = () => {
                   name="password"
                   rules={[
                     { required: true, message: 'Please input your password!' },
-                    {
-                      min: 6,
-                      message: 'Password must be at least 6 characters',
-                    },
                   ]}
                 >
-                  <Input.Password placeholder="Enter your password" />
+                  <Input.Password />
                 </Form.Item>
               </Col>
               <Col xs={24}>
