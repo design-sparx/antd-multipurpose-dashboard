@@ -52,13 +52,21 @@ export const SignInPage = () => {
     setLoading(true);
 
     message.open({
-      type: 'success',
-      content: 'Login successful',
+      type: 'loading',
+      content: 'Signing you in...',
+      duration: 1.5,
     });
 
+    // Mock authentication - in production, this would be an API call
     setTimeout(() => {
-      navigate(PATH_DASHBOARD.default);
-    }, 5000);
+      message.destroy();
+      message.success('Login successful!', 1);
+
+      setTimeout(() => {
+        setLoading(false);
+        navigate(PATH_DASHBOARD.default);
+      }, 1000);
+    }, 1500);
   };
 
   const onFinishFailed = (errorInfo: any) => {
