@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Checkbox,
   Col,
@@ -23,11 +24,13 @@ import {
 import { Logo } from '../../components';
 import { useMediaQuery } from 'react-responsive';
 import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../redux/theme/themeSlice';
 import { RootState } from '../../redux/store';
+import { useAuth } from '../../hooks';
+import { handleApiError } from '../../services/api/apiClient';
 
 const { Title, Text, Link } = Typography;
 
@@ -43,27 +46,39 @@ export const SignInPage = () => {
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const { mytheme } = useSelector((state: RootState) => state.theme);
+  const { login } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
-    console.log('Navigating to:', PATH_DASHBOARD.default);
+  const onFinish = async (values: any) => {
     setLoading(true);
+    setError(null);
 
-    // Mock authentication - in production, this would be an API call
-    setTimeout(() => {
-      message.success('Login successful!', 1);
+    try {
+      // Call the real authentication API
+      await login({
+        email: values.email!,
+        password: values.password!,
+      });
+
+      message.success('Login successful! Welcome back.');
+
+      // Redirect to the page they were trying to access, or dashboard
+      const from = location.state?.from?.pathname || PATH_DASHBOARD.default;
+      navigate(from, { replace: true });
+    } catch (err) {
+      console.error('Login error:', err);
+      const apiError = handleApiError(err);
+      setError(
+        apiError.message || 'Invalid email or password. Please try again.'
+      );
+      message.error(apiError.message || 'Login failed. Please try again.');
+    } finally {
       setLoading(false);
-      console.log('[SignIn] About to call navigate()');
-      try {
-        navigate(PATH_DASHBOARD.default, { replace: true });
-        console.log('[SignIn] Navigate called successfully');
-      } catch (error) {
-        console.error('[SignIn] Navigate error:', error);
-      }
-    }, 1000);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -121,6 +136,16 @@ export const SignInPage = () => {
             <Text>Don't have an account?</Text>
             <Link href={PATH_AUTH.signup}>Create an account here</Link>
           </Flex>
+          {error && (
+            <Alert
+              message="Login Failed"
+              description={error}
+              type="error"
+              closable
+              onClose={() => setError(null)}
+              style={{ width: '100%' }}
+            />
+          )}
           <Form
             name="sign-up-form"
             layout="vertical"
