@@ -56,7 +56,13 @@ export const SignInPage = () => {
     setTimeout(() => {
       message.success('Login successful!', 1);
       setLoading(false);
-      navigate(PATH_DASHBOARD.default, { replace: true });
+      console.log('[SignIn] About to call navigate()');
+      try {
+        navigate(PATH_DASHBOARD.default, { replace: true });
+        console.log('[SignIn] Navigate called successfully');
+      } catch (error) {
+        console.error('[SignIn] Navigate error:', error);
+      }
     }, 1000);
   };
 

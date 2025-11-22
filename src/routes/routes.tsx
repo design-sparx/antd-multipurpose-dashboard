@@ -1,4 +1,4 @@
-import { createBrowserRouter, useLocation } from 'react-router-dom';
+import { createBrowserRouter, Outlet, useLocation } from 'react-router-dom';
 import {
   AccountDeactivePage,
   BiddingDashboardPage,
@@ -223,6 +223,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth',
+    element: <Outlet />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -261,6 +262,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'errors',
+    element: <Outlet />,
     errorElement: <ErrorPage />,
     children: [
       {
