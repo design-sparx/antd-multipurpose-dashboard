@@ -122,8 +122,8 @@ export const SignInPage = () => {
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             initialValues={{
-              email: 'demo@email.com',
-              password: 'demo123',
+              email: 'demo@adminhub.com',
+              password: 'Demo@Pass1',
               remember: true,
             }}
             onFinish={onFinish}
