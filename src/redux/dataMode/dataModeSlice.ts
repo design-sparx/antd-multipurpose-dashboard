@@ -1,35 +1,43 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { API_CONFIG } from '../../config/api.config';
 
 export interface DataModeState {
   useMockData: boolean;
 }
 
 const initialState: DataModeState = {
-  // Check environment variable first, fallback to true (mock data)
-  useMockData: API_CONFIG.USE_MOCK_DATA,
+  // Always use mock data (locked to true)
+  useMockData: true,
 };
 
 const dataModeSlice = createSlice({
   name: 'dataMode',
   initialState,
   reducers: {
+    // These actions are kept for backward compatibility but don't change state
     toggleDataMode: (state: DataModeState) => {
-      console.log('[DataModeSlice] toggleDataMode called - BEFORE:', state.useMockData);
-      state.useMockData = !state.useMockData;
-      console.log('[DataModeSlice] toggleDataMode called - AFTER:', state.useMockData);
+      console.log(
+        '[DataModeSlice] toggleDataMode called - mock mode is locked, no action taken'
+      );
+      // Keep useMockData locked to true
+      state.useMockData = true;
     },
-    setDataMode: (state: DataModeState, action: PayloadAction<boolean>) => {
-      console.log('[DataModeSlice] setDataMode called:', action.payload);
-      state.useMockData = action.payload;
+    setDataMode: (state: DataModeState, _action: PayloadAction<boolean>) => {
+      console.log(
+        '[DataModeSlice] setDataMode called - mock mode is locked, no action taken'
+      );
+      // Keep useMockData locked to true
+      state.useMockData = true;
     },
     enableMockData: (state: DataModeState) => {
       console.log('[DataModeSlice] enableMockData called');
       state.useMockData = true;
     },
     enableRealData: (state: DataModeState) => {
-      console.log('[DataModeSlice] enableRealData called');
-      state.useMockData = false;
+      console.log(
+        '[DataModeSlice] enableRealData called - mock mode is locked, no action taken'
+      );
+      // Keep useMockData locked to true
+      state.useMockData = true;
     },
   },
 });

@@ -34,12 +34,11 @@ import { useMediaQuery } from 'react-responsive';
 import SideNav from './SideNav.tsx';
 import HeaderNav from './HeaderNav.tsx';
 import FooterNav from './FooterNav.tsx';
-import { NProgress, DataModeToggle, LoginModal } from '../../components';
+import { NProgress, LoginModal } from '../../components';
 import { PATH_LANDING } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../redux/theme/themeSlice.ts';
 import { logoutUser } from '../../redux/auth/authSlice';
-import { enableMockData } from '../../redux/dataMode/dataModeSlice';
 import { RootState } from '../../redux/store.ts';
 const { Content } = Layout;
 
@@ -162,9 +161,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             style={{
               marginLeft: collapsed ? 0 : '200px',
               padding: '0 2rem 0 0',
-              background: navFill
-                ? `${colorBgContainer}80`
-                : 'none',
+              background: navFill ? `${colorBgContainer}80` : 'none',
               backdropFilter: navFill ? 'blur(8px)' : 'none',
               boxShadow: navFill ? '0 0 8px 2px rgba(0, 0, 0, 0.05)' : 'none',
               display: 'flex',
@@ -208,7 +205,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               <Tooltip title="Messages">
                 <Button icon={<MessageOutlined />} type="text" size="large" />
               </Tooltip>
-              <DataModeToggle />
               <Tooltip title="Theme">
                 <Switch
                   className=" hidden sm:inline py-1"
