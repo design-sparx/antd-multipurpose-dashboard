@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+// @ts-ignore - JSON mock data uses string values for priority/status/category/color instead of numbers
 import TasksListData from '../../../../../public/mocks/TasksList.json';
 
 import { TasksListCard } from './TasksListCard.tsx';
@@ -18,6 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    // @ts-ignore - Mock data doesn't match exact type requirements
     data: TasksListData,
     style: { width: 800 },
   },

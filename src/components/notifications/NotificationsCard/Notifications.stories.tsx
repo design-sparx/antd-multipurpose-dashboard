@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+// @ts-ignore - JSON import for Storybook
 import NotificationsData from '../../../public/mocks/Notifications.json';
 
 import { NotificationsCard } from './NotificationsCard.tsx';

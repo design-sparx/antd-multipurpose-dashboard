@@ -28,7 +28,7 @@ import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { useFetchData } from '../../hooks';
-import { Comments, Posts } from '../../types';
+import { Comments, Posts, SocialMedia } from '../../types';
 import { useStylesContext } from '../../context';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -55,7 +55,7 @@ const Section = ({ tab }: SectionProps) => {
     data: socialsDataRaw,
     loading: socialsDataLoading,
     error: socialsDataError,
-  } = useFetchData<Posts[]>('/antd/social-media-activities');
+  } = useFetchData<SocialMedia[]>('/antd/social-media-activities');
   const socialsData = socialsDataRaw ?? [];
 
   // Fetch social comments data with proper typing
@@ -105,7 +105,8 @@ const Section = ({ tab }: SectionProps) => {
               key="followers-card"
               title="followers"
               value={
-                socialsData?.find((_: any) => _.title === title)?.followers || 0
+                socialsData?.find((_: SocialMedia) => _.title === title)
+                  ?.followers || 0
               }
               error={socialsDataError}
               loading={socialsDataLoading}
@@ -117,7 +118,8 @@ const Section = ({ tab }: SectionProps) => {
               key="following-card"
               title="following"
               value={
-                socialsData?.find((_: any) => _.title === title)?.following || 0
+                socialsData?.find((_: SocialMedia) => _.title === title)
+                  ?.following || 0
               }
               error={socialsDataError}
               loading={socialsDataLoading}
@@ -129,7 +131,8 @@ const Section = ({ tab }: SectionProps) => {
               key="likes-card"
               title="likes"
               value={
-                socialsData?.find((_: any) => _.title === title)?.likes || 0
+                socialsData?.find((_: SocialMedia) => _.title === title)
+                  ?.likes || 0
               }
               error={socialsDataError}
               loading={socialsDataLoading}
@@ -141,7 +144,8 @@ const Section = ({ tab }: SectionProps) => {
               key="comments-card"
               title="comments"
               value={
-                socialsData?.find((_: any) => _.title === title)?.comments || 0
+                socialsData?.find((_: SocialMedia) => _.title === title)
+                  ?.comments || 0
               }
               error={socialsDataError}
               loading={socialsDataLoading}
@@ -199,7 +203,7 @@ export const SocialDashboardPage = () => {
   const stylesContext = useStylesContext();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const { mytheme } = useSelector((state: RootState) => state.theme);
-  const colors = getThemeColors(mytheme);
+  const colors = getThemeColors(mytheme as 'dark' | 'light');
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>(
     'social-facebook-tab'
   );

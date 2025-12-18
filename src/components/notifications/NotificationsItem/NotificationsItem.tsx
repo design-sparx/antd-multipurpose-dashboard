@@ -1,4 +1,4 @@
-import { Notifications } from '../../types';
+import { Notifications } from '../../../types';
 import { Avatar, Flex, FlexProps, Tag, Typography } from 'antd';
 import {
   ContainerOutlined,

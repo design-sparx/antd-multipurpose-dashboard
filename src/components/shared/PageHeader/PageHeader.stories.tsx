@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'storybook-addon-react-router-v6';
-import { DASHBOARD_ITEMS } from '../../constants';
+import { DASHBOARD_ITEMS } from '../../../constants';
 
 import { PageHeader } from './PageHeader.tsx';
 

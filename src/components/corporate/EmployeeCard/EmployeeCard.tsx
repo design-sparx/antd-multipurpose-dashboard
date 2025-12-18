@@ -1,4 +1,4 @@
-import { Employee } from '../../types';
+import { Employee } from '../../../types';
 import { Card as AntdCard, CardProps, Flex, Typography } from 'antd';
 
 const { Meta } = AntdCard;

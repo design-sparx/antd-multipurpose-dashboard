@@ -14,7 +14,7 @@ import {
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import { Logo } from '../../components';
 import { useMediaQuery } from 'react-responsive';
-import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
+import { PATH_AUTH } from '../../constants';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -107,7 +107,12 @@ export const PasswordResetPage = () => {
           align={isMobile ? 'center' : 'flex-start'}
           justify="center"
           gap="middle"
-          style={{ height: '100%', width: '100%', padding: '2rem', background: colorBgContainer }}
+          style={{
+            height: '100%',
+            width: '100%',
+            padding: '2rem',
+            background: colorBgContainer,
+          }}
         >
           <Title className="m-0">Forgot password</Title>
           <Text>Enter your email to rest your password.</Text>

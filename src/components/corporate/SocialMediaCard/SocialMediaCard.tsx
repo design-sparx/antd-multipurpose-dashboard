@@ -1,5 +1,5 @@
 import { Button, ButtonProps, CardProps, Flex } from 'antd';
-import { Card } from '../index.ts';
+import { Card } from '../../shared';
 import {
   FacebookFilled,
   GithubFilled,

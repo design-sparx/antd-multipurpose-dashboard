@@ -218,7 +218,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
   const [openKeys, setOpenKeys] = useState(['']);
   const [current, setCurrent] = useState('');
   const { mytheme } = useSelector((state: RootState) => state.theme);
-  const colors = getThemeColors(mytheme);
+  const colors = getThemeColors(mytheme as 'dark' | 'light');
 
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);

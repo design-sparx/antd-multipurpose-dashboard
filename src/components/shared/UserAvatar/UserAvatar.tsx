@@ -1,5 +1,5 @@
 import { Avatar, AvatarProps, Flex, FlexProps, theme, Typography } from 'antd';
-import { colourNameToHex, getNameInitials, isColorLight } from '../../utils';
+import { colourNameToHex, getNameInitials, isColorLight } from '../../../utils';
 import { CheckCircleFilled, UserOutlined } from '@ant-design/icons';
 import { blue } from '@ant-design/colors';
 import { CSSProperties } from 'react';

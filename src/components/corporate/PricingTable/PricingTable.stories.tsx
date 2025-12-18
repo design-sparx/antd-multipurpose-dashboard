@@ -1,16 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TimelineData from '../../../public/mocks/TimelineActivity.json';
+// @ts-ignore - JSON import for Storybook
+import PricingData from '../../../public/mocks/Pricing.json';
 
-import { TimelineCard } from './TimelineCard.tsx';
+import { PricingTable } from './PricingTable.tsx';
 
 const meta = {
-  title: 'Components/Timeline',
-  component: TimelineCard,
+  title: 'Components/Pricing table',
+  component: PricingTable,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof TimelineCard>;
+} satisfies Meta<typeof PricingTable>;
 
 export default meta;
 
@@ -18,21 +19,21 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    data: TimelineData.slice(0, 5),
-    style: { width: 600 },
+    data: PricingData,
+    style: { width: 1000 },
   },
 };
 
 export const Loading: Story = {
   args: {
     loading: true,
-    style: { width: 600 },
+    style: { width: 1000 },
   },
 };
 
 export const Error: Story = {
   args: {
     error: 'Error fetching items',
-    style: { width: 600 },
+    style: { width: 1000 },
   },
 };

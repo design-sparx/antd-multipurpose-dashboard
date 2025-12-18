@@ -4,8 +4,8 @@ import {
   MobileOutlined,
   TabletOutlined,
 } from '@ant-design/icons';
-import { ActivityTimeline } from '../../types';
-import { Card, Loader } from '../index.ts';
+import { ActivityTimeline } from '../../../types';
+import { Card, Loader } from '../';
 import { ReactNode } from 'react';
 
 type Props = {

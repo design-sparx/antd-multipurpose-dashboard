@@ -5,9 +5,9 @@ import {
   loginUser,
   setLoginModalOpen,
   clearError,
-} from '../../redux/auth/authSlice';
-import { enableRealData } from '../../redux/dataMode/dataModeSlice';
-import { RootState } from '../../redux/store';
+} from '../../../redux/auth/authSlice';
+import { enableRealData } from '../../../redux/dataMode/dataModeSlice';
+import { RootState } from '../../../redux/store';
 import { useEffect } from 'react';
 
 const { Text, Title } = Typography;

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Alert, Button, CardProps, List, Space, Typography } from 'antd';
-import { Card } from '../../index.ts';
+import { Card } from '../../shared';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 
 import './styles.css';

@@ -1,4 +1,4 @@
-import { Pricing } from '../../types';
+import { Pricing } from '../../../types';
 import {
   Alert,
   Card as AntdCard,
@@ -12,9 +12,9 @@ import {
   Typography,
 } from 'antd';
 import { CheckCircleOutlined } from '@ant-design/icons';
-import { Card, Loader } from '../index.ts';
+import { Card, Loader } from '../../shared';
 import { ReactNode, useState } from 'react';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../../context';
 import CountUp from 'react-countup';
 
 const textStyles = (

@@ -1,6 +1,7 @@
 import { Alert, Button, CardProps, List } from 'antd';
-import { Card, Loader, NotificationsItem } from '../index.ts';
-import { Notifications } from '../../types';
+import { Card, Loader } from '../../shared';
+import { NotificationsItem } from '../NotificationsItem/NotificationsItem';
+import { Notifications } from '../../../types';
 
 import './styles.css';
 

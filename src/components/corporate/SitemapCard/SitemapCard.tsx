@@ -1,5 +1,5 @@
 import { CardProps, Flex, Typography } from 'antd';
-import { Card } from '../index.ts';
+import { Card } from '../../shared';
 
 import './styles.css';
 import { Link } from 'react-router-dom';
