@@ -74,7 +74,7 @@
     "lint-staged": "^15.2.0",
     "prettier": "3.1.1",
     "sass": "^1.66.1",
-    "storybook": "7.5.2",
+    "storybook": "7.6.21",
     "storybook-addon-react-router-v6": "^2.0.8",
     "storybook-react-context": "^0.6.0",
     "typescript": "^5.0.2",
