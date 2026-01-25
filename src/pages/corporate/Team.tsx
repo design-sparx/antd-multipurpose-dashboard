@@ -10,7 +10,7 @@ export const CorporateTeamPage = () => {
     data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData('../mocks/Employees.json');
+  } = useFetchData('/antd/employees');
 
   return (
     <div>
@@ -43,7 +43,7 @@ export const CorporateTeamPage = () => {
                   align: 'center',
                 }}
                 loading={employeesDataLoading}
-                dataSource={employeesData}
+                dataSource={employeesData || []}
                 renderItem={(item: Employee) => (
                   <List.Item key={item.employee_id}>
                     <EmployeeCard data={item} showInfo={true} />

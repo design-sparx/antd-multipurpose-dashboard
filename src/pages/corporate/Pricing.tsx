@@ -6,7 +6,7 @@ export const CorporatePricingPage = () => {
     data: pricingData,
     error: pricingDataError,
     loading: pricingDataLoading,
-  } = useFetchData('../mocks/Pricing.json');
+  } = useFetchData('/antd/pricings');
 
   return (
     <div>

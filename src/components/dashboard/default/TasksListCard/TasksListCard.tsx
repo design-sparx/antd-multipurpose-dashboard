@@ -13,6 +13,13 @@ import {
 import { Tasks } from '../../../../types';
 import { CalendarOutlined, FlagOutlined } from '@ant-design/icons';
 import { Card, Loader, UserAvatar } from '../../../index';
+import {
+  getTaskPriorityLabel,
+  getTaskStatusLabel,
+  getTaskStatusBadge,
+  getTaskCategoryLabel,
+  getTaskColorName,
+} from '../../../../utils';
 
 import './styles.css';
 
@@ -71,26 +78,22 @@ export const TasksListCard = ({ data, error, loading, ...others }: Props) => {
                     <Typography.Text strong className="text-capitalize">
                       {item.name.slice(0, 20)}...
                     </Typography.Text>
-                    <Tag className="text-capitalize">{item.category}</Tag>
+                    <Tag className="text-capitalize">
+                      {getTaskCategoryLabel(item.category)}
+                    </Tag>
                   </Flex>
                   <Flex justify="space-between" align="center">
                     <Tag
                       icon={<FlagOutlined />}
-                      color={item.color}
+                      color={getTaskColorName(item.color)}
                       style={{ textTransform: 'capitalize' }}
                     >
-                      {item.priority}
+                      {getTaskPriorityLabel(item.priority)}
                     </Tag>
                     <Badge
                       className="text-capitalize"
-                      status={
-                        item.status.toLowerCase() === 'completed'
-                          ? 'success'
-                          : item.status.toLowerCase() === 'in progress'
-                            ? 'processing'
-                            : 'warning'
-                      }
-                      text={item.status}
+                      status={getTaskStatusBadge(item.status)}
+                      text={getTaskStatusLabel(item.status)}
                     />
                   </Flex>
                   <Space>

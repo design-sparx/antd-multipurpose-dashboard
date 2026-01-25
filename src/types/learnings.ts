@@ -57,3 +57,10 @@ export type CommunityGroup = {
   member_interests: string;
   favorite_color: string;
 };
+
+export type StudyStatistics = {
+  id: string;
+  value: number;
+  category: string;
+  month: string;
+};

@@ -1,4 +1,4 @@
-import { createBrowserRouter, useLocation } from 'react-router-dom';
+import { createBrowserRouter, Outlet, useLocation } from 'react-router-dom';
 import {
   AccountDeactivePage,
   BiddingDashboardPage,
@@ -45,6 +45,7 @@ import {
 } from '../layouts';
 import React, { ReactNode, useEffect } from 'react';
 import { AboutPage } from '../pages/About.tsx';
+import { ProtectedRoute } from '../utils/ProtectedRoute';
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -84,18 +85,20 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '',
         element: <HomePage />,
       },
     ],
   },
   {
     path: '/dashboards',
-    element: <PageWrapper children={<DashboardLayout />} />,
+    element: (
+      <ProtectedRoute>
+        <PageWrapper children={<DashboardLayout />} />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
         path: 'default',
         element: <DefaultDashboardPage />,
       },
@@ -131,12 +134,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/sitemap',
-    element: <PageWrapper children={<DashboardLayout />} />,
+    element: (
+      <ProtectedRoute>
+        <PageWrapper children={<DashboardLayout />} />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        path: '',
         element: <SitemapPage />,
       },
     ],
@@ -147,7 +153,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
         path: 'about',
         element: <CorporateAboutPage />,
       },
@@ -175,11 +180,14 @@ const router = createBrowserRouter([
   },
   {
     path: '/user-profile',
-    element: <PageWrapper children={<UserAccountLayout />} />,
+    element: (
+      <ProtectedRoute>
+        <PageWrapper children={<UserAccountLayout />} />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
         path: 'details',
         element: <UserProfileDetailsPage />,
       },
@@ -215,15 +223,24 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth',
+    element: <Outlet />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: 'signup',
-        element: <SignUpPage />,
+        element: (
+          <ProtectedRoute requireAuth={false}>
+            <SignUpPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'signin',
-        element: <SignInPage />,
+        element: (
+          <ProtectedRoute requireAuth={false}>
+            <SignInPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'welcome',
@@ -245,6 +262,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'errors',
+    element: <Outlet />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -276,7 +294,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '',
         element: <AboutPage />,
       },
     ],

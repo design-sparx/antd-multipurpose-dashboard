@@ -22,7 +22,7 @@ export const CorporateAboutPage = () => {
     data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData('../mocks/Employees.json');
+  } = useFetchData('/antd/employees');
 
   return (
     <div>
@@ -87,7 +87,7 @@ export const CorporateAboutPage = () => {
                   pageSize: 4,
                   align: 'center',
                 }}
-                dataSource={employeesData}
+                dataSource={employeesData || []}
                 loading={employeesDataLoading}
                 renderItem={(item: Employee) => (
                   <List.Item key={item.employee_id}>

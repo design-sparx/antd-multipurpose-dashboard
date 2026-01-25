@@ -11,7 +11,7 @@ export const CorporateFaqPage = () => {
     data: faqsData,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData('../mocks/Faqs.json');
+  } = useFetchData('/antd/faqs');
   const [faqs, setFaqs] = useState<{ category: string; items: Faq[] }[]>([]);
   const stylesContext = useStylesContext();
 

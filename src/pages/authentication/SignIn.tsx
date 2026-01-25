@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Checkbox,
   Col,
@@ -8,19 +9,28 @@ import {
   Input,
   message,
   Row,
+  Switch,
   theme,
+  Tooltip,
   Typography,
 } from 'antd';
 import {
   FacebookFilled,
   GoogleOutlined,
+  MoonOutlined,
+  SunOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
 import { Logo } from '../../components';
 import { useMediaQuery } from 'react-responsive';
 import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../../redux/theme/themeSlice';
+import { RootState } from '../../redux/store';
+import { useAuth } from '../../hooks';
+import { handleApiError } from '../../services/api/apiClient';
 
 const { Title, Text, Link } = Typography;
 
@@ -32,24 +42,43 @@ type FieldType = {
 
 export const SignInPage = () => {
   const {
-    token: { colorPrimary },
+    token: { colorPrimary, colorBgContainer },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const { mytheme } = useSelector((state: RootState) => state.theme);
+  const { login } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+  const onFinish = async (values: any) => {
     setLoading(true);
+    setError(null);
 
-    message.open({
-      type: 'success',
-      content: 'Login successful',
-    });
+    try {
+      // Call the real authentication API
+      await login({
+        email: values.email!,
+        password: values.password!,
+      });
 
-    setTimeout(() => {
-      navigate(PATH_DASHBOARD.default);
-    }, 5000);
+      message.success('Login successful! Welcome back.');
+
+      // Redirect to the page they were trying to access, or dashboard
+      const from = location.state?.from?.pathname || PATH_DASHBOARD.default;
+      navigate(from, { replace: true });
+    } catch (err) {
+      console.error('Login error:', err);
+      const apiError = handleApiError(err);
+      setError(
+        apiError.message || 'Invalid email or password. Please try again.'
+      );
+      message.error(apiError.message || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -57,7 +86,25 @@ export const SignInPage = () => {
   };
 
   return (
-    <Row style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: 'hidden' }}>
+    <Row
+      style={{
+        minHeight: isMobile ? 'auto' : '100vh',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      <div
+        style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10 }}
+      >
+        <Tooltip title="Toggle theme">
+          <Switch
+            checkedChildren={<MoonOutlined />}
+            unCheckedChildren={<SunOutlined />}
+            checked={mytheme === 'dark'}
+            onClick={() => dispatch(toggleTheme())}
+          />
+        </Tooltip>
+      </div>
       <Col xs={24} lg={12}>
         <Flex
           vertical
@@ -82,21 +129,31 @@ export const SignInPage = () => {
           align={isMobile ? 'center' : 'flex-start'}
           justify="center"
           gap="middle"
-          style={{ height: '100%', padding: '2rem' }}
+          style={{ height: '100%', padding: '2rem', background: colorBgContainer }}
         >
           <Title className="m-0">Login</Title>
           <Flex gap={4}>
             <Text>Don't have an account?</Text>
             <Link href={PATH_AUTH.signup}>Create an account here</Link>
           </Flex>
+          {error && (
+            <Alert
+              message="Login Failed"
+              description={error}
+              type="error"
+              closable
+              onClose={() => setError(null)}
+              style={{ width: '100%' }}
+            />
+          )}
           <Form
             name="sign-up-form"
             layout="vertical"
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             initialValues={{
-              email: 'demo@email.com',
-              password: 'demo123',
+              email: 'demo@adminhub.com',
+              password: 'Demo@Pass1',
               remember: true,
             }}
             onFinish={onFinish}

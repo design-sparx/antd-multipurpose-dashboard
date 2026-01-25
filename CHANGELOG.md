@@ -4,6 +4,7 @@
 
 ### Patch Changes
 
+- d44ac06: chore(deps): bump tar-fs from 2.1.1 to 2.1.4
 - b8f8222: chore(deps-dev): bump vite from 4.5.3 to 5.4.21
 - f792207: chore(deps): bump min-document from 2.19.0 to 2.19.2
 

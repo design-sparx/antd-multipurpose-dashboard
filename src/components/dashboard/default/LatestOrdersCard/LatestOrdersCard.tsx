@@ -2,6 +2,7 @@ import { Alert, Card, CardProps, Table } from 'antd';
 import { MoreMenu } from '../../../index.ts';
 import { ReactNode } from 'react';
 import { useFetchData } from '../../../../hooks';
+import { CountryOrder } from '../../../../types';
 
 const COLUMNS = [
   {
@@ -43,11 +44,13 @@ export const LatestOrdersCard = ({
   error,
   ...others
 }: Props) => {
+  // Fetch country orders data with proper typing
   const {
-    data: ordersData,
+    data: ordersDataRaw,
     loading: ordersDataLoading,
     error: ordersDataError,
-  } = useFetchData('/mocks/CountryOrders.json');
+  } = useFetchData<CountryOrder[]>('/mocks/CountryOrders.json');
+  const ordersData = ordersDataRaw ?? [];
 
   return (
     <Card title={`Latest Orders`} extra={<MoreMenu />} {...others}>

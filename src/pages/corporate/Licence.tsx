@@ -9,7 +9,7 @@ export const CorporateLicensePage = () => {
     data: licenseData,
     error: licenseDataError,
     loading: licenseDataLoading,
-  } = useFetchData('../mocks/License.json');
+  } = useFetchData('/antd/licenses');
 
   return (
     <div>

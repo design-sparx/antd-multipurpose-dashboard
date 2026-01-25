@@ -27,7 +27,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../context';
 import { useFetchData } from '../../hooks';
-import { Projects } from '../../types';
+import { Projects, Tasks, Notifications } from '../../types';
 import CountUp from 'react-countup';
 
 const ACTIVITY_DATA = [
@@ -150,24 +150,34 @@ const CARD_PROPS: CardProps = {
 };
 
 export const DefaultDashboardPage = () => {
+  console.log('[DefaultDashboardPage] Rendering');
   const stylesContext = useStylesContext();
   const sliderRef1 = useRef<any>(null);
   const sliderRef2 = useRef<any>(null);
+
+  // Fetch tasks data with proper typing
   const {
-    data: tasksListData = [],
+    data: tasksListDataRaw,
     error: tasksListError,
     loading: tasksListLoading,
-  } = useFetchData('../mocks/TasksList.json');
+  } = useFetchData<Tasks[]>('/antd/tasks');
+  const tasksListData = tasksListDataRaw ?? [];
+
+  // Fetch projects data with proper typing
   const {
-    data: projectsData = [],
+    data: projectsDataRaw,
     error: projectsError,
     loading: projectsLoading,
-  } = useFetchData('../mocks/Projects.json');
+  } = useFetchData<Projects[]>('/antd/projects');
+  const projectsData = projectsDataRaw ?? [];
+
+  // Fetch notifications data with proper typing
   const {
-    data: notificationsData = [],
+    data: notificationsDataRaw,
     error: notificationsError,
     loading: notificationsLoading,
-  } = useFetchData('../mocks/Notifications.json');
+  } = useFetchData<Notifications[]>('/antd/notifications');
+  const notificationsData = notificationsDataRaw ?? [];
 
   return (
     <div>
