@@ -121,4 +121,6 @@ storybook-static/
 
 .claude
 CLAUDE.md
+AGENTS.md
+**.backup/**
 # End of https://www.toptal.com/developers/gitignore/api/webstorm+all
