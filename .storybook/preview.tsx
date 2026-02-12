@@ -27,6 +27,7 @@ export const withStylesProvider = (Story: any) => {
 };
 
 const preview: Preview = {
+  decorators: [withStylesProvider],
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -38,7 +39,6 @@ const preview: Preview = {
     docs: {
       theme: themes.normal,
     },
-    decorators: [withStylesProvider],
   },
 };
 
