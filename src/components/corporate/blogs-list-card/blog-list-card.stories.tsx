@@ -39,12 +39,14 @@ export const Default: Story = {
 
 export const Loading: Story = {
   args: {
+    data: [],
     loading: true,
   },
 };
 
 export const Error: Story = {
   args: {
+    data: [],
     error: 'Failed to fetch blogs',
   },
 };
