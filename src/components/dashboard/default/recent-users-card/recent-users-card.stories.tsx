@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CampaignsData from '../../../../../public/mocks/Campaigns.json';
+import CampaignsData from '@mocks/Campaigns.json';
 
 import { RecentUsersCard } from './recent-users-card';
 

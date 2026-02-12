@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ProjectsData from '../../../../../public/mocks/Projects.json';
+import ProjectsData from '@mocks/Projects.json';
 
 import { ProjectsTable } from './projects-table';
 

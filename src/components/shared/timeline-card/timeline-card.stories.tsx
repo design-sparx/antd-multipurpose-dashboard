@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 // @ts-ignore - JSON import for Storybook
-import TimelineData from '../../../public/mocks/TimelineActivity.json';
+import TimelineData from '@mocks/TimelineActivity.json';
 
 import { TimelineCard } from './timeline-card';
 

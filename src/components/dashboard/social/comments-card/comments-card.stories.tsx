@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SocialsCommentsData from '../../../../../public/mocks/SocialComments.json';
+import SocialsCommentsData from '@mocks/SocialComments.json';
 
 import { CommentsCard } from './comments-card';
 

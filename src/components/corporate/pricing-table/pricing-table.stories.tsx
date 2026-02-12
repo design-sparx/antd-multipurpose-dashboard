@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 // @ts-ignore - JSON import for Storybook
-import PricingData from '../../../public/mocks/Pricing.json';
+import PricingData from '@mocks/Pricing.json';
 
 import { PricingTable } from './pricing-table';
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CoursesData from '../../../../../public/mocks/RecommendedCourses.json';
+import CoursesData from '@mocks/RecommendedCourses.json';
 
 import { CoursesCarousel } from './courses-carousel';
 

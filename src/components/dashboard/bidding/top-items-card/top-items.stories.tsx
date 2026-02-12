@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TopItemsData from '../../../../../public/mocks/BiddingTopSellers.json';
+import TopItemsData from '@mocks/BiddingTopSellers.json';
 
 import { TopItemsCard } from './top-items-card';
 

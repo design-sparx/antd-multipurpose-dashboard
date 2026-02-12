@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CreatorsData from '../../../../../public/mocks/AuctionCreators.json';
+import CreatorsData from '@mocks/AuctionCreators.json';
 
 import { CreatorsCard } from './creators-card';
 

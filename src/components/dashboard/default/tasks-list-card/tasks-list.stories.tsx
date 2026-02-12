@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 // @ts-ignore - JSON mock data uses string values for priority/status/category/color instead of numbers
-import TasksListData from '../../../../../public/mocks/TasksList.json';
+import TasksListData from '@mocks/TasksList.json';
 
 import { TasksListCard } from './tasks-list-card';
 

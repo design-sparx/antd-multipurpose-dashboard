@@ -15,7 +15,7 @@ import {
 import { ReactNode, useEffect, useState } from 'react';
 import { CalendarOutlined, PlusOutlined } from '@ant-design/icons';
 import { blue, green, orange } from '@ant-design/colors';
-import CampaignsData from '../../../../../public/mocks/Campaigns.json';
+import CampaignsData from '@mocks/Campaigns.json';
 import { Loader } from '../../../index.ts';
 
 // socials - Facebook, Instagram, Twitter, LinkedIn
