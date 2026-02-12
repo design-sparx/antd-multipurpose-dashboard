@@ -1,5 +1,23 @@
 # antd-multi-dashboard
 
+## 1.5.0
+
+### Minor Changes
+
+- 0e32a77: feat: added live and mock data modes
+
+### Patch Changes
+
+- e48de0c: chore(deps): bump lodash from 4.17.21 to 4.17.23
+- 461f3ef: feat: updated theme support
+  fix: resolved login fixes
+  feat: update UI look in dark mode
+- f5942b8: refactor: rename PascalCase files and directories to kebab-case
+  chore: update pnpm-lock.yaml with dependency updates and version adjustments
+  chore: streamline file imports and improve workflows
+  chore: restrict GitHub workflow to trigger only on `main` branch
+- b98956c: refactor: rename PascalCase files and directories to kebab-case
+
 ## 1.4.4
 
 ### Patch Changes
