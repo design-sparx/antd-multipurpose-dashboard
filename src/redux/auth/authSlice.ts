@@ -1,9 +1,12 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import authService, {
-  LoginRequest,
-  AuthResponse,
-  User,
-} from '../../services/auth.service';
+import { tokenStorage } from '../../services/auth/tokenStorage';
+
+// Dummy user type for mock mode
+export interface User {
+  email: string;
+  userName: string;
+  roles: string[];
+}
 
 export interface AuthState {
   user: User | null;
@@ -14,51 +17,74 @@ export interface AuthState {
   loginModalOpen: boolean;
 }
 
+// Dummy user data
+const DUMMY_USER: User = {
+  email: 'demo@example.com',
+  userName: 'Demo User',
+  roles: ['admin'],
+};
+
+const DUMMY_TOKEN = 'dummy-jwt-token-mock-mode';
+
 const initialState: AuthState = {
-  user: authService.getUserFromToken(),
-  token: authService.getToken(),
-  isAuthenticated: authService.isAuthenticated(),
+  user: tokenStorage.isAuthenticated()
+    ? (tokenStorage.getUser() as User)
+    : null,
+  token: tokenStorage.getAccessToken(),
+  isAuthenticated: tokenStorage.isAuthenticated(),
   isLoading: false,
   error: null,
   loginModalOpen: false,
 };
 
-// Async thunks
+// Dummy response types
+interface AuthResponse {
+  token: string;
+  email: string;
+  userName: string;
+  roles: string[];
+}
+
+interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+// Async thunks - DUMMY IMPLEMENTATIONS
 export const loginUser = createAsyncThunk<AuthResponse, LoginRequest>(
   'auth/login',
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const response = await authService.login(credentials);
-      return response;
-    } catch (error: any) {
-      return rejectWithValue(error.message || 'Login failed');
-    }
+  async (credentials) => {
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    console.log('[Auth Slice - MOCK] Dummy login with:', credentials.email);
+
+    // Store dummy token
+    tokenStorage.setTokens(DUMMY_TOKEN, DUMMY_TOKEN);
+    tokenStorage.setUser(DUMMY_USER as any);
+
+    return {
+      token: DUMMY_TOKEN,
+      email: DUMMY_USER.email,
+      userName: DUMMY_USER.userName,
+      roles: DUMMY_USER.roles,
+    };
   }
 );
 
 export const logoutUser = createAsyncThunk<void, string>(
   'auth/logout',
-  async (email, { rejectWithValue }) => {
-    try {
-      await authService.logout(email);
-    } catch (error: any) {
-      return rejectWithValue(error.message || 'Logout failed');
-    }
+  async (email) => {
+    console.log('[Auth Slice - MOCK] Dummy logout for:', email);
+    tokenStorage.clearAuth();
   }
 );
 
 export const refreshToken = createAsyncThunk<string, void>(
   'auth/refreshToken',
-  async (_, { rejectWithValue }) => {
-    try {
-      const token = await authService.refreshToken();
-      if (!token) {
-        throw new Error('Failed to refresh token');
-      }
-      return token;
-    } catch (error: any) {
-      return rejectWithValue(error.message || 'Token refresh failed');
-    }
+  async () => {
+    console.log('[Auth Slice - MOCK] Dummy token refresh');
+    return DUMMY_TOKEN;
   }
 );
 
@@ -79,7 +105,7 @@ const authSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
       state.error = null;
-      authService.clearTokens();
+      tokenStorage.clearAuth();
     },
     setLoginModalOpen: (state, action: PayloadAction<boolean>) => {
       state.loginModalOpen = action.payload;
@@ -144,7 +170,7 @@ const authSlice = createSlice({
       .addCase(refreshToken.fulfilled, (state, action) => {
         state.isLoading = false;
         state.token = action.payload;
-        state.user = authService.getUserFromToken();
+        state.user = DUMMY_USER;
         state.isAuthenticated = true;
       })
       .addCase(refreshToken.rejected, (state) => {

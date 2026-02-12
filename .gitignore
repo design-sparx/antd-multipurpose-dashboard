@@ -118,4 +118,7 @@ fabric.properties
 storybook-static/
 
 .env
+
+.claude
+CLAUDE.md
 # End of https://www.toptal.com/developers/gitignore/api/webstorm+all

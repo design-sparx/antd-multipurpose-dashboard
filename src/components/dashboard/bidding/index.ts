@@ -1,5 +1,5 @@
-export { AuctionCarousel } from './AuctionCarousel/AuctionCarousel.tsx';
-export { CreatorsCard } from './CreatorsCard/CreatorsCard.tsx';
-export { TopItemsCard } from './TopItemsCard/TopItems.tsx';
-export { TransactionsCard } from './TransactionsCard/TransactionsCard.tsx';
-export { CategoriesCard } from './CategoriesCard/CategoriesCard.tsx';
+export { AuctionCarousel } from './auction-carousel/auction-carousel.tsx';
+export { CreatorsCard } from './creators-card/creators-card.tsx';
+export { TopItemsCard } from './top-items-card/top-items-card.tsx';
+export { TransactionsCard } from './transactions-card/transactions-card.tsx';
+export { CategoriesCard } from './categories-card/categories-card.tsx';

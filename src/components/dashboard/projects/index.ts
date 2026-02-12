@@ -1,3 +1,3 @@
-export { ClientsTable } from './ClientsTable/ClientsTable.tsx';
-export { ProjectsCountCard } from './ProjectsCountCard/ProjectsCountCard.tsx';
-export { ProjectsTable } from './ProjectsTables/ProjectsTable.tsx';
+export { ClientsTable } from './clients-table/clients-table.tsx';
+export { ProjectsCountCard } from './projects-count-card/projects-count-card.tsx';
+export { ProjectsTable } from './projects-tables/projects-table.tsx';

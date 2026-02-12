@@ -151,10 +151,12 @@ const logisticsApi = {
 
 // ==================== TRUCKS QUERY HOOKS ====================
 
-export const useTrucks = (options?: UseQueryOptions<any[]>) => {
+export const useTrucks = (
+  options?: Omit<UseQueryOptions<any[]>, 'queryKey' | 'queryFn'>
+) => {
   return useQuery({
     queryKey: truckKeys.all,
-    queryFn: logisticsApi.trucks.getAll,
+    queryFn: async () => (await logisticsApi.trucks.getAll()) as any[],
     ...options,
   });
 };
@@ -186,7 +188,9 @@ export const useUpdateTruck = () => {
       logisticsApi.trucks.update(id, data),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: truckKeys.all });
-      queryClient.invalidateQueries({ queryKey: truckKeys.detail(variables.id) });
+      queryClient.invalidateQueries({
+        queryKey: truckKeys.detail(variables.id),
+      });
     },
   });
 };
@@ -204,10 +208,12 @@ export const useDeleteTruck = () => {
 
 // ==================== DELIVERIES QUERY HOOKS ====================
 
-export const useDeliveries = (options?: UseQueryOptions<any[]>) => {
+export const useDeliveries = (
+  options?: Omit<UseQueryOptions<any[]>, 'queryKey' | 'queryFn'>
+) => {
   return useQuery({
     queryKey: deliveryKeys.all,
-    queryFn: logisticsApi.deliveries.getAll,
+    queryFn: async () => (await logisticsApi.deliveries.getAll()) as any[],
     ...options,
   });
 };
@@ -259,10 +265,13 @@ export const useDeleteDelivery = () => {
 
 // ==================== DELIVERY REQUESTS QUERY HOOKS ====================
 
-export const useDeliveryRequests = (options?: UseQueryOptions<any[]>) => {
+export const useDeliveryRequests = (
+  options?: Omit<UseQueryOptions<any[]>, 'queryKey' | 'queryFn'>
+) => {
   return useQuery({
     queryKey: deliveryRequestKeys.all,
-    queryFn: logisticsApi.deliveryRequests.getAll,
+    queryFn: async () =>
+      (await logisticsApi.deliveryRequests.getAll()) as any[],
     ...options,
   });
 };
@@ -314,10 +323,12 @@ export const useDeleteDeliveryRequest = () => {
 
 // ==================== DELIVERY ANALYTICS QUERY HOOKS ====================
 
-export const useDeliveryAnalytics = (options?: UseQueryOptions<any[]>) => {
+export const useDeliveryAnalytics = (
+  options?: Omit<UseQueryOptions<any[]>, 'queryKey' | 'queryFn'>
+) => {
   return useQuery({
     queryKey: deliveryAnalyticsKeys.all,
-    queryFn: logisticsApi.analytics.getAll,
+    queryFn: async () => (await logisticsApi.analytics.getAll()) as any[],
     ...options,
   });
 };

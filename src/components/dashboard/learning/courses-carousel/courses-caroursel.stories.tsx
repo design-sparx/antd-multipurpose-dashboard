@@ -1,0 +1,23 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import CoursesData from '@mocks/RecommendedCourses.json';
+
+import { CoursesCarousel } from './courses-carousel';
+
+const meta = {
+  title: 'Components/Dashboard/Learning/Courses/Carousel',
+  component: CoursesCarousel,
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof CoursesCarousel>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    data: CoursesData.slice(0, 5),
+    style: { width: 600 },
+  },
+};

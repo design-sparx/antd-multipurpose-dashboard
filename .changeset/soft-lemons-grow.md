@@ -1,5 +1,5 @@
 ---
-"antd-multi-dashboard": patch
+'antd-multi-dashboard': patch
 ---
 
 feat: updated theme support
