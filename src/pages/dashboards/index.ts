@@ -1,8 +1,8 @@
-export { DefaultDashboardPage } from './Default.tsx';
-export { ProjectsDashboardPage } from './Projects.tsx';
-export { EcommerceDashboardPage } from './Ecommerce.tsx';
-export { MarketingDashboardPage } from './Marketing.tsx';
-export { SocialDashboardPage } from './Social.tsx';
-export { BiddingDashboardPage } from './Bidding.tsx';
-export { LearningDashboardPage } from './Learning.tsx';
-export { LogisticsDashboardPage } from './Logistics.tsx';
+export { DefaultDashboardPage } from './default.tsx';
+export { ProjectsDashboardPage } from './projects.tsx';
+export { EcommerceDashboardPage } from './ecommerce.tsx';
+export { MarketingDashboardPage } from './marketing.tsx';
+export { SocialDashboardPage } from './social.tsx';
+export { BiddingDashboardPage } from './bidding.tsx';
+export { LearningDashboardPage } from './learning.tsx';
+export { LogisticsDashboardPage } from './logistics.tsx';

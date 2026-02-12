@@ -1,2 +1,2 @@
-export { NotificationsCard } from './NotificationsCard/NotificationsCard';
-export { NotificationsItem } from './NotificationsItem/NotificationsItem';
+export { NotificationsCard } from './notifications-card/notifications-card';
+export { NotificationsItem } from './notifications-item/notifications-item';

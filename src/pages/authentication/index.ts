@@ -1,6 +1,6 @@
-export { SignUpPage } from './SignUp.tsx';
-export { SignInPage } from './SignIn.tsx';
-export { WelcomePage } from './Welcome.tsx';
-export { VerifyEmailPage } from './VerifyEmail.tsx';
-export { PasswordResetPage } from './PasswordReset.tsx';
-export { AccountDeactivePage } from './AccountDeactivate.tsx';
+export { SignUpPage } from './sign-up.tsx';
+export { SignInPage } from './sign-in.tsx';
+export { WelcomePage } from './welcome.tsx';
+export { VerifyEmailPage } from './verify-email.tsx';
+export { PasswordResetPage } from './password-reset.tsx';
+export { AccountDeactivePage } from './account-deactivate.tsx';

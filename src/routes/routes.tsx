@@ -44,7 +44,7 @@ import {
   UserAccountLayout,
 } from '../layouts';
 import React, { ReactNode, useEffect } from 'react';
-import { AboutPage } from '../pages/About.tsx';
+import { AboutPage } from '../pages/about.tsx';
 import { ProtectedRoute } from '../utils/ProtectedRoute';
 
 // Custom scroll restoration function

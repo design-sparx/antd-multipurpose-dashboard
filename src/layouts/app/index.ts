@@ -1,1 +1,1 @@
-export { AppLayout } from './App.tsx';
+export { AppLayout } from './app.tsx';

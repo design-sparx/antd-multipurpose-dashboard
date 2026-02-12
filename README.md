@@ -63,6 +63,7 @@ This project features all the latest tools and good practices in web development
 ### Framework
 
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- [pnpm](https://pnpm.io/) - Fast, disk space efficient package manager
 
 #### Design System and Animations
 
@@ -83,10 +84,11 @@ This project features all the latest tools and good practices in web development
 
 #### Design Patterns
 
-- [ESLint](https://eslint.org/)
-- [Husky](https://github.com/typicode/husky)
-- [Lint staged](https://github.com/lint-staged/lint-staged)
-- [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/) - JavaScript linting
+- [Husky](https://github.com/typicode/husky) - Git hooks
+- [Lint staged](https://github.com/lint-staged/lint-staged) - Lint staged files
+- [Prettier](https://prettier.io/) - Code formatting
+- [Commitlint](https://commitlint.js.org/) - Conventional commit enforcement
 
 #### Components docs
 
@@ -97,10 +99,18 @@ This project features all the latest tools and good practices in web development
 - [moment](https://momentjs.com/)
 - [dayjs](https://day.js.org/)
 
+#### State Management
+
+- [Redux Toolkit](https://redux-toolkit.js.org/) - Modern Redux
+- [React Redux](https://react-redux.js.org/) - React bindings
+- [Redux Persist](https://github.com/rt2zz/redux-persist) - State persistence
+
 #### Utils
 
-- [lodash](https://lodash.com/)
-- [react-countup](https://github.com/glennreyes/react-countup)
+- [lodash](https://lodash.com/) - Utility library
+- [react-countup](https://github.com/glennreyes/react-countup) - Number animations
+- [axios](https://axios-http.com/) - HTTP client
+- [firebase](https://firebase.google.com/) - Backend services
 
 </details>
 
@@ -113,32 +123,68 @@ This project features all the latest tools and good practices in web development
 
 ### Build tools
 
-You'll need to install Node.js.
-Once Node.js is installed, run npm install to install the rest of the template's dependencies. All dependencies will be
+You'll need to install Node.js and pnpm.
+Once Node.js is installed, run pnpm install to install the rest of the template's dependencies. All dependencies will be
 downloaded to the node_modules directory.
 
 <details>
 <summary>View commands</summary>
 ```bash copy
-npm install
+pnpm install
 ```
 
 Now you're ready to modify the source files and generate new files. To automatically detect file changes and start a
-local webserver at http://localhost:3000, run the following command.
+local webserver at http://localhost:5173, run the following command.
 
 ```bash copy
-npm run dev
+pnpm dev
 ```
 
 Compile, optimize, minify and uglify all source files to build/
 
 ```bash copy
-npm run build
+pnpm build
+```
+
+### Development Commands
+
+```bash copy
+# Development server
+pnpm dev                      # Start dev server on http://localhost:5173
+
+# Code quality
+pnpm lint                     # Run ESLint (max 0 warnings)
+pnpm prettier:write           # Format all files
+
+# Storybook
+pnpm storybook               # Start Storybook on port 6006
+pnpm build-storybook         # Build Storybook for deployment
+
+# Production
+pnpm build                   # TypeScript compile + Vite build
+pnpm preview                 # Preview production build
 ```
 
 </details>
 
-# File structure
+## Testing
+
+This project uses Storybook for component testing and documentation:
+
+```bash copy
+# Start Storybook development server
+pnpm storybook
+
+# Build Storybook for deployment
+pnpm build-storybook
+```
+
+- **Component testing**: Interactive component development via Storybook
+- **Build validation**: TypeScript compilation ensures type safety
+- **Code quality**: ESLint static analysis and Prettier formatting
+- **Manual testing**: Development server for interactive testing
+
+## File structure
 
 Inside the zip file you'll find the following directories and files. Both compiled and minified distribution files, as
 Inside the zip file, you'll find the following directories and files. Both compiled and minified distribution files and
