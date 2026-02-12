@@ -1,14 +1,17 @@
 import type { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
+import { Provider } from 'react-redux';
+import { store } from '../src/redux/store';
 import { StylesContext } from '../src/context';
 import '../src/App.css';
 
 export const withStylesProvider = (Story: any) => {
   return (
-    <StylesContext.Provider value={null}>
-      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-      <Story />
-    </StylesContext.Provider>
+    <Provider store={store}>
+      <StylesContext.Provider value={null}>
+        <Story />
+      </StylesContext.Provider>
+    </Provider>
   );
 };
 
@@ -24,7 +27,7 @@ const preview: Preview = {
     docs: {
       theme: themes.normal,
     },
-    decorators: [],
+    decorators: [withStylesProvider],
   },
 };
 
