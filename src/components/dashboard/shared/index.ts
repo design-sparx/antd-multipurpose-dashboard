@@ -1,3 +1,3 @@
-export { RevenueCard } from './RevenueCard/RevenueCard.tsx';
-export { PostsCard } from './PostsCard/PostsCard.tsx';
-export { ProjectsCard } from './ProjectsCard/ProjectsCard.tsx';
+export { RevenueCard } from './revenue-card/revenue-card.tsx';
+export { PostsCard } from './posts-card/posts-card.tsx';
+export { ProjectsCard } from './projects-card/projects-card.tsx';

@@ -12,10 +12,8 @@ export const API_CONFIG = {
   API_VERSION: '/api/v1',
   DASHBOARD_PREFIX: '/antd',
 
-  // Default to mock data (can be overridden by environment variable)
-  USE_MOCK_DATA:
-    import.meta.env.VITE_USE_MOCK_DATA === 'true' ||
-    import.meta.env.VITE_USE_MOCK_DATA === undefined,
+  // Always use mock data (hardcoded to true)
+  USE_MOCK_DATA: true,
 };
 
 /**

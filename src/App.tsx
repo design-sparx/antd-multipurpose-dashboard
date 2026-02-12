@@ -6,7 +6,7 @@ import { StylesContext } from './context';
 import routes from './routes/routes.tsx';
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';
-import { PRIMARY_COLOR, getThemeColors } from './theme/colors';
+import { PRIMARY_COLOR } from './theme/colors';
 import './App.css';
 
 // Legacy COLOR export for backward compatibility

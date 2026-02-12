@@ -1,148 +1,142 @@
 /**
- * Authentication Service
- * Handles all authentication-related API calls
+ * Authentication Service - DUMMY IMPLEMENTATION
+ * Uses mock data only, no real API calls
  */
 
 import { ApiResponseOfObject } from '../../types/api/generic.ts';
 import {
   ChangePasswordRequestDto,
-  ForgotPasswordRequestDto,
   LoginDto,
   LoginResponse,
   RefreshTokenResponse,
   RegisterDto,
   ResetPasswordRequestDto,
 } from '../../types/api/auth.types';
-import { apiRequest } from '../api/apiClient';
-import { API_ENDPOINTS } from '../api/endpoints';
 import { tokenStorage } from './tokenStorage';
+
+// Dummy user data
+const DUMMY_USER = {
+  id: 'demo-user-123',
+  email: 'demo@example.com',
+  firstName: 'Demo',
+  lastName: 'User',
+  roles: ['admin'],
+  avatar: 'https://i.pravatar.cc/150?img=1',
+  createdAt: new Date().toISOString(),
+};
+
+const DUMMY_TOKEN = 'dummy-jwt-token-mock-mode';
 
 export const authService = {
   /**
-   * Login with email and password
+   * Login with email and password - DUMMY IMPLEMENTATION
+   * Accepts any credentials and returns dummy user
    */
   login: async (credentials: LoginDto): Promise<LoginResponse> => {
-    const response = await apiRequest.post<LoginResponse>(
-      API_ENDPOINTS.AUTH.LOGIN,
-      credentials
-    );
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    // Store tokens and user data (API returns "token" not "accessToken")
-    if (response.token) {
-      // Use the same token for both access and refresh since API doesn't provide separate refresh token
-      const refreshToken = response.refreshToken || response.token;
+    console.log('[Auth Service - MOCK] Dummy login with:', credentials.email);
 
-      if (import.meta.env.DEV) {
-        console.log('[Auth Service] Storing tokens:', {
-          hasToken: !!response.token,
-          tokenPreview: response.token.substring(0, 20) + '...',
-          user: response.user,
-        });
-      }
+    const response: LoginResponse = {
+      token: DUMMY_TOKEN,
+      refreshToken: DUMMY_TOKEN,
+      tokenType: 'Bearer',
+      expiresIn: 3600,
+      user: DUMMY_USER,
+    };
 
-      tokenStorage.setTokens(response.token, refreshToken);
-      tokenStorage.setUser(response.user);
+    // Store tokens and user data
+    tokenStorage.setTokens(response.token, response.refreshToken);
+    tokenStorage.setUser(response.user);
 
-      // Verify storage
-      if (import.meta.env.DEV) {
-        console.log('[Auth Service] Tokens stored. Verification:', {
-          storedToken: tokenStorage.getAccessToken()?.substring(0, 20) + '...',
-          isAuthenticated: tokenStorage.isAuthenticated(),
-        });
-      }
-    }
+    console.log('[Auth Service - MOCK] Login successful, user:', DUMMY_USER);
 
     return response;
   },
 
   /**
-   * Register a new user
+   * Register a new user - DUMMY IMPLEMENTATION
    */
   register: async (userData: RegisterDto): Promise<ApiResponseOfObject> => {
-    const response = await apiRequest.post<ApiResponseOfObject>(
-      API_ENDPOINTS.AUTH.REGISTER,
-      userData
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    console.log(
+      '[Auth Service - MOCK] Dummy registration with:',
+      userData.email
     );
-    return response;
+
+    return {
+      success: true,
+      message: 'Registration successful! You can now login.',
+      data: DUMMY_USER,
+    };
   },
 
   /**
-   * Logout current user
+   * Logout current user - DUMMY IMPLEMENTATION
    */
   logout: async (): Promise<void> => {
-    const refreshToken = tokenStorage.getRefreshToken();
-
-    try {
-      if (refreshToken) {
-        await apiRequest.post(API_ENDPOINTS.AUTH.LOGOUT, { refreshToken });
-      }
-    } catch (error) {
-      console.error('Logout API error:', error);
-    } finally {
-      // Clear local storage regardless of API response
-      tokenStorage.clearAuth();
-    }
+    console.log('[Auth Service - MOCK] Dummy logout');
+    // Clear local storage
+    tokenStorage.clearAuth();
   },
 
   /**
-   * Refresh access token
+   * Refresh access token - DUMMY IMPLEMENTATION
    */
   refreshToken: async (): Promise<RefreshTokenResponse> => {
-    const refreshToken = tokenStorage.getRefreshToken();
+    console.log('[Auth Service - MOCK] Dummy token refresh');
 
-    if (!refreshToken) {
-      throw new Error('No refresh token available');
-    }
-
-    const response = await apiRequest.post<RefreshTokenResponse>(
-      API_ENDPOINTS.AUTH.REFRESH_TOKEN,
-      { refreshToken }
-    );
-
-    // Update tokens
-    if (response.accessToken && response.refreshToken) {
-      tokenStorage.setTokens(response.accessToken, response.refreshToken);
-    }
-
-    return response;
+    return {
+      accessToken: DUMMY_TOKEN,
+      refreshToken: DUMMY_TOKEN,
+      expiresIn: 3600,
+    };
   },
 
   /**
-   * Request password reset email
+   * Request password reset email - DUMMY IMPLEMENTATION
    */
   forgotPassword: async (email: string): Promise<ApiResponseOfObject> => {
-    const request: ForgotPasswordRequestDto = { email };
-    const response = await apiRequest.post<ApiResponseOfObject>(
-      API_ENDPOINTS.AUTH.FORGOT_PASSWORD,
-      request
-    );
-    return response;
+    console.log('[Auth Service - MOCK] Dummy forgot password for:', email);
+
+    return {
+      success: true,
+      message: 'Password reset email sent (mock mode)',
+      data: null,
+    };
   },
 
   /**
-   * Reset password with token
+   * Reset password with token - DUMMY IMPLEMENTATION
    */
   resetPassword: async (
-    data: ResetPasswordRequestDto
+    _data: ResetPasswordRequestDto
   ): Promise<ApiResponseOfObject> => {
-    const response = await apiRequest.post<ApiResponseOfObject>(
-      API_ENDPOINTS.AUTH.RESET_PASSWORD,
-      data
-    );
-    return response;
+    console.log('[Auth Service - MOCK] Dummy password reset');
+
+    return {
+      success: true,
+      message: 'Password reset successful (mock mode)',
+      data: null,
+    };
   },
 
   /**
-   * Change password for authenticated user
+   * Change password for authenticated user - DUMMY IMPLEMENTATION
    */
   changePassword: async (
-    data: ChangePasswordRequestDto
+    _data: ChangePasswordRequestDto
   ): Promise<ApiResponseOfObject> => {
-    const response = await apiRequest.post<ApiResponseOfObject>(
-      API_ENDPOINTS.PROFILE.CHANGE_PASSWORD,
-      data
-    );
-    return response;
+    console.log('[Auth Service - MOCK] Dummy password change');
+
+    return {
+      success: true,
+      message: 'Password changed successfully (mock mode)',
+      data: null,
+    };
   },
 
   /**

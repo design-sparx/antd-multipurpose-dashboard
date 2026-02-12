@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import themeReducer, { ThemeState } from './theme/themeSlice';
-import dataModeReducer, { DataModeState } from './dataMode/dataModeSlice';
+import dataModeReducer, { DataModeState } from './data-mode/dataModeSlice';
 import authReducer, { AuthState } from './auth/authSlice';
 import { persistReducer, persistStore, PersistConfig } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';

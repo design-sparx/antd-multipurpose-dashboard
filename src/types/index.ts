@@ -45,6 +45,7 @@ import type {
   TopSeller,
   RecentOrder,
 } from './ecommerce';
+import type { SocialMedia } from './socialMedia';
 
 export type {
   Projects,
@@ -87,4 +88,5 @@ export type {
   TopCategory,
   TopSeller,
   RecentOrder,
+  SocialMedia,
 };

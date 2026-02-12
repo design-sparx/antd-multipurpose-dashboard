@@ -1,1 +1,1 @@
-export { CustomerReviewsCard } from './CustomerReviewsCard/CustomerReviewsCard.tsx';
+export { CustomerReviewsCard } from './customer-reviews-card/customer-reviews-card.tsx';
