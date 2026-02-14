@@ -68,7 +68,8 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 
     // If authenticated, logout from API
     if (isAuthenticated && user?.email) {
-      await dispatch(logoutUser(user.email));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await dispatch(logoutUser(user.email) as any);
     }
 
     // Switch back to mock data mode
