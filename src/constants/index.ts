@@ -57,6 +57,7 @@ const USER_PROFILE_ITEMS = [
   { title: 'actions', path: PATH_USER_PROFILE.action },
   { title: 'help', path: PATH_USER_PROFILE.help },
   { title: 'feedback', path: PATH_USER_PROFILE.feedback },
+  { title: 'settings', path: PATH_USER_PROFILE.settings },
 ];
 
 const AUTHENTICATION_ITEMS = [

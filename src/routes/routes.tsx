@@ -20,6 +20,7 @@ import {
   MarketingDashboardPage,
   PasswordResetPage,
   ProjectsDashboardPage,
+  SettingsPage,
   SignInPage,
   SignUpPage,
   SitemapPage,
@@ -219,6 +220,10 @@ const router = createBrowserRouter([
         path: 'feedback',
         element: <UserProfileFeedbackPage />,
       },
+      {
+        path: 'settings',
+        element: <SettingsPage />,
+      },
     ],
   },
   {
@@ -300,4 +305,5 @@ const router = createBrowserRouter([
   },
 ]);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default router;

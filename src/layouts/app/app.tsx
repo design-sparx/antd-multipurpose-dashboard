@@ -9,7 +9,6 @@ import {
   message,
   theme,
   Tooltip,
-  Switch,
 } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactNode, useEffect, useRef, useState } from 'react';
@@ -22,8 +21,6 @@ import {
   QuestionOutlined,
   SettingOutlined,
   UserOutlined,
-  MoonOutlined,
-  SunOutlined,
 } from '@ant-design/icons';
 import {
   CSSTransition,
@@ -35,9 +32,8 @@ import SideNav from './side-nav.tsx';
 import HeaderNav from './header-nav.tsx';
 import FooterNav from './footer-nav.tsx';
 import { NProgress, LoginModal } from '../../components';
-import { PATH_LANDING } from '../../constants';
+import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../../redux/theme/themeSlice.ts';
 import { logoutUser } from '../../redux/auth/authSlice';
 import { enableMockData } from '../../redux/data-mode/dataModeSlice';
 import { RootState } from '../../redux/store.ts';
@@ -60,7 +56,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const nodeRef = useRef(null);
   const floatBtnRef = useRef(null);
   const dispatch = useDispatch();
-  const { mytheme } = useSelector((state: RootState) => state.theme);
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.auth
   );
@@ -73,7 +68,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 
     // If authenticated, logout from API
     if (isAuthenticated && user?.email) {
-      await dispatch(logoutUser(user.email) as any);
+      await dispatch(logoutUser(user.email));
     }
 
     // Switch back to mock data mode
@@ -94,6 +89,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       key: 'user-settings-link',
       label: 'settings',
       icon: <SettingOutlined />,
+      onClick: () => navigate(PATH_USER_PROFILE.settings),
     },
     {
       key: 'user-help-link',
@@ -205,15 +201,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               </Tooltip>
               <Tooltip title="Messages">
                 <Button icon={<MessageOutlined />} type="text" size="large" />
-              </Tooltip>
-              <Tooltip title="Theme">
-                <Switch
-                  className=" hidden sm:inline py-1"
-                  checkedChildren={<MoonOutlined />}
-                  unCheckedChildren={<SunOutlined />}
-                  checked={mytheme === 'dark'}
-                  onClick={() => dispatch(toggleTheme())}
-                />
               </Tooltip>
               <Dropdown menu={{ items }} trigger={['click']}>
                 <Flex>
