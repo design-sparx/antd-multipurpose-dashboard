@@ -23,13 +23,10 @@ const ROOTS_INBOX = '/inbox';
 const ROOTS_CALENDAR = '/calendar';
 const ROOTS_ERRORS = '/errors';
 const ROOTS_ABOUT = '/about';
+const ROOTS_GALLERY = '/gallery';
 
 export const PATH_LANDING = {
   root: ROOTS_LANDING,
-  why: '/why-us',
-  pricing: '/pricing',
-  about: '/about',
-  contact: '/contact',
 };
 
 export const PATH_DASHBOARD = {
@@ -123,6 +120,7 @@ export const PATH_AUTH = {
   passwordConfirm: path(ROOTS_AUTH, '/password-confirmation'),
   welcome: path(ROOTS_AUTH, '/welcome'),
   verifyEmail: path(ROOTS_AUTH, '/verify-email'),
+  otpAuth: path(ROOTS_AUTH, '/otp-auth'),
   accountDelete: path(ROOTS_AUTH, '/account-delete'),
 };
 
@@ -227,4 +225,8 @@ export const PATH_SOCIALS = {
 
 export const PATH_ABOUT = {
   root: ROOTS_ABOUT,
+};
+
+export const PATH_GALLERY = {
+  root: ROOTS_GALLERY,
 };

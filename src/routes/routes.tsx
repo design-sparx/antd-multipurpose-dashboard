@@ -16,8 +16,10 @@ import {
   Error500Page,
   Error503Page,
   ErrorPage,
+  GalleryPage,
   HomePage,
   MarketingDashboardPage,
+  OtpAuthPage,
   PasswordResetPage,
   ProjectsDashboardPage,
   SettingsPage,
@@ -260,6 +262,10 @@ const router = createBrowserRouter([
         element: <PasswordResetPage />,
       },
       {
+        path: 'otp-auth',
+        element: <OtpAuthPage />,
+      },
+      {
         path: 'account-delete',
         element: <AccountDeactivePage />,
       },
@@ -300,6 +306,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <AboutPage />,
+      },
+    ],
+  },
+  {
+    path: '/gallery',
+    element: <PageWrapper children={<DashboardLayout />} />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <GalleryPage />,
       },
     ],
   },

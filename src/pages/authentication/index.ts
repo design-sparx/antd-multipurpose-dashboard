@@ -4,3 +4,4 @@ export { WelcomePage } from './welcome.tsx';
 export { VerifyEmailPage } from './verify-email.tsx';
 export { PasswordResetPage } from './password-reset.tsx';
 export { AccountDeactivePage } from './account-deactivate.tsx';
+export { default as OtpAuthPage } from './otp-auth.tsx';

@@ -26,6 +26,7 @@ import {
   PATH_LANDING,
   PATH_SITEMAP,
   PATH_USER_PROFILE,
+  PATH_GALLERY,
 } from '../../constants';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -157,6 +158,11 @@ const items: MenuProps['items'] = [
       null
     ),
     getItem(
+      <Link to={PATH_AUTH.otpAuth}>OTP Verification</Link>,
+      'auth-otp',
+      null
+    ),
+    getItem(
       <Link to={PATH_AUTH.passwordReset}>Password reset</Link>,
       'auth-password-reset',
       null
@@ -176,6 +182,12 @@ const items: MenuProps['items'] = [
     getItem(<Link to={PATH_ERROR.error500}>500</Link>, '500', null),
     getItem(<Link to={PATH_ERROR.error503}>503</Link>, '503', null),
   ]),
+
+  getItem(
+    <Link to={PATH_GALLERY.root}>Gallery</Link>,
+    'gallery',
+    <AppstoreAddOutlined />
+  ),
 
   getItem('Help', 'help', null, [], 'group'),
   getItem(

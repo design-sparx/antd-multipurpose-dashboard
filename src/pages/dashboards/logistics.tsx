@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd';
 import {
-  BlockOutlined,
+  StopOutlined,
   CarOutlined,
   GroupOutlined,
   HomeOutlined,
@@ -30,7 +30,7 @@ import {
 
 const STATS = [
   {
-    icon: BlockOutlined,
+    icon: StopOutlined,
     value: 1245,
     title: 'new packages',
     diff: 16,
