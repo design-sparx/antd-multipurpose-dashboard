@@ -31,6 +31,33 @@
   </a>
 </p>
 
+## Announcements
+
+### Ant Design v5 Branch (Legacy)
+
+> **Note**: This branch contains the **Ant Design v5** version of the project. This branch will receive security updates but no new features.
+
+#### For New Projects
+
+For new projects, please use the **`main`** branch which contains **Ant Design v6.3.0** with the latest features:
+
+- Masonry Component for galleries
+- InputNumber Spinner for enhanced number inputs
+- Semantic Structure APIs for better customization
+- And more v6 improvements
+
+```bash
+# Clone the v6 (main) branch
+git clone https://github.com/design-sparx/antd-multipurpose-dashboard.git
+# Then checkout main (or just use main which is default)
+```
+
+#### Changelog from v5 to v6
+
+If you're migrating from v5 to v6, see the [migration guide](https://ant.design/docs/react/migration-v6/) on the Ant Design website.
+
+---
+
 - [Live preview](https://antd-multipurpose-dashboard.netlify.app/)
 - [Components preview](https://6546507b657a74164abf2db6-iqmnggdrcl.chromatic.com/)
 - [Medium](https://medium.com/@kelvink96/designing-modern-dashboards-a-journey-through-react-vite-ant-design-and-storybook-2dac23e1e49a)
@@ -38,7 +65,7 @@
 
 ## Introduction
 
-A professional Admin & Dashboard template based on [Ant design 5](https://ant.design/) that comes with hundreds of UI
+A professional Admin & Dashboard template based on [Ant Design 5](https://ant.design/) that comes with hundreds of UI
 components, forms, tables, charts, pages and icons. This template is built using [React](https://react.dev/),
 [Vite](https://vitejs.dev/), [Ant Design Charts](https://charts.ant.design/),
 [Ant Design Icons](https://ant.design/components/icon) and [Storybook](https://storybook.js.org/).
