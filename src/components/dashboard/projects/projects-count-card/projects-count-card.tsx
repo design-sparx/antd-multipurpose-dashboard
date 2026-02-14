@@ -36,11 +36,13 @@ export const ProjectsCountCard = ({ ...others }: Props) => {
   return (
     <Card
       title="Project stats"
-      bodyStyle={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '80%',
+      styles={{
+        body: {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '80%',
+        },
       }}
       className="card"
       style={{

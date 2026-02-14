@@ -25,6 +25,7 @@ import {
   PATH_SITEMAP,
   PATH_SOCIALS,
   PATH_ABOUT,
+  PATH_GALLERY,
 } from './routes.ts';
 import { API_BASE_URL, API_ENDPOINTS } from './api.ts';
 
@@ -65,6 +66,7 @@ const AUTHENTICATION_ITEMS = [
   { title: 'sign up', path: PATH_AUTH.signup },
   { title: 'welcome', path: PATH_AUTH.welcome },
   { title: 'verify email', path: PATH_AUTH.verifyEmail },
+  { title: 'OTP verification', path: PATH_AUTH.otpAuth },
   { title: 'password reset', path: PATH_AUTH.passwordReset },
   { title: 'account deleted', path: PATH_AUTH.accountDelete },
 ];
@@ -111,4 +113,5 @@ export {
   PATH_ABOUT,
   API_BASE_URL,
   API_ENDPOINTS,
+  PATH_GALLERY,
 };

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BlockOutlined } from '@ant-design/icons';
+import { StopOutlined } from '@ant-design/icons';
 
 import { StatsCard } from './stats-card';
 
 const STATS = {
-  icon: BlockOutlined,
+  icon: StopOutlined,
   value: 1245,
   title: 'new packages',
   diff: 16,

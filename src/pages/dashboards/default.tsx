@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {
   Card,
   GetStartedCard,
@@ -16,12 +16,20 @@ import {
   CardProps,
   Carousel,
   CarouselProps,
+  Checkbox,
   Col,
+  DatePicker,
+  Drawer,
   Flex,
   Row,
+  Slider,
   Typography,
 } from 'antd';
-import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
+import {
+  HomeOutlined,
+  PieChartOutlined,
+  FilterOutlined,
+} from '@ant-design/icons';
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -152,8 +160,11 @@ const CARD_PROPS: CardProps = {
 export const DefaultDashboardPage = () => {
   console.log('[DefaultDashboardPage] Rendering');
   const stylesContext = useStylesContext();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sliderRef1 = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sliderRef2 = useRef<any>(null);
+  const [filterOpen, setFilterOpen] = useState(false);
 
   // Fetch tasks data with proper typing
   const {
@@ -186,6 +197,15 @@ export const DefaultDashboardPage = () => {
       </Helmet>
       <PageHeader
         title="default dashboard"
+        extra={[
+          <Button
+            key="filter"
+            icon={<FilterOutlined />}
+            onClick={() => setFilterOpen(true)}
+          >
+            Filters
+          </Button>,
+        ]}
         breadcrumbs={[
           {
             title: (
@@ -270,11 +290,11 @@ export const DefaultDashboardPage = () => {
               <Card
                 title="Ongoing projects"
                 extra={<Button>View all</Button>}
-                bordered={false}
+                variant="borderless"
               >
                 {projectsError ? (
                   <Alert
-                    message="Error"
+                    title="Error"
                     description={projectsError.toString()}
                     type="error"
                     showIcon
@@ -309,11 +329,11 @@ export const DefaultDashboardPage = () => {
               <Card
                 title="Queued projects"
                 extra={<Button>View all</Button>}
-                bordered={false}
+                variant="borderless"
               >
                 {projectsError ? (
                   <Alert
-                    message="Error"
+                    title="Error"
                     description={projectsError.toString()}
                     type="error"
                     showIcon
@@ -353,6 +373,43 @@ export const DefaultDashboardPage = () => {
           </Row>
         </Col>
       </Row>
+      <Drawer
+        title="Dashboard Filters"
+        placement="right"
+        onClose={() => setFilterOpen(false)}
+        open={filterOpen}
+        width={320}
+        styles={{
+          body: { padding: 16 },
+        }}
+      >
+        <Flex vertical gap="large">
+          <Flex vertical gap="small">
+            <Typography.Text strong>Date Range</Typography.Text>
+            <DatePicker.RangePicker style={{ width: '100%' }} />
+          </Flex>
+
+          <Flex vertical gap="small">
+            <Typography.Text strong>Project Status</Typography.Text>
+            <Checkbox.Group>
+              <Flex vertical>
+                <Checkbox value="in progress">In Progress</Checkbox>
+                <Checkbox value="completed">Completed</Checkbox>
+                <Checkbox value="on hold">On Hold</Checkbox>
+              </Flex>
+            </Checkbox.Group>
+          </Flex>
+
+          <Flex vertical gap="small">
+            <Typography.Text strong>Task Priority</Typography.Text>
+            <Slider range defaultValue={[20, 50]} />
+          </Flex>
+
+          <Button type="primary" block onClick={() => setFilterOpen(false)}>
+            Apply Filters
+          </Button>
+        </Flex>
+      </Drawer>
     </div>
   );
 };

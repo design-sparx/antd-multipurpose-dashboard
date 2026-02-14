@@ -176,7 +176,17 @@ export const GuestLayout = () => {
           Sparx
         </Footer>
       </Layout>
-      <Drawer title="Menu" placement="left" onClose={onClose} open={open}>
+      <Drawer
+        title="Menu"
+        placement="left"
+        onClose={onClose}
+        open={open}
+        width={300}
+        styles={{
+          body: { padding: 0 },
+          header: { padding: '12px 16px' },
+        }}
+      >
         <>
           <Flex gap="small" vertical>
             <Link to={PATH_DOCS.productRoadmap} target="_blank">
