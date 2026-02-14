@@ -82,6 +82,7 @@ export const PATH_USER_PROFILE = {
   action: path(ROOTS_PROFILE, '/actions'),
   help: path(ROOTS_PROFILE, '/help'),
   feedback: path(ROOTS_PROFILE, '/feedback'),
+  settings: path(ROOTS_PROFILE, '/settings'),
 };
 
 export const PATH_SOCIAL = {
