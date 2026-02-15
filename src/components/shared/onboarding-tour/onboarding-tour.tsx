@@ -3,7 +3,7 @@ import { FloatButton, Tooltip, Tour, TourProps } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
 type OnboardingStep = {
-  target: () => HTMLElement | null;
+  target: HTMLElement | (() => HTMLElement | null) | null;
   title?: React.ReactNode;
   description?: React.ReactNode;
 };
@@ -30,7 +30,7 @@ export function OnboardingTour({
   const tourProps: TourProps = {
     open,
     current,
-    steps,
+    steps: steps as TourProps['steps'],
     onChange: (cur) => setCurrent(cur),
     onClose: () => {
       setOpen(false);
@@ -72,7 +72,7 @@ export function useOnboardingTour(
   const tourProps: TourProps = {
     open,
     current,
-    steps,
+    steps: steps as TourProps['steps'],
     onChange: (cur) => setCurrent(cur),
     onClose: () => {
       setOpen(false);

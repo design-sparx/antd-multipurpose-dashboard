@@ -36,6 +36,7 @@ import {
   NProgress,
   LoginModal,
   OnboardingTour,
+  Accessibility,
 } from '../../components';
 import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
@@ -224,6 +225,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <>
       <NProgress isAnimating={isLoading} key={location.key} />
+      <Accessibility />
       <Layout
         style={{
           minHeight: '100vh',
@@ -316,6 +318,8 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             </Flex>
           </HeaderNav>
           <Content
+            id="main-content"
+            tabIndex={-1}
             style={{
               margin: `0 0 0 ${collapsed ? 0 : '200px'}`,
               // background: '#ebedf0',
@@ -365,25 +369,31 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       <OnboardingTour
         steps={[
           {
-            target: () => document.querySelector('.ant-layout-sider'),
+            target: () =>
+              document.querySelector('.ant-layout-sider') as HTMLElement | null,
             title: 'Navigation Sidebar',
             description:
               'Access all dashboards, profiles, and settings from this sidebar. Click the hamburger menu to collapse or expand.',
           },
           {
-            target: () => document.querySelector('.ant-input-search'),
+            target: () =>
+              document.querySelector('.ant-input-search') as HTMLElement | null,
             title: 'Quick Search',
             description:
               'Search for pages, users, or content. Or press Cmd+K for the command palette.',
           },
           {
-            target: () => document.querySelector('.ant-table'),
+            target: () =>
+              document.querySelector('.ant-table') as HTMLElement | null,
             title: 'Data Tables',
             description:
               'Sort, filter, and paginate data. Use the export button to download as CSV or JSON.',
           },
           {
-            target: () => document.querySelector('.ant-layout-header'),
+            target: () =>
+              document.querySelector(
+                '.ant-layout-header'
+              ) as HTMLElement | null,
             title: 'Header Actions',
             description:
               'Access notifications, messages, and your profile settings from here.',

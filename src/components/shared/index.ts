@@ -1,3 +1,4 @@
+export { Accessibility, VisuallyHidden } from './accessibility/accessibility';
 export { BackBtn } from './back-btn/back-btn';
 export { Card } from './card/card';
 export { CommandPalette } from './command-palette/command-palette';
