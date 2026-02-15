@@ -3,10 +3,12 @@ import { DownloadOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { exportToCSV, exportToJSON } from '../../../utils';
 
+type ColumnDef = { title: string; dataIndex: string };
+
 type ExportButtonProps = {
   data: unknown[];
   filename: string;
-  columns?: { title: string; dataIndex: string }[];
+  columns?: ColumnDef[];
   disabled?: boolean;
 };
 
@@ -20,13 +22,11 @@ export function ExportButton({
     {
       key: 'csv',
       label: 'Export as CSV',
-      onClick: () =>
-        exportToCSV(
-          data as Record<string, unknown>[],
-          filename,
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          columns as any
-        ),
+      onClick: () => {
+        const csvData = data as Record<string, unknown>[];
+        const csvCols = columns as ColumnDef[] | undefined;
+        exportToCSV(csvData, filename, csvCols);
+      },
     },
     {
       key: 'json',

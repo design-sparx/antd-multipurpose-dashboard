@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { Alert, Button, CardProps, Table, TableColumnsType } from 'antd';
+import { Alert, Button, CardProps, TableColumnsType } from 'antd';
 import { AuctionCreator } from '../../../../types';
-import { Card, UserAvatar } from '../../../index';
+import { Card, UserAvatar, AdvancedTable } from '../../../index';
 import { UserAddOutlined } from '@ant-design/icons';
 import './styles.css';
 
@@ -57,12 +57,12 @@ export const CreatorsCard = ({ data, loading, error, ...others }: Props) => {
       className="card"
       {...others}
     >
-      <Table
-        dataSource={data}
+      <AdvancedTable
+        dataSource={data || []}
         columns={COLUMNS}
-        size="middle"
         loading={loading}
-        className="overflow-scroll"
+        rowKey="id"
+        exportable
       />
     </Card>
   );

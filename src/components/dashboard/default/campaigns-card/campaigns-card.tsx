@@ -2,11 +2,9 @@ import {
   Alert,
   Badge,
   Button,
-  Card,
   CardProps,
   Space,
   Spin,
-  Table,
   Tag,
   TagProps,
   theme,
@@ -16,11 +14,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { CalendarOutlined, PlusOutlined } from '@ant-design/icons';
 import { blue, green, orange } from '@ant-design/colors';
 import CampaignsData from '@mocks/Campaigns.json';
-import { Loader } from '../../../index.ts';
-
-// socials - Facebook, Instagram, Twitter, LinkedIn
-// target audience - men, women, young adults, parents
-// statuses - active, inactive, pending, completed, cancelled
+import { Card, AdvancedTable, Loader } from '../../../index.ts';
 
 enum Status {
   Pending = 'pending',
@@ -30,51 +24,62 @@ enum Status {
   Completed = 'completed',
 }
 
-const DATA_SOURCE = CampaignsData;
+type Campaign = {
+  campaign_id: string;
+  campaign_name: string;
+  start_date: string;
+  end_date: string;
+  target_audience: string;
+  budget: string;
+  campaign_objective: string;
+  platform: string;
+  impressions: number;
+  clicks: number;
+  status: string;
+};
+
+const DATA_SOURCE: Campaign[] = CampaignsData;
 
 const COLUMNS = [
   {
     title: 'Name',
     dataIndex: 'campaign_name',
     key: 'name',
-    render: (_: any) => <span className="text-capitalize">{_}</span>,
+    sorter: true,
+    render: (_: string) => <span className="text-capitalize">{_}</span>,
   },
   {
     title: 'Audience',
     dataIndex: 'target_audience',
     key: 'audience',
-    render: (_: any) => <span className="text-capitalize">{_}</span>,
+    sorter: true,
+    render: (_: string) => <span className="text-capitalize">{_}</span>,
   },
   {
     title: 'Objective',
     dataIndex: 'campaign_objective',
     key: 'objective',
-    render: (_: any) => <span className="text-capitalize">{_}</span>,
+    sorter: true,
+    render: (_: string) => <span className="text-capitalize">{_}</span>,
   },
   {
     title: 'Platform',
     dataIndex: 'platform',
     key: 'platform',
+    sorter: true,
   },
   {
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
-    render: (_: any) => {
+    sorter: true,
+    render: (_: string) => {
       let color: TagProps['color'];
-
-      if (_ === 'pending') {
-        color = 'orange';
-      } else if (_ === 'active') {
-        color = 'blue';
-      } else if (_ === 'completed') {
-        color = 'green';
-      } else if (_ === 'cancelled') {
-        color = 'red';
-      } else {
-        color = 'default';
-      }
-
+      if (_ === 'pending') color = 'orange';
+      else if (_ === 'active') color = 'blue';
+      else if (_ === 'completed') color = 'green';
+      else if (_ === 'cancelled') color = 'red';
+      else color = 'default';
       return (
         <Tag color={color} className="text-capitalize">
           {_}
@@ -85,8 +90,9 @@ const COLUMNS = [
   {
     title: 'Start - End Date',
     dataIndex: 'start_date',
-    key: 'status',
-    render: (_: any, { start_date, end_date }: any) => (
+    key: 'dates',
+    sorter: true,
+    render: (_: string, { start_date, end_date }: Campaign) => (
       <Space>
         <CalendarOutlined />
         <Typography.Text>{start_date}</Typography.Text>-
@@ -96,14 +102,16 @@ const COLUMNS = [
   },
 ];
 
-type Props = { data?: any; loading?: boolean; error?: ReactNode } & CardProps;
+type Props = {
+  data?: Campaign[];
+  loading?: boolean;
+  error?: ReactNode;
+} & CardProps;
 
 export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
-  const {
-    token: { colorPrimary },
-  } = theme.useToken();
+  const { token } = theme.useToken();
   const [activeTabKey, setActiveTabKey] = useState<string>('allCampaigns');
-  const [campaignsData, setCampaignsData] = useState<any>([]);
+  const [campaignsData, setCampaignsData] = useState<Campaign[]>([]);
 
   const TAB_LIST = [
     {
@@ -114,7 +122,7 @@ export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
           {loading ? (
             <Spin size="small" />
           ) : (
-            <Badge color={colorPrimary} count={DATA_SOURCE.length} />
+            <Badge color={token.colorPrimary} count={DATA_SOURCE.length} />
           )}
         </Space>
       ),
@@ -130,8 +138,7 @@ export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
             <Badge
               color={orange[5]}
               count={
-                DATA_SOURCE.filter((_: any) => _.status === Status.Pending)
-                  .length
+                DATA_SOURCE.filter((c) => c.status === Status.Pending).length
               }
             />
           )}
@@ -149,8 +156,7 @@ export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
             <Badge
               color={blue[5]}
               count={
-                DATA_SOURCE.filter((_: any) => _.status === Status.Active)
-                  .length
+                DATA_SOURCE.filter((c) => c.status === Status.Active).length
               }
             />
           )}
@@ -168,8 +174,7 @@ export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
             <Badge
               color={green[6]}
               count={
-                DATA_SOURCE.filter((_: any) => _.status === Status.Pending)
-                  .length
+                DATA_SOURCE.filter((c) => c.status === Status.Pending).length
               }
             />
           )}
@@ -178,14 +183,10 @@ export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
     },
   ];
 
-  const onTabChange = (key: string) => {
-    setActiveTabKey(key);
-  };
-
   useEffect(() => {
-    const dd = data.length > 0 ? data : DATA_SOURCE;
+    const dd = data?.length > 0 ? data : DATA_SOURCE;
     if (activeTabKey !== 'allCampaigns') {
-      setCampaignsData(dd.filter((_: any) => _.status === activeTabKey));
+      setCampaignsData(dd.filter((c: Campaign) => c.status === activeTabKey));
     } else {
       setCampaignsData(dd);
     }
@@ -201,7 +202,7 @@ export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
           Create campaign
         </Button>
       }
-      onTabChange={onTabChange}
+      onTabChange={(key) => setActiveTabKey(key)}
       {...others}
     >
       {error ? (
@@ -214,7 +215,12 @@ export const CampaignsCard = ({ error, data, loading, ...others }: Props) => {
       ) : loading ? (
         <Loader />
       ) : (
-        <Table columns={COLUMNS} dataSource={campaignsData} />
+        <AdvancedTable
+          columns={COLUMNS}
+          dataSource={campaignsData}
+          rowKey="id"
+          exportable
+        />
       )}
     </Card>
   );

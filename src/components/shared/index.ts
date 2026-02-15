@@ -1,4 +1,5 @@
 export { Accessibility, VisuallyHidden } from './accessibility/accessibility';
+export { AdvancedTable } from './advanced-table/advanced-table';
 export { BackBtn } from './back-btn/back-btn';
 export { Card } from './card/card';
 export { CommandPalette } from './command-palette/command-palette';

@@ -1,8 +1,8 @@
-import { Alert, CardProps, Space, Table, Typography } from 'antd';
+import { Alert, CardProps, Space, Typography } from 'antd';
 import { LearningCourses } from '../../../../types';
 import { SwapRightOutlined } from '@ant-design/icons';
 import { ColumnsType } from 'antd/es/table';
-import { Card, UserAvatar } from '../../../index.ts';
+import { Card, UserAvatar, AdvancedTable } from '../../../index.ts';
 import { ReactNode } from 'react';
 
 const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
@@ -10,19 +10,21 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     title: 'Courses Title',
     dataIndex: 'name',
     key: 'courses_title',
-    render: (_: any) => <span className="text-capitalize">{_}</span>,
+    render: (value: string) => <span className="text-capitalize">{value}</span>,
   },
   {
     title: 'Lessons Completed',
     dataIndex: 'current_lessons',
     key: 'current_lessons',
-    render: (_: any, { current_lessons, total_lessons }: any) => (
+    render: (_: unknown, record: LearningCourses) => (
       <Space size={2} style={{ width: 120 }}>
-        <Typography.Text type="success">{current_lessons}</Typography.Text>
+        <Typography.Text type="success">
+          {record.current_lessons}
+        </Typography.Text>
         <Typography.Text>/</Typography.Text>
-        <Typography.Text>{total_lessons}</Typography.Text>
+        <Typography.Text>{record.total_lessons}</Typography.Text>
         <Typography.Text strong>
-          ({Number(current_lessons / total_lessons).toFixed(2)}%)
+          ({Number(record.current_lessons / record.total_lessons).toFixed(2)}%)
         </Typography.Text>
       </Space>
     ),
@@ -31,7 +33,7 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     title: 'Duration (Start-End)',
     dataIndex: 'start_date',
     key: 'start_date',
-    render: (_: any, { start_date, end_date }: any) => (
+    render: (_: string, { start_date, end_date }: LearningCourses) => (
       <Space size="small" style={{ width: 200 }}>
         <Typography.Text>{start_date}</Typography.Text>
         <SwapRightOutlined />
@@ -43,7 +45,10 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     title: 'Instructor',
     dataIndex: 'instructor_name',
     key: 'instructor_name',
-    render: (_: any, { instructor_name, favorite_color }: any) => (
+    render: (
+      _: string,
+      { instructor_name, favorite_color }: LearningCourses
+    ) => (
       <UserAvatar
         fullName={instructor_name}
         color={favorite_color}
@@ -75,11 +80,12 @@ export const CoursesCard = ({ data, loading, error, ...others }: Props) => {
           showIcon
         />
       ) : (
-        <Table
-          dataSource={data}
+        <AdvancedTable
+          dataSource={data || []}
           columns={COURSES_COLUMNS}
           loading={loading}
-          className="overflow-scroll"
+          rowKey="id"
+          exportable
         />
       )}
     </Card>

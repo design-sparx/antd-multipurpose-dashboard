@@ -1,22 +1,23 @@
-import { Alert, CardProps, Flex, Image, Table, Typography } from 'antd';
+import { Alert, CardProps, Flex, Image, Typography } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 import { AuctionSales } from '../../../../types';
-import { Card } from '../../../index.ts';
+import { Card, AdvancedTable } from '../../../index.ts';
 import { ReactNode } from 'react';
 import { numberWithCommas } from '../../../../utils';
 
-const SALES_COLUMNS = [
+const SALES_COLUMNS: ColumnsType<AuctionSales> = [
   {
     title: 'Title',
     dataIndex: 'title',
     key: 'title',
-    render: (_: any, { image_url, owner, title }: any) => (
+    render: (_: unknown, record: AuctionSales) => (
       <Flex align="center" gap="small">
-        <Image src={image_url} height={24} width={24} preview={false} />
+        <Image src={record.image_url} height={24} width={24} preview={false} />
         <Flex vertical gap={4} style={{ width: 160 }}>
           <Typography.Text strong className="text-capitalize">
-            {title}
+            {record.title}
           </Typography.Text>
-          <Typography.Link>@{owner.split(' ')[0]}</Typography.Link>
+          <Typography.Link>@{record.owner.split(' ')[0]}</Typography.Link>
         </Flex>
       </Flex>
     ),
@@ -25,16 +26,16 @@ const SALES_COLUMNS = [
     title: 'Sales count',
     dataIndex: 'volume',
     key: 'sales_count',
-    render: (_: any) => (
-      <Typography.Text>{numberWithCommas(Number(_))}</Typography.Text>
+    render: (value: number) => (
+      <Typography.Text>{numberWithCommas(Number(value))}</Typography.Text>
     ),
   },
   {
     title: 'Price',
     dataIndex: 'price',
     key: 'price',
-    render: (_: any) => (
-      <Typography.Text>${numberWithCommas(Number(_))}</Typography.Text>
+    render: (value: number) => (
+      <Typography.Text>${numberWithCommas(Number(value))}</Typography.Text>
     ),
   },
   {
@@ -51,8 +52,8 @@ const SALES_COLUMNS = [
     title: 'Owners',
     dataIndex: 'owners_count',
     key: 'owners_count',
-    render: (_: any) => (
-      <Typography.Text>{numberWithCommas(Number(_))}</Typography.Text>
+    render: (value: number) => (
+      <Typography.Text>{numberWithCommas(Number(value))}</Typography.Text>
     ),
   },
 ];
@@ -73,11 +74,12 @@ export const TopItemsCard = ({ data, loading, error, ...others }: Props) => {
     />
   ) : (
     <Card title="Top selling items" {...others}>
-      <Table
-        dataSource={data}
+      <AdvancedTable
+        dataSource={data || []}
         columns={SALES_COLUMNS}
         loading={loading}
-        className="overflow-scroll"
+        rowKey="id"
+        exportable
       />
     </Card>
   );

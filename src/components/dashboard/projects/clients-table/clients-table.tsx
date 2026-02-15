@@ -1,4 +1,5 @@
-import { Table, TableProps, Typography } from 'antd';
+import { Typography } from 'antd';
+import { AdvancedTable } from '../../../shared/advanced-table/advanced-table';
 import { Clients } from '../../../../types';
 import { UserAvatar } from '../../../index.ts';
 
@@ -7,7 +8,8 @@ const COLUMNS = [
     title: 'Client Name',
     dataIndex: 'client_name',
     key: 'c_name',
-    render: (_: any, { first_name, last_name }: Clients) => (
+    sorter: true,
+    render: (_: string, { first_name, last_name }: Clients) => (
       <UserAvatar fullName={`${first_name} ${last_name}`} />
     ),
   },
@@ -15,22 +17,22 @@ const COLUMNS = [
     title: 'Amount',
     dataIndex: 'total_price',
     key: 'client_amount',
-    render: (_: any) => <Typography.Text>${_}</Typography.Text>,
+    sorter: true,
+    render: (_: number) => <Typography.Text>${_}</Typography.Text>,
   },
 ];
 
 type Props = {
   data: Clients[];
-} & Omit<TableProps<Clients>, 'dataSource' | 'columns'>;
+  title?: React.ReactNode;
+};
 
-export const ClientsTable = ({ data, ...others }: Props) => (
-  <Table<Clients>
-    dataSource={data}
+export const ClientsTable = ({ data, title }: Props) => (
+  <AdvancedTable
     columns={COLUMNS}
-    key="client_table"
+    dataSource={data}
     rowKey="client_id"
-    size="middle"
-    className="overflow-scroll"
-    {...others}
+    title={title as string}
+    exportable
   />
 );

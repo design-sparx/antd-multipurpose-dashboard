@@ -6,8 +6,7 @@ export const getNameInitials = (fullName: string): string => {
 };
 
 export const colourNameToHex = (color: string): string => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const colours: any = {
+  const colours: Record<string, string> = {
     aliceblue: '#f0f8ff',
     antiquewhite: '#faebd7',
     aqua: '#00ffff',
