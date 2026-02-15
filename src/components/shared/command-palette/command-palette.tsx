@@ -1,5 +1,12 @@
-import { useEffect, useMemo, useState } from 'react';
+import {
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+  forwardRef,
+} from 'react';
 import { Input, List, Modal, Typography } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 const { Text } = Typography;
@@ -18,13 +25,17 @@ type CommandPaletteProps = {
   placeholder?: string;
 };
 
-export function CommandPalette({
-  items,
-  placeholder = 'Search pages, actions...',
-}: CommandPaletteProps) {
+export const CommandPalette = forwardRef<
+  { open: () => void },
+  CommandPaletteProps
+>(({ items, placeholder = 'Search pages, actions...' }, ref) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+
+  useImperativeHandle(ref, () => ({
+    open: () => setOpen(true),
+  }));
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -71,25 +82,21 @@ export function CommandPalette({
     return groups;
   }, [filteredItems]);
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    if (!open) setOpen(true);
+  };
+
   return (
     <>
-      <Text
+      <Input.Search
+        placeholder={`${placeholder} (Ctrl+K)`}
+        value={search}
+        onChange={handleSearchChange}
         onClick={() => setOpen(true)}
-        style={{ cursor: 'pointer', color: 'inherit', textDecoration: 'none' }}
-        className="command-palette-trigger"
-      >
-        <span
-          style={{
-            padding: '4px 8px',
-            borderRadius: 6,
-            background: 'rgba(255,255,255,0.1)',
-            fontSize: 12,
-            fontWeight: 500,
-          }}
-        >
-          ⌘K
-        </span>
-      </Text>
+        style={{ width: 400 }}
+        size="middle"
+      />
       <Modal
         open={open}
         onCancel={() => setOpen(false)}
@@ -98,6 +105,7 @@ export function CommandPalette({
         width={500}
         styles={{ body: { padding: 0 } }}
         className="command-palette-modal"
+        centered
       >
         <Input
           autoFocus
@@ -105,6 +113,7 @@ export function CommandPalette({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           variant="borderless"
+          prefix={<SearchOutlined />}
           style={{ padding: '16px 16px 8px', fontSize: 16 }}
         />
         <List
@@ -138,4 +147,4 @@ export function CommandPalette({
       </Modal>
     </>
   );
-}
+});

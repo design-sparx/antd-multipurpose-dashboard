@@ -3,7 +3,6 @@ import {
   Dropdown,
   Flex,
   FloatButton,
-  Input,
   Layout,
   MenuProps,
   message,
@@ -37,6 +36,7 @@ import {
   LoginModal,
   OnboardingTour,
   Accessibility,
+  LanguageSwitcher,
 } from '../../components';
 import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
@@ -282,20 +282,12 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                   onClick={() => setCollapsed(!collapsed)}
                   style={{
                     fontSize: '16px',
-                    width: 64,
-                    height: 64,
+                    width: 40,
+                    height: 40,
                   }}
                 />
               </Tooltip>
               <CommandPalette items={commandPaletteItems} />
-              <Input.Search
-                placeholder="search"
-                style={{
-                  width: isMobile ? '100%' : '400px',
-                  marginLeft: isMobile ? 0 : '.5rem',
-                }}
-                size="middle"
-              />
             </Flex>
             <Flex align="center" gap="small">
               <Tooltip title="Apps">
@@ -304,6 +296,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               <Tooltip title="Messages">
                 <Button icon={<MessageOutlined />} type="text" size="large" />
               </Tooltip>
+              <LanguageSwitcher />
               <Dropdown menu={{ items }} trigger={['click']}>
                 <Flex>
                   <img

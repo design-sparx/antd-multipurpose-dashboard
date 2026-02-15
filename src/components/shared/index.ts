@@ -5,6 +5,7 @@ export { CommandPalette } from './command-palette/command-palette';
 export * from './container';
 export { ExportButton } from './export-button/export-button';
 export { Flex } from './flex/flex';
+export { LanguageSwitcher } from './language-switcher/language-switcher';
 export { Loader } from './loader/loader';
 export { Logo } from './logo/logo';
 export { MoreMenu } from './more-menu/more-menu';
