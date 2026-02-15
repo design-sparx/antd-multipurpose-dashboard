@@ -1,4 +1,4 @@
-import { Spin, theme } from 'antd';
+import { Card, Skeleton, theme } from 'antd';
 
 import './styles.css';
 
@@ -9,9 +9,9 @@ export const Loader = () => {
 
   return (
     <div className="loader-container" style={{ borderRadius }}>
-      <Spin tip="Loading">
-        <div className="content" />
-      </Spin>
+      <Card style={{ borderRadius }}>
+        <Skeleton active />
+      </Card>
     </div>
   );
 };

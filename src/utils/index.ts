@@ -6,6 +6,7 @@ export const getNameInitials = (fullName: string): string => {
 };
 
 export const colourNameToHex = (color: string): string => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colours: any = {
     aliceblue: '#f0f8ff',
     antiquewhite: '#faebd7',
@@ -178,3 +179,4 @@ export const numberWithCommas = (x: number) => {
 
 export * from './api';
 export * from './tasks';
+export * from './export';

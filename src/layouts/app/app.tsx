@@ -31,7 +31,12 @@ import { useMediaQuery } from 'react-responsive';
 import SideNav from './side-nav.tsx';
 import HeaderNav from './header-nav.tsx';
 import FooterNav from './footer-nav.tsx';
-import { NProgress, LoginModal } from '../../components';
+import {
+  CommandPalette,
+  NProgress,
+  LoginModal,
+  OnboardingTour,
+} from '../../components';
 import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/auth/authSlice';
@@ -106,6 +111,99 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       icon: <LogoutOutlined />,
       danger: true,
       onClick: handleLogout,
+    },
+  ];
+
+  const commandPaletteItems = [
+    {
+      key: 'dashboard-default',
+      label: 'Default Dashboard',
+      path: '/dashboards/default',
+      category: 'Dashboards',
+    },
+    {
+      key: 'dashboard-projects',
+      label: 'Projects Dashboard',
+      path: '/dashboards/projects',
+      category: 'Dashboards',
+    },
+    {
+      key: 'dashboard-ecommerce',
+      label: 'Ecommerce Dashboard',
+      path: '/dashboards/ecommerce',
+      category: 'Dashboards',
+    },
+    {
+      key: 'dashboard-marketing',
+      label: 'Marketing Dashboard',
+      path: '/dashboards/marketing',
+      category: 'Dashboards',
+    },
+    {
+      key: 'dashboard-social',
+      label: 'Social Dashboard',
+      path: '/dashboards/social',
+      category: 'Dashboards',
+    },
+    {
+      key: 'dashboard-bidding',
+      label: 'Bidding Dashboard',
+      path: '/dashboards/bidding',
+      category: 'Dashboards',
+    },
+    {
+      key: 'dashboard-learning',
+      label: 'Learning Dashboard',
+      path: '/dashboards/learning',
+      category: 'Dashboards',
+    },
+    {
+      key: 'dashboard-logistics',
+      label: 'Logistics Dashboard',
+      path: '/dashboards/logistics',
+      category: 'Dashboards',
+    },
+    {
+      key: 'profile-details',
+      label: 'Profile Details',
+      path: '/user-profile/details',
+      category: 'Profile',
+    },
+    {
+      key: 'profile-settings',
+      label: 'Settings',
+      path: '/user-profile/settings',
+      category: 'Profile',
+    },
+    {
+      key: 'profile-security',
+      label: 'Security',
+      path: '/user-profile/security',
+      category: 'Profile',
+    },
+    {
+      key: 'corporate-about',
+      label: 'About',
+      path: '/corporate/about',
+      category: 'Corporate',
+    },
+    {
+      key: 'corporate-contact',
+      label: 'Contact',
+      path: '/corporate/contact',
+      category: 'Corporate',
+    },
+    {
+      key: 'corporate-pricing',
+      label: 'Pricing',
+      path: '/corporate/pricing',
+      category: 'Corporate',
+    },
+    {
+      key: 'corporate-faqs',
+      label: 'FAQs',
+      path: '/corporate/faqs',
+      category: 'Corporate',
     },
   ];
 
@@ -187,6 +285,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                   }}
                 />
               </Tooltip>
+              <CommandPalette items={commandPaletteItems} />
               <Input.Search
                 placeholder="search"
                 style={{
@@ -263,6 +362,34 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
         </Layout>
       </Layout>
       <LoginModal />
+      <OnboardingTour
+        steps={[
+          {
+            target: () => document.querySelector('.ant-layout-sider'),
+            title: 'Navigation Sidebar',
+            description:
+              'Access all dashboards, profiles, and settings from this sidebar. Click the hamburger menu to collapse or expand.',
+          },
+          {
+            target: () => document.querySelector('.ant-input-search'),
+            title: 'Quick Search',
+            description:
+              'Search for pages, users, or content. Or press Cmd+K for the command palette.',
+          },
+          {
+            target: () => document.querySelector('.ant-table'),
+            title: 'Data Tables',
+            description:
+              'Sort, filter, and paginate data. Use the export button to download as CSV or JSON.',
+          },
+          {
+            target: () => document.querySelector('.ant-layout-header'),
+            title: 'Header Actions',
+            description:
+              'Access notifications, messages, and your profile settings from here.',
+          },
+        ]}
+      />
     </>
   );
 };

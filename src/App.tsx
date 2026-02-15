@@ -9,22 +9,6 @@ import { RootState } from './redux/store';
 import { PRIMARY_COLOR } from './theme/colors';
 import './App.css';
 
-// Legacy COLOR export for backward compatibility
-// TODO: Migrate all usages to theme-aware colors from theme/colors.ts
-export const COLOR = {
-  50: '#e0f1ff',
-  100: '#b0d2ff',
-  200: '#7fb0ff',
-  300: '#4d8bff',
-  400: '#1e79fe',
-  500: '#076ee5',
-  600: '#0062b3',
-  700: '#004f81',
-  800: '#003650',
-  900: '#001620',
-  borderColor: '#E7EAF3B2',
-};
-
 function App() {
   const { mytheme } = useSelector((state: RootState) => state.theme);
 
@@ -45,7 +29,6 @@ function App() {
               dotWidth: 8,
             },
             Table: {
-              colorBgContainer: 'none',
               headerBg: 'none',
             },
             Timeline: {
