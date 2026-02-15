@@ -13,14 +13,12 @@ pnpm build                  # TypeScript compile + Vite build for production
 pnpm preview                # Preview production build locally
 
 # Code Quality
-pnpm lint                   # Run ESLint (max 0 warnings)
+pnpm lint                   # Run ESLint (max 0 warnings, 0 errors)
 pnpm prettier:write         # Format all files with Prettier
 
 # Storybook
 pnpm storybook              # Start Storybook on port 6006
 pnpm build-storybook        # Build Storybook for deployment
-
-# Single Test (no unit tests - use Storybook + build validation)
 ```
 
 Note: This project has no traditional unit tests. Testing is done via Storybook component testing and TypeScript build validation.
@@ -63,6 +61,8 @@ Rules: PascalCase names, extend antd props, destructure props, use spread operat
 - Use generic types: `useFetchData<T = any>`
 - Prefer union types: `TaskStatus = 'pending' | 'completed'`
 - Use nullish coalescing: `data ?? []`
+- **NEVER use `any`** - use proper types or `unknown`
+- Use `ColumnType<T>` for table columns with proper render typing
 
 ### Naming Conventions
 
@@ -88,6 +88,57 @@ Rules: try-catch async, use `{ data, error, loading }` pattern, use antd Alert.
 - Use `theme.useToken()` for theme-aware colors
 - Use antd components (Flex, Typography, Row/Col)
 - Inline styles for dynamic values: `style={{ backgroundColor: colorPrimary }}`
+
+## Shared Components
+
+This project includes reusable shared components in `src/components/shared/`:
+
+| Component | Location | Usage |
+|-----------|----------|--------|
+| `AdvancedTable` | `advanced-table/` | Tables with sorting, filtering, pagination, export |
+| `CommandPalette` | `command-palette/` | Search with Cmd+K shortcut |
+| `ExportButton` | `export-button/` | CSV/JSON export dropdown |
+| `OnboardingTour` | `onboarding-tour/` | User onboarding with antd Tour |
+| `LanguageSwitcher` | `language-switcher/` | i18n language selector |
+| `SkeletonLoader` | `skeleton/` | Loading skeletons (card/table/paragraph) |
+| `Accessibility` | `accessibility/` | Skip link, ARIA announcements |
+
+### AdvancedTable Usage
+
+```typescript
+import { AdvancedTable } from './components/shared/advanced-table';
+
+<AdvancedTable
+  columns={columns}
+  dataSource={data}
+  sortable        // Enable column sorting
+  filterable      // Enable column filtering
+  paginated       // Enable pagination (default: true)
+  pageSize={10}   // Default page size
+  exportable      // Show export button (CSV/JSON)
+  refreshable     // Show refresh button
+  onRefresh={refetch}
+  virtual         // Enable virtual scrolling for large datasets
+  rowKey="id"
+/>
+```
+
+### CommandPalette Usage
+
+```typescript
+import { CommandPalette } from './components/shared/command-palette';
+
+const items = [
+  { key: 'dashboard', label: 'Dashboard', path: '/dashboards/default', category: 'Pages' },
+  { key: 'settings', label: 'Settings', path: '/settings', category: 'Pages' },
+];
+
+<CommandPalette items={items} placeholder="Search pages..." />
+```
+
+### Language Switcher
+
+The app uses `react-i18next` for internationalization. Translations are in `src/i18n.ts`.
 
 ## Important Architecture Notes
 
@@ -118,16 +169,19 @@ src/components/
 ├── dashboard/default/    # Dashboard widgets
 ├── dashboard/ecommerce/
 ├── corporate/          # Corporate pages
-├── shared/             # Reusable (Card, PageHeader, etc.)
+├── shared/             # Reusable (Card, PageHeader, AdvancedTable, etc.)
 src/pages/              # Page components
 src/layouts/           # Layout components
+src/hooks/              # Custom hooks
+src/utils/             # Utility functions
 ```
 
 ## Git & Quality
 
 - Pre-commit: `lint-staged` + Prettier
 - Commit format: `type(scope): message` (feat, fix, chore, docs)
-- Run `pnpm lint` before committing
+- **ALWAYS run `pnpm lint` before committing** - must pass with 0 errors, 0 warnings
+- If lint fails, fix errors before committing
 
 ## Environment Variables
 
@@ -144,3 +198,18 @@ This project uses **Ant Design v6.3.0**. Key v6 features:
 - Semantic structure: `classNames={{ root: 'custom' }}`, `styles={{ body: {...} }}`
 - InputNumber spinner: `<InputNumber controls />`
 - Deprecated: `bodyStyle` → `styles.body`, `BlockOutlined` → `StopOutlined`
+
+## Quick Reference
+
+### Adding a New Shared Component
+1. Create folder in `src/components/shared/[component-name]/`
+2. Create `index.ts` and `[component-name].tsx`
+3. Export from `src/components/shared/index.ts`
+4. Use in pages: `import { ComponentName } from './components'`
+
+### Adding a New Dashboard Table
+1. Use `AdvancedTable` for tables with sorting, filtering, pagination
+2. Add `sorter: true` to columns for sorting
+3. Add `filters` array to columns for filtering
+4. Always provide `rowKey` prop
+5. Handle `data || []` to avoid undefined errors

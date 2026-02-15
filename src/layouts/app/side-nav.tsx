@@ -82,6 +82,17 @@ const items: MenuProps['items'] = [
       'logistics',
       null
     ),
+    getItem(
+      <Link to={PATH_DASHBOARD.analytics}>Analytics</Link>,
+      'analytics',
+      null
+    ),
+    getItem(
+      <Link to={PATH_DASHBOARD.healthcare}>Healthcare</Link>,
+      'healthcare',
+      null
+    ),
+    getItem(<Link to={PATH_DASHBOARD.finance}>Finance</Link>, 'finance', null),
   ]),
   getItem(
     <Link to={PATH_ABOUT.root}>About</Link>,

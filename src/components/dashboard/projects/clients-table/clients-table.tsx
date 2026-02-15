@@ -1,16 +1,17 @@
 import { Typography } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 import { AdvancedTable } from '../../../shared/advanced-table/advanced-table';
 import { Clients } from '../../../../types';
 import { UserAvatar } from '../../../index.ts';
 
-const COLUMNS = [
+const COLUMNS: ColumnsType<Clients> = [
   {
     title: 'Client Name',
     dataIndex: 'client_name',
     key: 'c_name',
     sorter: true,
-    render: (_: string, { first_name, last_name }: Clients) => (
-      <UserAvatar fullName={`${first_name} ${last_name}`} />
+    render: (_: string, record: Clients) => (
+      <UserAvatar fullName={`${record.first_name} ${record.last_name}`} />
     ),
   },
   {
@@ -18,7 +19,7 @@ const COLUMNS = [
     dataIndex: 'total_price',
     key: 'client_amount',
     sorter: true,
-    render: (_: number) => <Typography.Text>${_}</Typography.Text>,
+    render: (value: number) => <Typography.Text>${value}</Typography.Text>,
   },
 ];
 

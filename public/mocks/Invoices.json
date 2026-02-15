@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "invoice_number": "INV-2026-001",
+    "client": "Acme Corporation",
+    "amount": 5500,
+    "status": "paid",
+    "issue_date": "2026-01-15",
+    "due_date": "2026-02-15",
+    "paid_date": "2026-01-28"
+  },
+  {
+    "id": 2,
+    "invoice_number": "INV-2026-002",
+    "client": "Tech Solutions Inc",
+    "amount": 3200,
+    "status": "paid",
+    "issue_date": "2026-01-20",
+    "due_date": "2026-02-20",
+    "paid_date": "2026-02-01"
+  },
+  {
+    "id": 3,
+    "invoice_number": "INV-2026-003",
+    "client": "Global Services LLC",
+    "amount": 7800,
+    "status": "pending",
+    "issue_date": "2026-02-01",
+    "due_date": "2026-03-01",
+    "paid_date": null
+  },
+  {
+    "id": 4,
+    "invoice_number": "INV-2026-004",
+    "client": "StartUp Ventures",
+    "amount": 2100,
+    "status": "overdue",
+    "issue_date": "2026-01-05",
+    "due_date": "2026-01-20",
+    "paid_date": null
+  },
+  {
+    "id": 5,
+    "invoice_number": "INV-2026-005",
+    "client": "Digital Media Co",
+    "amount": 4500,
+    "status": "pending",
+    "issue_date": "2026-02-10",
+    "due_date": "2026-03-10",
+    "paid_date": null
+  },
+  {
+    "id": 6,
+    "invoice_number": "INV-2026-006",
+    "client": "Enterprise Systems",
+    "amount": 9200,
+    "status": "paid",
+    "issue_date": "2026-01-25",
+    "due_date": "2026-02-25",
+    "paid_date": "2026-02-05"
+  },
+  {
+    "id": 7,
+    "invoice_number": "INV-2026-007",
+    "client": "Cloud Networks Ltd",
+    "amount": 1800,
+    "status": "overdue",
+    "issue_date": "2026-01-10",
+    "due_date": "2026-01-25",
+    "paid_date": null
+  },
+  {
+    "id": 8,
+    "invoice_number": "INV-2026-008",
+    "client": "Data Analytics Pro",
+    "amount": 3600,
+    "status": "pending",
+    "issue_date": "2026-02-12",
+    "due_date": "2026-03-12",
+    "paid_date": null
+  }
+]

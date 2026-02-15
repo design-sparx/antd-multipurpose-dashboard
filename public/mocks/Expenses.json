@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "category": "Payroll",
+    "description": "Monthly salaries",
+    "amount": 45000,
+    "date": "2026-02-01",
+    "status": "completed"
+  },
+  {
+    "id": 2,
+    "category": "Office Rent",
+    "description": "February rent",
+    "amount": 8500,
+    "date": "2026-02-01",
+    "status": "completed"
+  },
+  {
+    "id": 3,
+    "category": "Software Subscriptions",
+    "description": "SaaS tools",
+    "amount": 2400,
+    "date": "2026-02-05",
+    "status": "completed"
+  },
+  {
+    "id": 4,
+    "category": "Marketing",
+    "description": "Digital advertising",
+    "amount": 5500,
+    "date": "2026-02-08",
+    "status": "pending"
+  },
+  {
+    "id": 5,
+    "category": "Utilities",
+    "description": "Electricity & internet",
+    "amount": 1200,
+    "date": "2026-02-10",
+    "status": "pending"
+  },
+  {
+    "id": 6,
+    "category": "Travel",
+    "description": "Client meeting",
+    "amount": 1800,
+    "date": "2026-02-12",
+    "status": "completed"
+  },
+  {
+    "id": 7,
+    "category": "Equipment",
+    "description": "New laptops",
+    "amount": 6200,
+    "date": "2026-02-14",
+    "status": "pending"
+  }
+]

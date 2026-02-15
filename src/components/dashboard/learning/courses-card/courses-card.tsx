@@ -33,11 +33,11 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     title: 'Duration (Start-End)',
     dataIndex: 'start_date',
     key: 'start_date',
-    render: (_: string, { start_date, end_date }: LearningCourses) => (
+    render: (_: unknown, record: LearningCourses) => (
       <Space size="small" style={{ width: 200 }}>
-        <Typography.Text>{start_date}</Typography.Text>
+        <Typography.Text>{record.start_date}</Typography.Text>
         <SwapRightOutlined />
-        <Typography.Text>{end_date}</Typography.Text>
+        <Typography.Text>{record.end_date}</Typography.Text>
       </Space>
     ),
   },
@@ -45,13 +45,10 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     title: 'Instructor',
     dataIndex: 'instructor_name',
     key: 'instructor_name',
-    render: (
-      _: string,
-      { instructor_name, favorite_color }: LearningCourses
-    ) => (
+    render: (_: unknown, record: LearningCourses) => (
       <UserAvatar
-        fullName={instructor_name}
-        color={favorite_color}
+        fullName={record.instructor_name}
+        color={record.favorite_color}
         textWidth={120}
       />
     ),

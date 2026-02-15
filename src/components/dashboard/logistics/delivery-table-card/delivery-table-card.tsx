@@ -25,7 +25,7 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
     dataIndex: 'shipment_id',
     key: 'shipment_id',
     sorter: true,
-    render: (text: string) => text.split('-')[0],
+    render: (value: string) => value.split('-')[0],
   },
   {
     title: 'Destination',
@@ -44,7 +44,7 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
     dataIndex: 'driver_name',
     key: 'driver_name',
     sorter: true,
-    render: (_: string) => <UserAvatar fullName={_} />,
+    render: (value: string) => <UserAvatar fullName={value} />,
   },
   {
     title: 'Status',
@@ -57,7 +57,7 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
     dataIndex: 'shipment_cost',
     key: 'shipment_cost',
     sorter: true,
-    render: (_: number) => <span>${numberWithCommas(_)}</span>,
+    render: (value: number) => <span>${numberWithCommas(value)}</span>,
   },
   {
     title: 'Delivery date',

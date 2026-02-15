@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Sarah Wilson",
+    "department": "General Medicine",
+    "specialization": "Internal Medicine",
+    "experience": "15 years",
+    "patients": 245,
+    "rating": 4.8,
+    "avatar": "SW",
+    "availability": "Available"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Michael Chen",
+    "department": "Cardiology",
+    "specialization": "Interventional Cardiology",
+    "experience": "20 years",
+    "patients": 180,
+    "rating": 4.9,
+    "avatar": "MC",
+    "availability": "Available"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Emily Brown",
+    "department": "Pulmonology",
+    "specialization": "Respiratory Medicine",
+    "experience": "12 years",
+    "patients": 156,
+    "rating": 4.7,
+    "avatar": "EB",
+    "availability": "On Leave"
+  },
+  {
+    "id": 4,
+    "name": "Dr. James Taylor",
+    "department": "Surgery",
+    "specialization": "General Surgery",
+    "experience": "18 years",
+    "patients": 320,
+    "rating": 4.9,
+    "avatar": "JT",
+    "availability": "Available"
+  },
+  {
+    "id": 5,
+    "name": "Dr. Lisa Anderson",
+    "department": "Pediatrics",
+    "specialization": "Child Health",
+    "experience": "10 years",
+    "patients": 210,
+    "rating": 4.8,
+    "avatar": "LA",
+    "availability": "Available"
+  },
+  {
+    "id": 6,
+    "name": "Dr. Robert Martinez",
+    "department": "Neurology",
+    "specialization": "Neurophysiology",
+    "experience": "22 years",
+    "patients": 145,
+    "rating": 4.9,
+    "avatar": "RM",
+    "availability": "Busy"
+  }
+]
