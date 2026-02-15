@@ -640,50 +640,46 @@ export const EcommerceDashboardPage = () => {
         ]}
       />
       <Row {...stylesContext?.rowProps}>
-        <Col sm={24} lg={16}>
-          <Row {...stylesContext?.rowProps}>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Visitors"
-                value={20149}
-                diff={5.54}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Customers"
-                value={5834}
-                diff={-12.3}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Orders"
-                value={3270}
-                diff={9.52}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Sales"
-                value="$ 1.324K"
-                diff={2.34}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-          </Row>
+        {/* KPI cards - top row */}
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Visitors"
+            value={20149}
+            diff={5.54}
+            height={180}
+            justify="space-between"
+          />
         </Col>
-        <Col sm={24} lg={8}>
-          <CustomerReviewsCard />
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Customers"
+            value={5834}
+            diff={-12.3}
+            height={180}
+            justify="space-between"
+          />
         </Col>
-        <Col xs={24} lg={12}>
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Orders"
+            value={3270}
+            diff={9.52}
+            height={180}
+            justify="space-between"
+          />
+        </Col>
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Sales"
+            value="$ 1.324K"
+            diff={2.34}
+            height={180}
+            justify="space-between"
+          />
+        </Col>
+
+        {/* Overall Sales + Customer Reviews side by side */}
+        <Col xs={24} lg={16}>
           <Card
             title="Overall sales"
             extra={
@@ -706,6 +702,11 @@ export const EcommerceDashboardPage = () => {
             </Flex>
           </Card>
         </Col>
+        <Col xs={24} lg={8}>
+          <CustomerReviewsCard />
+        </Col>
+
+        {/* Charts row */}
         <Col xs={24} lg={12}>
           <Card
             title="Categories"
@@ -752,7 +753,7 @@ export const EcommerceDashboardPage = () => {
                 <Typography.Title style={{ margin: 0 }}>8.48%</Typography.Title>
                 <Row>
                   <Col sm={24} lg={8}>
-                    <Space direction="vertical">
+                    <Space orientation="vertical">
                       <Text>Added to cart</Text>
                       <Text type="secondary">5 visits</Text>
                     </Space>
@@ -770,7 +771,7 @@ export const EcommerceDashboardPage = () => {
                 </Row>
                 <Row>
                   <Col sm={24} lg={8}>
-                    <Space direction="vertical">
+                    <Space orientation="vertical">
                       <Text>Reached to Checkout</Text>
                       <Text type="secondary">23 visits</Text>
                     </Space>
@@ -788,14 +789,16 @@ export const EcommerceDashboardPage = () => {
                 </Row>
               </Flex>
             </Card>
-            <Card title="Customer rate">
-              <div style={{ height: 80, textAlign: 'center' }}>
-                <CustomerRateChart />
-              </div>
-            </Card>
           </Flex>
         </Col>
         <Col xs={24} lg={12}>
+          <Card title="Customer rate">
+            <div style={{ height: 80, textAlign: 'center' }}>
+              <CustomerRateChart />
+            </div>
+          </Card>
+        </Col>
+        <Col xs={24}>
           <Card title="Popular products" style={cardStyles}>
             {topProductsError ? (
               <Alert
@@ -815,11 +818,11 @@ export const EcommerceDashboardPage = () => {
             )}
           </Card>
         </Col>
-        <Col xs={24} lg={12}>
+        <Col xs={24}>
           <Card title="Popular categories" style={cardStyles}>
             {topCategoriesError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={topCategoriesError.toString()}
                 type="error"
                 showIcon

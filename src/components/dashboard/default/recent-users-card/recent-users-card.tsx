@@ -52,7 +52,7 @@ export const RecentUsersCard = ({ loading, error, ...others }: Props) => {
     data: usersDataRaw,
     loading: usersDataLoading,
     error: usersDataError,
-  } = useFetchData<ChannelUser[]>('/mocks/ChannelUsers.json');
+  } = useFetchData<ChannelUser[]>('/antd/channel-users');
   const usersData = usersDataRaw ?? [];
 
   return (

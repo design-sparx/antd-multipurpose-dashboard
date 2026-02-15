@@ -110,91 +110,90 @@ export const LearningDashboardPage = () => {
         ]}
       />
       <Row {...stylesContext?.rowProps}>
-        <Col xs={24} xl={18}>
-          <Row {...stylesContext?.rowProps}>
-            <Col xs={24} sm={12} xl={6}>
-              <LearningStatsCard
-                title="Courses in Progress"
-                value={18}
-                icon={FileSyncOutlined}
-                color="teal"
-                progress={30}
-                style={{ height: '100%' }}
-              />
-            </Col>
-            <Col xs={24} sm={12} xl={6}>
-              <LearningStatsCard
-                title="Courses completed"
-                value={97}
-                icon={FileProtectOutlined}
-                color="green"
-                progress={90}
-                style={{ height: '100%' }}
-              />
-            </Col>
-            <Col xs={24} sm={12} xl={6}>
-              <LearningStatsCard
-                title="Certificates earned"
-                value={62}
-                icon={SafetyCertificateOutlined}
-                color="blue"
-                progress={76}
-                style={{ height: '100%' }}
-              />
-            </Col>
-            <Col xs={24} sm={12} xl={6}>
-              <LearningStatsCard
-                title="Community support"
-                value={245}
-                icon={UsergroupAddOutlined}
-                color="purple"
-                progress={78}
-                style={{ height: '100%' }}
-              />
-            </Col>
-            <Col xs={24} xl={12}>
-              <ProgressCard style={{ height: '100%' }} />
-            </Col>
-            <Col xs={24} xl={12}>
-              <StudyStatisticsCard
-                data={studyData}
-                loading={studyDataLoading}
-                error={studyDataError}
-              />
-            </Col>
-            <Col span={24}>
-              <CoursesCard
-                data={coursesData}
-                loading={coursesDataLoading}
-                error={coursesDataError}
-              />
-            </Col>
-          </Row>
+        {/* Stats cards - top row */}
+        <Col xs={24} sm={12} lg={6}>
+          <LearningStatsCard
+            title="Courses in Progress"
+            value={18}
+            icon={FileSyncOutlined}
+            color="teal"
+            progress={30}
+            style={{ height: '100%' }}
+          />
         </Col>
-        <Col xs={24} xl={6}>
-          <Row {...stylesContext?.rowProps}>
-            <Col span={24}>
-              <ExamsCard
-                data={examsData}
-                loading={examsDataLoading}
-                error={examsDataError}
-              />
-            </Col>
-            <Col span={24}>
-              <CommunityGroupCard
-                data={communitiesData}
-                loading={communitiesDataLoading}
-                error={communitiesDataError}
-              />
-            </Col>
-            <Col span={24}>
-              <CoursesCarousel
-                data={recommendedCoursesData}
-                loading={recommendedCoursesDataLoading}
-                error={recommendedCoursesDataError}
-              />
-            </Col>
-          </Row>
+        <Col xs={24} sm={12} lg={6}>
+          <LearningStatsCard
+            title="Courses completed"
+            value={97}
+            icon={FileProtectOutlined}
+            color="green"
+            progress={90}
+            style={{ height: '100%' }}
+          />
+        </Col>
+        <Col xs={24} sm={12} lg={6}>
+          <LearningStatsCard
+            title="Certificates earned"
+            value={62}
+            icon={SafetyCertificateOutlined}
+            color="blue"
+            progress={76}
+            style={{ height: '100%' }}
+          />
+        </Col>
+        <Col xs={24} sm={12} lg={6}>
+          <LearningStatsCard
+            title="Community support"
+            value={245}
+            icon={UsergroupAddOutlined}
+            color="purple"
+            progress={78}
+            style={{ height: '100%' }}
+          />
+        </Col>
+
+        {/* Progress + Study Statistics side by side */}
+        <Col xs={24} lg={12}>
+          <ProgressCard style={{ height: '100%' }} />
+        </Col>
+        <Col xs={24} lg={12}>
+          <StudyStatisticsCard
+            data={studyData}
+            loading={studyDataLoading}
+            error={studyDataError}
+          />
+        </Col>
+
+        {/* Courses table - full width */}
+        <Col span={24}>
+          <CoursesCard
+            data={coursesData}
+            loading={coursesDataLoading}
+            error={coursesDataError}
+          />
+        </Col>
+
+        {/* Exams + Community + Recommended Courses row */}
+        <Col xs={24} sm={12} lg={8}>
+          <ExamsCard
+            data={examsData}
+            loading={examsDataLoading}
+            error={examsDataError}
+          />
+        </Col>
+        <Col xs={24} sm={12} lg={8}>
+          <CommunityGroupCard
+            data={communitiesData}
+            loading={communitiesDataLoading}
+            error={communitiesDataError}
+          />
+        </Col>
+        <Col xs={24} lg={8}>
+          <CoursesCarousel
+            data={recommendedCoursesData}
+            loading={recommendedCoursesDataLoading}
+            error={recommendedCoursesDataError}
+          />
         </Col>
       </Row>
     </div>

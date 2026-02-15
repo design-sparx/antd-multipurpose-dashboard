@@ -48,7 +48,7 @@ export const LatestOrdersCard = ({ loading, error, ...others }: Props) => {
     data: ordersDataRaw,
     loading: ordersDataLoading,
     error: ordersDataError,
-  } = useFetchData<CountryOrder[]>('/mocks/CountryOrders.json');
+  } = useFetchData<CountryOrder[]>('/antd/country-orders');
   const ordersData = ordersDataRaw ?? [];
 
   return (

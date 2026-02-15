@@ -199,412 +199,330 @@ const FinanceDashboard = () => {
       />
 
       <Row {...stylesContext?.rowProps}>
-        <Col xs={24} lg={18}>
-          <Row {...stylesContext?.rowProps}>
-            <Col xs={24} md={24}>
-              <Row {...stylesContext?.rowProps}>
-                <Col xs={24} lg={14}>
-                  <Card>
-                    <Flex vertical gap="middle">
-                      <Typography.Title level={4} style={{ margin: 0 }}>
-                        Welcome to Finance Dashboard
-                      </Typography.Title>
-                      <Typography.Paragraph
-                        type="secondary"
-                        style={{ margin: 0 }}
-                      >
-                        Track invoices, expenses, and financial performance.
-                      </Typography.Paragraph>
-                      <Flex gap="middle">
-                        <Card style={{ flex: 1, textAlign: 'center' }}>
-                          <Typography.Title
-                            level={3}
-                            style={{ margin: 0, color: '#1890ff' }}
-                          >
-                            <CountUp end={invoicesData.length} />
-                          </Typography.Title>
-                          <Typography.Text type="secondary">
-                            Total Invoices
-                          </Typography.Text>
-                        </Card>
-                        <Card style={{ flex: 1, textAlign: 'center' }}>
-                          <Typography.Title
-                            level={3}
-                            style={{ margin: 0, color: '#52c41a' }}
-                          >
-                            <CountUp end={pendingInvoices.length} />
-                          </Typography.Title>
-                          <Typography.Text type="secondary">
-                            Pending
-                          </Typography.Text>
-                        </Card>
-                        <Card style={{ flex: 1, textAlign: 'center' }}>
-                          <Typography.Title
-                            level={3}
-                            style={{ margin: 0, color: '#f5222d' }}
-                          >
-                            <CountUp end={overdueInvoices.length} />
-                          </Typography.Title>
-                          <Typography.Text type="secondary">
-                            Overdue
-                          </Typography.Text>
-                        </Card>
-                      </Flex>
-                    </Flex>
-                  </Card>
-                </Col>
-                <Col xs={24} lg={10}>
-                  <Row {...stylesContext?.rowProps}>
-                    <Col xs={12} lg={24}>
-                      <Card>
-                        <Flex vertical align="center" gap="small">
-                          <DollarOutlined
-                            style={{ fontSize: 24, color: '#1890ff' }}
-                          />
-                          <Typography.Title level={3} style={{ margin: 0 }}>
-                            $<CountUp end={totalRevenue} separator="," />
-                          </Typography.Title>
-                          <Typography.Text type="secondary">
-                            Total Revenue
-                          </Typography.Text>
-                        </Flex>
-                      </Card>
-                    </Col>
-                    <Col xs={12} lg={24}>
-                      <Card>
-                        <Flex vertical align="center" gap="small">
-                          <FallOutlined
-                            style={{ fontSize: 24, color: '#f5222d' }}
-                          />
-                          <Typography.Title level={3} style={{ margin: 0 }}>
-                            $<CountUp end={totalExpenses} separator="," />
-                          </Typography.Title>
-                          <Typography.Text type="secondary">
-                            Total Expenses
-                          </Typography.Text>
-                        </Flex>
-                      </Card>
-                    </Col>
-                    <Col xs={12} lg={24}>
-                      <Card>
-                        <Flex vertical align="center" gap="small">
-                          <RiseOutlined
-                            style={{ fontSize: 24, color: '#52c41a' }}
-                          />
-                          <Typography.Title
-                            level={3}
-                            style={{
-                              margin: 0,
-                              color: netProfit >= 0 ? '#52c41a' : '#f5222d',
-                            }}
-                          >
-                            $<CountUp end={Math.abs(netProfit)} separator="," />
-                          </Typography.Title>
-                          <Typography.Text type="secondary">
-                            {netProfit >= 0 ? 'Net Profit' : 'Net Loss'}
-                          </Typography.Text>
-                        </Flex>
-                      </Card>
-                    </Col>
-                    <Col xs={12} lg={24}>
-                      <Card>
-                        <Flex vertical align="center" gap="small">
-                          <ClockCircleOutlined
-                            style={{ fontSize: 24, color: '#faad14' }}
-                          />
-                          <Typography.Title level={3} style={{ margin: 0 }}>
-                            <CountUp
-                              end={
-                                pendingInvoices.length + overdueInvoices.length
-                              }
-                            />
-                          </Typography.Title>
-                          <Typography.Text type="secondary">
-                            Pending Payments
-                          </Typography.Text>
-                        </Flex>
-                      </Card>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
-
-            <Col xs={24}>
-              <Card
-                title="Invoice Management"
-                extra={
-                  <Flex gap="small">
-                    <Tag color="green">
-                      Paid:{' '}
-                      {invoicesData.filter((i) => i.status === 'paid').length}
-                    </Tag>
-                    <Tag color="orange">Pending: {pendingInvoices.length}</Tag>
-                    <Tag color="red">Overdue: {overdueInvoices.length}</Tag>
-                  </Flex>
-                }
+        {/* KPI cards - top row for immediate visibility */}
+        <Col xs={12} sm={12} lg={6}>
+          <Card style={{ height: '100%' }}>
+            <Flex vertical align="center" gap="small">
+              <DollarOutlined style={{ fontSize: 24, color: '#1890ff' }} />
+              <Typography.Title level={3} style={{ margin: 0 }}>
+                $<CountUp end={totalRevenue} separator="," />
+              </Typography.Title>
+              <Typography.Text type="secondary">Total Revenue</Typography.Text>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={12} sm={12} lg={6}>
+          <Card style={{ height: '100%' }}>
+            <Flex vertical align="center" gap="small">
+              <FallOutlined style={{ fontSize: 24, color: '#f5222d' }} />
+              <Typography.Title level={3} style={{ margin: 0 }}>
+                $<CountUp end={totalExpenses} separator="," />
+              </Typography.Title>
+              <Typography.Text type="secondary">Total Expenses</Typography.Text>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={12} sm={12} lg={6}>
+          <Card style={{ height: '100%' }}>
+            <Flex vertical align="center" gap="small">
+              <RiseOutlined style={{ fontSize: 24, color: '#52c41a' }} />
+              <Typography.Title
+                level={3}
+                style={{
+                  margin: 0,
+                  color: netProfit >= 0 ? '#52c41a' : '#f5222d',
+                }}
               >
-                {invoicesError ? (
-                  <Typography.Text type="danger">
-                    Error loading invoices
-                  </Typography.Text>
-                ) : invoicesLoading ? (
-                  <Loader />
-                ) : (
-                  <Table
-                    columns={invoiceColumns}
-                    dataSource={invoicesData}
-                    rowKey="id"
-                    pagination={{ pageSize: 5 }}
-                    size="small"
-                  />
-                )}
-              </Card>
-            </Col>
-
-            <Col xs={24}>
-              <Card
-                title="Recent Expenses"
-                extra={<Button type="link">View All</Button>}
-              >
-                {expensesError ? (
-                  <Typography.Text type="danger">
-                    Error loading expenses
-                  </Typography.Text>
-                ) : expensesLoading ? (
-                  <Loader />
-                ) : (
-                  <Table
-                    columns={expenseColumns}
-                    dataSource={expensesData}
-                    rowKey="id"
-                    pagination={{ pageSize: 5 }}
-                    size="small"
-                  />
-                )}
-              </Card>
-            </Col>
-
-            <Col xs={24} lg={12}>
-              <Card title="Expense Breakdown">
-                {expensesError ? (
-                  <Typography.Text type="danger">
-                    Error loading data
-                  </Typography.Text>
-                ) : expensesLoading ? (
-                  <Loader />
-                ) : (
-                  <Flex vertical gap="middle">
-                    {expensesData.slice(0, 5).map((expense) => {
-                      const percentage = (expense.amount / totalExpenses) * 100;
-                      return (
-                        <Flex key={expense.id} vertical gap={4}>
-                          <Flex justify="space-between">
-                            <Typography.Text strong>
-                              {expense.category}
-                            </Typography.Text>
-                            <Typography.Text>
-                              ${expense.amount.toLocaleString()}
-                            </Typography.Text>
-                          </Flex>
-                          <Progress
-                            percent={percentage}
-                            strokeColor={getStatusColor(expense.status)}
-                            showInfo={false}
-                            size="small"
-                          />
-                        </Flex>
-                      );
-                    })}
-                  </Flex>
-                )}
-              </Card>
-            </Col>
-
-            <Col xs={24} lg={12}>
-              <Card title="Invoice Status Overview">
-                <Flex vertical gap="middle">
-                  <Flex justify="space-between" align="middle">
-                    <Flex align="middle" gap="small">
-                      <CheckCircleOutlined
-                        style={{ color: '#52c41a', fontSize: 20 }}
-                      />
-                      <Typography.Text>Paid Invoices</Typography.Text>
-                    </Flex>
-                    <Typography.Title level={4} style={{ margin: 0 }}>
-                      {invoicesData.filter((i) => i.status === 'paid').length}
-                    </Typography.Title>
-                  </Flex>
-                  <Flex justify="space-between" align="middle">
-                    <Flex align="middle" gap="small">
-                      <ClockCircleOutlined
-                        style={{ color: '#faad14', fontSize: 20 }}
-                      />
-                      <Typography.Text>Pending Invoices</Typography.Text>
-                    </Flex>
-                    <Typography.Title level={4} style={{ margin: 0 }}>
-                      {pendingInvoices.length}
-                    </Typography.Title>
-                  </Flex>
-                  <Flex justify="space-between" align="middle">
-                    <Flex align="middle" gap="small">
-                      <ExclamationCircleOutlined
-                        style={{ color: '#f5222d', fontSize: 20 }}
-                      />
-                      <Typography.Text>Overdue Invoices</Typography.Text>
-                    </Flex>
-                    <Typography.Title level={4} style={{ margin: 0 }}>
-                      {overdueInvoices.length}
-                    </Typography.Title>
-                  </Flex>
-                  <Card style={{ backgroundColor: '#f5f5f5' }}>
-                    <Flex vertical gap="small">
-                      <Flex justify="space-between">
-                        <Typography.Text>Total Outstanding</Typography.Text>
-                        <Typography.Text strong>
-                          $
-                          {pendingInvoices
-                            .reduce((sum, i) => sum + i.amount, 0)
-                            .toLocaleString()}
-                        </Typography.Text>
-                      </Flex>
-                      <Flex justify="space-between">
-                        <Typography.Text>Overdue Amount</Typography.Text>
-                        <Typography.Text strong type="danger">
-                          $
-                          {overdueInvoices
-                            .reduce((sum, i) => sum + i.amount, 0)
-                            .toLocaleString()}
-                        </Typography.Text>
-                      </Flex>
-                    </Flex>
-                  </Card>
-                </Flex>
-              </Card>
-            </Col>
-          </Row>
+                $<CountUp end={Math.abs(netProfit)} separator="," />
+              </Typography.Title>
+              <Typography.Text type="secondary">
+                {netProfit >= 0 ? 'Net Profit' : 'Net Loss'}
+              </Typography.Text>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={12} sm={12} lg={6}>
+          <Card style={{ height: '100%' }}>
+            <Flex vertical align="center" gap="small">
+              <ClockCircleOutlined style={{ fontSize: 24, color: '#faad14' }} />
+              <Typography.Title level={3} style={{ margin: 0 }}>
+                <CountUp
+                  end={pendingInvoices.length + overdueInvoices.length}
+                />
+              </Typography.Title>
+              <Typography.Text type="secondary">
+                Pending Payments
+              </Typography.Text>
+            </Flex>
+          </Card>
         </Col>
 
-        <Col md={24} lg={6}>
-          <Row {...stylesContext?.rowProps}>
-            <Col span={24}>
-              <Card title="Quick Summary">
-                <Flex vertical gap="middle">
-                  <Flex justify="space-between" align="middle">
-                    <Typography.Text>Revenue (MTD)</Typography.Text>
-                    <Typography.Title
-                      level={4}
-                      style={{ margin: 0, color: '#52c41a' }}
-                    >
-                      $<CountUp end={totalRevenue} separator="," />
-                    </Typography.Title>
-                  </Flex>
-                  <Flex justify="space-between" align="middle">
-                    <Typography.Text>Expenses (MTD)</Typography.Text>
-                    <Typography.Title
-                      level={4}
-                      style={{ margin: 0, color: '#f5222d' }}
-                    >
-                      $<CountUp end={totalExpenses} separator="," />
-                    </Typography.Title>
-                  </Flex>
-                  <Flex justify="space-between" align="middle">
-                    <Typography.Text>Net Profit</Typography.Text>
-                    <Typography.Title
-                      level={4}
-                      style={{
-                        margin: 0,
-                        color: netProfit >= 0 ? '#52c41a' : '#f5222d',
-                      }}
-                    >
-                      $<CountUp end={Math.abs(netProfit)} separator="," />
-                    </Typography.Title>
-                  </Flex>
-                  <Flex justify="space-between" align="middle">
-                    <Typography.Text>Collection Rate</Typography.Text>
-                    <Typography.Title level={4} style={{ margin: 0 }}>
-                      {invoicesData.length > 0
-                        ? Math.round(
-                            (invoicesData.filter((i) => i.status === 'paid')
-                              .length /
-                              invoicesData.length) *
-                              100
-                          )
-                        : 0}
-                      %
-                    </Typography.Title>
-                  </Flex>
-                </Flex>
-              </Card>
-            </Col>
+        {/* Invoice Management - full width */}
+        <Col xs={24}>
+          <Card
+            title="Invoice Management"
+            extra={
+              <Flex gap="small">
+                <Tag color="green">
+                  Paid: {invoicesData.filter((i) => i.status === 'paid').length}
+                </Tag>
+                <Tag color="orange">Pending: {pendingInvoices.length}</Tag>
+                <Tag color="red">Overdue: {overdueInvoices.length}</Tag>
+              </Flex>
+            }
+          >
+            {invoicesError ? (
+              <Typography.Text type="danger">
+                Error loading invoices
+              </Typography.Text>
+            ) : invoicesLoading ? (
+              <Loader />
+            ) : (
+              <Table
+                columns={invoiceColumns}
+                dataSource={invoicesData}
+                rowKey="id"
+                pagination={{ pageSize: 5 }}
+                size="small"
+              />
+            )}
+          </Card>
+        </Col>
 
-            <Col span={24}>
-              <Card title="Recent Activity">
-                <Flex vertical gap="small">
-                  {invoicesData.slice(0, 3).map((invoice) => (
-                    <Flex
-                      key={invoice.id}
-                      justify="space-between"
-                      align="middle"
-                      style={{
-                        padding: '8px 0',
-                        borderBottom: '1px solid #f0f0f0',
-                      }}
-                    >
-                      <Flex vertical gap={2}>
-                        <Typography.Text strong style={{ fontSize: 12 }}>
-                          {invoice.invoice_number}
-                        </Typography.Text>
-                        <Typography.Text
-                          type="secondary"
-                          style={{ fontSize: 11 }}
-                        >
-                          {invoice.client}
-                        </Typography.Text>
-                      </Flex>
-                      <Flex vertical align="end">
+        {/* Expense Breakdown + Invoice Status Overview side by side */}
+        <Col xs={24} lg={12}>
+          <Card title="Expense Breakdown" style={{ height: '100%' }}>
+            {expensesError ? (
+              <Typography.Text type="danger">
+                Error loading data
+              </Typography.Text>
+            ) : expensesLoading ? (
+              <Loader />
+            ) : (
+              <Flex vertical gap="middle">
+                {expensesData.slice(0, 5).map((expense) => {
+                  const percentage = (expense.amount / totalExpenses) * 100;
+                  return (
+                    <Flex key={expense.id} vertical gap={4}>
+                      <Flex justify="space-between">
                         <Typography.Text strong>
-                          ${invoice.amount.toLocaleString()}
+                          {expense.category}
                         </Typography.Text>
-                        <Tag
-                          color={
-                            invoice.status === 'paid'
-                              ? 'green'
-                              : invoice.status === 'pending'
-                                ? 'orange'
-                                : 'red'
-                          }
-                          style={{ fontSize: 10 }}
-                        >
-                          {invoice.status}
-                        </Tag>
+                        <Typography.Text>
+                          ${expense.amount.toLocaleString()}
+                        </Typography.Text>
                       </Flex>
+                      <Progress
+                        percent={percentage}
+                        strokeColor={getStatusColor(expense.status)}
+                        showInfo={false}
+                        size="small"
+                      />
                     </Flex>
-                  ))}
+                  );
+                })}
+              </Flex>
+            )}
+          </Card>
+        </Col>
+        <Col xs={24} lg={12}>
+          <Card title="Invoice Status Overview" style={{ height: '100%' }}>
+            <Flex vertical gap="middle">
+              <Flex justify="space-between" align="middle">
+                <Flex align="middle" gap="small">
+                  <CheckCircleOutlined
+                    style={{ color: '#52c41a', fontSize: 20 }}
+                  />
+                  <Typography.Text>Paid Invoices</Typography.Text>
                 </Flex>
-              </Card>
-            </Col>
-
-            <Col span={24}>
-              <Card title="Top Expense Categories">
+                <Typography.Title level={4} style={{ margin: 0 }}>
+                  {invoicesData.filter((i) => i.status === 'paid').length}
+                </Typography.Title>
+              </Flex>
+              <Flex justify="space-between" align="middle">
+                <Flex align="middle" gap="small">
+                  <ClockCircleOutlined
+                    style={{ color: '#faad14', fontSize: 20 }}
+                  />
+                  <Typography.Text>Pending Invoices</Typography.Text>
+                </Flex>
+                <Typography.Title level={4} style={{ margin: 0 }}>
+                  {pendingInvoices.length}
+                </Typography.Title>
+              </Flex>
+              <Flex justify="space-between" align="middle">
+                <Flex align="middle" gap="small">
+                  <ExclamationCircleOutlined
+                    style={{ color: '#f5222d', fontSize: 20 }}
+                  />
+                  <Typography.Text>Overdue Invoices</Typography.Text>
+                </Flex>
+                <Typography.Title level={4} style={{ margin: 0 }}>
+                  {overdueInvoices.length}
+                </Typography.Title>
+              </Flex>
+              <Card style={{ backgroundColor: '#f5f5f5' }}>
                 <Flex vertical gap="small">
-                  {expensesData.slice(0, 4).map((expense) => (
-                    <Flex
-                      key={expense.id}
-                      justify="space-between"
-                      align="middle"
-                      style={{ padding: '6px 0' }}
-                    >
-                      <Typography.Text>{expense.category}</Typography.Text>
-                      <Typography.Text strong>
-                        ${expense.amount.toLocaleString()}
-                      </Typography.Text>
-                    </Flex>
-                  ))}
+                  <Flex justify="space-between">
+                    <Typography.Text>Total Outstanding</Typography.Text>
+                    <Typography.Text strong>
+                      $
+                      {pendingInvoices
+                        .reduce((sum, i) => sum + i.amount, 0)
+                        .toLocaleString()}
+                    </Typography.Text>
+                  </Flex>
+                  <Flex justify="space-between">
+                    <Typography.Text>Overdue Amount</Typography.Text>
+                    <Typography.Text strong type="danger">
+                      $
+                      {overdueInvoices
+                        .reduce((sum, i) => sum + i.amount, 0)
+                        .toLocaleString()}
+                    </Typography.Text>
+                  </Flex>
                 </Flex>
               </Card>
-            </Col>
-          </Row>
+            </Flex>
+          </Card>
+        </Col>
+
+        {/* Recent Expenses - full width */}
+        <Col xs={24}>
+          <Card
+            title="Recent Expenses"
+            extra={<Button type="link">View All</Button>}
+          >
+            {expensesError ? (
+              <Typography.Text type="danger">
+                Error loading expenses
+              </Typography.Text>
+            ) : expensesLoading ? (
+              <Loader />
+            ) : (
+              <Table
+                columns={expenseColumns}
+                dataSource={expensesData}
+                rowKey="id"
+                pagination={{ pageSize: 5 }}
+                size="small"
+              />
+            )}
+          </Card>
+        </Col>
+
+        {/* Quick Summary + Recent Activity + Top Expenses row */}
+        <Col xs={24} sm={12} lg={8}>
+          <Card title="Quick Summary" style={{ height: '100%' }}>
+            <Flex vertical gap="middle">
+              <Flex justify="space-between" align="middle">
+                <Typography.Text>Revenue (MTD)</Typography.Text>
+                <Typography.Title
+                  level={4}
+                  style={{ margin: 0, color: '#52c41a' }}
+                >
+                  $<CountUp end={totalRevenue} separator="," />
+                </Typography.Title>
+              </Flex>
+              <Flex justify="space-between" align="middle">
+                <Typography.Text>Expenses (MTD)</Typography.Text>
+                <Typography.Title
+                  level={4}
+                  style={{ margin: 0, color: '#f5222d' }}
+                >
+                  $<CountUp end={totalExpenses} separator="," />
+                </Typography.Title>
+              </Flex>
+              <Flex justify="space-between" align="middle">
+                <Typography.Text>Net Profit</Typography.Text>
+                <Typography.Title
+                  level={4}
+                  style={{
+                    margin: 0,
+                    color: netProfit >= 0 ? '#52c41a' : '#f5222d',
+                  }}
+                >
+                  $<CountUp end={Math.abs(netProfit)} separator="," />
+                </Typography.Title>
+              </Flex>
+              <Flex justify="space-between" align="middle">
+                <Typography.Text>Collection Rate</Typography.Text>
+                <Typography.Title level={4} style={{ margin: 0 }}>
+                  {invoicesData.length > 0
+                    ? Math.round(
+                        (invoicesData.filter((i) => i.status === 'paid')
+                          .length /
+                          invoicesData.length) *
+                          100
+                      )
+                    : 0}
+                  %
+                </Typography.Title>
+              </Flex>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} lg={8}>
+          <Card title="Recent Activity" style={{ height: '100%' }}>
+            <Flex vertical gap="small">
+              {invoicesData.slice(0, 3).map((invoice) => (
+                <Flex
+                  key={invoice.id}
+                  justify="space-between"
+                  align="middle"
+                  style={{
+                    padding: '8px 0',
+                    borderBottom: '1px solid #f0f0f0',
+                  }}
+                >
+                  <Flex vertical gap={2}>
+                    <Typography.Text strong style={{ fontSize: 12 }}>
+                      {invoice.invoice_number}
+                    </Typography.Text>
+                    <Typography.Text type="secondary" style={{ fontSize: 11 }}>
+                      {invoice.client}
+                    </Typography.Text>
+                  </Flex>
+                  <Flex vertical align="end">
+                    <Typography.Text strong>
+                      ${invoice.amount.toLocaleString()}
+                    </Typography.Text>
+                    <Tag
+                      color={
+                        invoice.status === 'paid'
+                          ? 'green'
+                          : invoice.status === 'pending'
+                            ? 'orange'
+                            : 'red'
+                      }
+                      style={{ fontSize: 10 }}
+                    >
+                      {invoice.status}
+                    </Tag>
+                  </Flex>
+                </Flex>
+              ))}
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={24} lg={8}>
+          <Card title="Top Expense Categories" style={{ height: '100%' }}>
+            <Flex vertical gap="small">
+              {expensesData.slice(0, 4).map((expense) => (
+                <Flex
+                  key={expense.id}
+                  justify="space-between"
+                  align="middle"
+                  style={{ padding: '6px 0' }}
+                >
+                  <Typography.Text>{expense.category}</Typography.Text>
+                  <Typography.Text strong>
+                    ${expense.amount.toLocaleString()}
+                  </Typography.Text>
+                </Flex>
+              ))}
+            </Flex>
+          </Card>
         </Col>
       </Row>
 

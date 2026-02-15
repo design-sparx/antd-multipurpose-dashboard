@@ -69,6 +69,11 @@ const ENDPOINT_MOCK_MAP: Record<string, string> = {
   '/antd/timeline-activity': '/mocks/TimelineActivity.json',
   '/antd/social-comments': '/mocks/SocialComments.json',
 
+  // Users & Orders
+  '/antd/channel-users': '/mocks/ChannelUsers.json',
+  '/antd/country-orders': '/mocks/CountryOrders.json',
+  '/antd/campaigns': '/mocks/Campaigns.json',
+
   // Corporate Pages
   '/antd/employees': '/mocks/Employees.json',
   '/antd/faqs': '/mocks/Faqs.json',
