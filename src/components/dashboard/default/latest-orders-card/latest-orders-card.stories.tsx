@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CampaignsData from '@mocks/Campaigns.json';
+import CountryOrdersData from '@mocks/CountryOrders.json';
 
 import { LatestOrdersCard } from './latest-orders-card';
 
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    data: CampaignsData,
+    data: CountryOrdersData,
     style: { width: 1000 },
   },
 };

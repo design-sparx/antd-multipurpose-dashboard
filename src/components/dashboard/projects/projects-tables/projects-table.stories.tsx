@@ -18,6 +18,5 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     data: ProjectsData.slice(0, 10),
-    style: { width: 1000 },
   },
 };
