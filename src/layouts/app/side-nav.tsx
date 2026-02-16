@@ -2,15 +2,26 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ConfigProvider, Layout, Menu, MenuProps, SiderProps } from 'antd';
 import {
   AppstoreAddOutlined,
+  BarChartOutlined,
   BranchesOutlined,
   BugOutlined,
+  DollarOutlined,
+  FundProjectionScreenOutlined,
   GithubOutlined,
+  HeartOutlined,
   IdcardOutlined,
   InfoCircleOutlined,
+  LineChartOutlined,
+  PictureOutlined,
   PieChartOutlined,
   ProductOutlined,
+  RocketOutlined,
   SecurityScanOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
   SnippetsOutlined,
+  TeamOutlined,
+  TruckOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import { Logo } from '../../components';
@@ -31,6 +42,7 @@ import {
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { getThemeColors } from '../../theme/colors';
+import { useDesignStyle } from '../../hooks/useDesignStyle';
 
 const { Sider } = Layout;
 
@@ -53,47 +65,70 @@ const getItem = (
 };
 
 const items: MenuProps['items'] = [
+  // ── DASHBOARDS ──
+  getItem('Dashboards', 'section-dashboards', null, [], 'group'),
+
   getItem('Dashboards', 'dashboards', <PieChartOutlined />, [
-    getItem(<Link to={PATH_DASHBOARD.default}>Default</Link>, 'default', null),
+    getItem(
+      <Link to={PATH_DASHBOARD.default}>Default</Link>,
+      'default',
+      <BarChartOutlined />
+    ),
     getItem(
       <Link to={PATH_DASHBOARD.projects}>Projects</Link>,
       'projects',
-      null
+      <FundProjectionScreenOutlined />
     ),
     getItem(
       <Link to={PATH_DASHBOARD.ecommerce}>eCommerce</Link>,
       'ecommerce',
-      null
+      <ShoppingCartOutlined />
     ),
     getItem(
       <Link to={PATH_DASHBOARD.marketing}>Marketing</Link>,
       'marketing',
-      null
+      <RocketOutlined />
     ),
-    getItem(<Link to={PATH_DASHBOARD.social}>Social</Link>, 'social', null),
-    getItem(<Link to={PATH_DASHBOARD.bidding}>Bidding</Link>, 'bidding', null),
+    getItem(
+      <Link to={PATH_DASHBOARD.social}>Social</Link>,
+      'social',
+      <TeamOutlined />
+    ),
+    getItem(
+      <Link to={PATH_DASHBOARD.bidding}>Bidding</Link>,
+      'bidding',
+      <ShopOutlined />
+    ),
     getItem(
       <Link to={PATH_DASHBOARD.learning}>Learning</Link>,
       'learning',
-      null
+      <SnippetsOutlined />
     ),
     getItem(
       <Link to={PATH_DASHBOARD.logistics}>Logistics</Link>,
       'logistics',
-      null
+      <TruckOutlined />
     ),
     getItem(
       <Link to={PATH_DASHBOARD.analytics}>Analytics</Link>,
       'analytics',
-      null
+      <LineChartOutlined />
     ),
     getItem(
       <Link to={PATH_DASHBOARD.healthcare}>Healthcare</Link>,
       'healthcare',
-      null
+      <HeartOutlined />
     ),
-    getItem(<Link to={PATH_DASHBOARD.finance}>Finance</Link>, 'finance', null),
+    getItem(
+      <Link to={PATH_DASHBOARD.finance}>Finance</Link>,
+      'finance',
+      <DollarOutlined />
+    ),
   ]),
+
+  // ── PAGES ──
+  getItem('Pages', 'section-pages', null, [], 'group'),
+
   getItem(
     <Link to={PATH_ABOUT.root}>About</Link>,
     'about',
@@ -104,9 +139,6 @@ const items: MenuProps['items'] = [
     'sitemap',
     <BranchesOutlined />
   ),
-
-  getItem('Pages', 'pages', null, [], 'group'),
-
   getItem('Corporate', 'corporate', <IdcardOutlined />, [
     getItem(<Link to={PATH_CORPORATE.about}>About</Link>, 'about', null),
     getItem(<Link to={PATH_CORPORATE.team}>Team</Link>, 'team', null),
@@ -119,6 +151,14 @@ const items: MenuProps['items'] = [
     getItem(<Link to={PATH_CORPORATE.pricing}>Pricing</Link>, 'pricing', null),
     getItem(<Link to={PATH_CORPORATE.license}>License</Link>, 'license', null),
   ]),
+  getItem(
+    <Link to={PATH_GALLERY.root}>Gallery</Link>,
+    'gallery',
+    <PictureOutlined />
+  ),
+
+  // ── USER ──
+  getItem('User', 'section-user', null, [], 'group'),
 
   getItem('User profile', 'user-profile', <UserOutlined />, [
     getItem(
@@ -158,7 +198,6 @@ const items: MenuProps['items'] = [
       null
     ),
   ]),
-
   getItem('Authentication', 'authentication', <SecurityScanOutlined />, [
     getItem(<Link to={PATH_AUTH.signin}>Sign In</Link>, 'auth-signin', null),
     getItem(<Link to={PATH_AUTH.signup}>Sign Up</Link>, 'auth-signup', null),
@@ -178,14 +217,12 @@ const items: MenuProps['items'] = [
       'auth-password-reset',
       null
     ),
-    // getItem(<Link to={PATH_AUTH.passwordConfirm}>Passsword confirmation</Link>, 'auth-password-confirmation', null),
     getItem(
       <Link to={PATH_AUTH.accountDelete}>Account deleted</Link>,
       'auth-account-deactivation',
       null
     ),
   ]),
-
   getItem('Errors', 'errors', <BugOutlined />, [
     getItem(<Link to={PATH_ERROR.error400}>400</Link>, '400', null),
     getItem(<Link to={PATH_ERROR.error403}>403</Link>, '403', null),
@@ -194,13 +231,9 @@ const items: MenuProps['items'] = [
     getItem(<Link to={PATH_ERROR.error503}>503</Link>, '503', null),
   ]),
 
-  getItem(
-    <Link to={PATH_GALLERY.root}>Gallery</Link>,
-    'gallery',
-    <AppstoreAddOutlined />
-  ),
+  // ── HELP ──
+  getItem('Help', 'section-help', null, [], 'group'),
 
-  getItem('Help', 'help', null, [], 'group'),
   getItem(
     <Link to={PATH_DOCS.productRoadmap} target="_blank">
       Roadmap
@@ -235,6 +268,9 @@ const rootSubmenuKeys = ['dashboards', 'corporate', 'user-profile'];
 
 type SideNavProps = SiderProps;
 
+export const SIDER_WIDTH = 200;
+export const SIDER_COLLAPSED_WIDTH = 64;
+
 const SideNav = ({ ...others }: SideNavProps) => {
   const nodeRef = useRef(null);
   const { pathname } = useLocation();
@@ -242,6 +278,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
   const [current, setCurrent] = useState('');
   const { mytheme } = useSelector((state: RootState) => state.theme);
   const colors = getThemeColors(mytheme as 'dark' | 'light');
+  const { tokens, styleName } = useDesignStyle();
 
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
@@ -262,8 +299,27 @@ const SideNav = ({ ...others }: SideNavProps) => {
     setCurrent(paths[paths.length - 1]);
   }, [pathname]);
 
+  // Determine menu text color based on style + theme
+  const isBoldStyle = styleName === 'bold';
+  const isDark = mytheme === 'dark';
+  const menuTextColor = isBoldStyle
+    ? isDark
+      ? 'rgba(255, 255, 255, 0.85)'
+      : 'rgba(255, 255, 255, 0.85)'
+    : isDark
+      ? 'rgba(255, 255, 255, 0.85)'
+      : undefined;
+
+  const isCollapsed = others.collapsed ?? false;
+
   return (
-    <Sider ref={nodeRef} breakpoint="lg" collapsedWidth="0" {...others}>
+    <Sider
+      ref={nodeRef}
+      breakpoint="lg"
+      collapsedWidth={SIDER_COLLAPSED_WIDTH}
+      width={SIDER_WIDTH}
+      {...others}
+    >
       <Logo
         color="blue"
         asLink
@@ -272,27 +328,51 @@ const SideNav = ({ ...others }: SideNavProps) => {
         gap="small"
         imgSize={{ h: 28, w: 28 }}
         style={{ padding: '1rem 0' }}
+        showText={!isCollapsed}
       />
       <ConfigProvider
         theme={{
           components: {
             Menu: {
               itemBg: 'none',
-              itemSelectedBg: colors[100],
-              itemHoverBg: colors[50],
-              itemSelectedColor: colors[600],
+              itemSelectedBg: isBoldStyle
+                ? 'rgba(7, 110, 229, 0.2)'
+                : isDark
+                  ? 'rgba(7, 110, 229, 0.15)'
+                  : colors[100],
+              itemHoverBg: isBoldStyle
+                ? 'rgba(255, 255, 255, 0.08)'
+                : isDark
+                  ? 'rgba(255, 255, 255, 0.08)'
+                  : colors[50],
+              itemSelectedColor: isBoldStyle
+                ? '#4d8bff'
+                : isDark
+                  ? '#4d8bff'
+                  : colors[600],
+              itemColor: menuTextColor,
+              subMenuItemBg: 'none',
+              groupTitleColor: isDark ? 'rgba(255, 255, 255, 0.45)' : undefined,
             },
           },
         }}
       >
         <Menu
           mode="inline"
+          inlineCollapsed={isCollapsed}
           items={items}
           onClick={onClick}
-          openKeys={openKeys}
+          openKeys={isCollapsed ? [] : openKeys}
           onOpenChange={onOpenChange}
           selectedKeys={[current]}
-          style={{ border: 'none' }}
+          style={
+            {
+              border: 'none',
+              ...(tokens.menuItemHover.transition
+                ? { '--menu-transition': tokens.menuItemHover.transition }
+                : {}),
+            } as React.CSSProperties
+          }
         />
       </ConfigProvider>
     </Sider>

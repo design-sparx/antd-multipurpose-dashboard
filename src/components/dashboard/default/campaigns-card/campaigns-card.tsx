@@ -23,7 +23,7 @@ type Campaign = {
   start_date: string;
   end_date: string;
   target_audience: string;
-  budget: string;
+  budget: number;
   campaign_objective: string;
   platform: string;
   impressions: number;

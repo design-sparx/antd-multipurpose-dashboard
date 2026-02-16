@@ -1,5 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import { ConfigProvider, theme as antdTheme } from 'antd';
+import { useEffect } from 'react';
 
 import { HelmetProvider } from 'react-helmet-async';
 import { StylesContext } from './context';
@@ -7,10 +8,23 @@ import routes from './routes/routes.tsx';
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';
 import { PRIMARY_COLOR } from './theme/colors';
+import { getDesignTokens } from './theme/design-styles';
 import './App.css';
 
 function App() {
   const { mytheme } = useSelector((state: RootState) => state.theme);
+  const { activeStyle } = useSelector((state: RootState) => state.designStyle);
+  const themeMode = mytheme === 'dark' ? 'dark' : 'light';
+  const tokens = getDesignTokens(activeStyle, themeMode as 'light' | 'dark');
+
+  // Sync data-theme attribute for CSS dark mode targeting
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', themeMode);
+  }, [themeMode]);
+
+  // Neumorphic needs matching container backgrounds
+  const cardBgOverride =
+    activeStyle === 'neumorphic' ? tokens.surfaceBg : undefined;
 
   return (
     <HelmetProvider>
@@ -23,7 +37,7 @@ function App() {
           },
           components: {
             Calendar: {
-              colorBgContainer: 'none',
+              colorBgContainer: cardBgOverride || 'none',
             },
             Carousel: {
               dotWidth: 8,

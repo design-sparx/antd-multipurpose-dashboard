@@ -431,18 +431,17 @@ const CATEGORIES_COLUMNS = [
 
 const SELLER_COLUMNS = [
   {
-    title: 'Name',
-    dataIndex: 'first_name',
-    key: 'first_name',
-    render: (_: string, { first_name, last_name }: TopSeller) => (
-      <UserAvatar fullName={`${first_name} ${last_name}`} />
+    title: 'Seller',
+    dataIndex: 'seller_name',
+    key: 'seller_name',
+    render: (_: string, { seller_name }: TopSeller) => (
+      <UserAvatar fullName={seller_name} />
     ),
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
-    render: (_: string) => <Link to={`mailto:${_}`}>{_}</Link>,
+    title: 'Store',
+    dataIndex: 'store_name',
+    key: 'store_name',
   },
   {
     title: 'Region',
@@ -450,9 +449,16 @@ const SELLER_COLUMNS = [
     key: 'sales_region',
   },
   {
-    title: 'Country',
-    dataIndex: 'country',
-    key: 'country',
+    title: 'Orders',
+    dataIndex: 'orders_completed',
+    key: 'orders_completed',
+    render: (_: number) => <span>{numberWithCommas(_)}</span>,
+  },
+  {
+    title: 'Rating',
+    dataIndex: 'rating',
+    key: 'rating',
+    render: (_: number) => <span>{_.toFixed(1)}</span>,
   },
   {
     title: 'Volume',

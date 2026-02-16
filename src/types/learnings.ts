@@ -12,7 +12,6 @@ export type LearningCourses = {
   course_location: string;
   total_lessons: number;
   current_lessons: number;
-  favorite_color: string;
 };
 
 export type RecommendedCourses = {
@@ -26,7 +25,6 @@ export type RecommendedCourses = {
   instructor: string;
   start_date: string;
   course_language: string;
-  favorite_color: string;
   lessons: number;
 };
 
@@ -37,7 +35,7 @@ export type Exam = {
   course: string;
   course_code: string;
   exam_date: string;
-  exam_time: number;
+  exam_time: string;
   exam_duration: number;
   exam_score: number;
 };
@@ -55,7 +53,6 @@ export type CommunityGroup = {
   meeting_time: string;
   member_age_range: number;
   member_interests: string;
-  favorite_color: string;
 };
 
 export type StudyStatistics = {

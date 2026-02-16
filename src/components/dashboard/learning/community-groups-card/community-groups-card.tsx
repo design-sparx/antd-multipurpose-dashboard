@@ -49,12 +49,7 @@ export const CommunityGroupCard = ({
             <List.Item key={item.id}>
               <List.Item.Meta
                 avatar={
-                  <Avatar
-                    src={item.image}
-                    alt={item.name}
-                    size="default"
-                    style={{ backgroundColor: item.favorite_color }}
-                  />
+                  <Avatar src={item.image} alt={item.name} size="default" />
                 }
                 title={<Typography.Link>{item.name}</Typography.Link>}
                 description={`${item.size} Members`}

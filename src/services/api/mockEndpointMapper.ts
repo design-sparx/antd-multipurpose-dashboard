@@ -18,8 +18,8 @@ const ENDPOINT_MOCK_MAP: Record<string, string> = {
   '/antd/orders': '/mocks/RecentOrders.json', // Use RecentOrders as fallback
 
   // Sellers
-  '/antd/sellers/top': '/mocks/TopSeller.json',
-  '/antd/sellers': '/mocks/TopSeller.json', // Use TopSeller as fallback
+  '/antd/sellers/top': '/mocks/TopSellers.json',
+  '/antd/sellers': '/mocks/TopSellers.json', // Use TopSeller as fallback
 
   // Projects
   '/antd/projects': '/mocks/Projects.json',

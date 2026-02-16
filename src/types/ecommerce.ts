@@ -24,17 +24,17 @@ export type TopCategory = {
 };
 
 export type TopSeller = {
-  first_name: string;
-  last_name: string;
-  age: number;
-  email: string;
-  country: string;
-  postal_code: string;
-  favorite_color: string;
+  id: string;
+  seller_name: string;
+  store_name: string;
+  avatar: string;
   sales_volume: number;
-  sales_region: string;
   total_sales: number;
+  orders_completed: number;
+  rating: number;
   customer_satisfaction: number;
+  sales_region: string;
+  join_date: string;
 };
 
 export type RecentOrder = {

@@ -1,4 +1,6 @@
 import {
+  Badge,
+  Breadcrumb,
   Button,
   Dropdown,
   Flex,
@@ -6,43 +8,49 @@ import {
   Layout,
   MenuProps,
   message,
+  Skeleton,
   theme,
   Tooltip,
+  Typography,
 } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   AppstoreOutlined,
+  BgColorsOutlined,
+  CustomerServiceOutlined,
+  HomeOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   MessageOutlined,
+  SearchOutlined,
+  QuestionCircleOutlined,
   QuestionOutlined,
   SettingOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import {
-  CSSTransition,
-  SwitchTransition,
-  TransitionGroup,
-} from 'react-transition-group';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
-import SideNav from './side-nav.tsx';
+import SideNav, { SIDER_WIDTH, SIDER_COLLAPSED_WIDTH } from './side-nav.tsx';
 import HeaderNav from './header-nav.tsx';
 import FooterNav from './footer-nav.tsx';
 import {
   CommandPalette,
+  MobileTabBar,
   NProgress,
   LoginModal,
   OnboardingTour,
   Accessibility,
   LanguageSwitcher,
+  StyleSwitcher,
 } from '../../components';
 import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/auth/authSlice';
 import { enableMockData } from '../../redux/data-mode/dataModeSlice';
 import { RootState } from '../../redux/store.ts';
+import { useDesignStyle } from '../../hooks/useDesignStyle';
 const { Content } = Layout;
 
 type AppLayoutProps = {
@@ -51,20 +59,23 @@ type AppLayoutProps = {
 
 export const AppLayout = ({ children }: AppLayoutProps) => {
   const {
-    token: { borderRadius, colorBgContainer },
+    token: { borderRadius },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [collapsed, setCollapsed] = useState(true);
   const [navFill, setNavFill] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const contentRef = useRef<HTMLElement>(null);
+  const [styleDrawerOpen, setStyleDrawerOpen] = useState(false);
+  const [tourOpen, setTourOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const nodeRef = useRef(null);
   const floatBtnRef = useRef(null);
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.auth
   );
+  const { tokens, styleName } = useDesignStyle();
 
   const handleLogout = async () => {
     message.open({
@@ -213,14 +224,30 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   }, [isMobile]);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 5) {
-        setNavFill(true);
-      } else {
-        setNavFill(false);
-      }
-    });
+    const el = contentRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      setNavFill(el.scrollTop > 5);
+    };
+    el.addEventListener('scroll', onScroll);
+    return () => el.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Sidebar width: on mobile when collapsed, fully hidden (0); on desktop, icon rail (64px)
+  const sidebarWidth = collapsed
+    ? isMobile
+      ? 0
+      : SIDER_COLLAPSED_WIDTH
+    : SIDER_WIDTH;
+  const sidebarMargin = `${sidebarWidth}px`;
+
+  // Compute header background based on design style
+  const headerBg = navFill ? tokens.headerFilledBg : 'none';
+  const headerBackdrop = navFill ? tokens.headerFilledBackdrop : 'none';
+  const headerShadow = navFill ? tokens.headerFilledShadow : 'none';
+
+  // Neumorphic uses its own background for the whole layout
+  const layoutBg = styleName === 'neumorphic' ? tokens.surfaceBg : undefined;
 
   return (
     <>
@@ -228,14 +255,17 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       <Accessibility />
       <Layout
         style={{
-          minHeight: '100vh',
-          // backgroundColor: 'white',
+          height: '100vh',
+          overflow: 'hidden',
+          ...(layoutBg ? { backgroundColor: layoutBg } : {}),
         }}
       >
         <SideNav
           trigger={null}
           collapsible
           collapsed={collapsed}
+          collapsedWidth={isMobile ? 0 : SIDER_COLLAPSED_WIDTH}
+          width={SIDER_WIDTH}
           onCollapse={(value) => setCollapsed(value)}
           style={{
             overflow: 'auto',
@@ -243,36 +273,43 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             left: 0,
             top: 0,
             bottom: 0,
-            background: 'none',
-            border: 'none',
+            background: tokens.sidebarBg,
+            border: styleName !== 'clean' ? tokens.border : 'none',
+            borderLeft: 'none',
+            borderTop: 'none',
+            borderBottom: 'none',
+            backdropFilter: tokens.backdropFilter,
+            WebkitBackdropFilter: tokens.backdropFilter,
             transition: 'all .2s',
           }}
         />
         <Layout
-          style={
-            {
-              // background: 'none',
-            }
-          }
+          style={{
+            height: '100vh',
+            overflow: 'hidden',
+            ...(layoutBg ? { background: 'none' } : {}),
+          }}
         >
           <HeaderNav
             style={{
-              marginLeft: collapsed ? 0 : '200px',
-              padding: '0 2rem 0 0',
-              background: navFill ? `${colorBgContainer}80` : 'none',
-              backdropFilter: navFill ? 'blur(8px)' : 'none',
-              boxShadow: navFill ? '0 0 8px 2px rgba(0, 0, 0, 0.05)' : 'none',
+              marginLeft: sidebarMargin,
+              padding: navFill ? '0 1.5rem 0 0' : '0 2rem 0 0',
+              height: navFill ? 48 : 64,
+              background: headerBg,
+              backdropFilter: headerBackdrop,
+              WebkitBackdropFilter: headerBackdrop,
+              boxShadow: headerShadow,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              position: 'sticky',
-              top: 0,
+              flexShrink: 0,
               zIndex: 1,
               gap: 8,
               transition: 'all .25s',
             }}
           >
-            <Flex align="center">
+            {/* Left: collapse + breadcrumbs */}
+            <Flex align="center" gap={8}>
               <Tooltip title={`${collapsed ? 'Expand' : 'Collapse'} Sidebar`}>
                 <Button
                   type="text"
@@ -287,79 +324,208 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                   }}
                 />
               </Tooltip>
-              <CommandPalette items={commandPaletteItems} />
+              <Breadcrumb
+                items={(() => {
+                  const segments = location.pathname.split('/').filter(Boolean);
+                  return [
+                    { title: <HomeOutlined />, href: '/' },
+                    ...segments.map((seg, i) => ({
+                      title: seg.charAt(0).toUpperCase() + seg.slice(1),
+                      ...(i < segments.length - 1
+                        ? {
+                            href: '/' + segments.slice(0, i + 1).join('/'),
+                          }
+                        : {}),
+                    })),
+                  ];
+                })()}
+              />
             </Flex>
+            {/* Center: search */}
+            {isMobile ? (
+              <Tooltip title="Search">
+                <Button
+                  icon={<SearchOutlined />}
+                  type="text"
+                  size="large"
+                  onClick={() => {
+                    window.dispatchEvent(
+                      new KeyboardEvent('keydown', {
+                        key: 'k',
+                        ctrlKey: true,
+                      })
+                    );
+                  }}
+                />
+              </Tooltip>
+            ) : (
+              <CommandPalette items={commandPaletteItems} />
+            )}
+            {/* Right: actions */}
             <Flex align="center" gap="small">
               <Tooltip title="Apps">
-                <Button icon={<AppstoreOutlined />} type="text" size="large" />
+                <Badge dot offset={[-4, 4]} status="processing">
+                  <Button
+                    icon={<AppstoreOutlined />}
+                    type="text"
+                    size="large"
+                  />
+                </Badge>
               </Tooltip>
               <Tooltip title="Messages">
-                <Button icon={<MessageOutlined />} type="text" size="large" />
+                <Badge count={3} size="small" offset={[-4, 4]}>
+                  <Button icon={<MessageOutlined />} type="text" size="large" />
+                </Badge>
               </Tooltip>
               <LanguageSwitcher />
               <Dropdown menu={{ items }} trigger={['click']}>
-                <Flex>
-                  <img
-                    src="/me.jpg"
-                    alt="user profile photo"
-                    height={36}
-                    width={36}
-                    style={{ borderRadius, objectFit: 'cover' }}
-                  />
+                <Flex
+                  align="center"
+                  gap={8}
+                  style={{
+                    cursor: 'pointer',
+                    padding: '4px 8px 4px 4px',
+                    borderRadius: borderRadius + 16,
+                    transition: 'background 0.2s ease',
+                  }}
+                >
+                  <div style={{ position: 'relative' }}>
+                    <img
+                      src="/me.jpg"
+                      alt="user profile photo"
+                      height={36}
+                      width={36}
+                      style={{
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                        display: 'block',
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        bottom: 1,
+                        right: 1,
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        background: '#52c41a',
+                        border: '2px solid white',
+                      }}
+                    />
+                  </div>
+                  {!isMobile && (
+                    <Typography.Text
+                      strong
+                      style={{ fontSize: 13, lineHeight: 1 }}
+                    >
+                      {user?.userName || user?.email?.split('@')[0] || 'Admin'}
+                    </Typography.Text>
+                  )}
                 </Flex>
               </Dropdown>
             </Flex>
           </HeaderNav>
           <Content
+            ref={contentRef}
             id="main-content"
             tabIndex={-1}
             style={{
-              margin: `0 0 0 ${collapsed ? 0 : '200px'}`,
-              // background: '#ebedf0',
-              borderRadius: collapsed ? 0 : borderRadius,
+              margin: `0 0 0 ${sidebarMargin}`,
+              borderRadius,
               transition: 'all .25s',
-              padding: '24px 32px',
-              minHeight: 360,
+              padding: isMobile ? '16px 16px 72px' : '24px 32px',
+              flex: 1,
+              overflowY: 'auto',
             }}
           >
-            <TransitionGroup>
-              <SwitchTransition>
-                <CSSTransition
-                  key={`css-transition-${location.key}`}
-                  nodeRef={nodeRef}
-                  onEnter={() => {
-                    setIsLoading(true);
-                  }}
-                  onEntered={() => {
-                    setIsLoading(false);
-                  }}
-                  timeout={300}
-                  classNames="bottom-to-top"
-                  unmountOnExit
-                >
-                  {() => (
-                    <div ref={nodeRef} style={{ background: 'none' }}>
-                      {children}
-                    </div>
-                  )}
-                </CSSTransition>
-              </SwitchTransition>
-            </TransitionGroup>
-            <div ref={floatBtnRef}>
-              <FloatButton.BackTop />
-            </div>
+            <AnimatePresence
+              mode="wait"
+              onExitComplete={() => setIsLoading(false)}
+            >
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 30,
+                  mass: 0.8,
+                }}
+                onAnimationStart={() => setIsLoading(true)}
+                onAnimationComplete={() => setIsLoading(false)}
+                style={{ background: 'none' }}
+              >
+                {isLoading ? (
+                  <Flex vertical gap={16}>
+                    <Skeleton.Input active block style={{ height: 32 }} />
+                    <Flex gap={16}>
+                      <Skeleton.Node
+                        active
+                        style={{ width: '100%', height: 180 }}
+                      />
+                      <Skeleton.Node
+                        active
+                        style={{ width: '100%', height: 180 }}
+                      />
+                      {!isMobile && (
+                        <Skeleton.Node
+                          active
+                          style={{ width: '100%', height: 180 }}
+                        />
+                      )}
+                    </Flex>
+                    <Skeleton active paragraph={{ rows: 4 }} />
+                  </Flex>
+                ) : (
+                  children
+                )}
+              </motion.div>
+            </AnimatePresence>
           </Content>
           <FooterNav
             style={{
               textAlign: 'center',
-              marginLeft: collapsed ? 0 : '200px',
+              marginLeft: sidebarMargin,
               background: 'none',
+              flexShrink: 0,
             }}
           />
         </Layout>
       </Layout>
+      {isMobile && <MobileTabBar />}
+      <div ref={floatBtnRef}>
+        <FloatButton.Group
+          trigger="click"
+          icon={<CustomerServiceOutlined />}
+          tooltip="Quick Actions"
+        >
+          <FloatButton.BackTop
+            tooltip="Back to Top"
+            target={() => contentRef.current || window}
+          />
+          <FloatButton
+            icon={<BgColorsOutlined />}
+            tooltip="Customize Style"
+            onClick={() => setStyleDrawerOpen(true)}
+          />
+          <FloatButton
+            icon={<QuestionCircleOutlined />}
+            tooltip="Help & Tour"
+            onClick={() => setTourOpen(true)}
+          />
+        </FloatButton.Group>
+      </div>
+      <StyleSwitcher
+        open={styleDrawerOpen}
+        onClose={() => setStyleDrawerOpen(false)}
+      />
       <LoginModal />
       <OnboardingTour
+        open={tourOpen}
+        onClose={() => setTourOpen(false)}
         steps={[
           {
             target: () =>

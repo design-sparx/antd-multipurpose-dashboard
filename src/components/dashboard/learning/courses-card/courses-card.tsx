@@ -46,11 +46,7 @@ const COURSES_COLUMNS: ColumnsType<LearningCourses> = [
     dataIndex: 'instructor_name',
     key: 'instructor_name',
     render: (_: unknown, record: LearningCourses) => (
-      <UserAvatar
-        fullName={record.instructor_name}
-        color={record.favorite_color}
-        textWidth={120}
-      />
+      <UserAvatar fullName={record.instructor_name} textWidth={120} />
     ),
   },
   {

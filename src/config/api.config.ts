@@ -64,7 +64,7 @@ export const API_ENDPOINTS = {
     prod: '/campaigns/ads',
   },
   topSeller: {
-    mock: '/TopSeller.json',
+    mock: '/TopSellers.json',
     prod: '/sellers/top',
   },
   topCategories: {
@@ -166,6 +166,7 @@ export const getEndpoint = (
   resource: keyof typeof API_ENDPOINTS,
   useMockData: boolean
 ): string => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const endpoint = API_ENDPOINTS[resource] as any;
 
   if (!endpoint) {

@@ -165,6 +165,111 @@
   font-weight: bolder;
 }
 
+/* Theme transition — smooth crossfade when toggling light/dark */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ── Micro-interactions ── */
+
+/* Sidebar menu item hover pulse */
+.ant-menu-item {
+  transition:
+    transform 0.15s ease,
+    background-color 0.2s ease !important;
+}
+
+.ant-menu-item:active {
+  transform: scale(0.97);
+}
+
+/* Badge bounce on appear */
+@keyframes badge-bounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ant-badge-count,
+.ant-badge-dot {
+  animation: badge-bounce 0.4s ease-out;
+}
+
+/* Button press effect */
+.ant-btn:active {
+  transform: scale(0.95) !important;
+  transition: transform 0.1s ease !important;
+}
+
+/* Float button hover glow */
+.ant-float-btn:hover {
+  transform: scale(1.08);
+  transition: transform 0.2s ease;
+}
+
+/* Avatar hover grow */
+.ant-avatar:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Tag hover lift */
+.ant-tag {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ant-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress bar shimmer */
+@keyframes progress-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.ant-progress-bg {
+  background-size: 200% 100%;
+  animation: progress-shimmer 2s ease-in-out infinite;
+}
+
+/* Stat number pulse on first render */
+@keyframes stat-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ant-statistic-content-value {
+  animation: stat-appear 0.5s ease-out;
+}
+
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .overflow-scroll {

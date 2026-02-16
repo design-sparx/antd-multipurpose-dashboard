@@ -5,7 +5,7 @@ import {
   useState,
   forwardRef,
 } from 'react';
-import { Input, List, Modal, Typography } from 'antd';
+import { Button, Input, List, Modal, Typography, theme } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,6 +32,14 @@ export const CommandPalette = forwardRef<
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+  const {
+    token: {
+      colorBgContainer,
+      colorBorder,
+      borderRadiusLG,
+      colorTextPlaceholder,
+    },
+  } = theme.useToken();
 
   useImperativeHandle(ref, () => ({
     open: () => setOpen(true),
@@ -82,27 +90,41 @@ export const CommandPalette = forwardRef<
     return groups;
   }, [filteredItems]);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    if (!open) setOpen(true);
-  };
-
   return (
     <>
-      <Input.Search
-        placeholder={`${placeholder} (Ctrl+K)`}
-        value={search}
-        onChange={handleSearchChange}
+      <Button
+        icon={<SearchOutlined />}
         onClick={() => setOpen(true)}
-        style={{ width: 400 }}
-        size="middle"
-      />
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          color: colorTextPlaceholder,
+          background: colorBgContainer,
+          border: `1px solid ${colorBorder}`,
+          borderRadius: borderRadiusLG,
+          padding: '4px 12px',
+          height: 36,
+          minWidth: 180,
+          justifyContent: 'flex-start',
+        }}
+      >
+        <span style={{ flex: 1, textAlign: 'left', fontWeight: 'normal' }}>
+          Search...
+        </span>
+        <Text keyboard style={{ fontSize: 11, lineHeight: 1, margin: 0 }}>
+          Ctrl+K
+        </Text>
+      </Button>
       <Modal
         open={open}
-        onCancel={() => setOpen(false)}
+        onCancel={() => {
+          setOpen(false);
+          setSearch('');
+        }}
         footer={null}
         closable={false}
-        width={500}
+        width={520}
         styles={{ body: { padding: 0 } }}
         className="command-palette-modal"
         centered
@@ -127,6 +149,7 @@ export const CommandPalette = forwardRef<
                   display: 'block',
                   fontSize: 11,
                   textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
                 }}
               >
                 {category}
@@ -135,7 +158,11 @@ export const CommandPalette = forwardRef<
                 <List.Item
                   key={item.key}
                   onClick={() => handleSelect(item)}
-                  style={{ cursor: 'pointer', padding: '8px 16px' }}
+                  style={{
+                    cursor: 'pointer',
+                    padding: '8px 16px',
+                    transition: 'background 0.15s ease',
+                  }}
                 >
                   <Text>{item.label}</Text>
                 </List.Item>

@@ -2,9 +2,11 @@ import { Badge, Card, CardProps, Space, Typography } from 'antd';
 import { Pie } from '@ant-design/charts';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import * as _ from 'lodash';
+import CountUp from 'react-countup';
 import { MoreMenu } from '../../../index.ts';
 
 type Props = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
   title: string;
   diff: number;
@@ -57,7 +59,7 @@ export const EarningsCard = ({ data, title, diff, ...others }: Props) => {
         <Space direction="horizontal" align="center">
           <Typography.Title level={1} style={{ margin: 0 }}>
             <small>$</small>
-            {_.sumBy(data, 'value')}
+            <CountUp end={_.sumBy(data, 'value')} separator="," />
           </Typography.Title>
           <Badge
             count={
@@ -76,7 +78,7 @@ export const EarningsCard = ({ data, title, diff, ...others }: Props) => {
           />
         </Space>
         <div style={{ height: 180, textAlign: 'center' }}>
-          {/*@ts-ignore*/}
+          {/* @ts-expect-error Pie config types mismatch */}
           <Pie {...config} />
         </div>
       </Space>

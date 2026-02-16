@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FloatButton, Tooltip, Tour, TourProps } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { Tour, TourProps } from 'antd';
 
 type OnboardingStep = {
   target: HTMLElement | (() => HTMLElement | null) | null;
@@ -11,54 +10,51 @@ type OnboardingStep = {
 type OnboardingTourProps = {
   steps: OnboardingStep[];
   storageKey?: string;
+  open?: boolean;
+  onClose?: () => void;
 };
 
 export function OnboardingTour({
   steps,
   storageKey = 'onboarding_tour_completed',
+  open: controlledOpen,
+  onClose: onControlledClose,
 }: OnboardingTourProps) {
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
   const [current, setCurrent] = useState(0);
 
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
+
   useEffect(() => {
-    const completed = localStorage.getItem(storageKey);
-    if (!completed) {
-      setOpen(true);
+    if (!isControlled) {
+      const completed = localStorage.getItem(storageKey);
+      if (!completed) {
+        setInternalOpen(true);
+      }
     }
-  }, [storageKey]);
+  }, [storageKey, isControlled]);
+
+  const handleClose = () => {
+    if (isControlled) {
+      onControlledClose?.();
+    } else {
+      setInternalOpen(false);
+    }
+    localStorage.setItem(storageKey, 'true');
+  };
 
   const tourProps: TourProps = {
     open,
     current,
     steps: steps as TourProps['steps'],
     onChange: (cur) => setCurrent(cur),
-    onClose: () => {
-      setOpen(false);
-      localStorage.setItem(storageKey, 'true');
-    },
-    onFinish: () => {
-      setOpen(false);
-      localStorage.setItem(storageKey, 'true');
-    },
+    onClose: handleClose,
+    onFinish: handleClose,
     scrollIntoViewOptions: { behavior: 'smooth', block: 'center' },
   };
 
-  return (
-    <>
-      <Tour {...tourProps} />
-      <Tooltip title="Help & Tour" placement="left">
-        <FloatButton
-          icon={<QuestionCircleOutlined />}
-          type="primary"
-          onClick={() => {
-            setCurrent(0);
-            setOpen(true);
-          }}
-          style={{ bottom: 88 }}
-        />
-      </Tooltip>
-    </>
-  );
+  return <Tour {...tourProps} />;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
