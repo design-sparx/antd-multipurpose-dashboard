@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { Spin } from 'antd';
+import { Skeleton } from 'antd';
 import { useAuth } from '../contexts/AuthContext';
 
 interface ProtectedRouteProps {
@@ -24,7 +24,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
 
-  // Show loading spinner while checking auth status
+  // Show loading skeleton while checking auth status
   if (isLoading) {
     return (
       <div
@@ -33,9 +33,10 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh',
+          padding: 24,
         }}
       >
-        <Spin size="large" tip="Loading..." />
+        <Skeleton active paragraph={{ rows: 4 }} />
       </div>
     );
   }

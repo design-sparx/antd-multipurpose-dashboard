@@ -110,7 +110,46 @@ export const BiddingDashboardPage = () => {
         ]}
       />
       <Row {...ROW_PROPS}>
-        <Col sm={24} md={24} xl={18}>
+        {/* Account status cards at top */}
+        <Col xs={24} sm={12}>
+          <Card
+            title="Wallet"
+            extra={
+              <Popover content="Your account balance">
+                <Button icon={<QuestionOutlined />} type="text" />
+              </Popover>
+            }
+            style={{ height: '100%' }}
+          >
+            <Flex vertical gap="middle">
+              <Typography.Title level={2} className="m-0">
+                $4892.00
+              </Typography.Title>
+              <Button>Check Transactions</Button>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={24} sm={12}>
+          <Card
+            title="Revenue"
+            extra={
+              <Popover content="Revenue is retrieved by your staked.">
+                <Button icon={<QuestionOutlined />} type="text" />
+              </Popover>
+            }
+            style={{ height: '100%' }}
+          >
+            <Flex vertical gap="middle">
+              <Typography.Title level={2} className="m-0">
+                $210.00
+              </Typography.Title>
+              <Button>Read</Button>
+            </Flex>
+          </Card>
+        </Col>
+
+        {/* Live auctions - full width */}
+        <Col span={24}>
           <Flex align="center" justify="space-between">
             <Typography.Title level={4}>Live auctions</Typography.Title>
             <Select
@@ -130,45 +169,8 @@ export const BiddingDashboardPage = () => {
             error={auctionDataError}
           />
         </Col>
-        <Col xs={24} md={24} xl={6}>
-          <Typography.Title level={4}>Account status</Typography.Title>
-          <Row {...ROW_PROPS}>
-            <Col md={12} xl={24}>
-              <Card
-                title="Wallet"
-                extra={
-                  <Popover content="Your account balance">
-                    <Button icon={<QuestionOutlined />} type="text" />
-                  </Popover>
-                }
-              >
-                <Flex vertical gap="middle">
-                  <Typography.Title level={2} className="m-0">
-                    $4892.00
-                  </Typography.Title>
-                  <Button>Check Transactions</Button>
-                </Flex>
-              </Card>
-            </Col>
-            <Col md={12} xl={24}>
-              <Card
-                title="Revenue"
-                extra={
-                  <Popover content="Revenue is retrieved by your staked.">
-                    <Button icon={<QuestionOutlined />} type="text" />
-                  </Popover>
-                }
-              >
-                <Flex vertical gap="middle">
-                  <Typography.Title level={2} className="m-0">
-                    $210.00
-                  </Typography.Title>
-                  <Button>Read</Button>
-                </Flex>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
+
+        {/* Creators + Categories side by side */}
         <Col xs={24} xl={12}>
           <CreatorsCard
             data={auctionCreatorsData}

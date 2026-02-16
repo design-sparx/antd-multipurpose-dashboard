@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "patient_name": "John Doe",
+    "doctor": "Dr. Sarah Wilson",
+    "department": "Cardiology",
+    "time": "09:00 AM",
+    "date": "2026-02-15",
+    "status": "Scheduled",
+    "type": "Follow-up"
+  },
+  {
+    "id": 2,
+    "patient_name": "Jane Smith",
+    "doctor": "Dr. Michael Chen",
+    "department": "Internal Medicine",
+    "time": "09:30 AM",
+    "date": "2026-02-15",
+    "status": "In Progress",
+    "type": "Check-up"
+  },
+  {
+    "id": 3,
+    "patient_name": "Bob Johnson",
+    "doctor": "Dr. Emily Brown",
+    "department": "Cardiology",
+    "time": "10:00 AM",
+    "date": "2026-02-15",
+    "status": "Scheduled",
+    "type": "Surgery"
+  },
+  {
+    "id": 4,
+    "patient_name": "Alice Brown",
+    "doctor": "Dr. Sarah Wilson",
+    "department": "General Medicine",
+    "time": "10:30 AM",
+    "date": "2026-02-15",
+    "status": "Completed",
+    "type": "Follow-up"
+  },
+  {
+    "id": 5,
+    "patient_name": "Charlie Wilson",
+    "doctor": "Dr. Michael Chen",
+    "department": "Orthopedics",
+    "time": "11:00 AM",
+    "date": "2026-02-15",
+    "status": "Scheduled",
+    "type": "Consultation"
+  },
+  {
+    "id": 6,
+    "patient_name": "Diana Martinez",
+    "doctor": "Dr. Emily Brown",
+    "department": "Pulmonology",
+    "time": "11:30 AM",
+    "date": "2026-02-15",
+    "status": "Scheduled",
+    "type": "Emergency"
+  },
+  {
+    "id": 7,
+    "patient_name": "Edward Lee",
+    "doctor": "Dr. James Taylor",
+    "department": "Surgery",
+    "time": "02:00 PM",
+    "date": "2026-02-15",
+    "status": "Scheduled",
+    "type": "Surgery"
+  },
+  {
+    "id": 8,
+    "patient_name": "Grace Kim",
+    "doctor": "Dr. Sarah Wilson",
+    "department": "Dermatology",
+    "time": "02:30 PM",
+    "date": "2026-02-15",
+    "status": "Scheduled",
+    "type": "Check-up"
+  }
+]

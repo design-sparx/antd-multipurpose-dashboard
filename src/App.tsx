@@ -1,5 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import { ConfigProvider, theme as antdTheme } from 'antd';
+import { useEffect } from 'react';
 
 import { HelmetProvider } from 'react-helmet-async';
 import { StylesContext } from './context';
@@ -7,26 +8,23 @@ import routes from './routes/routes.tsx';
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';
 import { PRIMARY_COLOR } from './theme/colors';
+import { getDesignTokens } from './theme/design-styles';
 import './App.css';
-
-// Legacy COLOR export for backward compatibility
-// TODO: Migrate all usages to theme-aware colors from theme/colors.ts
-export const COLOR = {
-  50: '#e0f1ff',
-  100: '#b0d2ff',
-  200: '#7fb0ff',
-  300: '#4d8bff',
-  400: '#1e79fe',
-  500: '#076ee5',
-  600: '#0062b3',
-  700: '#004f81',
-  800: '#003650',
-  900: '#001620',
-  borderColor: '#E7EAF3B2',
-};
 
 function App() {
   const { mytheme } = useSelector((state: RootState) => state.theme);
+  const { activeStyle } = useSelector((state: RootState) => state.designStyle);
+  const themeMode = mytheme === 'dark' ? 'dark' : 'light';
+  const tokens = getDesignTokens(activeStyle, themeMode as 'light' | 'dark');
+
+  // Sync data-theme attribute for CSS dark mode targeting
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', themeMode);
+  }, [themeMode]);
+
+  // Neumorphic needs matching container backgrounds
+  const cardBgOverride =
+    activeStyle === 'neumorphic' ? tokens.surfaceBg : undefined;
 
   return (
     <HelmetProvider>
@@ -39,13 +37,12 @@ function App() {
           },
           components: {
             Calendar: {
-              colorBgContainer: 'none',
+              colorBgContainer: cardBgOverride || 'none',
             },
             Carousel: {
               dotWidth: 8,
             },
             Table: {
-              colorBgContainer: 'none',
               headerBg: 'none',
             },
             Timeline: {

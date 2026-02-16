@@ -9,12 +9,12 @@ import {
   Progress,
   Row,
   Space,
-  Table,
   Tag,
   TagProps,
   Typography,
 } from 'antd';
 import {
+  AdvancedTable,
   Card,
   CustomerReviewsCard,
   PageHeader,
@@ -251,7 +251,7 @@ const CategoriesChart = () => {
     },
   };
 
-  // @ts-ignore
+  // @ts-expect-error Pie config type mismatch with @ant-design/charts
   return <Pie {...config} />;
 };
 
@@ -321,7 +321,7 @@ const CustomerRateChart = () => {
       ],
     },
   };
-  // @ts-ignore
+  // @ts-expect-error Bullet config type mismatch with @ant-design/charts
   return <Bullet {...config} />;
 };
 
@@ -349,7 +349,8 @@ const OrdersStatusChart = () => {
     label: {
       type: 'inner',
       offset: '-30%',
-      content: ({ percent }: any) => `${(percent * 100).toFixed(0)}%`,
+      content: ({ percent }: { percent: number }) =>
+        `${(percent * 100).toFixed(0)}%`,
       style: {
         fontSize: 14,
         textAlign: 'center',
@@ -362,7 +363,7 @@ const OrdersStatusChart = () => {
     ],
   };
 
-  // @ts-ignore
+  // @ts-expect-error Pie config type mismatch with @ant-design/charts
   return <Pie {...config} />;
 };
 
@@ -371,7 +372,7 @@ const PRODUCTS_COLUMNS = [
     title: 'Name',
     dataIndex: 'product_name',
     key: 'product_name',
-    render: (_: any, { product_name, brand }: any) => (
+    render: (_: string, { product_name, brand }: TopProduct) => (
       <Flex gap="small" align="center">
         <Image src={brand} width={16} height={16} />
         <Text style={{ width: 160 }}>{product_name}</Text>
@@ -382,19 +383,19 @@ const PRODUCTS_COLUMNS = [
     title: 'Category',
     dataIndex: 'category',
     key: 'category',
-    render: (_: any) => <span className="text-capitalize">{_}</span>,
+    render: (_: string) => <span className="text-capitalize">{_}</span>,
   },
   {
     title: 'Price',
     dataIndex: 'price',
     key: 'price',
-    render: (_: any) => <span>$ {_}</span>,
+    render: (_: number) => <span>$ {_}</span>,
   },
   {
     title: 'Avg rating',
     dataIndex: 'average_rating',
     key: 'average_rating',
-    render: (_: any) => (
+    render: (_: number) => (
       <Flex align="center" gap="small">
         {_}
         <StarFilled style={{ fontSize: 12 }} />{' '}
@@ -413,13 +414,13 @@ const CATEGORIES_COLUMNS = [
     title: 'Price',
     dataIndex: 'price',
     key: 'price',
-    render: (_: any) => <span>$ {_}</span>,
+    render: (_: number) => <span>$ {_}</span>,
   },
   {
     title: 'Avg rating',
     dataIndex: 'rating',
     key: 'rating',
-    render: (_: any) => (
+    render: (_: number) => (
       <Flex align="center" gap="small">
         {_}
         <StarFilled style={{ fontSize: 12 }} />{' '}
@@ -430,18 +431,17 @@ const CATEGORIES_COLUMNS = [
 
 const SELLER_COLUMNS = [
   {
-    title: 'Name',
-    dataIndex: 'first_name',
-    key: 'first_name',
-    render: (_: any, { first_name, last_name }: any) => (
-      <UserAvatar fullName={`${first_name} ${last_name}`} />
+    title: 'Seller',
+    dataIndex: 'seller_name',
+    key: 'seller_name',
+    render: (_: string, { seller_name }: TopSeller) => (
+      <UserAvatar fullName={seller_name} />
     ),
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
-    render: (_: any) => <Link to={`mailto:${_}`}>{_}</Link>,
+    title: 'Store',
+    dataIndex: 'store_name',
+    key: 'store_name',
   },
   {
     title: 'Region',
@@ -449,27 +449,34 @@ const SELLER_COLUMNS = [
     key: 'sales_region',
   },
   {
-    title: 'Country',
-    dataIndex: 'country',
-    key: 'country',
+    title: 'Orders',
+    dataIndex: 'orders_completed',
+    key: 'orders_completed',
+    render: (_: number) => <span>{numberWithCommas(_)}</span>,
+  },
+  {
+    title: 'Rating',
+    dataIndex: 'rating',
+    key: 'rating',
+    render: (_: number) => <span>{_.toFixed(1)}</span>,
   },
   {
     title: 'Volume',
     dataIndex: 'sales_volume',
     key: 'sales_volume',
-    render: (_: any) => <span>{numberWithCommas(Number(_))}</span>,
+    render: (_: number) => <span>{numberWithCommas(Number(_))}</span>,
   },
   {
     title: 'Amount',
     dataIndex: 'total_sales',
     key: 'total_sales',
-    render: (_: any) => <span>${numberWithCommas(Number(_))}</span>,
+    render: (_: number) => <span>${numberWithCommas(Number(_))}</span>,
   },
   {
     title: 'Satisfaction rate',
     dataIndex: 'customer_satisfaction',
     key: 'customer_satisfaction',
-    render: (_: any) => {
+    render: (_: number) => {
       let color;
 
       if (_ < 20) {
@@ -497,7 +504,7 @@ const ORDERS_COLUMNS = [
     title: 'Customer',
     dataIndex: 'customer_name',
     key: 'customer_name',
-    render: (_: any) => <UserAvatar fullName={_} />,
+    render: (_: string) => <UserAvatar fullName={_} />,
   },
   {
     title: 'Date',
@@ -508,7 +515,7 @@ const ORDERS_COLUMNS = [
     title: 'Price',
     dataIndex: 'price',
     key: 'price',
-    render: (_: any) => <span>$ {_}</span>,
+    render: (_: number) => <span>$ {_}</span>,
   },
   {
     title: 'Quantity',
@@ -519,8 +526,8 @@ const ORDERS_COLUMNS = [
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
-    render: (_: any) => {
-      let color: TagProps['color'], icon: any;
+    render: (_: string) => {
+      let color: TagProps['color'], icon: typeof CheckCircleOutlined;
 
       if (_ === 'shipped') {
         color = 'magenta-inverse';
@@ -639,50 +646,46 @@ export const EcommerceDashboardPage = () => {
         ]}
       />
       <Row {...stylesContext?.rowProps}>
-        <Col sm={24} lg={16}>
-          <Row {...stylesContext?.rowProps}>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Visitors"
-                value={20149}
-                diff={5.54}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Customers"
-                value={5834}
-                diff={-12.3}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Orders"
-                value={3270}
-                diff={9.52}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-            <Col xs={24} sm={12}>
-              <RevenueCard
-                title="Sales"
-                value="$ 1.324K"
-                diff={2.34}
-                height={180}
-                justify="space-between"
-              />
-            </Col>
-          </Row>
+        {/* KPI cards - top row */}
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Visitors"
+            value={20149}
+            diff={5.54}
+            height={180}
+            justify="space-between"
+          />
         </Col>
-        <Col sm={24} lg={8}>
-          <CustomerReviewsCard />
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Customers"
+            value={5834}
+            diff={-12.3}
+            height={180}
+            justify="space-between"
+          />
         </Col>
-        <Col xs={24} lg={12}>
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Orders"
+            value={3270}
+            diff={9.52}
+            height={180}
+            justify="space-between"
+          />
+        </Col>
+        <Col xs={24} sm={12} lg={6}>
+          <RevenueCard
+            title="Sales"
+            value="$ 1.324K"
+            diff={2.34}
+            height={180}
+            justify="space-between"
+          />
+        </Col>
+
+        {/* Overall Sales + Customer Reviews side by side */}
+        <Col xs={24} lg={16}>
           <Card
             title="Overall sales"
             extra={
@@ -705,6 +708,11 @@ export const EcommerceDashboardPage = () => {
             </Flex>
           </Card>
         </Col>
+        <Col xs={24} lg={8}>
+          <CustomerReviewsCard />
+        </Col>
+
+        {/* Charts row */}
         <Col xs={24} lg={12}>
           <Card
             title="Categories"
@@ -751,7 +759,7 @@ export const EcommerceDashboardPage = () => {
                 <Typography.Title style={{ margin: 0 }}>8.48%</Typography.Title>
                 <Row>
                   <Col sm={24} lg={8}>
-                    <Space direction="vertical">
+                    <Space orientation="vertical">
                       <Text>Added to cart</Text>
                       <Text type="secondary">5 visits</Text>
                     </Space>
@@ -769,7 +777,7 @@ export const EcommerceDashboardPage = () => {
                 </Row>
                 <Row>
                   <Col sm={24} lg={8}>
-                    <Space direction="vertical">
+                    <Space orientation="vertical">
                       <Text>Reached to Checkout</Text>
                       <Text type="secondary">23 visits</Text>
                     </Space>
@@ -787,14 +795,16 @@ export const EcommerceDashboardPage = () => {
                 </Row>
               </Flex>
             </Card>
-            <Card title="Customer rate">
-              <div style={{ height: 80, textAlign: 'center' }}>
-                <CustomerRateChart />
-              </div>
-            </Card>
           </Flex>
         </Col>
         <Col xs={24} lg={12}>
+          <Card title="Customer rate">
+            <div style={{ height: 80, textAlign: 'center' }}>
+              <CustomerRateChart />
+            </div>
+          </Card>
+        </Col>
+        <Col xs={24}>
           <Card title="Popular products" style={cardStyles}>
             {topProductsError ? (
               <Alert
@@ -804,30 +814,32 @@ export const EcommerceDashboardPage = () => {
                 showIcon
               />
             ) : (
-              <Table
+              <AdvancedTable
                 columns={PRODUCTS_COLUMNS}
-                dataSource={topProducts}
+                dataSource={topProducts || []}
                 loading={topProductsLoading}
-                className="overflow-scroll"
+                rowKey="id"
+                exportable
               />
             )}
           </Card>
         </Col>
-        <Col xs={24} lg={12}>
+        <Col xs={24}>
           <Card title="Popular categories" style={cardStyles}>
             {topCategoriesError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={topCategoriesError.toString()}
                 type="error"
                 showIcon
               />
             ) : (
-              <Table
+              <AdvancedTable
                 columns={CATEGORIES_COLUMNS}
-                dataSource={topCategories}
+                dataSource={topCategories || []}
                 loading={topCategoriesLoading}
-                className="overflow-scroll"
+                rowKey="id"
+                exportable
               />
             )}
           </Card>
@@ -842,11 +854,12 @@ export const EcommerceDashboardPage = () => {
                 showIcon
               />
             ) : (
-              <Table
+              <AdvancedTable
                 columns={SELLER_COLUMNS}
-                dataSource={topSellers}
+                dataSource={topSellers || []}
                 loading={topSellersLoading}
-                className="overflow-scroll"
+                rowKey="id"
+                exportable
               />
             )}
           </Card>
@@ -861,11 +874,12 @@ export const EcommerceDashboardPage = () => {
                 showIcon
               />
             ) : (
-              <Table
+              <AdvancedTable
                 columns={ORDERS_COLUMNS}
-                dataSource={recentOrders}
+                dataSource={recentOrders || []}
                 loading={recentOrdersLoading}
-                className="overflow-scroll"
+                rowKey="id"
+                exportable
               />
             )}
           </Card>

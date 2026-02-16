@@ -47,7 +47,6 @@ type SectionProps = {
 };
 
 const Section = ({ tab }: SectionProps) => {
-  const stylesContext = useStylesContext();
   const [title, setTitle] = useState<string>('');
 
   // Fetch social media data with proper typing
@@ -98,95 +97,88 @@ const Section = ({ tab }: SectionProps) => {
 
   return (
     <>
-      <Col xs={24} xl={16}>
-        <Row {...stylesContext?.rowProps}>
-          <Col xs={24} md={12} lg={6}>
-            <SocialStatsCard
-              key="followers-card"
-              title="followers"
-              value={
-                socialsData?.find((_: SocialMedia) => _.title === title)
-                  ?.followers || 0
-              }
-              error={socialsDataError}
-              loading={socialsDataLoading}
-              style={{ height: '100%' }}
-            />
-          </Col>
-          <Col xs={24} md={12} lg={6}>
-            <SocialStatsCard
-              key="following-card"
-              title="following"
-              value={
-                socialsData?.find((_: SocialMedia) => _.title === title)
-                  ?.following || 0
-              }
-              error={socialsDataError}
-              loading={socialsDataLoading}
-              style={{ height: '100%' }}
-            />
-          </Col>
-          <Col xs={24} md={12} lg={6}>
-            <SocialStatsCard
-              key="likes-card"
-              title="likes"
-              value={
-                socialsData?.find((_: SocialMedia) => _.title === title)
-                  ?.likes || 0
-              }
-              error={socialsDataError}
-              loading={socialsDataLoading}
-              style={{ height: '100%' }}
-            />
-          </Col>
-          <Col xs={24} md={12} lg={6}>
-            <SocialStatsCard
-              key="comments-card"
-              title="comments"
-              value={
-                socialsData?.find((_: SocialMedia) => _.title === title)
-                  ?.comments || 0
-              }
-              error={socialsDataError}
-              loading={socialsDataLoading}
-              style={{ height: '100%' }}
-            />
-          </Col>
-          <Col xs={24} xl={12}>
-            <FollowersChart />
-          </Col>
-          <Col xs={24} xl={12}>
-            <LikesChart style={{ height: '100%' }} />
-          </Col>
-          <Col xs={24} sm={24} xl={12}>
-            <PostsCard
-              title="Scheduled Posts"
-              as="scheduled"
-              data={scheduledPostsData?.filter(
-                (_: Posts) => _.platform.toLowerCase() === title
-              )}
-              loading={scheduledPostsDataLoading}
-              error={scheduledPostsDataError}
-            />
-          </Col>
-          <Col xs={24} sm={24} xl={12}>
-            <Row
-              gutter={[
-                { xs: 8, sm: 12, md: 20, lg: 24 },
-                { xs: 4, sm: 8, md: 12, lg: 16 },
-              ]}
-            >
-              <Col span={24}>
-                <DevicesCardChart />
-              </Col>
-              <Col span={24}>
-                <MilestonesCard />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+      {/* Stats cards - top row */}
+      <Col xs={24} md={12} lg={6}>
+        <SocialStatsCard
+          key="followers-card"
+          title="followers"
+          value={
+            socialsData?.find((_: SocialMedia) => _.title === title)
+              ?.followers || 0
+          }
+          error={socialsDataError}
+          loading={socialsDataLoading}
+          style={{ height: '100%' }}
+        />
       </Col>
-      <Col xs={24} xl={8}>
+      <Col xs={24} md={12} lg={6}>
+        <SocialStatsCard
+          key="following-card"
+          title="following"
+          value={
+            socialsData?.find((_: SocialMedia) => _.title === title)
+              ?.following || 0
+          }
+          error={socialsDataError}
+          loading={socialsDataLoading}
+          style={{ height: '100%' }}
+        />
+      </Col>
+      <Col xs={24} md={12} lg={6}>
+        <SocialStatsCard
+          key="likes-card"
+          title="likes"
+          value={
+            socialsData?.find((_: SocialMedia) => _.title === title)?.likes || 0
+          }
+          error={socialsDataError}
+          loading={socialsDataLoading}
+          style={{ height: '100%' }}
+        />
+      </Col>
+      <Col xs={24} md={12} lg={6}>
+        <SocialStatsCard
+          key="comments-card"
+          title="comments"
+          value={
+            socialsData?.find((_: SocialMedia) => _.title === title)
+              ?.comments || 0
+          }
+          error={socialsDataError}
+          loading={socialsDataLoading}
+          style={{ height: '100%' }}
+        />
+      </Col>
+
+      {/* Charts side by side */}
+      <Col xs={24} lg={12}>
+        <FollowersChart />
+      </Col>
+      <Col xs={24} lg={12}>
+        <LikesChart style={{ height: '100%' }} />
+      </Col>
+
+      {/* Posts + Devices side by side */}
+      <Col xs={24} lg={12}>
+        <PostsCard
+          title="Scheduled Posts"
+          as="scheduled"
+          data={scheduledPostsData?.filter(
+            (_: Posts) => _.platform.toLowerCase() === title
+          )}
+          loading={scheduledPostsDataLoading}
+          error={scheduledPostsDataError}
+        />
+      </Col>
+      <Col xs={24} lg={12}>
+        <DevicesCardChart />
+      </Col>
+
+      {/* Milestones + Comments side by side */}
+      <Col xs={24} lg={12}>
+        <MilestonesCard />
+      </Col>
+      <Col xs={24} lg={12}>
         <CommentsCard
           data={socialCommentsData
             .filter((_: Comments) => _.platform.toLowerCase() === title)

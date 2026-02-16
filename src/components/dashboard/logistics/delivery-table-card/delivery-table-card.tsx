@@ -1,8 +1,8 @@
-import { Alert, Button, CardProps, Table, TableProps } from 'antd';
+import { Alert, Button, CardProps } from 'antd';
 import { TruckDelivery } from '../../../../types';
 import { ReactNode, useState } from 'react';
 import { ColumnsType } from 'antd/es/table';
-import { Card, UserAvatar } from '../../../index.ts';
+import { Card, UserAvatar, AdvancedTable } from '../../../index.ts';
 import { numberWithCommas } from '../../../../utils';
 
 type TabKeys = 'all' | 'in transit' | 'delayed' | 'delivered' | string;
@@ -13,22 +13,10 @@ type TabList = {
 }[];
 
 const TAB_LIST: TabList = [
-  {
-    key: 'all',
-    tab: 'All',
-  },
-  {
-    key: 'in transit',
-    tab: 'In Transit',
-  },
-  {
-    key: 'delivered',
-    tab: 'Delivered',
-  },
-  {
-    key: 'delayed',
-    tab: 'Delayed',
-  },
+  { key: 'all', tab: 'All' },
+  { key: 'in transit', tab: 'In Transit' },
+  { key: 'delivered', tab: 'Delivered' },
+  { key: 'delayed', tab: 'Delayed' },
 ];
 
 const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
@@ -36,56 +24,48 @@ const DELIVERY_TABLE_COLUMNS: ColumnsType<TruckDelivery> = [
     title: 'Id',
     dataIndex: 'shipment_id',
     key: 'shipment_id',
-    render: (text: any) => text.split('-')[0],
+    sorter: true,
+    render: (value: string) => value.split('-')[0],
   },
   {
     title: 'Destination',
     dataIndex: 'destination_city',
     key: 'destination',
+    sorter: true,
   },
   {
     title: 'Customer',
     dataIndex: 'customer_name',
     key: 'customer_name',
+    sorter: true,
   },
   {
     title: 'Driver',
     dataIndex: 'driver_name',
     key: 'driver_name',
-    render: (_: any) => <UserAvatar fullName={_} />,
+    sorter: true,
+    render: (value: string) => <UserAvatar fullName={value} />,
   },
   {
     title: 'Status',
     dataIndex: 'delivery_status',
     key: 'delivery_status',
+    sorter: true,
   },
   {
     title: 'Cost',
     dataIndex: 'shipment_cost',
     key: 'shipment_cost',
-    render: (_: any) => <span>${numberWithCommas(_)}</span>,
+    sorter: true,
+    render: (value: number) => <span>${numberWithCommas(value)}</span>,
   },
   {
     title: 'Delivery date',
     dataIndex: 'shipment_date',
     key: 'shipment_date',
+    sorter: true,
   },
 ];
-
-type DeliveryTableProps = {
-  data?: TruckDelivery[];
-} & TableProps<any>;
-
-const DeliveryTable = ({ data, ...others }: DeliveryTableProps) => {
-  return (
-    <Table
-      dataSource={data || []}
-      columns={DELIVERY_TABLE_COLUMNS}
-      className="overflow-scroll"
-      {...others}
-    />
-  );
-};
 
 type Props = {
   data?: TruckDelivery[];
@@ -101,9 +81,11 @@ export const DeliveryTableCard = ({
 }: Props) => {
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>('all');
 
-  const onTabChange = (key: string) => {
-    setActiveTabKey(key);
-  };
+  const filteredData =
+    activeTabKey !== 'all'
+      ? data?.filter((d) => d.delivery_status.toLowerCase() === activeTabKey) ||
+        []
+      : data || [];
 
   return (
     <Card
@@ -111,7 +93,7 @@ export const DeliveryTableCard = ({
       extra={<Button>See all</Button>}
       tabList={TAB_LIST}
       activeTabKey={activeTabKey}
-      onTabChange={onTabChange}
+      onTabChange={(key) => setActiveTabKey(key as TabKeys)}
       {...others}
     >
       {error ? (
@@ -122,15 +104,12 @@ export const DeliveryTableCard = ({
           showIcon
         />
       ) : (
-        <DeliveryTable
-          data={
-            activeTabKey !== 'all'
-              ? data?.filter(
-                  (d) => d.delivery_status.toLowerCase() === activeTabKey
-                )
-              : data || []
-          }
+        <AdvancedTable
+          dataSource={filteredData}
+          columns={DELIVERY_TABLE_COLUMNS}
           loading={loading}
+          rowKey="shipment_id"
+          exportable
         />
       )}
     </Card>

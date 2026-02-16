@@ -39,6 +39,9 @@ import {
   WelcomePage,
   LearningDashboardPage,
   LogisticsDashboardPage,
+  AnalyticsDashboardPage,
+  HealthcareDashboardPage,
+  FinanceDashboardPage,
 } from '../pages';
 import {
   CorporateLayout,
@@ -132,6 +135,18 @@ const router = createBrowserRouter([
       {
         path: 'logistics',
         element: <LogisticsDashboardPage />,
+      },
+      {
+        path: 'analytics',
+        element: <AnalyticsDashboardPage />,
+      },
+      {
+        path: 'healthcare',
+        element: <HealthcareDashboardPage />,
+      },
+      {
+        path: 'finance',
+        element: <FinanceDashboardPage />,
       },
     ],
   },

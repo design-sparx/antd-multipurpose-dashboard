@@ -6,7 +6,7 @@ export const getNameInitials = (fullName: string): string => {
 };
 
 export const colourNameToHex = (color: string): string => {
-  const colours: any = {
+  const colours: Record<string, string> = {
     aliceblue: '#f0f8ff',
     antiquewhite: '#faebd7',
     aqua: '#00ffff',
@@ -178,3 +178,4 @@ export const numberWithCommas = (x: number) => {
 
 export * from './api';
 export * from './tasks';
+export * from './export';

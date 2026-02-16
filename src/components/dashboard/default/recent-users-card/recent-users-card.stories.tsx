@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CampaignsData from '@mocks/Campaigns.json';
+import ChannelUsersData from '@mocks/ChannelUsers.json';
+import { ChannelUser } from '../../../../types';
 
 import { RecentUsersCard } from './recent-users-card';
 
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    data: CampaignsData,
+    data: ChannelUsersData as ChannelUser[],
     style: { width: 1000 },
   },
 };

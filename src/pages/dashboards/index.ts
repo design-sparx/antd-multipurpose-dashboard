@@ -6,3 +6,6 @@ export { SocialDashboardPage } from './social.tsx';
 export { BiddingDashboardPage } from './bidding.tsx';
 export { LearningDashboardPage } from './learning.tsx';
 export { LogisticsDashboardPage } from './logistics.tsx';
+export { default as AnalyticsDashboardPage } from './analytics.tsx';
+export { default as HealthcareDashboardPage } from './healthcare.tsx';
+export { default as FinanceDashboardPage } from './finance.tsx';

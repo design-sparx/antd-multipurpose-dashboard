@@ -1,5 +1,6 @@
-import { Alert, Card, CardProps, Table } from 'antd';
+import { Alert, CardProps } from 'antd';
 import { MoreMenu } from '../../../index.ts';
+import { AdvancedTable } from '../../../shared/advanced-table/advanced-table';
 import { ReactNode } from 'react';
 import { useFetchData } from '../../../../hooks';
 import { CountryOrder } from '../../../../types';
@@ -9,21 +10,25 @@ const COLUMNS = [
     title: 'Customer name',
     dataIndex: 'customer_name',
     key: 'customer_name',
+    sorter: true,
   },
   {
     title: 'Product',
     dataIndex: 'product_name',
     key: 'product_name',
+    sorter: true,
   },
   {
     title: 'Orders',
     dataIndex: 'orders',
     key: 'orders',
+    sorter: true,
   },
   {
     title: 'Country',
     dataIndex: 'country',
     key: 'country',
+    sorter: true,
   },
   {
     title: 'Shipping address',
@@ -33,27 +38,21 @@ const COLUMNS = [
 ];
 
 type Props = {
-  data?: any;
+  data?: CountryOrder[];
   loading?: boolean;
   error?: ReactNode;
 } & CardProps;
 
-export const LatestOrdersCard = ({
-  data,
-  loading,
-  error,
-  ...others
-}: Props) => {
-  // Fetch country orders data with proper typing
+export const LatestOrdersCard = ({ loading, error, ...others }: Props) => {
   const {
     data: ordersDataRaw,
     loading: ordersDataLoading,
     error: ordersDataError,
-  } = useFetchData<CountryOrder[]>('/mocks/CountryOrders.json');
+  } = useFetchData<CountryOrder[]>('/antd/country-orders');
   const ordersData = ordersDataRaw ?? [];
 
   return (
-    <Card title={`Latest Orders`} extra={<MoreMenu />} {...others}>
+    <>
       {ordersDataError || error ? (
         <Alert
           message="Error"
@@ -62,12 +61,17 @@ export const LatestOrdersCard = ({
           showIcon
         />
       ) : (
-        <Table
+        <AdvancedTable
           columns={COLUMNS}
           dataSource={ordersData}
           loading={ordersDataLoading || loading}
+          title="Latest Orders"
+          extra={<MoreMenu />}
+          exportable
+          rowKey="id"
+          {...others}
         />
       )}
-    </Card>
+    </>
   );
 };

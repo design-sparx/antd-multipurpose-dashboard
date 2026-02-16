@@ -18,8 +18,8 @@ const ENDPOINT_MOCK_MAP: Record<string, string> = {
   '/antd/orders': '/mocks/RecentOrders.json', // Use RecentOrders as fallback
 
   // Sellers
-  '/antd/sellers/top': '/mocks/TopSeller.json',
-  '/antd/sellers': '/mocks/TopSeller.json', // Use TopSeller as fallback
+  '/antd/sellers/top': '/mocks/TopSellers.json',
+  '/antd/sellers': '/mocks/TopSellers.json', // Use TopSeller as fallback
 
   // Projects
   '/antd/projects': '/mocks/Projects.json',
@@ -69,6 +69,11 @@ const ENDPOINT_MOCK_MAP: Record<string, string> = {
   '/antd/timeline-activity': '/mocks/TimelineActivity.json',
   '/antd/social-comments': '/mocks/SocialComments.json',
 
+  // Users & Orders
+  '/antd/channel-users': '/mocks/ChannelUsers.json',
+  '/antd/country-orders': '/mocks/CountryOrders.json',
+  '/antd/campaigns': '/mocks/Campaigns.json',
+
   // Corporate Pages
   '/antd/employees': '/mocks/Employees.json',
   '/antd/faqs': '/mocks/Faqs.json',
@@ -76,6 +81,16 @@ const ENDPOINT_MOCK_MAP: Record<string, string> = {
   '/antd/pricings': '/mocks/Pricing.json',
   '/antd/license': '/mocks/License.json',
   '/antd/licenses': '/mocks/License.json',
+
+  // Healthcare Dashboard
+  '/antd/patients': '/mocks/Patients.json',
+  '/antd/appointments': '/mocks/Appointments.json',
+  '/antd/doctors': '/mocks/Doctors.json',
+  '/antd/departments': '/mocks/Departments.json',
+
+  // Finance Dashboard
+  '/antd/invoices': '/mocks/Invoices.json',
+  '/antd/expenses': '/mocks/Expenses.json',
 };
 
 /**

@@ -38,6 +38,9 @@ const DASHBOARD_ITEMS = [
   { title: 'bidding', path: PATH_DASHBOARD.bidding },
   { title: 'learning', path: PATH_DASHBOARD.learning },
   { title: 'logistics', path: PATH_DASHBOARD.logistics },
+  { title: 'analytics', path: PATH_DASHBOARD.analytics },
+  { title: 'healthcare', path: PATH_DASHBOARD.healthcare },
+  { title: 'finance', path: PATH_DASHBOARD.finance },
 ];
 
 const CORPORATE_ITEMS = [

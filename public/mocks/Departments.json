@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Emergency",
+    "patients": 45,
+    "doctors": 12,
+    "beds": 50,
+    "occupancy": 90,
+    "color": "#f5222d"
+  },
+  {
+    "id": 2,
+    "name": "Cardiology",
+    "patients": 78,
+    "doctors": 8,
+    "beds": 80,
+    "occupancy": 75,
+    "color": "#1890ff"
+  },
+  {
+    "id": 3,
+    "name": "Neurology",
+    "patients": 56,
+    "doctors": 6,
+    "beds": 60,
+    "occupancy": 82,
+    "color": "#722ed1"
+  },
+  {
+    "id": 4,
+    "name": "Orthopedics",
+    "patients": 62,
+    "doctors": 7,
+    "beds": 70,
+    "occupancy": 68,
+    "color": "#52c41a"
+  },
+  {
+    "id": 5,
+    "name": "Pediatrics",
+    "patients": 89,
+    "doctors": 10,
+    "beds": 90,
+    "occupancy": 55,
+    "color": "#faad14"
+  },
+  {
+    "id": 6,
+    "name": "General Medicine",
+    "patients": 120,
+    "doctors": 15,
+    "beds": 120,
+    "occupancy": 72,
+    "color": "#13c2c2"
+  }
+]

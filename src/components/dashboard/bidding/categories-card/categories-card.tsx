@@ -1,5 +1,5 @@
-import { CardProps, Table } from 'antd';
-import { Card } from '../../../index.ts';
+import { CardProps } from 'antd';
+import { Card, AdvancedTable } from '../../../index.ts';
 
 import './styles.css';
 
@@ -174,11 +174,11 @@ type Props = CardProps;
 export const CategoriesCard = ({ ...others }: Props) => {
   return (
     <Card title="categories" className="card" {...others}>
-      <Table
+      <AdvancedTable
         dataSource={CATEGORIES_MOCKS}
         columns={CATEGORIES_COLUMNS}
-        size="middle"
-        className="overflow-scroll"
+        rowKey="id"
+        exportable
       />
     </Card>
   );

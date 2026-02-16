@@ -39,6 +39,9 @@ export const PATH_DASHBOARD = {
   bidding: path(ROOTS_DASHBOARD, '/bidding'),
   learning: path(ROOTS_DASHBOARD, '/learning'),
   logistics: path(ROOTS_DASHBOARD, '/logistics'),
+  analytics: path(ROOTS_DASHBOARD, '/analytics'),
+  healthcare: path(ROOTS_DASHBOARD, '/healthcare'),
+  finance: path(ROOTS_DASHBOARD, '/finance'),
 };
 
 export const PATH_SITEMAP = {

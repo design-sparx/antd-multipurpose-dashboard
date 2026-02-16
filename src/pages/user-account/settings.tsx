@@ -1,10 +1,23 @@
 import { useState } from 'react';
-import { Card, Col, Flex, Row, Select, Switch, Tabs, Typography } from 'antd';
+import {
+  Card,
+  Col,
+  Flex,
+  Row,
+  Select,
+  Switch,
+  Tabs,
+  Typography,
+  theme,
+} from 'antd';
+import { CheckCircleFilled } from '@ant-design/icons';
 import { Card as AntCard } from '../../components';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { toggleTheme } from '../../redux/theme/themeSlice';
+import { setDesignStyle } from '../../redux/design-style/designStyleSlice';
+import { DESIGN_STYLES, DesignStyleName } from '../../theme/design-styles';
 
 const { Text } = Typography;
 
@@ -13,13 +26,24 @@ interface UISettingsProps {
   onCompactSidebarChange: (value: boolean) => void;
 }
 
+const STYLE_GRADIENTS: Record<DesignStyleName, string> = {
+  clean: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+  glassmorphic: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+  neumorphic: 'linear-gradient(135deg, #e8ecf1 0%, #d5dce6 100%)',
+  bold: 'linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%)',
+};
+
 const UISettingsSection = ({
   compactSidebar,
   onCompactSidebarChange,
 }: UISettingsProps) => {
   const { mytheme } = useSelector((state: RootState) => state.theme);
+  const { activeStyle } = useSelector((state: RootState) => state.designStyle);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: 600 });
+  const {
+    token: { colorPrimary, borderRadiusLG, colorBorder },
+  } = theme.useToken();
 
   return (
     <Row gutter={[16, 16]}>
@@ -44,6 +68,72 @@ const UISettingsSection = ({
               />
             </Flex>
           </Flex>
+        </AntCard>
+      </Col>
+      <Col xs={24} lg={12}>
+        <AntCard title="Design Style">
+          <Flex vertical gap={4} style={{ marginBottom: 12 }}>
+            <Text type="secondary">
+              Choose a visual style for cards, sidebar, and surfaces
+            </Text>
+          </Flex>
+          <Row gutter={[10, 10]}>
+            {(Object.keys(DESIGN_STYLES) as DesignStyleName[]).map((key) => {
+              const style = DESIGN_STYLES[key];
+              const isActive = activeStyle === key;
+
+              return (
+                <Col xs={12} key={key}>
+                  <div
+                    onClick={() => dispatch(setDesignStyle(key))}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        dispatch(setDesignStyle(key));
+                      }
+                    }}
+                    style={{
+                      cursor: 'pointer',
+                      borderRadius: borderRadiusLG,
+                      border: isActive
+                        ? `2px solid ${colorPrimary}`
+                        : `1px solid ${colorBorder}`,
+                      overflow: 'hidden',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <div
+                      style={{
+                        height: 48,
+                        background: STYLE_GRADIENTS[key],
+                        position: 'relative',
+                      }}
+                    >
+                      {isActive && (
+                        <CheckCircleFilled
+                          style={{
+                            position: 'absolute',
+                            top: 6,
+                            right: 6,
+                            fontSize: 16,
+                            color: colorPrimary,
+                            background: '#fff',
+                            borderRadius: '50%',
+                          }}
+                        />
+                      )}
+                    </div>
+                    <div style={{ padding: '6px 10px' }}>
+                      <Text strong style={{ fontSize: 12, display: 'block' }}>
+                        {style.label}
+                      </Text>
+                    </div>
+                  </div>
+                </Col>
+              );
+            })}
+          </Row>
         </AntCard>
       </Col>
       <Col xs={24} lg={12}>

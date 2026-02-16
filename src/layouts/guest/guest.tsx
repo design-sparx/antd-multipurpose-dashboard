@@ -7,13 +7,9 @@ import {
   theme,
   Tooltip,
 } from 'antd';
-import {
-  CSSTransition,
-  SwitchTransition,
-  TransitionGroup,
-} from 'react-transition-group';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   AppstoreAddOutlined,
   GithubOutlined,
@@ -41,7 +37,6 @@ export const GuestLayout = () => {
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
-  const nodeRef = useRef(null);
   const [navFill, setNavFill] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -137,33 +132,29 @@ export const GuestLayout = () => {
             paddingBottom: '10rem',
           }}
         >
-          <TransitionGroup>
-            <SwitchTransition>
-              <CSSTransition
-                key={`css-transition-${location.key}`}
-                nodeRef={nodeRef}
-                onEnter={() => {
-                  setIsLoading(true);
-                }}
-                onEntered={() => {
-                  setIsLoading(false);
-                }}
-                timeout={300}
-                classNames="page"
-                unmountOnExit
-              >
-                {() => (
-                  <div
-                    ref={nodeRef}
-                    className="site-layout-content"
-                    style={{ background: 'none' }}
-                  >
-                    <Outlet />
-                  </div>
-                )}
-              </CSSTransition>
-            </SwitchTransition>
-          </TransitionGroup>
+          <AnimatePresence
+            mode="wait"
+            onExitComplete={() => setIsLoading(false)}
+          >
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 30,
+                mass: 0.8,
+              }}
+              onAnimationStart={() => setIsLoading(true)}
+              onAnimationComplete={() => setIsLoading(false)}
+              className="site-layout-content"
+              style={{ background: 'none' }}
+            >
+              <Outlet />
+            </motion.div>
+          </AnimatePresence>
           <FloatButton.BackTop />
         </Content>
         <Footer

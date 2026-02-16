@@ -1,24 +1,25 @@
-import { CardProps, Table, Typography, Image, Space, Alert } from 'antd';
+import { CardProps, Typography, Image, Space, Alert } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 import { AuctionTransactions } from '../../../../types';
 import { SwapRightOutlined } from '@ant-design/icons';
-import { Card } from '../../../index.ts';
+import { Card, AdvancedTable } from '../../../index.ts';
 import { ReactNode } from 'react';
 
-const TRANSACTIONS_COLUMNS = [
+const TRANSACTIONS_COLUMNS: ColumnsType<AuctionTransactions> = [
   {
     title: 'Type',
     dataIndex: 'transaction_type',
     key: 'transaction_type',
-    render: (_: any) => <span className="text-capitalize">{_}</span>,
+    render: (value: string) => <span className="text-capitalize">{value}</span>,
   },
   {
     title: 'Image',
     dataIndex: 'image',
     key: 'image',
-    render: (text: any, { product_id }: any) => (
+    render: (text: string, record: AuctionTransactions) => (
       <Image
         src={text}
-        alt={product_id}
+        alt={record.product_id}
         width={24}
         height={24}
         preview={false}
@@ -29,11 +30,13 @@ const TRANSACTIONS_COLUMNS = [
     title: 'From/To',
     dataIndex: 'seller',
     key: 'from_to',
-    render: (_: any, { buyer, seller, profit }: any) => (
+    render: (_: unknown, record: AuctionTransactions) => (
       <Space style={{ width: 240 }}>
-        <Typography.Link>@{seller}</Typography.Link>
-        <SwapRightOutlined style={{ color: profit > 0 ? 'green' : 'red' }} />
-        <Typography.Link>@{buyer}</Typography.Link>
+        <Typography.Link>@{record.seller}</Typography.Link>
+        <SwapRightOutlined
+          style={{ color: record.profit > 0 ? 'green' : 'red' }}
+        />
+        <Typography.Link>@{record.buyer}</Typography.Link>
       </Space>
     ),
   },
@@ -41,15 +44,13 @@ const TRANSACTIONS_COLUMNS = [
     title: 'Profit',
     dataIndex: 'profit',
     key: 'profit',
-    render: (_: any, { profit }: any) => (
-      <Typography.Text>${profit}</Typography.Text>
-    ),
+    render: (value: number) => <Typography.Text>${value}</Typography.Text>,
   },
   {
     title: 'Value',
     dataIndex: 'purchase_price',
     key: 'purchase_price',
-    render: (text: any) => <Typography.Text>${text}</Typography.Text>,
+    render: (value: number) => <Typography.Text>${value}</Typography.Text>,
   },
   {
     title: 'Quantity',
@@ -84,11 +85,12 @@ export const TransactionsCard = ({
     />
   ) : (
     <Card title="Recent transactions" {...others}>
-      <Table
-        dataSource={data}
+      <AdvancedTable
+        dataSource={data || []}
         columns={TRANSACTIONS_COLUMNS}
         loading={loading}
-        className="overflow-scroll"
+        rowKey="transaction_id"
+        exportable
       />
     </Card>
   );

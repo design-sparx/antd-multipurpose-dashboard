@@ -46,6 +46,8 @@ import type {
   RecentOrder,
 } from './ecommerce';
 import type { SocialMedia } from './socialMedia';
+import type { Patient, Appointment, Doctor, Department } from './healthcare';
+import type { Invoice, Expense, Transaction, AccountSummary } from './finance';
 
 export type {
   Projects,
@@ -89,4 +91,12 @@ export type {
   TopSeller,
   RecentOrder,
   SocialMedia,
+  Patient,
+  Appointment,
+  Doctor,
+  Department,
+  Invoice,
+  Expense,
+  Transaction,
+  AccountSummary,
 };

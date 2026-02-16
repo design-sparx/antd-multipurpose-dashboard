@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "age": 45,
+    "gender": "Male",
+    "condition": "Diabetes Type 2",
+    "status": "Active",
+    "admission_date": "2026-01-15",
+    "room": "ICU-101",
+    "doctor": "Dr. Sarah Wilson"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "age": 32,
+    "gender": "Female",
+    "condition": "Hypertension",
+    "status": "Recovering",
+    "admission_date": "2026-02-10",
+    "room": "WARD-205",
+    "doctor": "Dr. Michael Chen"
+  },
+  {
+    "id": 3,
+    "name": "Bob Johnson",
+    "age": 58,
+    "gender": "Male",
+    "condition": "Heart Disease",
+    "status": "Active",
+    "admission_date": "2026-02-12",
+    "room": "ICU-102",
+    "doctor": "Dr. Emily Brown"
+  },
+  {
+    "id": 4,
+    "name": "Alice Brown",
+    "age": 28,
+    "gender": "Female",
+    "condition": "Flu",
+    "status": "Recovered",
+    "admission_date": "2026-02-08",
+    "room": "WARD-108",
+    "doctor": "Dr. Sarah Wilson"
+  },
+  {
+    "id": 5,
+    "name": "Charlie Wilson",
+    "age": 65,
+    "gender": "Male",
+    "condition": "Arthritis",
+    "status": "Active",
+    "admission_date": "2026-01-20",
+    "room": "WARD-210",
+    "doctor": "Dr. Michael Chen"
+  },
+  {
+    "id": 6,
+    "name": "Diana Martinez",
+    "age": 42,
+    "gender": "Female",
+    "condition": "Pneumonia",
+    "status": "Critical",
+    "admission_date": "2026-02-14",
+    "room": "ICU-105",
+    "doctor": "Dr. Emily Brown"
+  },
+  {
+    "id": 7,
+    "name": "Edward Lee",
+    "age": 55,
+    "gender": "Male",
+    "condition": "Appendicitis",
+    "status": "Recovering",
+    "admission_date": "2026-02-13",
+    "room": "WARD-305",
+    "doctor": "Dr. James Taylor"
+  },
+  {
+    "id": 8,
+    "name": "Fiona Garcia",
+    "age": 38,
+    "gender": "Female",
+    "condition": "Migraine",
+    "status": "Discharged",
+    "admission_date": "2026-02-11",
+    "room": "WARD-202",
+    "doctor": "Dr. Sarah Wilson"
+  }
+]
