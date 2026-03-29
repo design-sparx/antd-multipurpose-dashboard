@@ -64,7 +64,9 @@ export const ScrollToTop: React.FC = () => {
       left: 0,
       behavior: 'smooth',
     }); // Scroll to the top when the location changes
-    ReactGA.send({ hitType: 'pageview', page: pathname });
+    if (import.meta.env.VITE_GA_MEASUREMENT_ID) {
+      ReactGA.send({ hitType: 'pageview', page: pathname });
+    }
   }, [pathname]);
 
   return null; // This component doesn't render anything
