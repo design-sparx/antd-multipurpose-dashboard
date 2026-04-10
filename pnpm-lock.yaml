@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@ant-design/charts':
         specifier: ^1.4.2
-        version: 1.4.3(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
+        version: 1.4.3(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
       '@ant-design/colors':
         specifier: ^7.0.2
         version: 7.2.1
@@ -54,8 +54,8 @@ importers:
         specifier: ^1.10.18
         version: 1.10.27
       lodash:
-        specifier: 4.17.23
-        version: 4.17.23
+        specifier: 4.18.1
+        version: 4.18.1
       moment:
         specifier: ^2.29.4
         version: 2.30.1
@@ -3024,6 +3024,7 @@ packages:
   git-raw-commits@4.0.0:
     resolution: {integrity: sha512-ICsMM1Wk8xSGMowkOmPrzo2Fgmfo4bMHLNX6ytHjajRJUqvHOw/TFapQ+QG75c3X/tTDDhOSRPGC52dDbNM8FQ==}
     engines: {node: '>=16'}
+    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
     hasBin: true
 
   gl-matrix@3.4.4:
@@ -3047,7 +3048,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   global-directory@4.0.1:
     resolution: {integrity: sha512-wHTUcDUoZ1H5/0iVqEudYW4/kAlN5cZ3j/bXn0Dpbizl9iaUVeWSHqiOjsgk6OW2bkLclbBjzewBz6weQ1zA2Q==}
@@ -3565,8 +3566,8 @@ packages:
   lodash.upperfirst@4.3.1:
     resolution: {integrity: sha512-sReKOYJIJf74dhJONhU4e0/shzi1trVbSWDOhKYE5XV2O+H7Sb2Dihwuc7xWxVl+DgFPyTqIN3zMfT9cq5iWDg==}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
   log-update@6.1.0:
     resolution: {integrity: sha512-9ie8ItPR6tjY5uYJh8K/Zrv/RMZ5VOlOWvtZdEHYSTFKZfIBPQa9tOAEeAWhd+AnIneLJ22w5fjOYtoutpWq5w==}
@@ -3964,8 +3965,8 @@ packages:
     resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
     engines: {node: '>=0.6'}
 
-  qs@6.14.2:
-    resolution: {integrity: sha512-V/yCWTTF7VJ9hIh18Ugr2zhJMP01MY7c5kh4J870L7imm6/DIzBsNLTXzMwUA3yZ5b/KBqLx8Kp3uRvd7xSe3Q==}
+  qs@6.15.1:
+    resolution: {integrity: sha512-6YHEFRL9mfgcAvql/XhwTvf5jKcOiiupt2FiJxHkiX1z4j7WL8J/jRHYLluORvc1XxB5rV20KoeK00gVJamspg==}
     engines: {node: '>=0.6'}
 
   quansync@0.2.11:
@@ -4063,10 +4064,7 @@ packages:
       react-dom: '>= 16.8.0 || ^18.0.0'
 
   react-ga4@3.0.1:
-    resolution:
-      {
-        integrity: sha512-GyCc01bSheWXjzGDyHsXMOqk/SP5Cf/JrcJTg4hcpKx4eeSwaJKpJUc+ipF4ffLTZkmabmf3ZGBv4OKHTXNXyA==,
-      }
+    resolution: {integrity: sha512-GyCc01bSheWXjzGDyHsXMOqk/SP5Cf/JrcJTg4hcpKx4eeSwaJKpJUc+ipF4ffLTZkmabmf3ZGBv4OKHTXNXyA==}
 
   react-helmet-async@1.3.0:
     resolution: {integrity: sha512-9jZ57/dAn9t3q6hneQS0wukqC2ENOBgMNVEhb/ZG9ZSxUetzVIw4iAmEU38IaVg3QGYauQPhSeUTuIUtFglWpg==}
@@ -4932,15 +4930,15 @@ snapshots:
 
   '@amap/amap-jsapi-loader@1.0.1': {}
 
-  '@ant-design/charts@1.4.3(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
+  '@ant-design/charts@1.4.3(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
     dependencies:
-      '@ant-design/flowchart': 1.2.2(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
+      '@ant-design/flowchart': 1.2.2(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
       '@ant-design/graphs': 1.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@ant-design/icons': 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@ant-design/maps': 1.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@ant-design/plots': 1.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       antd: 6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
@@ -4985,16 +4983,16 @@ snapshots:
 
   '@ant-design/fast-color@3.0.1': {}
 
-  '@ant-design/flowchart@1.2.2(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
+  '@ant-design/flowchart@1.2.2(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
     dependencies:
       '@ant-design/icons': 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/layout': 0.1.31
       '@antv/x6': 1.35.1
       '@antv/x6-react-components': 1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/x6-react-shape': 1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@antv/xflow': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
+      '@antv/xflow': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
       antd: 6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.3.1
       react-color: 2.17.3(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -5159,7 +5157,7 @@ snapshots:
     dependencies:
       eventemitter3: 4.0.7
       gl-matrix: 3.4.4
-      lodash: 4.17.23
+      lodash: 4.18.1
       probe.gl: 3.6.0
 
   '@antv/g-webgpu-engine@0.5.6':
@@ -5179,7 +5177,7 @@ snapshots:
     dependencies:
       '@antv/g-webgpu-core': 0.7.2
       gl-matrix: 3.4.4
-      lodash: 4.17.23
+      lodash: 4.18.1
       regl: 1.7.0
 
   '@antv/g-webgpu@0.5.5':
@@ -5203,7 +5201,7 @@ snapshots:
       '@antv/g-webgpu-engine': 0.7.2
       gl-matrix: 3.4.4
       gl-vec2: 1.3.0
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   '@antv/g2@4.2.12':
     dependencies:
@@ -5429,7 +5427,7 @@ snapshots:
       earcut: 2.2.4
       eventemitter3: 4.0.7
       gl-matrix: 3.4.4
-      lodash: 4.17.23
+      lodash: 4.18.1
       web-worker-helper: 0.0.3
 
   '@antv/l7@2.23.1':
@@ -5545,7 +5543,7 @@ snapshots:
       mousetrap: 1.6.5
       utility-types: 3.11.0
 
-  '@antv/xflow-core@1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@antv/xflow-core@1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ant-design/icons': 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/x6': 1.35.1
@@ -5555,7 +5553,7 @@ snapshots:
       antd: 6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames: 2.5.1
       immer: 9.0.21
-      lodash: 4.17.23
+      lodash: 4.18.1
       mana-common: 0.3.2
       mana-syringe: 0.2.2
       react: 18.3.1
@@ -5563,13 +5561,13 @@ snapshots:
       reflect-metadata: 0.1.14
       rxjs: 6.6.7
 
-  '@antv/xflow-extension@1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
+  '@antv/xflow-extension@1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
     dependencies:
       '@ant-design/icons': 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/x6': 1.35.1
       '@antv/x6-react-components': 1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/x6-react-shape': 1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@antv/xflow-core': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@antv/xflow-core': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/xflow-hook': 1.0.52
       antd: 6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames: 2.5.1
@@ -5591,18 +5589,18 @@ snapshots:
     dependencies:
       toposort: 2.0.2
 
-  '@antv/xflow@1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
+  '@antv/xflow@1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)':
     dependencies:
       '@ant-design/icons': 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/layout': 0.1.31
       '@antv/x6': 1.35.1
       '@antv/x6-react-components': 1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@antv/x6-react-shape': 1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@antv/xflow-core': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@antv/xflow-extension': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.17.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
+      '@antv/xflow-core': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@antv/xflow-extension': 1.1.52(@ant-design/icons@6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-components@1.1.20(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6-react-shape@1.6.6(@antv/x6@1.35.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@antv/x6@1.35.1)(antd@6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(classnames@2.5.1)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(reflect-metadata@0.1.14)
       '@antv/xflow-hook': 1.1.52
       antd: 6.3.0(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
@@ -5968,7 +5966,7 @@ snapshots:
 
   '@dagrejs/graphlib@2.1.4':
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   '@emotion/hash@0.8.0': {}
 
@@ -6855,7 +6853,7 @@ snapshots:
       core-js: 3.47.0
       fast-deep-equal: 3.1.3
       global: 4.4.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       memoizerific: 1.11.3
       react: 17.0.2
       react-dom: 18.3.1(react@18.3.1)
@@ -6893,7 +6891,7 @@ snapshots:
       '@storybook/client-logger': 7.6.20
       '@storybook/core-events': 7.6.20
       '@storybook/global': 5.0.0
-      qs: 6.14.2
+      qs: 6.15.1
       telejson: 7.2.0
       tiny-invariant: 1.3.3
 
@@ -6946,11 +6944,11 @@ snapshots:
 
   '@storybook/csf@0.0.1':
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   '@storybook/csf@0.0.2--canary.4566f4d.1':
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   '@storybook/global@5.0.0': {}
 
@@ -7147,7 +7145,7 @@ snapshots:
       chalk: 3.0.0
       css.escape: 1.5.1
       dom-accessibility-api: 0.6.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       redent: 3.0.0
 
   '@testing-library/user-event@14.5.2(@testing-library/dom@10.4.0)':
@@ -7960,7 +7958,7 @@ snapshots:
   dagre@0.8.5:
     dependencies:
       graphlib: 2.1.8
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   dargs@8.1.0: {}
 
@@ -8573,7 +8571,7 @@ snapshots:
 
   graphlib@2.1.8:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   grid-index@1.1.0: {}
 
@@ -8994,7 +8992,7 @@ snapshots:
 
   lodash.upperfirst@4.3.1: {}
 
-  lodash@4.17.23: {}
+  lodash@4.18.1: {}
 
   log-update@6.1.0:
     dependencies:
@@ -9414,7 +9412,7 @@ snapshots:
     dependencies:
       side-channel: 1.1.0
 
-  qs@6.14.2:
+  qs@6.15.1:
     dependencies:
       side-channel: 1.1.0
 
@@ -9487,7 +9485,7 @@ snapshots:
   react-color@2.17.1(react@18.3.1):
     dependencies:
       '@icons/material': 0.2.4(react@18.3.1)
-      lodash: 4.17.23
+      lodash: 4.18.1
       material-colors: 1.2.6
       prop-types: 15.8.1
       react: 18.3.1
@@ -9497,7 +9495,7 @@ snapshots:
   react-color@2.17.3(react@18.3.1):
     dependencies:
       '@icons/material': 0.2.4(react@18.3.1)
-      lodash: 4.17.23
+      lodash: 4.18.1
       material-colors: 1.2.6
       prop-types: 15.8.1
       react: 18.3.1
@@ -9591,7 +9589,7 @@ snapshots:
 
   react-resize-detector@7.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
@@ -9659,7 +9657,7 @@ snapshots:
 
   reactcss@1.2.3(react@18.3.1):
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.3.1
 
   read-yaml-file@1.1.0:
@@ -10163,7 +10161,7 @@ snapshots:
       is-regex: 1.2.1
       is-symbol: 1.1.1
       isobject: 4.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       memoizerific: 1.11.3
 
   telejson@7.2.0:
