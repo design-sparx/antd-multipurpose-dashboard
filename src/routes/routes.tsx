@@ -52,6 +52,7 @@ import {
 import React, { ReactNode, useEffect } from 'react';
 import { AboutPage } from '../pages/about.tsx';
 import { ProtectedRoute } from '../utils/ProtectedRoute';
+import ReactGA from 'react-ga4';
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -63,6 +64,9 @@ export const ScrollToTop: React.FC = () => {
       left: 0,
       behavior: 'smooth',
     }); // Scroll to the top when the location changes
+    if (import.meta.env.VITE_GA_MEASUREMENT_ID) {
+      ReactGA.send({ hitType: 'pageview', page: pathname });
+    }
   }, [pathname]);
 
   return null; // This component doesn't render anything

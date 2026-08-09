@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import ReactGA from 'react-ga4';
 import App from './App.tsx';
 import './i18n';
 import './index.css';
@@ -9,6 +10,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+if (gaId) {
+  ReactGA.initialize(gaId);
+}
 
 // Create a QueryClient instance
 const queryClient = new QueryClient({
