@@ -41,7 +41,12 @@ describe('tokenStorage', () => {
 
   it('should clear all auth data', () => {
     tokenStorage.setTokens('access', 'refresh');
-    tokenStorage.setUser({ id: '1', email: 'test@test.com' });
+    tokenStorage.setUser({
+      id: '1',
+      email: 'test@test.com',
+      roles: ['user'],
+      createdAt: '2024-01-01',
+    });
     tokenStorage.clearAuth();
     expect(tokenStorage.getAccessToken()).toBeNull();
     expect(tokenStorage.getRefreshToken()).toBeNull();
