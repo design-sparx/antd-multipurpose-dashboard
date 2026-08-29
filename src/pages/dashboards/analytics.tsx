@@ -35,7 +35,7 @@ import {
 } from '../../components/dashboard/default';
 import { ProjectsCard } from '../../components/dashboard/shared';
 import { NotificationsCard } from '../../components/notifications';
-import { useFetchData } from '../../hooks';
+import { useProjects, useNotifications } from '../../lib/queries';
 import { Projects, Notifications } from '../../types';
 import CountUp from 'react-countup';
 
@@ -67,14 +67,14 @@ const AnalyticsDashboard = () => {
   const {
     data: projectsDataRaw,
     error: projectsError,
-    loading: projectsLoading,
-  } = useFetchData<Projects[]>('/antd/projects');
+    isLoading: projectsLoading,
+  } = useProjects();
 
   const {
     data: notificationsDataRaw,
     error: notificationsError,
-    loading: notificationsLoading,
-  } = useFetchData<Notifications[]>('/antd/notifications');
+    isLoading: notificationsLoading,
+  } = useNotifications();
 
   const projectsData = projectsDataRaw ?? [];
   const notificationsData = notificationsDataRaw ?? [];
@@ -240,7 +240,7 @@ const AnalyticsDashboard = () => {
                 {...stylesContext?.carouselProps}
                 {...CAROUSEL_PROPS}
               >
-                {projectsData
+                {(projectsData as unknown as Projects[])
                   .filter(
                     (o: Projects) => o.status.toLowerCase() === 'in progress'
                   )
@@ -276,13 +276,13 @@ const AnalyticsDashboard = () => {
                 {...stylesContext?.carouselProps}
                 {...CAROUSEL_PROPS}
               >
-                {projectsData
+                {(projectsData as unknown as Projects[])
                   .filter((o: Projects) => o.status.toLowerCase() === 'on hold')
                   .slice(0, 4)
                   .map((o: Projects) => (
                     <ProjectsCard
                       key={o.project_id}
-                      project={o}
+                      project={o as unknown as Projects}
                       size="small"
                       style={{ margin: '0 8px' }}
                     />
@@ -293,8 +293,8 @@ const AnalyticsDashboard = () => {
         </Col>
         <Col xs={24} lg={8}>
           <NotificationsCard
-            data={notificationsData}
-            error={notificationsError}
+            data={notificationsData as unknown as Notifications[]}
+            error={notificationsError?.toString()}
             loading={notificationsLoading}
           />
         </Col>

@@ -19,7 +19,7 @@ import {
   SaveOutlined,
   TabletOutlined,
 } from '@ant-design/icons';
-import { useFetchData } from '../../hooks';
+import { useSessions } from '../../lib/queries';
 
 const { Text } = Typography;
 
@@ -43,9 +43,9 @@ export const UserProfileSecurityPage = () => {
   // Fetch session activity data with proper typing
   const {
     data: sessionActivityDataRaw,
-    loading: sessionActivityDataLoading,
+    isLoading: sessionActivityDataLoading,
     error: sessionActivityDataError,
-  } = useFetchData<Session[]>('../mocks/SessionActivity.json');
+  } = useSessions();
   const sessionActivityData = sessionActivityDataRaw ?? [];
 
   return (

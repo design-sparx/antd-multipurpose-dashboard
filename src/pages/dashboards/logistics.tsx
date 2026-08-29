@@ -19,14 +19,8 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useFetchData } from '../../hooks';
+import { useDeliveries, useDeliveryAnalytics, useTrucks, useDeliveryRequests } from '../../lib/queries';
 import { useStylesContext } from '../../contexts';
-import {
-  TruckDelivery,
-  DeliveryAnalytics,
-  Truck,
-  DeliveryRequest,
-} from '../../types';
 
 const STATS = [
   {
@@ -76,33 +70,33 @@ export const LogisticsDashboardPage = () => {
   // Fetch truck deliveries data with proper typing
   const {
     data: trucksDeliveryDataRaw,
-    loading: trucksDeliveryDataLoading,
+    isLoading: trucksDeliveryDataLoading,
     error: trucksDeliveryDataError,
-  } = useFetchData<TruckDelivery[]>('/antd/truck-deliveries');
+  } = useDeliveries();
   const trucksDeliveryData = trucksDeliveryDataRaw ?? [];
 
   // Fetch delivery analytics data with proper typing
   const {
     data: deliveryAnalyticsDataRaw,
-    loading: deliveryAnalyticsDataLoading,
+    isLoading: deliveryAnalyticsDataLoading,
     error: deliveryAnalyticsDataError,
-  } = useFetchData<DeliveryAnalytics[]>('/antd/delivery-analytics');
+  } = useDeliveryAnalytics();
   const deliveryAnalyticsData = deliveryAnalyticsDataRaw ?? [];
 
   // Fetch trucks data with proper typing
   const {
     data: trucksDataRaw,
-    loading: trucksDataLoading,
+    isLoading: trucksDataLoading,
     error: trucksDataError,
-  } = useFetchData<Truck[]>('/antd/trucks');
+  } = useTrucks();
   const trucksData = trucksDataRaw ?? [];
 
   // Fetch truck delivery requests data with proper typing
   const {
     data: trucksDeliveryRequestDataRaw,
-    loading: trucksDeliveryRequestDataLoading,
+    isLoading: trucksDeliveryRequestDataLoading,
     error: trucksDeliveryRequestDataError,
-  } = useFetchData<DeliveryRequest[]>('/antd/truck-delivery-requests');
+  } = useDeliveryRequests();
   const trucksDeliveryRequestData = trucksDeliveryRequestDataRaw ?? [];
 
   return (
@@ -151,7 +145,7 @@ export const LogisticsDashboardPage = () => {
           <DeliveryAnalyticsCard
             data={deliveryAnalyticsData}
             loading={deliveryAnalyticsDataLoading}
-            error={deliveryAnalyticsDataError}
+            error={deliveryAnalyticsDataError?.toString()}
           />
         </Col>
         <Col xs={24} xl={12}>
@@ -160,7 +154,7 @@ export const LogisticsDashboardPage = () => {
         <Col span={24}>
           <DeliveryTableCard
             data={trucksDeliveryData}
-            error={trucksDeliveryDataError}
+            error={trucksDeliveryDataError?.toString()}
             loading={trucksDeliveryDataLoading}
           />
         </Col>
@@ -168,14 +162,14 @@ export const LogisticsDashboardPage = () => {
           <TruckListCard
             data={trucksData}
             loading={trucksDataLoading}
-            error={trucksDataError}
+            error={trucksDataError?.toString()}
           />
         </Col>
         <Col xs={24} xl={12}>
           <DeliveryRequestCard
             data={trucksDeliveryRequestData}
             loading={trucksDeliveryRequestDataLoading}
-            error={trucksDeliveryRequestDataError}
+            error={trucksDeliveryRequestDataError?.toString()}
           />
         </Col>
       </Row>

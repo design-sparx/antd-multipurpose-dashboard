@@ -1,7 +1,7 @@
 import { Alert, Card as AntCard, Col, Row, Typography } from 'antd';
 import { Card, Loader } from '../../components';
 import { useStylesContext } from '../../contexts';
-import { useFetchData } from '../../hooks';
+import { useLicenses } from '../../lib/queries';
 import { License } from '../../types';
 
 export const CorporateLicensePage = () => {
@@ -9,8 +9,8 @@ export const CorporateLicensePage = () => {
   const {
     data: licenseData,
     error: licenseDataError,
-    loading: licenseDataLoading,
-  } = useFetchData<License[]>('/antd/licenses');
+    isLoading: licenseDataLoading,
+  } = useLicenses();
 
   return (
     <div>

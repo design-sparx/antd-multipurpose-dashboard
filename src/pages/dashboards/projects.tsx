@@ -20,7 +20,7 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useFetchData } from '../../hooks';
+import { useProjects, useClients } from '../../lib/queries';
 
 const RevenueColumnChart = () => {
   const data = [
@@ -150,17 +150,17 @@ export const ProjectsDashboardPage = () => {
   const {
     data: projectsDataRaw,
     error: projectsDataError,
-    loading: projectsDataLoading,
-  } = useFetchData<Projects[]>('/antd/projects');
-  const projectsData = projectsDataRaw ?? [];
+    isLoading: projectsDataLoading,
+  } = useProjects();
+  const projectsData = (projectsDataRaw ?? []) as unknown as Projects[];
 
   // Fetch clients data with proper typing
   const {
     data: clientsDataRaw,
     error: clientsDataError,
-    loading: clientsDataLoading,
-  } = useFetchData<Clients[]>('/antd/clients');
-  const clientsData = clientsDataRaw ?? [];
+    isLoading: clientsDataLoading,
+  } = useClients();
+  const clientsData = (clientsDataRaw ?? []) as unknown as Clients[];
 
   const [projectTabsKey, setProjectsTabKey] = useState<string>('all');
 
