@@ -1,6 +1,6 @@
 import { Modal, Form, Input, Button, Alert, Typography, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../../../contexts';
 
 const { Text, Title } = Typography;
@@ -41,11 +41,11 @@ export const LoginModal = () => {
   };
 
   // Expose open method globally
-  useState(() => {
+  useEffect(() => {
     const handleOpen = () => setOpen(true);
     window.addEventListener('open-login-modal', handleOpen);
     return () => window.removeEventListener('open-login-modal', handleOpen);
-  });
+  }, []);
 
   return (
     <Modal

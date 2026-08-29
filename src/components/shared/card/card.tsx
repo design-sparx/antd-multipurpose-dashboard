@@ -31,14 +31,19 @@ export const Card = ({ children, classNames, style, ...others }: Props) => {
           transition: 'box-shadow 0.25s ease, transform 0.2s ease',
         };
 
+  const mergedClassNames: CardSemanticClassNames =
+    typeof classNames === 'function'
+      ? {}
+      : {
+          ...classNames,
+          root: `card design-style-${styleName} ${
+            classNames?.root || ''
+          }`.trim(),
+        };
+
   return (
     <AntdCard
-      classNames={
-        {
-          root: `card design-style-${styleName}`,
-          ...classNames,
-        } as CardSemanticClassNames
-      }
+      classNames={mergedClassNames}
       style={{ ...designStyle, ...style }}
       {...others}
     >
