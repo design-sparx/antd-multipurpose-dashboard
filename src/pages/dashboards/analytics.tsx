@@ -22,7 +22,7 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import { PageHeader, Loader, Card } from '../../components/shared';
 import {
   CampaignsCard,

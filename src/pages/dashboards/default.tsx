@@ -1,30 +1,13 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import {
-  Card,
   GetStartedCard,
-  Loader,
   NotificationsCard,
   PageHeader,
-  ProjectsCard,
   TasksChartCard,
   TasksListCard,
   WeeklyActivityCard,
 } from '../../components';
-import {
-  Alert,
-  Button,
-  CardProps,
-  Carousel,
-  CarouselProps,
-  Checkbox,
-  Col,
-  DatePicker,
-  Drawer,
-  Flex,
-  Row,
-  Slider,
-  Typography,
-} from 'antd';
+import { Button, Col, Row } from 'antd';
 import {
   HomeOutlined,
   PieChartOutlined,
@@ -33,161 +16,28 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import { useFetchData } from '../../hooks';
 import { Projects, Tasks, Notifications } from '../../types';
-import CountUp from 'react-countup';
-
-const ACTIVITY_DATA = [
-  {
-    day: 'Monday',
-    value: 10,
-  },
-  {
-    day: 'Tuesday',
-    value: 22,
-  },
-  {
-    day: 'Wednesday',
-    value: 25,
-  },
-  {
-    day: 'Thursday',
-    value: 26,
-  },
-  {
-    day: 'Friday',
-    value: 15,
-  },
-  {
-    day: 'Saturday',
-    value: 12,
-  },
-  {
-    day: 'Sunday',
-    value: 3,
-  },
-];
-
-const TASKS_DATA = [
-  {
-    day: 'Monday',
-    value: 33,
-    status: 'new',
-  },
-  {
-    day: 'Tuesday',
-    value: 44,
-    status: 'new',
-  },
-  {
-    day: 'Wednesday',
-    value: 35,
-    status: 'new',
-  },
-  {
-    day: 'Thursday',
-    value: 55,
-    status: 'new',
-  },
-  {
-    day: 'Friday',
-    value: 49,
-    status: 'new',
-  },
-  {
-    day: 'Saturday',
-    value: 63,
-    status: 'new',
-  },
-  {
-    day: 'Sunday',
-    value: 72,
-    status: 'new',
-  },
-  {
-    day: 'Monday',
-    value: 69,
-    status: 'in progress',
-  },
-  {
-    day: 'Tuesday',
-    value: 81,
-    status: 'in progress',
-  },
-  {
-    day: 'Wednesday',
-    value: 34,
-    status: 'in progress',
-  },
-  {
-    day: 'Thursday',
-    value: 25,
-    status: 'in progress',
-  },
-  {
-    day: 'Friday',
-    value: 39,
-    status: 'in progress',
-  },
-  {
-    day: 'Saturday',
-    value: 45,
-    status: 'in progress',
-  },
-  {
-    day: 'Sunday',
-    value: 60,
-    status: 'in progress',
-  },
-];
-
-const CAROUSEL_PROPS: CarouselProps = {
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
-
-const CARD_PROPS: CardProps = {
-  style: {
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: 8,
-  },
-};
+import { ACTIVITY_DATA, CARD_PROPS, TASKS_DATA } from './default-data';
+import { DashboardFiltersDrawer } from './DashboardFiltersDrawer';
+import { ProjectCarouselCard } from './ProjectCarouselCard';
+import { StatCards } from './StatCards';
 
 export const DefaultDashboardPage = () => {
-  console.log('[DefaultDashboardPage] Rendering');
   const stylesContext = useStylesContext();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sliderRef1 = useRef<any>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sliderRef2 = useRef<any>(null);
   const [filterOpen, setFilterOpen] = useState(false);
 
-  // Fetch tasks data with proper typing
-  const {
-    data: tasksListDataRaw,
-    error: tasksListError,
-    loading: tasksListLoading,
-  } = useFetchData<Tasks[]>('/antd/tasks');
+  const { data: tasksListDataRaw, error: tasksListError, loading: tasksListLoading } =
+    useFetchData<Tasks[]>('/antd/tasks');
   const tasksListData = tasksListDataRaw ?? [];
 
-  // Fetch projects data with proper typing
-  const {
-    data: projectsDataRaw,
-    error: projectsError,
-    loading: projectsLoading,
-  } = useFetchData<Projects[]>('/antd/projects');
+  const { data: projectsDataRaw, error: projectsError, loading: projectsLoading } =
+    useFetchData<Projects[]>('/antd/projects');
   const projectsData = projectsDataRaw ?? [];
 
-  // Fetch notifications data with proper typing
-  const {
-    data: notificationsDataRaw,
-    error: notificationsError,
-    loading: notificationsLoading,
-  } = useFetchData<Notifications[]>('/antd/notifications');
+  const { data: notificationsDataRaw, error: notificationsError, loading: notificationsLoading } =
+    useFetchData<Notifications[]>('/antd/notifications');
   const notificationsData = notificationsDataRaw ?? [];
 
   return (
@@ -207,22 +57,9 @@ export const DefaultDashboardPage = () => {
           </Button>,
         ]}
         breadcrumbs={[
+          { title: <><HomeOutlined /><span>home</span></>, path: '/' },
           {
-            title: (
-              <>
-                <HomeOutlined />
-                <span>home</span>
-              </>
-            ),
-            path: '/',
-          },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboards</span>
-              </>
-            ),
+            title: <><PieChartOutlined /><span>dashboards</span></>,
             menu: {
               items: DASHBOARD_ITEMS.map((d) => ({
                 key: d.title,
@@ -230,38 +67,17 @@ export const DefaultDashboardPage = () => {
               })),
             },
           },
-          {
-            title: 'default',
-          },
+          { title: 'default' },
         ]}
       />
       <Row {...stylesContext?.rowProps}>
-        {/* Get Started card + stat cards in top row */}
         <Col xs={24} lg={16}>
           <GetStartedCard {...CARD_PROPS} />
         </Col>
         <Col xs={12} lg={4}>
-          <Card style={{ height: '100%' }}>
-            <Flex vertical align="center" gap="middle">
-              <Typography.Title style={{ margin: 0 }}>
-                <CountUp end={10} />+
-              </Typography.Title>
-              <Typography.Text>Projects</Typography.Text>
-            </Flex>
-          </Card>
-        </Col>
-        <Col xs={12} lg={4}>
-          <Card style={{ height: '100%' }}>
-            <Flex vertical align="center" gap="middle">
-              <Typography.Title style={{ margin: 0 }}>
-                <CountUp end={60} />+
-              </Typography.Title>
-              <Typography.Text>Tasks</Typography.Text>
-            </Flex>
-          </Card>
+          <StatCards />
         </Col>
 
-        {/* Charts side by side */}
         <Col xs={24} lg={12}>
           <WeeklyActivityCard data={ACTIVITY_DATA} />
         </Col>
@@ -269,7 +85,6 @@ export const DefaultDashboardPage = () => {
           <TasksChartCard data={TASKS_DATA} />
         </Col>
 
-        {/* Tasks list - full width */}
         <Col span={24}>
           <TasksListCard
             data={tasksListData}
@@ -278,82 +93,23 @@ export const DefaultDashboardPage = () => {
           />
         </Col>
 
-        {/* Projects + Notifications row */}
         <Col xs={24} sm={12} lg={8}>
-          <Card
+          <ProjectCarouselCard
             title="Ongoing projects"
-            extra={<Button>View all</Button>}
-            variant="borderless"
-            style={{ height: '100%' }}
-          >
-            {projectsError ? (
-              <Alert
-                title="Error"
-                description={projectsError.toString()}
-                type="error"
-                showIcon
-              />
-            ) : projectsLoading ? (
-              <Loader />
-            ) : (
-              <Carousel
-                ref={sliderRef1}
-                {...stylesContext?.carouselProps}
-                {...CAROUSEL_PROPS}
-              >
-                {projectsData
-                  .filter(
-                    (o: Projects) => o.status.toLowerCase() === 'in progress'
-                  )
-                  .slice(0, 4)
-                  .map((o: Projects) => (
-                    <ProjectsCard
-                      key={o.project_id}
-                      project={o}
-                      size="small"
-                      style={{ margin: `0 8px` }}
-                    />
-                  ))}
-              </Carousel>
-            )}
-          </Card>
+            filterStatus={(o: Projects) => o.status.toLowerCase() === 'in progress'}
+            projectsData={projectsData}
+            projectsError={projectsError}
+            projectsLoading={projectsLoading}
+          />
         </Col>
         <Col xs={24} sm={12} lg={8}>
-          <Card
+          <ProjectCarouselCard
             title="Queued projects"
-            extra={<Button>View all</Button>}
-            variant="borderless"
-            style={{ height: '100%' }}
-          >
-            {projectsError ? (
-              <Alert
-                title="Error"
-                description={projectsError.toString()}
-                type="error"
-                showIcon
-              />
-            ) : projectsLoading ? (
-              <Loader />
-            ) : (
-              <Carousel
-                ref={sliderRef2}
-                {...stylesContext?.carouselProps}
-                {...CAROUSEL_PROPS}
-              >
-                {projectsData
-                  .filter((o: Projects) => o.status.toLowerCase() === 'on hold')
-                  .slice(0, 4)
-                  .map((o: Projects) => (
-                    <ProjectsCard
-                      key={o.project_id}
-                      project={o}
-                      size="small"
-                      style={{ margin: `0 8px` }}
-                    />
-                  ))}
-              </Carousel>
-            )}
-          </Card>
+            filterStatus={(o: Projects) => o.status.toLowerCase() === 'on hold'}
+            projectsData={projectsData}
+            projectsError={projectsError}
+            projectsLoading={projectsLoading}
+          />
         </Col>
         <Col xs={24} lg={8}>
           <NotificationsCard
@@ -363,43 +119,7 @@ export const DefaultDashboardPage = () => {
           />
         </Col>
       </Row>
-      <Drawer
-        title="Dashboard Filters"
-        placement="right"
-        onClose={() => setFilterOpen(false)}
-        open={filterOpen}
-        width={320}
-        styles={{
-          body: { padding: 16 },
-        }}
-      >
-        <Flex vertical gap="large">
-          <Flex vertical gap="small">
-            <Typography.Text strong>Date Range</Typography.Text>
-            <DatePicker.RangePicker style={{ width: '100%' }} />
-          </Flex>
-
-          <Flex vertical gap="small">
-            <Typography.Text strong>Project Status</Typography.Text>
-            <Checkbox.Group>
-              <Flex vertical>
-                <Checkbox value="in progress">In Progress</Checkbox>
-                <Checkbox value="completed">Completed</Checkbox>
-                <Checkbox value="on hold">On Hold</Checkbox>
-              </Flex>
-            </Checkbox.Group>
-          </Flex>
-
-          <Flex vertical gap="small">
-            <Typography.Text strong>Task Priority</Typography.Text>
-            <Slider range defaultValue={[20, 50]} />
-          </Flex>
-
-          <Button type="primary" block onClick={() => setFilterOpen(false)}>
-            Apply Filters
-          </Button>
-        </Flex>
-      </Drawer>
+      <DashboardFiltersDrawer filterOpen={filterOpen} onClose={() => setFilterOpen(false)} />
     </div>
   );
 };

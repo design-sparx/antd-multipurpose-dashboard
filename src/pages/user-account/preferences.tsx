@@ -9,7 +9,7 @@ import {
   Typography,
 } from 'antd';
 import { Card } from '../../components';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import { useMediaQuery } from 'react-responsive';
 
 const { Text } = Typography;

@@ -7,7 +7,7 @@ import {
   ERROR_ITEMS,
   USER_PROFILE_ITEMS,
 } from '../constants';
-import { useStylesContext } from '../context';
+import { useStylesContext } from '../contexts';
 import { BranchesOutlined } from '@ant-design/icons';
 
 const SITES = [

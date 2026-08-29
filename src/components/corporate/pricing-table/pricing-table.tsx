@@ -14,7 +14,7 @@ import {
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { Card, Loader } from '../../shared';
 import { ReactNode, useState } from 'react';
-import { useStylesContext } from '../../../context';
+import { useStylesContext } from '../../../contexts';
 import CountUp from 'react-countup';
 
 const textStyles = (

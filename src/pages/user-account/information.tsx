@@ -15,7 +15,7 @@ import {
   PlusOutlined,
   SaveOutlined,
 } from '@ant-design/icons';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import dayjs from 'dayjs';
 
 const SOCIALS = [
