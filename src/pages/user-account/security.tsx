@@ -10,7 +10,7 @@ import {
   Row,
   Typography,
 } from 'antd';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import { Card, Flex, Loader } from '../../components';
 import { Session } from '../../types';
 import {

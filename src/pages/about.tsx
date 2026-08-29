@@ -1,5 +1,5 @@
 import { Col, Flex, Row, Typography } from 'antd';
-import { useStylesContext } from '../context';
+import { useStylesContext } from '../contexts';
 import {
   BugOutlined,
   BulbOutlined,

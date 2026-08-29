@@ -3,7 +3,7 @@ import { Card, FaqCollapse, Loader } from '../../components';
 import * as _ from 'lodash';
 import { useEffect, useState } from 'react';
 import { Faq } from '../../types';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import { useFetchData } from '../../hooks';
 
 export const CorporateFaqPage = () => {

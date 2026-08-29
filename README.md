@@ -123,7 +123,6 @@ This project features all the latest tools and good practices in web development
 
 #### Date formatting
 
-- [moment](https://momentjs.com/)
 - [dayjs](https://day.js.org/)
 
 #### State Management

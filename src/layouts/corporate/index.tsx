@@ -9,7 +9,7 @@ import {
 } from '../../components';
 import { HomeOutlined, IdcardOutlined } from '@ant-design/icons';
 import { CORPORATE_ITEMS } from '../../constants';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 
 const { Text, Title } = Typography;
 

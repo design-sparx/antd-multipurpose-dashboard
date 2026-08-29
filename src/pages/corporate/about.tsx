@@ -10,7 +10,7 @@ import {
 } from 'antd';
 import { Card, EmployeeCard } from '../../components';
 import { Employee } from '../../types';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import CountUp from 'react-countup';
 import { useFetchData } from '../../hooks';
 

@@ -3,7 +3,7 @@ import { ConfigProvider, theme as antdTheme } from 'antd';
 import { useEffect } from 'react';
 
 import { HelmetProvider } from 'react-helmet-async';
-import { StylesContext } from './context';
+import { StylesContext } from './contexts';
 import routes from './routes/routes.tsx';
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';

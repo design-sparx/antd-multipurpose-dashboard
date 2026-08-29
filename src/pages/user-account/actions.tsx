@@ -2,7 +2,7 @@ import { Card, Flex } from '../../components';
 import { Button, Col, Divider, Row, Switch, Typography } from 'antd';
 import { CSSProperties, ReactNode } from 'react';
 import { QuestionCircleOutlined, SyncOutlined } from '@ant-design/icons';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 
 const { Text } = Typography;
 

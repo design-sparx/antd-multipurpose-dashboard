@@ -14,7 +14,7 @@ import {
 import { Card } from '../../components';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { USER_PROFILE_ITEMS } from '../../constants';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 
 const { Link } = Typography;
 

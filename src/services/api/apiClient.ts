@@ -20,20 +20,11 @@ import {
   isMockOnlyEndpoint,
 } from './mockEndpointMapper';
 
-// DEBUG: Module loaded
-console.log('[API Client] Module loaded!');
-
 // API Configuration
 const API_HOST = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 const API_BASE_URL = API_HOST.endsWith('/api/v1')
   ? API_HOST
   : `${API_HOST}/api/v1`;
-
-console.log('[API Client] Configuration:', {
-  API_HOST,
-  API_BASE_URL,
-  storeAvailable: !!store,
-});
 
 /**
  * Create axios instance with default configuration
@@ -46,32 +37,16 @@ const apiClient: AxiosInstance = axios.create({
   },
 });
 
-console.log('[API Client] Axios instance created');
-
 /**
  * Request Interceptor
  * - Checks dataMode to route to mock or real API
  * - Adds authorization token to all requests
  */
-console.log('[API Client] Setting up request interceptor...');
-
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    console.log('[API Client] ===== INTERCEPTOR CALLED =====');
-    console.log('[API Client] Request URL:', config.url);
-    console.log('[API Client] Request Method:', config.method);
-
     // Get current data mode from Redux store
     const state = store.getState();
     const useMockData = state.dataMode?.useMockData ?? false;
-
-    // DEBUG: Log the actual state value
-    console.log('[API Client Debug] Redux State:', {
-      fullState: state,
-      dataModeState: state.dataMode,
-      useMockData: useMockData,
-      storeExists: !!store,
-    });
 
     // Get the request URL
     const requestUrl = config.url || '';
@@ -264,17 +239,14 @@ export const handleApiError = (error: unknown): ApiErrorResponse => {
  */
 export const apiRequest = {
   get: <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
-    console.log('[apiRequest.get] Called with URL:', url);
     return apiClient.get<T>(url, config).then((response) => response.data);
   },
 
   post: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
-    console.log('[apiRequest.post] Called with URL:', url);
     return apiClient.post<T>(url, data, config).then((response) => response.data);
   },
 
   put: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
-    console.log('[apiRequest.put] Called with URL:', url);
     return apiClient.put<T>(url, data, config).then((response) => response.data);
   },
 
@@ -283,16 +255,12 @@ export const apiRequest = {
     data?: any,
     config?: AxiosRequestConfig
   ): Promise<T> => {
-    console.log('[apiRequest.patch] Called with URL:', url);
     return apiClient.patch<T>(url, data, config).then((response) => response.data);
   },
 
   delete: <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
-    console.log('[apiRequest.delete] Called with URL:', url);
     return apiClient.delete<T>(url, config).then((response) => response.data);
   },
 };
-
-console.log('[API Client] apiRequest wrapper exported');
 
 export default apiClient;

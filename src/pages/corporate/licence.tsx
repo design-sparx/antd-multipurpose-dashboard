@@ -1,6 +1,6 @@
 import { Alert, Card as AntCard, Col, Row, Typography } from 'antd';
 import { Card, Loader } from '../../components';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import { useFetchData } from '../../hooks';
 
 export const CorporateLicensePage = () => {

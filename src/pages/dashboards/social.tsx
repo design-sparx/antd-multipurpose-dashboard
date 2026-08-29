@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { useFetchData } from '../../hooks';
 import { Comments, Posts, SocialMedia } from '../../types';
-import { useStylesContext } from '../../context';
+import { useStylesContext } from '../../contexts';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { getThemeColors } from '../../theme/colors';
