@@ -1,15 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { tokenStorage } from '../../services/auth/tokenStorage';
-
-// Dummy user type for mock mode
-export interface User {
-  email: string;
-  userName: string;
-  roles: string[];
-}
+import { UserProfileDto } from '../../types/api/auth.types';
 
 export interface AuthState {
-  user: User | null;
+  user: UserProfileDto | null;
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
@@ -18,18 +12,17 @@ export interface AuthState {
 }
 
 // Dummy user data
-const DUMMY_USER: User = {
+const DUMMY_USER: UserProfileDto = {
+  id: 'dummy-id',
   email: 'demo@example.com',
-  userName: 'Demo User',
   roles: ['admin'],
+  createdAt: new Date().toISOString(),
 };
 
 const DUMMY_TOKEN = 'dummy-jwt-token-mock-mode';
 
 const initialState: AuthState = {
-  user: tokenStorage.isAuthenticated()
-    ? (tokenStorage.getUser() as User)
-    : null,
+  user: tokenStorage.isAuthenticated() ? tokenStorage.getUser() : null,
   token: tokenStorage.getAccessToken(),
   isAuthenticated: tokenStorage.isAuthenticated(),
   isLoading: false,
@@ -40,9 +33,7 @@ const initialState: AuthState = {
 // Dummy response types
 interface AuthResponse {
   token: string;
-  email: string;
-  userName: string;
-  roles: string[];
+  user: UserProfileDto;
 }
 
 interface LoginRequest {
@@ -61,13 +52,11 @@ export const loginUser = createAsyncThunk<AuthResponse, LoginRequest>(
 
     // Store dummy token
     tokenStorage.setTokens(DUMMY_TOKEN, DUMMY_TOKEN);
-    tokenStorage.setUser(DUMMY_USER as any);
+    tokenStorage.setUser(DUMMY_USER);
 
     return {
       token: DUMMY_TOKEN,
-      email: DUMMY_USER.email,
-      userName: DUMMY_USER.userName,
-      roles: DUMMY_USER.roles,
+      user: DUMMY_USER,
     };
   }
 );
@@ -92,7 +81,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User | null>) => {
+    setUser: (state, action: PayloadAction<UserProfileDto | null>) => {
       state.user = action.payload;
       state.isAuthenticated = !!action.payload;
     },
@@ -125,11 +114,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isAuthenticated = true;
         state.token = action.payload.token;
-        state.user = {
-          email: action.payload.email,
-          userName: action.payload.userName,
-          roles: action.payload.roles,
-        };
+        state.user = action.payload.user;
         state.loginModalOpen = false;
         state.error = null;
       })

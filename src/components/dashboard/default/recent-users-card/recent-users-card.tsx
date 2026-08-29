@@ -60,7 +60,7 @@ export const RecentUsersCard = ({ loading, error, ...others }: Props) => {
       {usersDataError || error ? (
         <Alert
           title="Error"
-          description={error?.toString() || usersDataError.toString()}
+          description={error?.toString() || usersDataError?.toString()}
           type="error"
           showIcon
         />

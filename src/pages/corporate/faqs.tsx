@@ -11,7 +11,7 @@ export const CorporateFaqPage = () => {
     data: faqsData,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData('/antd/faqs');
+  } = useFetchData<Faq[]>('/antd/faqs');
   const [faqs, setFaqs] = useState<{ category: string; items: Faq[] }[]>([]);
   const stylesContext = useStylesContext();
 
