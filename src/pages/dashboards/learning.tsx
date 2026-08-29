@@ -20,15 +20,9 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useFetchData } from '../../hooks';
+import { useCourses, useStudyStatistics, useRecommendedCourses, useExams, useCommunityGroups } from '../../lib/queries';
 import { useStylesContext } from '../../contexts';
-import {
-  LearningCourses,
-  StudyStatistics,
-  RecommendedCourses,
-  Exam,
-  CommunityGroup,
-} from '../../types';
+import { LearningCourses, StudyStatistics, RecommendedCourses, Exam, CommunityGroup } from '../../types';
 
 export const LearningDashboardPage = () => {
   const stylesContext = useStylesContext();
@@ -36,41 +30,41 @@ export const LearningDashboardPage = () => {
   // Fetch courses data with proper typing
   const {
     data: coursesDataRaw,
-    loading: coursesDataLoading,
+    isLoading: coursesDataLoading,
     error: coursesDataError,
-  } = useFetchData<LearningCourses[]>('/antd/courses');
+  } = useCourses();
   const coursesData = coursesDataRaw ?? [];
 
   // Fetch study statistics data with proper typing
   const {
     data: studyDataRaw,
-    loading: studyDataLoading,
+    isLoading: studyDataLoading,
     error: studyDataError,
-  } = useFetchData<StudyStatistics[]>('/antd/study-statistics');
+  } = useStudyStatistics();
   const studyData = studyDataRaw ?? [];
 
   // Fetch recommended courses data with proper typing
   const {
     data: recommendedCoursesDataRaw,
-    loading: recommendedCoursesDataLoading,
+    isLoading: recommendedCoursesDataLoading,
     error: recommendedCoursesDataError,
-  } = useFetchData<RecommendedCourses[]>('/antd/recommended-courses');
+  } = useRecommendedCourses();
   const recommendedCoursesData = recommendedCoursesDataRaw ?? [];
 
   // Fetch exams data with proper typing
   const {
     data: examsDataRaw,
-    loading: examsDataLoading,
+    isLoading: examsDataLoading,
     error: examsDataError,
-  } = useFetchData<Exam[]>('/antd/exams');
+  } = useExams();
   const examsData = examsDataRaw ?? [];
 
   // Fetch communities data with proper typing
   const {
     data: communitiesDataRaw,
-    loading: communitiesDataLoading,
+    isLoading: communitiesDataLoading,
     error: communitiesDataError,
-  } = useFetchData<CommunityGroup[]>('/antd/community-groups');
+  } = useCommunityGroups();
   const communitiesData = communitiesDataRaw ?? [];
 
   return (
@@ -158,41 +152,41 @@ export const LearningDashboardPage = () => {
         </Col>
         <Col xs={24} lg={12}>
           <StudyStatisticsCard
-            data={studyData}
+            data={studyData as unknown as StudyStatistics[]}
             loading={studyDataLoading}
-            error={studyDataError}
+            error={studyDataError?.toString()}
           />
         </Col>
 
         {/* Courses table - full width */}
         <Col span={24}>
           <CoursesCard
-            data={coursesData}
+            data={coursesData as unknown as LearningCourses[]}
             loading={coursesDataLoading}
-            error={coursesDataError}
+            error={coursesDataError?.toString()}
           />
         </Col>
 
         {/* Exams + Community + Recommended Courses row */}
         <Col xs={24} sm={12} lg={8}>
           <ExamsCard
-            data={examsData}
+            data={examsData as unknown as Exam[]}
             loading={examsDataLoading}
-            error={examsDataError}
+            error={examsDataError?.toString()}
           />
         </Col>
         <Col xs={24} sm={12} lg={8}>
           <CommunityGroupCard
-            data={communitiesData}
+            data={communitiesData as unknown as CommunityGroup[]}
             loading={communitiesDataLoading}
-            error={communitiesDataError}
+            error={communitiesDataError?.toString()}
           />
         </Col>
         <Col xs={24} lg={8}>
           <CoursesCarousel
-            data={recommendedCoursesData}
+            data={recommendedCoursesData as unknown as RecommendedCourses[]}
             loading={recommendedCoursesDataLoading}
-            error={recommendedCoursesDataError}
+            error={recommendedCoursesDataError?.toString()}
           />
         </Col>
       </Row>

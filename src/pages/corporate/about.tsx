@@ -11,8 +11,8 @@ import {
 import { Card, EmployeeCard } from '../../components';
 import { Employee } from '../../types';
 import { useStylesContext } from '../../contexts';
+import { useEmployees } from '../../lib/queries';
 import CountUp from 'react-countup';
-import { useFetchData } from '../../hooks';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -20,9 +20,9 @@ export const CorporateAboutPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: employeesData,
-    loading: employeesDataLoading,
+    isLoading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData<Employee[]>('/antd/employees');
+  } = useEmployees();
 
   return (
     <div>

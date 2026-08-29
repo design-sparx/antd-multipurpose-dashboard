@@ -1,16 +1,16 @@
 import { Alert, Col, List, Row } from 'antd';
 import { Card, EmployeeCard } from '../../components';
 import { Employee } from '../../types';
-import { useFetchData } from '../../hooks';
+import { useEmployees } from '../../lib/queries';
 import { useStylesContext } from '../../contexts';
 
 export const CorporateTeamPage = () => {
   const stylesContext = useStylesContext();
   const {
     data: employeesData,
-    loading: employeesDataLoading,
+    isLoading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData<Employee[]>('/antd/employees');
+  } = useEmployees();
 
   return (
     <div>

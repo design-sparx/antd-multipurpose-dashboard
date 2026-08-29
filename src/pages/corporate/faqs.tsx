@@ -2,17 +2,14 @@ import { Alert, Col, Row, Space, Typography } from 'antd';
 import { Card, FaqCollapse, Loader } from '../../components';
 import * as _ from 'lodash';
 import { useEffect, useState } from 'react';
-import { Faq } from '../../types';
 import { useStylesContext } from '../../contexts';
-import { useFetchData } from '../../hooks';
+import { useFaqs } from '../../lib/queries';
+import { FaqDto } from '../../lib/queries';
 
 export const CorporateFaqPage = () => {
-  const {
-    data: faqsData,
-    loading: faqsDataLoading,
-    error: faqsDataError,
-  } = useFetchData<Faq[]>('/antd/faqs');
-  const [faqs, setFaqs] = useState<{ category: string; items: Faq[] }[]>([]);
+  const { data: faqsData, isLoading: faqsDataLoading, error: faqsDataError } =
+    useFaqs();
+  const [faqs, setFaqs] = useState<{ category: string; items: FaqDto[] }[]>([]);
   const stylesContext = useStylesContext();
 
   useEffect(() => {

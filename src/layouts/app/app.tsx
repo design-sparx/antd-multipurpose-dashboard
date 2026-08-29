@@ -46,11 +46,8 @@ import {
   StyleSwitcher,
 } from '../../components';
 import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
-import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/auth/authSlice';
-import { enableMockData } from '../../redux/data-mode/dataModeSlice';
-import { RootState } from '../../redux/store.ts';
 import { useDesignStyle } from '../../hooks/useDesignStyle';
+import { useAuth } from '../../contexts';
 const { Content } = Layout;
 
 type AppLayoutProps = {
@@ -71,11 +68,8 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   const floatBtnRef = useRef(null);
-  const dispatch = useDispatch();
-  const { user, isAuthenticated } = useSelector(
-    (state: RootState) => state.auth
-  );
   const { tokens, styleName } = useDesignStyle();
+  const { user, logout } = useAuth();
 
   const handleLogout = async () => {
     message.open({
@@ -83,14 +77,11 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       content: 'signing you out',
     });
 
-    // If authenticated, logout from API
-    if (isAuthenticated && user?.email) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await dispatch(logoutUser(user.email) as any);
+    try {
+      await logout();
+    } catch (error) {
+      // Error handled by AuthContext
     }
-
-    // Switch back to mock data mode
-    dispatch(enableMockData());
 
     setTimeout(() => {
       navigate(PATH_LANDING.root);

@@ -230,6 +230,90 @@ export const API_ENDPOINTS = {
       UPDATE: (id: string) => `/antd/delivery-analytics/${id}`,
       DELETE: (id: string) => `/antd/delivery-analytics/${id}`,
     },
+
+    // Notifications
+    NOTIFICATIONS: {
+      LIST: '/antd/notifications',
+      GET: (id: string) => `/antd/notifications/${id}`,
+    },
+
+    // Invoices
+    INVOICES: {
+      LIST: '/antd/invoices',
+      GET: (id: string) => `/antd/invoices/${id}`,
+    },
+
+    // Expenses
+    EXPENSES: {
+      LIST: '/antd/expenses',
+      GET: (id: string) => `/antd/expenses/${id}`,
+    },
+
+    // Pricings
+    PRICINGS: {
+      LIST: '/antd/pricings',
+      GET: (id: string) => `/antd/pricings/${id}`,
+    },
+
+    // Licenses
+    LICENSES: {
+      LIST: '/antd/licenses',
+      GET: (id: string) => `/antd/licenses/${id}`,
+    },
+
+    // Healthcare - Patients
+    PATIENTS: {
+      LIST: '/antd/patients',
+      GET: (id: string) => `/antd/patients/${id}`,
+    },
+
+    // Healthcare - Appointments
+    APPOINTMENTS: {
+      LIST: '/antd/appointments',
+      GET: (id: string) => `/antd/appointments/${id}`,
+    },
+
+    // Healthcare - Doctors
+    DOCTORS: {
+      LIST: '/antd/doctors',
+      GET: (id: string) => `/antd/doctors/${id}`,
+    },
+
+    // Healthcare - Departments
+    DEPARTMENTS: {
+      LIST: '/antd/departments',
+      GET: (id: string) => `/antd/departments/${id}`,
+    },
+
+    // Employees
+    EMPLOYEES: {
+      LIST: '/antd/employees',
+      GET: (id: string) => `/antd/employees/${id}`,
+    },
+
+    // FAQs
+    FAQS: {
+      LIST: '/antd/faqs',
+      GET: (id: string) => `/antd/faqs/${id}`,
+    },
+
+    // Country Orders
+    COUNTRY_ORDERS: {
+      LIST: '/antd/country-orders',
+      GET: (id: string) => `/antd/country-orders/${id}`,
+    },
+
+    // Channel Users
+    CHANNEL_USERS: {
+      LIST: '/antd/channel-users',
+      GET: (id: string) => `/antd/channel-users/${id}`,
+    },
+
+    // Social Comments
+    SOCIAL_COMMENTS: {
+      LIST: '/antd/social-comments',
+      GET: (id: string) => `/antd/social-comments/${id}`,
+    },
   },
 
   // ==================== MANTINE DASHBOARD ====================

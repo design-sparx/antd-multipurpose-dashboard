@@ -1,14 +1,7 @@
 import { Modal, Form, Input, Button, Alert, Typography, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  loginUser,
-  setLoginModalOpen,
-  clearError,
-} from '../../../redux/auth/authSlice';
-import { enableRealData } from '../../../redux/data-mode/dataModeSlice';
-import { RootState } from '../../../redux/store';
-import { useEffect } from 'react';
+import { useState } from 'react';
+import { useAuth } from '../../../contexts';
 
 const { Text, Title } = Typography;
 
@@ -18,33 +11,26 @@ interface LoginFormValues {
 }
 
 export const LoginModal = () => {
-  const dispatch = useDispatch();
+  const { isLoading, login } = useAuth();
   const [form] = Form.useForm();
-  const { loginModalOpen, isLoading, error, isAuthenticated } = useSelector(
-    (state: RootState) => state.auth
-  );
-
-  // Clear form and error when modal closes
-  useEffect(() => {
-    if (!loginModalOpen) {
-      form.resetFields();
-      dispatch(clearError());
-    }
-  }, [loginModalOpen, form, dispatch]);
-
-  // Automatically switch to live mode after successful login
-  useEffect(() => {
-    if (isAuthenticated && !loginModalOpen) {
-      dispatch(enableRealData());
-    }
-  }, [isAuthenticated, loginModalOpen, dispatch]);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (values: LoginFormValues) => {
-    await dispatch(loginUser(values) as any);
+    setError(null);
+    try {
+      await login(values);
+      setOpen(false);
+      form.resetFields();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Login failed');
+    }
   };
 
   const handleCancel = () => {
-    dispatch(setLoginModalOpen(false));
+    setOpen(false);
+    form.resetFields();
+    setError(null);
   };
 
   const fillDemoCredentials = () => {
@@ -54,6 +40,13 @@ export const LoginModal = () => {
     });
   };
 
+  // Expose open method globally
+  useState(() => {
+    const handleOpen = () => setOpen(true);
+    window.addEventListener('open-login-modal', handleOpen);
+    return () => window.removeEventListener('open-login-modal', handleOpen);
+  });
+
   return (
     <Modal
       title={
@@ -61,7 +54,7 @@ export const LoginModal = () => {
           Sign in to continue
         </Title>
       }
-      open={loginModalOpen}
+      open={open}
       onCancel={handleCancel}
       footer={null}
       centered
@@ -69,8 +62,8 @@ export const LoginModal = () => {
     >
       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
         <Alert
-          message="Live API Mode Requires Authentication"
-          description="Please sign in with your credentials to access live data from the API."
+          message="Demo Mode"
+          description="Sign in with demo credentials to explore the dashboard."
           type="info"
           showIcon
         />
@@ -82,7 +75,7 @@ export const LoginModal = () => {
             type="error"
             showIcon
             closable
-            onClose={() => dispatch(clearError())}
+            onClose={() => setError(null)}
           />
         )}
 

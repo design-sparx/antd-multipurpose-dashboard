@@ -27,8 +27,9 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import { useFetchData } from '../../hooks';
-import { Comments, Posts, SocialMedia } from '../../types';
+import { useSocialActivities, useComments, useScheduledPosts } from '../../lib/queries';
+import { SocialMediaActivityDto, ScheduledPostDto, CommentDto } from '../../lib/queries';
+import { Posts, Comments } from '../../types';
 import { useStylesContext } from '../../contexts';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -52,25 +53,25 @@ const Section = ({ tab }: SectionProps) => {
   // Fetch social media data with proper typing
   const {
     data: socialsDataRaw,
-    loading: socialsDataLoading,
+    isLoading: socialsDataLoading,
     error: socialsDataError,
-  } = useFetchData<SocialMedia[]>('/antd/social-media-activities');
+  } = useSocialActivities();
   const socialsData = socialsDataRaw ?? [];
 
   // Fetch social comments data with proper typing
   const {
     data: socialCommentsDataRaw,
-    loading: socialsCommentsDataLoading,
+    isLoading: socialsCommentsDataLoading,
     error: socialsCommentsDataError,
-  } = useFetchData<Comments[]>('/antd/social-comments');
+  } = useComments();
   const socialCommentsData = socialCommentsDataRaw ?? [];
 
   // Fetch scheduled posts data with proper typing
   const {
     data: scheduledPostsDataRaw,
-    loading: scheduledPostsDataLoading,
+    isLoading: scheduledPostsDataLoading,
     error: scheduledPostsDataError,
-  } = useFetchData<Posts[]>('/antd/scheduled-posts');
+  } = useScheduledPosts();
   const scheduledPostsData = scheduledPostsDataRaw ?? [];
 
   useEffect(() => {
@@ -95,6 +96,8 @@ const Section = ({ tab }: SectionProps) => {
     }
   }, [tab]);
 
+const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.toString() || socialsCommentsDataError?.toString();
+
   return (
     <>
       {/* Stats cards - top row */}
@@ -103,10 +106,10 @@ const Section = ({ tab }: SectionProps) => {
           key="followers-card"
           title="followers"
           value={
-            socialsData?.find((_: SocialMedia) => _.title === title)
-              ?.followers || 0
+            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)
+              ?.reach || 0
           }
-          error={socialsDataError}
+          error={errorMessage}
           loading={socialsDataLoading}
           style={{ height: '100%' }}
         />
@@ -116,10 +119,10 @@ const Section = ({ tab }: SectionProps) => {
           key="following-card"
           title="following"
           value={
-            socialsData?.find((_: SocialMedia) => _.title === title)
-              ?.following || 0
+            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)
+              ?.engagement_rate || 0
           }
-          error={socialsDataError}
+          error={errorMessage}
           loading={socialsDataLoading}
           style={{ height: '100%' }}
         />
@@ -129,9 +132,9 @@ const Section = ({ tab }: SectionProps) => {
           key="likes-card"
           title="likes"
           value={
-            socialsData?.find((_: SocialMedia) => _.title === title)?.likes || 0
+            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)?.likes || 0
           }
-          error={socialsDataError}
+          error={errorMessage}
           loading={socialsDataLoading}
           style={{ height: '100%' }}
         />
@@ -141,10 +144,10 @@ const Section = ({ tab }: SectionProps) => {
           key="comments-card"
           title="comments"
           value={
-            socialsData?.find((_: SocialMedia) => _.title === title)
+            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)
               ?.comments || 0
           }
-          error={socialsDataError}
+          error={errorMessage}
           loading={socialsDataLoading}
           style={{ height: '100%' }}
         />
@@ -164,10 +167,10 @@ const Section = ({ tab }: SectionProps) => {
           title="Scheduled Posts"
           as="scheduled"
           data={scheduledPostsData?.filter(
-            (_: Posts) => _.platform.toLowerCase() === title
-          )}
+            (_: ScheduledPostDto) => _.platform?.toLowerCase() === title
+          ) as unknown as Posts[]}
           loading={scheduledPostsDataLoading}
-          error={scheduledPostsDataError}
+          error={scheduledPostsDataError?.toString()}
         />
       </Col>
       <Col xs={24} lg={12}>
@@ -181,10 +184,10 @@ const Section = ({ tab }: SectionProps) => {
       <Col xs={24} lg={12}>
         <CommentsCard
           data={socialCommentsData
-            .filter((_: Comments) => _.platform.toLowerCase() === title)
-            ?.slice(0, 7)}
+            .filter((_: CommentDto) => _.platform?.toLowerCase() === title)
+            ?.slice(0, 7) as unknown as Comments[]}
           loading={socialsCommentsDataLoading}
-          error={socialsCommentsDataError}
+          error={socialsCommentsDataError?.toString()}
         />
       </Col>
     </>

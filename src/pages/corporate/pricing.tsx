@@ -1,19 +1,18 @@
 import { PricingTable } from '../../components';
-import { useFetchData } from '../../hooks';
-import { Pricing } from '../../types';
+import { usePricings } from '../../lib/queries';
 
 export const CorporatePricingPage = () => {
   const {
     data: pricingData,
     error: pricingDataError,
-    loading: pricingDataLoading,
-  } = useFetchData<Pricing[]>('/antd/pricings');
+    isLoading: pricingDataLoading,
+  } = usePricings();
 
   return (
     <div>
       <PricingTable
         data={pricingData ?? undefined}
-        error={pricingDataError}
+        error={pricingDataError?.toString()}
         loading={pricingDataLoading}
       />
     </div>

@@ -1,7 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import themeReducer, { ThemeState } from './theme/themeSlice';
-import dataModeReducer, { DataModeState } from './data-mode/dataModeSlice';
-import authReducer, { AuthState } from './auth/authSlice';
 import designStyleReducer, {
   DesignStyleState,
 } from './design-style/designStyleSlice';
@@ -11,16 +9,12 @@ import storage from 'redux-persist/lib/storage';
 // Define the state shape
 interface RootState {
   theme: ThemeState;
-  dataMode: DataModeState;
-  auth: AuthState;
   designStyle: DesignStyleState;
 }
 
 // Combine reducers
 const rootReducer = combineReducers({
   theme: themeReducer,
-  dataMode: dataModeReducer,
-  auth: authReducer,
   designStyle: designStyleReducer,
 });
 

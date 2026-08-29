@@ -17,7 +17,7 @@ import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
-import { useFetchData } from '../../hooks';
+import { useTasks, useProjects, useNotifications } from '../../lib/queries';
 import { Projects, Tasks, Notifications } from '../../types';
 import { ACTIVITY_DATA, CARD_PROPS, TASKS_DATA } from './default-data';
 import { DashboardFiltersDrawer } from './DashboardFiltersDrawer';
@@ -28,16 +28,16 @@ export const DefaultDashboardPage = () => {
   const stylesContext = useStylesContext();
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const { data: tasksListDataRaw, error: tasksListError, loading: tasksListLoading } =
-    useFetchData<Tasks[]>('/antd/tasks');
+  const { data: tasksListDataRaw, error: tasksListError, isLoading: tasksListLoading } =
+    useTasks();
   const tasksListData = tasksListDataRaw ?? [];
 
-  const { data: projectsDataRaw, error: projectsError, loading: projectsLoading } =
-    useFetchData<Projects[]>('/antd/projects');
+  const { data: projectsDataRaw, error: projectsError, isLoading: projectsLoading } =
+    useProjects();
   const projectsData = projectsDataRaw ?? [];
 
-  const { data: notificationsDataRaw, error: notificationsError, loading: notificationsLoading } =
-    useFetchData<Notifications[]>('/antd/notifications');
+  const { data: notificationsDataRaw, error: notificationsError, isLoading: notificationsLoading } =
+    useNotifications();
   const notificationsData = notificationsDataRaw ?? [];
 
   return (
@@ -87,8 +87,8 @@ export const DefaultDashboardPage = () => {
 
         <Col span={24}>
           <TasksListCard
-            data={tasksListData}
-            error={tasksListError}
+            data={tasksListData as unknown as Tasks[]}
+            error={tasksListError?.toString()}
             loading={tasksListLoading}
           />
         </Col>
@@ -97,8 +97,8 @@ export const DefaultDashboardPage = () => {
           <ProjectCarouselCard
             title="Ongoing projects"
             filterStatus={(o: Projects) => o.status.toLowerCase() === 'in progress'}
-            projectsData={projectsData}
-            projectsError={projectsError ?? undefined}
+            projectsData={projectsData as unknown as Projects[]}
+            projectsError={projectsError?.toString()}
             projectsLoading={projectsLoading}
           />
         </Col>
@@ -106,15 +106,15 @@ export const DefaultDashboardPage = () => {
           <ProjectCarouselCard
             title="Queued projects"
             filterStatus={(o: Projects) => o.status.toLowerCase() === 'on hold'}
-            projectsData={projectsData}
-            projectsError={projectsError ?? undefined}
+            projectsData={projectsData as unknown as Projects[]}
+            projectsError={projectsError?.toString()}
             projectsLoading={projectsLoading}
           />
         </Col>
         <Col xs={24} lg={8}>
           <NotificationsCard
-            data={notificationsData}
-            error={notificationsError}
+            data={notificationsData as unknown as Notifications[]}
+            error={notificationsError?.toString()}
             loading={notificationsLoading}
           />
         </Col>

@@ -30,8 +30,8 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { PageHeader, Loader, Card } from '../../components/shared';
-import { useFetchData } from '../../hooks';
-import { Invoice, Expense } from '../../types';
+import { useInvoices, useExpenses } from '../../lib/queries';
+import { InvoiceDto, ExpenseDto } from '../../lib/queries';
 import CountUp from 'react-countup';
 
 const FinanceDashboard = () => {
@@ -41,14 +41,14 @@ const FinanceDashboard = () => {
   const {
     data: invoicesDataRaw,
     error: invoicesError,
-    loading: invoicesLoading,
-  } = useFetchData<Invoice[]>('/antd/invoices');
+    isLoading: invoicesLoading,
+  } = useInvoices();
 
   const {
     data: expensesDataRaw,
     error: expensesError,
-    loading: expensesLoading,
-  } = useFetchData<Expense[]>('/antd/expenses');
+    isLoading: expensesLoading,
+  } = useExpenses();
 
   const invoicesData = invoicesDataRaw ?? [];
   const expensesData = expensesDataRaw ?? [];
@@ -62,7 +62,7 @@ const FinanceDashboard = () => {
   const totalExpenses = expensesData.reduce((sum, e) => sum + e.amount, 0);
   const netProfit = totalRevenue - totalExpenses;
 
-  const invoiceColumns: TableColumnsType<Invoice> = [
+  const invoiceColumns: TableColumnsType<InvoiceDto> = [
     {
       title: 'Invoice #',
       dataIndex: 'invoice_number',
@@ -104,7 +104,7 @@ const FinanceDashboard = () => {
     },
   ];
 
-  const expenseColumns: TableColumnsType<Expense> = [
+  const expenseColumns: TableColumnsType<ExpenseDto> = [
     {
       title: 'Category',
       dataIndex: 'category',

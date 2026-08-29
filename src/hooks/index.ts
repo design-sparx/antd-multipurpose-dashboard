@@ -1,7 +1,6 @@
 import { usePageContext } from './usePageContext.tsx';
-import useFetchData from './useFetchData.tsx';
 
-export { usePageContext, useFetchData };
+export { usePageContext };
 
 // Auth hook (re-export from context)
 export { useAuth } from '../contexts/AuthContext';

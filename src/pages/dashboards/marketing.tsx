@@ -13,7 +13,7 @@ import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
-import { useFetchData } from '../../hooks';
+import { useCampaigns } from '../../lib/queries';
 import { CampaignAds } from '../../types';
 
 export const MarketingDashboardPage = () => {
@@ -23,8 +23,8 @@ export const MarketingDashboardPage = () => {
   const {
     data: campaignAdsRaw,
     error: campaignAdsError,
-    loading: campaignAdsLoading,
-  } = useFetchData<CampaignAds[]>('/antd/campaign-ads');
+    isLoading: campaignAdsLoading,
+  } = useCampaigns();
   const campaignAds = campaignAdsRaw ?? [];
 
   return (
@@ -116,9 +116,9 @@ export const MarketingDashboardPage = () => {
         </Col>
         <Col span={24}>
           <CampaignsAdsCard
-            data={campaignAds}
+            data={campaignAds as unknown as CampaignAds[]}
             loading={campaignAdsLoading}
-            error={campaignAdsError}
+            error={campaignAdsError?.toString()}
           />
         </Col>
       </Row>

@@ -1,7 +1,7 @@
 import { Alert, CardProps, Typography } from 'antd';
 import { MoreMenu } from '../../../index.ts';
 import { AdvancedTable } from '../../../shared/advanced-table/advanced-table';
-import { useFetchData } from '../../../../hooks';
+import { useChannelUsers } from '../../../../lib/queries';
 import { ReactNode } from 'react';
 import { ChannelUser } from '../../../../types';
 
@@ -50,9 +50,9 @@ type Props = {
 export const RecentUsersCard = ({ loading, error, ...others }: Props) => {
   const {
     data: usersDataRaw,
-    loading: usersDataLoading,
+    isLoading: usersDataLoading,
     error: usersDataError,
-  } = useFetchData<ChannelUser[]>('/antd/channel-users');
+  } = useChannelUsers();
   const usersData = usersDataRaw ?? [];
 
   return (

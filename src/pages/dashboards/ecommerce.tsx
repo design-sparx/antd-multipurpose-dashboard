@@ -39,11 +39,11 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { createElement, CSSProperties } from 'react';
-import { useFetchData } from '../../hooks';
+import { useTopProducts, useProductCategories, useTopSellers, useRecentOrders } from '../../lib/queries';
 import { blue, green, red, yellow } from '@ant-design/colors';
 import CountUp from 'react-countup';
 import { numberWithCommas } from '../../utils';
-import { TopProduct, TopCategory, TopSeller, RecentOrder } from '../../types';
+import { TopProduct, TopSeller, RecentOrder } from '../../types';
 
 const { Text, Title } = Typography;
 
@@ -581,32 +581,32 @@ export const EcommerceDashboardPage = () => {
   const {
     data: topProductsRaw,
     error: topProductsError,
-    loading: topProductsLoading,
-  } = useFetchData<TopProduct[]>('/antd/products/top');
+    isLoading: topProductsLoading,
+  } = useTopProducts();
   const topProducts = topProductsRaw ?? [];
 
   // Fetch top categories data with proper typing
   const {
-    data: topCategoriesRaw,
+    data: topCategoriesResponse,
     error: topCategoriesError,
-    loading: topCategoriesLoading,
-  } = useFetchData<TopCategory[]>('/antd/products/categories');
-  const topCategories = topCategoriesRaw ?? [];
+    isLoading: topCategoriesLoading,
+  } = useProductCategories();
+  const topCategories = (topCategoriesResponse as unknown as { data: never[] })?.data ?? [];
 
   // Fetch top sellers data with proper typing
   const {
     data: topSellersRaw,
     error: topSellersError,
-    loading: topSellersLoading,
-  } = useFetchData<TopSeller[]>('/antd/sellers/top');
+    isLoading: topSellersLoading,
+  } = useTopSellers();
   const topSellers = topSellersRaw ?? [];
 
   // Fetch recent orders data with proper typing
   const {
     data: recentOrdersRaw,
     error: recentOrdersError,
-    loading: recentOrdersLoading,
-  } = useFetchData<RecentOrder[]>('/antd/orders/recent');
+    isLoading: recentOrdersLoading,
+  } = useRecentOrders();
   const recentOrders = recentOrdersRaw ?? [];
 
   return (
@@ -816,7 +816,7 @@ export const EcommerceDashboardPage = () => {
             ) : (
               <AdvancedTable
                 columns={PRODUCTS_COLUMNS}
-                dataSource={topProducts || []}
+                dataSource={(topProducts || []) as unknown as TopProduct[]}
                 loading={topProductsLoading}
                 rowKey="id"
                 exportable
@@ -856,7 +856,7 @@ export const EcommerceDashboardPage = () => {
             ) : (
               <AdvancedTable
                 columns={SELLER_COLUMNS}
-                dataSource={topSellers || []}
+                dataSource={(topSellers || []) as unknown as TopSeller[]}
                 loading={topSellersLoading}
                 rowKey="id"
                 exportable
@@ -876,7 +876,7 @@ export const EcommerceDashboardPage = () => {
             ) : (
               <AdvancedTable
                 columns={ORDERS_COLUMNS}
-                dataSource={recentOrders || []}
+                dataSource={(recentOrders || []) as unknown as RecentOrder[]}
                 loading={recentOrdersLoading}
                 rowKey="id"
                 exportable

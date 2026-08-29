@@ -25,13 +25,13 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useFetchData } from '../../hooks';
 import {
-  Bidding,
-  AuctionCreator,
-  AuctionSales,
-  AuctionTransactions,
-} from '../../types';
+  useLiveAuctions,
+  useAuctionCreators,
+  useBiddingTopSellers,
+  useBiddingTransactions,
+} from '../../lib/queries';
+import { Bidding, AuctionCreator, AuctionSales, AuctionTransactions } from '../../types';
 
 const ROW_PROPS: RowProps = {
   gutter: [
@@ -44,33 +44,33 @@ export const BiddingDashboardPage = () => {
   // Fetch live auction data with proper typing
   const {
     data: auctionDataRaw,
-    loading: auctionDataLoading,
+    isLoading: auctionDataLoading,
     error: auctionDataError,
-  } = useFetchData<Bidding[]>('/antd/live-auctions');
+  } = useLiveAuctions();
   const auctionData = auctionDataRaw ?? [];
 
   // Fetch auction creators data with proper typing
   const {
     data: auctionCreatorsDataRaw,
-    loading: auctionCreatorsDataLoading,
+    isLoading: auctionCreatorsDataLoading,
     error: auctionCreatorsDataError,
-  } = useFetchData<AuctionCreator[]>('/antd/auction-creators');
+  } = useAuctionCreators();
   const auctionCreatorsData = auctionCreatorsDataRaw ?? [];
 
   // Fetch top sellers data with proper typing
   const {
     data: topSellersDataRaw,
-    loading: topSellersDataLoading,
+    isLoading: topSellersDataLoading,
     error: topSellersDataError,
-  } = useFetchData<AuctionSales[]>('/antd/bidding-top-sellers');
+  } = useBiddingTopSellers();
   const topSellersData = topSellersDataRaw ?? [];
 
   // Fetch transactions data with proper typing
   const {
     data: transactionsDataRaw,
-    loading: transactionsDataLoading,
+    isLoading: transactionsDataLoading,
     error: transactionsDataError,
-  } = useFetchData<AuctionTransactions[]>('/antd/bidding-transactions');
+  } = useBiddingTransactions();
   const transactionsData = transactionsDataRaw ?? [];
 
   return (
@@ -164,18 +164,18 @@ export const BiddingDashboardPage = () => {
             />
           </Flex>
           <AuctionCarousel
-            data={auctionData}
+            data={auctionData as unknown as Bidding[]}
             loading={auctionDataLoading}
-            error={auctionDataError}
+            error={auctionDataError?.toString()}
           />
         </Col>
 
         {/* Creators + Categories side by side */}
         <Col xs={24} xl={12}>
           <CreatorsCard
-            data={auctionCreatorsData}
+            data={auctionCreatorsData as unknown as AuctionCreator[]}
             loading={auctionCreatorsDataLoading}
-            error={auctionCreatorsDataError}
+            error={auctionCreatorsDataError?.toString()}
           />
         </Col>
         <Col xs={24} xl={12}>
@@ -183,17 +183,17 @@ export const BiddingDashboardPage = () => {
         </Col>
         <Col xs={24} xl={12}>
           <TopItemsCard
-            data={topSellersData}
+            data={topSellersData as unknown as AuctionSales[]}
             loading={topSellersDataLoading}
-            error={topSellersDataError}
+            error={topSellersDataError?.toString()}
             style={{ height: '100%' }}
           />
         </Col>
         <Col xs={24} xl={12}>
           <TransactionsCard
-            data={transactionsData}
+            data={transactionsData as unknown as AuctionTransactions[]}
             loading={transactionsDataLoading}
-            error={transactionsDataError}
+            error={transactionsDataError?.toString()}
             style={{ height: '100%' }}
           />
         </Col>

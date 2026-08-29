@@ -30,8 +30,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { PageHeader, Loader, Card } from '../../components/shared';
-import { useFetchData } from '../../hooks';
-import { Patient, Appointment, Doctor, Department } from '../../types';
+import { usePatients, useAppointments, useDoctors, useDepartments } from '../../lib/queries';
 import CountUp from 'react-countup';
 
 const HealthcareDashboard = () => {
@@ -41,26 +40,26 @@ const HealthcareDashboard = () => {
   const {
     data: patientsDataRaw,
     error: patientsError,
-    loading: patientsLoading,
-  } = useFetchData<Patient[]>('/antd/patients');
+    isLoading: patientsLoading,
+  } = usePatients();
 
   const {
     data: appointmentsDataRaw,
     error: appointmentsError,
-    loading: appointmentsLoading,
-  } = useFetchData<Appointment[]>('/antd/appointments');
+    isLoading: appointmentsLoading,
+  } = useAppointments();
 
   const {
     data: doctorsDataRaw,
     error: doctorsError,
-    loading: doctorsLoading,
-  } = useFetchData<Doctor[]>('/antd/doctors');
+    isLoading: doctorsLoading,
+  } = useDoctors();
 
   const {
     data: departmentsDataRaw,
     error: departmentsError,
-    loading: departmentsLoading,
-  } = useFetchData<Department[]>('/antd/departments');
+    isLoading: departmentsLoading,
+  } = useDepartments();
 
   const patientsData = patientsDataRaw ?? [];
   const appointmentsData = appointmentsDataRaw ?? [];

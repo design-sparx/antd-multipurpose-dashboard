@@ -11,9 +11,7 @@ import { createElement, useEffect, useState } from 'react';
 import * as _ from 'lodash';
 import { TitleProps } from 'antd/es/typography/Title';
 import { useMediaQuery } from 'react-responsive';
-import { useFetchData } from '../../hooks';
-import { API_ENDPOINTS } from '../../constants';
-import { Faq } from '../../types';
+import { useFaqs } from '../../lib/queries';
 
 const { Text, Title } = Typography;
 
@@ -75,9 +73,9 @@ export const UserProfileHelpPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 600 });
   const {
     data: faqsData,
-    loading: faqsDataLoading,
+    isLoading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData<Faq[]>(API_ENDPOINTS.faqs);
+  } = useFaqs();
 
   const onTabChange = (key: string) => {
     setActiveTabKey(key);

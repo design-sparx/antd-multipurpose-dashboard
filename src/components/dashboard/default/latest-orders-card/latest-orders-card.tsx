@@ -2,7 +2,7 @@ import { Alert, CardProps } from 'antd';
 import { MoreMenu } from '../../../index.ts';
 import { AdvancedTable } from '../../../shared/advanced-table/advanced-table';
 import { ReactNode } from 'react';
-import { useFetchData } from '../../../../hooks';
+import { useCountryOrders } from '../../../../lib/queries';
 import { CountryOrder } from '../../../../types';
 
 const COLUMNS = [
@@ -46,9 +46,9 @@ type Props = {
 export const LatestOrdersCard = ({ loading, error, ...others }: Props) => {
   const {
     data: ordersDataRaw,
-    loading: ordersDataLoading,
+    isLoading: ordersDataLoading,
     error: ordersDataError,
-  } = useFetchData<CountryOrder[]>('/antd/country-orders');
+  } = useCountryOrders();
   const ordersData = ordersDataRaw ?? [];
 
   return (
