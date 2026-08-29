@@ -28,16 +28,25 @@ export const DefaultDashboardPage = () => {
   const stylesContext = useStylesContext();
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const { data: tasksListDataRaw, error: tasksListError, isLoading: tasksListLoading } =
-    useTasks();
+  const {
+    data: tasksListDataRaw,
+    error: tasksListError,
+    isLoading: tasksListLoading,
+  } = useTasks();
   const tasksListData = tasksListDataRaw ?? [];
 
-  const { data: projectsDataRaw, error: projectsError, isLoading: projectsLoading } =
-    useProjects();
+  const {
+    data: projectsDataRaw,
+    error: projectsError,
+    isLoading: projectsLoading,
+  } = useProjects();
   const projectsData = projectsDataRaw ?? [];
 
-  const { data: notificationsDataRaw, error: notificationsError, isLoading: notificationsLoading } =
-    useNotifications();
+  const {
+    data: notificationsDataRaw,
+    error: notificationsError,
+    isLoading: notificationsLoading,
+  } = useNotifications();
   const notificationsData = notificationsDataRaw ?? [];
 
   return (
@@ -57,9 +66,22 @@ export const DefaultDashboardPage = () => {
           </Button>,
         ]}
         breadcrumbs={[
-          { title: <><HomeOutlined /><span>home</span></>, path: '/' },
           {
-            title: <><PieChartOutlined /><span>dashboards</span></>,
+            title: (
+              <>
+                <HomeOutlined />
+                <span>home</span>
+              </>
+            ),
+            path: '/',
+          },
+          {
+            title: (
+              <>
+                <PieChartOutlined />
+                <span>dashboards</span>
+              </>
+            ),
             menu: {
               items: DASHBOARD_ITEMS.map((d) => ({
                 key: d.title,
@@ -74,7 +96,7 @@ export const DefaultDashboardPage = () => {
         <Col xs={24} lg={16}>
           <GetStartedCard {...CARD_PROPS} />
         </Col>
-        <Col xs={12} lg={4}>
+        <Col xs={12} lg={8}>
           <StatCards />
         </Col>
 
@@ -96,7 +118,9 @@ export const DefaultDashboardPage = () => {
         <Col xs={24} sm={12} lg={8}>
           <ProjectCarouselCard
             title="Ongoing projects"
-            filterStatus={(o: Projects) => o.status.toLowerCase() === 'in progress'}
+            filterStatus={(o: Projects) =>
+              o.status.toLowerCase() === 'in progress'
+            }
             projectsData={projectsData as unknown as Projects[]}
             projectsError={projectsError?.toString()}
             projectsLoading={projectsLoading}
@@ -119,7 +143,10 @@ export const DefaultDashboardPage = () => {
           />
         </Col>
       </Row>
-      <DashboardFiltersDrawer filterOpen={filterOpen} onClose={() => setFilterOpen(false)} />
+      <DashboardFiltersDrawer
+        filterOpen={filterOpen}
+        onClose={() => setFilterOpen(false)}
+      />
     </div>
   );
 };
