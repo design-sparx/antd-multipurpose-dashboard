@@ -48,7 +48,6 @@ import {
 import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/auth/authSlice';
-import { enableMockData } from '../../redux/data-mode/dataModeSlice';
 import { RootState } from '../../redux/store.ts';
 import { useDesignStyle } from '../../hooks/useDesignStyle';
 const { Content } = Layout;
@@ -88,9 +87,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await dispatch(logoutUser(user.email) as any);
     }
-
-    // Switch back to mock data mode
-    dispatch(enableMockData());
 
     setTimeout(() => {
       navigate(PATH_LANDING.root);

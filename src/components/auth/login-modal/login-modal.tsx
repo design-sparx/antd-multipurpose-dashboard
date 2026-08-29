@@ -6,7 +6,6 @@ import {
   setLoginModalOpen,
   clearError,
 } from '../../../redux/auth/authSlice';
-import { enableRealData } from '../../../redux/data-mode/dataModeSlice';
 import { RootState } from '../../../redux/store';
 import { useEffect } from 'react';
 
@@ -20,7 +19,7 @@ interface LoginFormValues {
 export const LoginModal = () => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const { loginModalOpen, isLoading, error, isAuthenticated } = useSelector(
+  const { loginModalOpen, isLoading, error } = useSelector(
     (state: RootState) => state.auth
   );
 
@@ -31,13 +30,6 @@ export const LoginModal = () => {
       dispatch(clearError());
     }
   }, [loginModalOpen, form, dispatch]);
-
-  // Automatically switch to live mode after successful login
-  useEffect(() => {
-    if (isAuthenticated && !loginModalOpen) {
-      dispatch(enableRealData());
-    }
-  }, [isAuthenticated, loginModalOpen, dispatch]);
 
   const handleLogin = async (values: LoginFormValues) => {
     await dispatch(loginUser(values) as any);

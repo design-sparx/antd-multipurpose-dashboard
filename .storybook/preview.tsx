@@ -3,15 +3,13 @@ import { themes } from '@storybook/theming';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import themeReducer from '../src/redux/theme/themeSlice';
-import dataModeReducer from '../src/redux/data-mode/dataModeSlice';
 import authReducer from '../src/redux/auth/authSlice';
-import { StylesContext } from '../src/context';
+import { StylesContext } from '../src/contexts';
 import '../src/App.css';
 
 const storybookStore = configureStore({
   reducer: {
     theme: themeReducer,
-    dataMode: dataModeReducer,
     auth: authReducer,
   },
 });

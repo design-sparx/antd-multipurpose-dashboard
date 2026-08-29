@@ -1,20 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import apiClient from '../services/api/apiClient';
-import { RootState } from '../redux/store';
 
 const useFetchData = <T = unknown,>(url: string) => {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Listen to dataMode changes so we refetch when user toggles
-  const { useMockData } = useSelector((state: RootState) => state.dataMode);
-
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      // Use apiClient instead of fetch - this will go through our interceptor
+      // Use apiClient — always routes to mock JSON files
       const response = await apiClient.get(url);
       const json = response.data;
 
@@ -37,7 +32,7 @@ const useFetchData = <T = unknown,>(url: string) => {
     } finally {
       setLoading(false);
     }
-  }, [url, useMockData]); // Re-fetch when URL or dataMode changes
+  }, [url]);
 
   useEffect(() => {
     fetchData();
