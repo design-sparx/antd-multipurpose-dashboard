@@ -331,7 +331,14 @@ External libs (React, antd) → Internal modules (`../../`) → Types
 
 ### Ant Design v6 Notes
 
-This project uses **Ant Design v6.3.0**. Key v6 patterns:
+This project uses **Ant Design v6** (latest v6 line) with matching ecosystem packages:
+
+- `antd` v6.3+
+- `@ant-design/icons` v6+
+- `@ant-design/colors` v7+
+- `@ant-design/charts` v1+
+
+Key v6 patterns:
 
 - Semantic structure: `classNames={{ root: 'custom' }}`, `styles={{ body: {...} }}`
 - Deprecated: `bodyStyle` → `styles.body`

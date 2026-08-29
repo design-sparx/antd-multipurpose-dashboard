@@ -74,7 +74,9 @@ This project features all the latest tools and good practices in web development
 
 - [Ant Design v6](https://ant.design/) - An enterprise-class UI design language and React UI library provides high-quality
   components.
-- [Ant Design Icons](https://ant.design/components/icon/) - Semantic vector graphics.
+- [Ant Design Icons v6](https://ant.design/components/icon/) - Semantic vector graphics.
+- [Ant Design Colors v7](https://ant.design/docs/spec/colors) - Color system and palette utilities.
+- [Ant Design Charts v1](https://charts.ant.design/) - React charting library.
 - [Framer Motion](https://www.framer.com/motion/) - Production-ready animation library.
 
 #### Charts
