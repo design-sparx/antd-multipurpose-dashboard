@@ -3,6 +3,8 @@
  * Manages storage and retrieval of authentication tokens
  */
 
+import { UserProfileDto } from '../../types/api/auth.types';
+
 const TOKEN_KEY = 'accessToken';
 const REFRESH_TOKEN_KEY = 'refreshToken';
 const USER_KEY = 'user';
@@ -47,14 +49,14 @@ export const tokenStorage = {
   /**
    * Store user profile data
    */
-  setUser: (user: any): void => {
+  setUser: (user: UserProfileDto): void => {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   },
 
   /**
    * Get user profile data
    */
-  getUser: (): any | null => {
+  getUser: (): UserProfileDto | null => {
     const user = localStorage.getItem(USER_KEY);
     return user ? JSON.parse(user) : null;
   },

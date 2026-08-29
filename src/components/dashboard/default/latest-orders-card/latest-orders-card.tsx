@@ -56,7 +56,7 @@ export const LatestOrdersCard = ({ loading, error, ...others }: Props) => {
       {ordersDataError || error ? (
         <Alert
           message="Error"
-          description={error?.toString() || ordersDataError.toString()}
+          description={error?.toString() || ordersDataError?.toString()}
           type="error"
           showIcon
         />

@@ -419,7 +419,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                       strong
                       style={{ fontSize: 13, lineHeight: 1 }}
                     >
-                      {user?.userName || user?.email?.split('@')[0] || 'Admin'}
+                      {user?.firstName || user?.email?.split('@')[0] || 'Admin'}
                     </Typography.Text>
                   )}
                 </Flex>

@@ -22,7 +22,7 @@ export const CorporateAboutPage = () => {
     data: employeesData,
     loading: employeesDataLoading,
     error: employeesDataError,
-  } = useFetchData('/antd/employees');
+  } = useFetchData<Employee[]>('/antd/employees');
 
   return (
     <div>

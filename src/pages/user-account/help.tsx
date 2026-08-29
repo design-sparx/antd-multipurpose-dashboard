@@ -13,6 +13,7 @@ import { TitleProps } from 'antd/es/typography/Title';
 import { useMediaQuery } from 'react-responsive';
 import { useFetchData } from '../../hooks';
 import { API_ENDPOINTS } from '../../constants';
+import { Faq } from '../../types';
 
 const { Text, Title } = Typography;
 
@@ -76,7 +77,7 @@ export const UserProfileHelpPage = () => {
     data: faqsData,
     loading: faqsDataLoading,
     error: faqsDataError,
-  } = useFetchData(API_ENDPOINTS.faqs);
+  } = useFetchData<Faq[]>(API_ENDPOINTS.faqs);
 
   const onTabChange = (key: string) => {
     setActiveTabKey(key);

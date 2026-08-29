@@ -98,7 +98,7 @@ export const DefaultDashboardPage = () => {
             title="Ongoing projects"
             filterStatus={(o: Projects) => o.status.toLowerCase() === 'in progress'}
             projectsData={projectsData}
-            projectsError={projectsError}
+            projectsError={projectsError ?? undefined}
             projectsLoading={projectsLoading}
           />
         </Col>
@@ -107,7 +107,7 @@ export const DefaultDashboardPage = () => {
             title="Queued projects"
             filterStatus={(o: Projects) => o.status.toLowerCase() === 'on hold'}
             projectsData={projectsData}
-            projectsError={projectsError}
+            projectsError={projectsError ?? undefined}
             projectsLoading={projectsLoading}
           />
         </Col>

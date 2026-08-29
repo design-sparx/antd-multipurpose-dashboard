@@ -242,17 +242,17 @@ export const apiRequest = {
     return apiClient.get<T>(url, config).then((response) => response.data);
   },
 
-  post: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
+  post: <T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> => {
     return apiClient.post<T>(url, data, config).then((response) => response.data);
   },
 
-  put: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
+  put: <T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> => {
     return apiClient.put<T>(url, data, config).then((response) => response.data);
   },
 
   patch: <T>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig
   ): Promise<T> => {
     return apiClient.patch<T>(url, data, config).then((response) => response.data);

@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import apiClient from '../services/api/apiClient';
 import { RootState } from '../redux/store';
 
-const useFetchData = <T = any,>(url: string) => {
+const useFetchData = <T = unknown,>(url: string) => {
   const [data, setData] = useState<T | null>(null);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Listen to dataMode changes so we refetch when user toggles
@@ -33,7 +33,7 @@ const useFetchData = <T = any,>(url: string) => {
       setError(null);
     } catch (error) {
       console.error('[useFetchData] Error:', error);
-      setError(error);
+      setError(error instanceof Error ? error.message : String(error));
     } finally {
       setLoading(false);
     }
