@@ -3,14 +3,12 @@ import { themes } from '@storybook/theming';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import themeReducer from '../src/redux/theme/themeSlice';
-import authReducer from '../src/redux/auth/authSlice';
 import { StylesContext } from '../src/contexts';
 import '../src/App.css';
 
 const storybookStore = configureStore({
   reducer: {
     theme: themeReducer,
-    auth: authReducer,
   },
 });
 
