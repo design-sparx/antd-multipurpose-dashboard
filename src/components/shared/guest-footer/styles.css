@@ -35,26 +35,6 @@
   color: var(--ant-color-primary);
 }
 
-.guest-footer__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: var(--ant-border-radius);
-  background: var(--ant-color-primary);
-  color: var(--ant-color-primary-contrast, #fff);
-  font-weight: 600;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-  width: max-content;
-}
-
-.guest-footer__cta:hover,
-.guest-footer__cta:focus-visible {
-  opacity: 0.85;
-  text-decoration: none;
-}
-
 .guest-footer__divider {
   margin-block: 1.5rem 1rem;
 }
@@ -65,8 +45,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .guest-footer__link,
-  .guest-footer__cta {
+  .guest-footer__link {
     transition:
       color 0.2s ease,
       opacity 0.2s ease;

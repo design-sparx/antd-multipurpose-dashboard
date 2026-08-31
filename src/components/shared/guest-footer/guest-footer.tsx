@@ -66,14 +66,15 @@ export const GuestFooter = () => {
                 An open-source multipurpose dashboard template built with React,
                 Vite, and Ant Design 6. Free to fork, extend, and ship.
               </Text>
-              <a
+              <Button
+                type="primary"
                 href={PATH_GITHUB.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="guest-footer__cta"
+                icon={<GithubOutlined />}
               >
-                <GithubOutlined /> Star on GitHub
-              </a>
+                Star on GitHub
+              </Button>
             </Space>
           </Col>
 
