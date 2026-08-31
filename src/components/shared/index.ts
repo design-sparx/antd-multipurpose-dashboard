@@ -7,6 +7,7 @@ export { CommandPalette } from './command-palette/command-palette';
 export * from './container';
 export { ExportButton } from './export-button/export-button';
 export { Flex } from './flex/flex';
+export { GuestFooter } from './guest-footer/guest-footer';
 export { LanguageSwitcher } from './language-switcher/language-switcher';
 export { Loader } from './loader/loader';
 export { Logo } from './logo/logo';
