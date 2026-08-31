@@ -74,7 +74,7 @@ export const LoginModal = () => {
             description={error}
             type="error"
             showIcon
-            closable={{ onClose: () => dispatch(clearError()) }}
+            closable={{ onClose: () => setError(null) }}
           />
         )}
 

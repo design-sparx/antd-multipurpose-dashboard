@@ -7,8 +7,11 @@ import { useFaqs } from '../../lib/queries';
 import { FaqDto } from '../../lib/queries';
 
 export const CorporateFaqPage = () => {
-  const { data: faqsData, isLoading: faqsDataLoading, error: faqsDataError } =
-    useFaqs();
+  const {
+    data: faqsData,
+    isLoading: faqsDataLoading,
+    error: faqsDataError,
+  } = useFaqs();
   const [faqs, setFaqs] = useState<{ category: string; items: FaqDto[] }[]>([]);
   const stylesContext = useStylesContext();
 

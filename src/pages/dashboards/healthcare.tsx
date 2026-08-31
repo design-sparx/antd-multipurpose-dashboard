@@ -30,7 +30,12 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { PageHeader, Loader, Card } from '../../components/shared';
-import { usePatients, useAppointments, useDoctors, useDepartments } from '../../lib/queries';
+import {
+  usePatients,
+  useAppointments,
+  useDoctors,
+  useDepartments,
+} from '../../lib/queries';
 import CountUp from 'react-countup';
 
 const HealthcareDashboard = () => {

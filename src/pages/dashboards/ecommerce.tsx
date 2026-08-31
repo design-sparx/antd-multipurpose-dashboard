@@ -39,7 +39,12 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { createElement, CSSProperties } from 'react';
-import { useTopProducts, useProductCategories, useTopSellers, useRecentOrders } from '../../lib/queries';
+import {
+  useTopProducts,
+  useProductCategories,
+  useTopSellers,
+  useRecentOrders,
+} from '../../lib/queries';
 import { blue, green, red, yellow } from '@ant-design/colors';
 import CountUp from 'react-countup';
 import { numberWithCommas } from '../../utils';
@@ -591,7 +596,8 @@ export const EcommerceDashboardPage = () => {
     error: topCategoriesError,
     isLoading: topCategoriesLoading,
   } = useProductCategories();
-  const topCategories = (topCategoriesResponse as unknown as { data: never[] })?.data ?? [];
+  const topCategories =
+    (topCategoriesResponse as unknown as { data: never[] })?.data ?? [];
 
   // Fetch top sellers data with proper typing
   const {
