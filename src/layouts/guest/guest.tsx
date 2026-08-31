@@ -19,7 +19,7 @@ import {
   ProductOutlined,
 } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
-import { Logo, NProgress } from '../../components';
+import { Container, Logo, NProgress } from '../../components';
 import {
   PATH_AUTH,
   PATH_DASHBOARD,
@@ -70,59 +70,64 @@ export const GuestLayout = () => {
       >
         <Header
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
             background: navFill ? `${colorBgContainer}CC` : 'none',
             backdropFilter: navFill ? 'blur(8px)' : 'none',
             boxShadow: navFill ? '0 0 8px 2px rgba(0, 0, 0, 0.05)' : 'none',
-            gap: 12,
             position: 'sticky',
             top: 0,
             padding: isMobile ? '0 1rem' : '0 2rem',
             zIndex: 1,
           }}
         >
-          <Logo color="blue" asLink href={PATH_LANDING.root} />
-          {!isMobile ? (
-            <>
-              <Flex gap="small">
-                <Link to={PATH_DOCS.productRoadmap} target="_blank">
-                  <Button icon={<ProductOutlined />} type="link">
-                    Product Roadmap
-                  </Button>
-                </Link>
-                <Link to={PATH_DOCS.components} target="_blank">
-                  <Button icon={<AppstoreAddOutlined />} type="link">
-                    Components
-                  </Button>
-                </Link>
-                <Link to={PATH_GITHUB.repo} target="_blank">
-                  <Button icon={<GithubOutlined />} type="link">
-                    Give us a star
-                  </Button>
-                </Link>
-                <Link to={PATH_AUTH.signin}>
-                  <Button icon={<LoginOutlined />} type="primary">
-                    Live Preview
-                  </Button>
-                </Link>
-              </Flex>
-            </>
-          ) : (
-            <Tooltip title={`${open ? 'Expand' : 'Collapse'} Sidebar`}>
-              <Button
-                type="text"
-                icon={open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={showDrawer}
-                style={{
-                  fontSize: '16px',
-                  width: 48,
-                  height: 48,
-                }}
-              />
-            </Tooltip>
-          )}
+          <Container
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 12,
+            }}
+          >
+            <Logo color="blue" asLink href={PATH_LANDING.root} />
+            {!isMobile ? (
+              <>
+                <Flex gap="small">
+                  <Link to={PATH_DOCS.productRoadmap} target="_blank">
+                    <Button icon={<ProductOutlined />} type="link">
+                      Product Roadmap
+                    </Button>
+                  </Link>
+                  <Link to={PATH_DOCS.components} target="_blank">
+                    <Button icon={<AppstoreAddOutlined />} type="link">
+                      Components
+                    </Button>
+                  </Link>
+                  <Link to={PATH_GITHUB.repo} target="_blank">
+                    <Button icon={<GithubOutlined />} type="link">
+                      Give us a star
+                    </Button>
+                  </Link>
+                  <Link to={PATH_AUTH.signin}>
+                    <Button icon={<LoginOutlined />} type="primary">
+                      Live Preview
+                    </Button>
+                  </Link>
+                </Flex>
+              </>
+            ) : (
+              <Tooltip title={`${open ? 'Expand' : 'Collapse'} Sidebar`}>
+                <Button
+                  type="text"
+                  icon={open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                  onClick={showDrawer}
+                  style={{
+                    fontSize: '16px',
+                    width: 48,
+                    height: 48,
+                  }}
+                />
+              </Tooltip>
+            )}
+          </Container>
         </Header>
         <Content
           style={{
