@@ -40,8 +40,21 @@ export const AsLink: Story = {
 export const CustomImageHeight: Story = {
   args: {
     color: 'black',
-    imgSize: {
-      h: 36,
-    },
+    imgHeight: 36,
+  },
+};
+
+export const CustomBrand: Story = {
+  args: {
+    color: 'black',
+    brandName: 'Acme Corp',
+  },
+};
+
+export const IconOnly: Story = {
+  args: {
+    color: 'black',
+    showText: false,
+    imgHeight: 32,
   },
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ConfigProvider, Layout, Menu, MenuProps, SiderProps } from 'antd';
+import { ConfigProvider, Flex, Layout, Menu, MenuProps, SiderProps } from 'antd';
 import {
   AppstoreAddOutlined,
   BarChartOutlined,
@@ -320,16 +320,15 @@ const SideNav = ({ ...others }: SideNavProps) => {
       width={SIDER_WIDTH}
       {...others}
     >
-      <Logo
-        color="blue"
-        asLink
-        href={PATH_LANDING.root}
-        justify="center"
-        gap="small"
-        imgSize={{ h: 28, w: 28 }}
-        style={{ padding: '1rem 0' }}
-        showText={!isCollapsed}
-      />
+      <Flex justify="center" style={{ padding: '1rem 0' }}>
+        <Logo
+          color="blue"
+          asLink
+          href={PATH_LANDING.root}
+          imgHeight={28}
+          showText={!isCollapsed}
+        />
+      </Flex>
       <ConfigProvider
         theme={{
           components: {
