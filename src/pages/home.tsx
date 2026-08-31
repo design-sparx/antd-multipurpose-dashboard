@@ -25,6 +25,7 @@ import {
   TableOutlined,
 } from '@ant-design/icons';
 import { Card, Container } from '../components';
+import { Announcements } from '../components/shared/announcements/announcements';
 import { createElement, CSSProperties } from 'react';
 
 const { Title, Text } = Typography;
@@ -250,6 +251,9 @@ export const HomePage = () => {
           </Row>
         </Container>
       </Flex>
+      <Container style={sectionStyles}>
+        <Announcements />
+      </Container>
       <Container style={sectionStyles}>
         <Title
           level={2}

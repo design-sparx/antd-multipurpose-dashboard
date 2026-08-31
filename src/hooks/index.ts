@@ -7,3 +7,11 @@ export { useAuth } from '../contexts/AuthContext';
 
 // Dashboard data hooks (re-export from lib/queries)
 export * from '../lib/queries';
+
+// Announcements feed
+export {
+  useAnnouncements,
+  formatRelativeDate,
+  type Announcement,
+  type AnnouncementTag,
+} from '../lib/hooks/use-announcements';

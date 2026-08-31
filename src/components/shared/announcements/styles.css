@@ -1,0 +1,54 @@
+/* Major Announcements cards: stagger-reveal on first mount.
+   The shared <Card> composes its own className ("card design-style-X"),
+   so this only adds the animation hooks — no DOM or style duplication. */
+
+@keyframes announcement-card-enter-kf {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.announcement-card {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .announcement-card {
+    opacity: 0;
+    animation: announcement-card-enter-kf 420ms cubic-bezier(0.2, 0.7, 0.2, 1)
+      forwards;
+    animation-delay: calc(var(--announcement-stagger, 0) * 90ms);
+  }
+}
+
+/* Per-index stagger steps (up to 8 items, plenty for a feed). */
+.announcement-card--0 {
+  --announcement-stagger: 0;
+}
+.announcement-card--1 {
+  --announcement-stagger: 1;
+}
+.announcement-card--2 {
+  --announcement-stagger: 2;
+}
+.announcement-card--3 {
+  --announcement-stagger: 3;
+}
+.announcement-card--4 {
+  --announcement-stagger: 4;
+}
+.announcement-card--5 {
+  --announcement-stagger: 5;
+}
+.announcement-card--6 {
+  --announcement-stagger: 6;
+}
+.announcement-card--7 {
+  --announcement-stagger: 7;
+}
