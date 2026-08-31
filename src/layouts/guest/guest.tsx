@@ -19,7 +19,7 @@ import {
   ProductOutlined,
 } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
-import { Container, Logo, NProgress } from '../../components';
+import { Container, GuestFooter, Logo, NProgress } from '../../components';
 import {
   PATH_AUTH,
   PATH_DASHBOARD,
@@ -28,7 +28,7 @@ import {
   PATH_LANDING,
 } from '../../constants';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 export const GuestLayout = () => {
   const {
@@ -162,15 +162,7 @@ export const GuestLayout = () => {
           </AnimatePresence>
           <FloatButton.BackTop />
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-            backgroundColor: 'rgba(52, 152, 219, 0.2)',
-          }}
-        >
-          AntD Dashboard &copy; {new Date().getFullYear()} Created by Design
-          Sparx
-        </Footer>
+        <GuestFooter />
       </Layout>
       <Drawer
         title="Menu"
