@@ -1,13 +1,15 @@
-import { Col, Divider, Row, Space, Typography, theme } from 'antd';
+import { Button, Col, Divider, Row, Space, Typography, theme } from 'antd';
 import {
   BookOutlined,
   GithubOutlined,
   HistoryOutlined,
   RocketOutlined,
+  VerticalAlignTopOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Container, Logo } from '../';
 import { PATH_DOCS, PATH_GITHUB, PATH_LANDING } from '../../../constants';
+import { goToTop } from '../../../utils';
 
 import './styles.css';
 
@@ -129,9 +131,20 @@ export const GuestFooter = () => {
             </Text>
           </Col>
           <Col>
-            <Link to={PATH_LANDING.root} className="guest-footer__link text-sm">
-              design-sparx
-            </Link>
+            <Space size="small" className="text-sm">
+              <Button
+                type="link"
+                size="small"
+                icon={<VerticalAlignTopOutlined />}
+                onClick={goToTop}
+              >
+                Back to top
+              </Button>
+              <Divider orientation="vertical" />
+              <Link to={PATH_LANDING.root} className="guest-footer__link">
+                design-sparx
+              </Link>
+            </Space>
           </Col>
         </Row>
       </Container>
