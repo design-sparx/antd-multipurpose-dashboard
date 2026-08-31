@@ -18,8 +18,17 @@ import {
   MenuUnfoldOutlined,
   ProductOutlined,
 } from '@ant-design/icons';
+import {
+  BulbFilled,
+  BulbOutlined,
+  MoonOutlined,
+  SunOutlined,
+} from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, GuestFooter, Logo, NProgress } from '../../components';
+import { RootState } from '../../redux/store';
+import { toggleTheme } from '../../redux/theme/themeSlice';
 import {
   PATH_AUTH,
   PATH_DASHBOARD,
@@ -39,6 +48,10 @@ export const GuestLayout = () => {
   const location = useLocation();
   const [navFill, setNavFill] = useState(false);
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const isDark = useSelector(
+    (state: RootState) => state.theme.mytheme === 'dark'
+  );
 
   const showDrawer = () => {
     setOpen(true);
@@ -160,7 +173,19 @@ export const GuestLayout = () => {
               <Outlet />
             </motion.div>
           </AnimatePresence>
-          <FloatButton.BackTop />
+          <FloatButton.Group
+            trigger="click"
+            icon={isDark ? <BulbFilled /> : <BulbOutlined />}
+            tooltip={isDark ? 'Light mode' : 'Dark mode'}
+            style={{ insetInlineEnd: 24 }}
+            onClick={() => dispatch(toggleTheme())}
+          >
+            <FloatButton
+              icon={isDark ? <SunOutlined /> : <MoonOutlined />}
+              tooltip="Back to top"
+            />
+            <FloatButton.BackTop />
+          </FloatButton.Group>
         </Content>
         <GuestFooter />
       </Layout>
