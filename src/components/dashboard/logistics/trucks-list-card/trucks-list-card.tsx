@@ -32,7 +32,7 @@ export const TruckListCard = ({ data, loading, error, ...others }: Props) => {
     >
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon
@@ -73,7 +73,7 @@ export const TruckListCard = ({ data, loading, error, ...others }: Props) => {
               </Space>
               <Row gutter={16}>
                 <Col span={10}>
-                  <Space direction="vertical">
+                  <Space vertical>
                     <Badge
                       color="purple"
                       text={<Typography.Text>{item.origin}</Typography.Text>}
@@ -87,13 +87,13 @@ export const TruckListCard = ({ data, loading, error, ...others }: Props) => {
                   </Space>
                 </Col>
                 <Col span={6}>
-                  <Space direction="vertical">
+                  <Space vertical>
                     <Typography.Text>Make: {item.make}</Typography.Text>
                     <Typography.Text>Model: {item.model}</Typography.Text>
                   </Space>
                 </Col>
                 <Col span={5}>
-                  <Space direction="vertical">
+                  <Space vertical>
                     <Typography.Text strong>{item.mileage} km</Typography.Text>
                     <Typography.Text>Distance</Typography.Text>
                   </Space>

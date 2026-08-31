@@ -51,7 +51,7 @@ export const StyleSwitcher = ({ open, onClose }: StyleSwitcherProps) => {
       placement="right"
       onClose={onClose}
       open={open}
-      width={320}
+      size={320}
       styles={{
         body: { padding: '24px 20px' },
       }}

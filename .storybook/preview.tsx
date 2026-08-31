@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import { App } from 'antd';
 import themeReducer from '../src/redux/theme/themeSlice';
 import { StylesContext } from '../src/contexts';
 import '../src/App.css';
@@ -16,7 +17,9 @@ export const withStylesProvider = (Story: any) => {
   return (
     <Provider store={storybookStore}>
       <StylesContext.Provider value={null}>
-        <Story />
+        <App>
+          <Story />
+        </App>
       </StylesContext.Provider>
     </Provider>
   );

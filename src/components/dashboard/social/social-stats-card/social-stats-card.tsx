@@ -51,7 +51,7 @@ export const SocialStatsCard = ({
     <Card {...others}>
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon

@@ -26,7 +26,7 @@ export const CorporateContactPage = () => {
       <Row {...ROW_PROPS}>
         <Col sm={24} lg={12}>
           <Card title="Phone" extra={<PhoneFilled />} style={cardStyles}>
-            <Space direction="vertical" style={{ width: '100%' }}>
+            <Space vertical style={{ width: '100%' }}>
               <Text style={textStyles}>
                 Nairobi: <Link strong>(254) 000-0000</Link>
               </Text>
@@ -45,7 +45,7 @@ export const CorporateContactPage = () => {
         </Col>
         <Col sm={24} lg={12}>
           <Card title="Email" extra={<MailFilled />} style={cardStyles}>
-            <Space direction="vertical" style={{ width: '100%' }}>
+            <Space vertical style={{ width: '100%' }}>
               <Text style={textStyles}>
                 Sales: <Link strong>biz@sparx.com</Link>
               </Text>

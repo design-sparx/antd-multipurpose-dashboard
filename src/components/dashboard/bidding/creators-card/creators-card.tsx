@@ -44,12 +44,7 @@ type Props = {
 
 export const CreatorsCard = ({ data, loading, error, ...others }: Props) => {
   return error ? (
-    <Alert
-      message="Error"
-      description={error.toString()}
-      type="error"
-      showIcon
-    />
+    <Alert title="Error" description={error.toString()} type="error" showIcon />
   ) : (
     <Card
       title="creators"

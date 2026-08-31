@@ -172,7 +172,7 @@ export const GuestLayout = () => {
         placement="left"
         onClose={onClose}
         open={open}
-        width={300}
+        size={300}
         styles={{
           body: { padding: 0 },
           header: { padding: '12px 16px' },

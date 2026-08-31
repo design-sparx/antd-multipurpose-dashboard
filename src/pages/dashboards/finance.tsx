@@ -531,7 +531,7 @@ const FinanceDashboard = () => {
         placement="right"
         onClose={() => setFilterOpen(false)}
         open={filterOpen}
-        width={320}
+        size={320}
         styles={{ body: { padding: 16 } }}
       >
         <Flex vertical gap="large">

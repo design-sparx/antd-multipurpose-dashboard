@@ -26,7 +26,7 @@ export const NotificationsCard = ({
     >
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon

@@ -7,7 +7,7 @@ import {
   FloatButton,
   Layout,
   MenuProps,
-  message,
+  App,
   Skeleton,
   theme,
   Tooltip,
@@ -69,7 +69,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const navigate = useNavigate();
   const floatBtnRef = useRef(null);
   const { tokens, styleName } = useDesignStyle();
-  const { user, logout } = useAuth();
+  const { message } = App.useApp();
 
   const handleLogout = async () => {
     message.open({

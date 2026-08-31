@@ -54,7 +54,7 @@ export const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
     <Card className="posts-lists-card card" {...others}>
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon
@@ -110,9 +110,9 @@ export const PostsCard = ({ as, data, error, loading, ...others }: Props) => {
                   description={
                     <Space>
                       <Typography.Text>{item.category}</Typography.Text>
-                      <Divider type="vertical" />
+                      <Divider orientation="vertical" />
                       <Typography.Text>{item.date}</Typography.Text>
-                      <Divider type="vertical" />
+                      <Divider orientation="vertical" />
                       <Typography.Text>{item.location}</Typography.Text>
                     </Space>
                   }

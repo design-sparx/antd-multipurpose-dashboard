@@ -374,7 +374,7 @@ const PRODUCTS_COLUMNS = [
     key: 'product_name',
     render: (_: string, { product_name, brand }: TopProduct) => (
       <Flex gap="small" align="center">
-        <Image src={brand} width={16} height={16} />
+        <Image src={brand} alt={product_name} width={16} height={16} />
         <Text style={{ width: 160 }}>{product_name}</Text>
       </Flex>
     ),
@@ -808,7 +808,7 @@ export const EcommerceDashboardPage = () => {
           <Card title="Popular products" style={cardStyles}>
             {topProductsError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={topProductsError.toString()}
                 type="error"
                 showIcon
@@ -848,7 +848,7 @@ export const EcommerceDashboardPage = () => {
           <Card title="Top sellers">
             {topSellersError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={topSellersError.toString()}
                 type="error"
                 showIcon
@@ -868,7 +868,7 @@ export const EcommerceDashboardPage = () => {
           <Card title="Recent orders">
             {recentOrdersError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={recentOrdersError.toString()}
                 type="error"
                 showIcon

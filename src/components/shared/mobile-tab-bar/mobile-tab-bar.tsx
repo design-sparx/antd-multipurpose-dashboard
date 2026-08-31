@@ -137,7 +137,7 @@ export const MobileTabBar = () => {
         placement="bottom"
         onClose={() => setMenuOpen(false)}
         open={menuOpen}
-        height="70vh"
+        size="70vh"
         styles={{
           body: { padding: 0, overflow: 'auto' },
         }}

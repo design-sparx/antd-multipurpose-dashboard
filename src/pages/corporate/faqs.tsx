@@ -38,7 +38,7 @@ export const CorporateFaqPage = () => {
           <Card title="Frequently askes questions (FAQs)">
             {faqsDataError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={faqsDataError.toString()}
                 type="error"
                 showIcon
@@ -46,11 +46,7 @@ export const CorporateFaqPage = () => {
             ) : faqsDataLoading ? (
               <Loader />
             ) : (
-              <Space
-                direction="vertical"
-                size="middle"
-                style={{ width: '100%' }}
-              >
+              <Space vertical size="middle" style={{ width: '100%' }}>
                 {faqs.map((f) => (
                   <>
                     <Typography.Text strong>{f.category}</Typography.Text>

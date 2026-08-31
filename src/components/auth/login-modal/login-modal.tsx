@@ -58,24 +58,23 @@ export const LoginModal = () => {
       onCancel={handleCancel}
       footer={null}
       centered
-      maskClosable={false}
+      mask={{ closable: false }}
     >
-      <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+      <Space vertical size="middle" style={{ width: '100%' }}>
         <Alert
-          message="Demo Mode"
-          description="Sign in with demo credentials to explore the dashboard."
+          title="Live API Mode Requires Authentication"
+          description="Please sign in with your credentials to access live data from the API."
           type="info"
           showIcon
         />
 
         {error && (
           <Alert
-            message="Authentication Failed"
+            title="Authentication Failed"
             description={error}
             type="error"
             showIcon
-            closable
-            onClose={() => setError(null)}
+            closable={{ onClose: () => dispatch(clearError()) }}
           />
         )}
 

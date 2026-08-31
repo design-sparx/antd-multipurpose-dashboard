@@ -245,7 +245,7 @@ export const ProjectsDashboardPage = () => {
           >
             {projectsDataError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={projectsDataError.toString()}
                 type="error"
                 showIcon
@@ -285,7 +285,7 @@ export const ProjectsDashboardPage = () => {
           <Card title="Top clients">
             {clientsDataError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={clientsDataError.toString()}
                 type="error"
                 showIcon

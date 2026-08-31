@@ -1,5 +1,5 @@
 import { RouterProvider } from 'react-router-dom';
-import { ConfigProvider, theme as antdTheme } from 'antd';
+import { App as AntdApp, ConfigProvider, theme as antdTheme } from 'antd';
 import { useEffect } from 'react';
 
 import { HelmetProvider } from 'react-helmet-async';
@@ -76,7 +76,9 @@ function App() {
             },
           }}
         >
-          <RouterProvider router={routes} />
+          <AntdApp>
+            <RouterProvider router={routes} />
+          </AntdApp>
         </StylesContext.Provider>
       </ConfigProvider>
     </HelmetProvider>

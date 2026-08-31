@@ -6,7 +6,7 @@ import {
   Flex,
   Form,
   Input,
-  message,
+  App,
   Row,
   Switch,
   theme,
@@ -49,6 +49,7 @@ export const SignUpPage = () => {
   const dispatch = useDispatch();
   const { mytheme } = useSelector((state: RootState) => state.theme);
   const [loading, setLoading] = useState(false);
+  const { message } = App.useApp();
 
   const onFinish = (values: any) => {
     console.log('Success:', values);

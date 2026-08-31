@@ -52,11 +52,8 @@ export const EarningsCard = ({ data, title, diff, ...others }: Props) => {
 
   return (
     <Card title={title} extra={<MoreMenu />} {...others}>
-      <Space
-        direction="vertical"
-        style={{ justifyContent: 'flex-start', width: '100%' }}
-      >
-        <Space direction="horizontal" align="center">
+      <Space vertical style={{ justifyContent: 'flex-start', width: '100%' }}>
+        <Space align="center">
           <Typography.Title level={1} style={{ margin: 0 }}>
             <small>$</small>
             <CountUp end={_.sumBy(data, 'value')} separator="," />

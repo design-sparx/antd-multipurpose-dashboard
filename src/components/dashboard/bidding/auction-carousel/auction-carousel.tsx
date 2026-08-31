@@ -6,7 +6,7 @@ import {
   Carousel,
   CarouselProps,
   Flex,
-  message,
+  App,
   Space,
   Tag,
   theme,
@@ -26,6 +26,7 @@ export const CardItem = ({ item, ...others }: CardItemProps) => {
   const {
     token: { borderRadius },
   } = theme.useToken();
+  const { message } = App.useApp();
   const {
     auction_id,
     nft_name,
@@ -147,12 +148,7 @@ export const AuctionCarousel = ({ data, error, loading }: Props) => {
   };
 
   return error ? (
-    <Alert
-      message="Error"
-      description={error.toString()}
-      type="error"
-      showIcon
-    />
+    <Alert title="Error" description={error.toString()} type="error" showIcon />
   ) : loading ? (
     <Loader />
   ) : (
