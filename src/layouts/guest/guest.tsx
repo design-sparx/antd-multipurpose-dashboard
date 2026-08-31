@@ -176,15 +176,15 @@ export const GuestLayout = () => {
           <FloatButton.Group
             trigger="click"
             icon={isDark ? <BulbFilled /> : <BulbOutlined />}
-            tooltip={isDark ? 'Light mode' : 'Dark mode'}
+            tooltip="Theme & navigation"
             style={{ insetInlineEnd: 24 }}
-            onClick={() => dispatch(toggleTheme())}
           >
             <FloatButton
               icon={isDark ? <SunOutlined /> : <MoonOutlined />}
-              tooltip="Back to top"
+              tooltip={isDark ? 'Light mode' : 'Dark mode'}
+              onClick={() => dispatch(toggleTheme())}
             />
-            <FloatButton.BackTop />
+            <FloatButton.BackTop tooltip="Back to top" />
           </FloatButton.Group>
         </Content>
         <GuestFooter />
