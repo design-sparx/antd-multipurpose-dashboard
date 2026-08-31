@@ -7,8 +7,11 @@ import { useFaqs } from '../../lib/queries';
 import { FaqDto } from '../../lib/queries';
 
 export const CorporateFaqPage = () => {
-  const { data: faqsData, isLoading: faqsDataLoading, error: faqsDataError } =
-    useFaqs();
+  const {
+    data: faqsData,
+    isLoading: faqsDataLoading,
+    error: faqsDataError,
+  } = useFaqs();
   const [faqs, setFaqs] = useState<{ category: string; items: FaqDto[] }[]>([]);
   const stylesContext = useStylesContext();
 
@@ -38,7 +41,7 @@ export const CorporateFaqPage = () => {
           <Card title="Frequently askes questions (FAQs)">
             {faqsDataError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={faqsDataError.toString()}
                 type="error"
                 showIcon
@@ -46,11 +49,7 @@ export const CorporateFaqPage = () => {
             ) : faqsDataLoading ? (
               <Loader />
             ) : (
-              <Space
-                direction="vertical"
-                size="middle"
-                style={{ width: '100%' }}
-              >
+              <Space vertical size="middle" style={{ width: '100%' }}>
                 {faqs.map((f) => (
                   <>
                     <Typography.Text strong>{f.category}</Typography.Text>

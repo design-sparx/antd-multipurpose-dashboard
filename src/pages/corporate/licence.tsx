@@ -19,7 +19,7 @@ export const CorporateLicensePage = () => {
           <Card title="licence comparisons">
             {licenseDataError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={licenseDataError.toString()}
                 type="error"
                 showIcon

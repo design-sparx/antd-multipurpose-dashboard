@@ -12,7 +12,13 @@ const SALES_COLUMNS: ColumnsType<AuctionSales> = [
     key: 'title',
     render: (_: unknown, record: AuctionSales) => (
       <Flex align="center" gap="small">
-        <Image src={record.image_url} height={24} width={24} preview={false} />
+        <Image
+          src={record.image_url}
+          alt={record.title}
+          height={24}
+          width={24}
+          preview={false}
+        />
         <Flex vertical gap={4} style={{ width: 160 }}>
           <Typography.Text strong className="text-capitalize">
             {record.title}
@@ -66,12 +72,7 @@ type Props = {
 
 export const TopItemsCard = ({ data, loading, error, ...others }: Props) => {
   return error ? (
-    <Alert
-      message="Error"
-      description={error.toString()}
-      type="error"
-      showIcon
-    />
+    <Alert title="Error" description={error.toString()} type="error" showIcon />
   ) : (
     <Card title="Top selling items" {...others}>
       <AdvancedTable

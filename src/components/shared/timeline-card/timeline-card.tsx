@@ -19,7 +19,7 @@ export const TimelineCard = ({ data, error, loading, ...others }: Props) => {
     <Card title="Latest activities" {...others}>
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon

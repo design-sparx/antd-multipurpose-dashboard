@@ -150,7 +150,7 @@ export const UserProfileHelpPage = () => {
         >
           {faqsDataError ? (
             <Alert
-              message="Error"
+              title="Error"
               description={faqsDataError.toString()}
               type="error"
               showIcon

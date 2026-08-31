@@ -19,7 +19,7 @@ export const CorporateTeamPage = () => {
           <Card title="Our team">
             {employeesDataError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={employeesDataError.toString()}
                 type="error"
                 showIcon

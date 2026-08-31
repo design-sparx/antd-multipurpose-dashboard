@@ -94,7 +94,7 @@ export const DeliveryAnalyticsCard = ({
     <Card title="Analytics" {...others}>
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon

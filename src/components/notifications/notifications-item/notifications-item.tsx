@@ -29,7 +29,7 @@ export const NotificationsItem = ({ data, ...others }: Props) => {
             {notification_message.slice(0, 30)}...
           </Typography.Text>
           <Tag
-            bordered={true}
+            variant="filled"
             icon={
               notification_type === 'voice' ? (
                 <PhoneOutlined />
@@ -45,7 +45,7 @@ export const NotificationsItem = ({ data, ...others }: Props) => {
           </Tag>
         </Flex>
         <Flex justify="space-between" align="center">
-          <Tag bordered={true} color={color}>
+          <Tag variant="filled" color={color}>
             {notification_category}
           </Tag>
           <Typography.Text>{notification_date}</Typography.Text>

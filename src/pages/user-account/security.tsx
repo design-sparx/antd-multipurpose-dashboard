@@ -172,7 +172,7 @@ export const UserProfileSecurityPage = () => {
         >
           {sessionActivityDataError ? (
             <Alert
-              message="Error"
+              title="Error"
               description={sessionActivityDataError.toString()}
               type="error"
               showIcon
@@ -182,7 +182,7 @@ export const UserProfileSecurityPage = () => {
           ) : (
             <Collapse
               bordered
-              expandIconPosition="start"
+              expandIconPlacement="start"
               items={sessionActivityData.slice(0, 5).map((s: Session) => ({
                 key: s.id,
                 label: (

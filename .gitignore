@@ -32,4 +32,7 @@ storybook-static/
 
 # AI
 .claude
+CLAUDE.md
+AGENTS.md
 .kilo
+.agents

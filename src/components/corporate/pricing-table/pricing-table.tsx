@@ -55,7 +55,7 @@ export const PricingTable = ({ data, error, loading, ...others }: Props) => {
     >
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon

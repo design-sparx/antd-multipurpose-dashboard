@@ -118,7 +118,7 @@ export const ProgressCard = ({ ...others }: Props) => {
                   borderRadius: '4px',
                 }}
               />
-              <Space direction="vertical" size={2}>
+              <Space vertical size={2}>
                 <Typography.Text strong>7100/9383</Typography.Text>
                 <Typography.Text>Completed</Typography.Text>
               </Space>
@@ -134,7 +134,7 @@ export const ProgressCard = ({ ...others }: Props) => {
                   borderRadius: '4px',
                 }}
               />
-              <Space direction="vertical" size={2}>
+              <Space vertical size={2}>
                 <Typography.Text strong>1478/9383</Typography.Text>
                 <Typography.Text>In progress</Typography.Text>
               </Space>
@@ -150,7 +150,7 @@ export const ProgressCard = ({ ...others }: Props) => {
                   borderRadius: '4px',
                 }}
               />
-              <Space direction="vertical" size={2}>
+              <Space vertical size={2}>
                 <Typography.Text strong>805/9383</Typography.Text>
                 <Typography.Text>Not started</Typography.Text>
               </Space>

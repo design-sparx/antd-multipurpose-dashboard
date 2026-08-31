@@ -40,7 +40,7 @@ export const CommentsCard = ({ data, error, loading, ...others }: Props) => (
   >
     {error ? (
       <Alert
-        message="Error"
+        title="Error"
         description={error.toString()}
         type="error"
         showIcon
@@ -54,14 +54,14 @@ export const CommentsCard = ({ data, error, loading, ...others }: Props) => (
         dataSource={data}
         renderItem={(item: Comments) => (
           <List.Item key={item.id}>
-            <Space direction="vertical" size="small">
+            <Space vertical size="small">
               <Flex justify="space-between">
                 <UserAvatar
                   fullName={item.author}
                   size="middle"
                   style={{ fontWeight: 500 }}
                 />
-                <Tag className="text-capitalize" bordered={false}>
+                <Tag className="text-capitalize" variant="outlined">
                   {item.activity_type}
                 </Tag>
               </Flex>

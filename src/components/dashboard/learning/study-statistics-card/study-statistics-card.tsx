@@ -76,7 +76,7 @@ export const StudyStatisticsCard = ({
     <Card title="Study statistics" {...others}>
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon

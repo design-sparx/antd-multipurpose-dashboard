@@ -30,7 +30,12 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { PageHeader, Loader, Card } from '../../components/shared';
-import { usePatients, useAppointments, useDoctors, useDepartments } from '../../lib/queries';
+import {
+  usePatients,
+  useAppointments,
+  useDoctors,
+  useDepartments,
+} from '../../lib/queries';
 import CountUp from 'react-countup';
 
 const HealthcareDashboard = () => {
@@ -543,7 +548,7 @@ const HealthcareDashboard = () => {
         placement="right"
         onClose={() => setFilterOpen(false)}
         open={filterOpen}
-        width={320}
+        size={320}
         styles={{ body: { padding: 16 } }}
       >
         <Flex vertical gap="large">

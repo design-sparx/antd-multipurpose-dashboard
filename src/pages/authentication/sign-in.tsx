@@ -7,7 +7,7 @@ import {
   Flex,
   Form,
   Input,
-  message,
+  App,
   Row,
   Switch,
   theme,
@@ -52,6 +52,7 @@ export const SignInPage = () => {
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { message } = App.useApp();
 
   const onFinish = async (values: any) => {
     setLoading(true);
@@ -142,11 +143,10 @@ export const SignInPage = () => {
           </Flex>
           {error && (
             <Alert
-              message="Login Failed"
+              title="Login Failed"
               description={error}
               type="error"
-              closable
-              onClose={() => setError(null)}
+              closable={{ onClose: () => setError(null) }}
               style={{ width: '100%' }}
             />
           )}

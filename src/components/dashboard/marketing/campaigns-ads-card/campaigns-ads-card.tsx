@@ -169,12 +169,7 @@ export const CampaignsAdsCard = ({ error, data, ...others }: Props) => {
   }, [data]);
 
   return error ? (
-    <Alert
-      message="Error"
-      description={error.toString()}
-      type="error"
-      showIcon
-    />
+    <Alert title="Error" description={error.toString()} type="error" showIcon />
   ) : (
     <Card
       title="Campaign performance by source"

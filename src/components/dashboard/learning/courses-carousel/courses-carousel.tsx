@@ -60,7 +60,7 @@ const CardItem = ({ data, ...others }: CardItemProps) => {
       }}
       {...others}
     >
-      <Space direction="vertical" size="large" style={{ width: '100%' }}>
+      <Space vertical size="large" style={{ width: '100%' }}>
         <Typography.Title
           level={4}
           style={{
@@ -84,7 +84,7 @@ const CardItem = ({ data, ...others }: CardItemProps) => {
         <Flex wrap="wrap" gap="small">
           <Tag icon={<TagFilled />}>{category}</Tag>
           <Tag
-            bordered={true}
+            variant="filled"
             color={levelColor}
             style={{ textTransform: 'capitalize' }}
           >
@@ -174,7 +174,7 @@ export const CoursesCarousel = ({ data, loading, error, ...others }: Props) => {
     >
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon

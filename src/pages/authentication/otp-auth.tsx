@@ -1,13 +1,5 @@
 import { useState } from 'react';
-import {
-  Button,
-  Flex,
-  InputNumber,
-  Typography,
-  Card,
-  message,
-  Space,
-} from 'antd';
+import { App, Button, Card, Flex, InputNumber, Space, Typography } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -18,6 +10,7 @@ const OtpAuthPage: React.FC = () => {
   const [otp, setOtp] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [resendCount, setResendCount] = useState(3);
+  const { message } = App.useApp();
 
   const handleVerify = () => {
     if (!otp || otp.toString().length !== 6) {

@@ -99,28 +99,28 @@ export const DevicesCardChart = ({ ...others }: Props) => {
               justifyContent: 'space-between',
             }}
           >
-            <Space direction="vertical">
+            <Space vertical>
               <DesktopOutlined />
               <Typography.Text>Desktop</Typography.Text>
               <Typography.Text style={{ color: '#62daaa' }}>
                 70%
               </Typography.Text>
             </Space>
-            <Space direction="vertical">
+            <Space vertical>
               <MobileOutlined />
               <Typography.Text>Mobile</Typography.Text>
               <Typography.Text style={{ color: '#6394f9' }}>
                 16%
               </Typography.Text>
             </Space>
-            <Space direction="vertical">
+            <Space vertical>
               <TabletFilled />
               <Typography.Text>Tablet</Typography.Text>
               <Typography.Text style={{ color: '#657797' }}>
                 10%
               </Typography.Text>
             </Space>
-            <Space direction="vertical">
+            <Space vertical>
               <SettingOutlined />
               <Typography.Text>Other</Typography.Text>
               <Typography.Text style={{ color: '#f6c022' }}>4%</Typography.Text>

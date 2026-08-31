@@ -23,6 +23,7 @@ export const GetStartedCard = ({ ...others }: Props) => {
         </Flex>
         <Image
           src="/get-started.png"
+          alt=""
           height={180}
           preview={false}
           style={{ objectFit: 'cover' }}

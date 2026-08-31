@@ -15,7 +15,7 @@ export const DashboardFiltersDrawer = ({
       placement="right"
       onClose={onClose}
       open={filterOpen}
-      width={320}
+      size={320}
       styles={{
         body: { padding: 16 },
       }}

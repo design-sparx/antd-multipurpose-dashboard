@@ -1,5 +1,4 @@
-import { Typography } from 'antd';
-import Masonry from 'antd/es/masonry';
+import { Typography, Masonry } from 'antd';
 import { Helmet } from 'react-helmet-async';
 import { HomeOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';

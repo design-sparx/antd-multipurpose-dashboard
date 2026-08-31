@@ -39,7 +39,12 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { createElement, CSSProperties } from 'react';
-import { useTopProducts, useProductCategories, useTopSellers, useRecentOrders } from '../../lib/queries';
+import {
+  useTopProducts,
+  useProductCategories,
+  useTopSellers,
+  useRecentOrders,
+} from '../../lib/queries';
 import { blue, green, red, yellow } from '@ant-design/colors';
 import CountUp from 'react-countup';
 import { numberWithCommas } from '../../utils';
@@ -374,7 +379,7 @@ const PRODUCTS_COLUMNS = [
     key: 'product_name',
     render: (_: string, { product_name, brand }: TopProduct) => (
       <Flex gap="small" align="center">
-        <Image src={brand} width={16} height={16} />
+        <Image src={brand} alt={product_name} width={16} height={16} />
         <Text style={{ width: 160 }}>{product_name}</Text>
       </Flex>
     ),
@@ -591,7 +596,8 @@ export const EcommerceDashboardPage = () => {
     error: topCategoriesError,
     isLoading: topCategoriesLoading,
   } = useProductCategories();
-  const topCategories = (topCategoriesResponse as unknown as { data: never[] })?.data ?? [];
+  const topCategories =
+    (topCategoriesResponse as unknown as { data: never[] })?.data ?? [];
 
   // Fetch top sellers data with proper typing
   const {
@@ -808,7 +814,7 @@ export const EcommerceDashboardPage = () => {
           <Card title="Popular products" style={cardStyles}>
             {topProductsError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={topProductsError.toString()}
                 type="error"
                 showIcon
@@ -848,7 +854,7 @@ export const EcommerceDashboardPage = () => {
           <Card title="Top sellers">
             {topSellersError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={topSellersError.toString()}
                 type="error"
                 showIcon
@@ -868,7 +874,7 @@ export const EcommerceDashboardPage = () => {
           <Card title="Recent orders">
             {recentOrdersError ? (
               <Alert
-                message="Error"
+                title="Error"
                 description={recentOrdersError.toString()}
                 type="error"
                 showIcon

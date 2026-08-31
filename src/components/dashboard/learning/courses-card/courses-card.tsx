@@ -67,7 +67,7 @@ export const CoursesCard = ({ data, loading, error, ...others }: Props) => {
     <Card title="My courses" {...others}>
       {error ? (
         <Alert
-          message="Error"
+          title="Error"
           description={error.toString()}
           type="error"
           showIcon
