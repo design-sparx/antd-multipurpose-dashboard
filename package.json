@@ -2,7 +2,7 @@
   "name": "antd-multi-dashboard",
   "private": "false",
   "type": "module",
-  "readme": "ERROR: No README data found!",
+  "readme": "README.md",
   "_id": "antd-multi-dashboard@1.1.0",
   "version": "1.5.0",
   "scripts": {
