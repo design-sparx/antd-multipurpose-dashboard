@@ -180,9 +180,9 @@ export const HomePage = () => {
         align="center"
         justify="center"
         style={{
-          height: isTablet ? 600 : 800,
+          height: isTablet ? 600 : 650,
           width: '100%',
-          padding: isMobile ? '2rem 1rem' : '5rem 0',
+          padding: isMobile ? '2rem 1rem' : '3rem 0',
           // backgroundColor: 'rgba(255, 255, 255, 0.85)',
         }}
       >

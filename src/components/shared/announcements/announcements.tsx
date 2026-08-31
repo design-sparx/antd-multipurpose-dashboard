@@ -36,7 +36,8 @@ type Props = {
 };
 
 export const Announcements = ({ data, id = 'announcements' }: Props) => {
-  const items = data ?? useAnnouncements();
+  const fallback = useAnnouncements();
+  const items = data ?? fallback;
 
   const {
     token: { colorPrimary },
