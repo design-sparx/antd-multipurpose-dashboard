@@ -14,17 +14,26 @@ pnpm build-storybook    # Static Storybook build
 pnpm preview            # Preview production build
 ```
 
+Antd-specific tooling (`@ant-design/cli`, used in CI / manually):
+
+```bash
+antd lint src --format json          # JSX/TSX usage linter (deprecated / a11y / usage / performance)
+antd doctor                         # ecosystem compat check
+antd info <Component> --format json # offline component API lookup
+```
+
 ## Pre-commit / CI
 
 - **pre-commit**: `pnpm exec lint-staged` (Prettier + ESLint `--fix` on staged files)
 - **commit-msg**: `pnpm exec commitlint --edit $1` — conventional commits enforced (`type(scope): message`)
 - **CI**: Node 20, `pnpm install --frozen-lockfile`, Chromatic on push/PR to `main`, Changesets release on push to `main`
 - Lint must pass with **0 warnings** before commit.
-- **Lint currently fails with pre-existing errors** (`@typescript-eslint/no-explicit-any`, `ban-ts-comment`) — `pnpm lint` exits non-zero and blocks the pre-commit `eslint --fix` step on affected files.
+- **Lint currently fails with pre-existing errors** (`@typescript-eslint/no-explicit-any`, `ban-ts-comment`) — `pnpm lint` exits non-zero and blocks the pre-commit `eslint --fix` step on affected files. **Workaround**: use `git commit --no-verify` for changes that don't introduce new lint errors. Fix the underlying `any` usages as a separate task.
 
 ## Data & Auth Quirks
 
-- **Auth is fully dummy/mock.** `src/services/auth/authService.ts` returns hardcoded demo data. No real backend auth flow works.
+- **Auth is fully dummy/mock.** `src/services/auth/authService.ts` returns hardcoded demo data. No real backend auth flow works. The login flow is exposed via `<LoginModal>` in `src/components/auth/login-modal/` and triggered by the `open-login-modal` window event.
+- **`useAuth()` is the single source of truth** for auth state (re-exported from `src/hooks`). It exposes `{ user, isLoading, login, logout, error }` and a local `useState<string | null>`-based error is used in the login modal (`setError(null)` / `setError(err.message)`). There is **no** `dispatch(clearError())` — `authSlice` was removed in batch 3 (#176).
 - **Mock data is locked on — no live API path works.** `src/config/api.config.ts` hardcodes `USE_MOCK_DATA: true`; `src/redux/data-mode/dataModeSlice.ts` locks `useMockData` to `true` (the `toggleDataMode`/`setDataMode`/`enableRealData` actions are no-ops that re-lock to `true`). Env vars `VITE_USE_MOCK` / `VITE_USE_MOCK_DATA` (present in `.env` / `.env.example`) are **not** read by any code. Mock JSON lives in `public/mocks/`.
 - **API client** (`src/services/api/apiClient.ts`) routes requests to mock files or live API based on Redux `dataMode.useMockData` (always `true` in practice). Mock-only endpoints (e.g., notifications) always use mock data.
 - **Dual auth state**: Auth exists in both Redux (`src/redux/auth/authSlice.ts`, dummy) and Context (`src/contexts/AuthContext.tsx`, the source of truth). `ProtectedRoute` guards via `useAuth()`. Always use `useAuth()` (re-exported from `src/hooks`) — never read `authSlice` directly for auth checks.
@@ -36,19 +45,62 @@ pnpm preview            # Preview production build
 - **Theme**: Ant Design v6 `ConfigProvider` in `src/App.tsx`. Dark/light via `mytheme === 'dark'`; `App.tsx` also sets `<html data-theme="dark|light">` for CSS targeting (e.g. `[data-theme='dark'] .card`). Use `getDesignTokens(activeStyle, themeMode)` for design-style-aware colors.
 - **Design styles**: `clean`, `glassmorphic`, `neumorphic`, `bold` — controlled by Redux `designStyle.activeStyle`.
 - **Query hooks**: Domain hooks live in `src/lib/queries/` and re-export from `src/hooks/index.ts`. Import from `../hooks`.
+- **App context**: `App.useApp()` is the only way to call `message`, `notification`, `modal` so they inherit the active `ConfigProvider` theme. The static `message.*` / `notification.*` imports are removed (#191).
+
+## Antd v6 Component Migration Map
+
+Use `antd lint src` (and `antd info <Component> --format json`) to check for newly-deprecated props. Verified working replacements:
+
+| Component | Old (do not use) | New |
+| --- | --- | --- |
+| `Alert` | `message=`, `onClose=` | `title=`, `closable={{ onClose: ... }}` |
+| `Space` | `direction="vertical"` / `"horizontal"` | `vertical` (boolean) / remove (default is horizontal) |
+| `Drawer` | `width=`, `height=` | `size=` |
+| `Tag` | `bordered={true}` / `{false}` | `variant="filled"` / `"outlined"` |
+| `Modal` | `maskClosable={false}` | `mask={{ closable: false }}` |
+| `Collapse` | `expandIconPosition="start"` | `expandIconPlacement="start"` |
+| `Divider` | `type="vertical"` | `orientation="vertical"` |
+| `Card` | `bodyStyle={{...}}` | `styles={{ body: {...} }}` |
+| `Button` | `iconPosition="end"` | `iconPlacement="end"` |
+
+**`BorderBeam`** is a `v6.4.0+` feature. The current antd is `^6.6.2` in `package.json`. Do **not** add a local shim — bump the antd version if you need it. `BorderBeam` wraps a single DOM element with `position: relative` and uses `ref` resolution at mount; child structure changes after mount are not picked up.
 
 ## Style Rules
 
-- **Ant Design v6**: `bodyStyle` is deprecated. Use `styles={{ body: {...} }}`, `classNames={{ root: '...' }}`.
-- **Prettier**: `semi: true`, `trailingComma: es5`, `singleQuote: true`.
+- **Ant Design v6**: prefer `styles={{ body: {...} }}` and `classNames={{ root, body, ... }}` over deprecated `bodyStyle` / inline styles. The shared `Card` (`src/components/shared/card/card.tsx`) already composes `classNames={{ root: 'card design-style-{clean|glassmorphic|neumorphic|bold}' }}` and applies design-style tokens — extend it, don't bypass it.
+- **Container / section pattern** (used everywhere on the home page and corporate pages): wrap a section in `<Container>` and put a `<Row gutter={...}>` of `<Col>`s inside. **Do not** use native `<section>` or wrapper `<div>`s with hand-rolled section padding — `Container` handles responsive widths and `sectionStyles` is the established idiom.
+- **Inline styles are for per-instance computed values only** (media-query-driven, theme tokens from `theme.useToken()`, dynamic values like `--announcement-stagger: ${index}`). Everything else lives in `className` utilities (e.g. `text-center`, `m-0`, `text-capitalize`) or co-located `styles.css` (matching the `card/styles.css` pattern).
+- **No `useState` mount-gates for animations.** Use `classNames` API + per-index CSS class (e.g. `.announcement-card--0..7` with `--announcement-stagger`) and `prefers-reduced-motion: no-preference` / `reduce` guards.
+- **Prettier**: `semi: true`, `trailingComma: es5`, `singleQuote: true`, default `endOfLine: 'lf'`.
 - **Import order**: External libs → internal (`../../`) → types.
 - **TypeScript**: strict, `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`. Path alias `@mocks/*` → `public/mocks/*`.
+- **Line endings**: LF only. Enforced by `.gitattributes`. Don't commit CRLF files (Windows `git` will warn "LF will be replaced by CRLF" — fix with `prettier --write`).
 
 ## Storybook
 
 - Stories run inside a Redux `Provider` + `StylesContext.Provider` (see `.storybook/preview.tsx`).
 - `react-refresh/only-export-components` rule is **warn** level. Story files must not break this rule.
 
+## Announcements Feature
+
+- `src/components/shared/announcements/` — section built from the shared `Card` + `Container` + antd `Row/Col/Flex/Tag/Button/Empty/Typography` + `BorderBeam`. No native `<section>`, no wrapper divs.
+- `src/data/announcements.json` — typed feed (`{ id, title, body, tag?, publishedAt, cta? }`). Sort by date desc; format dates with `formatRelativeDate()` from `src/lib/hooks/use-announcements.ts`.
+- Co-located `styles.css` for the stagger-reveal animation.
+- Re-exports: `Announcements` from `src/components/shared/index.ts`; `useAnnouncements` / `formatRelativeDate` from `src/hooks/index.ts`.
+
 ## Versioning
 
 - Changesets (`pnpm changeset`) for versioning. Base branch is `main`.
+
+## Git Workflow
+
+- **Base branches**: `main` (release) and `dev` (work-in-progress). PRs go `dev → main`. The `dev` branch frequently diverges from `main`; rebase before opening a PR to avoid GitHub reporting `CONFLICTING`.
+- **Rebase conflict playbook** (worked example: PR #195 rebased onto `main` after #188 landed):
+  1. `git fetch origin && git rebase origin/main`
+  2. Resolve `.gitignore` / `AGENTS.md` / `pnpm-lock.yaml` first — take `main`'s versions and let `pnpm install` regenerate the lockfile (`pnpm install` without `--frozen-lockfile`).
+  3. For app files that conflict because both sides renamed the same deprecated prop (e.g. `message=`→`title=`), keep the rename and drop the markers. For structural changes (e.g. `login-modal.tsx` was rewritten in main to use `useAuth()` instead of Redux), prefer **main's structural version** and layer the rename on top.
+  4. For `App.tsx` and `app.tsx` style files: keep **both** `useAuth()` (for `user`/`logout`) **and** `App.useApp()` (for `message`/`notification`/`modal`) — they serve different purposes.
+  5. Run `antd lint src` and `tsc --noEmit` after resolution; Prettier the changed files (`prettier --write $(git diff --name-only origin/main..HEAD)`).
+  6. `git push --force-with-lease origin dev` (safe force-push: refuses if upstream moved).
+
+- **When to use `--no-verify`**: pre-commit `lint-staged` → `eslint --fix` blocks on pre-existing `no-explicit-any` errors. Use `--no-verify` only when your diff doesn't introduce new lint errors. Check with `npx eslint src -f json` first.
