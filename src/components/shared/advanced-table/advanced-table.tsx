@@ -141,7 +141,7 @@ export function AdvancedTable<T extends object>({
   );
 
   return (
-    <Card title={title} extra={tableExtra} bodyStyle={{ padding: 0 }}>
+    <Card title={title} extra={tableExtra} styles={{ body: { padding: 0 } }}>
       <Table
         columns={columns}
         dataSource={dataSource}
