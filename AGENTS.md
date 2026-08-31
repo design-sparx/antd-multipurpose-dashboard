@@ -70,6 +70,7 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 - **Ant Design v6**: prefer `styles={{ body: {...} }}` and `classNames={{ root, body, ... }}` over deprecated `bodyStyle` / inline styles. The shared `Card` (`src/components/shared/card/card.tsx`) already composes `classNames={{ root: 'card design-style-{clean|glassmorphic|neumorphic|bold}' }}` and applies design-style tokens — extend it, don't bypass it.
 - **Container / section pattern** (used everywhere on the home page and corporate pages): wrap a section in `<Container>` and put a `<Row gutter={...}>` of `<Col>`s inside. **Do not** use native `<section>` or wrapper `<div>`s with hand-rolled section padding — `Container` handles responsive widths and `sectionStyles` is the established idiom.
 - **Inline styles are for per-instance computed values only** (media-query-driven, theme tokens from `theme.useToken()`, dynamic values like `--announcement-stagger: ${index}`). Everything else lives in `className` utilities (e.g. `text-center`, `m-0`, `text-capitalize`) or co-located `styles.css` (matching the `card/styles.css` pattern).
+- **Don't add CSS for things antd already styles.** Antd v6 `Button`, `Tag`, `Card`, etc. have full theming and variants — use them directly (e.g. `<Button type="primary" href=...>` for CTAs, not a custom-styled `<a>` with a `.cta` class). Co-located `styles.css` is only for custom layouts, animations, or genuinely new visual treatments.
 - **No `useState` mount-gates for animations.** Use `classNames` API + per-index CSS class (e.g. `.announcement-card--0..7` with `--announcement-stagger`) and `prefers-reduced-motion: no-preference` / `reduce` guards.
 - **Prettier**: `semi: true`, `trailingComma: es5`, `singleQuote: true`, default `endOfLine: 'lf'`.
 - **Import order**: External libs → internal (`../../`) → types.
@@ -88,6 +89,28 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 - Co-located `styles.css` for the stagger-reveal animation.
 - Re-exports: `Announcements` from `src/components/shared/index.ts`; `useAnnouncements` / `formatRelativeDate` from `src/hooks/index.ts`.
 
+## Shared Components
+
+### `Logo` (`src/components/shared/logo/logo.tsx`)
+
+- **Props**: `color?`, `bgColor?`, `imgSrc?` (default `/logo-no-background.png`), `imgAlt?`, `brandName?` (default `'Antd Admin'`), `imgHeight?` (default 48), `asLink?`, `href?` (default `/`), `showText?` (default `true`).
+- Uses `Typography.Text` + `ellipsis` (NOT `Typography.Title` — brand text isn't a heading; `ellipsis` gives free `text-overflow` in the collapsed sidebar).
+- Wraps the brand text in a chip using `theme.useToken().borderRadius` for the radius.
+- **Do not** spread `FlexProps` onto `<Logo>` — wrap in `<Flex>` instead when you need justify/padding/gap on the root (see `side-nav.tsx`).
+
+### `GuestFooter` (`src/components/shared/guest-footer/`)
+
+- 3-col layout: Brand + Star-on-GitHub CTA, Product links (Docs, Roadmap, Changelog), Community links (Source, Issues, Discussions) + meta row with MIT notice, "Back to top" button, and `design-sparx` link.
+- Re-exports from `src/components/shared/index.ts`.
+- For inline anchors **use the same paths as the `PATH_*` constants in `src/constants/routes.ts`** — don't hardcode GitHub URLs.
+- "Back to top" uses the `goToTop()` util in `src/utils/index.ts:168` (smooth scroll, `window.scrollTo({ top: 0, behavior: 'smooth' })`).
+- **CTA buttons: use antd `<Button type="primary" href=... target="_blank" rel="noopener noreferrer" icon=...>`, NOT a custom-styled `<a>`.** Antd v6 buttons support `href` natively — see how `Star on GitHub` is rendered in `guest-footer.tsx`.
+- Storybook: `fullscreen` layout decorator.
+
+## FloatButton Group Pitfall
+
+`<FloatButton.Group>`'s main icon is the menu's open/close trigger. An `onClick` on the group fires on **every** click of that icon — both opening AND closing the menu. **Move action handlers to child `FloatButton`s, not the group** (PR #196 footgun). See `guest.tsx` for the correct pattern: group icon opens menu, first child toggles theme, second child is `FloatButton.BackTop`.
+
 ## Versioning
 
 - Changesets (`pnpm changeset`) for versioning. Base branch is `main`.
@@ -95,7 +118,7 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 ## Git Workflow
 
 - **Base branches**: `main` (release) and `dev` (work-in-progress). PRs go `dev → main`. The `dev` branch frequently diverges from `main`; rebase before opening a PR to avoid GitHub reporting `CONFLICTING`.
-- **Rebase conflict playbook** (worked example: PR #195 rebased onto `main` after #188 landed):
+- **Rebase conflict playbook** (worked example: PR #196 rebased onto `main` after #188 landed):
   1. `git fetch origin && git rebase origin/main`
   2. Resolve `.gitignore` / `AGENTS.md` / `pnpm-lock.yaml` first — take `main`'s versions and let `pnpm install` regenerate the lockfile (`pnpm install` without `--frozen-lockfile`).
   3. For app files that conflict because both sides renamed the same deprecated prop (e.g. `message=`→`title=`), keep the rename and drop the markers. For structural changes (e.g. `login-modal.tsx` was rewritten in main to use `useAuth()` instead of Redux), prefer **main's structural version** and layer the rename on top.
