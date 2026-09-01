@@ -108,9 +108,15 @@
 /*UTILITIES*/
 
 .text-highlight {
-  background: -webkit-linear-gradient(45deg, #8e44ad, #3498db);
+  background: linear-gradient(
+    45deg,
+    var(--text-highlight-from, #8e44ad),
+    var(--text-highlight-to, #3498db)
+  );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .text-capitalize {

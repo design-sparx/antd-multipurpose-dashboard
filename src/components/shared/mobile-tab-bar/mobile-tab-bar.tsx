@@ -148,7 +148,7 @@ export const MobileTabBar = () => {
           collapsed={false}
           width={SIDER_WIDTH}
           style={{
-            background: tokens.sidebarBg,
+            background: tokens?.sidebarBg,
             border: 'none',
             position: 'relative',
             height: '100%',

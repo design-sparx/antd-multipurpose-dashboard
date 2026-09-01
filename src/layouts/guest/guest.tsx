@@ -12,6 +12,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
   AppstoreAddOutlined,
+  BgColorsOutlined,
   GithubOutlined,
   HistoryOutlined,
   LoginOutlined,
@@ -27,7 +28,13 @@ import {
 } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, GuestFooter, Logo, NProgress } from '../../components';
+import {
+  Container,
+  GuestFooter,
+  Logo,
+  NProgress,
+  StyleSwitcher,
+} from '../../components';
 import { RootState } from '../../redux/store';
 import { toggleTheme } from '../../redux/theme/themeSlice';
 import {
@@ -50,6 +57,7 @@ export const GuestLayout = () => {
   const location = useLocation();
   const [navFill, setNavFill] = useState(false);
   const [open, setOpen] = useState(false);
+  const [styleDrawerOpen, setStyleDrawerOpen] = useState(false);
   const dispatch = useDispatch();
   const isDark = useSelector(
     (state: RootState) => state.theme.mytheme === 'dark'
@@ -71,6 +79,13 @@ export const GuestLayout = () => {
         setNavFill(false);
       }
     });
+  }, []);
+
+  useEffect(() => {
+    const handleOpenStyleDrawer = () => setStyleDrawerOpen(true);
+    window.addEventListener('open-style-drawer', handleOpenStyleDrawer);
+    return () =>
+      window.removeEventListener('open-style-drawer', handleOpenStyleDrawer);
   }, []);
 
   return (
@@ -191,6 +206,11 @@ export const GuestLayout = () => {
               tooltip={isDark ? 'Light mode' : 'Dark mode'}
               onClick={() => dispatch(toggleTheme())}
             />
+            <FloatButton
+              icon={<BgColorsOutlined />}
+              tooltip="Customize Style"
+              onClick={() => setStyleDrawerOpen(true)}
+            />
             <FloatButton.BackTop tooltip="Back to top" />
           </FloatButton.Group>
         </Content>
@@ -237,6 +257,10 @@ export const GuestLayout = () => {
           </Flex>
         </>
       </Drawer>
+      <StyleSwitcher
+        open={styleDrawerOpen}
+        onClose={() => setStyleDrawerOpen(false)}
+      />
     </>
   );
 };

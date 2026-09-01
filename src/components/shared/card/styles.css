@@ -1,22 +1,31 @@
-/* Base card style (clean) */
+/* Brand card styling — the active design style decides which of the
+   rules below apply:
+   - `design-style-clean` keeps the app's original subtle card shadow/hover.
+   - `design-style-glassmorphic` / `design-style-neumorphic` are surface
+     styles: the shared Card applies their SurfaceTokens inline, these rules
+     only add the hover states.
+   - Native themes (bold, mui, shadcn, serene) are rendered purely by antd
+     Card component tokens — no CSS overrides here so the tokens win. */
+
 .card {
-  -webkit-box-shadow: rgba(140, 152, 164, 0.075) 0 6px 12px 0;
-  -moz-box-shadow: rgba(140, 152, 164, 0.075) 0 6px 12px 0;
-  box-shadow: rgba(140, 152, 164, 0.075) 0 6px 12px 0;
   transition:
     box-shadow 0.25s ease,
     transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
 }
 
 .card .ant-card-head-title {
   text-transform: capitalize;
 }
 
-/* ── Light mode hovers ── */
+.card.design-style-clean {
+  box-shadow: rgba(140, 152, 164, 0.075) 0 6px 12px 0;
+}
+
+.card.design-style-clean:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Light mode hovers (surface styles) ── */
 
 .card.design-style-glassmorphic:hover {
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.22);
@@ -28,16 +37,9 @@
     -8px -8px 18px rgba(255, 255, 255, 0.9);
 }
 
-.card.design-style-bold:hover {
-  box-shadow:
-    0 6px 0 rgba(7, 110, 229, 0.25),
-    0 12px 32px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
 /* ── Dark mode overrides ── */
 
-[data-theme='dark'] .card {
+[data-theme='dark'] .card.design-style-clean {
   box-shadow: rgba(0, 0, 0, 0.2) 0 6px 12px 0;
 }
 
@@ -49,11 +51,4 @@
   box-shadow:
     8px 8px 18px rgba(0, 0, 0, 0.6),
     -8px -8px 18px rgba(60, 60, 85, 0.35);
-}
-
-[data-theme='dark'] .card.design-style-bold:hover {
-  box-shadow:
-    0 6px 0 rgba(77, 139, 255, 0.25),
-    0 12px 32px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
 }

@@ -32,18 +32,19 @@ const STYLES_CONTEXT_VALUE: StylesContentProps = {
 };
 
 function App() {
-  const { mytheme, activeStyle } = useSelector(
+  const { mytheme, activeStyle, themeCustomization } = useSelector(
     (state: RootState) => ({
       mytheme: state.theme.mytheme,
       activeStyle: state.designStyle.activeStyle,
+      themeCustomization: state.themeCustomization,
     }),
     shallowEqual
   );
   const themeMode = mytheme === 'dark' ? 'dark' : 'light';
 
   const antdThemeConfig = useMemo(
-    () => getAntdThemeConfig(activeStyle, themeMode),
-    [activeStyle, themeMode]
+    () => getAntdThemeConfig(activeStyle, themeMode, themeCustomization),
+    [activeStyle, themeMode, themeCustomization]
   );
 
   useDataTheme(themeMode);

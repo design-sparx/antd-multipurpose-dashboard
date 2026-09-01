@@ -8,7 +8,8 @@ import {
 
 interface UseDesignStyleReturn {
   styleName: DesignStyleName;
-  tokens: SurfaceTokens;
+  tokens: SurfaceTokens | null;
+  isSurface: boolean;
 }
 
 export const useDesignStyle = (): UseDesignStyleReturn => {
@@ -16,8 +17,11 @@ export const useDesignStyle = (): UseDesignStyleReturn => {
   const { mytheme } = useSelector((state: RootState) => state.theme);
   const themeMode = mytheme === 'dark' ? 'dark' : 'light';
 
+  const tokens = getDesignTokens(activeStyle, themeMode);
+
   return {
     styleName: activeStyle,
-    tokens: getDesignTokens(activeStyle, themeMode),
+    tokens,
+    isSurface: tokens !== null,
   };
 };
