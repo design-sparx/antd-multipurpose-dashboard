@@ -27,8 +27,16 @@ import {
 import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import { useSocialActivities, useComments, useScheduledPosts } from '../../lib/queries';
-import { SocialMediaActivityDto, ScheduledPostDto, CommentDto } from '../../lib/queries';
+import {
+  useSocialActivities,
+  useComments,
+  useScheduledPosts,
+} from '../../lib/queries';
+import {
+  SocialMediaActivityDto,
+  ScheduledPostDto,
+  CommentDto,
+} from '../../lib/queries';
 import { Posts, Comments } from '../../types';
 import { useStylesContext } from '../../contexts';
 import { useSelector } from 'react-redux';
@@ -96,7 +104,10 @@ const Section = ({ tab }: SectionProps) => {
     }
   }, [tab]);
 
-const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.toString() || socialsCommentsDataError?.toString();
+  const errorMessage =
+    socialsDataError?.toString() ||
+    scheduledPostsDataError?.toString() ||
+    socialsCommentsDataError?.toString();
 
   return (
     <>
@@ -106,8 +117,9 @@ const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.to
           key="followers-card"
           title="followers"
           value={
-            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)
-              ?.reach || 0
+            socialsData?.find(
+              (_: SocialMediaActivityDto) => _.platform === title
+            )?.reach || 0
           }
           error={errorMessage}
           loading={socialsDataLoading}
@@ -119,8 +131,9 @@ const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.to
           key="following-card"
           title="following"
           value={
-            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)
-              ?.engagement_rate || 0
+            socialsData?.find(
+              (_: SocialMediaActivityDto) => _.platform === title
+            )?.engagement_rate || 0
           }
           error={errorMessage}
           loading={socialsDataLoading}
@@ -132,7 +145,9 @@ const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.to
           key="likes-card"
           title="likes"
           value={
-            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)?.likes || 0
+            socialsData?.find(
+              (_: SocialMediaActivityDto) => _.platform === title
+            )?.likes || 0
           }
           error={errorMessage}
           loading={socialsDataLoading}
@@ -144,8 +159,9 @@ const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.to
           key="comments-card"
           title="comments"
           value={
-            socialsData?.find((_: SocialMediaActivityDto) => _.platform === title)
-              ?.comments || 0
+            socialsData?.find(
+              (_: SocialMediaActivityDto) => _.platform === title
+            )?.comments || 0
           }
           error={errorMessage}
           loading={socialsDataLoading}
@@ -166,9 +182,11 @@ const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.to
         <PostsCard
           title="Scheduled Posts"
           as="scheduled"
-          data={scheduledPostsData?.filter(
-            (_: ScheduledPostDto) => _.platform?.toLowerCase() === title
-          ) as unknown as Posts[]}
+          data={
+            scheduledPostsData?.filter(
+              (_: ScheduledPostDto) => _.platform?.toLowerCase() === title
+            ) as unknown as Posts[]
+          }
           loading={scheduledPostsDataLoading}
           error={scheduledPostsDataError?.toString()}
         />
@@ -183,9 +201,11 @@ const errorMessage = socialsDataError?.toString() || scheduledPostsDataError?.to
       </Col>
       <Col xs={24} lg={12}>
         <CommentsCard
-          data={socialCommentsData
-            .filter((_: CommentDto) => _.platform?.toLowerCase() === title)
-            ?.slice(0, 7) as unknown as Comments[]}
+          data={
+            socialCommentsData
+              .filter((_: CommentDto) => _.platform?.toLowerCase() === title)
+              ?.slice(0, 7) as unknown as Comments[]
+          }
           loading={socialsCommentsDataLoading}
           error={socialsCommentsDataError?.toString()}
         />
@@ -198,7 +218,7 @@ export const SocialDashboardPage = () => {
   const stylesContext = useStylesContext();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const { mytheme } = useSelector((state: RootState) => state.theme);
-  const colors = getThemeColors(mytheme as 'dark' | 'light');
+  const colors = getThemeColors(mytheme);
   const [activeTabKey, setActiveTabKey] = useState<TabKeys>(
     'social-facebook-tab'
   );

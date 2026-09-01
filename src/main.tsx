@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import ReactGA from 'react-ga4';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import App from './App.tsx';
 import './i18n';
 import './index.css';
 import { store, persistor } from './redux/store.ts';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
 
 const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
@@ -15,7 +16,8 @@ if (gaId) {
   ReactGA.initialize(gaId);
 }
 
-// Create a QueryClient instance
+// Create a QueryClient instance outside the component so it survives StrictMode
+// double-invocation in dev.
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -26,16 +28,22 @@ const queryClient = new QueryClient({
   },
 });
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+function Providers({ children }: { children: React.ReactNode }) {
+  return (
     <QueryClientProvider client={queryClient}>
       <PersistGate persistor={persistor}>
         <Provider store={store}>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
+          <AuthProvider>{children}</AuthProvider>
         </Provider>
       </PersistGate>
     </QueryClientProvider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Providers>
+      <App />
+    </Providers>
   </React.StrictMode>
 );
