@@ -68,6 +68,14 @@ const cleanLight: ThemeConfig = {
     borderRadius: 6,
   },
   components: {
+    Layout: {
+      bodyBg: '#f5f6fa',
+      siderBg: '#ffffff',
+      headerBg: '#ffffff',
+      headerColor: 'rgba(0, 0, 0, 0.88)',
+      triggerBg: '#ffffff',
+      triggerColor: 'rgba(0, 0, 0, 0.45)',
+    },
     Menu: SHAPE_MENU,
   },
 };
@@ -82,6 +90,14 @@ const cleanDark: ThemeConfig = {
     borderRadius: 6,
   },
   components: {
+    Layout: {
+      bodyBg: '#14142a',
+      siderBg: '#1a1a2e',
+      headerBg: '#1a1a2e',
+      headerColor: 'rgba(255, 255, 255, 0.88)',
+      triggerBg: '#1a1a2e',
+      triggerColor: 'rgba(255, 255, 255, 0.45)',
+    },
     Menu: SHAPE_MENU,
   },
 };
