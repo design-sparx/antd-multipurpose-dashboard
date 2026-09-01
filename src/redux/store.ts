@@ -3,6 +3,9 @@ import themeReducer, { ThemeState } from './theme/themeSlice';
 import designStyleReducer, {
   DesignStyleState,
 } from './design-style/designStyleSlice';
+import themeCustomizationReducer, {
+  ThemeCustomizationState,
+} from './theme-customization/themeCustomizationSlice';
 import { persistReducer, persistStore, PersistConfig } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -10,12 +13,14 @@ import storage from 'redux-persist/lib/storage';
 interface RootState {
   theme: ThemeState;
   designStyle: DesignStyleState;
+  themeCustomization: ThemeCustomizationState;
 }
 
 // Combine reducers
 const rootReducer = combineReducers({
   theme: themeReducer,
   designStyle: designStyleReducer,
+  themeCustomization: themeCustomizationReducer,
 });
 
 // Persist config with RootState
