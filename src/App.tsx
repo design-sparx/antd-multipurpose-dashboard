@@ -2,7 +2,7 @@ import { RouterProvider } from 'react-router-dom';
 import { App as AntdApp, ConfigProvider } from 'antd';
 import { useMemo } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 import { StylesContext } from './contexts';
 import { useDataTheme } from './hooks';
@@ -32,8 +32,13 @@ const STYLES_CONTEXT_VALUE: StylesContentProps = {
 };
 
 function App() {
-  const { mytheme } = useSelector((state: RootState) => state.theme);
-  const { activeStyle } = useSelector((state: RootState) => state.designStyle);
+  const { mytheme, activeStyle } = useSelector(
+    (state: RootState) => ({
+      mytheme: state.theme.mytheme,
+      activeStyle: state.designStyle.activeStyle,
+    }),
+    shallowEqual
+  );
   const themeMode = mytheme === 'dark' ? 'dark' : 'light';
 
   const antdThemeConfig = useMemo(
