@@ -154,10 +154,17 @@ const FEATURES = [
 
 export const HomePage = () => {
   const {
-    token: { colorPrimary },
+    token: { colorPrimary, colorPrimaryHover },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const isTablet = useMediaQuery({ maxWidth: 992 });
+
+  // Feed the resolved primary (style + mode + user override) into the
+  // .text-highlight gradient so the hero highlights follow the active theme.
+  const highlightVars = {
+    '--text-highlight-from': colorPrimary,
+    '--text-highlight-to': colorPrimaryHover,
+  } as CSSProperties;
 
   const sectionStyles: CSSProperties = {
     paddingTop: isMobile ? 40 : 80,
@@ -169,6 +176,7 @@ export const HomePage = () => {
   return (
     <div
       style={{
+        ...highlightVars,
         // backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.35) 40%, rgba(255, 255, 255, 1) 40%), url('/grid-3d.jpg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',

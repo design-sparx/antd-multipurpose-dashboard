@@ -6,7 +6,12 @@ import designStyleReducer, {
 import themeCustomizationReducer, {
   ThemeCustomizationState,
 } from './theme-customization/themeCustomizationSlice';
-import { persistReducer, persistStore, PersistConfig } from 'redux-persist';
+import {
+  persistReducer,
+  persistStore,
+  PersistConfig,
+  PersistedState,
+} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 // Define the state shape
@@ -23,11 +28,28 @@ const rootReducer = combineReducers({
   themeCustomization: themeCustomizationReducer,
 });
 
-// Persist config with RootState
+// Persist config with RootState. Version 2: primaries became nullable in
+// `themeCustomization` (null = active style's default). Migration clears the
+// old hardcoded brand overrides that got persisted as "user pins" (which
+// previously froze the primary to the brand blue regardless of style).
 const persistConfig: PersistConfig<RootState> = {
   key: 'root',
   storage,
-  version: 1,
+  version: 2,
+  migrate: async (persistedState, version): Promise<PersistedState> => {
+    if (version < 2) {
+      const state = (persistedState ?? {}) as Partial<RootState>;
+      return {
+        ...state,
+        themeCustomization: {
+          ...state.themeCustomization,
+          primaryLight: null,
+          primaryDark: null,
+        },
+      } as unknown as PersistedState;
+    }
+    return persistedState;
+  },
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

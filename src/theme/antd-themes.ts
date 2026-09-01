@@ -4,6 +4,29 @@ import { DesignStyleName } from './design-styles';
 import { DARK_PRIMARY_COLOR, PRIMARY_COLOR } from './colors';
 
 /**
+ * Per-style primary colors (light/dark). Each design style gets its own
+ * befitting accent so switching styles changes the whole tone, not just the
+ * surfaces. The user theme customizer may override these (null in the slice
+ * means "use the active style's default").
+ */
+export type StylePrimaries = { light: string; dark: string };
+
+export const STYLE_PRIMARIES: Record<DesignStyleName, StylePrimaries> = {
+  clean: { light: PRIMARY_COLOR, dark: DARK_PRIMARY_COLOR },
+  glassmorphic: { light: '#0ea5e9', dark: '#38bdf8' },
+  neumorphic: { light: '#6e79d9', dark: '#8f97ee' },
+  bold: { light: '#2059ff', dark: '#6f9bff' },
+  mui: { light: '#1976d2', dark: '#90caf9' },
+  shadcn: { light: '#262626', dark: '#e4e4e7' },
+  serene: { light: '#b45309', dark: '#e0a458' },
+};
+
+export const getStylePrimary = (
+  styleName: DesignStyleName,
+  themeMode: 'light' | 'dark'
+): string => STYLE_PRIMARIES[styleName][themeMode];
+
+/**
  * Antd-native theme configs, one per design style (per light/dark mode).
  *
  * `clean` and `bold` are our own home-grown styles.
@@ -69,10 +92,10 @@ const cleanDark: ThemeConfig = {
 const boldLight: ThemeConfig = {
   algorithm: antdTheme.defaultAlgorithm,
   token: {
-    colorPrimary: PRIMARY_COLOR,
-    colorLink: PRIMARY_COLOR,
-    colorLinkHover: PRIMARY_COLOR,
-    colorLinkActive: PRIMARY_COLOR,
+    colorPrimary: STYLE_PRIMARIES.bold.light,
+    colorLink: STYLE_PRIMARIES.bold.light,
+    colorLinkHover: STYLE_PRIMARIES.bold.light,
+    colorLinkActive: STYLE_PRIMARIES.bold.light,
     borderRadius: 6,
     colorBgLayout: '#0a1628',
   },
@@ -93,7 +116,7 @@ const boldLight: ThemeConfig = {
       colorBgContainer: '#ffffff',
     },
     Button: {
-      primaryShadow: '0 4px 0 rgba(7, 110, 229, 0.25)',
+      primaryShadow: `0 4px 0 ${STYLE_PRIMARIES.bold.light}40`,
       defaultShadow: 'none',
       dangerShadow: 'none',
     },
@@ -103,10 +126,10 @@ const boldLight: ThemeConfig = {
 const boldDark: ThemeConfig = {
   algorithm: antdTheme.darkAlgorithm,
   token: {
-    colorPrimary: DARK_PRIMARY_COLOR,
-    colorLink: DARK_PRIMARY_COLOR,
-    colorLinkHover: DARK_PRIMARY_COLOR,
-    colorLinkActive: DARK_PRIMARY_COLOR,
+    colorPrimary: STYLE_PRIMARIES.bold.dark,
+    colorLink: STYLE_PRIMARIES.bold.dark,
+    colorLinkHover: STYLE_PRIMARIES.bold.dark,
+    colorLinkActive: STYLE_PRIMARIES.bold.dark,
     borderRadius: 6,
     colorBgLayout: '#080818',
   },
@@ -127,7 +150,7 @@ const boldDark: ThemeConfig = {
       colorBgContainer: '#141428',
     },
     Button: {
-      primaryShadow: '0 4px 0 rgba(77, 139, 255, 0.25)',
+      primaryShadow: `0 4px 0 ${STYLE_PRIMARIES.bold.dark}40`,
       defaultShadow: 'none',
       dangerShadow: 'none',
     },
@@ -201,14 +224,14 @@ const muiDark: ThemeConfig = {
 const shadcnLight: ThemeConfig = {
   algorithm: antdTheme.defaultAlgorithm,
   token: {
-    colorPrimary: '#262626',
-    colorLink: '#262626',
+    colorPrimary: STYLE_PRIMARIES.shadcn.light,
+    colorLink: STYLE_PRIMARIES.shadcn.light,
     colorLinkHover: '#404040',
     colorLinkActive: '#171717',
     colorSuccess: '#22c55e',
     colorWarning: '#f97316',
     colorError: '#ef4444',
-    colorInfo: '#262626',
+    colorInfo: STYLE_PRIMARIES.shadcn.light,
     colorTextBase: '#262626',
     colorBgBase: '#ffffff',
     colorBgLayout: '#fafafa',
@@ -245,14 +268,14 @@ const shadcnLight: ThemeConfig = {
 const shadcnDark: ThemeConfig = {
   algorithm: antdTheme.darkAlgorithm,
   token: {
-    colorPrimary: '#e4e4e7',
-    colorLink: '#e4e4e7',
+    colorPrimary: STYLE_PRIMARIES.shadcn.dark,
+    colorLink: STYLE_PRIMARIES.shadcn.dark,
     colorLinkHover: '#fafafa',
     colorLinkActive: '#a1a1aa',
     colorSuccess: '#22c55e',
     colorWarning: '#f97316',
     colorError: '#ef4444',
-    colorInfo: '#e4e4e7',
+    colorInfo: STYLE_PRIMARIES.shadcn.dark,
     colorBgLayout: '#09090b',
     colorBorder: '#27272a',
     colorBorderSecondary: '#27272a',
@@ -288,10 +311,10 @@ const shadcnDark: ThemeConfig = {
 const sereneLight: ThemeConfig = {
   algorithm: antdTheme.defaultAlgorithm,
   token: {
-    colorPrimary: '#312721',
-    colorLink: '#312721',
-    colorLinkHover: '#3f342d',
-    colorLinkActive: '#221c18',
+    colorPrimary: STYLE_PRIMARIES.serene.light,
+    colorLink: STYLE_PRIMARIES.serene.light,
+    colorLinkHover: '#c2610f',
+    colorLinkActive: '#8a3f06',
     colorSuccess: '#49795d',
     colorWarning: '#cc9433',
     colorError: '#be4237',
@@ -332,10 +355,10 @@ const sereneLight: ThemeConfig = {
 const sereneDark: ThemeConfig = {
   algorithm: antdTheme.darkAlgorithm,
   token: {
-    colorPrimary: '#e8e2d9',
-    colorLink: '#e8e2d9',
-    colorLinkHover: '#f5f2ec',
-    colorLinkActive: '#c7bbb0',
+    colorPrimary: STYLE_PRIMARIES.serene.dark,
+    colorLink: STYLE_PRIMARIES.serene.dark,
+    colorLinkHover: '#edb978',
+    colorLinkActive: '#c27a31',
     colorSuccess: '#8fb9a0',
     colorWarning: '#d9bc7a',
     colorError: '#d98f84',
@@ -404,8 +427,8 @@ export const SIDEBAR_MENU: Partial<Record<DesignStyleName, SidebarMenuMode>> = {
       itemBorderRadius: 0,
       itemColor: 'rgba(255, 255, 255, 0.85)',
       itemHoverBg: 'rgba(255, 255, 255, 0.08)',
-      itemSelectedBg: 'rgba(7, 110, 229, 0.25)',
-      itemSelectedColor: '#4d8bff',
+      itemSelectedBg: `${STYLE_PRIMARIES.bold.light}40`,
+      itemSelectedColor: '#8ab2ff',
       groupTitleColor: 'rgba(255, 255, 255, 0.45)',
     },
     dark: {
@@ -413,8 +436,8 @@ export const SIDEBAR_MENU: Partial<Record<DesignStyleName, SidebarMenuMode>> = {
       itemBorderRadius: 0,
       itemColor: 'rgba(255, 255, 255, 0.85)',
       itemHoverBg: 'rgba(255, 255, 255, 0.08)',
-      itemSelectedBg: 'rgba(77, 139, 255, 0.25)',
-      itemSelectedColor: '#7fb0ff',
+      itemSelectedBg: `${STYLE_PRIMARIES.bold.dark}33`,
+      itemSelectedColor: '#8ab2ff',
       groupTitleColor: 'rgba(255, 255, 255, 0.45)',
     },
   },

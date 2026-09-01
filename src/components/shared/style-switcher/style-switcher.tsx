@@ -24,6 +24,7 @@ import {
 } from '../../../redux/theme-customization/themeCustomizationSlice';
 import { toggleTheme } from '../../../redux/theme/themeSlice';
 import { DESIGN_STYLES, DesignStyleName } from '../../../theme/design-styles';
+import { getStylePrimary } from '../../../theme/antd-themes';
 
 const { Text } = Typography;
 
@@ -32,19 +33,19 @@ const STYLE_PREVIEWS: Record<
   { gradient: string; icon: string }
 > = {
   clean: {
-    gradient: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+    gradient: 'linear-gradient(135deg, #076ee5 0%, #a9c8f5 100%)',
     icon: '✦',
   },
   glassmorphic: {
-    gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+    gradient: 'linear-gradient(135deg, #0ea5e9 0%, #7dd3e6 100%)',
     icon: '◈',
   },
   neumorphic: {
-    gradient: 'linear-gradient(135deg, #e8ecf1 0%, #d5dce6 100%)',
+    gradient: 'linear-gradient(135deg, #6e79d9 0%, #b7bef5 100%)',
     icon: '◉',
   },
   bold: {
-    gradient: 'linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%)',
+    gradient: 'linear-gradient(135deg, #2059ff 0%, #0a1628 100%)',
     icon: '◆',
   },
   mui: {
@@ -56,7 +57,7 @@ const STYLE_PREVIEWS: Record<
     icon: '⌘',
   },
   serene: {
-    gradient: 'linear-gradient(135deg, #f8f6f2 0%, #2c241c 100%)',
+    gradient: 'linear-gradient(135deg, #b45309 0%, #f5e4c8 100%)',
     icon: '☁',
   },
 };
@@ -94,8 +95,16 @@ export const StyleSwitcher = ({ open, onClose }: StyleSwitcherProps) => {
   const isDark = mytheme === 'dark';
 
   const customizerFields = [
-    { label: 'Light primary', value: primaryLight, onChange: setPrimaryLight },
-    { label: 'Dark primary', value: primaryDark, onChange: setPrimaryDark },
+    {
+      label: 'Light primary',
+      value: primaryLight ?? getStylePrimary(activeStyle, 'light'),
+      onChange: setPrimaryLight,
+    },
+    {
+      label: 'Dark primary',
+      value: primaryDark ?? getStylePrimary(activeStyle, 'dark'),
+      onChange: setPrimaryDark,
+    },
   ];
 
   return (
@@ -175,7 +184,7 @@ export const StyleSwitcher = ({ open, onClose }: StyleSwitcherProps) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: 18,
-                        color: key === 'bold' ? '#4d8bff' : '#333',
+                        color: key === 'shadcn' ? '#333' : '#fff',
                       }}
                     >
                       {preview.icon}

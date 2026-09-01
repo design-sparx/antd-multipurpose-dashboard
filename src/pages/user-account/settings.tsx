@@ -27,13 +27,13 @@ interface UISettingsProps {
 }
 
 const STYLE_GRADIENTS: Record<DesignStyleName, string> = {
-  clean: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-  glassmorphic: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-  neumorphic: 'linear-gradient(135deg, #e8ecf1 0%, #d5dce6 100%)',
-  bold: 'linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%)',
+  clean: 'linear-gradient(135deg, #076ee5 0%, #a9c8f5 100%)',
+  glassmorphic: 'linear-gradient(135deg, #0ea5e9 0%, #7dd3e6 100%)',
+  neumorphic: 'linear-gradient(135deg, #6e79d9 0%, #b7bef5 100%)',
+  bold: 'linear-gradient(135deg, #2059ff 0%, #0a1628 100%)',
   mui: 'linear-gradient(135deg, #1976d2 0%, #90caf9 100%)',
   shadcn: 'linear-gradient(135deg, #e5e5e5 0%, #262626 100%)',
-  serene: 'linear-gradient(135deg, #f8f6f2 0%, #2c241c 100%)',
+  serene: 'linear-gradient(135deg, #b45309 0%, #f5e4c8 100%)',
 };
 
 const UISettingsSection = ({

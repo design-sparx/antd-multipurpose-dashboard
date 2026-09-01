@@ -1,11 +1,10 @@
 import { theme as antdTheme, ThemeConfig } from 'antd';
-import { DARK_PRIMARY_COLOR, PRIMARY_COLOR } from './colors';
 import {
   DesignStyleName,
   getDesignTokens,
   isSurfaceStyle,
 } from './design-styles';
-import { ANTD_THEMES } from './antd-themes';
+import { ANTD_THEMES, getStylePrimary } from './antd-themes';
 
 /**
  * User theme overrides (persisted). `null` values or missing keys mean "use
@@ -13,8 +12,8 @@ import { ANTD_THEMES } from './antd-themes';
  * slice by the App component.
  */
 export interface ThemeOverrides {
-  primaryLight?: string;
-  primaryDark?: string;
+  primaryLight?: string | null;
+  primaryDark?: string | null;
   borderRadius?: number;
   compact?: boolean;
 }
@@ -43,11 +42,13 @@ export const getAntdThemeConfig = (
     activeStyle === 'neumorphic' ? surfaceTokens?.surfaceBg : undefined;
   // Link buttons (`Button type="link"`) default to antd's info color (~#1677ff,
   // ~4.0:1 on light/dark surfaces — fails WCAG AA) when `colorLink` is unset.
-  // Drive them from the brand primary so they match the rest of the UI and pass.
+  // Drive them from the active style's primary so they match the rest of the UI
+  // and pass, unless the user pinned a custom primary.
+  const stylePrimary = getStylePrimary(activeStyle, themeMode);
   const brandColor =
     themeMode === 'dark'
-      ? overrides?.primaryDark ?? DARK_PRIMARY_COLOR
-      : overrides?.primaryLight ?? PRIMARY_COLOR;
+      ? overrides?.primaryDark ?? stylePrimary
+      : overrides?.primaryLight ?? stylePrimary;
   const radius = overrides?.borderRadius ?? 6;
   const densityPad = overrides?.compact ? 28 : 36;
 
@@ -92,7 +93,7 @@ export const getAntdThemeConfig = (
   const themeConfig = nativeTheme[themeMode];
 
   const userTokenOverrides: ThemeConfig['token'] = {
-    ...(overrides?.primaryLight || overrides?.primaryDark
+    ...(overrides?.primaryLight != null || overrides?.primaryDark != null
       ? {
           colorPrimary: brandColor,
           colorLink: brandColor,
