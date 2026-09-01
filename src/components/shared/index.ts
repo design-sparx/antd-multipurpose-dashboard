@@ -18,6 +18,7 @@ export {
 } from './onboarding-tour/onboarding-tour';
 export * from './nprogress';
 export { PageHeader } from './page-header/page-header';
+export { RecentReleases } from './recent-releases/recent-releases';
 export { RefreshBtn } from './refresh-btn/refresh-btn';
 export { SkeletonLoader } from './skeleton/skeleton-loader';
 export { TimelineCard } from './timeline-card/timeline-card';

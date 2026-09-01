@@ -8,7 +8,12 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Container, Logo } from '../';
-import { PATH_DOCS, PATH_GITHUB, PATH_LANDING } from '../../../constants';
+import {
+  PATH_CHANGELOG,
+  PATH_DOCS,
+  PATH_GITHUB,
+  PATH_LANDING,
+} from '../../../constants';
 import { goToTop } from '../../../utils';
 
 import './styles.css';
@@ -31,7 +36,7 @@ const PRODUCT_LINKS = [
   {
     key: 'changelog',
     label: 'Changelog',
-    href: `${PATH_GITHUB.repo}/releases`,
+    href: PATH_CHANGELOG.root,
     icon: <HistoryOutlined />,
   },
 ];
@@ -83,18 +88,37 @@ export const GuestFooter = () => {
               Product
             </Title>
             <Space vertical size="small" className="w-100">
-              {PRODUCT_LINKS.map((link) => (
-                <a
-                  key={link.key}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="guest-footer__link"
-                >
-                  <span className="guest-footer__link-icon">{link.icon}</span>
-                  {link.label}
-                </a>
-              ))}
+              {PRODUCT_LINKS.map((link) => {
+                const isExternal = link.href.startsWith('http');
+
+                if (isExternal) {
+                  return (
+                    <a
+                      key={link.key}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="guest-footer__link"
+                    >
+                      <span className="guest-footer__link-icon">
+                        {link.icon}
+                      </span>
+                      {link.label}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={link.key}
+                    to={link.href}
+                    className="guest-footer__link"
+                  >
+                    <span className="guest-footer__link-icon">{link.icon}</span>
+                    {link.label}
+                  </Link>
+                );
+              })}
             </Space>
           </Col>
 

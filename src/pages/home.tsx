@@ -24,7 +24,7 @@ import {
   RocketFilled,
   TableOutlined,
 } from '@ant-design/icons';
-import { Card, Container } from '../components';
+import { Card, Container, RecentReleases } from '../components';
 import { Announcements } from '../components/shared/announcements/announcements';
 import { createElement, CSSProperties } from 'react';
 
@@ -251,6 +251,9 @@ export const HomePage = () => {
           </Row>
         </Container>
       </Flex>
+      <Container style={sectionStyles}>
+        <RecentReleases />
+      </Container>
       <Container style={sectionStyles}>
         <Announcements />
       </Container>

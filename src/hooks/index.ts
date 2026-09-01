@@ -18,3 +18,11 @@ export {
   type Announcement,
   type AnnouncementTag,
 } from '../lib/hooks/use-announcements';
+
+// Releases feed (parsed from CHANGELOG.md)
+export {
+  useReleases,
+  type ChangeKind,
+  type Release,
+  KIND_COLOR,
+} from '../lib/hooks/use-releases';
