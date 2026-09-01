@@ -1,15 +1,5 @@
-import {
-  BorderBeam,
-  Button,
-  Col,
-  Empty,
-  Flex,
-  Row,
-  Tag,
-  Typography,
-  theme,
-} from 'antd';
 import { ArrowRightOutlined, ThunderboltFilled } from '@ant-design/icons';
+import { Button, Col, Empty, Flex, Row, Tag, Typography } from 'antd';
 import { Card, Container } from '../';
 import {
   Announcement,
@@ -39,20 +29,11 @@ export const Announcements = ({ data, id = 'announcements' }: Props) => {
   const fallback = useAnnouncements();
   const items = data ?? fallback;
 
-  const {
-    token: { colorPrimary },
-  } = theme.useToken();
-
   if (items.length === 0) {
     return (
       <Container>
-        <Title
-          id={`${id}-title`}
-          level={2}
-          className="text-center"
-          style={{ marginBottom: '2rem' }}
-        >
-          <ThunderboltFilled style={{ color: colorPrimary, marginRight: 12 }} />
+        <Title id={`${id}-title`} level={2}>
+          <ThunderboltFilled />
           Major Announcements
         </Title>
         <Empty description="No announcements right now" />
@@ -62,28 +43,11 @@ export const Announcements = ({ data, id = 'announcements' }: Props) => {
 
   return (
     <Container>
-      <Flex vertical align="center" style={{ marginBottom: '2.5rem' }}>
-        <Tag
-          variant="filled"
-          color={colorPrimary}
-          icon={<ThunderboltFilled />}
-          style={{ marginBottom: 12, fontWeight: 600 }}
-        >
-          Major
-        </Tag>
-        <Title
-          id={`${id}-title`}
-          level={2}
-          className="text-center m-0"
-          style={{ fontWeight: 800 }}
-        >
+      <Flex vertical align="center" style={{ marginBottom: '2rem' }}>
+        <Title id={`${id}-title`} level={2}>
           Major Announcements
         </Title>
-        <Text
-          type="secondary"
-          className="text-center"
-          style={{ marginTop: 8, maxWidth: 560 }}
-        >
+        <Text style={{ maxWidth: 560 }}>
           Releases, breaking changes, and security notes that affect how you
           build with this template.
         </Text>
@@ -96,22 +60,7 @@ export const Announcements = ({ data, id = 'announcements' }: Props) => {
       >
         {items.map((item, index) => (
           <Col key={item.id} xs={24} md={12} lg={8}>
-            <Card
-              hoverable
-              style={{ height: '100%', position: 'relative' }}
-              classNames={{
-                root: `announcement-card announcement-card--${index}`,
-                body: 'announcement-card__body',
-              }}
-              styles={{ body: { padding: 20 } }}
-              data-enter-index={index}
-            >
-              <BorderBeam
-                color={colorPrimary}
-                duration={6}
-                size={120}
-                lineWidth={2}
-              />
+            <Card hoverable style={{ height: '100%' }} data-enter-index={index}>
               <Flex vertical gap="small" style={{ height: '100%' }}>
                 {item.tag && (
                   <Tag

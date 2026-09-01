@@ -1,4 +1,5 @@
 export { HomePage } from './home.tsx';
+export { ReleasesPage } from './releases.tsx';
 export { SitemapPage } from './sitemap.tsx';
 export { GalleryPage } from './gallery';
 export * from './dashboards';

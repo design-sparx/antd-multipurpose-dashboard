@@ -22,6 +22,7 @@ import {
   OtpAuthPage,
   PasswordResetPage,
   ProjectsDashboardPage,
+  ReleasesPage,
   SettingsPage,
   SignInPage,
   SignUpPage,
@@ -336,6 +337,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <GalleryPage />,
+      },
+    ],
+  },
+  {
+    path: '/releases',
+    element: <PageWrapper children={<GuestLayout />} />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <ReleasesPage />,
       },
     ],
   },

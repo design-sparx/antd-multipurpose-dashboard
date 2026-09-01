@@ -19,6 +19,7 @@ import {
   AppstoreOutlined,
   BgColorsOutlined,
   CustomerServiceOutlined,
+  HistoryOutlined,
   HomeOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
@@ -45,7 +46,11 @@ import {
   LanguageSwitcher,
   StyleSwitcher,
 } from '../../components';
-import { PATH_LANDING, PATH_USER_PROFILE } from '../../constants';
+import {
+  PATH_CHANGELOG,
+  PATH_LANDING,
+  PATH_USER_PROFILE,
+} from '../../constants';
 import { useDesignStyle } from '../../hooks/useDesignStyle';
 import { useAuth } from '../../contexts';
 const { Content } = Layout;
@@ -368,6 +373,14 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                 <Badge count={3} size="small" offset={[-4, 4]}>
                   <Button icon={<MessageOutlined />} type="text" size="large" />
                 </Badge>
+              </Tooltip>
+              <Tooltip title="Changelog" placement="bottom">
+                <Button
+                  icon={<HistoryOutlined />}
+                  type="text"
+                  size="large"
+                  onClick={() => navigate(PATH_CHANGELOG.root)}
+                />
               </Tooltip>
               <LanguageSwitcher />
               <Dropdown menu={{ items }} trigger={['click']}>

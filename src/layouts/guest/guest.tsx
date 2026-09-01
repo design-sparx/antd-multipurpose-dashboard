@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import {
   AppstoreAddOutlined,
   GithubOutlined,
+  HistoryOutlined,
   LoginOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -31,6 +32,7 @@ import { RootState } from '../../redux/store';
 import { toggleTheme } from '../../redux/theme/themeSlice';
 import {
   PATH_AUTH,
+  PATH_CHANGELOG,
   PATH_DASHBOARD,
   PATH_DOCS,
   PATH_GITHUB,
@@ -100,7 +102,7 @@ export const GuestLayout = () => {
               gap: 12,
             }}
           >
-            <Logo color="blue" asLink href={PATH_LANDING.root} />
+            <Logo asLink href={PATH_LANDING.root} />
             {!isMobile ? (
               <>
                 <Flex gap="small">
@@ -112,6 +114,11 @@ export const GuestLayout = () => {
                   <Link to={PATH_DOCS.components} target="_blank">
                     <Button icon={<AppstoreAddOutlined />} type="link">
                       Components
+                    </Button>
+                  </Link>
+                  <Link to={PATH_CHANGELOG.root}>
+                    <Button icon={<HistoryOutlined />} type="link">
+                      Changelog
                     </Button>
                   </Link>
                   <Link to={PATH_GITHUB.repo} target="_blank">
@@ -205,6 +212,11 @@ export const GuestLayout = () => {
             <Link to={PATH_DOCS.productRoadmap} target="_blank">
               <Button icon={<ProductOutlined />} type="link">
                 Roadmap
+              </Button>
+            </Link>
+            <Link to={PATH_CHANGELOG.root}>
+              <Button icon={<HistoryOutlined />} type="text">
+                Changelog
               </Button>
             </Link>
             <Link to={PATH_DASHBOARD.default}>

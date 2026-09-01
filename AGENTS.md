@@ -26,7 +26,7 @@ antd info <Component> --format json # offline component API lookup
 
 - **pre-commit**: `pnpm exec lint-staged` (Prettier + ESLint `--fix` on staged files)
 - **commit-msg**: `pnpm exec commitlint --edit $1` — conventional commits enforced (`type(scope): message`)
-- **CI**: Node 20, `pnpm install --frozen-lockfile`, Chromatic on push/PR to `main`, Changesets release on push to `main`
+- **CI**: Node 20, `pnpm install --frozen-lockfile`, Chromatic on push/PR to `main`, Changesets release on push to `main`. The dedicated CI build+lint workflow (`ci.yml`) was removed to save action minutes — validate locally with `pnpm build` / `pnpm lint` too.
 - Lint must pass with **0 warnings** before commit.
 - **Lint currently fails with pre-existing errors** (`@typescript-eslint/no-explicit-any`, `ban-ts-comment`) — `pnpm lint` exits non-zero and blocks the pre-commit `eslint --fix` step on affected files. **Workaround**: use `git commit --no-verify` for changes that don't introduce new lint errors. Fix the underlying `any` usages as a separate task.
 
@@ -42,7 +42,8 @@ antd info <Component> --format json # offline component API lookup
 
 - **Routing**: `src/routes/routes.tsx` uses `createBrowserRouter`. `ProtectedRoute` guards auth. `PageWrapper` HOC wraps routes for scroll restoration.
 - **Redux**: `theme`, `dataMode`, `auth`, `designStyle` slices. All persisted via `redux-persist` to `localStorage`.
-- **Theme**: Ant Design v6 `ConfigProvider` in `src/App.tsx`. Dark/light via `mytheme === 'dark'`; `App.tsx` also sets `<html data-theme="dark|light">` for CSS targeting (e.g. `[data-theme='dark'] .card`). Use `getDesignTokens(activeStyle, themeMode)` for design-style-aware colors.
+- **Theme**: Ant Design v6 `ConfigProvider` in `src/App.tsx`; the theme object is built by `getAntdThemeConfig(activeStyle, themeMode)` in `src/theme/antd-theme.ts` and `useMemo`-cached on `[activeStyle, themeMode]`. Dark/light via `mytheme === 'dark'` (typed `'light' | 'dark'`); the `<html data-theme="dark|light">` attribute is synced by the `useDataTheme(themeMode)` hook (`src/hooks/useDataTheme.ts`, re-exported from `src/hooks`). Contrast-aware: `colorPrimary` is `#076ee5` (light) / `#4d8bff` (dark — `DARK_PRIMARY_COLOR` in `src/theme/colors.ts`; the light `#076ee5` drops to ~3.5:1 on dark surfaces) and `colorLink` is pinned to the brand primary so `Button type="link"` doesn't fall back to antd's default `colorInfo` (`~#1677ff`, ~4.0:1, fails AA). Use `getDesignTokens(activeStyle, themeMode)` for design-style-aware colors.
+- **App shell / providers**: `src/main.tsx` composes the provider tree via a `Providers` component (`QueryClientProvider` → `PersistGate` → `Provider` → `AuthProvider` → `App`). The `StylesContext` value (`rowProps`/`carouselProps`) is a static, module-level constant in `App.tsx` so the 15+ `useStylesContext()` consumers don't re-render on every render.
 - **Design styles**: `clean`, `glassmorphic`, `neumorphic`, `bold` — controlled by Redux `designStyle.activeStyle`.
 - **Query hooks**: Domain hooks live in `src/lib/queries/` and re-export from `src/hooks/index.ts`. Import from `../hooks`.
 - **App context**: `App.useApp()` is the only way to call `message`, `notification`, `modal` so they inherit the active `ConfigProvider` theme. The static `message.*` / `notification.*` imports are removed (#191).
@@ -70,6 +71,7 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 - **Ant Design v6**: prefer `styles={{ body: {...} }}` and `classNames={{ root, body, ... }}` over deprecated `bodyStyle` / inline styles. The shared `Card` (`src/components/shared/card/card.tsx`) already composes `classNames={{ root: 'card design-style-{clean|glassmorphic|neumorphic|bold}' }}` and applies design-style tokens — extend it, don't bypass it.
 - **Container / section pattern** (used everywhere on the home page and corporate pages): wrap a section in `<Container>` and put a `<Row gutter={...}>` of `<Col>`s inside. **Do not** use native `<section>` or wrapper `<div>`s with hand-rolled section padding — `Container` handles responsive widths and `sectionStyles` is the established idiom.
 - **Inline styles are for per-instance computed values only** (media-query-driven, theme tokens from `theme.useToken()`, dynamic values like `--announcement-stagger: ${index}`). Everything else lives in `className` utilities (e.g. `text-center`, `m-0`, `text-capitalize`) or co-located `styles.css` (matching the `card/styles.css` pattern).
+- **Don't add CSS for things antd already styles.** Antd v6 `Button`, `Tag`, `Card`, etc. have full theming and variants — use them directly (e.g. `<Button type="primary" href=...>` for CTAs, not a custom-styled `<a>` with a `.cta` class). Co-located `styles.css` is only for custom layouts, animations, or genuinely new visual treatments.
 - **No `useState` mount-gates for animations.** Use `classNames` API + per-index CSS class (e.g. `.announcement-card--0..7` with `--announcement-stagger`) and `prefers-reduced-motion: no-preference` / `reduce` guards.
 - **Prettier**: `semi: true`, `trailingComma: es5`, `singleQuote: true`, default `endOfLine: 'lf'`.
 - **Import order**: External libs → internal (`../../`) → types.
@@ -88,6 +90,28 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 - Co-located `styles.css` for the stagger-reveal animation.
 - Re-exports: `Announcements` from `src/components/shared/index.ts`; `useAnnouncements` / `formatRelativeDate` from `src/hooks/index.ts`.
 
+## Shared Components
+
+### `Logo` (`src/components/shared/logo/logo.tsx`)
+
+- **Props**: `color?`, `bgColor?`, `imgSrc?` (default `/logo-no-background.png`), `imgAlt?`, `brandName?` (default `'Antd Admin'`), `imgHeight?` (default 48), `asLink?`, `href?` (default `/`), `showText?` (default `true`).
+- Uses `Typography.Text` + `ellipsis` (NOT `Typography.Title` — brand text isn't a heading; `ellipsis` gives free `text-overflow` in the collapsed sidebar).
+- Wraps the brand text in a chip using `theme.useToken().borderRadius` for the radius.
+- **Do not** spread `FlexProps` onto `<Logo>` — wrap in `<Flex>` instead when you need justify/padding/gap on the root (see `side-nav.tsx`).
+
+### `GuestFooter` (`src/components/shared/guest-footer/`)
+
+- 3-col layout: Brand + Star-on-GitHub CTA, Product links (Docs, Roadmap, Changelog), Community links (Source, Issues, Discussions) + meta row with MIT notice, "Back to top" button, and `design-sparx` link.
+- Re-exports from `src/components/shared/index.ts`.
+- For inline anchors **use the same paths as the `PATH_*` constants in `src/constants/routes.ts`** — don't hardcode GitHub URLs.
+- "Back to top" uses the `goToTop()` util in `src/utils/index.ts:168` (smooth scroll, `window.scrollTo({ top: 0, behavior: 'smooth' })`).
+- **CTA buttons: use antd `<Button type="primary" href=... target="_blank" rel="noopener noreferrer" icon=...>`, NOT a custom-styled `<a>`.** Antd v6 buttons support `href` natively — see how `Star on GitHub` is rendered in `guest-footer.tsx`.
+- Storybook: `fullscreen` layout decorator.
+
+## FloatButton Group Pitfall
+
+`<FloatButton.Group>`'s main icon is the menu's open/close trigger. An `onClick` on the group fires on **every** click of that icon — both opening AND closing the menu. **Move action handlers to child `FloatButton`s, not the group** (PR #196 footgun). See `guest.tsx` for the correct pattern: group icon opens menu, first child toggles theme, second child is `FloatButton.BackTop`.
+
 ## Versioning
 
 - Changesets (`pnpm changeset`) for versioning. Base branch is `main`.
@@ -95,7 +119,7 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 ## Git Workflow
 
 - **Base branches**: `main` (release) and `dev` (work-in-progress). PRs go `dev → main`. The `dev` branch frequently diverges from `main`; rebase before opening a PR to avoid GitHub reporting `CONFLICTING`.
-- **Rebase conflict playbook** (worked example: PR #195 rebased onto `main` after #188 landed):
+- **Rebase conflict playbook** (worked example: PR #196 rebased onto `main` after #188 landed):
   1. `git fetch origin && git rebase origin/main`
   2. Resolve `.gitignore` / `AGENTS.md` / `pnpm-lock.yaml` first — take `main`'s versions and let `pnpm install` regenerate the lockfile (`pnpm install` without `--frozen-lockfile`).
   3. For app files that conflict because both sides renamed the same deprecated prop (e.g. `message=`→`title=`), keep the rename and drop the markers. For structural changes (e.g. `login-modal.tsx` was rewritten in main to use `useAuth()` instead of Redux), prefer **main's structural version** and layer the rename on top.

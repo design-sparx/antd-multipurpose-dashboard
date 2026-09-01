@@ -1,81 +1,57 @@
 import { RouterProvider } from 'react-router-dom';
-import { App as AntdApp, ConfigProvider, theme as antdTheme } from 'antd';
-import { useEffect } from 'react';
-
+import { App as AntdApp, ConfigProvider } from 'antd';
+import { useMemo } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
+import { shallowEqual, useSelector } from 'react-redux';
+
 import { StylesContext } from './contexts';
+import { useDataTheme } from './hooks';
 import routes from './routes/routes.tsx';
-import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';
-import { PRIMARY_COLOR } from './theme/colors';
-import { getDesignTokens } from './theme/design-styles';
+import { getAntdThemeConfig } from './theme/antd-theme';
+import type { StylesContentProps } from './contexts/styles';
 import './App.css';
 
+// Static StylesContext value: shared row/carousel props used across layouts.
+// Hoisted to module scope so context consumers don't re-render on every App render.
+const STYLES_CONTEXT_VALUE: StylesContentProps = {
+  rowProps: {
+    gutter: [
+      { xs: 8, sm: 16, md: 24, lg: 32 },
+      { xs: 8, sm: 16, md: 24, lg: 32 },
+    ],
+  },
+  carouselProps: {
+    autoplay: true,
+    dots: true,
+    dotPosition: 'bottom',
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  },
+};
+
 function App() {
-  const { mytheme } = useSelector((state: RootState) => state.theme);
-  const { activeStyle } = useSelector((state: RootState) => state.designStyle);
+  const { mytheme, activeStyle } = useSelector(
+    (state: RootState) => ({
+      mytheme: state.theme.mytheme,
+      activeStyle: state.designStyle.activeStyle,
+    }),
+    shallowEqual
+  );
   const themeMode = mytheme === 'dark' ? 'dark' : 'light';
-  const tokens = getDesignTokens(activeStyle, themeMode as 'light' | 'dark');
 
-  // Sync data-theme attribute for CSS dark mode targeting
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', themeMode);
-  }, [themeMode]);
+  const antdThemeConfig = useMemo(
+    () => getAntdThemeConfig(activeStyle, themeMode),
+    [activeStyle, themeMode]
+  );
 
-  // Neumorphic needs matching container backgrounds
-  const cardBgOverride =
-    activeStyle === 'neumorphic' ? tokens.surfaceBg : undefined;
+  useDataTheme(themeMode);
 
   return (
     <HelmetProvider>
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: PRIMARY_COLOR,
-            borderRadius: 6,
-            fontFamily: 'Lato, sans-serif',
-          },
-          components: {
-            Calendar: {
-              colorBgContainer: cardBgOverride || 'none',
-            },
-            Carousel: {
-              dotWidth: 8,
-            },
-            Table: {
-              headerBg: 'none',
-            },
-            Timeline: {
-              dotBg: 'none',
-            },
-            Typography: {
-              linkHoverDecoration: 'underline',
-            },
-          },
-          algorithm:
-            mytheme === 'dark'
-              ? antdTheme.darkAlgorithm
-              : antdTheme.defaultAlgorithm,
-        }}
-      >
-        <StylesContext.Provider
-          value={{
-            rowProps: {
-              gutter: [
-                { xs: 8, sm: 16, md: 24, lg: 32 },
-                { xs: 8, sm: 16, md: 24, lg: 32 },
-              ],
-            },
-            carouselProps: {
-              autoplay: true,
-              dots: true,
-              dotPosition: 'bottom',
-              infinite: true,
-              slidesToShow: 3,
-              slidesToScroll: 1,
-            },
-          }}
-        >
+      <ConfigProvider theme={antdThemeConfig}>
+        <StylesContext.Provider value={STYLES_CONTEXT_VALUE}>
           <AntdApp>
             <RouterProvider router={routes} />
           </AntdApp>

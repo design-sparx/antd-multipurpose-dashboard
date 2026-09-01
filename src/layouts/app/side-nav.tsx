@@ -1,5 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ConfigProvider, Flex, Layout, Menu, MenuProps, SiderProps } from 'antd';
+import {
+  ConfigProvider,
+  Flex,
+  Layout,
+  Menu,
+  MenuProps,
+  SiderProps,
+} from 'antd';
 import {
   AppstoreAddOutlined,
   BarChartOutlined,
@@ -277,7 +284,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
   const [openKeys, setOpenKeys] = useState(['']);
   const [current, setCurrent] = useState('');
   const { mytheme } = useSelector((state: RootState) => state.theme);
-  const colors = getThemeColors(mytheme as 'dark' | 'light');
+  const colors = getThemeColors(mytheme);
   const { tokens, styleName } = useDesignStyle();
 
   const onClick: MenuProps['onClick'] = (e) => {

@@ -208,7 +208,7 @@ export const PATH_DOCS = {
 };
 
 export const PATH_CHANGELOG = {
-  root: '',
+  root: '/releases',
 };
 
 export const PATH_GITHUB = {
