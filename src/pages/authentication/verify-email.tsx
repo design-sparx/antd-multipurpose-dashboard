@@ -40,7 +40,7 @@ export const VerifyEmailPage = () => {
         justify="center"
         style={{ height: '80vh' }}
       >
-        <Logo color="blue" />
+        <Logo />
         <Typography.Title className="m-0" style={{ color: token.colorText }}>
           Verify Your Email
         </Typography.Title>

@@ -40,7 +40,7 @@ export const WelcomePage = () => {
         justify="center"
         style={{ height: '80vh' }}
       >
-        <Logo color="blue" />
+        <Logo />
         <Typography.Title className="m-0" style={{ color: token.colorText }}>
           Welcome to Antd
         </Typography.Title>

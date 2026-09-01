@@ -39,7 +39,7 @@ export const Logo = ({
           strong
           ellipsis
           style={{
-            color,
+            color: color ?? token.colorPrimary,
             backgroundColor: bgColor,
             padding: '4px 8px',
             borderRadius: token.borderRadius,

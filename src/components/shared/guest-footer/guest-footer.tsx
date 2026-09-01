@@ -61,7 +61,7 @@ export const GuestFooter = () => {
         <Row gutter={[32, 32]} className="guest-footer__row">
           <Col xs={24} md={10}>
             <Space vertical size="middle" className="w-100">
-              <Logo color="blue" asLink href={PATH_LANDING.root} />
+              <Logo asLink href={PATH_LANDING.root} />
               <Text type="secondary">
                 An open-source multipurpose dashboard template built with React,
                 Vite, and Ant Design 6. Free to fork, extend, and ship.

@@ -100,7 +100,7 @@ export const GuestLayout = () => {
               gap: 12,
             }}
           >
-            <Logo color="blue" asLink href={PATH_LANDING.root} />
+            <Logo asLink href={PATH_LANDING.root} />
             {!isMobile ? (
               <>
                 <Flex gap="small">
