@@ -20,7 +20,7 @@ export const Card = ({ children, classNames, style, ...others }: Props) => {
   const { tokens, styleName } = useDesignStyle();
 
   const designStyle: React.CSSProperties =
-    styleName === 'clean'
+    tokens == null
       ? {}
       : {
           background: tokens.surfaceBg,

@@ -28,6 +28,18 @@ const STYLE_PREVIEWS: Record<
     gradient: 'linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%)',
     icon: '◆',
   },
+  mui: {
+    gradient: 'linear-gradient(135deg, #1976d2 0%, #90caf9 100%)',
+    icon: 'M',
+  },
+  shadcn: {
+    gradient: 'linear-gradient(135deg, #e5e5e5 0%, #262626 100%)',
+    icon: '⌘',
+  },
+  serene: {
+    gradient: 'linear-gradient(135deg, #f8f6f2 0%, #2c241c 100%)',
+    icon: '☁',
+  },
 };
 
 type StyleSwitcherProps = {

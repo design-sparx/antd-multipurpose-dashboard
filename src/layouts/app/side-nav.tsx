@@ -49,6 +49,8 @@ import {
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { getThemeColors } from '../../theme/colors';
+import { isSurfaceStyle } from '../../theme/design-styles';
+import { SIDEBAR_MENU } from '../../theme/antd-themes';
 import { useDesignStyle } from '../../hooks/useDesignStyle';
 
 const { Sider } = Layout;
@@ -309,13 +311,38 @@ const SideNav = ({ ...others }: SideNavProps) => {
   // Determine menu text color based on style + theme
   const isBoldStyle = styleName === 'bold';
   const isDark = mytheme === 'dark';
-  const menuTextColor = isBoldStyle
-    ? isDark
-      ? 'rgba(255, 255, 255, 0.85)'
-      : 'rgba(255, 255, 255, 0.85)'
-    : isDark
-      ? 'rgba(255, 255, 255, 0.85)'
-      : undefined;
+
+  // Native styles have a curated sidebar Menu palette (SIDEBAR_MENU) that is
+  // scoped to the sidebar's nested ConfigProvider, so the dark bold sidebar's
+  // white menu text doesn't leak to app-wide menus. Surface styles keep their
+  // token-driven logic below.
+  const sidebarMenu = isSurfaceStyle(styleName)
+    ? {
+        itemBg: 'none' as const,
+        itemSelectedBg: isBoldStyle
+          ? 'rgba(7, 110, 229, 0.2)'
+          : isDark
+            ? 'rgba(7, 110, 229, 0.15)'
+            : colors[100],
+        itemHoverBg: isBoldStyle
+          ? 'rgba(255, 255, 255, 0.08)'
+          : isDark
+            ? 'rgba(255, 255, 255, 0.08)'
+            : colors[50],
+        itemSelectedColor: isBoldStyle
+          ? '#4d8bff'
+          : isDark
+            ? '#4d8bff'
+            : colors[600],
+        itemColor: isBoldStyle
+          ? 'rgba(255, 255, 255, 0.85)'
+          : isDark
+            ? 'rgba(255, 255, 255, 0.85)'
+            : undefined,
+        subMenuItemBg: 'none' as const,
+        groupTitleColor: isDark ? 'rgba(255, 255, 255, 0.45)' : undefined,
+      }
+    : SIDEBAR_MENU[styleName]?.[mytheme] ?? {};
 
   const isCollapsed = others.collapsed ?? false;
 
@@ -336,33 +363,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
           showText={!isCollapsed}
         />
       </Flex>
-      <ConfigProvider
-        theme={{
-          components: {
-            Menu: {
-              itemBg: 'none',
-              itemSelectedBg: isBoldStyle
-                ? 'rgba(7, 110, 229, 0.2)'
-                : isDark
-                  ? 'rgba(7, 110, 229, 0.15)'
-                  : colors[100],
-              itemHoverBg: isBoldStyle
-                ? 'rgba(255, 255, 255, 0.08)'
-                : isDark
-                  ? 'rgba(255, 255, 255, 0.08)'
-                  : colors[50],
-              itemSelectedColor: isBoldStyle
-                ? '#4d8bff'
-                : isDark
-                  ? '#4d8bff'
-                  : colors[600],
-              itemColor: menuTextColor,
-              subMenuItemBg: 'none',
-              groupTitleColor: isDark ? 'rgba(255, 255, 255, 0.45)' : undefined,
-            },
-          },
-        }}
-      >
+      <ConfigProvider theme={{ components: { Menu: sidebarMenu } }}>
         <Menu
           mode="inline"
           inlineCollapsed={isCollapsed}
@@ -374,7 +375,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
           style={
             {
               border: 'none',
-              ...(tokens.menuItemHover.transition
+              ...(tokens?.menuItemHover.transition
                 ? { '--menu-transition': tokens.menuItemHover.transition }
                 : {}),
             } as React.CSSProperties

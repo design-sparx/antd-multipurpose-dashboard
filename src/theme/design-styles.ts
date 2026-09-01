@@ -1,6 +1,13 @@
 import { CSSProperties } from 'react';
 
-export type DesignStyleName = 'clean' | 'glassmorphic' | 'neumorphic' | 'bold';
+export type DesignStyleName =
+  | 'clean'
+  | 'glassmorphic'
+  | 'neumorphic'
+  | 'bold'
+  | 'mui'
+  | 'shadcn'
+  | 'serene';
 
 export interface SurfaceTokens {
   /** CSS background value for elevated surfaces (cards, sidebar, popups) */
@@ -29,38 +36,76 @@ export interface DesignStyle {
   name: DesignStyleName;
   label: string;
   description: string;
-  light: SurfaceTokens;
-  dark: SurfaceTokens;
+  /**
+   * Surfaces are rendered entirely by antd ConfigProvider tokens/components
+   * (see antd-themes.ts). `null` tells consumers to skip SurfaceTokens-driven
+   * inline overrides (no-op) and let the active theme handle the look.
+   */
+  light: SurfaceTokens | null;
+  dark: SurfaceTokens | null;
 }
+
+/**
+ * Styles driven by antd ConfigProvider tokens/components. Their `SurfaceTokens`
+ * are `null` — the shared Card and layouts must NOT apply inline surface
+ * styling so the native theme's Card/Layout/Menu component tokens win.
+ */
+export const NATIVE_STYLES: DesignStyleName[] = [
+  'clean',
+  'bold',
+  'mui',
+  'shadcn',
+  'serene',
+];
+
+/**
+ * Styles exempt from the antd-native token system. Their look relies on CSS
+ * effects antd tokens cannot express (backdrop blur, soft inset shadows), so
+ * they keep SurfaceTokens-driven inline styling on top of the base theme.
+ */
+export const SURFACE_STYLES: DesignStyleName[] = ['glassmorphic', 'neumorphic'];
+
+export const isSurfaceStyle = (styleName: DesignStyleName): boolean =>
+  SURFACE_STYLES.includes(styleName);
 
 const cleanStyle: DesignStyle = {
   name: 'clean',
   label: 'Clean',
   description: 'Minimal and flat — solid backgrounds with subtle shadows',
-  light: {
-    surfaceBg: '#ffffff',
-    sidebarBg: 'none',
-    border: 'none',
-    shadow: 'rgba(140, 152, 164, 0.075) 0 6px 12px 0',
-    backdropFilter: 'none',
-    hoverShadow: 'rgba(140, 152, 164, 0.15) 0 8px 16px 0',
-    menuItemHover: { transform: 'none' },
-    headerFilledBg: 'rgba(255, 255, 255, 0.8)',
-    headerFilledBackdrop: 'blur(8px)',
-    headerFilledShadow: '0 0 8px 2px rgba(0, 0, 0, 0.05)',
-  },
-  dark: {
-    surfaceBg: '#1a1a2e',
-    sidebarBg: 'none',
-    border: 'none',
-    shadow: 'rgba(0, 0, 0, 0.2) 0 6px 12px 0',
-    backdropFilter: 'none',
-    hoverShadow: 'rgba(0, 0, 0, 0.35) 0 8px 16px 0',
-    menuItemHover: { transform: 'none' },
-    headerFilledBg: 'rgba(26, 26, 46, 0.8)',
-    headerFilledBackdrop: 'blur(8px)',
-    headerFilledShadow: '0 0 8px 2px rgba(0, 0, 0, 0.2)',
-  },
+  light: null,
+  dark: null,
+};
+
+const boldStyle: DesignStyle = {
+  name: 'bold',
+  label: 'Bold',
+  description: 'Strong shadows, vivid accents, and sharp defined edges',
+  light: null,
+  dark: null,
+};
+
+const muiStyle: DesignStyle = {
+  name: 'mui',
+  label: 'MUI',
+  description: 'Material Design cross-platform surfaces (Roboto)',
+  light: null,
+  dark: null,
+};
+
+const shadcnStyle: DesignStyle = {
+  name: 'shadcn',
+  label: 'Shadcn',
+  description: 'Neutral grayscale, minimal shadows',
+  light: null,
+  dark: null,
+};
+
+const sereneStyle: DesignStyle = {
+  name: 'serene',
+  label: 'Serene',
+  description: 'Warm earth tones and calm surfaces',
+  light: null,
+  dark: null,
 };
 
 const glassmorphicStyle: DesignStyle = {
@@ -143,57 +188,26 @@ const neumorphicStyle: DesignStyle = {
   },
 };
 
-const boldStyle: DesignStyle = {
-  name: 'bold',
-  label: 'Bold',
-  description: 'Strong shadows, vivid accents, and sharp defined edges',
-  light: {
-    surfaceBg: '#ffffff',
-    sidebarBg: '#0a1628',
-    border: '2px solid rgba(7, 110, 229, 0.15)',
-    shadow: '0 4px 0 rgba(7, 110, 229, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08)',
-    backdropFilter: 'none',
-    hoverShadow:
-      '0 6px 0 rgba(7, 110, 229, 0.25), 0 12px 32px rgba(0, 0, 0, 0.12)',
-    menuItemHover: {
-      transform: 'scale(1.02)',
-      transition: 'transform 0.15s ease',
-    },
-    headerFilledBg: 'rgba(255, 255, 255, 0.95)',
-    headerFilledBackdrop: 'none',
-    headerFilledShadow:
-      '0 3px 0 rgba(7, 110, 229, 0.12), 0 6px 16px rgba(0, 0, 0, 0.06)',
-  },
-  dark: {
-    surfaceBg: '#141428',
-    sidebarBg: '#080818',
-    border: '2px solid rgba(77, 139, 255, 0.2)',
-    shadow: '0 4px 0 rgba(77, 139, 255, 0.15), 0 8px 24px rgba(0, 0, 0, 0.3)',
-    backdropFilter: 'none',
-    hoverShadow:
-      '0 6px 0 rgba(77, 139, 255, 0.25), 0 12px 32px rgba(0, 0, 0, 0.4)',
-    menuItemHover: {
-      transform: 'scale(1.02)',
-      transition: 'transform 0.15s ease',
-    },
-    headerFilledBg: 'rgba(20, 20, 40, 0.95)',
-    headerFilledBackdrop: 'none',
-    headerFilledShadow:
-      '0 3px 0 rgba(77, 139, 255, 0.12), 0 6px 16px rgba(0, 0, 0, 0.25)',
-  },
-};
-
 export const DESIGN_STYLES: Record<DesignStyleName, DesignStyle> = {
   clean: cleanStyle,
+  bold: boldStyle,
+  mui: muiStyle,
+  shadcn: shadcnStyle,
+  serene: sereneStyle,
   glassmorphic: glassmorphicStyle,
   neumorphic: neumorphicStyle,
-  bold: boldStyle,
 };
 
+/**
+ * Returns the SurfaceTokens for an exempt (CSS-driven) style, or `null` for a
+ * native style — native styles are fully rendered via antd ConfigProvider and
+ * callers must skip inline surface overrides.
+ */
 export const getDesignTokens = (
   styleName: DesignStyleName,
   themeMode: 'light' | 'dark'
-): SurfaceTokens => {
+): SurfaceTokens | null => {
   const style = DESIGN_STYLES[styleName];
-  return themeMode === 'dark' ? style.dark : style.light;
+  const tokens = themeMode === 'dark' ? style.dark : style.light;
+  return tokens ?? null;
 };

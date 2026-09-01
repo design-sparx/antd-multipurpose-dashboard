@@ -239,12 +239,26 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const sidebarMargin = `${sidebarWidth}px`;
 
   // Compute header background based on design style
-  const headerBg = navFill ? tokens.headerFilledBg : 'none';
-  const headerBackdrop = navFill ? tokens.headerFilledBackdrop : 'none';
-  const headerShadow = navFill ? tokens.headerFilledShadow : 'none';
+  // Surface styles: transparent until scrolled, then filled/blurred.
+  // Native styles: always use the antd Layout.headerBg token (no override).
+  const headerBg = tokens
+    ? navFill
+      ? tokens.headerFilledBg
+      : 'none'
+    : undefined;
+  const headerBackdrop = tokens
+    ? navFill
+      ? tokens.headerFilledBackdrop
+      : 'none'
+    : undefined;
+  const headerShadow = tokens
+    ? navFill
+      ? tokens.headerFilledShadow
+      : 'none'
+    : 'none';
 
   // Neumorphic uses its own background for the whole layout
-  const layoutBg = styleName === 'neumorphic' ? tokens.surfaceBg : undefined;
+  const layoutBg = styleName === 'neumorphic' ? tokens?.surfaceBg : undefined;
 
   return (
     <>
@@ -270,13 +284,19 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             left: 0,
             top: 0,
             bottom: 0,
-            background: tokens.sidebarBg,
-            border: styleName !== 'clean' ? tokens.border : 'none',
+            // Surface styles set their own sidebar surface; native styles use
+            // the antd Layout.siderBg token so no inline background is set.
+            background: tokens?.sidebarBg,
+            border: tokens
+              ? styleName !== 'clean'
+                ? tokens.border
+                : 'none'
+              : 'none',
             borderLeft: 'none',
             borderTop: 'none',
             borderBottom: 'none',
-            backdropFilter: tokens.backdropFilter,
-            WebkitBackdropFilter: tokens.backdropFilter,
+            backdropFilter: tokens?.backdropFilter,
+            WebkitBackdropFilter: tokens?.backdropFilter,
             transition: 'all .2s',
           }}
         />
