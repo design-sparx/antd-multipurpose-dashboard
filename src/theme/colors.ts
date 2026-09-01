@@ -33,5 +33,8 @@ export const getThemeColors = (theme: 'light' | 'dark'): ColorPalette => {
   return theme === 'dark' ? DARK_COLORS : LIGHT_COLORS;
 };
 
-// Primary color (same for both themes as the algorithm adjusts it)
+// Primary color for light mode (#076ee5 vs #ffffff = 4.8:1, passes WCAG AA)
 export const PRIMARY_COLOR = '#076ee5';
+// Primary color for dark mode. #076ee5 falls to ~3.5:1 on dark surfaces
+// (fails AA); #4d8bff stays >=5.0:1 across all dark design surfaces.
+export const DARK_PRIMARY_COLOR = '#4d8bff';

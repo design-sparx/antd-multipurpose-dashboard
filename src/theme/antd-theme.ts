@@ -1,5 +1,5 @@
 import { theme as antdTheme } from 'antd';
-import { PRIMARY_COLOR } from './colors';
+import { DARK_PRIMARY_COLOR, PRIMARY_COLOR } from './colors';
 import { DesignStyleName, getDesignTokens } from './design-styles';
 
 export const getAntdThemeConfig = (
@@ -13,7 +13,7 @@ export const getAntdThemeConfig = (
 
   return {
     token: {
-      colorPrimary: PRIMARY_COLOR,
+      colorPrimary: themeMode === 'dark' ? DARK_PRIMARY_COLOR : PRIMARY_COLOR,
       borderRadius: 6,
       fontFamily: 'Lato, sans-serif',
     },
