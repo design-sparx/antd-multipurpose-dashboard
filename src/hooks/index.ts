@@ -5,6 +5,9 @@ export { usePageContext };
 // Auth hook (re-export from context)
 export { useAuth } from '../contexts/AuthContext';
 
+// Theme hook
+export { useDataTheme } from './useDataTheme';
+
 // Dashboard data hooks (re-export from lib/queries)
 export * from '../lib/queries';
 
