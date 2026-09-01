@@ -124,6 +124,8 @@ export const StyleSwitcher = ({ open, onClose }: StyleSwitcherProps) => {
         <Flex
           align="center"
           justify="space-between"
+          className="style-switcher-mode"
+          data-tour="theme-mode"
           style={{
             padding: '12px 16px',
             borderRadius: borderRadiusLG,
@@ -144,7 +146,7 @@ export const StyleSwitcher = ({ open, onClose }: StyleSwitcherProps) => {
         </Flex>
 
         {/* Design style picker */}
-        <div>
+        <div className="style-switcher-picker" data-tour="style-picker">
           <SectionLabel>Design Style</SectionLabel>
           <Row gutter={[10, 10]} style={{ marginTop: 12 }}>
             {(Object.keys(DESIGN_STYLES) as DesignStyleName[]).map((key) => {
@@ -217,7 +219,7 @@ export const StyleSwitcher = ({ open, onClose }: StyleSwitcherProps) => {
         </div>
 
         {/* Theme customization */}
-        <div>
+        <div className="style-switcher-customize" data-tour="customize">
           <Flex
             align="center"
             justify="space-between"

@@ -77,6 +77,13 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const { user, logout } = useAuth();
   const { message } = App.useApp();
 
+  useEffect(() => {
+    const handleOpenStyleDrawer = () => setStyleDrawerOpen(true);
+    window.addEventListener('open-style-drawer', handleOpenStyleDrawer);
+    return () =>
+      window.removeEventListener('open-style-drawer', handleOpenStyleDrawer);
+  }, []);
+
   const handleLogout = async () => {
     message.open({
       type: 'loading',

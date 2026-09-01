@@ -1,4 +1,14 @@
-import { Button, Col, Flex, Image, Row, theme, Typography } from 'antd';
+import {
+  BorderBeam,
+  Button,
+  Col,
+  Flex,
+  Image,
+  Row,
+  theme,
+  Tour,
+  Typography,
+} from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import {
   PATH_AUTH,
@@ -26,7 +36,7 @@ import {
 } from '@ant-design/icons';
 import { Card, Container, RecentReleases } from '../components';
 import { Announcements } from '../components/shared/announcements/announcements';
-import { createElement, CSSProperties } from 'react';
+import { ComponentProps, createElement, CSSProperties, useState } from 'react';
 
 const { Title, Text } = Typography;
 
@@ -158,6 +168,7 @@ export const HomePage = () => {
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const isTablet = useMediaQuery({ maxWidth: 992 });
+  const [tourOpen, setTourOpen] = useState(false);
 
   // Feed the resolved primary (style + mode + user override) into the
   // .text-highlight gradient so the hero highlights follow the active theme.
@@ -259,6 +270,105 @@ export const HomePage = () => {
           </Row>
         </Container>
       </Flex>
+      <Container style={sectionStyles}>
+        <Title
+          level={2}
+          className="text-center"
+          style={{ marginBottom: '2rem' }}
+        >
+          Theme customization, in one click
+        </Title>
+        <Flex justify="center">
+          <BorderBeam
+            size={220}
+            lineWidth={2}
+            color={[
+              { color: colorPrimary, percent: 0 },
+              { color: colorPrimaryHover, percent: 100 },
+            ]}
+          >
+            <div
+              style={{
+                position: 'relative',
+                borderRadius: 16,
+                width: '100%',
+                maxWidth: 560,
+              }}
+            >
+              <Card
+                hoverable
+                className="theme-tour-card"
+                onClick={() => setTourOpen(true)}
+              >
+                <Flex vertical gap={8}>
+                  <Text>
+                    Every design style ships with its own primary color, and the
+                    customize drawer lets you fine-tune light/dark primaries,
+                    radius, and compact density.
+                  </Text>
+                  <Button
+                    type="primary"
+                    icon={<FormatPainterOutlined />}
+                    style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}
+                    onClick={() => setTourOpen(true)}
+                  >
+                    Take the tour
+                  </Button>
+                </Flex>
+              </Card>
+            </div>
+          </BorderBeam>
+        </Flex>
+      </Container>
+      <Tour
+        open={tourOpen}
+        onClose={() => setTourOpen(false)}
+        onChange={(current) => {
+          if (current === 1) {
+            window.dispatchEvent(new Event('open-style-drawer'));
+          }
+        }}
+        steps={
+          [
+            {
+              target: () =>
+                document.querySelector(
+                  '.theme-tour-card'
+                ) as HTMLElement | null,
+              title: 'Theme customization',
+              description:
+                'Every design style ships with its own befitting primary color. The customize drawer lives behind this section.',
+            },
+            {
+              target: () =>
+                document.querySelector(
+                  '.style-switcher-mode'
+                ) as HTMLElement | null,
+              title: 'Light & Dark mode',
+              description:
+                'Toggle the theme here. Colors stay contrast-aware in both modes.',
+            },
+            {
+              target: () =>
+                document.querySelector(
+                  '.style-switcher-picker'
+                ) as HTMLElement | null,
+              title: 'Design styles',
+              description:
+                'Pick a style — clean, glassmorphic, neumorphic, bold, and more. Each has its own befitting primary color.',
+            },
+            {
+              target: () =>
+                document.querySelector(
+                  '.style-switcher-customize'
+                ) as HTMLElement | null,
+              title: 'Fine-tune',
+              description:
+                'Adjust light/dark primaries, border radius, and compact density. It all applies live across the app.',
+            },
+          ] as NonNullable<ComponentProps<typeof Tour>['steps']>
+        }
+      />
       <Container style={sectionStyles}>
         <RecentReleases />
       </Container>

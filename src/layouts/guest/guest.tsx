@@ -81,6 +81,13 @@ export const GuestLayout = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const handleOpenStyleDrawer = () => setStyleDrawerOpen(true);
+    window.addEventListener('open-style-drawer', handleOpenStyleDrawer);
+    return () =>
+      window.removeEventListener('open-style-drawer', handleOpenStyleDrawer);
+  }, []);
+
   return (
     <>
       <NProgress isAnimating={isLoading} key={location.key} />
