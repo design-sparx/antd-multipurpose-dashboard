@@ -26,7 +26,7 @@ antd info <Component> --format json # offline component API lookup
 
 - **pre-commit**: `pnpm exec lint-staged` (Prettier + ESLint `--fix` on staged files)
 - **commit-msg**: `pnpm exec commitlint --edit $1` — conventional commits enforced (`type(scope): message`)
-- **CI**: Node 20, `pnpm install --frozen-lockfile`, Chromatic on push/PR to `main`, Changesets release on push to `main`
+- **CI**: Node 20, `pnpm install --frozen-lockfile`, Chromatic on push/PR to `main`, Changesets release on push to `main`. The dedicated CI build+lint workflow (`ci.yml`) was removed to save action minutes — validate locally with `pnpm build` / `pnpm lint` too.
 - Lint must pass with **0 warnings** before commit.
 - **Lint currently fails with pre-existing errors** (`@typescript-eslint/no-explicit-any`, `ban-ts-comment`) — `pnpm lint` exits non-zero and blocks the pre-commit `eslint --fix` step on affected files. **Workaround**: use `git commit --no-verify` for changes that don't introduce new lint errors. Fix the underlying `any` usages as a separate task.
 
