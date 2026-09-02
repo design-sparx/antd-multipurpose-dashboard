@@ -29,5 +29,10 @@ jobs:
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
+        with:
+          # Skip husky hooks (commitlint) for the bot's 'Version Packages'
+          # commit, which doesn't follow the conventional-commits format.
+          commit: 'chore(release): version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HUSKY: 0
