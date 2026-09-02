@@ -1,5 +1,5 @@
 ---
-"@fake-scope/fake-pkg": patch
+"antd-multi-dashboard": patch
 ---
 
 refactor(logo) + feat(footer): white-label logo props and public-site GuestFooter
