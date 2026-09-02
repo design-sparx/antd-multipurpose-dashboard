@@ -3,8 +3,6 @@ import {
   StopOutlined,
   CarOutlined,
   GroupOutlined,
-  HomeOutlined,
-  PieChartOutlined,
   ShoppingOutlined,
 } from '@ant-design/icons';
 import {
@@ -16,8 +14,6 @@ import {
   PageHeader,
   TruckListCard,
 } from '../../components';
-import { DASHBOARD_ITEMS } from '../../constants';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useDeliveries, useDeliveryAnalytics, useTrucks, useDeliveryRequests } from '../../lib/queries';
 import { useStylesContext } from '../../contexts';
@@ -106,34 +102,6 @@ export const LogisticsDashboardPage = () => {
       </Helmet>
       <PageHeader
         title="logistics dashboard"
-        breadcrumbs={[
-          {
-            title: (
-              <>
-                <HomeOutlined />
-                <span>home</span>
-              </>
-            ),
-            path: '/',
-          },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboards</span>
-              </>
-            ),
-            menu: {
-              items: DASHBOARD_ITEMS.map((d) => ({
-                key: d.title,
-                title: <Link to={d.path}>{d.title}</Link>,
-              })),
-            },
-          },
-          {
-            title: 'logistics',
-          },
-        ]}
       />
       <Row {...stylesContext?.rowProps}>
         {STATS.map((s) => (

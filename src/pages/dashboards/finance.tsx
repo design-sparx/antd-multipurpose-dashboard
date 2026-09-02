@@ -15,8 +15,6 @@ import {
 } from 'antd';
 import type { TableColumnsType } from 'antd';
 import {
-  HomeOutlined,
-  PieChartOutlined,
   FilterOutlined,
   DollarOutlined,
   RiseOutlined,
@@ -25,8 +23,7 @@ import {
   CheckCircleOutlined,
   ExclamationCircleOutlined,
 } from '@ant-design/icons';
-import { DASHBOARD_ITEMS } from '../../constants';
-import { Link } from 'react-router-dom';
+
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { PageHeader, Loader, Card } from '../../components/shared';
@@ -159,34 +156,6 @@ const FinanceDashboard = () => {
       </Helmet>
       <PageHeader
         title="finance dashboard"
-        breadcrumbs={[
-          {
-            title: (
-              <>
-                <HomeOutlined />
-                <span>home</span>
-              </>
-            ),
-            path: '/',
-          },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboards</span>
-              </>
-            ),
-            menu: {
-              items: DASHBOARD_ITEMS.map((d) => ({
-                key: d.title,
-                title: <Link to={d.path}>{d.title}</Link>,
-              })),
-            },
-          },
-          {
-            title: 'finance',
-          },
-        ]}
         extra={[
           <Button
             key="filter"
