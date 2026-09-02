@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 2.0.2
+
+### Patch Changes
+
+- bf69a8a: docs(agents): document CI changes from #206-#216
+
 ## 2.0.1
 
 ### Patch Changes
