@@ -1,5 +1,4 @@
 import {
-  Badge,
   Breadcrumb,
   Button,
   Dropdown,
@@ -388,18 +387,10 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             {/* Right: actions */}
             <Flex align="center" gap="small">
               <Tooltip title="Apps">
-                <Badge dot offset={[-4, 4]} status="processing">
-                  <Button
-                    icon={<AppstoreOutlined />}
-                    type="text"
-                    size="large"
-                  />
-                </Badge>
+                <Button icon={<AppstoreOutlined />} type="text" size="large" />
               </Tooltip>
               <Tooltip title="Messages">
-                <Badge count={3} size="small" offset={[-4, 4]}>
-                  <Button icon={<MessageOutlined />} type="text" size="large" />
-                </Badge>
+                <Button icon={<MessageOutlined />} type="text" size="large" />
               </Tooltip>
               <Tooltip title="Changelog" placement="bottom">
                 <Button
