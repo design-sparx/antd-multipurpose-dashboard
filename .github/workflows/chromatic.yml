@@ -33,4 +33,6 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: build-storybook
-          exit-zero-on-errors: true
+          # Exit as soon as the build is uploaded; don't block PR status on
+          # visual diff review (Chromatic posts a status check separately).
+          exitOnceUploaded: true
