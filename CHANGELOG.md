@@ -1,5 +1,11 @@
 # antd-multi-dashboard
 
+## 2.0.1
+
+### Patch Changes
+
+- 6146a0e: ci(chromatic): replace exit-zero-on-errors with exitOnceUploaded
+
 ## 2.0.0
 
 ### Major Changes
