@@ -5,6 +5,8 @@
   "readme": "README.md",
   "_id": "antd-multi-dashboard@1.1.0",
   "version": "1.5.0",
+  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@9.15.4",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
