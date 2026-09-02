@@ -26,7 +26,9 @@ antd info <Component> --format json # offline component API lookup
 
 - **pre-commit**: `pnpm exec lint-staged` (Prettier + ESLint `--fix` on staged files)
 - **commit-msg**: `pnpm exec commitlint --edit $1` — conventional commits enforced (`type(scope): message`)
-- **CI**: Node 20, `pnpm install --frozen-lockfile`, Chromatic on push/PR to `main`, Changesets release on push to `main`. The dedicated CI build+lint workflow (`ci.yml`) was removed to save action minutes — validate locally with `pnpm build` / `pnpm lint` too.
+- **CI**: Node 24, `pnpm install --frozen-lockfile` (lockfileVersion 9), Chromatic on push/PR to `main`, Changesets release on push to `main`. The dedicated CI build+lint workflow (`ci.yml`) was removed to save action minutes — validate locally with `pnpm build` / `pnpm lint` too.
+- **pnpm version** is pinned in `package.json#packageManager` (currently `pnpm@9.15.4`). Do **not** also pass `version:` to `pnpm/action-setup@v4` — the action errors with `Multiple versions of pnpm specified`. The `packageManager` field is the single source of truth (resolved by corepack).
+- **`pnpm-workspace.yaml`** is required: the `pnpm` cache step in `actions/setup-node@v4` calls `pnpm store path`, which in pnpm 9 requires a non-empty `packages:` field. This is a single-package repo (not a monorepo) so the workspace contains just the root (`packages: ['.']`).
 - Lint must pass with **0 warnings** before commit.
 - **Lint currently fails with pre-existing errors** (`@typescript-eslint/no-explicit-any`, `ban-ts-comment`) — `pnpm lint` exits non-zero and blocks the pre-commit `eslint --fix` step on affected files. **Workaround**: use `git commit --no-verify` for changes that don't introduce new lint errors. Fix the underlying `any` usages as a separate task.
 
@@ -119,9 +121,31 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 
 `<FloatButton.Group>`'s main icon is the menu's open/close trigger. An `onClick` on the group fires on **every** click of that icon — both opening AND closing the menu. **Move action handlers to child `FloatButton`s, not the group** (PR #196 footgun). See `guest.tsx` for the correct pattern: group icon opens menu, first child toggles theme, second child is `FloatButton.BackTop`.
 
+## Chromatic Workflow
+
+`.github/workflows/chromatic.yml` runs on push/PR to `main`.
+
+- The `chromaui/action@latest` `exit-zero-on-errors` input was deprecated and removed; the closest replacement is `exitOnceUploaded: true` (exit after upload; Chromatic posts the status check separately). Do **not** add the old flag back — it now emits a warning and is silently ignored.
+- Builds report `n component errors` when a story throws. These are masked by no current flag (the old `exit-zero-on-errors: true` used to hide them) — they will fail the workflow. See #214 for the current 6 unresolved errors in build 168.
+- The `chromatic` dev dependency pins v15; the action uses the CLI from `node_modules`. Bump both together if upgrading.
+
 ## Versioning
 
 - Changesets (`pnpm changeset`) for versioning. Base branch is `main`.
+- **Changeset frontmatter is mandatory.** The file must start with:
+  ```
+  ---
+  "antd-multi-dashboard": patch
+  ---
+
+  <one-line summary>
+  ```
+  The package name must match `package.json#name` exactly (currently `antd-multi-dashboard`). Bump levels: `patch` / `minor` / `major`.
+- **Web UI gotcha:** the GitHub PR View "Add a changeset" button pre-fills only the empty `--- ---` and the PR title — it does **not** prompt for the package name or bump level (the local CLI does). Edit the file body to add the frontmatter line before committing. (#216)
+- **Release workflow** (`.github/workflows/release.yml`):
+  - `changesets/action@v1` runs an internal `git commit -m "Version Packages"`. The repo's husky `commit-msg` hook (commitlint) rejects that format.
+  - The workflow sets `HUSKY: 0` in env (bypasses the hook) **and** passes `commit: 'chore(release): version packages'` so the message is well-formed even if `HUSKY=0` is ever not honored.
+- **Changeset validation hook** is tracked in #216 (not implemented yet). For now, eyeball every changeset before committing.
 
 ## Git Workflow
 
