@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Button } from 'antd';
+import { FilterOutlined } from '@ant-design/icons';
 import { withRouter } from 'storybook-addon-react-router-v6';
-import { DASHBOARD_ITEMS } from '../../../constants';
 
 import { PageHeader } from './page-header';
 
@@ -22,55 +21,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Simple: Story = {
   args: {
-    title: 'Dashboard',
-    breadcrumbs: [
-      {
-        title: (
-          <>
-            <HomeOutlined />
-            <span>home</span>
-          </>
-        ),
-        path: '/',
-      },
-      {
-        title: 'default dashboard',
-      },
-    ],
+    title: 'Default Dashboard',
     style: { width: 800 },
   },
 };
 
 export const Complex: Story = {
   args: {
-    title: 'Dashboard',
-    breadcrumbs: [
-      {
-        title: (
-          <>
-            <HomeOutlined />
-            <span>home</span>
-          </>
-        ),
-        path: '/',
-      },
-      {
-        title: (
-          <>
-            <PieChartOutlined />
-            <span>dashboards</span>
-          </>
-        ),
-        menu: {
-          items: DASHBOARD_ITEMS.map((d) => ({
-            key: d.title,
-            title: <Link to="#">{d.title}</Link>,
-          })),
-        },
-      },
-      {
-        title: 'default',
-      },
+    title: 'E-commerce Dashboard',
+    extra: [
+      <Button key="filter" icon={<FilterOutlined />}>
+        Filters
+      </Button>,
     ],
     style: { width: 800 },
   },

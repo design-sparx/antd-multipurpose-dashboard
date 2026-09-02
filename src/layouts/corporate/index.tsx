@@ -1,14 +1,12 @@
 import { AppLayout } from '../index.ts';
 import { Button, Col, Row, Typography } from 'antd';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {
   BlogsListCard,
   Card,
   PageHeader,
   SocialMediaCard,
 } from '../../components';
-import { HomeOutlined, IdcardOutlined } from '@ant-design/icons';
-import { CORPORATE_ITEMS } from '../../constants';
 import { useStylesContext } from '../../contexts';
 
 const { Text, Title } = Typography;
@@ -24,7 +22,6 @@ const BLOGS_DATA = Array.from({ length: 23 }).map((_, i) => ({
 }));
 
 export const CorporateLayout = () => {
-  const { pathname } = useLocation();
   const stylesContext = useStylesContext();
 
   return (
@@ -33,34 +30,6 @@ export const CorporateLayout = () => {
       <AppLayout>
         <PageHeader
           title="corporate"
-          breadcrumbs={[
-            {
-              title: (
-                <>
-                  <HomeOutlined />
-                  <span>home</span>
-                </>
-              ),
-              path: '/',
-            },
-            {
-              title: (
-                <>
-                  <IdcardOutlined />
-                  <span>corporate</span>
-                </>
-              ),
-              menu: {
-                items: CORPORATE_ITEMS.map((d) => ({
-                  key: d.title,
-                  title: <Link to={d.path}>{d.title}</Link>,
-                })),
-              },
-            },
-            {
-              title: pathname.split('/')[pathname.split('/').length - 1] || '',
-            },
-          ]}
         />
         <Row {...stylesContext?.rowProps}>
           <Col xs={24} md={16} xl={18}>

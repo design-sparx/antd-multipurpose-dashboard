@@ -8,13 +8,7 @@ import {
   WeeklyActivityCard,
 } from '../../components';
 import { Button, Col, Row } from 'antd';
-import {
-  HomeOutlined,
-  PieChartOutlined,
-  FilterOutlined,
-} from '@ant-design/icons';
-import { DASHBOARD_ITEMS } from '../../constants';
-import { Link } from 'react-router-dom';
+import { FilterOutlined } from '@ant-design/icons';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { useTasks, useProjects, useNotifications } from '../../lib/queries';
@@ -64,32 +58,6 @@ export const DefaultDashboardPage = () => {
           >
             Filters
           </Button>,
-        ]}
-        breadcrumbs={[
-          {
-            title: (
-              <>
-                <HomeOutlined />
-                <span>home</span>
-              </>
-            ),
-            path: '/',
-          },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboards</span>
-              </>
-            ),
-            menu: {
-              items: DASHBOARD_ITEMS.map((d) => ({
-                key: d.title,
-                title: <Link to={d.path}>{d.title}</Link>,
-              })),
-            },
-          },
-          { title: 'default' },
         ]}
       />
       <Row {...stylesContext?.rowProps}>

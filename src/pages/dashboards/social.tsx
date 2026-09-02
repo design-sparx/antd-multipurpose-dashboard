@@ -3,12 +3,10 @@ import { Col, ConfigProvider, Row, Tabs, TabsProps } from 'antd';
 import {
   FacebookFilled,
   FacebookOutlined,
-  HomeOutlined,
   InstagramFilled,
   InstagramOutlined,
   LinkedinFilled,
   LinkedinOutlined,
-  PieChartOutlined,
   TwitterCircleFilled,
   TwitterOutlined,
   YoutubeFilled,
@@ -24,8 +22,6 @@ import {
   PostsCard,
   SocialStatsCard,
 } from '../../components';
-import { DASHBOARD_ITEMS } from '../../constants';
-import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import {
   useSocialActivities,
@@ -307,34 +303,6 @@ export const SocialDashboardPage = () => {
     <div>
       <PageHeader
         title="social dashboard"
-        breadcrumbs={[
-          {
-            title: (
-              <>
-                <HomeOutlined />
-                <span>home</span>
-              </>
-            ),
-            path: '/',
-          },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboards</span>
-              </>
-            ),
-            menu: {
-              items: DASHBOARD_ITEMS.map((d) => ({
-                key: d.title,
-                title: <Link to={d.path}>{d.title}</Link>,
-              })),
-            },
-          },
-          {
-            title: 'social',
-          },
-        ]}
       />
       <ConfigProvider
         theme={{

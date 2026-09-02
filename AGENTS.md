@@ -41,6 +41,7 @@ antd info <Component> --format json # offline component API lookup
 ## Architecture Notes
 
 - **Routing**: `src/routes/routes.tsx` uses `createBrowserRouter`. `ProtectedRoute` guards auth. `PageWrapper` HOC wraps routes for scroll restoration.
+- **Breadcrumbs**: Rendered once, in the app header (`HeaderNav` in `src/layouts/app/app.tsx`), auto-generated from `location.pathname` (home icon + capitalized path segments). `PageHeader` no longer renders breadcrumbs — do **not** pass a `breadcrumbs` prop to it; page-level breadcrumbs were removed in favor of the single header breadcrumb.
 - **Redux**: `theme`, `dataMode`, `auth`, `designStyle` slices. All persisted via `redux-persist` to `localStorage`.
 - **Theme**: Ant Design v6 `ConfigProvider` in `src/App.tsx`; the theme object is built by `getAntdThemeConfig(activeStyle, themeMode)` in `src/theme/antd-theme.ts` and `useMemo`-cached on `[activeStyle, themeMode]`. Dark/light via `mytheme === 'dark'` (typed `'light' | 'dark'`); the `<html data-theme="dark|light">` attribute is synced by the `useDataTheme(themeMode)` hook (`src/hooks/useDataTheme.ts`, re-exported from `src/hooks`). Contrast-aware: `colorPrimary` is `#076ee5` (light) / `#4d8bff` (dark — `DARK_PRIMARY_COLOR` in `src/theme/colors.ts`; the light `#076ee5` drops to ~3.5:1 on dark surfaces) and `colorLink` is pinned to the brand primary so `Button type="link"` doesn't fall back to antd's default `colorInfo` (`~#1677ff`, ~4.0:1, fails AA). Use `getDesignTokens(activeStyle, themeMode)` for design-style-aware colors.
 - **App shell / providers**: `src/main.tsx` composes the provider tree via a `Providers` component (`QueryClientProvider` → `PersistGate` → `Provider` → `AuthProvider` → `App`). The `StylesContext` value (`rowProps`/`carouselProps`) is a static, module-level constant in `App.tsx` so the 15+ `useStylesContext()` consumers don't re-render on every render.
@@ -107,6 +108,12 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
 - "Back to top" uses the `goToTop()` util in `src/utils/index.ts:168` (smooth scroll, `window.scrollTo({ top: 0, behavior: 'smooth' })`).
 - **CTA buttons: use antd `<Button type="primary" href=... target="_blank" rel="noopener noreferrer" icon=...>`, NOT a custom-styled `<a>`.** Antd v6 buttons support `href` natively — see how `Star on GitHub` is rendered in `guest-footer.tsx`.
 - Storybook: `fullscreen` layout decorator.
+
+### `PageHeader` (`src/components/shared/page-header/page-header.tsx`)
+
+- **Props**: `title: string`, `extra?: ReactNode`, plus standard `HTMLAttributes`. The `breadcrumbs` prop was **removed** — breadcrumbs are rendered in the app header instead (see Architecture Notes).
+- Renders a `Typography.Title` (level 4, capitalized) + optional `extra` actions, followed by a plain `Divider`.
+- Re-exported from `src/components/shared/index.ts`.
 
 ## FloatButton Group Pitfall
 

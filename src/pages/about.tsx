@@ -5,13 +5,10 @@ import {
   BulbOutlined,
   CodeOutlined,
   GithubOutlined,
-  HomeOutlined,
-  PieChartOutlined,
 } from '@ant-design/icons';
 import { Card, PageHeader } from '../components';
 import { createElement } from 'react';
-import { DASHBOARD_ITEMS, PATH_GITHUB } from '../constants';
-import { Link } from 'react-router-dom';
+import { PATH_GITHUB } from '../constants';
 
 const { Title, Text } = Typography;
 
@@ -50,34 +47,6 @@ export const AboutPage = () => {
       <Flex vertical gap="middle">
         <PageHeader
           title="About"
-          breadcrumbs={[
-            {
-              title: (
-                <>
-                  <HomeOutlined />
-                  <span>home</span>
-                </>
-              ),
-              path: '/',
-            },
-            {
-              title: (
-                <>
-                  <PieChartOutlined />
-                  <span>dashboards</span>
-                </>
-              ),
-              menu: {
-                items: DASHBOARD_ITEMS.map((d) => ({
-                  key: d.title,
-                  title: <Link to={d.path}>{d.title}</Link>,
-                })),
-              },
-            },
-            {
-              title: 'about',
-            },
-          ]}
         />
         <Card>
           <Flex vertical gap="small">

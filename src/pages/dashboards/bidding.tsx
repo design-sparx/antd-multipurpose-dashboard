@@ -17,13 +17,7 @@ import {
   TopItemsCard,
   TransactionsCard,
 } from '../../components';
-import {
-  HomeOutlined,
-  PieChartOutlined,
-  QuestionOutlined,
-} from '@ant-design/icons';
-import { DASHBOARD_ITEMS } from '../../constants';
-import { Link } from 'react-router-dom';
+import { QuestionOutlined } from '@ant-design/icons';
 import { Helmet } from 'react-helmet-async';
 import {
   useLiveAuctions,
@@ -80,34 +74,6 @@ export const BiddingDashboardPage = () => {
       </Helmet>
       <PageHeader
         title="bidding dashboard"
-        breadcrumbs={[
-          {
-            title: (
-              <>
-                <HomeOutlined />
-                <span>home</span>
-              </>
-            ),
-            path: '/',
-          },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboards</span>
-              </>
-            ),
-            menu: {
-              items: DASHBOARD_ITEMS.map((d) => ({
-                key: d.title,
-                title: <Link to={d.path}>{d.title}</Link>,
-              })),
-            },
-          },
-          {
-            title: 'bidding',
-          },
-        ]}
       />
       <Row {...ROW_PROPS}>
         {/* Account status cards at top */}

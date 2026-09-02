@@ -355,13 +355,7 @@ const SideNav = ({ ...others }: SideNavProps) => {
       {...others}
     >
       <Flex justify="center" style={{ padding: '1rem 0' }}>
-        <Logo
-          color="blue"
-          asLink
-          href={PATH_LANDING.root}
-          imgHeight={28}
-          showText={!isCollapsed}
-        />
+        <Logo asLink href={PATH_LANDING.root} showText={!isCollapsed} />
       </Flex>
       <ConfigProvider theme={{ components: { Menu: sidebarMenu } }}>
         <Menu

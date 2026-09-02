@@ -28,14 +28,10 @@ import {
   CheckCircleOutlined,
   ClockCircleOutlined,
   ExclamationCircleOutlined,
-  HomeOutlined,
-  PieChartOutlined,
   QuestionOutlined,
   StarFilled,
   SyncOutlined,
 } from '@ant-design/icons';
-import { DASHBOARD_ITEMS } from '../../constants';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useStylesContext } from '../../contexts';
 import { createElement, CSSProperties } from 'react';
@@ -622,34 +618,6 @@ export const EcommerceDashboardPage = () => {
       </Helmet>
       <PageHeader
         title="ecommerce dashboard"
-        breadcrumbs={[
-          {
-            title: (
-              <>
-                <HomeOutlined />
-                <span>home</span>
-              </>
-            ),
-            path: '/',
-          },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboards</span>
-              </>
-            ),
-            menu: {
-              items: DASHBOARD_ITEMS.map((d) => ({
-                key: d.title,
-                title: <Link to={d.path}>{d.title}</Link>,
-              })),
-            },
-          },
-          {
-            title: 'ecommerce',
-          },
-        ]}
       />
       <Row {...stylesContext?.rowProps}>
         {/* KPI cards - top row */}
