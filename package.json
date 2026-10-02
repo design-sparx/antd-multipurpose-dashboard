@@ -29,7 +29,7 @@
     "@tanstack/react-query": "^5.90.10",
     "@tanstack/react-query-devtools": "^5.90.2",
     "antd": "^6.6.2",
-    "axios": "^1.18.0",
+    "axios": "^1.20.0",
     "dayjs": "^1.11.9",
     "earcut": "^3.2.3",
     "framer-motion": "^12.34.0",
