@@ -4,7 +4,7 @@
   "type": "module",
   "readme": "README.md",
   "_id": "antd-multi-dashboard@1.1.0",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "packageManager": "pnpm@9.15.4",
   "scripts": {
     "dev": "vite",
