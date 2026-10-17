@@ -1,5 +1,12 @@
 # antd-multi-dashboard
 
+## 2.0.3
+
+### Patch Changes
+
+- ## 8af285e: fix(ci): skip chromatic deployment when project token is missing
+- b8758d6: Keep the app header at a constant 64px on scroll so the burger button and breadcrumb no longer clip (#199)
+
 ## 2.0.2
 
 ### Patch Changes
