@@ -11,6 +11,8 @@ on:
 # List of jobs
 jobs:
   chromatic-deployment:
+    # Skip gracefully when no Chromatic project token is configured (forks/PRs).
+    if: ${{ secrets.CHROMATIC_PROJECT_TOKEN != '' }}
     # Operating System
     runs-on: ubuntu-latest
     # Job steps

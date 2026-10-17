@@ -146,10 +146,11 @@ Use `antd lint src` (and `antd info <Component> --format json`) to check for new
   - `changesets/action@v1` runs an internal `git commit -m "Version Packages"`. The repo's husky `commit-msg` hook (commitlint) rejects that format.
   - The workflow sets `HUSKY: 0` in env (bypasses the hook) **and** passes `commit: 'chore(release): version packages'` so the message is well-formed even if `HUSKY=0` is ever not honored.
 - **Changeset validation hook** is tracked in #216 (not implemented yet). For now, eyeball every changeset before committing.
+- **Every PR must include a changeset.** Before opening or finishing a PR, ensure a file exists under `.changeset/` (run `pnpm changeset` or add one manually). Missing changeset blocks release.
 
 ## Git Workflow
 
-- **Base branches**: `main` (release) and `dev` (work-in-progress). PRs go `dev → main`. The `dev` branch frequently diverges from `main`; rebase before opening a PR to avoid GitHub reporting `CONFLICTING`.
+- **Before opening or finishing any PR, ensure a changeset exists under `.changeset/`** (run `pnpm changeset` or add one manually). Every PR must include a changeset.
 - **Rebase conflict playbook** (worked example: PR #196 rebased onto `main` after #188 landed):
   1. `git fetch origin && git rebase origin/main`
   2. Resolve `.gitignore` / `AGENTS.md` / `pnpm-lock.yaml` first — take `main`'s versions and let `pnpm install` regenerate the lockfile (`pnpm install` without `--frozen-lockfile`).
