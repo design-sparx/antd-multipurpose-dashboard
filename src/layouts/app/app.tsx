@@ -317,7 +317,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             style={{
               marginLeft: sidebarMargin,
               padding: navFill ? '0 1.5rem 0 0' : '0 2rem 0 0',
-              height: navFill ? 48 : 64,
+              height: 64,
               background: headerBg,
               backdropFilter: headerBackdrop,
               WebkitBackdropFilter: headerBackdrop,
