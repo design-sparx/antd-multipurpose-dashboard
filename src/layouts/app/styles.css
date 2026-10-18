@@ -1,0 +1,35 @@
+/* Let the breadcrumb absorb pressure without shrinking navigation controls. */
+.app-header__navigation,
+.app-header__breadcrumb,
+.app-header__breadcrumb-item {
+  min-width: 0;
+}
+
+.app-header__navigation {
+  flex: 0 1 auto;
+}
+
+.app-header > .ant-btn,
+.app-header__sidebar-toggle,
+.app-header__actions,
+.app-header__breadcrumb-item:first-child,
+.app-header__breadcrumb-separator {
+  flex-shrink: 0;
+}
+
+.app-header__breadcrumb > ol {
+  flex-wrap: nowrap;
+}
+
+/* Truncate individual labels, keeping home and every ancestor link reachable. */
+.app-header__breadcrumb .app-header__breadcrumb-item > .ant-breadcrumb-link {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-header__profile {
+  height: auto;
+  padding: 4px 8px 4px 4px;
+}

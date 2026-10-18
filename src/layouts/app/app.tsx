@@ -6,6 +6,7 @@ import {
   FloatButton,
   Layout,
   MenuProps,
+  Popover,
   App,
   Skeleton,
   theme,
@@ -24,7 +25,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   MessageOutlined,
-  SearchOutlined,
+  MoreOutlined,
   QuestionCircleOutlined,
   QuestionOutlined,
   SettingOutlined,
@@ -52,6 +53,7 @@ import {
 } from '../../constants';
 import { useDesignStyle } from '../../hooks/useDesignStyle';
 import { useAuth } from '../../contexts';
+import './styles.css';
 const { Content } = Layout;
 
 type AppLayoutProps = {
@@ -63,12 +65,14 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     token: { borderRadius },
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
+  const isNarrow = useMediaQuery({ maxWidth: 575 });
   const [collapsed, setCollapsed] = useState(true);
   const [navFill, setNavFill] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
   const [styleDrawerOpen, setStyleDrawerOpen] = useState(false);
   const [tourOpen, setTourOpen] = useState(false);
+  const [actionsOpen, setActionsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const floatBtnRef = useRef(null);
@@ -242,7 +246,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       ? 0
       : SIDER_COLLAPSED_WIDTH
     : SIDER_WIDTH;
-  const sidebarMargin = `${sidebarWidth}px`;
+  // On mobile the fixed sidebar overlays content below the header. Reserving
+  // its 200px width would leave only 175px for the header's navigation controls.
+  const sidebarMargin = isMobile ? '0px' : `${sidebarWidth}px`;
 
   // Compute header background based on design style
   // Surface styles: transparent until scrolled, then filled/blurred.
@@ -266,6 +272,40 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   // Neumorphic uses its own background for the whole layout
   const layoutBg = styleName === 'neumorphic' ? tokens?.surfaceBg : undefined;
 
+  const secondaryActions = (
+    <Flex align="center" gap="small">
+      <Tooltip title="Apps">
+        <Button
+          aria-label="Apps"
+          icon={<AppstoreOutlined />}
+          type="text"
+          size="large"
+        />
+      </Tooltip>
+      <Tooltip title="Messages">
+        <Button
+          aria-label="Messages"
+          icon={<MessageOutlined />}
+          type="text"
+          size="large"
+        />
+      </Tooltip>
+      <Tooltip title="Changelog" placement="bottom">
+        <Button
+          aria-label="Changelog"
+          icon={<HistoryOutlined />}
+          type="text"
+          size="large"
+          onClick={() => {
+            setActionsOpen(false);
+            navigate(PATH_CHANGELOG.root);
+          }}
+        />
+      </Tooltip>
+      <LanguageSwitcher />
+    </Flex>
+  );
+
   return (
     <>
       <NProgress isAnimating={isLoading} key={location.key} />
@@ -288,8 +328,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             overflow: 'auto',
             position: 'fixed',
             left: 0,
-            top: 0,
+            top: isMobile ? 64 : 0,
             bottom: 0,
+            zIndex: isMobile ? 2 : undefined,
             // Surface styles set their own sidebar surface; native styles use
             // the antd Layout.siderBg token so no inline background is set.
             background: tokens?.sidebarBg,
@@ -314,6 +355,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           }}
         >
           <HeaderNav
+            className="app-header"
             style={{
               marginLeft: sidebarMargin,
               padding: navFill ? '0 1.5rem 0 0' : '0 2rem 0 0',
@@ -332,9 +374,12 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             }}
           >
             {/* Left: collapse + breadcrumbs */}
-            <Flex align="center" gap={8}>
+            <Flex className="app-header__navigation" align="center" gap={8}>
               <Tooltip title={`${collapsed ? 'Expand' : 'Collapse'} Sidebar`}>
                 <Button
+                  aria-label={`${collapsed ? 'Expand' : 'Collapse'} Sidebar`}
+                  aria-expanded={!collapsed}
+                  className="app-header__sidebar-toggle"
                   type="text"
                   icon={
                     collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
@@ -348,68 +393,68 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                 />
               </Tooltip>
               <Breadcrumb
+                aria-label="Breadcrumb"
+                classNames={{
+                  root: 'app-header__breadcrumb',
+                  item: 'app-header__breadcrumb-item',
+                  separator: 'app-header__breadcrumb-separator',
+                }}
                 items={(() => {
                   const segments = location.pathname.split('/').filter(Boolean);
                   return [
-                    { title: <HomeOutlined />, href: '/' },
+                    {
+                      title: <HomeOutlined />,
+                      href: '/',
+                      'aria-label': 'Home',
+                    },
                     ...segments.map((seg, i) => ({
-                      title: seg.charAt(0).toUpperCase() + seg.slice(1),
+                      title: (
+                        <span
+                          title={seg.charAt(0).toUpperCase() + seg.slice(1)}
+                        >
+                          {seg.charAt(0).toUpperCase() + seg.slice(1)}
+                        </span>
+                      ),
                       ...(i < segments.length - 1
                         ? {
                             href: '/' + segments.slice(0, i + 1).join('/'),
                           }
-                        : {}),
+                        : { 'aria-current': 'page' as const }),
                     })),
                   ];
                 })()}
               />
             </Flex>
             {/* Center: search */}
-            {isMobile ? (
-              <Tooltip title="Search">
-                <Button
-                  icon={<SearchOutlined />}
-                  type="text"
-                  size="large"
-                  onClick={() => {
-                    window.dispatchEvent(
-                      new KeyboardEvent('keydown', {
-                        key: 'k',
-                        ctrlKey: true,
-                      })
-                    );
-                  }}
-                />
-              </Tooltip>
-            ) : (
-              <CommandPalette items={commandPaletteItems} />
-            )}
+            <CommandPalette items={commandPaletteItems} compact={isMobile} />
             {/* Right: actions */}
-            <Flex align="center" gap="small">
-              <Tooltip title="Apps">
-                <Button icon={<AppstoreOutlined />} type="text" size="large" />
-              </Tooltip>
-              <Tooltip title="Messages">
-                <Button icon={<MessageOutlined />} type="text" size="large" />
-              </Tooltip>
-              <Tooltip title="Changelog" placement="bottom">
-                <Button
-                  icon={<HistoryOutlined />}
-                  type="text"
-                  size="large"
-                  onClick={() => navigate(PATH_CHANGELOG.root)}
-                />
-              </Tooltip>
-              <LanguageSwitcher />
+            <Flex className="app-header__actions" align="center" gap="small">
+              {isNarrow ? (
+                <Popover
+                  content={secondaryActions}
+                  trigger="click"
+                  placement="bottomRight"
+                  open={actionsOpen}
+                  onOpenChange={setActionsOpen}
+                >
+                  <Button
+                    aria-label="More actions"
+                    aria-expanded={actionsOpen}
+                    icon={<MoreOutlined />}
+                    type="text"
+                    size="large"
+                  />
+                </Popover>
+              ) : (
+                secondaryActions
+              )}
               <Dropdown menu={{ items }} trigger={['click']}>
-                <Flex
-                  align="center"
-                  gap={8}
+                <Button
+                  type="text"
+                  aria-label="Profile menu"
+                  className="app-header__profile"
                   style={{
-                    cursor: 'pointer',
-                    padding: '4px 8px 4px 4px',
                     borderRadius: borderRadius + 16,
-                    transition: 'background 0.2s ease',
                   }}
                 >
                   <div style={{ position: 'relative' }}>
@@ -445,7 +490,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                       {user?.firstName || user?.email?.split('@')[0] || 'Admin'}
                     </Typography.Text>
                   )}
-                </Flex>
+                </Button>
               </Dropdown>
             </Flex>
           </HeaderNav>

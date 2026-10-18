@@ -5,7 +5,7 @@ import {
   useState,
   forwardRef,
 } from 'react';
-import { Button, Input, List, Modal, Typography, theme } from 'antd';
+import { Button, Input, List, Modal, Tooltip, Typography, theme } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,12 +23,13 @@ type CommandItem = {
 type CommandPaletteProps = {
   items: CommandItem[];
   placeholder?: string;
+  compact?: boolean;
 };
 
 export const CommandPalette = forwardRef<
   { open: () => void },
   CommandPaletteProps
->(({ items, placeholder = 'Search pages, actions...' }, ref) => {
+>(({ items, placeholder, compact = false }, ref) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
@@ -92,30 +93,42 @@ export const CommandPalette = forwardRef<
 
   return (
     <>
-      <Button
-        icon={<SearchOutlined />}
-        onClick={() => setOpen(true)}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          color: colorTextPlaceholder,
-          background: colorBgContainer,
-          border: `1px solid ${colorBorder}`,
-          borderRadius: borderRadiusLG,
-          padding: '4px 12px',
-          height: 36,
-          minWidth: 180,
-          justifyContent: 'flex-start',
-        }}
-      >
-        <span style={{ flex: 1, textAlign: 'left', fontWeight: 'normal' }}>
-          Search...
-        </span>
-        <Text keyboard style={{ fontSize: 11, lineHeight: 1, margin: 0 }}>
-          Ctrl+K
-        </Text>
-      </Button>
+      {compact ? (
+        <Tooltip title="Search">
+          <Button
+            aria-label="Search"
+            icon={<SearchOutlined />}
+            type="text"
+            size="large"
+            onClick={() => setOpen(true)}
+          />
+        </Tooltip>
+      ) : (
+        <Button
+          icon={<SearchOutlined />}
+          onClick={() => setOpen(true)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            color: colorTextPlaceholder,
+            background: colorBgContainer,
+            border: `1px solid ${colorBorder}`,
+            borderRadius: borderRadiusLG,
+            padding: '4px 12px',
+            height: 36,
+            minWidth: 180,
+            justifyContent: 'flex-start',
+          }}
+        >
+          <span style={{ flex: 1, textAlign: 'left', fontWeight: 'normal' }}>
+            Search...
+          </span>
+          <Text keyboard style={{ fontSize: 11, lineHeight: 1, margin: 0 }}>
+            Ctrl+K
+          </Text>
+        </Button>
+      )}
       <Modal
         open={open}
         onCancel={() => {
@@ -131,7 +144,7 @@ export const CommandPalette = forwardRef<
       >
         <Input
           autoFocus
-          placeholder={placeholder}
+          placeholder={placeholder ?? 'Search pages, actions...'}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           variant="borderless"
