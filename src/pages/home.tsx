@@ -8,6 +8,7 @@ import {
   Row,
   Tag,
   theme,
+  Tooltip,
   Typography,
 } from 'antd';
 import { useMediaQuery } from 'react-responsive';
@@ -20,6 +21,7 @@ import {
   LoginOutlined,
   RocketFilled,
   SettingOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import {
   PATH_AUTH,
@@ -29,7 +31,7 @@ import {
 } from '../constants';
 import { Card, Container, RecentReleases } from '../components';
 import { Announcements } from '../components/shared/announcements/announcements';
-import { CSSProperties } from 'react';
+import { CSSProperties, useState } from 'react';
 
 const { Title, Text } = Typography;
 
@@ -122,8 +124,8 @@ const FILTER_PILLS = ['All', 'Releases', 'Security', 'Maintenance'];
 
 const CONTRIBUTORS = [
   { name: 'Dnevend', link: 'https://github.com/Dnevend' },
-  { name: 'Kelvin Kiprop', link: 'https://github.com/KelvinKiprop' },
-  { name: 'Oliver Leonor', link: 'https://github.com/OliverLeonor' },
+  { name: 'Kelvin Kiprop', link: 'https://github.com/kelvink96' },
+  { name: 'Oliver Leonor', link: 'https://github.com/Oliver-Leonor' },
   { name: 'ram-prasad23', link: 'https://github.com/ram-prasad23' },
 ];
 
@@ -133,6 +135,7 @@ export const HomePage = () => {
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const isTablet = useMediaQuery({ maxWidth: 992 });
+  const [failedAvatars, setFailedAvatars] = useState<Set<string>>(new Set());
 
   const highlightVars = {
     '--text-highlight-from': colorPrimary,
@@ -214,17 +217,34 @@ export const HomePage = () => {
                   maxCount={6}
                   style={{ marginTop: 4 }}
                 >
-                  {CONTRIBUTORS.map((contributor) => (
-                    <Avatar
-                      key={contributor.name}
-                      src={`https://github.com/${contributor.name}.png`}
-                      alt={contributor.name}
-                      onClick={() => {
-                        window.open(contributor.link, '_blank');
-                      }}
-                      style={{ cursor: 'pointer' }}
-                    />
-                  ))}
+                  {CONTRIBUTORS.map((contributor) => {
+                    const hasFailed = failedAvatars.has(contributor.name);
+                    return (
+                      <Tooltip key={contributor.name} title={contributor.name}>
+                        <Avatar
+                          src={
+                            hasFailed
+                              ? undefined
+                              : `https://github.com/${contributor.name}.png`
+                          }
+                          alt={contributor.name}
+                          icon={hasFailed ? <UserOutlined /> : undefined}
+                          onError={() => {
+                            setFailedAvatars((prev) => {
+                              const next = new Set(prev);
+                              next.add(contributor.name);
+                              return next;
+                            });
+                            return true;
+                          }}
+                          onClick={() => {
+                            window.open(contributor.link, '_blank');
+                          }}
+                          style={{ cursor: 'pointer' }}
+                        />
+                      </Tooltip>
+                    );
+                  })}
                 </Avatar.Group>
               </Flex>
               <Flex
