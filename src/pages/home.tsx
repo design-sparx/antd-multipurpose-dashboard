@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Button,
   Col,
   Flex,
@@ -119,6 +120,13 @@ const BENEFITS = [
 
 const FILTER_PILLS = ['All', 'Releases', 'Security', 'Maintenance'];
 
+const CONTRIBUTORS = [
+  { name: 'Dnevend', link: 'https://github.com/Dnevend' },
+  { name: 'Kelvin Kiprop', link: 'https://github.com/KelvinKiprop' },
+  { name: 'Oliver Leonor', link: 'https://github.com/OliverLeonor' },
+  { name: 'ram-prasad23', link: 'https://github.com/ram-prasad23' },
+];
+
 export const HomePage = () => {
   const {
     token: { colorPrimary, colorPrimaryHover },
@@ -189,6 +197,36 @@ export const HomePage = () => {
                 <span className="text-highlight">Ant Design</span>, and{' '}
                 <span className="text-highlight">Storybook</span>
               </Title>
+              <Flex vertical gap="small" style={{ marginTop: '1rem' }}>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    color: 'rgba(0,0,0,0.45)',
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.1,
+                    fontWeight: 700,
+                  }}
+                >
+                  Contributors
+                </Text>
+                <Avatar.Group
+                  size="default"
+                  maxCount={6}
+                  style={{ marginTop: 4 }}
+                >
+                  {CONTRIBUTORS.map((contributor) => (
+                    <Avatar
+                      key={contributor.name}
+                      src={`https://github.com/${contributor.name}.png`}
+                      alt={contributor.name}
+                      onClick={() => {
+                        window.open(contributor.link, '_blank');
+                      }}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  ))}
+                </Avatar.Group>
+              </Flex>
               <Flex
                 gap="middle"
                 vertical={isMobile}
