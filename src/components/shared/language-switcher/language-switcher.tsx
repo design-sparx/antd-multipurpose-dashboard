@@ -25,7 +25,12 @@ export function LanguageSwitcher() {
   return (
     <Tooltip title="Language">
       <Dropdown menu={{ items }} trigger={['click']} placement="bottomRight">
-        <Button icon={<GlobalOutlined />} type="text" size="large" />
+        <Button
+          aria-label="Language"
+          icon={<GlobalOutlined />}
+          type="text"
+          size="large"
+        />
       </Dropdown>
     </Tooltip>
   );

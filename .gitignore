@@ -27,6 +27,10 @@ dist-ssr
 # Storybook
 storybook-static/
 
+# Browser test artifacts
+playwright-report/
+test-results/
+
 # Env
 .env
 

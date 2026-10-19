@@ -42,6 +42,19 @@ pnpm run dev
 
 Each PR should pass the linter to be accepted. To fix lint and prettier errors, run `pnpm run lint:fix` and `pnpm run prettier:fix`.
 
+## Tests
+
+Use Node 24 (the CI version), install dependencies with `pnpm install --frozen-lockfile`, and run `pnpm test:run` for unit tests.
+
+The header's responsive regression tests run in Chromium at 375px, 768px, and 1280px. Install the browser once, then run:
+
+```bash
+pnpm exec playwright install chromium
+pnpm test:e2e
+```
+
+Playwright starts Vite on port 4173 automatically. The tests check actual breadcrumb and control bounds, truncation, navigation, sidebar toggling, and header scroll effects. They use an isolated demo auth session, matching the app's mock authentication. Failure screenshots and traces are saved in the ignored `test-results/` directory.
+
 ## Commit Message
 
 We use [commitlint](https://commitlint.js.org/guides/getting-started) to manage and standardize our commits:

@@ -1,3 +1,6 @@
 # Ignore artifacts:
 build
 coverage
+
+# Keep pnpm's generated lockfile format.
+pnpm-lock.yaml
