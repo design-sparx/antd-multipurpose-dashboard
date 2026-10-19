@@ -1,4 +1,14 @@
-import { Button, Col, Flex, Masonry, Row, Tag, theme, Typography } from 'antd';
+import {
+  Button,
+  Col,
+  Flex,
+  Image,
+  Masonry,
+  Row,
+  Tag,
+  theme,
+  Typography,
+} from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 import {
@@ -24,14 +34,19 @@ const { Title, Text } = Typography;
 
 const DASHBOARDS = [
   {
-    title: 'bidding',
-    link: PATH_DASHBOARD.bidding,
-    image: '/showcase/dashboard/bidding.png',
-  },
-  {
     title: 'default',
     link: PATH_DASHBOARD.default,
     image: '/showcase/dashboard/default.png',
+  },
+  {
+    title: 'analytics',
+    link: PATH_DASHBOARD.analytics,
+    image: '/showcase/dashboard/analytics.png',
+  },
+  {
+    title: 'bidding',
+    link: PATH_DASHBOARD.bidding,
+    image: '/showcase/dashboard/bidding.png',
   },
   {
     title: 'ecommerce',
@@ -39,9 +54,14 @@ const DASHBOARDS = [
     image: '/showcase/dashboard/ecommerce.png',
   },
   {
-    title: 'learning',
-    link: PATH_DASHBOARD.learning,
-    image: '/showcase/dashboard/learning.png',
+    title: 'marketing',
+    link: PATH_DASHBOARD.marketing,
+    image: '/showcase/dashboard/marketing.png',
+  },
+  {
+    title: 'social',
+    link: PATH_DASHBOARD.social,
+    image: '/showcase/dashboard/social.png',
   },
   {
     title: 'logistics',
@@ -49,19 +69,24 @@ const DASHBOARDS = [
     image: '/showcase/dashboard/logistics.png',
   },
   {
-    title: 'marketing',
-    link: PATH_DASHBOARD.marketing,
-    image: '/showcase/dashboard/marketing.png',
-  },
-  {
     title: 'projects',
     link: PATH_DASHBOARD.projects,
     image: '/showcase/dashboard/projects.png',
   },
   {
-    title: 'social',
-    link: PATH_DASHBOARD.social,
-    image: '/showcase/dashboard/social.png',
+    title: 'learning',
+    link: PATH_DASHBOARD.learning,
+    image: '/showcase/dashboard/learning.png',
+  },
+  {
+    title: 'healthcare',
+    link: PATH_DASHBOARD.healthcare,
+    image: '/showcase/dashboard/healthcare.png',
+  },
+  {
+    title: 'finance',
+    link: PATH_DASHBOARD.finance,
+    image: '/showcase/dashboard/finance.png',
   },
 ];
 
@@ -199,30 +224,11 @@ export const HomePage = () => {
                 lg={12}
                 style={{ display: 'flex', justifyContent: 'center' }}
               >
-                <Card
-                  hoverable
-                  cover={
-                    <img
-                      src="/landing-frame.png"
-                      alt="dashboard preview"
-                      style={{ borderRadius: 16, width: '100%', maxWidth: 520 }}
-                    />
-                  }
-                >
-                  <Flex
-                    vertical
-                    align="center"
-                    justify="center"
-                    style={{ height: '100%', padding: 24 }}
-                  >
-                    <Text
-                      className="m-0 text-capitalize"
-                      style={{ fontWeight: 700 }}
-                    >
-                      Dashboard preview
-                    </Text>
-                  </Flex>
-                </Card>
+                <Image
+                  src="/showcase/dashboard/default.png"
+                  alt="dashboard preview"
+                  style={{ borderRadius: 16, width: '100%', maxWidth: 520 }}
+                />
               </Col>
             )}
           </Row>
@@ -273,22 +279,28 @@ export const HomePage = () => {
           className="text-center"
           style={{ marginBottom: '2rem' }}
         >
-          8 dashboard pages available
+          10 dashboard pages available
         </Title>
         <Masonry
+          columns={4}
+          gutter={16}
           items={DASHBOARDS.map((dashboard) => ({
             key: dashboard.title,
             data: dashboard,
           }))}
-          columns={{ xs: 1, sm: 2, md: 3, lg: 4 }}
-          gutter={16}
-          itemRender={(item) => {
-            const dashboard = item.data as (typeof DASHBOARDS)[number];
+          itemRender={({ data }) => {
+            const dashboard = data as (typeof DASHBOARDS)[number];
             return (
               <Link key={dashboard.title} to={dashboard.link}>
                 <Card
                   hoverable
-                  cover={<img src={dashboard.image} alt={dashboard.title} />}
+                  cover={
+                    <img
+                      src={dashboard.image}
+                      alt={dashboard.title}
+                      style={{ width: '100%' }}
+                    />
+                  }
                 >
                   <Text className="m-0 text-capitalize">{dashboard.title}</Text>
                 </Card>
