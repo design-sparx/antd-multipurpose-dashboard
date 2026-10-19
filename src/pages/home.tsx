@@ -1,55 +1,55 @@
 import {
-  BorderBeam,
+  Avatar,
   Button,
   Col,
   Flex,
   Image,
+  Masonry,
   Row,
+  Tag,
   theme,
-  Tour,
+  Tooltip,
   Typography,
 } from 'antd';
 import { useMediaQuery } from 'react-responsive';
-import {
-  PATH_AUTH,
-  PATH_CORPORATE,
-  PATH_DASHBOARD,
-  PATH_ERROR,
-  PATH_GITHUB,
-  PATH_USER_PROFILE,
-} from '../constants';
 import { Link } from 'react-router-dom';
 import {
-  AntDesignOutlined,
+  DashboardOutlined,
   AppstoreOutlined,
-  BorderOutlined,
-  CalendarOutlined,
-  EditOutlined,
-  FileOutlined,
-  FormatPainterOutlined,
+  BookOutlined,
   GithubOutlined,
   LoginOutlined,
-  MergeCellsOutlined,
-  PieChartOutlined,
   RocketFilled,
-  TableOutlined,
+  SettingOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
+import {
+  PATH_AUTH,
+  PATH_DASHBOARD,
+  PATH_DOCS,
+  PATH_GITHUB,
+} from '../constants';
 import { Card, Container, RecentReleases } from '../components';
 import { Announcements } from '../components/shared/announcements/announcements';
-import { ComponentProps, createElement, CSSProperties, useState } from 'react';
+import { CSSProperties, useState } from 'react';
 
 const { Title, Text } = Typography;
 
 const DASHBOARDS = [
   {
-    title: 'bidding',
-    link: PATH_DASHBOARD.bidding,
-    image: '/showcase/dashboard/bidding.png',
-  },
-  {
     title: 'default',
     link: PATH_DASHBOARD.default,
     image: '/showcase/dashboard/default.png',
+  },
+  {
+    title: 'analytics',
+    link: PATH_DASHBOARD.analytics,
+    image: '/showcase/dashboard/analytics.png',
+  },
+  {
+    title: 'bidding',
+    link: PATH_DASHBOARD.bidding,
+    image: '/showcase/dashboard/bidding.png',
   },
   {
     title: 'ecommerce',
@@ -57,9 +57,14 @@ const DASHBOARDS = [
     image: '/showcase/dashboard/ecommerce.png',
   },
   {
-    title: 'learning',
-    link: PATH_DASHBOARD.learning,
-    image: '/showcase/dashboard/learning.png',
+    title: 'marketing',
+    link: PATH_DASHBOARD.marketing,
+    image: '/showcase/dashboard/marketing.png',
+  },
+  {
+    title: 'social',
+    link: PATH_DASHBOARD.social,
+    image: '/showcase/dashboard/social.png',
   },
   {
     title: 'logistics',
@@ -67,99 +72,61 @@ const DASHBOARDS = [
     image: '/showcase/dashboard/logistics.png',
   },
   {
-    title: 'marketing',
-    link: PATH_DASHBOARD.marketing,
-    image: '/showcase/dashboard/marketing.png',
-  },
-  {
     title: 'projects',
     link: PATH_DASHBOARD.projects,
     image: '/showcase/dashboard/projects.png',
   },
   {
-    title: 'social',
-    link: PATH_DASHBOARD.social,
-    image: '/showcase/dashboard/social.png',
+    title: 'learning',
+    link: PATH_DASHBOARD.learning,
+    image: '/showcase/dashboard/learning.png',
+  },
+  {
+    title: 'healthcare',
+    link: PATH_DASHBOARD.healthcare,
+    image: '/showcase/dashboard/healthcare.png',
+  },
+  {
+    title: 'finance',
+    link: PATH_DASHBOARD.finance,
+    image: '/showcase/dashboard/finance.png',
   },
 ];
 
-const APPS = [
+const BENEFITS = [
   {
-    title: 'corporate',
-    link: PATH_CORPORATE.team,
-    image: '/showcase/corporate/team.png',
-  },
-  {
-    title: 'user profile',
-    link: PATH_USER_PROFILE.details,
-    image: '/showcase/profile/details.png',
-  },
-  {
-    title: 'auth',
-    link: PATH_AUTH.signin,
-    image: '/showcase/auth/login.png',
-  },
-  {
-    title: 'errors',
-    link: PATH_ERROR.error400,
-    image: '/showcase/errors/400.png',
-  },
-];
-
-const FEATURES = [
-  {
-    title: 'customizable theme',
+    title: 'Ten dashboards',
     description:
-      'We have included a configurable theme provider to customize your elegant admin.',
-    icon: FormatPainterOutlined,
+      'Ready-to-use dashboard pages for analytics, ecommerce, marketing, social, and more.',
+    icon: DashboardOutlined,
   },
   {
-    title: '50+ Page Templates',
-    description: 'We have 50+ pages to make your development easier.',
-    icon: FileOutlined,
+    title: 'Four design styles',
+    description:
+      'Clean, glassmorphic, neumorphic, and bold — each with its own primary color and tokens.',
+    icon: SettingOutlined,
   },
   {
-    title: '60+ UI components',
-    description: 'Almost 60+ UI Components being given with Antd Admin Pack.',
+    title: '60+ components',
+    description:
+      'Ant Design v6 components, themed and responsive, ready to drop into any page.',
     icon: AppstoreOutlined,
   },
   {
-    title: 'Ant Design',
-    description: 'Its been made with Ant Design and full responsive layout.',
-    icon: AntDesignOutlined,
-  },
-  {
-    title: '500+ font icons',
+    title: 'Storybook ready',
     description:
-      'Lots of Icon Fonts are included here in the package of Antd Admin.',
-    icon: BorderOutlined,
+      'Every component is documented in Storybook with interactive controls and args.',
+    icon: BookOutlined,
   },
-  {
-    title: 'Slick Carousel',
-    description: 'The Last React Carousel You will Ever Need!.',
-    icon: MergeCellsOutlined,
-  },
-  {
-    title: 'Easy to Customize',
-    description: 'Customization will be easy as we understand your pain.',
-    icon: EditOutlined,
-  },
-  {
-    title: 'Lots of Chart Options',
-    description:
-      'You name it and we have it, Yes lots of variations for Charts.',
-    icon: PieChartOutlined,
-  },
-  {
-    title: 'Lots of Table Examples',
-    description: 'Data Tables are initial requirement and we added them.',
-    icon: TableOutlined,
-  },
-  {
-    title: 'Calendar Design',
-    description: 'Calendar is available with our package & in nice design.',
-    icon: CalendarOutlined,
-  },
+];
+
+const FILTER_PILLS = ['All', 'Releases', 'Security', 'Maintenance'];
+
+const CONTRIBUTORS = [
+  { name: 'Dnevend', link: 'https://github.com/Dnevend' },
+  { name: 'Kelvin Kiprop', link: 'https://github.com/kelvink96' },
+  { name: 'Oliver Leonor', link: 'https://github.com/Oliver-Leonor' },
+  { name: 'ram-prasad23', link: 'https://github.com/ram-prasad23' },
 ];
 
 export const HomePage = () => {
@@ -168,10 +135,8 @@ export const HomePage = () => {
   } = theme.useToken();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const isTablet = useMediaQuery({ maxWidth: 992 });
-  const [tourOpen, setTourOpen] = useState(false);
+  const [failedAvatars, setFailedAvatars] = useState<Set<string>>(new Set());
 
-  // Feed the resolved primary (style + mode + user override) into the
-  // .text-highlight gradient so the hero highlights follow the active theme.
   const highlightVars = {
     '--text-highlight-from': colorPrimary,
     '--text-highlight-to': colorPrimaryHover,
@@ -188,12 +153,12 @@ export const HomePage = () => {
     <div
       style={{
         ...highlightVars,
-        // backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.35) 40%, rgba(255, 255, 255, 1) 40%), url('/grid-3d.jpg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
       }}
     >
+      {/* Hero */}
       <Flex
         vertical
         align="center"
@@ -202,43 +167,90 @@ export const HomePage = () => {
           height: isTablet ? 600 : 650,
           width: '100%',
           padding: isMobile ? '2rem 1rem' : '3rem 0',
-          // backgroundColor: 'rgba(255, 255, 255, 0.85)',
         }}
       >
         <Container>
           <Row style={{ alignItems: 'center' }}>
-            <Col lg={12}>
+            <Col xs={24} lg={12}>
               <Text
                 style={{
                   color: colorPrimary,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: 700,
+                  letterSpacing: 0.05,
+                  textTransform: 'uppercase',
                 }}
               >
-                <RocketFilled /> Kick start your project with
+                <RocketFilled /> Kick start your project
               </Text>
               <Title
+                level={1}
                 style={{
-                  fontSize: isMobile ? 36 : 40,
-                  fontWeight: 900,
-                  margin: '1.5rem 0',
+                  fontSize: isMobile ? 40 : 48,
+                  fontWeight: 800,
+                  margin: '1.25rem 0 1rem',
+                  lineHeight: 1.1,
                 }}
               >
-                A dynamic and versatile multipurpose{' '}
-                <span className="text-highlight">dashboard</span> template built
-                using <span className="text-highlight">React</span>,{' '}
+                A dynamic and versatile{' '}
+                <span className="text-highlight">multipurpose dashboard</span>{' '}
+                template built with{' '}
+                <span className="text-highlight">React</span>,{' '}
                 <span className="text-highlight">Vite</span>,{' '}
                 <span className="text-highlight">Ant Design</span>, and{' '}
-                <span className="text-highlight">Storybook</span>{' '}
+                <span className="text-highlight">Storybook</span>
               </Title>
-              <Text style={{ fontSize: 20, marginBottom: '1.5rem' }}>
-                <span className="text-highlight fw-bolder">60+</span> ready made
-                components to use.
-              </Text>
+              <Flex vertical gap="small" style={{ marginTop: '1rem' }}>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    color: 'rgba(0,0,0,0.45)',
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.1,
+                    fontWeight: 700,
+                  }}
+                >
+                  Contributors
+                </Text>
+                <Avatar.Group
+                  size="default"
+                  maxCount={6}
+                  style={{ marginTop: 4 }}
+                >
+                  {CONTRIBUTORS.map((contributor) => {
+                    const hasFailed = failedAvatars.has(contributor.name);
+                    return (
+                      <Tooltip key={contributor.name} title={contributor.name}>
+                        <Avatar
+                          src={
+                            hasFailed
+                              ? undefined
+                              : `https://github.com/${contributor.name}.png`
+                          }
+                          alt={contributor.name}
+                          icon={hasFailed ? <UserOutlined /> : undefined}
+                          onError={() => {
+                            setFailedAvatars((prev) => {
+                              const next = new Set(prev);
+                              next.add(contributor.name);
+                              return next;
+                            });
+                            return true;
+                          }}
+                          onClick={() => {
+                            window.open(contributor.link, '_blank');
+                          }}
+                          style={{ cursor: 'pointer' }}
+                        />
+                      </Tooltip>
+                    );
+                  })}
+                </Avatar.Group>
+              </Flex>
               <Flex
                 gap="middle"
                 vertical={isMobile}
-                style={{ marginTop: '1.5rem' }}
+                style={{ marginTop: '0.5rem' }}
               >
                 <Link to={PATH_AUTH.signin}>
                   <Button
@@ -246,6 +258,7 @@ export const HomePage = () => {
                     type="primary"
                     size="large"
                     block={isMobile}
+                    style={{ height: 52 }}
                   >
                     Live preview
                   </Button>
@@ -256,6 +269,7 @@ export const HomePage = () => {
                     type="default"
                     size="large"
                     block={isMobile}
+                    style={{ height: 52 }}
                   >
                     Give us a star
                   </Button>
@@ -263,224 +277,174 @@ export const HomePage = () => {
               </Flex>
             </Col>
             {!isTablet && (
-              <Col lg={12}>
-                <Image src="/landing-frame.png" alt="dashboard image snippet" />
+              <Col
+                xs={24}
+                lg={12}
+                style={{ display: 'flex', justifyContent: 'center' }}
+              >
+                <Image
+                  src="/showcase/dashboard/default.png"
+                  alt="dashboard preview"
+                  style={{ borderRadius: 16, width: '100%', maxWidth: 520 }}
+                />
               </Col>
             )}
           </Row>
         </Container>
       </Flex>
+
+      {/* Benefits */}
       <Container style={sectionStyles}>
-        <Title
-          level={2}
-          className="text-center"
-          style={{ marginBottom: '2rem' }}
-        >
-          Theme customization, in one click
-        </Title>
-        <Flex justify="center">
-          <BorderBeam
-            size={220}
-            lineWidth={2}
-            color={[
-              { color: colorPrimary, percent: 0 },
-              { color: colorPrimaryHover, percent: 100 },
-            ]}
+        <Flex vertical align="center" style={{ marginBottom: '2rem' }}>
+          <Title
+            level={2}
+            className="text-center"
+            style={{ marginBottom: '0.5rem' }}
           >
-            <div
-              style={{
-                position: 'relative',
-                borderRadius: 16,
-                width: '100%',
-                maxWidth: 560,
-              }}
-            >
-              <Card
-                hoverable
-                className="theme-tour-card"
-                onClick={() => setTourOpen(true)}
-              >
-                <Flex vertical gap={8}>
-                  <Text>
-                    Every design style ships with its own primary color, and the
-                    customize drawer lets you fine-tune light/dark primaries,
-                    radius, and compact density.
-                  </Text>
-                  <Button
-                    type="primary"
-                    icon={<FormatPainterOutlined />}
-                    style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}
-                    onClick={() => setTourOpen(true)}
-                  >
-                    Take the tour
-                  </Button>
-                </Flex>
-              </Card>
-            </div>
-          </BorderBeam>
+            Everything you need to ship
+          </Title>
         </Flex>
+        <Row gutter={[16, 24]}>
+          {BENEFITS.map((benefit) => {
+            const Icon = benefit.icon;
+            return (
+              <Col key={benefit.title} xs={24} md={12} lg={6}>
+                <Card hoverable style={{ height: '100%' }}>
+                  <Flex vertical gap="small">
+                    <Icon style={{ fontSize: 32, color: colorPrimary }} />
+                    <Title
+                      level={4}
+                      className="m-0"
+                      style={{ fontWeight: 700 }}
+                    >
+                      {benefit.title}
+                    </Title>
+                    <Text type="secondary" style={{ fontSize: 14 }}>
+                      {benefit.description}
+                    </Text>
+                  </Flex>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
       </Container>
-      <Tour
-        open={tourOpen}
-        onClose={() => setTourOpen(false)}
-        onChange={(current) => {
-          if (current === 1) {
-            window.dispatchEvent(new Event('open-style-drawer'));
-          }
-        }}
-        steps={
-          [
-            {
-              target: () =>
-                document.querySelector(
-                  '.theme-tour-card'
-                ) as HTMLElement | null,
-              title: 'Theme customization',
-              description:
-                'Every design style ships with its own befitting primary color. The customize drawer lives behind this section.',
-            },
-            {
-              target: () =>
-                document.querySelector(
-                  '.style-switcher-mode'
-                ) as HTMLElement | null,
-              title: 'Light & Dark mode',
-              description:
-                'Toggle the theme here. Colors stay contrast-aware in both modes.',
-            },
-            {
-              target: () =>
-                document.querySelector(
-                  '.style-switcher-picker'
-                ) as HTMLElement | null,
-              title: 'Design styles',
-              description:
-                'Pick a style — clean, glassmorphic, neumorphic, bold, and more. Each has its own befitting primary color.',
-            },
-            {
-              target: () =>
-                document.querySelector(
-                  '.style-switcher-customize'
-                ) as HTMLElement | null,
-              title: 'Fine-tune',
-              description:
-                'Adjust light/dark primaries, border radius, and compact density. It all applies live across the app.',
-            },
-          ] as NonNullable<ComponentProps<typeof Tour>['steps']>
-        }
-      />
-      <Container style={sectionStyles}>
-        <RecentReleases />
-      </Container>
-      <Container style={sectionStyles}>
-        <Announcements />
-      </Container>
+
+      {/* Dashboard grid — masonry */}
       <Container style={sectionStyles}>
         <Title
           level={2}
           className="text-center"
           style={{ marginBottom: '2rem' }}
         >
-          8 dashboard pages available
+          10 dashboard pages available
         </Title>
-        <Row
-          gutter={[
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-          ]}
-        >
-          {DASHBOARDS.map((dashboard) => (
-            <Col key={dashboard.title} xs={24} lg={8} xl={6}>
-              <Link to={dashboard.link}>
+        <Masonry
+          columns={4}
+          gutter={16}
+          items={DASHBOARDS.map((dashboard) => ({
+            key: dashboard.title,
+            data: dashboard,
+          }))}
+          itemRender={({ data }) => {
+            const dashboard = data as (typeof DASHBOARDS)[number];
+            return (
+              <Link key={dashboard.title} to={dashboard.link}>
                 <Card
                   hoverable
-                  cover={<img src={dashboard.image} alt={dashboard.title} />}
+                  cover={
+                    <img
+                      src={dashboard.image}
+                      alt={dashboard.title}
+                      style={{ width: '100%' }}
+                    />
+                  }
                 >
                   <Text className="m-0 text-capitalize">{dashboard.title}</Text>
                 </Card>
               </Link>
-            </Col>
-          ))}
-        </Row>
+            );
+          }}
+        />
       </Container>
+
+      {/* What's New */}
       <Container style={sectionStyles}>
-        <Title
-          level={2}
-          className="text-center"
-          style={{ marginBottom: '2rem' }}
-        >
-          3+ pages available
-        </Title>
-        <Row
-          gutter={[
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-          ]}
-        >
-          {APPS.map((app) => (
-            <Col key={app.title} xs={24} sm={12} lg={8} xl={6}>
-              <Link to={app.link}>
-                <Card hoverable cover={<img src={app.image} alt={app.title} />}>
-                  <Text className="m-0 text-capitalize">{app.title}</Text>
-                </Card>
-              </Link>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-      <Container style={sectionStyles}>
-        <Title
-          level={2}
-          className="text-center"
-          style={{ marginBottom: '2rem' }}
-        >
-          Other Amazing Features & Flexibility Provided
-        </Title>
-        <Row
-          gutter={[
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-          ]}
-        >
-          {FEATURES.map((feature) => (
-            <Col key={feature.title} xs={24} md={12} lg={8}>
-              <Card style={{ height: '100%' }}>
-                <Flex vertical>
-                  {createElement(feature.icon, {
-                    style: { fontSize: 32, color: colorPrimary },
-                  })}
-                  <Title level={5} className="text-capitalize">
-                    {feature.title}
-                  </Title>
-                  <Text>{feature.description}</Text>
-                </Flex>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-      <Card
-        style={{
-          width: isMobile ? '95%' : 500,
-          margin: '0 auto',
-          textAlign: 'center',
-        }}
-      >
-        <Title level={4} style={{ marginTop: 0 }}>
-          Haven't found an answer to your question?
-        </Title>
-        <Text style={{ marginTop: '1rem' }}>
-          Connect with us either on discord or email us
-        </Text>
-        <Flex gap="middle" justify="center" style={{ marginTop: '1rem' }}>
-          <Button href="mailto:kelvin.kiprop96@gmail.com" type="primary">
-            Email
-          </Button>
-          <Button target="_blank" href={`${PATH_GITHUB.repo}/issues`}>
-            Submit an issue
-          </Button>
+        <Flex vertical align="center" style={{ marginBottom: '1.5rem' }}>
+          <Title
+            level={2}
+            className="text-center"
+            style={{ marginBottom: '0.5rem' }}
+          >
+            What's New
+          </Title>
+          <Text
+            className="text-center"
+            type="secondary"
+            style={{ maxWidth: 560, margin: '0 auto' }}
+          >
+            Latest releases, announcements, and security notes.
+          </Text>
         </Flex>
-      </Card>
+        <Flex justify="center" gap={8} wrap>
+          {FILTER_PILLS.map((label) => (
+            <Tag key={label} variant="outlined" style={{ cursor: 'default' }}>
+              {label}
+            </Tag>
+          ))}
+        </Flex>
+        <Flex vertical gap={16}>
+          <RecentReleases />
+          <Announcements />
+        </Flex>
+      </Container>
+
+      {/* CTA */}
+      <Container style={sectionStyles}>
+        <Card
+          style={{
+            textAlign: 'center',
+            padding: '3rem 1rem',
+            borderRadius: 24,
+          }}
+        >
+          <Title level={3} style={{ marginBottom: '1.5rem' }}>
+            Ready to build your dashboard?
+          </Title>
+          <Flex
+            gap="small"
+            style={{ flexWrap: 'wrap', justifyContent: 'center' }}
+          >
+            <Link to={PATH_DASHBOARD.default}>
+              <Button type="primary" size="large" block={isMobile}>
+                Live preview
+              </Button>
+            </Link>
+            <Link
+              to={PATH_GITHUB.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                type="default"
+                size="large"
+                block={isMobile}
+                icon={<GithubOutlined />}
+              >
+                Give us a star
+              </Button>
+            </Link>
+            <Button
+              type="default"
+              size="large"
+              block={isMobile}
+              onClick={() => window.open(PATH_DOCS.components, '_blank')}
+            >
+              Components
+            </Button>
+          </Flex>
+        </Card>
+      </Container>
     </div>
   );
 };
