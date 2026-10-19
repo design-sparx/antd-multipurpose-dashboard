@@ -1,5 +1,13 @@
 # antd-multi-dashboard
 
+## 2.0.4
+
+### Patch Changes
+
+- 084f99e: Replace home page with hybrid marketing dashboard design featuring embedded dashboard preview hero, benefit statements, masonry dashboard grid, and What's New feed with filter pills.
+- 70a8c56: Refactor home page dashboard images to antd Masonry grid with all 10 dashboard pages and add contributors avatar group below the hero section
+- d82c72c: Keep mobile header breadcrumbs on one line, preserve access to navigation actions, and add responsive browser regression coverage.
+
 ## 2.0.3
 
 ### Patch Changes
